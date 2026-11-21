@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-11-21T19:14:29+09:00",
+  "updated_at": "2026-11-21T19:53:33+09:00",
   "episodes": [
     {
       "episode_id": "ep001",
@@ -105,6 +105,18 @@
       "source_post_no": "75091",
       "status": "pending",
       "queued_at": "2026-11-21T19:14:29+09:00",
+      "packed_at": null,
+      "published_at": null,
+      "dc_post_url": "",
+      "pack_dir": ""
+    },
+    {
+      "episode_id": "ep010",
+      "episode_number": 10,
+      "title": "이거 필비 전사가 가져갓네 ㅎㄷ",
+      "source_post_no": "98449",
+      "status": "pending",
+      "queued_at": "2026-11-21T19:53:33+09:00",
       "packed_at": null,
       "published_at": null,
       "dc_post_url": "",
