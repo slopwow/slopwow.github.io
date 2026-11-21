@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "wow-forever-sloptoon"
+version = "0.1.0"
+description = "Automated 4~6-cut gag sloptoon pipeline and static web archive for DCInside WOW Forever minor gallery."
+requires-python = ">=3.10"
+dependencies = [
+    "google-genai>=3.2.0",
+    "pydantic>=2.7.0",
+    "httpx>=0.27.0",
+    "beautifulsoup4>=4.12.0",
+    "Pillow>=10.0.0",
+    "numpy>=1.26.0",
+    "python-dotenv>=1.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+]
+
+[project.scripts]
+sloptoon = "wow_sloptoon.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

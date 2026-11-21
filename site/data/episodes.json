@@ -1,0 +1,92 @@
+[
+  {
+    "episode_id": "ep001",
+    "episode_number": 1,
+    "title": "흑마법사가 물을 어케 줌?",
+    "subtitle": "흑마를 법사로 착각한 힐러와 뉴비 흑마의 멜론 주스 상황극",
+    "source_post_no": "92059",
+    "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=92059&exception_mode=recommend&page=1",
+    "created_at": "2026-11-21T01:30:00+09:00",
+    "date_short": "2026-11-21",
+    "cut_count": 5,
+    "cast_used": [
+      "나이트엘프 사제",
+      "인간 흑마법사",
+      "스카이본 마법사"
+    ],
+    "cast_chips": [
+      {
+        "id": "nightelf_priest",
+        "name": "나이트엘프 사제",
+        "color": "#9575CD"
+      },
+      {
+        "id": "human_warlock",
+        "name": "인간 흑마법사",
+        "color": "#7E57C2"
+      },
+      {
+        "id": "skyborne_mage",
+        "name": "스카이본 마법사",
+        "color": "#29B6F6"
+      }
+    ],
+    "full_image": "assets/episodes/ep001/episode_full.jpg",
+    "thumb_image": "assets/episodes/ep001/thumb.jpg",
+    "page_images": [
+      "assets/episodes/ep001/page_1.png",
+      "assets/episodes/ep001/page_2.png",
+      "assets/episodes/ep001/page_3.png"
+    ],
+    "dc_title": "[만화] 와우 포에버 슬롭툰 EP.1 — 흑마법사가 물을 어케 줌?",
+    "dc_body": "와우 포에버 슬롭툰 EP.1 — 흑마법사가 물을 어케 줌?\n흑마를 법사로 착각한 힐러와 뉴비 흑마의 멜론 주스 상황극\n\n원본 포에버갤 개념글 (#92059):\nhttps://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=92059&exception_mode=recommend&page=1\n\n웹 아카이브에서 정주행: https://slopwow.github.io/episode.html?id=ep001\n\n※ 시안 C 귀염뽀짝 9×9 미소녀 상황극 봇 (순수 팬메이드 패러디)"
+  },
+  {
+    "episode_id": "ep002",
+    "episode_number": 2,
+    "title": "방금 만난 기사님의 명언",
+    "subtitle": "알카즈섬 민첩 반지 입찰 사건 — 100% 던전 파티 상황극",
+    "source_post_no": "96849",
+    "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=96849&exception_mode=recommend&page=1",
+    "created_at": "2026-11-21T14:20:00+09:00",
+    "date_short": "2026-11-21",
+    "cut_count": 6,
+    "cast_used": [
+      "드워프 사냥꾼",
+      "언데드 성기사",
+      "스카이본 마법사",
+      "오크 전사"
+    ],
+    "cast_chips": [
+      {
+        "id": "dwarf_hunter",
+        "name": "드워프 사냥꾼",
+        "color": "#2E7D32"
+      },
+      {
+        "id": "undead_paladin",
+        "name": "언데드 성기사",
+        "color": "#9E9E9E"
+      },
+      {
+        "id": "skyborne_mage",
+        "name": "스카이본 마법사",
+        "color": "#29B6F6"
+      },
+      {
+        "id": "orc_warrior",
+        "name": "오크 전사",
+        "color": "#4CAF50"
+      }
+    ],
+    "full_image": "assets/episodes/ep002/episode_full.jpg",
+    "thumb_image": "assets/episodes/ep002/thumb.jpg",
+    "page_images": [
+      "assets/episodes/ep002/page_1.png",
+      "assets/episodes/ep002/page_2.png",
+      "assets/episodes/ep002/page_3.png"
+    ],
+    "dc_title": "[만화] 와우 포에버 슬롭툰 EP.2 — 방금 만난 기사님의 명언",
+    "dc_body": "와우 포에버 슬롭툰 EP.2 — 방금 만난 기사님의 명언\n알카즈섬 민첩 반지 입찰 사건 — 100% 던전 파티 상황극\n\n원본 포에버갤 개념글 (#96849):\nhttps://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=96849&exception_mode=recommend&page=1\n\n웹 아카이브에서 정주행: https://slopwow.github.io/episode.html?id=ep002\n\n※ 시안 C 귀염뽀짝 9×9 미소녀 상황극 봇 (순수 팬메이드 패러디)"
+  }
+]

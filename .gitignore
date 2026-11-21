@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# Secrets & local overrides
+.env
+.env.local
+
+# Generated scratch / upload packs
+upload_pack/
+data/raw_cuts/
+*.tmp
+.DS_Store
+Thumbs.db
