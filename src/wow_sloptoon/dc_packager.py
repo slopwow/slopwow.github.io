@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import ctypes
 import io
+import os
 import re
 import shutil
 import subprocess
@@ -24,6 +25,7 @@ from pathlib import Path
 import numpy as np
 from PIL import Image
 
+from wow_sloptoon.config import DEFAULT_ARCHIVE_BASE_URL
 from wow_sloptoon.models import EpisodeRecord
 
 DEFAULT_GALLERY_ID: str = "wowforever"
@@ -67,6 +69,54 @@ def open_dc_write_page(gallery_id: str = DEFAULT_GALLERY_ID) -> str:
     except Exception:
         pass
     return url
+
+
+def _is_headless_or_ci() -> bool:
+    """Return True when running in CI or a non-GUI headless environment."""
+    for env_key in ("CI", "GITHUB_ACTIONS", "SLOPTOON_HEADLESS"):
+        if os.environ.get(env_key, "").strip():
+            return True
+    if sys.platform.startswith("linux") and not (
+        os.environ.get("DISPLAY") or os.environ.get("WAYLAND_DISPLAY")
+    ):
+        return True
+    return False
+
+
+def open_pack_folder(pack_dir: Path) -> bool:
+    """Open the local DCInside upload pack folder in the OS file explorer safely.
+
+    Uses `os.startfile` on Windows so the user can drag-and-drop watermarked JPGs
+    into the official DCInside editor. Safe no-op in headless/CI environments; never raises.
+    """
+    target = Path(pack_dir).expanduser().resolve()
+    if not target.exists() or _is_headless_or_ci():
+        return False
+
+    try:
+        if sys.platform == "win32" and hasattr(os, "startfile"):
+            os.startfile(str(target))  # type: ignore[attr-defined]
+            return True
+        if sys.platform == "darwin":
+            subprocess.Popen(
+                ["open", str(target)],
+                stdin=subprocess.DEVNULL,
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.DEVNULL,
+            )
+            return True
+        opener = shutil.which("xdg-open")
+        if opener:
+            subprocess.Popen(
+                [opener, str(target)],
+                stdin=subprocess.DEVNULL,
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.DEVNULL,
+            )
+            return True
+    except Exception:
+        return False
+    return False
 
 
 def _copy_windows_ctypes(text: str) -> bool:
@@ -364,22 +414,34 @@ def format_post_title(record: EpisodeRecord) -> str:
     return f"[만화] 와우 포에버 슬롭툰 EP.{record.episode_number} — {record.title}"
 
 
-def format_post_body(record: EpisodeRecord, archive_base_url: str = "") -> str:
-    """Format canonical DCInside WOW Forever Gallery post body with source & archive links."""
+def format_post_body(
+    record: EpisodeRecord,
+    archive_base_url: str = DEFAULT_ARCHIVE_BASE_URL,
+) -> str:
+    """Format canonical DCInside WOW Forever Gallery post body with prominent archive links."""
+    base = (archive_base_url or DEFAULT_ARCHIVE_BASE_URL).strip().rstrip("/")
+    if not base:
+        base = DEFAULT_ARCHIVE_BASE_URL
+
     lines: list[str] = []
     if record.subtitle.strip():
         lines.append(record.subtitle.strip())
         lines.append("")
+
+    lines.extend(
+        [
+            f"전편 정주행 아카이브: {base}/episodes/{record.episode_id}.html",
+            f"전체 목록: {base}",
+            f"웹 뷰어 바로가기: {base}/episode.html?id={record.episode_id}",
+            "",
+        ]
+    )
 
     if record.cast_used:
         cast_str = " · ".join(record.cast_used)
         lines.append(f"등장 캐릭터 (시안 C): {cast_str}")
 
     lines.append(f"원본 개념글 (#{record.source_post_no}): {record.source_url}")
-
-    base = archive_base_url.strip().rstrip("/")
-    if base:
-        lines.append(f"슬롭툰 아카이브 보기: {base}/episode.html?id={record.episode_id}")
 
     lines.extend(
         [
@@ -395,7 +457,7 @@ def create_dc_upload_pack(
     record: EpisodeRecord,
     full_image_path: Path,
     output_dir: Path,
-    archive_base_url: str = "",
+    archive_base_url: str = DEFAULT_ARCHIVE_BASE_URL,
     *,
     gallery_id: str = DEFAULT_GALLERY_ID,
     max_file_bytes: int = DEFAULT_MAX_FILE_BYTES,

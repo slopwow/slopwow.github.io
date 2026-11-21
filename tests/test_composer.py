@@ -1,7 +1,9 @@
-"""Tests for `wow_sloptoon.composer` and `wow_sloptoon.dc_packager`."""
+"""Tests for `wow_sloptoon.composer`, `wow_sloptoon.dc_packager`, `wow_sloptoon.scheduler`, and CLI automation."""
 
 from __future__ import annotations
 
+import json
+import sys
 from pathlib import Path
 from unittest.mock import patch
 
@@ -9,6 +11,7 @@ import numpy as np
 import pytest
 from PIL import Image, ImageDraw
 
+from wow_sloptoon import cli
 from wow_sloptoon.composer import (
     BOT_BOX_W,
     EPILOGUE_PAGE_H,
@@ -16,19 +19,33 @@ from wow_sloptoon.composer import (
     HEADER_H,
     PAGE_W,
     THUMB_SIZE,
+    WATERMARK_FOOTER_H,
     ComposeResult,
+    append_watermark_footer,
     clean_white_bg,
     compose_episode,
     load_font,
+    render_watermark_footer,
+    retrofit_episode_watermark,
 )
 from wow_sloptoon.dc_packager import (
     DcUploadPack,
     build_dc_write_url,
     copy_to_clipboard,
     create_dc_upload_pack,
+    format_post_body,
     open_dc_write_page,
+    open_pack_folder,
 )
-from wow_sloptoon.models import ComicCut, EpisodeRecord, EpisodeScript
+from wow_sloptoon.models import ComicCut, EpisodeRecord, EpisodeScript, GalleryPost
+from wow_sloptoon.scheduler import (
+    get_next_unpublished,
+    load_publish_queue,
+    mark_episode_packed,
+    mark_episode_published,
+    notify_new_episode_ready,
+    sync_publish_queue,
+)
 
 
 def _make_synthetic_cut(
@@ -442,3 +459,315 @@ def test_open_dc_write_page_and_clipboard_policy_safety() -> None:
     # Clipboard helper must return bool and never raise
     result = copy_to_clipboard("와우 포에버 슬롭툰 클립보드 테스트")
     assert isinstance(result, bool)
+
+
+def test_watermark_footer_rendering_and_append(tmp_path: Path) -> None:
+    footer = render_watermark_footer(width=PAGE_W, site_url="https://slopwow.github.io/")
+    assert footer.size == (PAGE_W, WATERMARK_FOOTER_H)
+    assert footer.mode == "RGB"
+
+    footer_path = tmp_path / "watermark_footer.png"
+    footer.save(footer_path)
+    _assert_pure_white_outer_border(footer_path, margin=6)
+
+    arr = np.asarray(footer)
+    # Must contain crisp dark Sloptoon ink pixels (rounded card border / pill / typography)
+    dark_px = np.sum((arr[:, :, 0] < 40) & (arr[:, :, 1] < 40) & (arr[:, :, 2] < 40))
+    assert dark_px > 2000
+    # Must contain #0EA5E9 sky-blue accent pixels (high blue, mid-high green, low red)
+    sky_px = np.sum((arr[:, :, 2] > 180) & (arr[:, :, 1] > 120) & (arr[:, :, 0] < 60))
+    assert sky_px > 120
+
+    # Narrow width auto-fit must still succeed cleanly
+    narrow = render_watermark_footer(width=480, site_url="slopwow.github.io")
+    assert narrow.size == (480, WATERMARK_FOOTER_H)
+
+    # Append seamlessly increases height by exact WATERMARK_FOOTER_H
+    base_im = Image.new("RGB", (PAGE_W, 600), (255, 255, 255))
+    stitched = append_watermark_footer(base_im, site_url="slopwow.github.io")
+    assert stitched.size == (PAGE_W, 600 + WATERMARK_FOOTER_H)
+
+    # Empty site_url acts as clean opt-out
+    unchanged = append_watermark_footer(base_im, site_url="")
+    assert unchanged.size == (PAGE_W, 600)
+
+
+def test_compose_episode_watermark_default_optout_and_idempotent_retrofit(tmp_path: Path) -> None:
+    script = _make_script(4)
+    raw_paths = _create_cut_fixtures(tmp_path / "raw_wm", 4)
+
+    out_with_wm = tmp_path / "with_wm"
+    res_wm = compose_episode(script, raw_paths, out_with_wm)
+    assert res_wm.audit_report["passed"] is True
+    assert res_wm.audit_report["watermarked"] is True
+    assert res_wm.audit_report["watermark_url"] == "slopwow.github.io"
+    assert (out_with_wm / "episode_full_raw.jpg").exists()
+
+    out_no_wm = tmp_path / "no_wm"
+    res_no = compose_episode(script, raw_paths, out_no_wm, watermark_url=None)
+    assert res_no.audit_report["passed"] is True
+    assert res_no.audit_report["watermarked"] is False
+    assert not (out_no_wm / "episode_full_raw.jpg").exists()
+
+    with Image.open(res_wm.full_image_path) as im_wm, Image.open(res_no.full_image_path) as im_no:
+        assert im_wm.size == (PAGE_W, im_no.size[1] + WATERMARK_FOOTER_H)
+    _assert_pure_white_outer_border(res_wm.full_image_path, margin=2)
+
+    # Calling retrofit on an already-watermarked composed episode must NEVER double-stamp
+    expected_h = res_wm.audit_report["full_size"][1]
+    retrofit_episode_watermark(out_with_wm, site_url="slopwow.github.io")
+    with Image.open(out_with_wm / "episode_full.jpg") as after_re:
+        assert after_re.size == (PAGE_W, expected_h)
+
+    # Legacy un-watermarked episode retrofit: backs up raw once and stays strictly idempotent
+    legacy_dir = tmp_path / "legacy_ep"
+    legacy_dir.mkdir()
+    orig_h = 1000
+    orig_im = Image.new("RGB", (PAGE_W, orig_h), (255, 255, 255))
+    orig_im.save(legacy_dir / "episode_full.jpg", format="JPEG", quality=95)
+
+    stamped1 = retrofit_episode_watermark(legacy_dir, site_url="slopwow.github.io")
+    assert stamped1 == legacy_dir / "episode_full.jpg"
+    assert (legacy_dir / "episode_full_raw.jpg").exists()
+    with Image.open(legacy_dir / "episode_full_raw.jpg") as raw_bak:
+        assert raw_bak.size == (PAGE_W, orig_h)
+    with Image.open(stamped1) as s1:
+        assert s1.size == (PAGE_W, orig_h + WATERMARK_FOOTER_H)
+
+    # Repeated calls produce identical dimensions (zero double-stamping)
+    stamped2 = retrofit_episode_watermark(legacy_dir, site_url="slopwow.github.io")
+    with Image.open(stamped2) as s2:
+        assert s2.size == (PAGE_W, orig_h + WATERMARK_FOOTER_H)
+
+
+def test_dc_packager_promotes_slopwow_and_open_pack_folder(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    record = EpisodeRecord(
+        episode_id="ep001",
+        episode_number=1,
+        title="흑마법사가 물을 어케 줌?",
+        subtitle="흑마를 법사로 착각한 힐러와 뉴비 흑마의 멜론 주스 상황극",
+        source_post_no="92059",
+        source_url="https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=92059",
+        created_at="2026-11-21",
+        cut_count=5,
+        cast_used=["나이트엘프 사제", "인간 흑마법사"],
+        full_image_rel="data/episodes/ep001/episode_full.jpg",
+        thumb_image_rel="data/episodes/ep001/thumb.jpg",
+        page_images_rel=[],
+    )
+
+    body = format_post_body(record)
+    assert "전편 정주행 아카이브: https://slopwow.github.io/episodes/ep001.html" in body
+    assert "전체 목록: https://slopwow.github.io" in body
+    assert "https://slopwow.github.io/episode.html?id=ep001" in body
+
+    pack_dir = tmp_path / "pack"
+    pack_dir.mkdir()
+
+    # In CI / headless mode, open_pack_folder must safely no-op without calling os.startfile
+    monkeypatch.setenv("CI", "true")
+    assert open_pack_folder(pack_dir) is False
+    assert open_pack_folder(tmp_path / "does_not_exist") is False
+
+    # On non-CI Windows, open_pack_folder delegates to os.startfile safely
+    monkeypatch.delenv("CI", raising=False)
+    monkeypatch.delenv("GITHUB_ACTIONS", raising=False)
+    monkeypatch.delenv("SLOPTOON_HEADLESS", raising=False)
+    if sys.platform == "win32":
+        with patch("wow_sloptoon.dc_packager.os.startfile", create=True) as mock_start:
+            assert open_pack_folder(pack_dir) is True
+            mock_start.assert_called_once_with(str(pack_dir.resolve()))
+
+
+def _write_sample_episodes_json(project_root: Path, count: int = 2) -> list[EpisodeRecord]:
+    records: list[EpisodeRecord] = []
+    for n in range(1, count + 1):
+        ep_id = f"ep{n:03d}"
+        ep_dir = project_root / "data" / "episodes" / ep_id
+        ep_dir.mkdir(parents=True, exist_ok=True)
+        img = Image.new("RGB", (PAGE_W, 800), (255, 255, 255))
+        draw = ImageDraw.Draw(img)
+        draw.rectangle([100, 100, 800, 700], fill=(140, 180, 230), outline=(20, 20, 20), width=4)
+        img.save(ep_dir / "episode_full.jpg", format="JPEG", quality=92)
+        img.resize((800, 600)).save(ep_dir / "thumb.jpg", format="JPEG", quality=90)
+        records.append(
+            EpisodeRecord(
+                episode_id=ep_id,
+                episode_number=n,
+                title=f"테스트 에피소드 {n}",
+                subtitle=f"서브타이틀 {n}",
+                source_post_no=f"9200{n}",
+                source_url=f"https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=9200{n}",
+                created_at="2026-11-21T15:00:00+09:00",
+                cut_count=5,
+                cast_used=["오크 전사", "나이트엘프 사제"],
+                full_image_rel=f"data/episodes/{ep_id}/episode_full.jpg",
+                thumb_image_rel=f"data/episodes/{ep_id}/thumb.jpg",
+                page_images_rel=[],
+            )
+        )
+    ep_json = project_root / "data" / "episodes.json"
+    ep_json.parent.mkdir(parents=True, exist_ok=True)
+    ep_json.write_text(
+        json.dumps([r.model_dump(mode="json") for r in records], ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
+    return records
+
+
+def test_publish_queue_lifecycle_and_notifications(tmp_path: Path) -> None:
+    _write_sample_episodes_json(tmp_path, count=2)
+    ep_json = tmp_path / "data" / "episodes.json"
+    queue_path = tmp_path / "data" / "publish_queue.json"
+
+    items = sync_publish_queue(episodes_json=ep_json, queue_path=queue_path)
+    assert [i.episode_id for i in items] == ["ep001", "ep002"]
+    assert all(i.status == "pending" for i in items)
+
+    nxt = get_next_unpublished(queue_path=queue_path)
+    assert nxt is not None and nxt.episode_id == "ep001"
+
+    packed = mark_episode_packed("ep001", pack_dir=tmp_path / "upload_pack" / "ep001", queue_path=queue_path)
+    assert packed.status == "packed"
+    assert packed.packed_at is not None
+
+    # Still unpublished until explicitly marked published
+    nxt2 = get_next_unpublished(queue_path=queue_path)
+    assert nxt2 is not None and nxt2.episode_id == "ep001"
+
+    dc_url = "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=999999"
+    pub1 = mark_episode_published("ep001", dc_post_url=dc_url, queue_path=queue_path)
+    assert pub1.status == "published"
+    assert pub1.published_at is not None
+    assert pub1.dc_post_url == dc_url
+
+    # Next unpublished advances to ep002
+    nxt3 = get_next_unpublished(queue_path=queue_path)
+    assert nxt3 is not None and nxt3.episode_id == "ep002"
+
+    # Re-syncing after adding ep003 preserves ep001 published status
+    _write_sample_episodes_json(tmp_path, count=3)
+    resynced = sync_publish_queue(episodes_json=ep_json, queue_path=queue_path)
+    by_id = {i.episode_id: i for i in resynced}
+    assert by_id["ep001"].status == "published"
+    assert by_id["ep001"].dc_post_url == dc_url
+    assert by_id["ep002"].status == "pending"
+    assert by_id["ep003"].status == "pending"
+
+    mark_episode_published("ep002", queue_path=queue_path)
+    mark_episode_published("ep003", queue_path=queue_path)
+    assert get_next_unpublished(queue_path=queue_path) is None
+    assert len(load_publish_queue(queue_path)) == 3
+
+    # Notification helper must never block or raise in CI/pytest
+    assert notify_new_episode_ready("ep003", "테스트 에피소드 3", use_toast=True) is False
+
+
+def test_cli_watermark_queue_publish_next_and_autopilot_dry_run(
+    tmp_path: Path, capsys: pytest.CaptureFixture[str]
+) -> None:
+    (tmp_path / "pyproject.toml").write_text('[project]\nname = "test"\n', encoding="utf-8")
+    _write_sample_episodes_json(tmp_path, count=2)
+
+    # 1. watermark-all (twice -> idempotent!)
+    rc = cli.main(["--project-root", str(tmp_path), "watermark-all", "--site-url", "slopwow.github.io"])
+    assert rc == 0
+    with Image.open(tmp_path / "data" / "episodes" / "ep001" / "episode_full.jpg") as im1:
+        assert im1.size == (PAGE_W, 800 + WATERMARK_FOOTER_H)
+
+    rc2 = cli.main(["--project-root", str(tmp_path), "watermark-all", "--site-url", "slopwow.github.io"])
+    assert rc2 == 0
+    with Image.open(tmp_path / "data" / "episodes" / "ep001" / "episode_full.jpg") as im2:
+        assert im2.size == (PAGE_W, 800 + WATERMARK_FOOTER_H)
+
+    # 2. queue --json
+    capsys.readouterr()
+    assert cli.main(["--project-root", str(tmp_path), "queue", "--json"]) == 0
+    q_data = json.loads(capsys.readouterr().out)
+    assert [row["episode_id"] for row in q_data] == ["ep001", "ep002"]
+    assert all(row["status"] == "pending" for row in q_data)
+
+    # 3. publish-next (mock clipboard/folder/browser so test stays headless & fast)
+    with (
+        patch("wow_sloptoon.dc_packager.copy_to_clipboard", return_value=True) as mock_clip,
+        patch("wow_sloptoon.dc_packager.open_pack_folder", return_value=True) as mock_folder,
+        patch(
+            "wow_sloptoon.dc_packager.open_dc_write_page",
+            return_value="https://gall.dcinside.com/mgallery/board/write/?id=wowforever",
+        ) as mock_browser,
+    ):
+        rc_pub = cli.main(
+            [
+                "--project-root",
+                str(tmp_path),
+                "publish-next",
+                "--open-folder",
+                "--open-browser",
+                "--copy-body",
+            ]
+        )
+        assert rc_pub == 0
+        mock_clip.assert_called_once()
+        mock_folder.assert_called_once()
+        mock_browser.assert_called_once_with("wowforever")
+
+    pack_body = (tmp_path / "upload_pack" / "ep001" / "post_body.txt").read_text(encoding="utf-8")
+    assert "https://slopwow.github.io/episodes/ep001.html" in pack_body
+    assert "전체 목록: https://slopwow.github.io" in pack_body
+
+    # 4. mark-published ep001
+    dc_post = "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=123456"
+    assert (
+        cli.main(["--project-root", str(tmp_path), "mark-published", "ep001", "--dc-url", dc_post])
+        == 0
+    )
+    nxt = get_next_unpublished(queue_path=tmp_path / "data" / "publish_queue.json")
+    assert nxt is not None and nxt.episode_id == "ep002"
+
+    # 5. autopilot --dry-run (mocked scout, zero API calls or deploy)
+    fake_post = GalleryPost(
+        post_no="99888",
+        title="던전 탱커가 마나 물약을 요구한 사연",
+        url="https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=99888",
+        author="포에버갤러",
+        date_str="2026-11-21",
+        recommends=35,
+        comments_count=12,
+        body="탱커가 지능 반지 입찰한 상황극 본문",
+    )
+    with patch("wow_sloptoon.cli.GalleryScout.scout_candidates", return_value=[(fake_post, 99.5)]):
+        rc_auto = cli.main(["--project-root", str(tmp_path), "autopilot", "--dry-run"])
+        assert rc_auto == 0
+
+
+def test_policy_compliance_no_captcha_bypass_or_auto_post() -> None:
+    """Verify automation modules strictly avoid CAPTCHA bypass, headless login, or DC auto-POST."""
+    project_root = Path(__file__).resolve().parents[1]
+    checked_files = [
+        project_root / "src" / "wow_sloptoon" / "dc_packager.py",
+        project_root / "src" / "wow_sloptoon" / "scheduler.py",
+        project_root / "src" / "wow_sloptoon" / "cli.py",
+        project_root / "setup-automation.ps1",
+    ]
+    forbidden_tokens = [
+        "2captcha",
+        "anticaptcha",
+        "capsolver",
+        "solve_captcha",
+        "bypass_captcha",
+        "playwright",
+        "selenium",
+        "puppeteer",
+        "requests.post(",
+        "httpx.post(",
+        "Invoke-WebRequest",
+        "google-generativeai",
+        "gemini-2.5-",
+    ]
+    for file_path in checked_files:
+        assert file_path.exists(), f"Missing expected file: {file_path}"
+        content = file_path.read_text(encoding="utf-8").lower()
+        for token in forbidden_tokens:
+            assert token.lower() not in content, f"Forbidden policy/tech token '{token}' in {file_path.name}"

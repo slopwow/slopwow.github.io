@@ -6,6 +6,8 @@ import argparse
 import functools
 import http.server
 import json
+import shutil
+import subprocess
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -14,6 +16,7 @@ from typing import Sequence
 from wow_sloptoon.artist import generate_episode_cuts, resolve_image_model
 from wow_sloptoon.cast import canonical_cast_name
 from wow_sloptoon.config import (
+    DEFAULT_ARCHIVE_BASE_URL,
     DEFAULT_TEXT_MODEL,
     SUPPORTED_IMAGE_MODELS,
     Settings,
@@ -166,8 +169,13 @@ def _generate_for_post(
     from wow_sloptoon import composer
 
     ep_dir = settings.episodes_dir / ep_id
-    print(f"[3/4] Composing speech bubbles & layout into {ep_dir}...")
-    composed = composer.compose_episode(script, raw_cut_paths, ep_dir)
+    print(f"[3/4] Composing speech bubbles & watermark CTA into {ep_dir}...")
+    composed = composer.compose_episode(
+        script,
+        raw_cut_paths,
+        ep_dir,
+        watermark_url=settings.archive_base_url,
+    )
 
     # Save script alongside composed assets for reproducibility
     (ep_dir / "script.json").write_text(script_to_pretty_json(script), encoding="utf-8")
@@ -347,6 +355,10 @@ def cmd_pack_dc(args: argparse.Namespace, settings: Settings) -> int:
         copied = dc_packager.copy_to_clipboard(pack.body_text)
         print(f"  Clipboard (body) : {'copied' if copied else 'unavailable'}")
 
+    if getattr(args, "open_folder", False):
+        opened_folder = dc_packager.open_pack_folder(pack.pack_dir)
+        print(f"  Pack folder      : {'opened' if opened_folder else 'skipped (headless/unavailable)'}")
+
     if args.open_browser:
         url = dc_packager.open_dc_write_page(settings.gallery_id)
         print(f"Opened official DCInside write page in browser: {url}")
@@ -421,6 +433,366 @@ def cmd_run_once(args: argparse.Namespace, settings: Settings) -> int:
     return 0
 
 
+def _has_real_gemini_api_key(settings: Settings) -> bool:
+    key = (settings.gemini_api_key or "").strip()
+    if not key:
+        return False
+    return key.lower() not in {"your-gemini-api-key-here", "changeme", "placeholder"}
+
+
+def cmd_watermark_all(args: argparse.Namespace, settings: Settings) -> int:
+    from wow_sloptoon import composer, dc_packager
+
+    records = load_episode_records(settings.episodes_json)
+    if not records:
+        print(f"No episodes found in {settings.episodes_json}.")
+        return 0
+
+    site_url = (args.site_url or settings.archive_base_url or composer.DEFAULT_WATERMARK_URL).strip()
+    watermarked_count = 0
+    repacked_count = 0
+
+    for record in records:
+        full_img = _resolve_episode_asset(record.full_image_rel, settings)
+        if not full_img.exists():
+            print(f"[SKIP] {record.episode_id}: missing {full_img}", file=sys.stderr)
+            continue
+
+        stamped = composer.retrofit_episode_watermark(
+            full_img.parent,
+            site_url=site_url,
+            filename=full_img.name,
+        )
+        watermarked_count += 1
+        print(f"[OK] Watermarked {record.episode_id}: {stamped}")
+
+        pack_dir = settings.upload_pack_dir / record.episode_id
+        if args.repack or pack_dir.exists():
+            dc_packager.create_dc_upload_pack(
+                record,
+                stamped,
+                pack_dir,
+                archive_base_url=settings.archive_base_url,
+            )
+            repacked_count += 1
+            print(f"     Re-packed upload pack: {pack_dir}")
+
+    print(
+        f"Done! Watermarked {watermarked_count}/{len(records)} episode(s) "
+        f"(banner URL: {site_url}, repacked: {repacked_count})."
+    )
+    return 0
+
+
+def cmd_queue(args: argparse.Namespace, settings: Settings) -> int:
+    from wow_sloptoon import scheduler
+
+    queue_path = scheduler.default_queue_path(settings)
+    items = scheduler.sync_publish_queue(
+        episodes_json=settings.episodes_json,
+        queue_path=queue_path,
+    )
+
+    if args.json:
+        payload = [item.model_dump(mode="json") for item in items]
+        print(json.dumps(payload, ensure_ascii=False, indent=2))
+        return 0
+
+    if not items:
+        print("Publish queue is empty (no episodes in data/episodes.json).")
+        return 0
+
+    print(f"DCInside Publish Queue ({queue_path}):")
+    print(f"{'ID':<8} {'EP':<5} {'STATUS':<10} {'UPDATED':<20} {'TITLE'}")
+    print("-" * 82)
+    for item in items:
+        ts = item.published_at or item.packed_at or item.queued_at
+        ts_short = ts[:19].replace("T", " ") if ts else "-"
+        title_line = item.title if len(item.title) <= 44 else (item.title[:41] + "...")
+        print(
+            f"{item.episode_id:<8} EP.{item.episode_number:<2} "
+            f"{item.status:<10} {ts_short:<20} {title_line}"
+        )
+        if item.dc_post_url:
+            print(f"{'':<25} DC URL: {item.dc_post_url}")
+
+    n_pub = sum(1 for i in items if i.status == "published")
+    n_packed = sum(1 for i in items if i.status == "packed")
+    n_pend = sum(1 for i in items if i.status == "pending")
+    print("-" * 82)
+    print(f"Total: {len(items)} | published: {n_pub} | packed: {n_packed} | pending: {n_pend}")
+
+    nxt = scheduler.get_next_unpublished(queue_path=queue_path)
+    if nxt is not None:
+        print(
+            f"Next unpublished: {nxt.episode_id} (EP.{nxt.episode_number} - {nxt.title})\n"
+            "Run: python -m wow_sloptoon.cli publish-next --open-folder --open-browser --copy-body"
+        )
+    else:
+        print("All episodes are published on DCInside!")
+    return 0
+
+
+def cmd_publish_next(args: argparse.Namespace, settings: Settings) -> int:
+    from wow_sloptoon import composer, dc_packager, scheduler
+
+    queue_path = scheduler.default_queue_path(settings)
+    scheduler.sync_publish_queue(episodes_json=settings.episodes_json, queue_path=queue_path)
+    records = load_episode_records(settings.episodes_json)
+
+    if args.episode_id:
+        record = _find_episode_record(records, args.episode_id)
+        if record is None:
+            print(f"Episode '{args.episode_id}' not found in {settings.episodes_json}.", file=sys.stderr)
+            return 1
+    else:
+        next_item = scheduler.get_next_unpublished(queue_path=queue_path)
+        if next_item is None:
+            print("All episodes are already published on DCInside! Nothing pending in queue.")
+            return 0
+        record = _find_episode_record(records, next_item.episode_id)
+        if record is None:
+            print(
+                f"Queued episode '{next_item.episode_id}' missing from {settings.episodes_json}.",
+                file=sys.stderr,
+            )
+            return 1
+
+    full_img = _resolve_episode_asset(record.full_image_rel, settings)
+    if not full_img.exists():
+        print(
+            f"Full episode image not found for {record.episode_id}: {full_img}",
+            file=sys.stderr,
+        )
+        return 1
+
+    archive_url = (
+        args.archive_url
+        if args.archive_url is not None
+        else (settings.archive_base_url or DEFAULT_ARCHIVE_BASE_URL)
+    )
+
+    # Ensure episode_full.jpg carries the bottom watermark CTA banner idempotently
+    stamped_img = composer.retrofit_episode_watermark(
+        full_img.parent,
+        site_url=archive_url,
+        filename=full_img.name,
+    )
+
+    pack_dir = settings.upload_pack_dir / record.episode_id
+    pack = dc_packager.create_dc_upload_pack(
+        record,
+        stamped_img,
+        pack_dir,
+        archive_base_url=archive_url,
+        gallery_id=settings.gallery_id,
+    )
+
+    scheduler.mark_episode_packed(
+        record.episode_id,
+        pack_dir=pack.pack_dir,
+        queue_path=queue_path,
+    )
+
+    print(f"[publish-next] Ready for manual DCInside upload: {record.episode_id} (EP.{record.episode_number})")
+    print(f"  Title     : {pack.title_text}")
+    print(f"  Pack Dir  : {pack.pack_dir}")
+    print(f"  Write URL : {pack.write_url}")
+    print("  Images    :")
+    for img_path in pack.image_paths:
+        print(f"    - {img_path}")
+
+    if args.copy_title:
+        copied = dc_packager.copy_to_clipboard(pack.title_text)
+        print(f"  Clipboard (title): {'copied' if copied else 'unavailable'}")
+    elif args.copy_body:
+        copied = dc_packager.copy_to_clipboard(pack.body_text)
+        print(f"  Clipboard (body) : {'copied' if copied else 'unavailable'}")
+
+    if args.open_folder:
+        opened = dc_packager.open_pack_folder(pack.pack_dir)
+        print(f"  Explorer folder  : {'opened' if opened else 'skipped (headless/unavailable)'}")
+
+    if args.open_browser:
+        url = dc_packager.open_dc_write_page(settings.gallery_id)
+        print(f"  Browser opened   : {url}")
+        print("  (Please log in, attach the watermarked JPGs, complete CAPTCHA, and submit manually.)")
+
+    print(
+        f"\nAfter posting on DCInside, mark it done with:\n"
+        f"  python -m wow_sloptoon.cli mark-published {record.episode_id} --dc-url <POST_URL>"
+    )
+    return 0
+
+
+def cmd_mark_published(args: argparse.Namespace, settings: Settings) -> int:
+    from wow_sloptoon import scheduler
+
+    queue_path = scheduler.default_queue_path(settings)
+    try:
+        updated = scheduler.mark_episode_published(
+            args.episode_id,
+            dc_post_url=args.dc_url or "",
+            queue_path=queue_path,
+            episodes_json=settings.episodes_json,
+        )
+    except KeyError as exc:
+        print(str(exc), file=sys.stderr)
+        return 1
+
+    print(f"[OK] Marked {updated.episode_id} (EP.{updated.episode_number}) as published.")
+    if updated.dc_post_url:
+        print(f"  DC Post URL  : {updated.dc_post_url}")
+    print(f"  Published At : {updated.published_at}")
+
+    nxt = scheduler.get_next_unpublished(queue_path=queue_path)
+    if nxt is not None:
+        print(f"  Next in queue: {nxt.episode_id} (EP.{nxt.episode_number} - {nxt.title})")
+    else:
+        print("  All episodes are now published!")
+    return 0
+
+
+def _run_deploy_pages_script(settings: Settings) -> int:
+    deploy_script = settings.project_root / "deploy-pages.ps1"
+    if not deploy_script.exists():
+        print(f"[WARN] deploy-pages.ps1 not found at {deploy_script}; skipping deploy.", file=sys.stderr)
+        return 1
+
+    ps_exe = shutil.which("pwsh") or shutil.which("powershell")
+    if not ps_exe:
+        print("[ERROR] PowerShell executable (pwsh/powershell) not found for --deploy.", file=sys.stderr)
+        return 1
+
+    print(f"[autopilot] Deploying static archive via {deploy_script} -SkipBuild ...")
+    proc = subprocess.run(
+        [ps_exe, "-NoProfile", "-ExecutionPolicy", "Bypass", "-File", str(deploy_script), "-SkipBuild"],
+        cwd=str(settings.project_root),
+        check=False,
+    )
+    return int(proc.returncode)
+
+
+def cmd_autopilot(args: argparse.Namespace, settings: Settings) -> int:
+    from wow_sloptoon import dc_packager, scheduler
+
+    queue_path = scheduler.default_queue_path(settings)
+    existing_records = load_episode_records(settings.episodes_json)
+    existing_post_nos = {r.source_post_no for r in existing_records}
+
+    print(f"[autopilot 1/6] Scouting unproduced recommend posts from '{settings.gallery_id}'...")
+    scout = GalleryScout(gallery_id=settings.gallery_id)
+    candidates = scout.scout_candidates(
+        existing_post_nos=existing_post_nos,
+        pages=args.pages,
+        limit=5,
+        fetch_bodies_for_top=5,
+    )
+
+    if args.dry_run:
+        if candidates:
+            post, score = candidates[0]
+            if not post.body:
+                post = scout.fetch_post_detail(post.post_no, base_post=post)
+            print(f"[autopilot DRY-RUN] Top candidate #{post.post_no} (score={score:.2f}): {post.title}")
+            _generate_for_post(
+                post,
+                settings=settings,
+                dry_run=True,
+                text_model=args.text_model,
+                image_model=args.image_model,
+                skip_site=True,
+            )
+        else:
+            print("[autopilot DRY-RUN] No new unproduced recommend candidates found.")
+        print(
+            "[autopilot DRY-RUN] Would run: generate (if GEMINI_API_KEY set) -> build-site -> "
+            "pack-dc -> sync_publish_queue"
+            + (" -> deploy-pages.ps1" if args.deploy else "")
+            + " -> notify user (manual DCInside upload only; never auto-POSTs)."
+        )
+        return 0
+
+    created_record: EpisodeRecord | None = None
+    if candidates and _has_real_gemini_api_key(settings):
+        post, score = candidates[0]
+        if not post.body:
+            post = scout.fetch_post_detail(post.post_no, base_post=post)
+        print(f"[autopilot 2/6] Generating episode from #{post.post_no} (score={score:.2f}): {post.title}")
+        res = _generate_for_post(
+            post,
+            settings=settings,
+            dry_run=False,
+            text_model=args.text_model,
+            image_model=args.image_model,
+            skip_site=True,
+        )
+        if isinstance(res, EpisodeRecord):
+            created_record = res
+    elif not candidates:
+        print("[autopilot 2/6] No new unproduced recommend posts found; refreshing archive & queue.")
+    else:
+        print("[autopilot 2/6] GEMINI_API_KEY not set; skipping episode generation.")
+
+    print("[autopilot 3/6] Building static web archive (site/)...")
+    built = _run_build_site(settings)
+    print(f"  Archive built: {built}")
+
+    print("[autopilot 4/6] Syncing DCInside publish queue...")
+    scheduler.sync_publish_queue(episodes_json=settings.episodes_json, queue_path=queue_path)
+
+    target_record: EpisodeRecord | None = created_record
+    if target_record is None:
+        all_records = load_episode_records(settings.episodes_json)
+        nxt_item = scheduler.get_next_unpublished(queue_path=queue_path)
+        if nxt_item is not None:
+            target_record = _find_episode_record(all_records, nxt_item.episode_id)
+
+    packed_dir: Path | None = None
+    if target_record is not None:
+        full_img = _resolve_episode_asset(target_record.full_image_rel, settings)
+        if full_img.exists():
+            pack_dir = settings.upload_pack_dir / target_record.episode_id
+            print(f"[autopilot 5/6] Packing DCInside manual upload pack for {target_record.episode_id}...")
+            pack = dc_packager.create_dc_upload_pack(
+                target_record,
+                full_img,
+                pack_dir,
+                archive_base_url=settings.archive_base_url,
+                gallery_id=settings.gallery_id,
+            )
+            packed_dir = pack.pack_dir
+            scheduler.mark_episode_packed(
+                target_record.episode_id,
+                pack_dir=pack.pack_dir,
+                queue_path=queue_path,
+            )
+            print(f"  Upload pack ready: {pack.pack_dir}")
+        else:
+            print(f"[autopilot 5/6] Skipping pack-dc: missing image {full_img}", file=sys.stderr)
+    else:
+        print("[autopilot 5/6] All episodes already published; no upload pack needed.")
+
+    if args.deploy:
+        rc = _run_deploy_pages_script(settings)
+        if rc != 0:
+            print(f"[autopilot ERROR] deploy-pages.ps1 exited with code {rc}", file=sys.stderr)
+            return rc
+    else:
+        print("[autopilot 6/6] Local run complete (pass --deploy to push to slopwow.github.io).")
+
+    if target_record is not None:
+        scheduler.notify_new_episode_ready(
+            target_record.episode_id,
+            target_record.title,
+            site_url=settings.archive_base_url,
+            pack_dir=packed_dir,
+            use_toast=not args.no_notify,
+        )
+
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="sloptoon",
@@ -481,6 +853,7 @@ def build_parser() -> argparse.ArgumentParser:
         help="Create a policy-compliant manual DCInside upload pack (images + title/body text).",
     )
     p_pack.add_argument("episode_id", type=str, help="Episode ID (e.g. ep001, ep002).")
+    p_pack.add_argument("--open-folder", action="store_true", help="Open local upload_pack folder in Explorer.")
     p_pack.add_argument("--open-browser", action="store_true", help="Open official wowforever gallery write page in default browser.")
     p_pack.add_argument("--output-dir", type=str, default=None, help="Custom output directory (default: upload_pack/<episode_id>).")
     p_pack.add_argument("--archive-url", type=str, default=None, help="Public web archive base URL for body link.")
@@ -516,6 +889,74 @@ def build_parser() -> argparse.ArgumentParser:
     p_once.add_argument("--pages", type=int, default=1, help="Recommend list pages to scan.")
     p_once.add_argument("--pack-dc", action="store_true", help="Also generate a DCInside manual upload pack.")
     p_once.set_defaults(func=cmd_run_once)
+
+    # watermark-all
+    p_wm = subparsers.add_parser(
+        "watermark-all",
+        help="Idempotently apply the Sloptoon bottom watermark CTA banner to all episodes in data/episodes.json.",
+    )
+    p_wm.add_argument(
+        "--site-url",
+        type=str,
+        default="slopwow.github.io",
+        help="Archive domain shown in the bottom watermark banner (default: slopwow.github.io).",
+    )
+    p_wm.add_argument(
+        "--repack",
+        action="store_true",
+        help="Create or refresh upload_pack/<ep_id>/ for all episodes even if not packed yet.",
+    )
+    p_wm.set_defaults(func=cmd_watermark_all)
+
+    # queue
+    p_queue = subparsers.add_parser(
+        "queue",
+        help="Sync and display the DCInside manual publish queue (pending / packed / published).",
+    )
+    p_queue.add_argument("--json", action="store_true", help="Output publish queue as JSON.")
+    p_queue.set_defaults(func=cmd_queue)
+
+    # publish-next
+    p_pub = subparsers.add_parser(
+        "publish-next",
+        help="Prepare watermarked upload pack for the next unpublished episode and assist manual DCInside posting.",
+    )
+    p_pub.add_argument("--episode-id", type=str, default=None, help="Optionally target a specific episode ID.")
+    p_pub.add_argument("--archive-url", type=str, default=None, help="Override archive base URL in post body & watermark.")
+    p_pub.add_argument("--open-folder", action="store_true", help="Open upload_pack/<ep_id>/ in Explorer for drag-and-drop.")
+    p_pub.add_argument("--open-browser", action="store_true", help="Open official wowforever gallery write page in browser.")
+    pub_clip_group = p_pub.add_mutually_exclusive_group()
+    pub_clip_group.add_argument("--copy-body", action="store_true", help="Copy formatted post body to clipboard.")
+    pub_clip_group.add_argument("--copy-title", action="store_true", help="Copy formatted post title to clipboard.")
+    p_pub.set_defaults(func=cmd_publish_next)
+
+    # mark-published
+    p_mark = subparsers.add_parser(
+        "mark-published",
+        help="Record an episode as manually published on DCInside in data/publish_queue.json.",
+    )
+    p_mark.add_argument("episode_id", type=str, help="Episode ID to mark published (e.g. ep001).")
+    p_mark.add_argument("--dc-url", type=str, default="", help="Optional published DCInside post URL.")
+    p_mark.set_defaults(func=cmd_mark_published)
+
+    # autopilot
+    p_auto = subparsers.add_parser(
+        "autopilot",
+        help="Policy-compliant end-to-end pipeline: scout -> generate -> build-site -> pack-dc -> queue -> optional deploy -> notify.",
+    )
+    p_auto.add_argument("--deploy", action="store_true", help="Run deploy-pages.ps1 to publish site/ to slopwow.github.io.")
+    p_auto.add_argument("--dry-run", action="store_true", help="Preview scout + dry-run script without API calls or deploy.")
+    p_auto.add_argument("--text-model", type=str, default=None, help=f"Override Gemini text model (default: {DEFAULT_TEXT_MODEL}).")
+    p_auto.add_argument(
+        "--image-model",
+        type=str,
+        default=None,
+        choices=list(SUPPORTED_IMAGE_MODELS),
+        help="Select Gemini image model.",
+    )
+    p_auto.add_argument("--pages", type=int, default=1, help="Recommend list pages to scan.")
+    p_auto.add_argument("--no-notify", action="store_true", help="Suppress Windows toast notification (console output only).")
+    p_auto.set_defaults(func=cmd_autopilot)
 
     return parser
 

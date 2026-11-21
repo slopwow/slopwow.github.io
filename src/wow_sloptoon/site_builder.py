@@ -16,8 +16,18 @@ import numpy as np
 from PIL import Image
 
 from wow_sloptoon.cast import CAST_BIBLE, CAST_BY_NAME, CastMember, resolve_cast_member
-from wow_sloptoon.config import DEFAULT_GALLERY_ID
+from wow_sloptoon.config import DEFAULT_ARCHIVE_BASE_URL, DEFAULT_GALLERY_ID
 from wow_sloptoon.models import EpisodeRecord
+
+SITE_NAME = "와우 포에버 슬롭툰"
+SITE_TAGLINE = "디시 WOW 포에버 마이너 갤러리 개념글 상황극 봇"
+SITE_DESCRIPTION = (
+    "디시인사이드 WOW 포에버 마이너 갤러리 개념글을 시안 C 귀염뽀짝 9×9 미소녀 4~6컷 상황극 웹툰으로 아카이빙합니다."
+)
+LEGAL_NOTICE = (
+    "본 사이트는 World of Warcraft 및 디시인사이드 WOW 포에버 마이너 갤러리 기반의 비공식 팬메이드 패러디 아카이브입니다. "
+    "모든 에피소드에 원글 출처를 표기하며, 원작자 삭제 요청 시 즉시 비공개 처리합니다."
+)
 
 DC_GALLERY_RECOMMEND_URL = (
     f"https://gall.dcinside.com/mgallery/board/lists/?id={DEFAULT_GALLERY_ID}&exception_mode=recommend"
@@ -302,25 +312,32 @@ def extract_cast_portraits(cast_sheet_clean: Path, dest_cast_dir: Path, size: in
     return generated
 
 
+def _normalize_base_url(archive_base_url: str | None) -> str:
+    return (archive_base_url or "").strip().rstrip("/")
+
+
 def _build_dc_post_title(ep: EpisodeRecord) -> str:
     return f"[만화] 와우 포에버 슬롭툰 EP.{ep.episode_number} — {ep.title}"
 
 
-def _build_dc_post_body(ep: EpisodeRecord, archive_base_url: str = "") -> str:
+def _build_dc_post_body(
+    ep: EpisodeRecord,
+    archive_base_url: str = DEFAULT_ARCHIVE_BASE_URL,
+) -> str:
+    clean_base = _normalize_base_url(archive_base_url) or DEFAULT_ARCHIVE_BASE_URL
+    canonical_ep_url = f"{clean_base}/episodes/{ep.episode_id}.html"
     lines = [
         f"와우 포에버 슬롭툰 EP.{ep.episode_number} — {ep.title}",
         ep.subtitle,
         "",
         f"원본 포에버갤 개념글 (#{ep.source_post_no}):",
         ep.source_url,
-    ]
-    if archive_base_url:
-        clean_base = archive_base_url.rstrip("/")
-        lines.extend(["", f"웹 아카이브에서 정주행: {clean_base}/episode.html?id={ep.episode_id}"])
-    lines.extend([
+        "",
+        f"전편 정주행 아카이브: {canonical_ep_url}",
+        f"전체 정주행: {clean_base}",
         "",
         "※ 시안 C 귀염뽀짝 9×9 미소녀 상황극 봇 (순수 팬메이드 패러디)",
-    ])
+    ]
     return "\n".join(lines)
 
 
@@ -350,6 +367,112 @@ def _cast_member_payload(
     }
 
 
+def _render_social_meta(
+    *,
+    title: str,
+    description: str,
+    og_type: str,
+    path_from_root: str,
+    relative_url: str,
+    image_rel_from_root: str,
+    base_url: str,
+    root_prefix: str = "",
+) -> str:
+    """Render complete Open Graph + Twitter Card meta tags with absolute or relative fallback."""
+    clean_path = path_from_root.lstrip("/")
+    if base_url:
+        og_url = f"{base_url}/{clean_path}" if clean_path else f"{base_url}/"
+    else:
+        og_url = relative_url
+
+    clean_img = image_rel_from_root.lstrip("/")
+    if clean_img:
+        og_image = f"{base_url}/{clean_img}" if base_url else f"{root_prefix}{clean_img}"
+    else:
+        og_image = ""
+
+    lines = [
+        f'  <meta name="description" content="{html.escape(description)}">',
+        f'  <meta property="og:site_name" content="{html.escape(SITE_NAME)}">',
+        f'  <meta property="og:type" content="{html.escape(og_type)}">',
+        '  <meta property="og:locale" content="ko_KR">',
+        f'  <meta property="og:title" content="{html.escape(title)}">',
+        f'  <meta property="og:description" content="{html.escape(description)}">',
+        f'  <meta property="og:url" content="{html.escape(og_url)}">',
+    ]
+    if og_image:
+        lines.append(f'  <meta property="og:image" content="{html.escape(og_image)}">')
+    lines.extend([
+        '  <meta name="twitter:card" content="summary_large_image">',
+        f'  <meta name="twitter:title" content="{html.escape(title)}">',
+        f'  <meta name="twitter:description" content="{html.escape(description)}">',
+    ])
+    if og_image:
+        lines.append(f'  <meta name="twitter:image" content="{html.escape(og_image)}">')
+    if base_url:
+        lines.append(f'  <link rel="canonical" href="{html.escape(og_url)}">')
+    return "\n".join(lines)
+
+
+def _select_recommended_episodes(
+    site_episodes: list[dict[str, Any]],
+    current_id: str,
+    limit: int = 3,
+) -> list[dict[str, Any]]:
+    """Select up to `limit` other episodes for binge recommendations (non-adjacent preferred)."""
+    idx = next((i for i, item in enumerate(site_episodes) if item["episode_id"] == current_id), -1)
+    adjacent_ids: set[str] = set()
+    if idx > 0:
+        adjacent_ids.add(site_episodes[idx - 1]["episode_id"])
+    if 0 <= idx < len(site_episodes) - 1:
+        adjacent_ids.add(site_episodes[idx + 1]["episode_id"])
+
+    newest_others = [e for e in reversed(site_episodes) if e["episode_id"] != current_id]
+    non_adjacent = [e for e in newest_others if e["episode_id"] not in adjacent_ids]
+    adjacent = [e for e in newest_others if e["episode_id"] in adjacent_ids]
+    return (non_adjacent + adjacent)[:limit]
+
+
+def _render_sitemap_xml(site_episodes: list[dict[str, Any]], base_url: str) -> str:
+    clean_base = _normalize_base_url(base_url) or DEFAULT_ARCHIVE_BASE_URL
+    latest_date = site_episodes[-1]["date_short"] if site_episodes else ""
+
+    def _entry(loc: str, lastmod: str = "", changefreq: str = "weekly", priority: str = "0.8") -> str:
+        parts = [f"  <url>", f"    <loc>{html.escape(loc)}</loc>"]
+        if lastmod and len(lastmod) == 10 and lastmod[4] == "-" and lastmod[7] == "-":
+            parts.append(f"    <lastmod>{html.escape(lastmod)}</lastmod>")
+        parts.append(f"    <changefreq>{changefreq}</changefreq>")
+        parts.append(f"    <priority>{priority}</priority>")
+        parts.append("  </url>")
+        return "\n".join(parts)
+
+    entries = [
+        _entry(f"{clean_base}/", lastmod=latest_date, changefreq="daily", priority="1.0"),
+        _entry(f"{clean_base}/cast.html", lastmod=latest_date, changefreq="weekly", priority="0.7"),
+    ]
+    for ep in site_episodes:
+        entries.append(
+            _entry(
+                f"{clean_base}/episodes/{ep['episode_id']}.html",
+                lastmod=ep.get("date_short", ""),
+                changefreq="monthly",
+                priority="0.9",
+            )
+        )
+
+    return (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        + "\n".join(entries)
+        + "\n</urlset>\n"
+    )
+
+
+def _render_robots_txt(base_url: str) -> str:
+    clean_base = _normalize_base_url(base_url) or DEFAULT_ARCHIVE_BASE_URL
+    return f"User-agent: *\nAllow: /\n\nSitemap: {clean_base}/sitemap.xml\n"
+
+
 def _render_nav(active: str, root_prefix: str = "") -> str:
     def _cls(key: str) -> str:
         return "nav-link is-active" if active == key else "nav-link"
@@ -365,6 +488,7 @@ def _render_nav(active: str, root_prefix: str = "") -> str:
         <nav class="site-nav" aria-label="주요 메뉴">
           <a class="{_cls('home')}" href="{root_prefix}index.html">에피소드</a>
           <a class="{_cls('cast')}" href="{root_prefix}cast.html">9×9 캐스트 도감</a>
+          <button type="button" class="nav-pill-random js-random-ep" title="무작위 다른 에피소드로 이동">🎲 랜덤 화 보기</button>
           <a class="nav-link nav-ext" href="{DC_GALLERY_RECOMMEND_URL}" target="_blank" rel="noopener noreferrer">포에버갤 개념글 ↗</a>
         </nav>
       </div>
@@ -377,7 +501,7 @@ def _render_footer(total_episodes: int, root_prefix: str = "") -> str:
     <footer class="site-footer">
       <div class="container footer-inner">
         <div class="footer-brand">
-          <span class="pill-badge pill-sm"><span class="dot-sky"></span>디시 WOW 포에버 마이너 갤러리 개념글 상황극 봇</span>
+          <span class="pill-badge pill-sm"><span class="dot-sky"></span>{SITE_TAGLINE}</span>
           <p class="footer-desc">
             포에버갤 개념글의 명장면을 시안 C 귀염뽀짝 9종족×9직업 미소녀 4~6컷 순수 상황극 웹툰으로 아카이빙합니다.
             현재 총 <strong>{total_episodes}화</strong>가 아카이브에 보관되어 있습니다.
@@ -387,7 +511,11 @@ def _render_footer(total_episodes: int, root_prefix: str = "") -> str:
           <a href="{root_prefix}index.html">전체 에피소드</a>
           <a href="{root_prefix}cast.html">시안 C 캐스트 도감</a>
           <a href="{DC_GALLERY_RECOMMEND_URL}" target="_blank" rel="noopener noreferrer">디시 WOW 포에버 갤러리 ↗</a>
+          <a class="footer-link-discreet" href="{root_prefix}publish.html">업로드 큐 관리</a>
         </div>
+      </div>
+      <div class="container footer-legal">
+        <p class="legal-notice">{LEGAL_NOTICE}</p>
       </div>
     </footer>
     <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
@@ -406,20 +534,79 @@ def _render_cast_chip_html(cast_name: str, root_prefix: str = "") -> str:
     )
 
 
+def _render_episode_card(
+    ep: dict[str, Any],
+    *,
+    root_prefix: str = "",
+    include_filter_attrs: bool = False,
+) -> str:
+    chips = "".join(
+        f'<span class="mini-chip"><span class="cast-dot" style="background:{html.escape((CAST_BY_NAME[c].color_hex if c in CAST_BY_NAME else "#111111"))};"></span>{html.escape(c)}</span>'
+        for c in ep["cast_used"]
+    )
+    filter_attrs = ""
+    if include_filter_attrs:
+        filter_attrs = (
+            f'\n              data-id="{html.escape(ep["episode_id"])}"'
+            f'\n              data-num="{ep["episode_number"]}"'
+            f'\n              data-title="{html.escape(ep["title"].lower())}"'
+            f'\n              data-sub="{html.escape(ep["subtitle"].lower())}"'
+            f'\n              data-post="{html.escape(ep["source_post_no"].lower())}"'
+            f'\n              data-cast="{html.escape("|".join(ep["cast_used"]))}"'
+        )
+    ep_href = f"{root_prefix}episodes/{html.escape(ep['episode_id'])}.html"
+    return f"""
+            <article class="ep-card"{filter_attrs}>
+              <a class="ep-card-link" href="{ep_href}">
+                <div class="ep-thumb-wrap">
+                  <img src="{root_prefix}{html.escape(ep['thumb_image'])}" alt="EP.{ep['episode_number']} {html.escape(ep['title'])}" class="ep-thumb" loading="lazy">
+                  <span class="thumb-cuts">{ep['cut_count']}컷</span>
+                </div>
+                <div class="ep-card-body">
+                  <div class="meta-row">
+                    <span class="ep-pill ep-pill-sm">EP.{ep['episode_number']}</span>
+                    <span class="post-no">#{html.escape(ep['source_post_no'])}</span>
+                    <span class="meta-date">{html.escape(ep['date_short'])}</span>
+                  </div>
+                  <h3 class="ep-card-title">{html.escape(ep['title'])}</h3>
+                  <p class="ep-card-sub">{html.escape(ep['subtitle'])}</p>
+                  <div class="mini-chip-row">{chips}</div>
+                </div>
+              </a>
+            </article>
+            """
+
+
 def _render_index_html(
     site_episodes: list[dict[str, Any]],
     cast_payload: list[dict[str, Any]],
     total_episodes: int,
+    *,
+    base_url: str = DEFAULT_ARCHIVE_BASE_URL,
+    fallback_og_image: str = "",
 ) -> str:
     newest_first = list(reversed(site_episodes))
     latest = newest_first[0] if newest_first else None
+    og_image_rel = latest["thumb_image"] if latest else fallback_og_image
+    page_title = f"{SITE_NAME} — {SITE_TAGLINE}"
+    social_meta = _render_social_meta(
+        title=page_title,
+        description=SITE_DESCRIPTION,
+        og_type="website",
+        path_from_root="",
+        relative_url="index.html",
+        image_rel_from_root=og_image_rel,
+        base_url=base_url,
+        root_prefix="",
+    )
 
     if latest:
+        latest_href = f"episodes/{html.escape(latest['episode_id'])}.html"
         latest_chips = "".join(_render_cast_chip_html(c) for c in latest["cast_used"])
         hero_html = f"""
         <section class="hero-section" aria-label="최신 에피소드">
           <div class="hero-card">
-            <a class="hero-thumb-link" href="episode.html?id={html.escape(latest['episode_id'])}">
+            <a class="hero-thumb-link" href="{latest_href}">
               <img src="{html.escape(latest['thumb_image'])}" alt="EP.{latest['episode_number']} {html.escape(latest['title'])} 썸네일" class="hero-thumb" loading="eager">
               <span class="thumb-flag">LATEST · EP.{latest['episode_number']}</span>
               <span class="thumb-cuts">{latest['cut_count']}컷 상황극</span>
@@ -430,12 +617,12 @@ def _render_index_html(
                 <span class="meta-date">{html.escape(latest['date_short'])}</span>
               </div>
               <h2 class="hero-title">
-                <a href="episode.html?id={html.escape(latest['episode_id'])}">{html.escape(latest['title'])}</a>
+                <a href="{latest_href}">{html.escape(latest['title'])}</a>
               </h2>
               <p class="hero-sub">{html.escape(latest['subtitle'])}</p>
               <div class="chip-row">{latest_chips}</div>
               <div class="hero-actions">
-                <a class="btn btn-primary" href="episode.html?id={html.escape(latest['episode_id'])}">지금 바로 감상하기 →</a>
+                <a class="btn btn-primary" href="{latest_href}">지금 바로 감상하기 →</a>
                 <a class="btn btn-outline" href="{html.escape(latest['source_url'])}" target="_blank" rel="noopener noreferrer">원본 개념글 ↗</a>
               </div>
             </div>
@@ -460,50 +647,24 @@ def _render_index_html(
             f"</button>"
         )
 
-    cards_html_parts: list[str] = []
-    for ep in newest_first:
-        chips = "".join(
-            f'<span class="mini-chip"><span class="cast-dot" style="background:{html.escape((CAST_BY_NAME[c].color_hex if c in CAST_BY_NAME else "#111111"))};"></span>{html.escape(c)}</span>'
-            for c in ep["cast_used"]
-        )
-        cards_html_parts.append(
-            f"""
-            <article class="ep-card"
-              data-id="{html.escape(ep['episode_id'])}"
-              data-num="{ep['episode_number']}"
-              data-title="{html.escape(ep['title'].lower())}"
-              data-sub="{html.escape(ep['subtitle'].lower())}"
-              data-post="{html.escape(ep['source_post_no'].lower())}"
-              data-cast="{html.escape('|'.join(ep['cast_used']))}">
-              <a class="ep-card-link" href="episode.html?id={html.escape(ep['episode_id'])}">
-                <div class="ep-thumb-wrap">
-                  <img src="{html.escape(ep['thumb_image'])}" alt="EP.{ep['episode_number']} {html.escape(ep['title'])}" class="ep-thumb" loading="lazy">
-                  <span class="thumb-cuts">{ep['cut_count']}컷</span>
-                </div>
-                <div class="ep-card-body">
-                  <div class="meta-row">
-                    <span class="ep-pill ep-pill-sm">EP.{ep['episode_number']}</span>
-                    <span class="post-no">#{html.escape(ep['source_post_no'])}</span>
-                    <span class="meta-date">{html.escape(ep['date_short'])}</span>
-                  </div>
-                  <h3 class="ep-card-title">{html.escape(ep['title'])}</h3>
-                  <p class="ep-card-sub">{html.escape(ep['subtitle'])}</p>
-                  <div class="mini-chip-row">{chips}</div>
-                </div>
-              </a>
-            </article>
-            """
-        )
+    cards_html_parts = [
+        _render_episode_card(ep, root_prefix="", include_filter_attrs=True)
+        for ep in newest_first
+    ]
 
-    embedded_data = _safe_json_for_script({"episodes": site_episodes, "cast": cast_payload})
+    embedded_data = _safe_json_for_script({
+        "episodes": site_episodes,
+        "cast": cast_payload,
+        "rootPrefix": "",
+    })
 
     return f"""<!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>와우 포에버 슬롭툰 — 디시 WOW 포에버 마이너 갤러리 개념글 상황극 봇</title>
-  <meta name="description" content="디시인사이드 WOW 포에버 마이너 갤러리 개념글을 시안 C 귀염뽀짝 9×9 미소녀 4~6컷 상황극 웹툰으로 아카이빙합니다.">
+  <title>{html.escape(page_title)}</title>
+{social_meta}
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
   <link rel="stylesheet" href="assets/style.css">
 </head>
@@ -513,9 +674,9 @@ def _render_index_html(
   <main class="container main-content">
     <section class="masthead">
       <div class="pill-badge">
-        <span class="dot-sky"></span>디시 WOW 포에버 마이너 갤러리 개념글 상황극 봇
+        <span class="dot-sky"></span>{SITE_TAGLINE}
       </div>
-      <h1 class="masthead-title">와우 포에버 슬롭툰</h1>
+      <h1 class="masthead-title">{SITE_NAME}</h1>
       <p class="masthead-sub">포에버갤 레전드 개념글을 시안 C 9종족×9직업 귀염뽀짝 미소녀 100% 라이브 상황극으로 연재하는 순백 웹 아카이브</p>
       <div class="masthead-stats">
         <span class="stat-pill">총 <strong>{total_episodes}</strong>화 아카이브</span>
@@ -557,6 +718,8 @@ def _render_index_html(
         <button type="button" id="resetFiltersBtn" class="btn btn-outline">필터 초기화</button>
       </div>
     </section>
+
+    <aside class="slop-sponsor-slot" data-slot="home-feed-bottom" aria-label="스폰서 영역"></aside>
   </main>
 
   {_render_footer(total_episodes)}
@@ -573,6 +736,9 @@ def _render_episode_reader_html(
     default_episode: dict[str, Any] | None,
     root_prefix: str = "",
     pinned_episode_id: str | None = None,
+    *,
+    base_url: str = DEFAULT_ARCHIVE_BASE_URL,
+    fallback_og_image: str = "",
 ) -> str:
     """Render `episode.html` (dynamic `?id=...`) or a static `episodes/<id>.html` page."""
     ep = default_episode
@@ -582,40 +748,84 @@ def _render_episode_reader_html(
         "rootPrefix": root_prefix,
         "pinnedEpisodeId": pinned_episode_id or "",
         "dcWriteUrl": DC_GALLERY_WRITE_URL,
+        "archiveBaseUrl": base_url or DEFAULT_ARCHIVE_BASE_URL,
     })
 
     page_title = (
-        f"EP.{ep['episode_number']} {ep['title']} — 와우 포에버 슬롭툰"
+        f"EP.{ep['episode_number']} {ep['title']} — {SITE_NAME}"
         if ep
-        else "에피소드 리더 — 와우 포에버 슬롭툰"
+        else f"에피소드 리더 — {SITE_NAME}"
     )
     og_desc = ep["subtitle"] if ep else "와우 포에버 슬롭툰 웹툰 뷰어"
-    og_img = f"{root_prefix}{ep['thumb_image']}" if ep else ""
+    og_img_rel = ep["thumb_image"] if ep else fallback_og_image
+    if pinned_episode_id and ep:
+        path_from_root = f"episodes/{ep['episode_id']}.html"
+        relative_url = f"{ep['episode_id']}.html"
+    elif ep:
+        path_from_root = f"episodes/{ep['episode_id']}.html"
+        relative_url = "episode.html"
+    else:
+        path_from_root = "episode.html"
+        relative_url = "episode.html"
+
+    social_meta = _render_social_meta(
+        title=page_title,
+        description=og_desc,
+        og_type="article",
+        path_from_root=path_from_root,
+        relative_url=relative_url,
+        image_rel_from_root=og_img_rel,
+        base_url=base_url,
+        root_prefix=root_prefix,
+    )
 
     # Pre-render initial episode SSR content so no-JS crawlers, tests, and instant first paint work!
     if ep:
         idx = next((i for i, item in enumerate(site_episodes) if item["episode_id"] == ep["episode_id"]), 0)
         prev_ep = site_episodes[idx - 1] if idx > 0 else None
         next_ep = site_episodes[idx + 1] if idx + 1 < len(site_episodes) else None
+        recommended = _select_recommended_episodes(site_episodes, ep["episode_id"], limit=3)
         cast_chips = "".join(_render_cast_chip_html(c, root_prefix=root_prefix) for c in ep["cast_used"])
         pages_imgs_html = "".join(
             f'<img src="{root_prefix}{html.escape(p)}" alt="EP.{ep["episode_number"]} 페이지 {pi}" class="reader-page-img" loading="lazy">'
             for pi, p in enumerate(ep["page_images"], start=1)
         )
+        canonical_url = html.escape(ep["canonical_url"])
+
         prev_link_html = (
-            f'<a class="nav-ep-card" href="{root_prefix}episode.html?id={html.escape(prev_ep["episode_id"])}">'
-            f'<span class="nav-ep-dir">← 이전 화</span>'
-            f'<strong class="nav-ep-title">EP.{prev_ep["episode_number"]} {html.escape(prev_ep["title"])}</strong></a>'
+            f'<a class="nav-ep-card" href="{root_prefix}episodes/{html.escape(prev_ep["episode_id"])}.html">'
+            f'<div class="nav-ep-thumb-wrap">'
+            f'<img src="{root_prefix}{html.escape(prev_ep["thumb_image"])}" alt="EP.{prev_ep["episode_number"]} {html.escape(prev_ep["title"])}" class="nav-ep-thumb" loading="lazy">'
+            f'</div>'
+            f'<div class="nav-ep-info">'
+            f'<span class="nav-ep-dir">← 이전 화 정주행</span>'
+            f'<strong class="nav-ep-title">EP.{prev_ep["episode_number"]} {html.escape(prev_ep["title"])}</strong>'
+            f'<span class="nav-ep-sub">{html.escape(prev_ep["subtitle"])}</span>'
+            f'</div>'
+            f'</a>'
             if prev_ep
-            else '<div class="nav-ep-card is-disabled"><span class="nav-ep-dir">← 이전 화</span><span class="nav-ep-title">첫 번째 에피소드입니다</span></div>'
+            else '<div class="nav-ep-card is-disabled"><div class="nav-ep-info"><span class="nav-ep-dir">← 이전 화</span><span class="nav-ep-title">첫 번째 에피소드입니다</span><span class="nav-ep-sub">지금 1화부터 정주행 중이에요!</span></div></div>'
         )
         next_link_html = (
-            f'<a class="nav-ep-card nav-ep-next" href="{root_prefix}episode.html?id={html.escape(next_ep["episode_id"])}">'
-            f'<span class="nav-ep-dir">다음 화 →</span>'
-            f'<strong class="nav-ep-title">EP.{next_ep["episode_number"]} {html.escape(next_ep["title"])}</strong></a>'
+            f'<a class="nav-ep-card nav-ep-next" href="{root_prefix}episodes/{html.escape(next_ep["episode_id"])}.html">'
+            f'<div class="nav-ep-info">'
+            f'<span class="nav-ep-dir nav-ep-dir-accent">다음 화 바로 보기 →</span>'
+            f'<strong class="nav-ep-title">EP.{next_ep["episode_number"]} {html.escape(next_ep["title"])}</strong>'
+            f'<span class="nav-ep-sub">{html.escape(next_ep["subtitle"])}</span>'
+            f'</div>'
+            f'<div class="nav-ep-thumb-wrap">'
+            f'<img src="{root_prefix}{html.escape(next_ep["thumb_image"])}" alt="EP.{next_ep["episode_number"]} {html.escape(next_ep["title"])}" class="nav-ep-thumb" loading="lazy">'
+            f'</div>'
+            f'</a>'
             if next_ep
-            else '<div class="nav-ep-card nav-ep-next is-disabled"><span class="nav-ep-dir">다음 화 →</span><span class="nav-ep-title">가장 최신 에피소드입니다</span></div>'
+            else '<div class="nav-ep-card nav-ep-next is-disabled"><div class="nav-ep-info"><span class="nav-ep-dir">다음 화 →</span><span class="nav-ep-title">가장 최신 에피소드입니다</span><span class="nav-ep-sub">랜덤 화 보기로 다른 명장면도 즐겨보세요!</span></div></div>'
         )
+
+        rec_cards_html = "".join(
+            _render_episode_card(rec, root_prefix=root_prefix, include_filter_attrs=False)
+            for rec in recommended
+        )
+        rec_hidden_attr = "" if recommended else " hidden"
 
         reader_initial_html = f"""
         <div class="reader-top-bar">
@@ -624,7 +834,10 @@ def _render_episode_reader_html(
             <button type="button" class="mode-btn is-active" data-mode="full">통합 스크롤</button>
             <button type="button" class="mode-btn" data-mode="pages">페이지별 보기</button>
           </div>
-          <a class="btn btn-sm btn-outline" href="#dc-upload-helper">디시 업로드 도우미 ↓</a>
+          <div class="reader-top-actions">
+            <button type="button" class="btn btn-sm btn-outline js-share-url" data-share-url="{canonical_url}">🔗 링크 복사</button>
+            <a class="btn btn-sm btn-subtle" href="#dc-upload-helper">디시 업로드 도우미 ↓</a>
+          </div>
         </div>
 
         <header class="episode-header">
@@ -652,13 +865,45 @@ def _render_episode_reader_html(
           </div>
         </section>
 
+        <aside class="slop-sponsor-slot" data-slot="episode-strip-bottom" aria-label="스폰서 영역"></aside>
+
+        <section class="episode-action-strip" aria-label="공유 및 다음 정주행">
+          <div class="action-strip-copy">
+            <strong>이 념글 상황극, 재밌게 보셨나요?</strong>
+            <span>링크를 복사해 공유하거나 랜덤 화로 바로 이어서 정주행해 보세요!</span>
+          </div>
+          <div class="action-strip-btns">
+            <button type="button" id="shareCopyBtn" class="btn btn-outline btn-sm js-share-url" data-share-url="{canonical_url}">🔗 링크 복사</button>
+            <button type="button" id="bottomRandomBtn" class="btn btn-sky btn-sm js-random-ep">🎲 랜덤 화 보기</button>
+            <a id="epBottomSourceLink" class="btn btn-subtle btn-sm" href="{html.escape(ep['source_url'])}" target="_blank" rel="noopener noreferrer">원본 개념글 ↗</a>
+          </div>
+        </section>
+
+        <nav class="episode-pager" id="epPager" aria-label="이전화 다음화 이동">
+          {prev_link_html}
+          {next_link_html}
+        </nav>
+
+        <section class="recommend-section" id="epRecommendSection" aria-label="다른 레전드 념글 만화"{rec_hidden_attr}>
+          <div class="section-head">
+            <div>
+              <h2 class="section-title">다른 레전드 념글 만화</h2>
+              <p class="section-meta">놓치면 아까운 포에버갤 개념글 상황극을 이어서 정주행해 보세요.</p>
+            </div>
+            <a class="btn btn-subtle btn-sm" href="{root_prefix}index.html">전체 아카이브 →</a>
+          </div>
+          <div class="recommend-grid" id="epRecommendGrid">
+            {rec_cards_html}
+          </div>
+        </section>
+
         <section class="dc-helper-card" id="dc-upload-helper" aria-label="디시 포에버갤 업로드 도우미">
           <div class="dc-helper-head">
             <div>
               <span class="pill-badge pill-sm"><span class="dot-sky"></span>1-CLICK UPLOAD HELPER</span>
               <h2 class="dc-helper-title">디시 포에버갤 업로드 도우미</h2>
               <p class="dc-helper-desc">
-                버튼 한 번으로 <strong>[만화] 제목 + 본문/출처 복사</strong>, <strong>통합본 JPG 다운로드</strong>,
+                버튼 한 번으로 <strong>[만화] 제목 + 본문/정주행 링크 복사</strong>, <strong>통합본 JPG 다운로드</strong>,
                 <strong>공식 포에버갤 글쓰기창 새 탭 열기</strong>를 동시에 준비합니다.
                 (로그인·캡차 확인 및 최종 등록은 공식 페이지에서 직접 완료해 주세요.)
               </p>
@@ -671,7 +916,7 @@ def _render_episode_reader_html(
               <pre id="dcTitlePreview" class="dc-preview-text">{html.escape(ep['dc_title'])}</pre>
             </div>
             <div class="dc-preview-box">
-              <div class="dc-preview-label">본문 &amp; 원본 출처</div>
+              <div class="dc-preview-label">본문 &amp; 정주행 아카이브 출처</div>
               <pre id="dcBodyPreview" class="dc-preview-text">{html.escape(ep['dc_body'])}</pre>
             </div>
           </div>
@@ -688,11 +933,6 @@ def _render_episode_reader_html(
             </div>
           </div>
         </section>
-
-        <nav class="episode-pager" id="epPager" aria-label="이전화 다음화 이동">
-          {prev_link_html}
-          {next_link_html}
-        </nav>
         """
     else:
         reader_initial_html = f"""
@@ -708,10 +948,7 @@ def _render_episode_reader_html(
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{html.escape(page_title)}</title>
-  <meta name="description" content="{html.escape(og_desc)}">
-  <meta property="og:title" content="{html.escape(page_title)}">
-  <meta property="og:description" content="{html.escape(og_desc)}">
-  <meta property="og:image" content="{html.escape(og_img)}">
+{social_meta}
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
   <link rel="stylesheet" href="{root_prefix}assets/style.css">
 </head>
@@ -736,8 +973,12 @@ def _render_cast_html(
     site_episodes: list[dict[str, Any]],
     has_labeled_sheet: bool,
     has_clean_sheet: bool,
+    *,
+    base_url: str = DEFAULT_ARCHIVE_BASE_URL,
 ) -> str:
     total_episodes = len(site_episodes)
+    page_title = f"9×9 캐스트 도감 (시안 C) — {SITE_NAME}"
+    page_desc = "와우 포에버 슬롭툰 공식 확정 시안 C 9종족×9직업 귀염뽀짝 미소녀 캐릭터 도감"
 
     ep_by_cast: dict[str, list[dict[str, Any]]] = {c["name"]: [] for c in cast_payload}
     for ep in reversed(site_episodes):
@@ -758,6 +999,18 @@ def _render_cast_html(
         if has_labeled_sheet
         else ("assets/cast/cast_sheet_c.jpg" if has_clean_sheet else "")
     )
+    og_image_rel = sheet_src or (site_episodes[-1]["thumb_image"] if site_episodes else "")
+    social_meta = _render_social_meta(
+        title=page_title,
+        description=page_desc,
+        og_type="website",
+        path_from_root="cast.html",
+        relative_url="cast.html",
+        image_rel_from_root=og_image_rel,
+        base_url=base_url,
+        root_prefix="",
+    )
+
     sheet_section = (
         f"""
         <section class="cast-sheet-section" aria-label="공식 시안 C 전체 시트">
@@ -782,7 +1035,7 @@ def _render_cast_html(
         appearances = ep_by_cast.get(c["name"], [])
         if appearances:
             ep_links = "".join(
-                f'<a class="ep-mini-link" href="episode.html?id={html.escape(ep["episode_id"])}">EP.{ep["episode_number"]} {html.escape(ep["title"])}</a>'
+                f'<a class="ep-mini-link" href="episodes/{html.escape(ep["episode_id"])}.html">EP.{ep["episode_number"]} {html.escape(ep["title"])}</a>'
                 for ep in appearances
             )
             appearances_html = f'<div class="cast-ep-list">{ep_links}</div>'
@@ -830,13 +1083,21 @@ def _render_cast_html(
             """
         )
 
+    embedded_data = _safe_json_for_script({
+        "episodes": [
+            {"episode_id": ep["episode_id"], "episode_number": ep["episode_number"], "title": ep["title"]}
+            for ep in site_episodes
+        ],
+        "rootPrefix": "",
+    })
+
     return f"""<!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>9×9 캐스트 도감 (시안 C) — 와우 포에버 슬롭툰</title>
-  <meta name="description" content="와우 포에버 슬롭툰 공식 확정 시안 C 9종족×9직업 귀염뽀짝 미소녀 캐릭터 도감">
+  <title>{html.escape(page_title)}</title>
+{social_meta}
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
   <link rel="stylesheet" href="assets/style.css">
 </head>
@@ -876,6 +1137,141 @@ def _render_cast_html(
 
   {_render_footer(total_episodes)}
 
+  <script>window.__SLOPTOON_DATA__ = {embedded_data};</script>
+  <script src="assets/app.js"></script>
+</body>
+</html>
+"""
+
+
+def _render_publish_html(
+    site_episodes: list[dict[str, Any]],
+) -> str:
+    """Render `publish.html` — Creator DCInside manual upload queue manager."""
+    total_episodes = len(site_episodes)
+    newest_first = list(reversed(site_episodes))
+    page_title = f"업로드 큐 관리 — {SITE_NAME}"
+
+    if newest_first:
+        queue_items_parts: list[str] = []
+        for ep in newest_first:
+            ep_id = html.escape(ep["episode_id"])
+            ep_href = f"episodes/{ep_id}.html"
+            queue_items_parts.append(
+                f"""
+                <article class="publish-card" data-episode-id="{ep_id}" data-status="pending">
+                  <div class="publish-card-main">
+                    <a class="publish-thumb-link" href="{ep_href}">
+                      <img src="{html.escape(ep['thumb_image'])}" alt="EP.{ep['episode_number']} {html.escape(ep['title'])}" class="publish-thumb" loading="lazy">
+                    </a>
+                    <div class="publish-info">
+                      <div class="publish-top-row">
+                        <div class="meta-row">
+                          <span class="ep-pill ep-pill-sm">EP.{ep['episode_number']}</span>
+                          <span class="post-no">#{html.escape(ep['source_post_no'])}</span>
+                          <span class="meta-date">{html.escape(ep['date_short'])}</span>
+                          <span class="stat-pill">{ep['cut_count']}컷</span>
+                        </div>
+                        <button type="button" class="publish-status-toggle" data-ep="{ep_id}" aria-pressed="false">
+                          <span class="status-dot" aria-hidden="true"></span>
+                          <span class="status-label">대기 중</span>
+                        </button>
+                      </div>
+                      <h2 class="publish-ep-title">
+                        <a href="{ep_href}">{html.escape(ep['title'])}</a>
+                      </h2>
+                      <p class="publish-ep-sub">{html.escape(ep['subtitle'])}</p>
+                      <div class="publish-meta-links">
+                        <a href="{ep_href}">아카이브 페이지 열기 →</a>
+                        <a href="{html.escape(ep['source_url'])}" target="_blank" rel="noopener noreferrer">원본 개념글 (#{html.escape(ep['source_post_no'])}) ↗</a>
+                      </div>
+                      <div class="publish-actions">
+                        <button type="button" class="btn btn-outline btn-sm js-pub-copy-title" data-ep="{ep_id}">제목 복사</button>
+                        <button type="button" class="btn btn-outline btn-sm js-pub-copy-body" data-ep="{ep_id}">본문·주소 복사</button>
+                        <a class="btn btn-outline btn-sm" href="{html.escape(ep['full_image'])}" download="wow_sloptoon_{ep_id}_full.jpg">워터마크 통합본 JPG 저장</a>
+                        <a class="btn btn-primary btn-sm" href="{DC_GALLERY_WRITE_URL}" target="_blank" rel="noopener noreferrer">포에버갤 글쓰기 열기 ↗</a>
+                      </div>
+                    </div>
+                  </div>
+                  <details class="publish-preview-details">
+                    <summary>복사될 제목 · 본문 미리보기</summary>
+                    <div class="dc-preview-grid">
+                      <div class="dc-preview-box">
+                        <div class="dc-preview-label">글 제목</div>
+                        <pre class="dc-preview-text">{html.escape(ep['dc_title'])}</pre>
+                      </div>
+                      <div class="dc-preview-box">
+                        <div class="dc-preview-label">본문 &amp; 정주행 아카이브 주소</div>
+                        <pre class="dc-preview-text">{html.escape(ep['dc_body'])}</pre>
+                      </div>
+                    </div>
+                  </details>
+                </article>
+                """
+            )
+        queue_html = f'<div class="publish-list" id="publishList">{"".join(queue_items_parts)}</div>'
+    else:
+        queue_html = """
+        <section class="empty-hero">
+          <p>아직 생성된 에피소드가 없습니다. 새 에피소드를 빌드하면 업로드 큐에 자동 표시됩니다.</p>
+        </section>
+        """
+
+    embedded_data = _safe_json_for_script({
+        "episodes": site_episodes,
+        "rootPrefix": "",
+        "dcWriteUrl": DC_GALLERY_WRITE_URL,
+    })
+
+    return f"""<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>{html.escape(page_title)}</title>
+  <meta name="description" content="와우 포에버 슬롭툰 디시 WOW 포에버 마이너 갤러리 수동 업로드 큐 관리 페이지">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-page="publish">
+  {_render_nav('publish')}
+
+  <main class="container main-content">
+    <section class="masthead">
+      <div class="pill-badge">
+        <span class="dot-sky"></span>CREATOR UPLOAD QUEUE · 수동 업로드 도우미
+      </div>
+      <h1 class="masthead-title">포에버갤 업로드 큐 관리</h1>
+      <p class="masthead-sub">최신 에피소드부터 제목·본문 복사, 워터마크 통합본 JPG 저장, 공식 포에버갤 글쓰기 열기 및 등록 상태를 브라우저에서 간편하게 관리합니다.</p>
+      <p class="publish-policy-note">
+        ※ 디시인사이드 정책 준수: 로그인, 이미지 첨부, 캡차(자동등록방지) 확인 및 최종 등록은 공식 포에버갤 글쓰기 페이지에서 직접 진행해 주세요. 등록 완료 상태는 현재 브라우저(localStorage)에 안전하게 저장됩니다.
+      </p>
+    </section>
+
+    <hr class="ink-divider">
+
+    <section class="publish-controls" aria-label="업로드 상태 필터">
+      <div class="publish-filter-bar" id="publishFilterBar" role="group" aria-label="상태별 필터">
+        <button type="button" class="filter-chip is-active" data-filter="all">전체 <span class="filter-count" id="pubCountAll">{total_episodes}</span></button>
+        <button type="button" class="filter-chip" data-filter="pending">대기 중 <span class="filter-count" id="pubCountPending">{total_episodes}</span></button>
+        <button type="button" class="filter-chip" data-filter="done">완료 <span class="filter-count" id="pubCountDone">0</span></button>
+      </div>
+      <p class="section-meta" id="publishSummary">전체 {total_episodes}화 중 0화 포에버갤 등록 완료</p>
+    </section>
+
+    {queue_html}
+
+    <div class="empty-filter" id="publishEmptyFilter" hidden>
+      <p class="empty-filter-title">선택한 상태에 해당하는 에피소드가 없습니다.</p>
+      <p class="empty-filter-sub">다른 필터 탭을 선택해 전체 에피소드를 확인해 보세요.</p>
+      <button type="button" id="publishResetFilterBtn" class="btn btn-outline">전체 보기</button>
+    </div>
+  </main>
+
+  {_render_footer(total_episodes)}
+
+  <script>window.__SLOPTOON_DATA__ = {embedded_data};</script>
   <script src="assets/app.js"></script>
 </body>
 </html>
@@ -893,7 +1289,10 @@ _STYLE_CSS = """/* 와우 포에버 슬롭툰 — 순백(#FFFFFF) 초고속 정�
   --border: #e4e4e7;
   --border-strong: #111111;
   --navy: #1e3a8a;
-  --sky: #38bdf8;
+  --sky: #0ea5e9;
+  --sky-dark: #0284c7;
+  --sky-soft: #f0f9ff;
+  --sky-border: #bae6fd;
   --radius-sm: 10px;
   --radius-md: 16px;
   --radius-lg: 22px;
@@ -928,7 +1327,7 @@ button, input { font-family: inherit; }
   position: sticky;
   top: 0;
   z-index: 40;
-  background: rgba(255, 255, 255, 0.94);
+  background: rgba(255, 255, 255, 0.96);
   backdrop-filter: blur(10px);
   border-bottom: 1.5px solid var(--border);
 }
@@ -937,7 +1336,9 @@ button, input { font-family: inherit; }
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  height: 62px;
+  min-height: 62px;
+  padding-top: 6px;
+  padding-bottom: 6px;
 }
 .brand {
   display: inline-flex;
@@ -946,6 +1347,7 @@ button, input { font-family: inherit; }
   font-weight: 800;
   font-size: 1.05rem;
   letter-spacing: -0.02em;
+  flex-shrink: 0;
 }
 .brand-dot {
   width: 11px;
@@ -966,10 +1368,11 @@ button, input { font-family: inherit; }
 .site-nav {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 6px;
 }
 .nav-link {
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   font-weight: 600;
   color: var(--ink-muted);
   padding: 7px 13px;
@@ -979,6 +1382,27 @@ button, input { font-family: inherit; }
 .nav-link:hover { background: var(--surface-2); color: var(--ink); }
 .nav-link.is-active { background: var(--ink); color: #ffffff; }
 .nav-ext { border: 1px solid var(--border); }
+.nav-pill-random {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.86rem;
+  font-weight: 800;
+  color: var(--ink);
+  background: #ffffff;
+  border: 1.5px solid var(--ink);
+  border-radius: 999px;
+  padding: 6px 13px;
+  cursor: pointer;
+  transition: transform 0.14s ease, box-shadow 0.14s ease, background 0.14s ease, border-color 0.14s ease;
+}
+.nav-pill-random:hover {
+  background: var(--sky-soft);
+  border-color: var(--sky);
+  color: var(--sky-dark);
+  transform: translate(-1px, -1px);
+  box-shadow: 2px 2px 0 var(--sky);
+}
 
 /* Editorial masthead matching comic header */
 .main-content { padding-top: 38px; padding-bottom: 72px; }
@@ -1078,7 +1502,7 @@ button, input { font-family: inherit; }
   border-radius: 12px;
   border: 2px solid var(--ink);
   cursor: pointer;
-  transition: transform 0.14s ease, box-shadow 0.14s ease, background 0.14s ease;
+  transition: transform 0.14s ease, box-shadow 0.14s ease, background 0.14s ease, border-color 0.14s ease;
 }
 .btn:hover { transform: translate(-1px, -1px); }
 .btn-primary {
@@ -1087,12 +1511,37 @@ button, input { font-family: inherit; }
   box-shadow: 3px 3px 0 var(--sky);
 }
 .btn-primary:hover { box-shadow: 4px 4px 0 var(--sky); }
+.btn-sky {
+  background: var(--sky);
+  color: #ffffff;
+  border-color: var(--ink);
+  box-shadow: 3px 3px 0 var(--ink);
+}
+.btn-sky:hover { background: var(--sky-dark); box-shadow: 4px 4px 0 var(--ink); }
 .btn-outline { background: #ffffff; color: var(--ink); }
 .btn-outline:hover { background: var(--surface); box-shadow: 3px 3px 0 var(--ink); }
 .btn-subtle { background: var(--surface); border-color: var(--border); color: var(--ink); }
 .btn-subtle:hover { border-color: var(--ink); }
 .btn-sm { font-size: 0.82rem; padding: 7px 13px; border-radius: 10px; border-width: 1.5px; }
 .btn-lg { font-size: 0.98rem; padding: 14px 22px; width: 100%; }
+
+/* Collapsible sponsor / ad slot — zero-height & invisible when empty */
+.slop-sponsor-slot {
+  width: 100%;
+  max-width: 900px;
+  margin: 28px auto;
+  padding: 16px;
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  text-align: center;
+}
+.slop-sponsor-slot:empty {
+  display: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
 
 /* Hero featured latest card */
 .hero-section { margin-bottom: 48px; }
@@ -1357,6 +1806,12 @@ button, input { font-family: inherit; }
   padding-bottom: 18px;
   border-bottom: 1px solid var(--border);
 }
+.reader-top-actions {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
 .back-link { font-weight: 700; font-size: 0.9rem; color: var(--ink-muted); }
 .back-link:hover { color: var(--ink); }
 .reader-mode-toggle {
@@ -1395,17 +1850,17 @@ button, input { font-family: inherit; }
   gap: 6px;
   font-size: 0.84rem;
   font-weight: 700;
-  color: var(--navy);
+  color: var(--sky-dark);
   padding: 6px 14px;
   border-radius: 999px;
-  background: #eff6ff;
-  border: 1px solid #bfdbfe;
+  background: var(--sky-soft);
+  border: 1px solid var(--sky-border);
 }
-.source-link:hover { background: #dbeafe; }
+.source-link:hover { background: #e0f2fe; }
 
 .comic-stage {
   background: #ffffff;
-  margin: 12px auto 38px;
+  margin: 12px auto 28px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1428,6 +1883,116 @@ button, input { font-family: inherit; }
   border-radius: 10px;
 }
 
+/* Post-comic Share & Random Binge Strip */
+.episode-action-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+  padding: 18px 22px;
+  background: #ffffff;
+  border: 1.8px solid var(--ink);
+  border-radius: var(--radius-md);
+  box-shadow: 3px 3px 0 var(--sky);
+  margin-bottom: 24px;
+}
+.action-strip-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.action-strip-copy strong {
+  font-size: 0.98rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+.action-strip-copy span {
+  font-size: 0.83rem;
+  color: var(--ink-muted);
+  word-break: keep-all;
+}
+.action-strip-btns {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Sleek Prev / Next Episode Binge Cards */
+.episode-pager {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 42px;
+}
+.nav-ep-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  border: 1.8px solid var(--ink);
+  border-radius: var(--radius-md);
+  background: #ffffff;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+.nav-ep-card:not(.is-disabled):hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-comic);
+}
+.nav-ep-card.is-disabled {
+  border-color: var(--border);
+  color: var(--ink-soft);
+  background: var(--surface);
+}
+.nav-ep-next {
+  justify-content: flex-end;
+  text-align: right;
+}
+.nav-ep-thumb-wrap {
+  width: 108px;
+  height: 70px;
+  flex-shrink: 0;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  background: #ffffff;
+}
+.nav-ep-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #ffffff;
+}
+.nav-ep-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+  flex: 1;
+}
+.nav-ep-dir { font-size: 0.76rem; font-weight: 800; color: var(--ink-soft); }
+.nav-ep-dir-accent { color: var(--sky-dark); }
+.nav-ep-title { font-size: 0.98rem; font-weight: 900; line-height: 1.25; word-break: keep-all; }
+.nav-ep-sub {
+  font-size: 0.8rem;
+  color: var(--ink-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Recommended "다른 레전드 념글 만화" Grid */
+.recommend-section {
+  margin-bottom: 42px;
+}
+.recommend-section[hidden] { display: none; }
+.recommend-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 18px;
+}
+
 /* DCInside 1-Click Upload Helper */
 .dc-helper-card {
   background: #ffffff;
@@ -1435,7 +2000,7 @@ button, input { font-family: inherit; }
   border-radius: var(--radius-lg);
   padding: 24px 26px;
   box-shadow: var(--shadow-comic);
-  margin-bottom: 34px;
+  margin-bottom: 24px;
 }
 .dc-helper-title {
   margin: 10px 0 6px;
@@ -1479,30 +2044,153 @@ button, input { font-family: inherit; }
 .dc-helper-actions { display: flex; flex-direction: column; gap: 10px; }
 .dc-sub-actions { display: flex; flex-wrap: wrap; gap: 8px; }
 
-/* Prev / Next episode pager */
-.episode-pager {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
+/* Creator Upload Queue page (publish.html) */
+.publish-policy-note {
+  margin: 16px auto 0;
+  max-width: 760px;
+  padding: 10px 16px;
+  background: var(--sky-soft);
+  border: 1.5px solid var(--sky-border);
+  border-radius: 12px;
+  font-size: 0.83rem;
+  font-weight: 600;
+  color: #0c4a6e;
+  word-break: keep-all;
 }
-.nav-ep-card {
+.publish-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+.publish-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.publish-list {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  padding: 16px 18px;
+  gap: 18px;
+}
+.publish-card {
+  background: #ffffff;
   border: 1.8px solid var(--ink);
   border-radius: var(--radius-md);
+  padding: 18px 20px;
+  transition: box-shadow 0.15s ease, border-color 0.15s ease;
+}
+.publish-card:hover { box-shadow: var(--shadow-comic); }
+.publish-card.is-done { border-color: var(--sky); }
+.publish-card-main {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+}
+.publish-thumb-link {
+  width: 176px;
+  flex-shrink: 0;
+  aspect-ratio: 16 / 10;
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
   background: #ffffff;
-  transition: transform 0.14s ease, box-shadow 0.14s ease;
 }
-.nav-ep-card:not(.is-disabled):hover {
-  transform: translate(-1px, -2px);
-  box-shadow: var(--shadow-comic);
+.publish-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #ffffff;
 }
-.nav-ep-card.is-disabled { border-color: var(--border); color: var(--ink-soft); background: var(--surface); }
-.nav-ep-next { text-align: right; }
-.nav-ep-dir { font-size: 0.76rem; font-weight: 800; color: var(--ink-soft); }
-.nav-ep-title { font-size: 0.95rem; font-weight: 800; word-break: keep-all; }
+.publish-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.publish-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.publish-status-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 13px;
+  border-radius: 999px;
+  border: 1.5px solid var(--ink);
+  background: #ffffff;
+  color: var(--ink);
+  font-size: 0.8rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background 0.14s ease, color 0.14s ease, border-color 0.14s ease;
+}
+.publish-status-toggle:hover { background: var(--surface-2); }
+.publish-status-toggle.is-done {
+  background: var(--sky);
+  border-color: var(--ink);
+  color: #ffffff;
+}
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: #f59e0b;
+  flex-shrink: 0;
+}
+.publish-status-toggle.is-done .status-dot { background: #ffffff; }
+.publish-ep-title {
+  margin: 0;
+  font-size: 1.12rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  word-break: keep-all;
+}
+.publish-ep-title a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.publish-ep-sub {
+  margin: 0;
+  font-size: 0.87rem;
+  color: var(--ink-muted);
+  word-break: keep-all;
+}
+.publish-meta-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--sky-dark);
+}
+.publish-meta-links a:hover { text-decoration: underline; }
+.publish-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+.publish-preview-details {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--border);
+}
+.publish-preview-details summary {
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--ink-muted);
+  user-select: none;
+}
+.publish-preview-details[open] summary {
+  margin-bottom: 10px;
+  color: var(--ink);
+}
 
 /* Cast page */
 .cast-sheet-section { margin-bottom: 46px; }
@@ -1651,11 +2339,11 @@ button, input { font-family: inherit; }
   cursor: pointer;
 }
 
-/* Footer & toast */
+/* Pure-White Footer, Legal Notice & Toast */
 .site-footer {
   border-top: 1.5px solid var(--border);
-  background: var(--surface);
-  padding: 32px 0 42px;
+  background: #ffffff;
+  padding: 34px 0 38px;
 }
 .footer-inner {
   display: flex;
@@ -1674,12 +2362,31 @@ button, input { font-family: inherit; }
 .footer-links {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 16px;
   font-size: 0.86rem;
   font-weight: 700;
   color: var(--ink-muted);
 }
 .footer-links a:hover { color: var(--ink); }
+.footer-link-discreet {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+.footer-link-discreet:hover { color: var(--sky-dark); }
+.footer-legal {
+  margin-top: 22px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+.legal-notice {
+  margin: 0;
+  font-size: 0.78rem;
+  line-height: 1.65;
+  color: var(--ink-soft);
+  word-break: keep-all;
+}
 
 .toast {
   position: fixed;
@@ -1694,15 +2401,23 @@ button, input { font-family: inherit; }
   padding: 12px 20px;
   border-radius: 999px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
+  max-width: calc(100vw - 32px);
+  text-align: center;
 }
 
 @media (max-width: 820px) {
+  .header-inner { flex-wrap: wrap; padding-top: 10px; padding-bottom: 10px; }
+  .nav-link { font-size: 0.84rem; padding: 6px 10px; }
+  .nav-pill-random { font-size: 0.82rem; padding: 5px 11px; }
   .hero-card { grid-template-columns: 1fr; }
   .hero-thumb-link { border-right: 0; border-bottom: 2px solid var(--border-strong); }
   .hero-thumb { min-height: 220px; }
   .hero-body { padding: 20px; }
   .episode-pager { grid-template-columns: 1fr; }
-  .nav-ep-next { text-align: left; }
+  .nav-ep-next { text-align: left; flex-direction: row-reverse; justify-content: flex-start; }
+  .nav-ep-thumb-wrap { width: 88px; height: 58px; }
+  .publish-card-main { flex-direction: column; }
+  .publish-thumb-link { width: 100%; max-width: 280px; }
   .brand-tag { display: none; }
   .search-input { width: 100%; }
 }
@@ -1712,6 +2427,8 @@ button, input { font-family: inherit; }
 _APP_JS = """/* 와우 포에버 슬롭툰 — 정적 웹 아카이브 인터랙션 */
 (function () {
   "use strict";
+
+  var PUBLISH_STORAGE_KEY = "wow_sloptoon_dc_published_v1";
 
   function showToast(msg) {
     var toast = document.getElementById("toast");
@@ -1746,6 +2463,41 @@ _APP_JS = """/* 와우 포에버 슬롭툰 — 정적 웹 아카이브 인터랙
       /* ignore */
     }
     document.body.removeChild(ta);
+  }
+
+  function episodeHref(rootPrefix, episodeId) {
+    return (rootPrefix || "") + "episodes/" + encodeURIComponent(episodeId) + ".html";
+  }
+
+  /* ---------------- GLOBAL RANDOM EPISODE NAVIGATION ---------------- */
+  function initRandomButtons() {
+    var buttons = document.querySelectorAll(".js-random-ep");
+    if (!buttons.length) return;
+
+    buttons.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var data = window.__SLOPTOON_DATA__ || {};
+        var episodes = Array.isArray(data.episodes) ? data.episodes : [];
+        var rootPrefix = data.rootPrefix || "";
+        if (episodes.length === 0) {
+          showToast("아직 등록된 에피소드가 없습니다.");
+          return;
+        }
+        var currentId = window.__SLOPTOON_CURRENT_EP__ || "";
+        var pool = episodes.filter(function (item) {
+          return item.episode_id !== currentId;
+        });
+        if (pool.length === 0) {
+          if (currentId) {
+            showToast("현재 1화만 등록되어 있어요! 곧 새로운 념글 만화가 추가됩니다.");
+            return;
+          }
+          pool = episodes;
+        }
+        var picked = pool[Math.floor(Math.random() * pool.length)];
+        window.location.href = episodeHref(rootPrefix, picked.episode_id);
+      });
+    });
   }
 
   /* ---------------- HOME PAGE (SEARCH / FILTER / SORT) ---------------- */
@@ -1850,7 +2602,156 @@ _APP_JS = """/* 와우 포에버 슬롭툰 — 정적 웹 아카이브 인터랙
     applyFilters();
   }
 
-  /* ---------------- EPISODE READER & 1-CLICK DC HELPER ---------------- */
+  /* ---------------- EPISODE READER, SHARE, BINGE & DC HELPER ---------------- */
+  function selectRecommended(episodes, currentIndex, limit) {
+    var currentId = episodes[currentIndex].episode_id;
+    var adjacent = {};
+    if (currentIndex > 0) adjacent[episodes[currentIndex - 1].episode_id] = true;
+    if (currentIndex + 1 < episodes.length) adjacent[episodes[currentIndex + 1].episode_id] = true;
+
+    var nonAdjacent = [];
+    var adjList = [];
+    for (var i = episodes.length - 1; i >= 0; i--) {
+      var item = episodes[i];
+      if (item.episode_id === currentId) continue;
+      if (adjacent[item.episode_id]) {
+        adjList.push(item);
+      } else {
+        nonAdjacent.push(item);
+      }
+    }
+    return nonAdjacent.concat(adjList).slice(0, limit);
+  }
+
+  function buildRecommendCardEl(rec, rootPrefix) {
+    var article = document.createElement("article");
+    article.className = "ep-card";
+
+    var link = document.createElement("a");
+    link.className = "ep-card-link";
+    link.href = episodeHref(rootPrefix, rec.episode_id);
+
+    var thumbWrap = document.createElement("div");
+    thumbWrap.className = "ep-thumb-wrap";
+    var img = document.createElement("img");
+    img.src = rootPrefix + rec.thumb_image;
+    img.alt = "EP." + rec.episode_number + " " + rec.title;
+    img.className = "ep-thumb";
+    img.loading = "lazy";
+    var cuts = document.createElement("span");
+    cuts.className = "thumb-cuts";
+    cuts.textContent = rec.cut_count + "컷";
+    thumbWrap.appendChild(img);
+    thumbWrap.appendChild(cuts);
+
+    var body = document.createElement("div");
+    body.className = "ep-card-body";
+    var metaRow = document.createElement("div");
+    metaRow.className = "meta-row";
+    var pill = document.createElement("span");
+    pill.className = "ep-pill ep-pill-sm";
+    pill.textContent = "EP." + rec.episode_number;
+    var postNo = document.createElement("span");
+    postNo.className = "post-no";
+    postNo.textContent = "#" + rec.source_post_no;
+    var dt = document.createElement("span");
+    dt.className = "meta-date";
+    dt.textContent = rec.date_short || "";
+    metaRow.appendChild(pill);
+    metaRow.appendChild(postNo);
+    metaRow.appendChild(dt);
+
+    var h3 = document.createElement("h3");
+    h3.className = "ep-card-title";
+    h3.textContent = rec.title;
+
+    var sub = document.createElement("p");
+    sub.className = "ep-card-sub";
+    sub.textContent = rec.subtitle || "";
+
+    var chipRow = document.createElement("div");
+    chipRow.className = "mini-chip-row";
+    (rec.cast_chips || []).forEach(function (chip) {
+      var sp = document.createElement("span");
+      sp.className = "mini-chip";
+      var dot = document.createElement("span");
+      dot.className = "cast-dot";
+      dot.style.background = chip.color || "#111111";
+      sp.appendChild(dot);
+      sp.appendChild(document.createTextNode(chip.name));
+      chipRow.appendChild(sp);
+    });
+
+    body.appendChild(metaRow);
+    body.appendChild(h3);
+    body.appendChild(sub);
+    body.appendChild(chipRow);
+    link.appendChild(thumbWrap);
+    link.appendChild(body);
+    article.appendChild(link);
+    return article;
+  }
+
+  function buildBingeCardEl(targetEp, isNext, rootPrefix) {
+    if (!targetEp) {
+      var disabled = document.createElement("div");
+      disabled.className = isNext ? "nav-ep-card nav-ep-next is-disabled" : "nav-ep-card is-disabled";
+      var info = document.createElement("div");
+      info.className = "nav-ep-info";
+      var dir = document.createElement("span");
+      dir.className = "nav-ep-dir";
+      dir.textContent = isNext ? "다음 화 →" : "← 이전 화";
+      var ttl = document.createElement("span");
+      ttl.className = "nav-ep-title";
+      ttl.textContent = isNext ? "가장 최신 에피소드입니다" : "첫 번째 에피소드입니다";
+      var hint = document.createElement("span");
+      hint.className = "nav-ep-sub";
+      hint.textContent = isNext ? "랜덤 화 보기로 다른 명장면도 즐겨보세요!" : "지금 1화부터 정주행 중이에요!";
+      info.appendChild(dir);
+      info.appendChild(ttl);
+      info.appendChild(hint);
+      disabled.appendChild(info);
+      return disabled;
+    }
+
+    var a = document.createElement("a");
+    a.className = isNext ? "nav-ep-card nav-ep-next" : "nav-ep-card";
+    a.href = episodeHref(rootPrefix, targetEp.episode_id);
+
+    var thumbWrap = document.createElement("div");
+    thumbWrap.className = "nav-ep-thumb-wrap";
+    var img = document.createElement("img");
+    img.src = rootPrefix + targetEp.thumb_image;
+    img.alt = "EP." + targetEp.episode_number + " " + targetEp.title;
+    img.className = "nav-ep-thumb";
+    img.loading = "lazy";
+    thumbWrap.appendChild(img);
+
+    var infoBox = document.createElement("div");
+    infoBox.className = "nav-ep-info";
+    var dirSpan = document.createElement("span");
+    dirSpan.className = isNext ? "nav-ep-dir nav-ep-dir-accent" : "nav-ep-dir";
+    dirSpan.textContent = isNext ? "다음 화 바로 보기 →" : "← 이전 화 정주행";
+    var titleStrong = document.createElement("strong");
+    titleStrong.className = "nav-ep-title";
+    titleStrong.textContent = "EP." + targetEp.episode_number + " " + targetEp.title;
+    var subSpan = document.createElement("span");
+    subSpan.className = "nav-ep-sub";
+    subSpan.textContent = targetEp.subtitle || "";
+    infoBox.appendChild(dirSpan);
+    infoBox.appendChild(titleStrong);
+    infoBox.appendChild(subSpan);
+
+    if (isNext) {
+      a.appendChild(infoBox);
+      a.appendChild(thumbWrap);
+    } else {
+      a.appendChild(thumbWrap);
+      a.appendChild(infoBox);
+    }
+    return a;
+  }
+
   function initEpisodePage() {
     var data = window.__SLOPTOON_DATA__;
     if (!data || !Array.isArray(data.episodes) || data.episodes.length === 0) return;
@@ -1871,8 +2772,12 @@ _APP_JS = """/* 와우 포에버 슬롭툰 — 정적 웹 아카이브 인터랙
       }
     }
     var ep = episodes[currentIndex];
+    window.__SLOPTOON_CURRENT_EP__ = ep.episode_id;
+
     var prevEp = currentIndex > 0 ? episodes[currentIndex - 1] : null;
     var nextEp = currentIndex + 1 < episodes.length ? episodes[currentIndex + 1] : null;
+    var canonicalShareUrl =
+      ep.canonical_url || ((data.archiveBaseUrl || "https://slopwow.github.io").replace(/\\/+$/, "") + "/episodes/" + ep.episode_id + ".html");
 
     // Update DOM dynamically when ?id= differs from default SSR episode
     document.title = "EP." + ep.episode_number + " " + ep.title + " — 와우 포에버 슬롭툰";
@@ -1892,6 +2797,10 @@ _APP_JS = """/* 와우 포에버 슬롭툰 — 정적 웹 아카이브 인터랙
       sourceEl.href = ep.source_url;
       sourceEl.textContent =
         "원본 디시 WOW 포에버 마이너 갤러리 개념글 (#" + ep.source_post_no + ") 바로가기 ↗";
+    }
+    var bottomSourceEl = document.getElementById("epBottomSourceLink");
+    if (bottomSourceEl) {
+      bottomSourceEl.href = ep.source_url;
     }
 
     var castRow = document.getElementById("epCastRow");
@@ -1942,42 +2851,43 @@ _APP_JS = """/* 와우 포에버 슬롭툰 — 정적 웹 아카이브 인터랙
       dlBtn.setAttribute("download", dlFileName);
     }
 
-    // Update pager cards
+    // Wire Share URL ("링크 복사") buttons
+    document.querySelectorAll(".js-share-url").forEach(function (btn) {
+      btn.setAttribute("data-share-url", canonicalShareUrl);
+      btn.addEventListener("click", function () {
+        var origText = btn.textContent;
+        copyText(canonicalShareUrl).then(function () {
+          showToast("링크가 복사되었습니다! " + canonicalShareUrl);
+          btn.textContent = "✓ 링크 복사됨";
+          clearTimeout(btn._copyTimer);
+          btn._copyTimer = setTimeout(function () {
+            btn.textContent = origText;
+          }, 1800);
+        });
+      });
+    });
+
+    // Update sleek Prev / Next binge cards
     var pager = document.getElementById("epPager");
     if (pager) {
       pager.innerHTML = "";
-      if (prevEp) {
-        var prevA = document.createElement("a");
-        prevA.className = "nav-ep-card";
-        prevA.href = rootPrefix + "episode.html?id=" + encodeURIComponent(prevEp.episode_id);
-        prevA.innerHTML =
-          '<span class="nav-ep-dir">← 이전 화</span><strong class="nav-ep-title"></strong>';
-        prevA.querySelector(".nav-ep-title").textContent =
-          "EP." + prevEp.episode_number + " " + prevEp.title;
-        pager.appendChild(prevA);
-      } else {
-        var prevD = document.createElement("div");
-        prevD.className = "nav-ep-card is-disabled";
-        prevD.innerHTML =
-          '<span class="nav-ep-dir">← 이전 화</span><span class="nav-ep-title">첫 번째 에피소드입니다</span>';
-        pager.appendChild(prevD);
-      }
+      pager.appendChild(buildBingeCardEl(prevEp, false, rootPrefix));
+      pager.appendChild(buildBingeCardEl(nextEp, true, rootPrefix));
+    }
 
-      if (nextEp) {
-        var nextA = document.createElement("a");
-        nextA.className = "nav-ep-card nav-ep-next";
-        nextA.href = rootPrefix + "episode.html?id=" + encodeURIComponent(nextEp.episode_id);
-        nextA.innerHTML =
-          '<span class="nav-ep-dir">다음 화 →</span><strong class="nav-ep-title"></strong>';
-        nextA.querySelector(".nav-ep-title").textContent =
-          "EP." + nextEp.episode_number + " " + nextEp.title;
-        pager.appendChild(nextA);
+    // Update "다른 레전드 념글 만화" recommended episode grid (up to 3)
+    var recSection = document.getElementById("epRecommendSection");
+    var recGrid = document.getElementById("epRecommendGrid");
+    if (recSection && recGrid) {
+      var recs = selectRecommended(episodes, currentIndex, 3);
+      recGrid.innerHTML = "";
+      if (recs.length > 0) {
+        recs.forEach(function (rec) {
+          recGrid.appendChild(buildRecommendCardEl(rec, rootPrefix));
+        });
+        recSection.hidden = false;
       } else {
-        var nextD = document.createElement("div");
-        nextD.className = "nav-ep-card nav-ep-next is-disabled";
-        nextD.innerHTML =
-          '<span class="nav-ep-dir">다음 화 →</span><span class="nav-ep-title">가장 최신 에피소드입니다</span>';
-        pager.appendChild(nextD);
+        recSection.hidden = true;
       }
     }
 
@@ -2028,7 +2938,7 @@ _APP_JS = """/* 와우 포에버 슬롭툰 — 정적 웹 아카이브 인터랙
     if (copyBodyBtn) {
       copyBodyBtn.addEventListener("click", function () {
         copyText(ep.dc_body).then(function () {
-          showToast("본문 및 원본 출처 링크를 클립보드에 복사했습니다!");
+          showToast("본문 및 정주행 아카이브 링크를 클립보드에 복사했습니다!");
         });
       });
     }
@@ -2037,9 +2947,9 @@ _APP_JS = """/* 와우 포에버 슬롭툰 — 정적 웹 아카이브 인터랙
     document.addEventListener("keydown", function (ev) {
       if (ev.target && /INPUT|TEXTAREA/.test(ev.target.tagName)) return;
       if (ev.key === "ArrowLeft" && prevEp) {
-        window.location.href = rootPrefix + "episode.html?id=" + encodeURIComponent(prevEp.episode_id);
+        window.location.href = episodeHref(rootPrefix, prevEp.episode_id);
       } else if (ev.key === "ArrowRight" && nextEp) {
-        window.location.href = rootPrefix + "episode.html?id=" + encodeURIComponent(nextEp.episode_id);
+        window.location.href = episodeHref(rootPrefix, nextEp.episode_id);
       }
     });
   }
@@ -2079,11 +2989,161 @@ _APP_JS = """/* 와우 포에버 슬롭툰 — 정적 웹 아카이브 인터랙
     }
   }
 
+  /* ---------------- CREATOR UPLOAD QUEUE PAGE (publish.html) ---------------- */
+  function readPublishedMap() {
+    try {
+      var raw = window.localStorage.getItem(PUBLISH_STORAGE_KEY);
+      if (!raw) return {};
+      var parsed = JSON.parse(raw);
+      return parsed && typeof parsed === "object" ? parsed : {};
+    } catch (_err) {
+      return {};
+    }
+  }
+
+  function writePublishedMap(map) {
+    try {
+      window.localStorage.setItem(PUBLISH_STORAGE_KEY, JSON.stringify(map));
+    } catch (_err) {
+      /* ignore private-mode quota errors */
+    }
+  }
+
+  function initPublishPage() {
+    var data = window.__SLOPTOON_DATA__ || {};
+    var episodes = Array.isArray(data.episodes) ? data.episodes : [];
+    var byId = {};
+    episodes.forEach(function (ep) {
+      byId[ep.episode_id] = ep;
+    });
+
+    var cards = Array.prototype.slice.call(document.querySelectorAll(".publish-card"));
+    var filterBar = document.getElementById("publishFilterBar");
+    var summaryEl = document.getElementById("publishSummary");
+    var countAllEl = document.getElementById("pubCountAll");
+    var countPendingEl = document.getElementById("pubCountPending");
+    var countDoneEl = document.getElementById("pubCountDone");
+    var emptyEl = document.getElementById("publishEmptyFilter");
+    var resetBtn = document.getElementById("publishResetFilterBtn");
+
+    var publishedMap = readPublishedMap();
+    var activeFilter = "all";
+
+    function syncPublishUI() {
+      var total = cards.length;
+      var doneCount = 0;
+      var visibleCount = 0;
+
+      cards.forEach(function (card) {
+        var epId = card.getAttribute("data-episode-id") || "";
+        var isDone = Boolean(publishedMap[epId]);
+        if (isDone) doneCount += 1;
+
+        card.setAttribute("data-status", isDone ? "done" : "pending");
+        card.classList.toggle("is-done", isDone);
+
+        var toggleBtn = card.querySelector(".publish-status-toggle");
+        if (toggleBtn) {
+          toggleBtn.classList.toggle("is-done", isDone);
+          toggleBtn.setAttribute("aria-pressed", isDone ? "true" : "false");
+          var label = toggleBtn.querySelector(".status-label");
+          if (label) {
+            label.textContent = isDone ? "포에버갤 등록 완료" : "대기 중";
+          }
+        }
+
+        var show =
+          activeFilter === "all" ||
+          (activeFilter === "done" && isDone) ||
+          (activeFilter === "pending" && !isDone);
+        card.hidden = !show;
+        if (show) visibleCount += 1;
+      });
+
+      var pendingCount = total - doneCount;
+      if (countAllEl) countAllEl.textContent = String(total);
+      if (countPendingEl) countPendingEl.textContent = String(pendingCount);
+      if (countDoneEl) countDoneEl.textContent = String(doneCount);
+      if (summaryEl) {
+        summaryEl.textContent = "전체 " + total + "화 중 " + doneCount + "화 포에버갤 등록 완료";
+      }
+      if (emptyEl) {
+        emptyEl.hidden = total === 0 || visibleCount > 0;
+      }
+    }
+
+    document.querySelectorAll(".publish-status-toggle").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var epId = btn.getAttribute("data-ep") || "";
+        if (!epId) return;
+        var nextDone = !Boolean(publishedMap[epId]);
+        if (nextDone) {
+          publishedMap[epId] = true;
+        } else {
+          delete publishedMap[epId];
+        }
+        writePublishedMap(publishedMap);
+        syncPublishUI();
+        var ep = byId[epId];
+        var prefix = ep ? "EP." + ep.episode_number + " " : "";
+        showToast(nextDone ? prefix + "포에버갤 등록 완료로 표시했습니다!" : prefix + "대기 중 상태로 변경했습니다.");
+      });
+    });
+
+    document.querySelectorAll(".js-pub-copy-title").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var ep = byId[btn.getAttribute("data-ep") || ""];
+        if (!ep) return;
+        copyText(ep.dc_title).then(function () {
+          showToast("EP." + ep.episode_number + " 글 제목을 복사했습니다!");
+        });
+      });
+    });
+
+    document.querySelectorAll(".js-pub-copy-body").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var ep = byId[btn.getAttribute("data-ep") || ""];
+        if (!ep) return;
+        copyText(ep.dc_body).then(function () {
+          showToast("EP." + ep.episode_number + " 본문과 정주행 주소를 복사했습니다!");
+        });
+      });
+    });
+
+    if (filterBar) {
+      filterBar.addEventListener("click", function (ev) {
+        var btn = ev.target.closest(".filter-chip");
+        if (!btn) return;
+        activeFilter = btn.getAttribute("data-filter") || "all";
+        filterBar.querySelectorAll(".filter-chip").forEach(function (b) {
+          b.classList.toggle("is-active", b === btn);
+        });
+        syncPublishUI();
+      });
+    }
+
+    if (resetBtn) {
+      resetBtn.addEventListener("click", function () {
+        activeFilter = "all";
+        if (filterBar) {
+          filterBar.querySelectorAll(".filter-chip").forEach(function (b) {
+            b.classList.toggle("is-active", b.getAttribute("data-filter") === "all");
+          });
+        }
+        syncPublishUI();
+      });
+    }
+
+    syncPublishUI();
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     var page = document.body.getAttribute("data-page");
     if (page === "home") initHomePage();
     if (page === "episode") initEpisodePage();
     if (page === "cast") initCastPage();
+    if (page === "publish") initPublishPage();
+    initRandomButtons();
   });
 })();
 """
@@ -2093,14 +3153,14 @@ def build_static_site(
     episodes_json: Path,
     site_dir: Path,
     assets_dir: Path,
-    archive_base_url: str = "",
+    archive_base_url: str = DEFAULT_ARCHIVE_BASE_URL,
 ) -> Path:
     """Build the complete static pure-white web archive into `site_dir`.
 
     Copies cast sheets, generates individual 9×9 cast portraits, syncs episode images,
     auto-generates missing episode thumbnails, and emits `index.html`, `episode.html`,
-    static `episodes/<id>.html`, `cast.html`, `assets/style.css`, `assets/app.js`,
-    and `data/episodes.json`.
+    static `episodes/<id>.html`, `cast.html`, `publish.html`, `sitemap.xml`,
+    `robots.txt`, `assets/style.css`, `assets/app.js`, and `data/episodes.json`.
 
     Returns:
         Path to the generated `site_dir / "index.html"`.
@@ -2108,6 +3168,9 @@ def build_static_site(
     episodes_json = Path(episodes_json)
     site_dir = Path(site_dir)
     assets_dir = Path(assets_dir)
+
+    clean_base = _normalize_base_url(archive_base_url)
+    canonical_base = clean_base or DEFAULT_ARCHIVE_BASE_URL
 
     site_dir.mkdir(parents=True, exist_ok=True)
     site_assets_dir = site_dir / "assets"
@@ -2138,6 +3201,11 @@ def build_static_site(
         has_clean = True
 
     portraits = extract_cast_portraits(clean_src, site_cast_dir) if has_clean else {}
+    fallback_og_image = (
+        "assets/cast/cast_sheet_c_labeled.png"
+        if has_labeled
+        else ("assets/cast/cast_sheet_c.jpg" if has_clean else "")
+    )
 
     # 2. Load episodes and sync media assets into site/assets/episodes/<id>/
     records = load_episodes(episodes_json)
@@ -2196,6 +3264,7 @@ def build_static_site(
                     "color": member.color_hex if member else "#111111",
                 })
 
+        canonical_ep_url = f"{canonical_base}/episodes/{record.episode_id}.html"
         site_episodes.append({
             "episode_id": record.episode_id,
             "episode_number": record.episode_number,
@@ -2211,8 +3280,9 @@ def build_static_site(
             "full_image": f"assets/episodes/{record.episode_id}/episode_full.jpg",
             "thumb_image": f"assets/episodes/{record.episode_id}/thumb.jpg",
             "page_images": page_web_paths,
+            "canonical_url": canonical_ep_url,
             "dc_title": _build_dc_post_title(record),
-            "dc_body": _build_dc_post_body(record, archive_base_url=archive_base_url),
+            "dc_body": _build_dc_post_body(record, archive_base_url=canonical_base),
         })
 
     # 3. Build cast metadata payload
@@ -2221,7 +3291,7 @@ def build_static_site(
         for member in CAST_BIBLE
     ]
 
-    # 4. Write shared static assets & site JSON
+    # 4. Write shared static assets, site JSON, and crawler metadata
     (site_assets_dir / "style.css").write_text(_STYLE_CSS, encoding="utf-8")
     (site_assets_dir / "app.js").write_text(_APP_JS, encoding="utf-8")
     (site_data_dir / "episodes.json").write_text(
@@ -2229,17 +3299,37 @@ def build_static_site(
         encoding="utf-8",
     )
     (site_dir / ".nojekyll").write_text("", encoding="utf-8")
+    (site_dir / "sitemap.xml").write_text(
+        _render_sitemap_xml(site_episodes, canonical_base),
+        encoding="utf-8",
+    )
+    (site_dir / "robots.txt").write_text(
+        _render_robots_txt(canonical_base),
+        encoding="utf-8",
+    )
 
     # 5. Write HTML pages
     index_path = site_dir / "index.html"
     index_path.write_text(
-        _render_index_html(site_episodes, cast_payload, len(site_episodes)),
+        _render_index_html(
+            site_episodes,
+            cast_payload,
+            len(site_episodes),
+            base_url=clean_base,
+            fallback_og_image=fallback_og_image,
+        ),
         encoding="utf-8",
     )
 
     latest_ep = site_episodes[-1] if site_episodes else None
     (site_dir / "episode.html").write_text(
-        _render_episode_reader_html(site_episodes, latest_ep, root_prefix=""),
+        _render_episode_reader_html(
+            site_episodes,
+            latest_ep,
+            root_prefix="",
+            base_url=clean_base,
+            fallback_og_image=fallback_og_image,
+        ),
         encoding="utf-8",
     )
 
@@ -2250,12 +3340,25 @@ def build_static_site(
                 ep,
                 root_prefix="../",
                 pinned_episode_id=ep["episode_id"],
+                base_url=clean_base,
+                fallback_og_image=fallback_og_image,
             ),
             encoding="utf-8",
         )
 
     (site_dir / "cast.html").write_text(
-        _render_cast_html(cast_payload, site_episodes, has_labeled, has_clean),
+        _render_cast_html(
+            cast_payload,
+            site_episodes,
+            has_labeled,
+            has_clean,
+            base_url=clean_base,
+        ),
+        encoding="utf-8",
+    )
+
+    (site_dir / "publish.html").write_text(
+        _render_publish_html(site_episodes),
         encoding="utf-8",
     )
 

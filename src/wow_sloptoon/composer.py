@@ -15,6 +15,7 @@ from __future__ import annotations
 
 import os
 import re
+import shutil
 from dataclasses import dataclass
 from functools import lru_cache
 from pathlib import Path
@@ -31,10 +32,13 @@ PURE_WHITE: tuple[int, int, int] = (255, 255, 255)    # #FFFFFF seamless pure wh
 MUTED_INK: tuple[int, int, int] = (88, 92, 102)       # Subtle aside / subtitle ink
 DC_BLUE: tuple[int, int, int] = (43, 76, 126)         # DC WOW Forever Gallery accent blue
 PILL_DOT_BLUE: tuple[int, int, int] = (92, 184, 255)  # Header badge accent dot
+WATERMARK_ACCENT_BLUE: tuple[int, int, int] = (14, 165, 233)  # #0EA5E9 sky-blue CTA accent
+WATERMARK_LINK_BLUE: tuple[int, int, int] = (2, 132, 199)     # #0284C7 crisp URL ink on #FFFFFF
 
 # Canonical Sloptoon page & panel geometry
 PAGE_W: int = 900
 HEADER_H: int = 244
+WATERMARK_FOOTER_H: int = 132
 FULL_PAGE_H: int = 1320
 TOP_PANEL_H: int = 830
 BOT_BOX_RECT: tuple[int, int, int, int] = (28, 856, 872, 1292)
@@ -48,6 +52,10 @@ THUMB_SIZE: tuple[int, int] = (800, 600)              # Crisp 4:3 web archive ca
 
 HEADER_BADGE_TEXT = "디시 WOW 포에버 마이너 갤러리 개념글 봇"
 SERIES_TITLE_TEXT = "와우 포에버 슬롭툰"
+DEFAULT_WATERMARK_URL = "slopwow.github.io"
+WATERMARK_BADGE_TEXT = "와우 포에버 슬롭툰  |  WOW FOREVER SLOPTOON"
+WATERMARK_CTA_PREFIX = "다음 화 & 전편 정주행"
+WATERMARK_SUBTEXT = "디시 WOW 포에버 마이너 갤러리 개념글 100% 상황극 아카이브"
 
 _TRAILING_PAREN_RE = re.compile(r"^(.*?)(\s*\([^()]{2,34}\))\s*$")
 
@@ -1649,10 +1657,203 @@ def _resolve_cut_path(
     )
 
 
+def _normalize_watermark_site_url(site_url: str) -> str:
+    """Normalize a site URL for compact display inside the bottom CTA banner."""
+    cleaned = (site_url or "").strip()
+    if not cleaned:
+        return ""
+    cleaned = re.sub(r"^https?://", "", cleaned, flags=re.IGNORECASE)
+    return cleaned.rstrip("/")
+
+
+def render_watermark_footer(
+    width: int = PAGE_W,
+    site_url: str = DEFAULT_WATERMARK_URL,
+) -> Image.Image:
+    """Render a crisp pure-`#FFFFFF` Sloptoon bottom watermark CTA banner (~132px tall).
+
+    Matches the comic's minimal black-and-white Sloptoon aesthetic with a 4x-supersampled
+    rounded card border, `#0EA5E9` sky-blue accent dot, and auto-fitting Korean typography
+    (zero emojis, zero broken glyph boxes).
+    """
+    w = max(320, int(round(width)))
+    h = WATERMARK_FOOTER_H
+    display_url = _normalize_watermark_site_url(site_url) or DEFAULT_WATERMARK_URL
+
+    canvas = Image.new("RGB", (w, h), PURE_WHITE)
+    cx = w / 2.0
+
+    # Sleek 4x-supersampled thin-border black rounded card (matches x=28..872 panel framing)
+    side_margin = 28 if w >= 700 else max(12, int(round(w * 0.032)))
+    card_x0 = side_margin
+    card_x1 = w - side_margin
+    card_y0 = 10
+    card_y1 = h - 10
+    card_w = card_x1 - card_x0
+    card_h = card_y1 - card_y0
+
+    S = 4
+    stroke_px = 2.4
+    radius = 20
+    pad = 6
+    rw, rh = card_w + pad * 2, card_h + pad * 2
+    layer_4x = Image.new("RGBA", (rw * S, rh * S), (0, 0, 0, 0))
+    d4 = ImageDraw.Draw(layer_4x)
+
+    bx0, by0 = pad * S, pad * S
+    bx1, by1 = (pad + card_w) * S, (pad + card_h) * S
+    bw = round(stroke_px * S)
+    rad4 = radius * S
+
+    # Outer crisp black rounded border + pure white interior
+    d4.rounded_rectangle([bx0, by0, bx1, by1], radius=rad4, fill=(*INK_BLACK, 255))
+    d4.rounded_rectangle(
+        [bx0 + bw, by0 + bw, bx1 - bw, by1 - bw],
+        radius=max(4, rad4 - bw),
+        fill=(*PURE_WHITE, 255),
+    )
+
+    card_1x = layer_4x.resize((rw, rh), Image.Resampling.BOX)
+    rgba = canvas.convert("RGBA")
+    rgba.alpha_composite(card_1x, dest=(card_x0 - pad, card_y0 - pad))
+    canvas.paste(rgba.convert("RGB"), (0, 0))
+
+    inner_max_w = max(160, card_w - 44)
+
+    # Row 1: Top badge pill with #0EA5E9 sky-blue accent dot
+    draw_minimal_pill(
+        canvas,
+        cx=cx,
+        cy=31,
+        text=WATERMARK_BADGE_TEXT,
+        bg_col=INK_BLACK,
+        txt_col=PURE_WHITE,
+        dot_col=WATERMARK_ACCENT_BLUE,
+        font_size=12,
+        pad_xy=(14, 5),
+        max_width=inner_max_w,
+    )
+
+    # Row 2: Main bold CTA (`다음 화 & 전편 정주행  >>  slopwow.github.io`)
+    d = ImageDraw.Draw(canvas)
+    cta_prefix = WATERMARK_CTA_PREFIX
+    cta_sep = "  >>  "
+    cta_fs = 22
+    f_prefix = load_font(cta_fs, weight="Black")
+    f_sep = load_font(cta_fs, weight="Bold")
+    f_url = load_font(cta_fs, weight="Black")
+
+    def _measure_cta(fs: int) -> tuple[Any, Any, Any, float, float, float, float]:
+        fp = load_font(fs, weight="Black")
+        fs_sep = load_font(fs, weight="Bold")
+        fu = load_font(fs, weight="Black")
+        wp = float(d.textlength(cta_prefix, font=fp))
+        ws = float(d.textlength(cta_sep, font=fs_sep))
+        wu = float(d.textlength(display_url, font=fu))
+        return fp, fs_sep, fu, wp, ws, wu, wp + ws + wu
+
+    f_prefix, f_sep, f_url, w_prefix, w_sep, w_url, total_cta_w = _measure_cta(cta_fs)
+    while total_cta_w > inner_max_w and cta_fs > 12:
+        cta_fs -= 1
+        f_prefix, f_sep, f_url, w_prefix, w_sep, w_url, total_cta_w = _measure_cta(cta_fs)
+
+    cta_cy = 67.0
+    full_cta_str = f"{cta_prefix}{cta_sep}{display_url}"
+    cta_bb = d.textbbox((0, 0), full_cta_str, font=f_prefix)
+    cta_h = float(cta_bb[3] - cta_bb[1])
+    cta_y = round(cta_cy - cta_h / 2.0 - cta_bb[1])
+    start_x = cx - total_cta_w / 2.0
+
+    # Align each segment to the same baseline/top reference cleanly
+    d.text((round(start_x), cta_y), cta_prefix, font=f_prefix, fill=INK_BLACK)
+    sep_x = start_x + w_prefix
+    d.text((round(sep_x), cta_y), cta_sep, font=f_sep, fill=WATERMARK_ACCENT_BLUE)
+    url_x = sep_x + w_sep
+    d.text((round(url_x), cta_y), display_url, font=f_url, fill=WATERMARK_LINK_BLUE)
+
+    # Crisp sky-blue accent underline beneath URL so it pops at mobile widths
+    url_bb = d.textbbox((round(url_x), cta_y), display_url, font=f_url)
+    ul_y = url_bb[3] + 2
+    d.line(
+        [(round(url_x), ul_y), (round(url_x + w_url), ul_y)],
+        fill=WATERMARK_ACCENT_BLUE,
+        width=2,
+    )
+
+    # Row 3: Subtext
+    sub_fs = 13
+    f_sub = load_font(sub_fs, weight="Medium")
+    while float(d.textlength(WATERMARK_SUBTEXT, font=f_sub)) > inner_max_w and sub_fs > 9:
+        sub_fs -= 1
+        f_sub = load_font(sub_fs, weight="Medium")
+    sub_bb = d.textbbox((0, 0), WATERMARK_SUBTEXT, font=f_sub)
+    sub_w = float(d.textlength(WATERMARK_SUBTEXT, font=f_sub))
+    sub_h = float(sub_bb[3] - sub_bb[1])
+    d.text(
+        (round(cx - sub_w / 2.0), round(105.0 - sub_h / 2.0 - sub_bb[1])),
+        WATERMARK_SUBTEXT,
+        font=f_sub,
+        fill=MUTED_INK,
+    )
+
+    return canvas
+
+
+def append_watermark_footer(
+    image: Image.Image,
+    site_url: str = DEFAULT_WATERMARK_URL,
+) -> Image.Image:
+    """Append the Sloptoon bottom watermark CTA banner seamlessly onto `image`."""
+    rgb = _flatten_to_white_rgb(image)
+    clean_url = (site_url or "").strip()
+    if not clean_url:
+        return rgb.copy()
+
+    footer = render_watermark_footer(width=rgb.width, site_url=clean_url)
+    out = Image.new("RGB", (rgb.width, rgb.height + footer.height), PURE_WHITE)
+    out.paste(rgb, (0, 0))
+    out.paste(footer, (0, rgb.height))
+    return out
+
+
+def retrofit_episode_watermark(
+    episode_dir: Path,
+    site_url: str = DEFAULT_WATERMARK_URL,
+    *,
+    filename: str = "episode_full.jpg",
+) -> Path:
+    """Idempotently apply the bottom watermark CTA banner to an episode's full scroll JPG.
+
+    On first run (when `episode_full_raw.jpg` does not yet exist), backs up the original
+    `episode_full.jpg` to `episode_full_raw.jpg` before stamping the footer. Subsequent calls
+    always re-render from `episode_full_raw.jpg`, guaranteeing zero double-stamping.
+    """
+    ep_dir = Path(episode_dir)
+    full_path = ep_dir / filename
+    raw_name = f"{full_path.stem}_raw{full_path.suffix}"
+    raw_path = ep_dir / raw_name
+
+    clean_url = (site_url or "").strip()
+    if not clean_url:
+        raise ValueError("site_url must not be empty when retrofitting a watermark.")
+
+    if not raw_path.exists():
+        if not full_path.exists():
+            raise FileNotFoundError(f"Episode full image not found: {full_path}")
+        shutil.copy2(full_path, raw_path)
+
+    with Image.open(raw_path) as raw_im:
+        watermarked = append_watermark_footer(raw_im, site_url=clean_url)
+
+    watermarked.save(full_path, format="JPEG", quality=95, subsampling=0)
+    return full_path
+
+
 def compose_episode(
     script: EpisodeScript,
     raw_cut_paths: dict[int, Path],
     output_dir: Path,
+    watermark_url: str | None = DEFAULT_WATERMARK_URL,
 ) -> ComposeResult:
     """Compose a complete 4~6 cut Sloptoon episode into header, pages, stitched JPG, and thumb.
 
@@ -1660,6 +1861,11 @@ def compose_episode(
     - 4 cuts -> 2 two-tier pages (`900x1320`)
     - 5 cuts -> 2 two-tier pages (`900x1320`) + 1 epilogue single-box page (`900x486`)
     - 6 cuts -> 3 two-tier pages (`900x1320`)
+
+    By default appends the Sloptoon bottom watermark CTA banner (`watermark_url="slopwow.github.io"`)
+    to `episode_full.jpg` while saving an un-watermarked backup at `episode_full_raw.jpg` so
+    `retrofit_episode_watermark()` stays strictly idempotent. Pass `watermark_url=None` or `""`
+    to opt out.
     """
     out_dir = Path(output_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -1740,7 +1946,7 @@ def compose_episode(
             idx += 1
             page_num += 1
 
-    # 3. Stitch full vertical scroll (episode_full.jpg)
+    # 3. Stitch full vertical scroll (episode_full.jpg) + optional bottom watermark CTA footer
     gap_after_header = 24
     bot_pad = 24
     inter_gaps: list[int] = []
@@ -1764,6 +1970,12 @@ def compose_episode(
         cur_y += page.size[1]
         if p_idx < len(inter_gaps):
             cur_y += inter_gaps[p_idx]
+
+    wm_url = (watermark_url or "").strip() if watermark_url else ""
+    if wm_url:
+        raw_full_path = out_dir / "episode_full_raw.jpg"
+        full_im.save(raw_full_path, format="JPEG", quality=95, subsampling=0)
+        full_im = append_watermark_footer(full_im, site_url=wm_url)
 
     full_image_path = out_dir / "episode_full.jpg"
     full_im.save(full_image_path, format="JPEG", quality=95, subsampling=0)
@@ -1790,6 +2002,8 @@ def compose_episode(
         "page_sizes": [list(p.size) for p in pages],
         "full_size": list(full_im.size),
         "thumb_size": list(thumb_im.size),
+        "watermarked": bool(wm_url),
+        "watermark_url": _normalize_watermark_site_url(wm_url) if wm_url else None,
         "cuts": cut_audits,
     }
 

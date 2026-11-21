@@ -2,6 +2,8 @@
 (function () {
   "use strict";
 
+  var PUBLISH_STORAGE_KEY = "wow_sloptoon_dc_published_v1";
+
   function showToast(msg) {
     var toast = document.getElementById("toast");
     if (!toast) return;
@@ -35,6 +37,41 @@
       /* ignore */
     }
     document.body.removeChild(ta);
+  }
+
+  function episodeHref(rootPrefix, episodeId) {
+    return (rootPrefix || "") + "episodes/" + encodeURIComponent(episodeId) + ".html";
+  }
+
+  /* ---------------- GLOBAL RANDOM EPISODE NAVIGATION ---------------- */
+  function initRandomButtons() {
+    var buttons = document.querySelectorAll(".js-random-ep");
+    if (!buttons.length) return;
+
+    buttons.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var data = window.__SLOPTOON_DATA__ || {};
+        var episodes = Array.isArray(data.episodes) ? data.episodes : [];
+        var rootPrefix = data.rootPrefix || "";
+        if (episodes.length === 0) {
+          showToast("아직 등록된 에피소드가 없습니다.");
+          return;
+        }
+        var currentId = window.__SLOPTOON_CURRENT_EP__ || "";
+        var pool = episodes.filter(function (item) {
+          return item.episode_id !== currentId;
+        });
+        if (pool.length === 0) {
+          if (currentId) {
+            showToast("현재 1화만 등록되어 있어요! 곧 새로운 념글 만화가 추가됩니다.");
+            return;
+          }
+          pool = episodes;
+        }
+        var picked = pool[Math.floor(Math.random() * pool.length)];
+        window.location.href = episodeHref(rootPrefix, picked.episode_id);
+      });
+    });
   }
 
   /* ---------------- HOME PAGE (SEARCH / FILTER / SORT) ---------------- */
@@ -139,7 +176,156 @@
     applyFilters();
   }
 
-  /* ---------------- EPISODE READER & 1-CLICK DC HELPER ---------------- */
+  /* ---------------- EPISODE READER, SHARE, BINGE & DC HELPER ---------------- */
+  function selectRecommended(episodes, currentIndex, limit) {
+    var currentId = episodes[currentIndex].episode_id;
+    var adjacent = {};
+    if (currentIndex > 0) adjacent[episodes[currentIndex - 1].episode_id] = true;
+    if (currentIndex + 1 < episodes.length) adjacent[episodes[currentIndex + 1].episode_id] = true;
+
+    var nonAdjacent = [];
+    var adjList = [];
+    for (var i = episodes.length - 1; i >= 0; i--) {
+      var item = episodes[i];
+      if (item.episode_id === currentId) continue;
+      if (adjacent[item.episode_id]) {
+        adjList.push(item);
+      } else {
+        nonAdjacent.push(item);
+      }
+    }
+    return nonAdjacent.concat(adjList).slice(0, limit);
+  }
+
+  function buildRecommendCardEl(rec, rootPrefix) {
+    var article = document.createElement("article");
+    article.className = "ep-card";
+
+    var link = document.createElement("a");
+    link.className = "ep-card-link";
+    link.href = episodeHref(rootPrefix, rec.episode_id);
+
+    var thumbWrap = document.createElement("div");
+    thumbWrap.className = "ep-thumb-wrap";
+    var img = document.createElement("img");
+    img.src = rootPrefix + rec.thumb_image;
+    img.alt = "EP." + rec.episode_number + " " + rec.title;
+    img.className = "ep-thumb";
+    img.loading = "lazy";
+    var cuts = document.createElement("span");
+    cuts.className = "thumb-cuts";
+    cuts.textContent = rec.cut_count + "컷";
+    thumbWrap.appendChild(img);
+    thumbWrap.appendChild(cuts);
+
+    var body = document.createElement("div");
+    body.className = "ep-card-body";
+    var metaRow = document.createElement("div");
+    metaRow.className = "meta-row";
+    var pill = document.createElement("span");
+    pill.className = "ep-pill ep-pill-sm";
+    pill.textContent = "EP." + rec.episode_number;
+    var postNo = document.createElement("span");
+    postNo.className = "post-no";
+    postNo.textContent = "#" + rec.source_post_no;
+    var dt = document.createElement("span");
+    dt.className = "meta-date";
+    dt.textContent = rec.date_short || "";
+    metaRow.appendChild(pill);
+    metaRow.appendChild(postNo);
+    metaRow.appendChild(dt);
+
+    var h3 = document.createElement("h3");
+    h3.className = "ep-card-title";
+    h3.textContent = rec.title;
+
+    var sub = document.createElement("p");
+    sub.className = "ep-card-sub";
+    sub.textContent = rec.subtitle || "";
+
+    var chipRow = document.createElement("div");
+    chipRow.className = "mini-chip-row";
+    (rec.cast_chips || []).forEach(function (chip) {
+      var sp = document.createElement("span");
+      sp.className = "mini-chip";
+      var dot = document.createElement("span");
+      dot.className = "cast-dot";
+      dot.style.background = chip.color || "#111111";
+      sp.appendChild(dot);
+      sp.appendChild(document.createTextNode(chip.name));
+      chipRow.appendChild(sp);
+    });
+
+    body.appendChild(metaRow);
+    body.appendChild(h3);
+    body.appendChild(sub);
+    body.appendChild(chipRow);
+    link.appendChild(thumbWrap);
+    link.appendChild(body);
+    article.appendChild(link);
+    return article;
+  }
+
+  function buildBingeCardEl(targetEp, isNext, rootPrefix) {
+    if (!targetEp) {
+      var disabled = document.createElement("div");
+      disabled.className = isNext ? "nav-ep-card nav-ep-next is-disabled" : "nav-ep-card is-disabled";
+      var info = document.createElement("div");
+      info.className = "nav-ep-info";
+      var dir = document.createElement("span");
+      dir.className = "nav-ep-dir";
+      dir.textContent = isNext ? "다음 화 →" : "← 이전 화";
+      var ttl = document.createElement("span");
+      ttl.className = "nav-ep-title";
+      ttl.textContent = isNext ? "가장 최신 에피소드입니다" : "첫 번째 에피소드입니다";
+      var hint = document.createElement("span");
+      hint.className = "nav-ep-sub";
+      hint.textContent = isNext ? "랜덤 화 보기로 다른 명장면도 즐겨보세요!" : "지금 1화부터 정주행 중이에요!";
+      info.appendChild(dir);
+      info.appendChild(ttl);
+      info.appendChild(hint);
+      disabled.appendChild(info);
+      return disabled;
+    }
+
+    var a = document.createElement("a");
+    a.className = isNext ? "nav-ep-card nav-ep-next" : "nav-ep-card";
+    a.href = episodeHref(rootPrefix, targetEp.episode_id);
+
+    var thumbWrap = document.createElement("div");
+    thumbWrap.className = "nav-ep-thumb-wrap";
+    var img = document.createElement("img");
+    img.src = rootPrefix + targetEp.thumb_image;
+    img.alt = "EP." + targetEp.episode_number + " " + targetEp.title;
+    img.className = "nav-ep-thumb";
+    img.loading = "lazy";
+    thumbWrap.appendChild(img);
+
+    var infoBox = document.createElement("div");
+    infoBox.className = "nav-ep-info";
+    var dirSpan = document.createElement("span");
+    dirSpan.className = isNext ? "nav-ep-dir nav-ep-dir-accent" : "nav-ep-dir";
+    dirSpan.textContent = isNext ? "다음 화 바로 보기 →" : "← 이전 화 정주행";
+    var titleStrong = document.createElement("strong");
+    titleStrong.className = "nav-ep-title";
+    titleStrong.textContent = "EP." + targetEp.episode_number + " " + targetEp.title;
+    var subSpan = document.createElement("span");
+    subSpan.className = "nav-ep-sub";
+    subSpan.textContent = targetEp.subtitle || "";
+    infoBox.appendChild(dirSpan);
+    infoBox.appendChild(titleStrong);
+    infoBox.appendChild(subSpan);
+
+    if (isNext) {
+      a.appendChild(infoBox);
+      a.appendChild(thumbWrap);
+    } else {
+      a.appendChild(thumbWrap);
+      a.appendChild(infoBox);
+    }
+    return a;
+  }
+
   function initEpisodePage() {
     var data = window.__SLOPTOON_DATA__;
     if (!data || !Array.isArray(data.episodes) || data.episodes.length === 0) return;
@@ -160,8 +346,12 @@
       }
     }
     var ep = episodes[currentIndex];
+    window.__SLOPTOON_CURRENT_EP__ = ep.episode_id;
+
     var prevEp = currentIndex > 0 ? episodes[currentIndex - 1] : null;
     var nextEp = currentIndex + 1 < episodes.length ? episodes[currentIndex + 1] : null;
+    var canonicalShareUrl =
+      ep.canonical_url || ((data.archiveBaseUrl || "https://slopwow.github.io").replace(/\/+$/, "") + "/episodes/" + ep.episode_id + ".html");
 
     // Update DOM dynamically when ?id= differs from default SSR episode
     document.title = "EP." + ep.episode_number + " " + ep.title + " — 와우 포에버 슬롭툰";
@@ -181,6 +371,10 @@
       sourceEl.href = ep.source_url;
       sourceEl.textContent =
         "원본 디시 WOW 포에버 마이너 갤러리 개념글 (#" + ep.source_post_no + ") 바로가기 ↗";
+    }
+    var bottomSourceEl = document.getElementById("epBottomSourceLink");
+    if (bottomSourceEl) {
+      bottomSourceEl.href = ep.source_url;
     }
 
     var castRow = document.getElementById("epCastRow");
@@ -231,42 +425,43 @@
       dlBtn.setAttribute("download", dlFileName);
     }
 
-    // Update pager cards
+    // Wire Share URL ("링크 복사") buttons
+    document.querySelectorAll(".js-share-url").forEach(function (btn) {
+      btn.setAttribute("data-share-url", canonicalShareUrl);
+      btn.addEventListener("click", function () {
+        var origText = btn.textContent;
+        copyText(canonicalShareUrl).then(function () {
+          showToast("링크가 복사되었습니다! " + canonicalShareUrl);
+          btn.textContent = "✓ 링크 복사됨";
+          clearTimeout(btn._copyTimer);
+          btn._copyTimer = setTimeout(function () {
+            btn.textContent = origText;
+          }, 1800);
+        });
+      });
+    });
+
+    // Update sleek Prev / Next binge cards
     var pager = document.getElementById("epPager");
     if (pager) {
       pager.innerHTML = "";
-      if (prevEp) {
-        var prevA = document.createElement("a");
-        prevA.className = "nav-ep-card";
-        prevA.href = rootPrefix + "episode.html?id=" + encodeURIComponent(prevEp.episode_id);
-        prevA.innerHTML =
-          '<span class="nav-ep-dir">← 이전 화</span><strong class="nav-ep-title"></strong>';
-        prevA.querySelector(".nav-ep-title").textContent =
-          "EP." + prevEp.episode_number + " " + prevEp.title;
-        pager.appendChild(prevA);
-      } else {
-        var prevD = document.createElement("div");
-        prevD.className = "nav-ep-card is-disabled";
-        prevD.innerHTML =
-          '<span class="nav-ep-dir">← 이전 화</span><span class="nav-ep-title">첫 번째 에피소드입니다</span>';
-        pager.appendChild(prevD);
-      }
+      pager.appendChild(buildBingeCardEl(prevEp, false, rootPrefix));
+      pager.appendChild(buildBingeCardEl(nextEp, true, rootPrefix));
+    }
 
-      if (nextEp) {
-        var nextA = document.createElement("a");
-        nextA.className = "nav-ep-card nav-ep-next";
-        nextA.href = rootPrefix + "episode.html?id=" + encodeURIComponent(nextEp.episode_id);
-        nextA.innerHTML =
-          '<span class="nav-ep-dir">다음 화 →</span><strong class="nav-ep-title"></strong>';
-        nextA.querySelector(".nav-ep-title").textContent =
-          "EP." + nextEp.episode_number + " " + nextEp.title;
-        pager.appendChild(nextA);
+    // Update "다른 레전드 념글 만화" recommended episode grid (up to 3)
+    var recSection = document.getElementById("epRecommendSection");
+    var recGrid = document.getElementById("epRecommendGrid");
+    if (recSection && recGrid) {
+      var recs = selectRecommended(episodes, currentIndex, 3);
+      recGrid.innerHTML = "";
+      if (recs.length > 0) {
+        recs.forEach(function (rec) {
+          recGrid.appendChild(buildRecommendCardEl(rec, rootPrefix));
+        });
+        recSection.hidden = false;
       } else {
-        var nextD = document.createElement("div");
-        nextD.className = "nav-ep-card nav-ep-next is-disabled";
-        nextD.innerHTML =
-          '<span class="nav-ep-dir">다음 화 →</span><span class="nav-ep-title">가장 최신 에피소드입니다</span>';
-        pager.appendChild(nextD);
+        recSection.hidden = true;
       }
     }
 
@@ -317,7 +512,7 @@
     if (copyBodyBtn) {
       copyBodyBtn.addEventListener("click", function () {
         copyText(ep.dc_body).then(function () {
-          showToast("본문 및 원본 출처 링크를 클립보드에 복사했습니다!");
+          showToast("본문 및 정주행 아카이브 링크를 클립보드에 복사했습니다!");
         });
       });
     }
@@ -326,9 +521,9 @@
     document.addEventListener("keydown", function (ev) {
       if (ev.target && /INPUT|TEXTAREA/.test(ev.target.tagName)) return;
       if (ev.key === "ArrowLeft" && prevEp) {
-        window.location.href = rootPrefix + "episode.html?id=" + encodeURIComponent(prevEp.episode_id);
+        window.location.href = episodeHref(rootPrefix, prevEp.episode_id);
       } else if (ev.key === "ArrowRight" && nextEp) {
-        window.location.href = rootPrefix + "episode.html?id=" + encodeURIComponent(nextEp.episode_id);
+        window.location.href = episodeHref(rootPrefix, nextEp.episode_id);
       }
     });
   }
@@ -368,10 +563,160 @@
     }
   }
 
+  /* ---------------- CREATOR UPLOAD QUEUE PAGE (publish.html) ---------------- */
+  function readPublishedMap() {
+    try {
+      var raw = window.localStorage.getItem(PUBLISH_STORAGE_KEY);
+      if (!raw) return {};
+      var parsed = JSON.parse(raw);
+      return parsed && typeof parsed === "object" ? parsed : {};
+    } catch (_err) {
+      return {};
+    }
+  }
+
+  function writePublishedMap(map) {
+    try {
+      window.localStorage.setItem(PUBLISH_STORAGE_KEY, JSON.stringify(map));
+    } catch (_err) {
+      /* ignore private-mode quota errors */
+    }
+  }
+
+  function initPublishPage() {
+    var data = window.__SLOPTOON_DATA__ || {};
+    var episodes = Array.isArray(data.episodes) ? data.episodes : [];
+    var byId = {};
+    episodes.forEach(function (ep) {
+      byId[ep.episode_id] = ep;
+    });
+
+    var cards = Array.prototype.slice.call(document.querySelectorAll(".publish-card"));
+    var filterBar = document.getElementById("publishFilterBar");
+    var summaryEl = document.getElementById("publishSummary");
+    var countAllEl = document.getElementById("pubCountAll");
+    var countPendingEl = document.getElementById("pubCountPending");
+    var countDoneEl = document.getElementById("pubCountDone");
+    var emptyEl = document.getElementById("publishEmptyFilter");
+    var resetBtn = document.getElementById("publishResetFilterBtn");
+
+    var publishedMap = readPublishedMap();
+    var activeFilter = "all";
+
+    function syncPublishUI() {
+      var total = cards.length;
+      var doneCount = 0;
+      var visibleCount = 0;
+
+      cards.forEach(function (card) {
+        var epId = card.getAttribute("data-episode-id") || "";
+        var isDone = Boolean(publishedMap[epId]);
+        if (isDone) doneCount += 1;
+
+        card.setAttribute("data-status", isDone ? "done" : "pending");
+        card.classList.toggle("is-done", isDone);
+
+        var toggleBtn = card.querySelector(".publish-status-toggle");
+        if (toggleBtn) {
+          toggleBtn.classList.toggle("is-done", isDone);
+          toggleBtn.setAttribute("aria-pressed", isDone ? "true" : "false");
+          var label = toggleBtn.querySelector(".status-label");
+          if (label) {
+            label.textContent = isDone ? "포에버갤 등록 완료" : "대기 중";
+          }
+        }
+
+        var show =
+          activeFilter === "all" ||
+          (activeFilter === "done" && isDone) ||
+          (activeFilter === "pending" && !isDone);
+        card.hidden = !show;
+        if (show) visibleCount += 1;
+      });
+
+      var pendingCount = total - doneCount;
+      if (countAllEl) countAllEl.textContent = String(total);
+      if (countPendingEl) countPendingEl.textContent = String(pendingCount);
+      if (countDoneEl) countDoneEl.textContent = String(doneCount);
+      if (summaryEl) {
+        summaryEl.textContent = "전체 " + total + "화 중 " + doneCount + "화 포에버갤 등록 완료";
+      }
+      if (emptyEl) {
+        emptyEl.hidden = total === 0 || visibleCount > 0;
+      }
+    }
+
+    document.querySelectorAll(".publish-status-toggle").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var epId = btn.getAttribute("data-ep") || "";
+        if (!epId) return;
+        var nextDone = !Boolean(publishedMap[epId]);
+        if (nextDone) {
+          publishedMap[epId] = true;
+        } else {
+          delete publishedMap[epId];
+        }
+        writePublishedMap(publishedMap);
+        syncPublishUI();
+        var ep = byId[epId];
+        var prefix = ep ? "EP." + ep.episode_number + " " : "";
+        showToast(nextDone ? prefix + "포에버갤 등록 완료로 표시했습니다!" : prefix + "대기 중 상태로 변경했습니다.");
+      });
+    });
+
+    document.querySelectorAll(".js-pub-copy-title").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var ep = byId[btn.getAttribute("data-ep") || ""];
+        if (!ep) return;
+        copyText(ep.dc_title).then(function () {
+          showToast("EP." + ep.episode_number + " 글 제목을 복사했습니다!");
+        });
+      });
+    });
+
+    document.querySelectorAll(".js-pub-copy-body").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var ep = byId[btn.getAttribute("data-ep") || ""];
+        if (!ep) return;
+        copyText(ep.dc_body).then(function () {
+          showToast("EP." + ep.episode_number + " 본문과 정주행 주소를 복사했습니다!");
+        });
+      });
+    });
+
+    if (filterBar) {
+      filterBar.addEventListener("click", function (ev) {
+        var btn = ev.target.closest(".filter-chip");
+        if (!btn) return;
+        activeFilter = btn.getAttribute("data-filter") || "all";
+        filterBar.querySelectorAll(".filter-chip").forEach(function (b) {
+          b.classList.toggle("is-active", b === btn);
+        });
+        syncPublishUI();
+      });
+    }
+
+    if (resetBtn) {
+      resetBtn.addEventListener("click", function () {
+        activeFilter = "all";
+        if (filterBar) {
+          filterBar.querySelectorAll(".filter-chip").forEach(function (b) {
+            b.classList.toggle("is-active", b.getAttribute("data-filter") === "all");
+          });
+        }
+        syncPublishUI();
+      });
+    }
+
+    syncPublishUI();
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     var page = document.body.getAttribute("data-page");
     if (page === "home") initHomePage();
     if (page === "episode") initEpisodePage();
     if (page === "cast") initCastPage();
+    if (page === "publish") initPublishPage();
+    initRandomButtons();
   });
 })();

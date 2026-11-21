@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "updated_at": "2026-11-21T15:47:39+09:00",
+  "episodes": [
+    {
+      "episode_id": "ep001",
+      "episode_number": 1,
+      "title": "흑마법사가 물을 어케 줌?",
+      "source_post_no": "92059",
+      "status": "pending",
+      "queued_at": "2026-11-21T15:47:14+09:00",
+      "packed_at": null,
+      "published_at": null,
+      "dc_post_url": "",
+      "pack_dir": ""
+    },
+    {
+      "episode_id": "ep002",
+      "episode_number": 2,
+      "title": "방금 만난 기사님의 명언",
+      "source_post_no": "96849",
+      "status": "pending",
+      "queued_at": "2026-11-21T15:47:14+09:00",
+      "packed_at": null,
+      "published_at": null,
+      "dc_post_url": "",
+      "pack_dir": ""
+    },
+    {
+      "episode_id": "ep003",
+      "episode_number": 3,
+      "title": "놈리건 천장 압사 사건",
+      "source_post_no": "89934",
+      "status": "pending",
+      "queued_at": "2026-11-21T15:47:14+09:00",
+      "packed_at": null,
+      "published_at": null,
+      "dc_post_url": "",
+      "pack_dir": ""
+    },
+    {
+      "episode_id": "ep004",
+      "episode_number": 4,
+      "title": "침낭퀘 1시간 반 돌라나르 대참사",
+      "source_post_no": "105596",
+      "status": "pending",
+      "queued_at": "2026-11-21T15:47:14+09:00",
+      "packed_at": null,
+      "published_at": null,
+      "dc_post_url": "",
+      "pack_dir": ""
+    }
+  ]
+}

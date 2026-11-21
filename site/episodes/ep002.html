@@ -5,9 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EP.2 방금 만난 기사님의 명언 — 와우 포에버 슬롭툰</title>
   <meta name="description" content="알카즈섬 민첩 반지 입찰 사건 — 100% 던전 파티 상황극">
+  <meta property="og:site_name" content="와우 포에버 슬롭툰">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="ko_KR">
   <meta property="og:title" content="EP.2 방금 만난 기사님의 명언 — 와우 포에버 슬롭툰">
   <meta property="og:description" content="알카즈섬 민첩 반지 입찰 사건 — 100% 던전 파티 상황극">
-  <meta property="og:image" content="../assets/episodes/ep002/thumb.jpg">
+  <meta property="og:url" content="https://slopwow.github.io/episodes/ep002.html">
+  <meta property="og:image" content="https://slopwow.github.io/assets/episodes/ep002/thumb.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="EP.2 방금 만난 기사님의 명언 — 와우 포에버 슬롭툰">
+  <meta name="twitter:description" content="알카즈섬 민첩 반지 입찰 사건 — 100% 던전 파티 상황극">
+  <meta name="twitter:image" content="https://slopwow.github.io/assets/episodes/ep002/thumb.jpg">
+  <link rel="canonical" href="https://slopwow.github.io/episodes/ep002.html">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
   <link rel="stylesheet" href="../assets/style.css">
 </head>
@@ -22,6 +31,7 @@
         <nav class="site-nav" aria-label="주요 메뉴">
           <a class="nav-link is-active" href="../index.html">에피소드</a>
           <a class="nav-link" href="../cast.html">9×9 캐스트 도감</a>
+          <button type="button" class="nav-pill-random js-random-ep" title="무작위 다른 에피소드로 이동">🎲 랜덤 화 보기</button>
           <a class="nav-link nav-ext" href="https://gall.dcinside.com/mgallery/board/lists/?id=wowforever&exception_mode=recommend" target="_blank" rel="noopener noreferrer">포에버갤 개념글 ↗</a>
         </nav>
       </div>
@@ -35,7 +45,10 @@
             <button type="button" class="mode-btn is-active" data-mode="full">통합 스크롤</button>
             <button type="button" class="mode-btn" data-mode="pages">페이지별 보기</button>
           </div>
-          <a class="btn btn-sm btn-outline" href="#dc-upload-helper">디시 업로드 도우미 ↓</a>
+          <div class="reader-top-actions">
+            <button type="button" class="btn btn-sm btn-outline js-share-url" data-share-url="https://slopwow.github.io/episodes/ep002.html">🔗 링크 복사</button>
+            <a class="btn btn-sm btn-subtle" href="#dc-upload-helper">디시 업로드 도우미 ↓</a>
+          </div>
         </div>
 
         <header class="episode-header">
@@ -63,13 +76,102 @@
           </div>
         </section>
 
+        <aside class="slop-sponsor-slot" data-slot="episode-strip-bottom" aria-label="스폰서 영역"></aside>
+
+        <section class="episode-action-strip" aria-label="공유 및 다음 정주행">
+          <div class="action-strip-copy">
+            <strong>이 념글 상황극, 재밌게 보셨나요?</strong>
+            <span>링크를 복사해 공유하거나 랜덤 화로 바로 이어서 정주행해 보세요!</span>
+          </div>
+          <div class="action-strip-btns">
+            <button type="button" id="shareCopyBtn" class="btn btn-outline btn-sm js-share-url" data-share-url="https://slopwow.github.io/episodes/ep002.html">🔗 링크 복사</button>
+            <button type="button" id="bottomRandomBtn" class="btn btn-sky btn-sm js-random-ep">🎲 랜덤 화 보기</button>
+            <a id="epBottomSourceLink" class="btn btn-subtle btn-sm" href="https://gall.dcinside.com/mgallery/board/view/?id=wowforever&amp;no=96849&amp;exception_mode=recommend&amp;page=1" target="_blank" rel="noopener noreferrer">원본 개념글 ↗</a>
+          </div>
+        </section>
+
+        <nav class="episode-pager" id="epPager" aria-label="이전화 다음화 이동">
+          <a class="nav-ep-card" href="../episodes/ep001.html"><div class="nav-ep-thumb-wrap"><img src="../assets/episodes/ep001/thumb.jpg" alt="EP.1 흑마법사가 물을 어케 줌?" class="nav-ep-thumb" loading="lazy"></div><div class="nav-ep-info"><span class="nav-ep-dir">← 이전 화 정주행</span><strong class="nav-ep-title">EP.1 흑마법사가 물을 어케 줌?</strong><span class="nav-ep-sub">흑마를 법사로 착각한 힐러와 뉴비 흑마의 멜론 주스 상황극</span></div></a>
+          <a class="nav-ep-card nav-ep-next" href="../episodes/ep003.html"><div class="nav-ep-info"><span class="nav-ep-dir nav-ep-dir-accent">다음 화 바로 보기 →</span><strong class="nav-ep-title">EP.3 놈리건 천장 압사 사건</strong><span class="nav-ep-sub">1넴 보라 허리띠 구경하다 파티 전원 돌무더기 압사 — 100% 놈리건 던전 상황극</span></div><div class="nav-ep-thumb-wrap"><img src="../assets/episodes/ep003/thumb.jpg" alt="EP.3 놈리건 천장 압사 사건" class="nav-ep-thumb" loading="lazy"></div></a>
+        </nav>
+
+        <section class="recommend-section" id="epRecommendSection" aria-label="다른 레전드 념글 만화">
+          <div class="section-head">
+            <div>
+              <h2 class="section-title">다른 레전드 념글 만화</h2>
+              <p class="section-meta">놓치면 아까운 포에버갤 개념글 상황극을 이어서 정주행해 보세요.</p>
+            </div>
+            <a class="btn btn-subtle btn-sm" href="../index.html">전체 아카이브 →</a>
+          </div>
+          <div class="recommend-grid" id="epRecommendGrid">
+            
+            <article class="ep-card">
+              <a class="ep-card-link" href="../episodes/ep004.html">
+                <div class="ep-thumb-wrap">
+                  <img src="../assets/episodes/ep004/thumb.jpg" alt="EP.4 침낭퀘 1시간 반 돌라나르 대참사" class="ep-thumb" loading="lazy">
+                  <span class="thumb-cuts">6컷</span>
+                </div>
+                <div class="ep-card-body">
+                  <div class="meta-row">
+                    <span class="ep-pill ep-pill-sm">EP.4</span>
+                    <span class="post-no">#105596</span>
+                    <span class="meta-date">2026-11-21</span>
+                  </div>
+                  <h3 class="ep-card-title">침낭퀘 1시간 반 돌라나르 대참사</h3>
+                  <p class="ep-card-sub">15렙 뉴비 침낭퀘 태워주다 돌라나르 귀환석 맞은 고수 기사님 — 100% 필드 상황극</p>
+                  <div class="mini-chip-row"><span class="mini-chip"><span class="cast-dot" style="background:#9E9E9E;"></span>언데드 성기사</span><span class="mini-chip"><span class="cast-dot" style="background:#9575CD;"></span>나이트엘프 사제</span><span class="mini-chip"><span class="cast-dot" style="background:#8D6E63;"></span>타우렌 드루이드</span></div>
+                </div>
+              </a>
+            </article>
+            
+            <article class="ep-card">
+              <a class="ep-card-link" href="../episodes/ep003.html">
+                <div class="ep-thumb-wrap">
+                  <img src="../assets/episodes/ep003/thumb.jpg" alt="EP.3 놈리건 천장 압사 사건" class="ep-thumb" loading="lazy">
+                  <span class="thumb-cuts">6컷</span>
+                </div>
+                <div class="ep-card-body">
+                  <div class="meta-row">
+                    <span class="ep-pill ep-pill-sm">EP.3</span>
+                    <span class="post-no">#89934</span>
+                    <span class="meta-date">2026-11-21</span>
+                  </div>
+                  <h3 class="ep-card-title">놈리건 천장 압사 사건</h3>
+                  <p class="ep-card-sub">1넴 보라 허리띠 구경하다 파티 전원 돌무더기 압사 — 100% 놈리건 던전 상황극</p>
+                  <div class="mini-chip-row"><span class="mini-chip"><span class="cast-dot" style="background:#FFC107;"></span>노움 도적</span><span class="mini-chip"><span class="cast-dot" style="background:#8D6E63;"></span>타우렌 드루이드</span><span class="mini-chip"><span class="cast-dot" style="background:#4CAF50;"></span>오크 전사</span><span class="mini-chip"><span class="cast-dot" style="background:#9575CD;"></span>나이트엘프 사제</span></div>
+                </div>
+              </a>
+            </article>
+            
+            <article class="ep-card">
+              <a class="ep-card-link" href="../episodes/ep001.html">
+                <div class="ep-thumb-wrap">
+                  <img src="../assets/episodes/ep001/thumb.jpg" alt="EP.1 흑마법사가 물을 어케 줌?" class="ep-thumb" loading="lazy">
+                  <span class="thumb-cuts">5컷</span>
+                </div>
+                <div class="ep-card-body">
+                  <div class="meta-row">
+                    <span class="ep-pill ep-pill-sm">EP.1</span>
+                    <span class="post-no">#92059</span>
+                    <span class="meta-date">2026-11-21</span>
+                  </div>
+                  <h3 class="ep-card-title">흑마법사가 물을 어케 줌?</h3>
+                  <p class="ep-card-sub">흑마를 법사로 착각한 힐러와 뉴비 흑마의 멜론 주스 상황극</p>
+                  <div class="mini-chip-row"><span class="mini-chip"><span class="cast-dot" style="background:#9575CD;"></span>나이트엘프 사제</span><span class="mini-chip"><span class="cast-dot" style="background:#7E57C2;"></span>인간 흑마법사</span><span class="mini-chip"><span class="cast-dot" style="background:#29B6F6;"></span>스카이본 마법사</span></div>
+                </div>
+              </a>
+            </article>
+            
+          </div>
+        </section>
+
         <section class="dc-helper-card" id="dc-upload-helper" aria-label="디시 포에버갤 업로드 도우미">
           <div class="dc-helper-head">
             <div>
               <span class="pill-badge pill-sm"><span class="dot-sky"></span>1-CLICK UPLOAD HELPER</span>
               <h2 class="dc-helper-title">디시 포에버갤 업로드 도우미</h2>
               <p class="dc-helper-desc">
-                버튼 한 번으로 <strong>[만화] 제목 + 본문/출처 복사</strong>, <strong>통합본 JPG 다운로드</strong>,
+                버튼 한 번으로 <strong>[만화] 제목 + 본문/정주행 링크 복사</strong>, <strong>통합본 JPG 다운로드</strong>,
                 <strong>공식 포에버갤 글쓰기창 새 탭 열기</strong>를 동시에 준비합니다.
                 (로그인·캡차 확인 및 최종 등록은 공식 페이지에서 직접 완료해 주세요.)
               </p>
@@ -82,14 +184,15 @@
               <pre id="dcTitlePreview" class="dc-preview-text">[만화] 와우 포에버 슬롭툰 EP.2 — 방금 만난 기사님의 명언</pre>
             </div>
             <div class="dc-preview-box">
-              <div class="dc-preview-label">본문 &amp; 원본 출처</div>
+              <div class="dc-preview-label">본문 &amp; 정주행 아카이브 출처</div>
               <pre id="dcBodyPreview" class="dc-preview-text">와우 포에버 슬롭툰 EP.2 — 방금 만난 기사님의 명언
 알카즈섬 민첩 반지 입찰 사건 — 100% 던전 파티 상황극
 
 원본 포에버갤 개념글 (#96849):
 https://gall.dcinside.com/mgallery/board/view/?id=wowforever&amp;no=96849&amp;exception_mode=recommend&amp;page=1
 
-웹 아카이브에서 정주행: https://slopwow.github.io/episode.html?id=ep002
+전편 정주행 아카이브: https://slopwow.github.io/episodes/ep002.html
+전체 정주행: https://slopwow.github.io
 
 ※ 시안 C 귀염뽀짝 9×9 미소녀 상황극 봇 (순수 팬메이드 패러디)</pre>
             </div>
@@ -107,11 +210,6 @@ https://gall.dcinside.com/mgallery/board/view/?id=wowforever&amp;no=96849&amp;ex
             </div>
           </div>
         </section>
-
-        <nav class="episode-pager" id="epPager" aria-label="이전화 다음화 이동">
-          <a class="nav-ep-card" href="../episode.html?id=ep001"><span class="nav-ep-dir">← 이전 화</span><strong class="nav-ep-title">EP.1 흑마법사가 물을 어케 줌?</strong></a>
-          <div class="nav-ep-card nav-ep-next is-disabled"><span class="nav-ep-dir">다음 화 →</span><span class="nav-ep-title">가장 최신 에피소드입니다</span></div>
-        </nav>
         
   </main>
 
@@ -121,19 +219,23 @@ https://gall.dcinside.com/mgallery/board/view/?id=wowforever&amp;no=96849&amp;ex
           <span class="pill-badge pill-sm"><span class="dot-sky"></span>디시 WOW 포에버 마이너 갤러리 개념글 상황극 봇</span>
           <p class="footer-desc">
             포에버갤 개념글의 명장면을 시안 C 귀염뽀짝 9종족×9직업 미소녀 4~6컷 순수 상황극 웹툰으로 아카이빙합니다.
-            현재 총 <strong>2화</strong>가 아카이브에 보관되어 있습니다.
+            현재 총 <strong>4화</strong>가 아카이브에 보관되어 있습니다.
           </p>
         </div>
         <div class="footer-links">
           <a href="../index.html">전체 에피소드</a>
           <a href="../cast.html">시안 C 캐스트 도감</a>
           <a href="https://gall.dcinside.com/mgallery/board/lists/?id=wowforever&exception_mode=recommend" target="_blank" rel="noopener noreferrer">디시 WOW 포에버 갤러리 ↗</a>
+          <a class="footer-link-discreet" href="../publish.html">업로드 큐 관리</a>
         </div>
+      </div>
+      <div class="container footer-legal">
+        <p class="legal-notice">본 사이트는 World of Warcraft 및 디시인사이드 WOW 포에버 마이너 갤러리 기반의 비공식 팬메이드 패러디 아카이브입니다. 모든 에피소드에 원글 출처를 표기하며, 원작자 삭제 요청 시 즉시 비공개 처리합니다.</p>
       </div>
     </footer>
     <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
 
-  <script>window.__SLOPTOON_DATA__ = {"episodes":[{"episode_id":"ep001","episode_number":1,"title":"흑마법사가 물을 어케 줌?","subtitle":"흑마를 법사로 착각한 힐러와 뉴비 흑마의 멜론 주스 상황극","source_post_no":"92059","source_url":"https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=92059&exception_mode=recommend&page=1","created_at":"2026-11-21T01:30:00+09:00","date_short":"2026-11-21","cut_count":5,"cast_used":["나이트엘프 사제","인간 흑마법사","스카이본 마법사"],"cast_chips":[{"id":"nightelf_priest","name":"나이트엘프 사제","color":"#9575CD"},{"id":"human_warlock","name":"인간 흑마법사","color":"#7E57C2"},{"id":"skyborne_mage","name":"스카이본 마법사","color":"#29B6F6"}],"full_image":"assets/episodes/ep001/episode_full.jpg","thumb_image":"assets/episodes/ep001/thumb.jpg","page_images":["assets/episodes/ep001/page_1.png","assets/episodes/ep001/page_2.png","assets/episodes/ep001/page_3.png"],"dc_title":"[만화] 와우 포에버 슬롭툰 EP.1 — 흑마법사가 물을 어케 줌?","dc_body":"와우 포에버 슬롭툰 EP.1 — 흑마법사가 물을 어케 줌?\n흑마를 법사로 착각한 힐러와 뉴비 흑마의 멜론 주스 상황극\n\n원본 포에버갤 개념글 (#92059):\nhttps://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=92059&exception_mode=recommend&page=1\n\n웹 아카이브에서 정주행: https://slopwow.github.io/episode.html?id=ep001\n\n※ 시안 C 귀염뽀짝 9×9 미소녀 상황극 봇 (순수 팬메이드 패러디)"},{"episode_id":"ep002","episode_number":2,"title":"방금 만난 기사님의 명언","subtitle":"알카즈섬 민첩 반지 입찰 사건 — 100% 던전 파티 상황극","source_post_no":"96849","source_url":"https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=96849&exception_mode=recommend&page=1","created_at":"2026-11-21T14:20:00+09:00","date_short":"2026-11-21","cut_count":6,"cast_used":["드워프 사냥꾼","언데드 성기사","스카이본 마법사","오크 전사"],"cast_chips":[{"id":"dwarf_hunter","name":"드워프 사냥꾼","color":"#2E7D32"},{"id":"undead_paladin","name":"언데드 성기사","color":"#9E9E9E"},{"id":"skyborne_mage","name":"스카이본 마법사","color":"#29B6F6"},{"id":"orc_warrior","name":"오크 전사","color":"#4CAF50"}],"full_image":"assets/episodes/ep002/episode_full.jpg","thumb_image":"assets/episodes/ep002/thumb.jpg","page_images":["assets/episodes/ep002/page_1.png","assets/episodes/ep002/page_2.png","assets/episodes/ep002/page_3.png"],"dc_title":"[만화] 와우 포에버 슬롭툰 EP.2 — 방금 만난 기사님의 명언","dc_body":"와우 포에버 슬롭툰 EP.2 — 방금 만난 기사님의 명언\n알카즈섬 민첩 반지 입찰 사건 — 100% 던전 파티 상황극\n\n원본 포에버갤 개념글 (#96849):\nhttps://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=96849&exception_mode=recommend&page=1\n\n웹 아카이브에서 정주행: https://slopwow.github.io/episode.html?id=ep002\n\n※ 시안 C 귀염뽀짝 9×9 미소녀 상황극 봇 (순수 팬메이드 패러디)"}],"rootPrefix":"../","pinnedEpisodeId":"ep002","dcWriteUrl":"https://gall.dcinside.com/mgallery/board/write/?id=wowforever"};</script>
+  <script>window.__SLOPTOON_DATA__ = {"episodes":[{"episode_id":"ep001","episode_number":1,"title":"흑마법사가 물을 어케 줌?","subtitle":"흑마를 법사로 착각한 힐러와 뉴비 흑마의 멜론 주스 상황극","source_post_no":"92059","source_url":"https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=92059&exception_mode=recommend&page=1","created_at":"2026-11-21T01:30:00+09:00","date_short":"2026-11-21","cut_count":5,"cast_used":["나이트엘프 사제","인간 흑마법사","스카이본 마법사"],"cast_chips":[{"id":"nightelf_priest","name":"나이트엘프 사제","color":"#9575CD"},{"id":"human_warlock","name":"인간 흑마법사","color":"#7E57C2"},{"id":"skyborne_mage","name":"스카이본 마법사","color":"#29B6F6"}],"full_image":"assets/episodes/ep001/episode_full.jpg","thumb_image":"assets/episodes/ep001/thumb.jpg","page_images":["assets/episodes/ep001/page_1.png","assets/episodes/ep001/page_2.png","assets/episodes/ep001/page_3.png"],"canonical_url":"https://slopwow.github.io/episodes/ep001.html","dc_title":"[만화] 와우 포에버 슬롭툰 EP.1 — 흑마법사가 물을 어케 줌?","dc_body":"와우 포에버 슬롭툰 EP.1 — 흑마법사가 물을 어케 줌?\n흑마를 법사로 착각한 힐러와 뉴비 흑마의 멜론 주스 상황극\n\n원본 포에버갤 개념글 (#92059):\nhttps://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=92059&exception_mode=recommend&page=1\n\n전편 정주행 아카이브: https://slopwow.github.io/episodes/ep001.html\n전체 정주행: https://slopwow.github.io\n\n※ 시안 C 귀염뽀짝 9×9 미소녀 상황극 봇 (순수 팬메이드 패러디)"},{"episode_id":"ep002","episode_number":2,"title":"방금 만난 기사님의 명언","subtitle":"알카즈섬 민첩 반지 입찰 사건 — 100% 던전 파티 상황극","source_post_no":"96849","source_url":"https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=96849&exception_mode=recommend&page=1","created_at":"2026-11-21T14:20:00+09:00","date_short":"2026-11-21","cut_count":6,"cast_used":["드워프 사냥꾼","언데드 성기사","스카이본 마법사","오크 전사"],"cast_chips":[{"id":"dwarf_hunter","name":"드워프 사냥꾼","color":"#2E7D32"},{"id":"undead_paladin","name":"언데드 성기사","color":"#9E9E9E"},{"id":"skyborne_mage","name":"스카이본 마법사","color":"#29B6F6"},{"id":"orc_warrior","name":"오크 전사","color":"#4CAF50"}],"full_image":"assets/episodes/ep002/episode_full.jpg","thumb_image":"assets/episodes/ep002/thumb.jpg","page_images":["assets/episodes/ep002/page_1.png","assets/episodes/ep002/page_2.png","assets/episodes/ep002/page_3.png"],"canonical_url":"https://slopwow.github.io/episodes/ep002.html","dc_title":"[만화] 와우 포에버 슬롭툰 EP.2 — 방금 만난 기사님의 명언","dc_body":"와우 포에버 슬롭툰 EP.2 — 방금 만난 기사님의 명언\n알카즈섬 민첩 반지 입찰 사건 — 100% 던전 파티 상황극\n\n원본 포에버갤 개념글 (#96849):\nhttps://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=96849&exception_mode=recommend&page=1\n\n전편 정주행 아카이브: https://slopwow.github.io/episodes/ep002.html\n전체 정주행: https://slopwow.github.io\n\n※ 시안 C 귀염뽀짝 9×9 미소녀 상황극 봇 (순수 팬메이드 패러디)"},{"episode_id":"ep003","episode_number":3,"title":"놈리건 천장 압사 사건","subtitle":"1넴 보라 허리띠 구경하다 파티 전원 돌무더기 압사 — 100% 놈리건 던전 상황극","source_post_no":"89934","source_url":"https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=89934&exception_mode=recommend&page=1","created_at":"2026-11-21T15:35:00+09:00","date_short":"2026-11-21","cut_count":6,"cast_used":["노움 도적","타우렌 드루이드","오크 전사","나이트엘프 사제"],"cast_chips":[{"id":"gnome_rogue","name":"노움 도적","color":"#FFC107"},{"id":"tauren_druid","name":"타우렌 드루이드","color":"#8D6E63"},{"id":"orc_warrior","name":"오크 전사","color":"#4CAF50"},{"id":"nightelf_priest","name":"나이트엘프 사제","color":"#9575CD"}],"full_image":"assets/episodes/ep003/episode_full.jpg","thumb_image":"assets/episodes/ep003/thumb.jpg","page_images":["assets/episodes/ep003/page_1.png","assets/episodes/ep003/page_2.png","assets/episodes/ep003/page_3.png"],"canonical_url":"https://slopwow.github.io/episodes/ep003.html","dc_title":"[만화] 와우 포에버 슬롭툰 EP.3 — 놈리건 천장 압사 사건","dc_body":"와우 포에버 슬롭툰 EP.3 — 놈리건 천장 압사 사건\n1넴 보라 허리띠 구경하다 파티 전원 돌무더기 압사 — 100% 놈리건 던전 상황극\n\n원본 포에버갤 개념글 (#89934):\nhttps://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=89934&exception_mode=recommend&page=1\n\n전편 정주행 아카이브: https://slopwow.github.io/episodes/ep003.html\n전체 정주행: https://slopwow.github.io\n\n※ 시안 C 귀염뽀짝 9×9 미소녀 상황극 봇 (순수 팬메이드 패러디)"},{"episode_id":"ep004","episode_number":4,"title":"침낭퀘 1시간 반 돌라나르 대참사","subtitle":"15렙 뉴비 침낭퀘 태워주다 돌라나르 귀환석 맞은 고수 기사님 — 100% 필드 상황극","source_post_no":"105596","source_url":"https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=105596&exception_mode=recommend&page=1","created_at":"2026-11-21T15:35:00+09:00","date_short":"2026-11-21","cut_count":6,"cast_used":["언데드 성기사","나이트엘프 사제","타우렌 드루이드"],"cast_chips":[{"id":"undead_paladin","name":"언데드 성기사","color":"#9E9E9E"},{"id":"nightelf_priest","name":"나이트엘프 사제","color":"#9575CD"},{"id":"tauren_druid","name":"타우렌 드루이드","color":"#8D6E63"}],"full_image":"assets/episodes/ep004/episode_full.jpg","thumb_image":"assets/episodes/ep004/thumb.jpg","page_images":["assets/episodes/ep004/page_1.png","assets/episodes/ep004/page_2.png","assets/episodes/ep004/page_3.png"],"canonical_url":"https://slopwow.github.io/episodes/ep004.html","dc_title":"[만화] 와우 포에버 슬롭툰 EP.4 — 침낭퀘 1시간 반 돌라나르 대참사","dc_body":"와우 포에버 슬롭툰 EP.4 — 침낭퀘 1시간 반 돌라나르 대참사\n15렙 뉴비 침낭퀘 태워주다 돌라나르 귀환석 맞은 고수 기사님 — 100% 필드 상황극\n\n원본 포에버갤 개념글 (#105596):\nhttps://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=105596&exception_mode=recommend&page=1\n\n전편 정주행 아카이브: https://slopwow.github.io/episodes/ep004.html\n전체 정주행: https://slopwow.github.io\n\n※ 시안 C 귀염뽀짝 9×9 미소녀 상황극 봇 (순수 팬메이드 패러디)"}],"rootPrefix":"../","pinnedEpisodeId":"ep002","dcWriteUrl":"https://gall.dcinside.com/mgallery/board/write/?id=wowforever","archiveBaseUrl":"https://slopwow.github.io"};</script>
   <script src="../assets/app.js"></script>
 </body>
 </html>
