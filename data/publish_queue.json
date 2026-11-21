@@ -1,17 +1,17 @@
 {
   "version": 1,
-  "updated_at": "2026-11-21T15:47:39+09:00",
+  "updated_at": "2026-11-21T16:31:50+09:00",
   "episodes": [
     {
       "episode_id": "ep001",
       "episode_number": 1,
       "title": "흑마법사가 물을 어케 줌?",
       "source_post_no": "92059",
-      "status": "pending",
+      "status": "published",
       "queued_at": "2026-11-21T15:47:14+09:00",
       "packed_at": null,
-      "published_at": null,
-      "dc_post_url": "",
+      "published_at": "2026-11-21T16:31:50+09:00",
+      "dc_post_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=107655",
       "pack_dir": ""
     },
     {
