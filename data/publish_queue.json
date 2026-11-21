@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-11-21T19:53:33+09:00",
+  "updated_at": "2026-11-21T20:03:04+09:00",
   "episodes": [
     {
       "episode_id": "ep001",
@@ -103,11 +103,11 @@
       "episode_number": 9,
       "title": "진지하게 앞으로 성기사랑 파티 안간다",
       "source_post_no": "75091",
-      "status": "pending",
+      "status": "published",
       "queued_at": "2026-11-21T19:14:29+09:00",
       "packed_at": null,
-      "published_at": null,
-      "dc_post_url": "",
+      "published_at": "2026-11-21T20:03:03+09:00",
+      "dc_post_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=108182",
       "pack_dir": ""
     },
     {
