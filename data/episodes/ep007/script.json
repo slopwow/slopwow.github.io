@@ -1,90 +1,100 @@
 {
   "episode_number": 7,
-  "source_post_no": "80851",
-  "source_title": "오늘자 RP, 상상도 못한 편지.jpg",
-  "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=80851",
-  "subtitle": "길드 창설 RP 편지 반송 대참사와 우체통 폭풍 오열 — 100% 모험 상황극",
+  "source_post_no": "105798",
+  "source_title": "장트라제 처먹고 파탈한 도둑놈ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ",
+  "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=105798",
+  "subtitle": "줄파락 술트라제 완성 직전 도적 먹튀 대참사 — 100% 인던 상황극",
   "cuts": [
     {
       "cut_index": 1,
       "aspect_ratio": "4:3",
       "layout_slot": "top",
       "characters": [
-        "드워프 사냥꾼"
+        "언데드 성기사",
+        "노움 도적"
       ],
-      "speaker": "드워프 사냥꾼",
-      "dialogue": "오우거 퀘 끝내고 설레며 우체통 열었는데...\n내가 보낸 RP 편지가 반송돼서 돌아왔어?!",
+      "speaker": "언데드 성기사",
+      "dialogue": "술트라제 완성이다 세상에!!\n감사합니다 여러분!!",
       "wordless": false,
-      "visual_prompt": "Solo cute anime chibi girl from the Draft C cast sheet on a 100% pure solid #FFFFFF white background (no floor scenery, no gray backdrop, no panel borders, zero text, zero letters, zero speech bubbles). On the lower-left, the Dwarf Hunter girl (top-row #4 on Draft C cast sheet: forest-green fur-trimmed ranger hood, vivid orange-ginger hair in two thick braided pigtails wrapping under her chin like a cozy playful braid-beard, warm amber eyes, fur-trimmed brown leather hunter coat, classic wooden blunderbuss rifle slung on her back) stands beside a cute compact classic rounded red-and-brass fantasy mailbox prop on the lower-right with its little front flap open. She holds up a single blank cream parchment envelope sealed with a round red wax stamp and a tiny simple curved red U-turn return arrow icon (strictly zero text, zero letters, zero writing lines anywhere), blinking at the envelope as her excited rosy smile freezes in stunned confusion with a tiny sweat drop. Keep both the character and compact mailbox strictly in the lower two-thirds of the 4:3 frame with generous pure #FFFFFF white headroom across the top 35%.",
-      "tail_target": "left"
+      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white background (no dungeon scenery, no desert sand, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero speech bubbles). On the lower-left, the Undead Paladin girl (top-row #2 on Draft C cast sheet: round white cartoon skull hood with dark eye sockets, chin-length silver-white bob hair with icy blue inner tips, crisp white-and-gold paladin cloak with cream neck bow ribbon, shiny golden warhammer resting beside her) throws both hands up joyfully in ecstatic tearful celebration with huge sparkling starry golden-yellow eyes, rosy flushed cheeks, and a radiant open-mouthed joy smile, looking up toward a floating gleaming cobalt-blue and gold one-handed fantasy broadsword radiating crisp blue rare-loot sparkles between them. On the lower-right, the Gnome Rogue girl (top-row #3 on Draft C cast sheet: blonde twin pigtails fading into hot-pink and electric-blue tips, green-lensed steampunk aviator goggles on her forehead, cross and star hairpins, bright blue eyes, black stealth mask pulled down below her chin, dark charcoal rogue cloak, dual glowing poison-green daggers at her waist) glances slyly sideways at the gleaming blue sword with a sneaky mischievous half-lidded smirk, secretly reaching one gloved hand out toward a tiny floating golden loot-dice icon (pure graphic icon only, zero letters or numbers). Keep both characters and the floating sword strictly in the lower two-thirds of the 4:3 frame with generous pure #FFFFFF white headroom across the top 38%.",
+      "tail_target": "left",
+      "item_tooltip": {
+        "wowhead_item_id": 11086,
+        "item_name": "보호의 장트라제",
+        "quality": "rare"
+      }
     },
     {
       "cut_index": 2,
       "aspect_ratio": "16:9",
       "layout_slot": "bottom",
       "characters": [
-        "드워프 사냥꾼"
+        "스카이본 마법사"
       ],
-      "speaker": null,
-      "dialogue": null,
-      "wordless": true,
-      "visual_prompt": "Tight centered comedic close-up bust portrait of ONLY the Dwarf Hunter chibi girl from the Draft C cast sheet on a 100% pure solid #FFFFFF white background (no scenery, no panel border, zero text, zero speech bubbles). Squarely centered in the 16:9 canvas, wearing her forest-green fur-trimmed ranger hood, vivid orange-ginger hair in two thick braided pigtails wrapping under her chin like a cozy playful braid-beard, and fur-trimmed brown leather hunter coat collar. Classic anime deadpan horror and soul-crushing embarrassment shock expression matching the bottom silent reaction panel of Reference Image 2: deep ominous dark blue-gray gloom shadow cast across her forehead and upper eyes, tiny contracted trembling amber pupils staring blankly straight ahead, a single crisp cartoon sweat drop on her cheek, tiny frozen mouth, completely petrified and speechless while clutching the single blank wax-sealed parchment envelope with trembling gloved hands.",
-      "tail_target": "center"
+      "speaker": "스카이본 마법사",
+      "dialogue": "어... 기사님, 그거\n도적님이 입찰해서 드셨는데요...",
+      "wordless": false,
+      "visual_prompt": "Solo cute anime chibi girl from the Draft C cast sheet on a 100% pure solid #FFFFFF white background (no scenery, no gray tint, no panel borders, zero text, zero letters, zero speech bubbles). Positioned cleanly on the right half of the wide 16:9 frame facing slightly left (leaving the entire left 46% completely empty pure #FFFFFF white space for a left speech bubble), the Skyborne Mage girl (bottom-row #4 on Draft C cast sheet: pointed elf ears, long golden-blonde hair fading into pastel sky-blue and aqua tips, big sapphire-blue eyes, blue-and-white sailor-collar mage uniform with a teal ribbon bow) clutches her steaming warm round mage bun and glowing corked blue mana-water flask awkwardly to her chest, giving an uneasy apologetic grimace with nervous side-glancing eyes, worried angled eyebrows, and a crisp cartoon sweat drop on her cheek as she hesitantly points one thumb backward off-frame.",
+      "tail_target": "right"
     },
     {
       "cut_index": 3,
       "aspect_ratio": "4:3",
       "layout_slot": "top",
       "characters": [
-        "드워프 사냥꾼",
-        "타우렌 드루이드"
+        "언데드 성기사",
+        "노움 도적"
       ],
-      "speaker": "타우렌 드루이드",
-      "dialogue": "아앗 아까 반송은 손 미끄러진 거예요!\n우체통 다음 페이지에 답장 가득해요!!",
+      "speaker": "언데드 성기사",
+      "dialogue": "저 술트라제 만드는데 주시면 안 되나요 ㅠㅠ\n10골... 아니 20골 드릴게요!!\n(도적: 저도 이거 보고 온 거라서 지송지송~)",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white background (no floor scenery, no gray backdrop, no panel borders, zero text, zero letters, zero speech bubbles). On the lower-left, the Dwarf Hunter girl (top-row #4: forest-green fur-trimmed ranger hood, vivid orange-ginger twin braided pigtails wrapping under her chin, fur-trimmed brown leather coat) gasps in wide-eyed amazement as the compact classic red-and-brass fantasy mailbox overflows with a joyful cascade of blank cream parchment envelopes sealed with colorful round wax seals (green leaf wax seals, golden crescent wax seals, crimson wax seals — strictly zero writing or letters) and two cute pastel green-and-gold ribbon-tied gift boxes tumbling out. On the lower-right, the Tauren Druid girl (bottom-row #1: fluffy warm-brown plush tauren cow hood with curved ivory horns, cute cow snout with golden nose ring and floppy cow ears, chestnut-brown bangs, big glossy brown eyes, blushing puffed cheeks, leafy green foliage mantle over brown druid tunic) waves urgently in flustered adorable apology while holding out a fresh green-wax-sealed blank envelope. Keep both characters and all envelopes strictly in the lower two-thirds with generous pure #FFFFFF white headroom across the top 35%.",
-      "tail_target": "right"
+      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white background (no dungeon scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero speech bubbles). On the lower-left, the Undead Paladin girl (top-row #2 on Draft C cast sheet: round white cartoon skull hood with dark eye sockets, chin-length silver-white bob hair with icy blue inner tips, crisp white-and-gold paladin cloak with cream neck bow ribbon) drops to her knees leaning forward desperately with huge teary pleading golden-yellow puppy eyes and trembling hands holding out a plump brown leather pouch overflowing with shiny golden coins. On the lower-right, the Gnome Rogue girl (top-row #3 on Draft C cast sheet: blonde twin pigtails fading into hot-pink and electric-blue tips, green-lensed steampunk aviator goggles on her forehead, cross and star hairpins, bright blue eyes, black stealth mask pulled down below her chin, dark charcoal rogue cloak, glowing green daggers at her belt) turns casually away walking toward the right edge, hoisting the gleaming cobalt-blue and gold broadsword over one shoulder while flashing a breezy dismissive V-sign over her other shoulder with a cheeky unapologetic closed-eye grin, as pale translucent cyan-blue logout teleport sparkles swirl around her boots and cloak hem. Keep both characters strictly in the lower two-thirds of the 4:3 frame with generous pure #FFFFFF white headroom across the top 36%.",
+      "tail_target": "left"
     },
     {
       "cut_index": 4,
       "aspect_ratio": "16:9",
       "layout_slot": "bottom",
       "characters": [
-        "드워프 사냥꾼"
+        "언데드 성기사"
       ],
-      "speaker": "드워프 사냥꾼",
-      "dialogue": "왈-칵!! 너희 모두...\nRP를 기다려왔던 거구나?!",
-      "wordless": false,
-      "visual_prompt": "Solo cute anime chibi girl from the Draft C cast sheet on a 100% pure solid #FFFFFF white background (no scenery, no gray tint, no panel borders, zero text, zero letters, zero speech bubbles). Positioned cleanly on the right half of the wide 16:9 frame (leaving the entire left 45% completely empty pure #FFFFFF white space), the Dwarf Hunter girl (top-row #4: forest-green fur-trimmed ranger hood, vivid orange-ginger twin braided pigtails wrapping under her chin like a cozy braid-beard, fur-trimmed brown leather hunter coat) hugs an overflowing armful of blank cream wax-sealed parchment envelopes and a cute green-ribboned gift parcel tightly against her chest while bawling comically joyful sparkling anime waterfall tears streaming down rosy blushing cheeks, overwhelmed happy crying smile, and warm floating pink heart sparkles around her hood.",
-      "tail_target": "right"
+      "speaker": null,
+      "dialogue": null,
+      "wordless": true,
+      "visual_prompt": "Tight centered comedic close-up bust portrait of ONLY the Undead Paladin chibi girl from the Draft C cast sheet on a 100% pure solid #FFFFFF white background (no scenery, no panel border, zero text, zero letters, zero speech bubbles, zero symbols). Squarely centered in the 16:9 canvas: cute chibi girl wearing her round white cartoon skull hood with dark eye sockets, chin-length silver-white bob hair with icy blue inner tips, and crisp white-and-gold paladin cloak collar with cream neck bow ribbon. Classic anime deadpan horror and soul-crushed stunned disbelief freeze-frame expression matching the silent bottom reaction panel of Reference Image 2: deep ominous dark blue-gray gloom shadow cast heavily across her forehead and upper eyes, wide-open golden-yellow eyes with tiny contracted trembling pinpoint pupils staring straight ahead into the void, a single crisp cartoon cold sweat drop rolling down her pale cheek, tiny frozen parted mouth, completely petrified and speechless in utter disbelief.",
+      "tail_target": "center"
     },
     {
       "cut_index": 5,
       "aspect_ratio": "4:3",
       "layout_slot": "top",
       "characters": [
-        "드워프 사냥꾼",
-        "노움 도적"
+        "스카이본 마법사",
+        "언데드 성기사"
       ],
-      "speaker": "드워프 사냥꾼",
-      "dialogue": "전사님 편지 보고 구시가지 주점 왔는데...\n주정뱅이만 눕혔지 전사님은 어딨어?!",
+      "speaker": "스카이본 마법사",
+      "dialogue": "도적이 저걸 왜 먹지...\n1안은 기사님 리액션 보고 일부러 굴린 거임.",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white background (no room scenery, no gray backdrop, no panel borders, zero text, zero letters, zero speech bubbles). On the lower-left, the Dwarf Hunter girl (top-row #4: forest-green fur-trimmed ranger hood, vivid orange-ginger twin braided pigtails wrapping under her chin, fur-trimmed brown leather hunter coat, wooden blunderbuss slung on her back) holds up a blank rolled parchment scroll with a red wax seal in one hand and scratches her hood in puzzled confusion beside a single tipped-over wooden tavern mug and tiny cartoon dizzy stars on the invisible floor. On the lower-right, the Gnome Rogue girl (top-row #3: blonde twin pigtails fading into hot-pink and electric-blue tips, green-lensed steampunk aviator goggles on her forehead, cross and star hairpins, bright blue eyes, cheeky wide grin, black stealth mask pulled down below her chin, dark charcoal rogue cloak) leans in pointing sideways with a sly amused grin as if explaining she has the wrong building. Keep both characters strictly in the lower two-thirds with generous pure #FFFFFF white headroom across the top 35%.",
-      "tail_target": "left"
+      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white background (no dungeon scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero speech bubbles). On the lower-left, the Skyborne Mage girl (bottom-row #4 on Draft C cast sheet: pointed elf ears, long golden-blonde hair fading into pastel sky-blue and aqua tips, sapphire-blue eyes, blue-and-white sailor-collar mage uniform with teal ribbon bow, holding her corked blue mana-water flask in one hand) leans toward the Paladin with a tired deadpan sighing expression, half-lidded unimpressed eyes, and one hand pointing up toward a faint ghostly translucent purple-glowing epic two-handed broadsword vision dissolving away into tiny purple sparkles above them. On the lower-right, the Undead Paladin girl (top-row #2 on Draft C cast sheet: round white cartoon skull hood with dark eye sockets, chin-length silver-white bob hair with icy blue inner tips, crisp white-and-gold paladin cloak with cream neck bow ribbon, golden warhammer slumped at her side) sits hunched over deflated like a crushed plushie with blank hollow golden eyes and dark gloom vertical lines above her hood, still clutching her rejected gold coin pouch weakly. Keep both characters and the faint sword vision strictly in the lower two-thirds of the 4:3 frame with generous pure #FFFFFF white headroom across the top 38%.",
+      "tail_target": "left",
+      "item_tooltip": {
+        "wowhead_item_id": 9372,
+        "item_name": "질풍의 술트라제",
+        "quality": "epic"
+      }
     },
     {
       "cut_index": 6,
       "aspect_ratio": "16:9",
       "layout_slot": "bottom",
       "characters": [
-        "드워프 사냥꾼",
-        "오크 전사"
+        "인간 흑마법사"
       ],
-      "speaker": "드워프 사냥꾼",
-      "dialogue": "구시가지는 선술집이고 여기가 진짜 여관?!\n나보다 컨셉에 진심인 RP 고수였잖아!!",
+      "speaker": "인간 흑마법사",
+      "dialogue": "악마보다 더한 인간이 있네...\n템 뜰 때 절대 좋아하지 마라!!",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white background (no room scenery, no gray floor, no panel borders, zero text, zero letters, zero speech bubbles). Positioned cleanly side by side across the lower two-thirds of the wide 16:9 frame (leaving clean pure #FFFFFF white headroom along the top 34% for a top-center speech bubble): on the left, the Dwarf Hunter girl (top-row #4: forest-green fur-trimmed ranger hood, vivid orange-ginger twin braided pigtails wrapping under her chin, fur-trimmed brown leather hunter coat) leans forward clasping her hands with huge starry-eyed awe, rosy cheeks, and a comedic sweat drop of pure respect. On the right, the Orc Warrior girl (top-row #1: vibrant green plush orc animal-onesie hood with curved cream horns, tiny upturned fangs, piggy snout and pointed green ears, black high ponytail hair with bangs, spiky red shoulder pauldrons over silver plate armor, chunky silver battle axe resting beside her) sits with hilariously solemn noble knightly posture behind a small round wooden inn table prop, eyes closed in dignified chivalric pride with golden sparkles around her as she raises a foaming wooden ale tankard in formal medieval greeting.",
-      "tail_target": "center"
+      "visual_prompt": "Solo cute anime chibi girl from the Draft C cast sheet on a 100% pure solid #FFFFFF white background (no scenery, no gray tint, no panel borders, zero text, zero letters, zero speech bubbles). Positioned cleanly on the right half of the wide 16:9 frame facing slightly left (leaving the entire left 46% completely empty pure #FFFFFF white space for a left speech bubble), the Human Warlock girl (bottom-row #3 on Draft C cast sheet: deep dark-purple warlock hood over long jet-black twin pigtails with vivid purple highlights, dark purple robe, floating purple soul-shard crystals around her) hugs her plump grumpy red plush imp doll tightly against her chest in genuine pale-faced horror — her sharp violet eyes wide open and trembling with a cold sweat drop on her cheek as even the little red plush imp doll in her arms shivers with shocked wide cartoon eyes and a tiny sweat drop, looking genuinely terrified of human greed.",
+      "tail_target": "right"
     }
   ]
 }

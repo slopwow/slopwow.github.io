@@ -1,0 +1,102 @@
+{
+  "episode_number": 9,
+  "source_post_no": "75091",
+  "source_title": "진지하게 앞으로 성기사랑 파티 안간다",
+  "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=75091",
+  "subtitle": "크롤도크 보루 주문력 사슬·치유 반지 풀닌자 징기 참사 — 100% 인던 상황극",
+  "cuts": [
+    {
+      "cut_index": 1,
+      "aspect_ratio": "4:3",
+      "layout_slot": "top",
+      "characters": [
+        "트롤 주술사",
+        "언데드 성기사"
+      ],
+      "speaker": "트롤 주술사",
+      "dialogue": "어...? 사슬에 주문력 +12 붙었는데\n그거 정술 템 아니에요?!",
+      "wordless": false,
+      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white background (no dungeon scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero numbers, zero speech bubbles). On the lower-left, the Troll Shaman girl (top-row #5 on Draft C cast sheet: sky-blue plush troll onesie hood with bright red spiky mohawk crest, floppy pierced long ears and tiny white hood tusks, mint-teal bob hair, patterned tribal scarf and light-blue sleeves with tiny blue lightning sparks around her hands) reaches both hands out in sudden shocked disbelief, her wide bright green eyes staring in dismay with a cartoon sweat drop on her cheek as she almost grabbed the loot. On the lower-right, the Undead Paladin girl (top-row #2 on Draft C cast sheet: round white cartoon skull hood with dark eye sockets, chin-length silver-white bob hair with icy blue inner tips, deadpan sleepy half-lidded golden-yellow eyes with faint tired eye bags and completely stoic unbothered face, crisp white-and-gold paladin cloak with cream neck bow, holding her shiny golden warhammer in one hand) effortlessly and shamelessly snatches away an ornate silver-linked mail chain waist belt glowing with bright blue arcane spell-power sparkles in her other hand, turning casually aside. Keep both characters and props strictly in the lower two-thirds of the canvas with generous pure #FFFFFF white headroom across the top 35%.",
+      "tail_target": "left",
+      "item_tooltip": {
+        "image_path": "assets/items/chain_of_binding.png",
+        "item_name": "속박의 사슬",
+        "quality": "rare"
+      }
+    },
+    {
+      "cut_index": 2,
+      "aspect_ratio": "16:9",
+      "layout_slot": "bottom",
+      "characters": [
+        "인간 흑마법사",
+        "나이트엘프 사제"
+      ],
+      "speaker": "인간 흑마법사",
+      "dialogue": "주문력 탐나지만 치유량 +22니까\n사제님께 양보할게요!",
+      "wordless": false,
+      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet positioned cleanly side-by-side on the right half of the wide 16:9 frame (leaving the entire left 46% completely empty pure #FFFFFF white space for a left speech bubble and item tooltip), on a 100% pure solid #FFFFFF white background (no scenery, no gray tint, no panel borders, zero text, zero letters, zero speech bubbles). Left of the pair (center-right): the Human Warlock girl (bottom-row #3 on Draft C cast sheet: deep dark-purple warlock hood over long jet-black twin pigtails with vivid purple highlights, sharp violet eyes, dark purple robe, floating tiny purple soul-shard crystals, hugging her plump grumpy red plush imp doll against her chest with one arm) has a tiny comedic gleaming drop of drool at the corner of her smiling mouth as she gazes longingly at the loot, yet nobly waves her other open hand toward the Priest in a gracious polite 'after you' passing gesture. Right of the pair (far-right): the Night Elf Priest girl (bottom-row #2 on Draft C cast sheet: long silky lavender-silver hair, long pointed elf ears, delicate golden crescent-moon forehead circlet, lilac-purple eyes with faint dark under-eye circles now lighting up with hopeful golden sparkles, white-and-gold priestess robe with cream collar bow, golden crescent-moon staff resting at her side) clasps both hands happily in front of her chest gazing at an ornate glowing emerald-and-gold healing ring floating brightly with soft green-gold healing sparkles between them.",
+      "tail_target": "right",
+      "item_tooltip": {
+        "image_path": "assets/items/band_of_bossman.png",
+        "item_name": "두목의 고리",
+        "quality": "rare"
+      }
+    },
+    {
+      "cut_index": 3,
+      "aspect_ratio": "4:3",
+      "layout_slot": "top",
+      "characters": [
+        "나이트엘프 사제",
+        "언데드 성기사"
+      ],
+      "speaker": "언데드 성기사",
+      "dialogue": "(사제: 기사님 반지 안 쓰시면 저 주시면 안 될까요...)\n이중특성으로 신기도 키우는 중이라\n그때 필요해요.",
+      "wordless": false,
+      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white background (no dungeon scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero speech bubbles). On the lower-left, the Night Elf Priest girl (bottom-row #2 on Draft C cast sheet: long silky lavender-silver hair, long pointed elf ears, delicate golden crescent-moon forehead circlet, pronounced dark under-eye circles, white-and-gold priestess robe with cream collar bow, golden crescent-moon staff leaned against her shoulder) leans forward clasping both hands together pleadingly under her chin with huge watery trembling puppy-dog lilac eyes brimming with tears. On the lower-right, the Undead Paladin girl (top-row #2 on Draft C cast sheet: round white cartoon skull hood with dark eye sockets, chin-length silver-white bob hair with icy blue inner tips, deadpan sleepy half-lidded golden-yellow eyes and totally shameless poker-faced expression, crisp white-and-gold paladin cloak with cream neck bow, shiny golden warhammer tucked under one arm with the glowing silver-and-blue chain mail waist belt already draped over her arm) casually holds up the gleaming emerald-and-gold healing ring between two fingers on her other hand with zero remorse, radiating innocent golden loot sparkles. Keep both characters strictly in the lower two-thirds of the canvas with generous pure #FFFFFF white headroom across the top 35%.",
+      "tail_target": "right"
+    },
+    {
+      "cut_index": 4,
+      "aspect_ratio": "16:9",
+      "layout_slot": "bottom",
+      "characters": [
+        "인간 흑마법사"
+      ],
+      "speaker": null,
+      "dialogue": null,
+      "wordless": true,
+      "visual_prompt": "Tight centered comedic close-up bust portrait of the Human Warlock chibi girl from the Draft C cast sheet on a 100% pure solid #FFFFFF white background (no scenery, no gray backdrop, no panel border, zero text, zero letters, zero speech bubbles, zero symbols). Squarely centered in the 16:9 canvas: cute chibi girl wearing her deep dark-purple warlock hood over long jet-black twin pigtails with vivid purple highlights and dark purple robe collar, with just the top of her plump red plush imp doll's wide-eyed shocked head peeking at the very bottom foreground edge. Iconic anime deadpan horror and utter misanthropy shock freeze-frame expression matching the silent bottom reaction panel of Reference Image 2: deep ominous dark blue-gray gloom shadow cast heavily across her forehead and upper eyes, wide-open violet eyes with tiny contracted trembling pupils staring straight ahead in stunned disbelief, a single crisp cartoon cold sweat drop on her cheek, small frozen parted mouth, completely petrified and speechless.",
+      "tail_target": "center"
+    },
+    {
+      "cut_index": 5,
+      "aspect_ratio": "4:3",
+      "layout_slot": "top",
+      "characters": [
+        "인간 흑마법사",
+        "나이트엘프 사제"
+      ],
+      "speaker": "인간 흑마법사",
+      "dialogue": "소문만 들을 땐 설마 했는데...\n내 눈으로 보니 진짜 인간혐오 생기네!!",
+      "wordless": false,
+      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white background (no scenery, no gray floor, no panel borders, zero text, zero letters, zero speech bubbles). On the lower-left, the Human Warlock girl (bottom-row #3 on Draft C cast sheet: deep dark-purple warlock hood over long jet-black twin pigtails with vivid purple highlights, sharp violet eyes wide and trembling in pure disbelief and righteous exasperation, tiny fang grimace, dark purple robe, floating purple soul-shard crystals jittering around her) squeezes her plump grumpy red plush imp doll extra tightly against her chest with both hands (the squishy red imp doll puffing its cheeks in comical surprise), shaking with a tiny cartoon sweat drop and faint jagged purple exasperation aura lines. On the lower-right, the Night Elf Priest girl (bottom-row #2 on Draft C cast sheet: long silky lavender-silver hair, long pointed elf ears, golden crescent-moon forehead circlet, heavy dark under-eye circles, white-and-gold priestess robe with cream collar bow, hugging her golden crescent-moon staff) slumps sadly beside her with streams of comical anime tears rolling down her cheeks in dejected heartbreak. Keep both characters strictly in the lower two-thirds of the canvas with generous pure #FFFFFF white headroom across the top 35%.",
+      "tail_target": "left"
+    },
+    {
+      "cut_index": 6,
+      "aspect_ratio": "16:9",
+      "layout_slot": "bottom",
+      "characters": [
+        "인간 흑마법사",
+        "트롤 주술사"
+      ],
+      "speaker": "인간 흑마법사",
+      "dialogue": "앞으로 파티에 성기사 있으면 절대 안 간다!\n들어오면 내가 나감!!",
+      "wordless": false,
+      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white background (no scenery, no gray floor, no panel borders, zero text, zero letters, zero floating symbols, zero speech bubbles), positioned cleanly across the lower two-thirds of the wide 16:9 frame (leaving clean pure #FFFFFF white headroom along the top 35% for a top-center speech bubble). On the left-center, the Human Warlock girl (bottom-row #3 on Draft C cast sheet: deep dark-purple warlock hood over long jet-black twin pigtails with vivid purple highlights, fiery determined violet eyes, tiny fierce fang shout, dark purple robe, floating purple soul-shard crystals) firmly crosses both of her forearms tightly over each other in front of her chest in a bold resolute crossed-arms refusal gesture (do NOT draw any floating letters or symbols in the air), while her plump grumpy red plush imp doll perched beside her hip also stubbornly crosses its tiny red arms. On the right-center, the Troll Shaman girl (top-row #5 on Draft C cast sheet: sky-blue plush troll onesie hood with bright red spiky mohawk crest, floppy pierced long ears and tiny white hood tusks, mint-teal bob hair, bright sparkling green eyes, big enthusiastic nodding grin, patterned tribal scarf and light-blue sleeves with lively blue lightning sparks) leans in beside the Warlock giving an energetic wholehearted thumbs-up in 100% enthusiastic solidarity.",
+      "tail_target": "center"
+    }
+  ]
+}

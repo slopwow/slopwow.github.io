@@ -286,5 +286,93 @@
       "assets/episodes/ep006/page_3.png"
     ],
     "canonical_url": "https://slopwow.github.io/episodes/ep006.html"
+  },
+  {
+    "episode_id": "ep007",
+    "episode_number": 7,
+    "title": "장트라제 처먹고 파탈한 도둑놈ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ",
+    "subtitle": "줄파락 술트라제 완성 직전 도적 먹튀 대참사 — 100% 인던 상황극",
+    "source_post_no": "105798",
+    "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=105798",
+    "created_at": "2026-11-21T17:52:51+09:00",
+    "date_short": "2026-11-21",
+    "cut_count": 6,
+    "cast_used": [
+      "언데드 성기사",
+      "노움 도적",
+      "스카이본 마법사",
+      "인간 흑마법사"
+    ],
+    "cast_chips": [
+      {
+        "id": "undead_paladin",
+        "name": "언데드 성기사",
+        "color": "#9E9E9E"
+      },
+      {
+        "id": "gnome_rogue",
+        "name": "노움 도적",
+        "color": "#FFC107"
+      },
+      {
+        "id": "skyborne_mage",
+        "name": "스카이본 마법사",
+        "color": "#29B6F6"
+      },
+      {
+        "id": "human_warlock",
+        "name": "인간 흑마법사",
+        "color": "#7E57C2"
+      }
+    ],
+    "full_image": "assets/episodes/ep007/episode_full.jpg",
+    "thumb_image": "assets/episodes/ep007/thumb.jpg",
+    "page_images": [
+      "assets/episodes/ep007/page_1.png",
+      "assets/episodes/ep007/page_2.png",
+      "assets/episodes/ep007/page_3.png"
+    ],
+    "canonical_url": "https://slopwow.github.io/episodes/ep007.html"
+  },
+  {
+    "episode_id": "ep008",
+    "episode_number": 8,
+    "title": "실시간 던전 파티.... 분노의 흑마 ㅋㅋㅋㅋㅋㅋ",
+    "subtitle": "가시덩굴 구릉 지능목·탱목 쌍입찰 대참사 — 100% 인던 상황극",
+    "source_post_no": "68582",
+    "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=68582",
+    "created_at": "2026-11-21T17:53:43+09:00",
+    "date_short": "2026-11-21",
+    "cut_count": 6,
+    "cast_used": [
+      "인간 흑마법사",
+      "언데드 성기사",
+      "오크 전사"
+    ],
+    "cast_chips": [
+      {
+        "id": "human_warlock",
+        "name": "인간 흑마법사",
+        "color": "#7E57C2"
+      },
+      {
+        "id": "undead_paladin",
+        "name": "언데드 성기사",
+        "color": "#9E9E9E"
+      },
+      {
+        "id": "orc_warrior",
+        "name": "오크 전사",
+        "color": "#4CAF50"
+      }
+    ],
+    "full_image": "assets/episodes/ep008/episode_full.jpg",
+    "thumb_image": "assets/episodes/ep008/thumb.jpg",
+    "page_images": [
+      "assets/episodes/ep008/page_1.png",
+      "assets/episodes/ep008/page_2.png",
+      "assets/episodes/ep008/page_3.png"
+    ],
+    "canonical_url": "https://slopwow.github.io/episodes/ep008.html"
   }
 ]

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-11-21T17:29:25+09:00",
+  "updated_at": "2026-11-21T17:56:25+09:00",
   "episodes": [
     {
       "episode_id": "ep001",
@@ -73,6 +73,30 @@
       "published_at": "2026-11-21T17:29:25+09:00",
       "dc_post_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=107796",
       "pack_dir": "C:\\Users\\kbu39\\Desktop\\antigravity\\sloptoon\\upload_pack\\ep006"
+    },
+    {
+      "episode_id": "ep007",
+      "episode_number": 7,
+      "title": "장트라제 처먹고 파탈한 도둑놈ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ",
+      "source_post_no": "105798",
+      "status": "pending",
+      "queued_at": "2026-11-21T17:56:25+09:00",
+      "packed_at": null,
+      "published_at": null,
+      "dc_post_url": "",
+      "pack_dir": ""
+    },
+    {
+      "episode_id": "ep008",
+      "episode_number": 8,
+      "title": "실시간 던전 파티.... 분노의 흑마 ㅋㅋㅋㅋㅋㅋ",
+      "source_post_no": "68582",
+      "status": "pending",
+      "queued_at": "2026-11-21T17:56:25+09:00",
+      "packed_at": null,
+      "published_at": null,
+      "dc_post_url": "",
+      "pack_dir": ""
     }
   ]
 }

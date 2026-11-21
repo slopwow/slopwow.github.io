@@ -466,15 +466,16 @@ def test_checked_in_site_workflow_and_readme_integrity() -> None:
     settings = load_settings(PROJECT_ROOT)
     records = load_episodes(settings.episodes_json)
     site_dir = PROJECT_ROOT / "site"
+    assert not (site_dir / "publish.html").exists(), "publish.html must not exist in checked-in public site/"
     for page in (
         site_dir / "index.html",
         site_dir / "episode.html",
         site_dir / "cast.html",
-        site_dir / "publish.html",
         *(site_dir / "episodes" / f"{rec.episode_id}.html" for rec in records),
     ):
         assert page.exists(), f"Checked-in site page missing: {page}"
         _assert_internal_links_resolve(page)
+        assert DC_GALLERY_WRITE_URL not in page.read_text(encoding="utf-8")
     assert (site_dir / "sitemap.xml").exists()
     assert (site_dir / "robots.txt").exists()
 
