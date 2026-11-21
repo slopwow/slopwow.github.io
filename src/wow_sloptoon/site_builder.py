@@ -317,7 +317,7 @@ def _normalize_base_url(archive_base_url: str | None) -> str:
 
 
 def _build_dc_post_title(ep: EpisodeRecord) -> str:
-    return f"[와포슬롭툰] EP.{ep.episode_number} — {ep.title}"
+    return f"[와포슬롭툰]{ep.title.strip()}"
 
 
 def _build_dc_post_body(

@@ -406,7 +406,8 @@ def test_dc_packager_standard_and_split_outputs(tmp_path: Path) -> None:
     assert len(pack.image_paths) == 1
     assert pack.image_paths[0].exists()
     assert pack.image_paths[0].stat().st_size <= int(4.5 * 1024 * 1024)
-    assert pack.title_text == "[와포슬롭툰] EP.1 — 흑마법사가 물을 어케 줌?"
+    assert pack.title_text == "[와포슬롭툰]흑마법사가 물을 어케 줌?"
+    assert "EP." not in pack.title_text
     assert pack.write_url == "https://gall.dcinside.com/mgallery/board/write/?id=wowforever"
 
     title_file = pack_dir / "post_title.txt"

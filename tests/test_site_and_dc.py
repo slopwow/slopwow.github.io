@@ -462,7 +462,8 @@ def test_dc_upload_pack_for_seed_episodes(
     assert pack.pack_dir == pack_dir
     assert pack.write_url == build_dc_write_url("wowforever")
     assert pack.write_url == "https://gall.dcinside.com/mgallery/board/write/?id=wowforever"
-    assert pack.title_text.startswith(f"[와포슬롭툰] EP.{rec.episode_number}")
+    assert pack.title_text == f"[와포슬롭툰]{rec.title.strip()}"
+    assert "EP." not in pack.title_text
     assert expected_post_no in pack.body_text
     assert f"episode.html?id={episode_id}" in pack.body_text
 

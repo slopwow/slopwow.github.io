@@ -27,6 +27,67 @@ class GalleryPost(BaseModel):
     )
 
 
+TooltipQuality = Literal["epic", "rare", "uncommon", "common"]
+TooltipCorner = Literal["auto", "top_left", "top_right", "bottom_left", "bottom_right"]
+
+
+class ItemTooltipSpec(BaseModel):
+    """Authentic Korean Classic/Turtle WoW item tooltip overlay specification for a comic cut."""
+
+    model_config = ConfigDict(extra="ignore")
+
+    image_path: Optional[str] = Field(
+        default=None,
+        description=(
+            "Optional path to a cropped WoW item tooltip screenshot "
+            "(e.g. 'assets/items/scepter_of_the_librarian.png')."
+        ),
+    )
+    item_name: Optional[str] = Field(
+        default=None,
+        description="Korean item display name (e.g. '삼위일체의 아뮬렛', '사서의 홀').",
+    )
+    wowhead_item_id: Optional[int] = Field(
+        default=None,
+        ge=1,
+        description="Korean Classic Wowhead item ID (e.g. 7722 for Triune Amulet, 7720 for Whitemane's Chapeau).",
+    )
+    quality: TooltipQuality = Field(
+        default="rare",
+        description="WoW item quality tier ('epic', 'rare', 'uncommon', 'common').",
+    )
+    slot_left: str = Field(
+        default="",
+        description="Equipment slot label on left (e.g. '목', '머리', '주장비').",
+    )
+    slot_right: str = Field(
+        default="",
+        description="Subtype label on right (e.g. '천', '둔기', '도끼').",
+    )
+    lines: list[str] = Field(
+        default_factory=list,
+        description="White stat/binding lines (use 'left\\tright' for two-column weapon damage/speed).",
+    )
+    equip_effects: list[str] = Field(
+        default_factory=list,
+        description="Green (#1EFF00) equip/use/proc effect lines (e.g. '착용 효과: ...').",
+    )
+    icon_name: Optional[str] = Field(
+        default=None,
+        description="Optional Wowhead/zamimg icon name (e.g. 'inv_jewelry_amulet_01').",
+    )
+    preferred_corner: TooltipCorner = Field(
+        default="auto",
+        description="Optional placement hint ('auto', 'top_left', 'top_right', 'bottom_left', 'bottom_right').",
+    )
+    target_width: int = Field(
+        default=288,
+        ge=180,
+        le=420,
+        description="Target rendered width in pixels (~260-310px).",
+    )
+
+
 class ComicCut(BaseModel):
     """A single panel/cut inside a 4~6 cut sloptoon episode."""
 
@@ -66,6 +127,10 @@ class ComicCut(BaseModel):
         default="left",
         description="Direction the speech-bubble tail points toward the speaker.",
     )
+    item_tooltip: Optional[ItemTooltipSpec] = Field(
+        default=None,
+        description="Optional authentic WoW item tooltip card overlay displayed in an open corner of this cut.",
+    )
 
     @model_validator(mode="after")
     def validate_cut_rules(self) -> "ComicCut":
@@ -86,7 +151,9 @@ class EpisodeScript(BaseModel):
 
     episode_number: int = Field(..., ge=1, description="Sequential episode number (e.g. 1, 2, 3).")
     source_post_no: str = Field(..., description="Origin DCInside wowforever post number.")
-    source_title: str = Field(..., description="Origin post title (or polished episode title).")
+    source_title: str = Field(
+        ..., description="Exact verbatim original DCInside wowforever concept post title."
+    )
     source_url: str = Field(..., description="Origin DCInside wowforever post URL.")
     subtitle: str = Field(..., description="Witty short Korean subtitle shown in the episode header.")
     cuts: list[ComicCut] = Field(

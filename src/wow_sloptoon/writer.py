@@ -41,6 +41,10 @@ WRITER_SYSTEM_RULES = """당신은 디시인사이드 '와우 포에버 마이�
    - 반드시 영문으로 캐릭터의 좌우 위치, 포즈, 소품, 표정, 감정을 구체적으로 묘사하세요.
    - 모든 컷은 **100% pure solid white `#FFFFFF` borderless background (no scenery, no text, no speech bubbles)** 조건을 전제로 캐릭터와 최소한의 소품(물병, 멜론 주스, 도끼, 지팡이, 호빵 등)만 등장하도록 묘사하세요.
    - 공식 시안 C 미소녀 복장·헤어·후드·소품 디테일을 일관되게 유지하세요.
+7. **원본 개념글 제목 100% 원문 유지 (`source_title`)**:
+   - `source_title`에는 절대 임의로 요약·재작성한 제목을 넣지 말고, 제공된 **포에버갤 원본 개념글 제목(`post.title`)을 100% 글자 그대로** 기입하세요.
+8. **실제 와우 아이템 툴팁 카드 (`item_tooltip`, 선택 사항)**:
+   - 실제 와우 아이템(예: 삼위일체의 아뮬렛, 화이트메인의 모자, 사서의 홀 등)이 핵심 소재로 등장하는 컷에만 선택적으로 `item_tooltip`을 지정할 수 있습니다. 유저 닉네임이나 인물명에는 절대 `item_tooltip`을 붙이지 마세요.
 """
 
 
@@ -60,12 +64,13 @@ def build_writer_prompt(post: GalleryPost, episode_number: int) -> str:
         f"- 예정 화수: EP.{episode_number}\n"
         f"- 게시글 번호: #{post.post_no}\n"
         f"- 원문 URL: {post.url}\n"
-        f"- 제목: {post.title}\n"
+        f"- 원문 제목 (100% 그대로 유지): {post.title.strip()}\n"
         f"- 작성자: {post.author} | 추천: {post.recommends} | 댓글: {post.comments_count}\n"
         f"- 본문:\n{post.body or '(본문 텍스트 없음 — 제목의 펀치라인을 던전 상황극으로 풀어내세요)'}\n\n"
         f"- 주요 댓글 (메타 해설 금지! 웃긴 포인트만 캐릭터 대사·상황극 소재로 흡수):\n{comments_block}\n\n"
         f"위 JSON 스키마(`EpisodeScript`)에 정확히 맞춰 출력하세요. "
         f"`episode_number`는 {episode_number}, `source_post_no`는 \"{post.post_no}\", "
+        f"`source_title`은 원문 제목 100% 그대로인 {json.dumps(post.title.strip(), ensure_ascii=False)}, "
         f"`source_url`은 \"{post.url}\" 로 정확히 기입하세요."
     )
 
@@ -113,10 +118,12 @@ def _normalize_script(
             )
         )
 
+    verbatim_title = post.title.strip() or script.source_title.strip()
     return script.model_copy(
         update={
             "episode_number": episode_number,
             "source_post_no": str(post.post_no),
+            "source_title": verbatim_title,
             "source_url": post.url,
             "cuts": normalized_cuts,
         }
@@ -169,8 +176,9 @@ def generate_episode_script(
 
 def build_dry_run_script(post: GalleryPost, episode_number: int) -> EpisodeScript:
     """Build a deterministic offline 4-cut Draft C script for `--dry-run` previews and smoke tests."""
-    short_title = post.title.strip() or f"개념글 #{post.post_no}"
-    snippet = (post.body.strip().splitlines()[0][:28] + "...") if post.body.strip() else short_title[:28]
+    verbatim_title = post.title.strip()
+    dialogue_hook = verbatim_title or f"개념글 #{post.post_no}"
+    snippet = (post.body.strip().splitlines()[0][:28] + "...") if post.body.strip() else dialogue_hook[:28]
 
     cuts = [
         ComicCut(
@@ -179,7 +187,7 @@ def build_dry_run_script(post: GalleryPost, episode_number: int) -> EpisodeScrip
             layout_slot="top",
             characters=["나이트엘프 사제", "오크 전사"],
             speaker="나이트엘프 사제",
-            dialogue=f"저기요...\n'{short_title[:18]}'\n이거 실화예요?",
+            dialogue=f"저기요...\n'{dialogue_hook[:18]}'\n이거 실화예요?",
             wordless=False,
             visual_prompt=(
                 "Left: Night Elf Priest chibi girl with dark under-eye circles holding her "
@@ -241,7 +249,7 @@ def build_dry_run_script(post: GalleryPost, episode_number: int) -> EpisodeScrip
     return EpisodeScript(
         episode_number=episode_number,
         source_post_no=str(post.post_no),
-        source_title=short_title,
+        source_title=verbatim_title or dialogue_hook,
         source_url=post.url,
         subtitle=f"포에버갤 #{post.post_no} 드라이런 상황극 프리뷰",
         cuts=cuts,
