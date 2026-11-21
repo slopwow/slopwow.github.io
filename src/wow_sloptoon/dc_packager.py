@@ -411,7 +411,7 @@ def _prepare_upload_images(
 
 def format_post_title(record: EpisodeRecord) -> str:
     """Format canonical DCInside WOW Forever Gallery comic post title."""
-    return f"[만화] 와우 포에버 슬롭툰 EP.{record.episode_number} — {record.title}"
+    return f"[와포슬롭툰] EP.{record.episode_number} — {record.title}"
 
 
 def format_post_body(
@@ -468,7 +468,7 @@ def create_dc_upload_pack(
     Produces inside `output_dir`:
     - Optimized single JPG (`{episode_id}_full.jpg`) or cleanly white-gutter-split
       JPG parts (`{episode_id}_part_01.jpg`, ...) strictly within DCInside size/height limits
-    - `post_title.txt`: ready-to-paste title (`[만화] 와우 포에버 슬롭툰 EP.{N} — {제목}`)
+    - `post_title.txt`: ready-to-paste title (`[와포슬롭툰] EP.{N} — {제목}`)
     - `post_body.txt`: ready-to-paste body with concept post attribution, archive link, and bot credit
     - `upload_guide.txt`: 3-step manual posting reminder (no CAPTCHA bypass or auto-submit)
     """

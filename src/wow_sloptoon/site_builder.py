@@ -317,7 +317,7 @@ def _normalize_base_url(archive_base_url: str | None) -> str:
 
 
 def _build_dc_post_title(ep: EpisodeRecord) -> str:
-    return f"[만화] 와우 포에버 슬롭툰 EP.{ep.episode_number} — {ep.title}"
+    return f"[와포슬롭툰] EP.{ep.episode_number} — {ep.title}"
 
 
 def _build_dc_post_body(
@@ -903,7 +903,7 @@ def _render_episode_reader_html(
               <span class="pill-badge pill-sm"><span class="dot-sky"></span>1-CLICK UPLOAD HELPER</span>
               <h2 class="dc-helper-title">디시 포에버갤 업로드 도우미</h2>
               <p class="dc-helper-desc">
-                버튼 한 번으로 <strong>[만화] 제목 + 본문/정주행 링크 복사</strong>, <strong>통합본 JPG 다운로드</strong>,
+                버튼 한 번으로 <strong>[와포슬롭툰] 제목 + 본문/정주행 링크 복사</strong>, <strong>통합본 JPG 다운로드</strong>,
                 <strong>공식 포에버갤 글쓰기창 새 탭 열기</strong>를 동시에 준비합니다.
                 (로그인·캡차 확인 및 최종 등록은 공식 페이지에서 직접 완료해 주세요.)
               </p>
