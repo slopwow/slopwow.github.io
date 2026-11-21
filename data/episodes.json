@@ -137,28 +137,5 @@
       "data/episodes/ep006/page_2.png",
       "data/episodes/ep006/page_3.png"
     ]
-  },
-  {
-    "episode_id": "ep007",
-    "episode_number": 7,
-    "title": "오늘자 RP, 상상도 못한 편지.jpg",
-    "subtitle": "길드 창설 RP 편지 반송 대참사와 우체통 폭풍 오열 — 100% 모험 상황극",
-    "source_post_no": "80851",
-    "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=80851",
-    "created_at": "2026-11-21T16:53:03+09:00",
-    "cut_count": 6,
-    "cast_used": [
-      "드워프 사냥꾼",
-      "타우렌 드루이드",
-      "노움 도적",
-      "오크 전사"
-    ],
-    "full_image_rel": "data/episodes/ep007/episode_full.jpg",
-    "thumb_image_rel": "data/episodes/ep007/thumb.jpg",
-    "page_images_rel": [
-      "data/episodes/ep007/page_1.png",
-      "data/episodes/ep007/page_2.png",
-      "data/episodes/ep007/page_3.png"
-    ]
   }
 ]

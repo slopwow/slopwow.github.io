@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-11-21T17:13:56+09:00",
+  "updated_at": "2026-11-21T17:29:25+09:00",
   "episodes": [
     {
       "episode_id": "ep001",
@@ -55,11 +55,11 @@
       "episode_number": 5,
       "title": "방금 길드에서 레전드 사건 일어남",
       "source_post_no": "94979",
-      "status": "packed",
+      "status": "published",
       "queued_at": "2026-11-21T17:12:25+09:00",
       "packed_at": "2026-11-21T17:13:55+09:00",
-      "published_at": null,
-      "dc_post_url": "",
+      "published_at": "2026-11-21T17:29:24+09:00",
+      "dc_post_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=107782",
       "pack_dir": "C:\\Users\\kbu39\\Desktop\\antigravity\\sloptoon\\upload_pack\\ep005"
     },
     {
@@ -67,24 +67,12 @@
       "episode_number": 6,
       "title": "와뉴비 다들 왜 사제 안키우는 지 알거같다",
       "source_post_no": "78596",
-      "status": "packed",
+      "status": "published",
       "queued_at": "2026-11-21T17:12:25+09:00",
       "packed_at": "2026-11-21T17:13:55+09:00",
-      "published_at": null,
-      "dc_post_url": "",
+      "published_at": "2026-11-21T17:29:25+09:00",
+      "dc_post_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=107796",
       "pack_dir": "C:\\Users\\kbu39\\Desktop\\antigravity\\sloptoon\\upload_pack\\ep006"
-    },
-    {
-      "episode_id": "ep007",
-      "episode_number": 7,
-      "title": "오늘자 RP, 상상도 못한 편지.jpg",
-      "source_post_no": "80851",
-      "status": "packed",
-      "queued_at": "2026-11-21T17:12:25+09:00",
-      "packed_at": "2026-11-21T17:13:55+09:00",
-      "published_at": null,
-      "dc_post_url": "",
-      "pack_dir": "C:\\Users\\kbu39\\Desktop\\antigravity\\sloptoon\\upload_pack\\ep007"
     }
   ]
 }

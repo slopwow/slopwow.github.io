@@ -332,7 +332,6 @@
 
     var episodes = data.episodes;
     var rootPrefix = data.rootPrefix || "";
-    var dcWriteUrl = data.dcWriteUrl || "https://gall.dcinside.com/mgallery/board/write/?id=wowforever";
 
     var params = new URLSearchParams(window.location.search);
     var requestedId = data.pinnedEpisodeId || params.get("id") || "";
@@ -478,45 +477,6 @@
       });
     });
 
-    // 1-Click DCInside Upload Helper (Clipboard + Image Download + Official Write Tab)
-    var oneClickBtn = document.getElementById("dcOneClickBtn");
-    if (oneClickBtn) {
-      oneClickBtn.addEventListener("click", function () {
-        var combined = ep.dc_title + "\n\n" + ep.dc_body;
-        copyText(combined).then(function () {
-          // Trigger JPG download
-          var link = document.createElement("a");
-          link.href = fullSrc;
-          link.download = dlFileName;
-          document.body.appendChild(link);
-          link.click();
-          document.body.removeChild(link);
-
-          // Open official DCInside write page in new tab (user signs in & posts manually)
-          window.open(dcWriteUrl, "_blank", "noopener,noreferrer");
-          showToast("제목·본문 복사 완료 + JPG 저장 시작 + 포에버갤 글쓰기창을 열었습니다!");
-        });
-      });
-    }
-
-    var copyTitleBtn = document.getElementById("dcCopyTitleBtn");
-    if (copyTitleBtn) {
-      copyTitleBtn.addEventListener("click", function () {
-        copyText(ep.dc_title).then(function () {
-          showToast("글 제목을 클립보드에 복사했습니다!");
-        });
-      });
-    }
-
-    var copyBodyBtn = document.getElementById("dcCopyBodyBtn");
-    if (copyBodyBtn) {
-      copyBodyBtn.addEventListener("click", function () {
-        copyText(ep.dc_body).then(function () {
-          showToast("본문 및 정주행 아카이브 링크를 클립보드에 복사했습니다!");
-        });
-      });
-    }
-
     // Keyboard prev/next navigation
     document.addEventListener("keydown", function (ev) {
       if (ev.target && /INPUT|TEXTAREA/.test(ev.target.tagName)) return;
@@ -563,160 +523,11 @@
     }
   }
 
-  /* ---------------- CREATOR UPLOAD QUEUE PAGE (publish.html) ---------------- */
-  function readPublishedMap() {
-    try {
-      var raw = window.localStorage.getItem(PUBLISH_STORAGE_KEY);
-      if (!raw) return {};
-      var parsed = JSON.parse(raw);
-      return parsed && typeof parsed === "object" ? parsed : {};
-    } catch (_err) {
-      return {};
-    }
-  }
-
-  function writePublishedMap(map) {
-    try {
-      window.localStorage.setItem(PUBLISH_STORAGE_KEY, JSON.stringify(map));
-    } catch (_err) {
-      /* ignore private-mode quota errors */
-    }
-  }
-
-  function initPublishPage() {
-    var data = window.__SLOPTOON_DATA__ || {};
-    var episodes = Array.isArray(data.episodes) ? data.episodes : [];
-    var byId = {};
-    episodes.forEach(function (ep) {
-      byId[ep.episode_id] = ep;
-    });
-
-    var cards = Array.prototype.slice.call(document.querySelectorAll(".publish-card"));
-    var filterBar = document.getElementById("publishFilterBar");
-    var summaryEl = document.getElementById("publishSummary");
-    var countAllEl = document.getElementById("pubCountAll");
-    var countPendingEl = document.getElementById("pubCountPending");
-    var countDoneEl = document.getElementById("pubCountDone");
-    var emptyEl = document.getElementById("publishEmptyFilter");
-    var resetBtn = document.getElementById("publishResetFilterBtn");
-
-    var publishedMap = readPublishedMap();
-    var activeFilter = "all";
-
-    function syncPublishUI() {
-      var total = cards.length;
-      var doneCount = 0;
-      var visibleCount = 0;
-
-      cards.forEach(function (card) {
-        var epId = card.getAttribute("data-episode-id") || "";
-        var isDone = Boolean(publishedMap[epId]);
-        if (isDone) doneCount += 1;
-
-        card.setAttribute("data-status", isDone ? "done" : "pending");
-        card.classList.toggle("is-done", isDone);
-
-        var toggleBtn = card.querySelector(".publish-status-toggle");
-        if (toggleBtn) {
-          toggleBtn.classList.toggle("is-done", isDone);
-          toggleBtn.setAttribute("aria-pressed", isDone ? "true" : "false");
-          var label = toggleBtn.querySelector(".status-label");
-          if (label) {
-            label.textContent = isDone ? "포에버갤 등록 완료" : "대기 중";
-          }
-        }
-
-        var show =
-          activeFilter === "all" ||
-          (activeFilter === "done" && isDone) ||
-          (activeFilter === "pending" && !isDone);
-        card.hidden = !show;
-        if (show) visibleCount += 1;
-      });
-
-      var pendingCount = total - doneCount;
-      if (countAllEl) countAllEl.textContent = String(total);
-      if (countPendingEl) countPendingEl.textContent = String(pendingCount);
-      if (countDoneEl) countDoneEl.textContent = String(doneCount);
-      if (summaryEl) {
-        summaryEl.textContent = "전체 " + total + "화 중 " + doneCount + "화 포에버갤 등록 완료";
-      }
-      if (emptyEl) {
-        emptyEl.hidden = total === 0 || visibleCount > 0;
-      }
-    }
-
-    document.querySelectorAll(".publish-status-toggle").forEach(function (btn) {
-      btn.addEventListener("click", function () {
-        var epId = btn.getAttribute("data-ep") || "";
-        if (!epId) return;
-        var nextDone = !Boolean(publishedMap[epId]);
-        if (nextDone) {
-          publishedMap[epId] = true;
-        } else {
-          delete publishedMap[epId];
-        }
-        writePublishedMap(publishedMap);
-        syncPublishUI();
-        var ep = byId[epId];
-        var prefix = ep ? "EP." + ep.episode_number + " " : "";
-        showToast(nextDone ? prefix + "포에버갤 등록 완료로 표시했습니다!" : prefix + "대기 중 상태로 변경했습니다.");
-      });
-    });
-
-    document.querySelectorAll(".js-pub-copy-title").forEach(function (btn) {
-      btn.addEventListener("click", function () {
-        var ep = byId[btn.getAttribute("data-ep") || ""];
-        if (!ep) return;
-        copyText(ep.dc_title).then(function () {
-          showToast("EP." + ep.episode_number + " 글 제목을 복사했습니다!");
-        });
-      });
-    });
-
-    document.querySelectorAll(".js-pub-copy-body").forEach(function (btn) {
-      btn.addEventListener("click", function () {
-        var ep = byId[btn.getAttribute("data-ep") || ""];
-        if (!ep) return;
-        copyText(ep.dc_body).then(function () {
-          showToast("EP." + ep.episode_number + " 본문과 정주행 주소를 복사했습니다!");
-        });
-      });
-    });
-
-    if (filterBar) {
-      filterBar.addEventListener("click", function (ev) {
-        var btn = ev.target.closest(".filter-chip");
-        if (!btn) return;
-        activeFilter = btn.getAttribute("data-filter") || "all";
-        filterBar.querySelectorAll(".filter-chip").forEach(function (b) {
-          b.classList.toggle("is-active", b === btn);
-        });
-        syncPublishUI();
-      });
-    }
-
-    if (resetBtn) {
-      resetBtn.addEventListener("click", function () {
-        activeFilter = "all";
-        if (filterBar) {
-          filterBar.querySelectorAll(".filter-chip").forEach(function (b) {
-            b.classList.toggle("is-active", b.getAttribute("data-filter") === "all");
-          });
-        }
-        syncPublishUI();
-      });
-    }
-
-    syncPublishUI();
-  }
-
   document.addEventListener("DOMContentLoaded", function () {
     var page = document.body.getAttribute("data-page");
     if (page === "home") initHomePage();
     if (page === "episode") initEpisodePage();
     if (page === "cast") initCastPage();
-    if (page === "publish") initPublishPage();
     initRandomButtons();
   });
 })();

@@ -115,7 +115,6 @@ def test_build_static_site_end_to_end_and_link_integrity(tmp_path: Path) -> None
         out_site / "index.html",
         out_site / "episode.html",
         out_site / "cast.html",
-        out_site / "publish.html",
         out_site / "sitemap.xml",
         out_site / "robots.txt",
         *(out_site / "episodes" / f"{rec.episode_id}.html" for rec in records),
@@ -127,23 +126,26 @@ def test_build_static_site_end_to_end_and_link_integrity(tmp_path: Path) -> None
     ]
     for path in required_files:
         assert path.exists(), f"Missing generated file: {path}"
+    assert not (out_site / "publish.html").exists(), "Creator publish.html must not be exposed publicly"
 
-    # Verify ALL HTML pages (including publish.html and all episode pages) have zero broken local links/assets
+    # Verify ALL HTML pages have zero broken local links/assets and ZERO creator upload links
     all_html_pages = [
         out_site / "index.html",
         out_site / "episode.html",
         out_site / "cast.html",
-        out_site / "publish.html",
         *(out_site / "episodes" / f"{rec.episode_id}.html" for rec in records),
     ]
     for page in all_html_pages:
         _assert_internal_links_resolve(page)
 
-    # Verify shared footer legal notice, discreet publish link, and top-nav random button on every HTML page
+    # Verify shared footer legal notice, top-nav random button, and ZERO admin/write links on every HTML page
     for page in all_html_pages:
         text = page.read_text(encoding="utf-8")
         assert LEGAL_NOTICE in text, f"Legal notice missing in {page.name}"
-        assert "업로드 큐 관리" in text, f"Footer publish link missing in {page.name}"
+        assert "publish.html" not in text, f"Admin publish link leaked in {page.name}"
+        assert "업로드 큐 관리" not in text, f"Admin queue text leaked in {page.name}"
+        assert "디시 포에버갤 업로드 도우미" not in text, f"Admin helper leaked in {page.name}"
+        assert DC_GALLERY_WRITE_URL not in text, f"DC write URL leaked in {page.name}"
         assert "🎲 랜덤 화 보기" in text, f"Top-nav random button missing in {page.name}"
 
     # Verify index.html content: header, search, cast filter, all episodes, empty sponsor slot
@@ -156,11 +158,11 @@ def test_build_static_site_end_to_end_and_link_integrity(tmp_path: Path) -> None
     assert 'id="castFilterBar"' in index_html
     assert 'class="slop-sponsor-slot" data-slot="home-feed-bottom" aria-label="스폰서 영역"></aside>' in index_html
 
-    # Verify episode.html & episodes/ep001.html: reader, share button, random button, binge cards, recommended grid, DC helper
+    # Verify episode.html & episodes/ep001.html: reader, share button, random button, binge cards, recommended grid (no admin helper)
     ep_html = (out_site / "episode.html").read_text(encoding="utf-8")
-    assert 'id="dcOneClickBtn"' in ep_html
-    assert DC_GALLERY_WRITE_URL in ep_html
-    assert "디시 포에버갤 업로드 도우미" in ep_html
+    assert 'id="dcOneClickBtn"' not in ep_html
+    assert DC_GALLERY_WRITE_URL not in ep_html
+    assert "디시 포에버갤 업로드 도우미" not in ep_html
     assert 'id="shareCopyBtn"' in ep_html
     assert "링크 복사" in ep_html
     assert 'id="bottomRandomBtn"' in ep_html
@@ -169,8 +171,6 @@ def test_build_static_site_end_to_end_and_link_integrity(tmp_path: Path) -> None
 
     ep1_html = (out_site / "episodes" / "ep001.html").read_text(encoding="utf-8")
     assert f'data-share-url="{base_url}/episodes/ep001.html"' in ep1_html
-    assert f"전편 정주행 아카이브: {base_url}/episodes/ep001.html" in ep1_html
-    assert f"전체 정주행: {base_url}" in ep1_html
     assert "다른 레전드 념글 만화" in ep1_html
     assert "nav-ep-thumb" in ep1_html
 
@@ -274,10 +274,10 @@ def test_seo_og_twitter_sitemap_robots_and_relative_fallback(tmp_path: Path) -> 
         assert meta["og:image"].startswith(f"{DEFAULT_ARCHIVE_BASE_URL}/assets/")
         assert meta["twitter:card"] == "summary_large_image"
 
-    # Verify default dc_body contains canonical slopwow.github.io archive URLs
+    # Verify canonical public URLs appear without exposing creator upload helpers
     ep1_default = (default_site / "episodes" / "ep001.html").read_text(encoding="utf-8")
-    assert f"전편 정주행 아카이브: {DEFAULT_ARCHIVE_BASE_URL}/episodes/ep001.html" in ep1_default
-    assert f"전체 정주행: {DEFAULT_ARCHIVE_BASE_URL}" in ep1_default
+    assert f'data-share-url="{DEFAULT_ARCHIVE_BASE_URL}/episodes/ep001.html"' in ep1_default
+    assert DC_GALLERY_WRITE_URL not in ep1_default
 
     # 2. Explicit empty archive_base_url="" -> clean relative fallback for OG tags
     rel_site = tmp_path / "rel_site"
@@ -333,36 +333,20 @@ def test_publish_queue_page_and_five_episode_recommendations(tmp_path: Path) -> 
 
     build_static_site(episodes_json, out_site, empty_assets)
 
-    # Verify all generated HTML files pass link integrity
+    # Verify all generated HTML files pass link integrity and exclude publish.html
+    assert not (out_site / "publish.html").exists()
     for html_file in [
         out_site / "index.html",
         out_site / "episode.html",
         out_site / "cast.html",
-        out_site / "publish.html",
         *(out_site / "episodes" / f"ep{n:03d}.html" for n in range(1, 6)),
     ]:
         _assert_internal_links_resolve(html_file)
 
-    # Verify publish.html creator queue controls, newest-first ordering, and policy compliance
-    pub_html = (out_site / "publish.html").read_text(encoding="utf-8")
-    assert '<meta name="robots" content="noindex, nofollow">' in pub_html
-    assert "포에버갤 업로드 큐 관리" in pub_html
-    assert "제목 복사" in pub_html
-    assert "본문·주소 복사" in pub_html
-    assert "워터마크 통합본 JPG 저장" in pub_html
-    assert "포에버갤 글쓰기 열기 ↗" in pub_html
-    assert DC_GALLERY_WRITE_URL in pub_html
-    assert 'data-filter="all"' in pub_html
-    assert 'data-filter="pending"' in pub_html
-    assert 'data-filter="done"' in pub_html
-    assert "대기 중" in pub_html
-    assert pub_html.index('data-episode-id="ep005"') < pub_html.index('data-episode-id="ep001"')
-
     app_js = (out_site / "assets" / "app.js").read_text(encoding="utf-8")
-    assert "localStorage" in app_js
-    assert "포에버갤 등록 완료" in app_js
     assert "initRandomButtons" in app_js
-    assert "initPublishPage" in app_js
+    assert DC_GALLERY_WRITE_URL not in app_js
+    assert "initPublishPage" not in app_js
 
     # Verify recommended episode grid on ep003 shows exactly 3 other episodes (excluding ep003)
     ep3_html = (out_site / "episodes" / "ep003.html").read_text(encoding="utf-8")

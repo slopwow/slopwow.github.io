@@ -511,7 +511,6 @@ def _render_footer(total_episodes: int, root_prefix: str = "") -> str:
           <a href="{root_prefix}index.html">전체 에피소드</a>
           <a href="{root_prefix}cast.html">시안 C 캐스트 도감</a>
           <a href="{DC_GALLERY_RECOMMEND_URL}" target="_blank" rel="noopener noreferrer">디시 WOW 포에버 갤러리 ↗</a>
-          <a class="footer-link-discreet" href="{root_prefix}publish.html">업로드 큐 관리</a>
         </div>
       </div>
       <div class="container footer-legal">
@@ -747,7 +746,6 @@ def _render_episode_reader_html(
         "episodes": site_episodes,
         "rootPrefix": root_prefix,
         "pinnedEpisodeId": pinned_episode_id or "",
-        "dcWriteUrl": DC_GALLERY_WRITE_URL,
         "archiveBaseUrl": base_url or DEFAULT_ARCHIVE_BASE_URL,
     })
 
@@ -836,7 +834,6 @@ def _render_episode_reader_html(
           </div>
           <div class="reader-top-actions">
             <button type="button" class="btn btn-sm btn-outline js-share-url" data-share-url="{canonical_url}">🔗 링크 복사</button>
-            <a class="btn btn-sm btn-subtle" href="#dc-upload-helper">디시 업로드 도우미 ↓</a>
           </div>
         </div>
 
@@ -894,43 +891,6 @@ def _render_episode_reader_html(
           </div>
           <div class="recommend-grid" id="epRecommendGrid">
             {rec_cards_html}
-          </div>
-        </section>
-
-        <section class="dc-helper-card" id="dc-upload-helper" aria-label="디시 포에버갤 업로드 도우미">
-          <div class="dc-helper-head">
-            <div>
-              <span class="pill-badge pill-sm"><span class="dot-sky"></span>1-CLICK UPLOAD HELPER</span>
-              <h2 class="dc-helper-title">디시 포에버갤 업로드 도우미</h2>
-              <p class="dc-helper-desc">
-                버튼 한 번으로 <strong>[와포슬롭툰] 제목 + 본문/정주행 링크 복사</strong>, <strong>통합본 JPG 다운로드</strong>,
-                <strong>공식 포에버갤 글쓰기창 새 탭 열기</strong>를 동시에 준비합니다.
-                (로그인·캡차 확인 및 최종 등록은 공식 페이지에서 직접 완료해 주세요.)
-              </p>
-            </div>
-          </div>
-
-          <div class="dc-preview-grid">
-            <div class="dc-preview-box">
-              <div class="dc-preview-label">글 제목 (자동 복사)</div>
-              <pre id="dcTitlePreview" class="dc-preview-text">{html.escape(ep['dc_title'])}</pre>
-            </div>
-            <div class="dc-preview-box">
-              <div class="dc-preview-label">본문 &amp; 정주행 아카이브 출처</div>
-              <pre id="dcBodyPreview" class="dc-preview-text">{html.escape(ep['dc_body'])}</pre>
-            </div>
-          </div>
-
-          <div class="dc-helper-actions">
-            <button type="button" id="dcOneClickBtn" class="btn btn-primary btn-lg">
-              디시 포에버갤 업로드 도우미 실행 (복사 + 저장 + 글쓰기 열기)
-            </button>
-            <div class="dc-sub-actions">
-              <button type="button" id="dcCopyTitleBtn" class="btn btn-outline btn-sm">제목만 복사</button>
-              <button type="button" id="dcCopyBodyBtn" class="btn btn-outline btn-sm">본문·출처 복사</button>
-              <a id="dcDownloadBtn" class="btn btn-outline btn-sm" href="{root_prefix}{html.escape(ep['full_image'])}" download="wow_sloptoon_{html.escape(ep['episode_id'])}_full.jpg">통합본 JPG 저장</a>
-              <a id="dcWriteLink" class="btn btn-subtle btn-sm" href="{DC_GALLERY_WRITE_URL}" target="_blank" rel="noopener noreferrer">글쓰기창만 열기 ↗</a>
-            </div>
           </div>
         </section>
         """
@@ -2758,7 +2718,6 @@ _APP_JS = """/* 와우 포에버 슬롭툰 — 정적 웹 아카이브 인터랙
 
     var episodes = data.episodes;
     var rootPrefix = data.rootPrefix || "";
-    var dcWriteUrl = data.dcWriteUrl || "https://gall.dcinside.com/mgallery/board/write/?id=wowforever";
 
     var params = new URLSearchParams(window.location.search);
     var requestedId = data.pinnedEpisodeId || params.get("id") || "";
@@ -2904,45 +2863,6 @@ _APP_JS = """/* 와우 포에버 슬롭툰 — 정적 웹 아카이브 인터랙
       });
     });
 
-    // 1-Click DCInside Upload Helper (Clipboard + Image Download + Official Write Tab)
-    var oneClickBtn = document.getElementById("dcOneClickBtn");
-    if (oneClickBtn) {
-      oneClickBtn.addEventListener("click", function () {
-        var combined = ep.dc_title + "\\n\\n" + ep.dc_body;
-        copyText(combined).then(function () {
-          // Trigger JPG download
-          var link = document.createElement("a");
-          link.href = fullSrc;
-          link.download = dlFileName;
-          document.body.appendChild(link);
-          link.click();
-          document.body.removeChild(link);
-
-          // Open official DCInside write page in new tab (user signs in & posts manually)
-          window.open(dcWriteUrl, "_blank", "noopener,noreferrer");
-          showToast("제목·본문 복사 완료 + JPG 저장 시작 + 포에버갤 글쓰기창을 열었습니다!");
-        });
-      });
-    }
-
-    var copyTitleBtn = document.getElementById("dcCopyTitleBtn");
-    if (copyTitleBtn) {
-      copyTitleBtn.addEventListener("click", function () {
-        copyText(ep.dc_title).then(function () {
-          showToast("글 제목을 클립보드에 복사했습니다!");
-        });
-      });
-    }
-
-    var copyBodyBtn = document.getElementById("dcCopyBodyBtn");
-    if (copyBodyBtn) {
-      copyBodyBtn.addEventListener("click", function () {
-        copyText(ep.dc_body).then(function () {
-          showToast("본문 및 정주행 아카이브 링크를 클립보드에 복사했습니다!");
-        });
-      });
-    }
-
     // Keyboard prev/next navigation
     document.addEventListener("keydown", function (ev) {
       if (ev.target && /INPUT|TEXTAREA/.test(ev.target.tagName)) return;
@@ -2989,160 +2909,11 @@ _APP_JS = """/* 와우 포에버 슬롭툰 — 정적 웹 아카이브 인터랙
     }
   }
 
-  /* ---------------- CREATOR UPLOAD QUEUE PAGE (publish.html) ---------------- */
-  function readPublishedMap() {
-    try {
-      var raw = window.localStorage.getItem(PUBLISH_STORAGE_KEY);
-      if (!raw) return {};
-      var parsed = JSON.parse(raw);
-      return parsed && typeof parsed === "object" ? parsed : {};
-    } catch (_err) {
-      return {};
-    }
-  }
-
-  function writePublishedMap(map) {
-    try {
-      window.localStorage.setItem(PUBLISH_STORAGE_KEY, JSON.stringify(map));
-    } catch (_err) {
-      /* ignore private-mode quota errors */
-    }
-  }
-
-  function initPublishPage() {
-    var data = window.__SLOPTOON_DATA__ || {};
-    var episodes = Array.isArray(data.episodes) ? data.episodes : [];
-    var byId = {};
-    episodes.forEach(function (ep) {
-      byId[ep.episode_id] = ep;
-    });
-
-    var cards = Array.prototype.slice.call(document.querySelectorAll(".publish-card"));
-    var filterBar = document.getElementById("publishFilterBar");
-    var summaryEl = document.getElementById("publishSummary");
-    var countAllEl = document.getElementById("pubCountAll");
-    var countPendingEl = document.getElementById("pubCountPending");
-    var countDoneEl = document.getElementById("pubCountDone");
-    var emptyEl = document.getElementById("publishEmptyFilter");
-    var resetBtn = document.getElementById("publishResetFilterBtn");
-
-    var publishedMap = readPublishedMap();
-    var activeFilter = "all";
-
-    function syncPublishUI() {
-      var total = cards.length;
-      var doneCount = 0;
-      var visibleCount = 0;
-
-      cards.forEach(function (card) {
-        var epId = card.getAttribute("data-episode-id") || "";
-        var isDone = Boolean(publishedMap[epId]);
-        if (isDone) doneCount += 1;
-
-        card.setAttribute("data-status", isDone ? "done" : "pending");
-        card.classList.toggle("is-done", isDone);
-
-        var toggleBtn = card.querySelector(".publish-status-toggle");
-        if (toggleBtn) {
-          toggleBtn.classList.toggle("is-done", isDone);
-          toggleBtn.setAttribute("aria-pressed", isDone ? "true" : "false");
-          var label = toggleBtn.querySelector(".status-label");
-          if (label) {
-            label.textContent = isDone ? "포에버갤 등록 완료" : "대기 중";
-          }
-        }
-
-        var show =
-          activeFilter === "all" ||
-          (activeFilter === "done" && isDone) ||
-          (activeFilter === "pending" && !isDone);
-        card.hidden = !show;
-        if (show) visibleCount += 1;
-      });
-
-      var pendingCount = total - doneCount;
-      if (countAllEl) countAllEl.textContent = String(total);
-      if (countPendingEl) countPendingEl.textContent = String(pendingCount);
-      if (countDoneEl) countDoneEl.textContent = String(doneCount);
-      if (summaryEl) {
-        summaryEl.textContent = "전체 " + total + "화 중 " + doneCount + "화 포에버갤 등록 완료";
-      }
-      if (emptyEl) {
-        emptyEl.hidden = total === 0 || visibleCount > 0;
-      }
-    }
-
-    document.querySelectorAll(".publish-status-toggle").forEach(function (btn) {
-      btn.addEventListener("click", function () {
-        var epId = btn.getAttribute("data-ep") || "";
-        if (!epId) return;
-        var nextDone = !Boolean(publishedMap[epId]);
-        if (nextDone) {
-          publishedMap[epId] = true;
-        } else {
-          delete publishedMap[epId];
-        }
-        writePublishedMap(publishedMap);
-        syncPublishUI();
-        var ep = byId[epId];
-        var prefix = ep ? "EP." + ep.episode_number + " " : "";
-        showToast(nextDone ? prefix + "포에버갤 등록 완료로 표시했습니다!" : prefix + "대기 중 상태로 변경했습니다.");
-      });
-    });
-
-    document.querySelectorAll(".js-pub-copy-title").forEach(function (btn) {
-      btn.addEventListener("click", function () {
-        var ep = byId[btn.getAttribute("data-ep") || ""];
-        if (!ep) return;
-        copyText(ep.dc_title).then(function () {
-          showToast("EP." + ep.episode_number + " 글 제목을 복사했습니다!");
-        });
-      });
-    });
-
-    document.querySelectorAll(".js-pub-copy-body").forEach(function (btn) {
-      btn.addEventListener("click", function () {
-        var ep = byId[btn.getAttribute("data-ep") || ""];
-        if (!ep) return;
-        copyText(ep.dc_body).then(function () {
-          showToast("EP." + ep.episode_number + " 본문과 정주행 주소를 복사했습니다!");
-        });
-      });
-    });
-
-    if (filterBar) {
-      filterBar.addEventListener("click", function (ev) {
-        var btn = ev.target.closest(".filter-chip");
-        if (!btn) return;
-        activeFilter = btn.getAttribute("data-filter") || "all";
-        filterBar.querySelectorAll(".filter-chip").forEach(function (b) {
-          b.classList.toggle("is-active", b === btn);
-        });
-        syncPublishUI();
-      });
-    }
-
-    if (resetBtn) {
-      resetBtn.addEventListener("click", function () {
-        activeFilter = "all";
-        if (filterBar) {
-          filterBar.querySelectorAll(".filter-chip").forEach(function (b) {
-            b.classList.toggle("is-active", b.getAttribute("data-filter") === "all");
-          });
-        }
-        syncPublishUI();
-      });
-    }
-
-    syncPublishUI();
-  }
-
   document.addEventListener("DOMContentLoaded", function () {
     var page = document.body.getAttribute("data-page");
     if (page === "home") initHomePage();
     if (page === "episode") initEpisodePage();
     if (page === "cast") initCastPage();
-    if (page === "publish") initPublishPage();
     initRandomButtons();
   });
 })();
@@ -3281,8 +3052,6 @@ def build_static_site(
             "thumb_image": f"assets/episodes/{record.episode_id}/thumb.jpg",
             "page_images": page_web_paths,
             "canonical_url": canonical_ep_url,
-            "dc_title": _build_dc_post_title(record),
-            "dc_body": _build_dc_post_body(record, archive_base_url=canonical_base),
         })
 
     # 3. Build cast metadata payload
@@ -3333,6 +3102,11 @@ def build_static_site(
         encoding="utf-8",
     )
 
+    valid_episode_html_names = {f"{ep['episode_id']}.html" for ep in site_episodes}
+    for stale_html in site_episodes_html_dir.glob("*.html"):
+        if stale_html.name not in valid_episode_html_names:
+            stale_html.unlink(missing_ok=True)
+
     for ep in site_episodes:
         (site_episodes_html_dir / f"{ep['episode_id']}.html").write_text(
             _render_episode_reader_html(
@@ -3357,9 +3131,7 @@ def build_static_site(
         encoding="utf-8",
     )
 
-    (site_dir / "publish.html").write_text(
-        _render_publish_html(site_episodes),
-        encoding="utf-8",
-    )
+    # Never expose creator upload helper pages publicly on the reader archive
+    (site_dir / "publish.html").unlink(missing_ok=True)
 
     return index_path

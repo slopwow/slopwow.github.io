@@ -42,6 +42,12 @@ EXCLUDED_SUBJECT_TOKENS: tuple[str, ...] = (
     "뉴스",
     "홍보",
     "AD",
+    "RP",
+    "🎬RP",
+)
+
+EXCLUDED_TITLE_RE = re.compile(
+    r"(?i)(\[와포슬롭툰\]|오늘자\s*rp|\brp\b|rp를\s*위한|롤플레잉|롤플|모험기록)",
 )
 
 EXCLUDED_ROW_TYPES: set[str] = {
@@ -260,6 +266,8 @@ def parse_recommend_list(html: str, gallery_id: str = DEFAULT_GALLERY_ID) -> lis
         if not title:
             continue
         if any(title.startswith(f"[{tok}]") for tok in ("공지", "설문", "AD", "광고")):
+            continue
+        if EXCLUDED_TITLE_RE.search(title):
             continue
 
         href = str(title_link["href"])
