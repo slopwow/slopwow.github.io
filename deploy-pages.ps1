@@ -64,6 +64,7 @@ try {
     } else {
         gh api "repos/$Owner/$Repo/pages" -X PUT -f "source[branch]=gh-pages" -f "source[path]=/" | Out-Null
     }
+    gh api "repos/$Owner/$Repo/pages/builds" -X POST | Out-Null
 
     Write-Host "Deployed to $LiveUrl !" -ForegroundColor Green
 } finally {
