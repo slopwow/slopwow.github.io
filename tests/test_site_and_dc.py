@@ -365,7 +365,7 @@ def test_publish_queue_page_and_five_episode_recommendations(tmp_path: Path) -> 
 
 def test_auto_thumbnail_generation_and_dict_json_format(tmp_path: Path) -> None:
     data_dir = tmp_path / "data"
-    ep_dir = data_dir / "episodes" / "ep009"
+    ep_dir = data_dir / "episodes" / "ep999"
     ep_dir.mkdir(parents=True)
 
     # Create a synthetic 900x1320 comic page with white background and middle artwork
@@ -386,8 +386,8 @@ def test_auto_thumbnail_generation_and_dict_json_format(tmp_path: Path) -> None:
             {
                 "episodes": [
                     {
-                        "episode_id": "ep009",
-                        "episode_number": 9,
+                        "episode_id": "ep999",
+                        "episode_number": 999,
                         "title": "자동 썸네일 테스트 에피소드",
                         "subtitle": "썸네일 미존재 시 자동 생성 확인",
                         "source_post_no": "99999",
@@ -395,9 +395,9 @@ def test_auto_thumbnail_generation_and_dict_json_format(tmp_path: Path) -> None:
                         "created_at": "2026-11-21T15:00:00+09:00",
                         "cut_count": 4,
                         "cast_used": ["오크 전사", "트롤 주술사"],
-                        "full_image_rel": "data/episodes/ep009/episode_full.jpg",
-                        "thumb_image_rel": "data/episodes/ep009/thumb.jpg",
-                        "page_images_rel": ["data/episodes/ep009/page_1.png"],
+                        "full_image_rel": "data/episodes/ep999/episode_full.jpg",
+                        "thumb_image_rel": "data/episodes/ep999/thumb.jpg",
+                        "page_images_rel": ["data/episodes/ep999/page_1.png"],
                     }
                 ]
             },
@@ -413,7 +413,7 @@ def test_auto_thumbnail_generation_and_dict_json_format(tmp_path: Path) -> None:
     index_path = build_static_site(episodes_json, site_dir, assets_dir)
     assert index_path.exists()
 
-    auto_thumb = site_dir / "assets" / "episodes" / "ep009" / "thumb.jpg"
+    auto_thumb = site_dir / "assets" / "episodes" / "ep999" / "thumb.jpg"
     assert auto_thumb.exists()
     with Image.open(auto_thumb) as im:
         assert im.size == (800, 500)
