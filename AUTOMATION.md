@@ -1,6 +1,6 @@
 # 와우 포에버 슬롭툰 (`sloptoon`) 6시간 자동 양산 가이드 (`AUTOMATION.md`)
 
-본 문서는 디시인사이드 **WOW 포에버 마이너 갤러리(`wowforever`)** 개념글을 6시간 주기로 정찰·웹툰화(시안 C + 실제 와우 아이템 툴팁)·정적 웹 배포(`https://slopwow.github.io/`)·디시 업로드(`[와포슬롭툰]{원본념글제목}`)까지 자동화하는 **양산 아키텍처와 운영 방법**을 정리합니다.
+본 문서는 디시인사이드 **WOW 포에버 마이너 갤러리(`wowforever`)** 최신 개념글(최근 3일 이내) 중 자극적인 인게임 사건·사고만 엄선해 **Gemini 4 Neon (XHigh) + 스웜(`/swarm`) 병렬 파이프라인**으로 6시간 주기 자동 양산(하루 최대 4편, 적합한 소재가 없으면 스킵)하고 `https://slopwow.github.io/` 배포까지 마친 뒤 병욱님 검수 후 포에버갤에 게시하는 운영 방법을 정리합니다.
 
 ---
 
@@ -9,11 +9,11 @@
 | 구분 | **방식 A: Antigravity 예약 자동화 봇 (권장 주력)** | **방식 B: Windows 작업 스케줄러 (`setup-automation.ps1`)** | **방식 C: GitHub Actions (`auto-sloptoon.yml`)** |
 | :--- | :--- | :--- | :--- |
 | **식별자 / 이름** | **`WOW 포에버 슬롭툰 6시간 자동 양산 봇`** (`wow-sloptoon-factory`) | `WowForeverSloptoonAuto` | `Auto Sloptoon & Deploy Pages` |
-| **실행 주기** | `CRON_TZ=Asia/Seoul 0 */6 * * *` (00, 06, 12, 18시 KST) | 등록 시점부터 매 6시간 반복 | `15 */6 * * *` (UTC 기준 6시간 주기) |
-| **제목 규칙** | 웹툰 제목 = `원본념글제목` 100% 일치 / 디시 제목 = **`[와포슬롭툰]{원본념글제목}`** | 동일 (`dc_packager` 자동 적용) | 동일 (`writer` / `site_builder` 자동 적용) |
-| **원화 & 아이템 툴팁** | `image-generator` 서브에이전트 + 시각 검수 + **실제 와우 아이템 툴팁(`item_tooltip`)** | 로컬 `.env`의 `GEMINI_API_KEY`로 CLI 무인 호출 | GitHub Secrets `GEMINI_API_KEY` 무인 호출 |
-| **말풍선·워터마크 합성** | `composer.compose_episode` (`overlap_px == 0`, `tooltip_overlap_px == 0`, 하단 배너) | 동일 (`autopilot` 내장) | 동일 (`run-once` 내장) |
-| **디시 포에버갤 업로드** | **외장 Chrome MCP(`chrome-devtools`, 고정닉 `와포슬롭툰`) 자동 업로드** *(캡차 시 즉시 안전 중단)* | 수동 업로드 패키지(`upload_pack/`) 생성 + Windows 알림 (직접 등록) | 정적 웹 아카이브(`gh-pages`) 배포 전용 |
+| **실행 주기 및 모델** | `CRON_TZ=Asia/Seoul 0 */6 * * *` (하루 최대 4편) · **`Gemini 4 Neon (XHigh)`** + 스웜 병렬 | 등록 시점부터 매 6시간 반복 | `15 */6 * * *` (UTC 기준 6시간 주기) |
+| **소재 선정 게이트** | **최근 3일(72시간) 이내** 실제 인게임 사건·사고 1편 엄선 (적합 소재 없으면 **자동 스킵** · RP/진영비교 영구 제외) | `scout` 상위 후보 1편 | `scout` 상위 후보 1편 |
+| **제목 및 익명성** | 원본 념글 제목 100% 일치 (`[와포슬롭툰]{원본념글제목}`) · **사고 당사자 아이디·길드명 0글자 익명** | 동일 (`dc_packager` 자동 적용) | 동일 (`writer` / `site_builder` 자동 적용) |
+| **원화 & 아이템 툴팁** | 스웜 + 3병렬 `image-generator` 팬아웃 + **실제 와우 아이템 툴팁(`item_tooltip`)** | 로컬 `.env`의 `GEMINI_API_KEY`로 CLI 무인 호출 | GitHub Secrets `GEMINI_API_KEY` 무인 호출 |
+| **배포 및 디시 게시** | **`slopwow.github.io` 실서버 배포 + `upload_pack/` 준비까지만 자동** *(병욱님 검수 승인 후 외장 Chrome 게시)* | 수동 업로드 패키지(`upload_pack/`) 생성 + Windows 알림 | 정적 웹 아카이브(`gh-pages`) 배포 전용 |
 
 > [!IMPORTANT]
 > **중복 실행 방지 안내**: **방식 A (`WOW 포에버 슬롭툰 6시간 자동 양산 봇`)**를 활성화할 때는 작업 충돌을 막기 위해 방식 B(`WowForeverSloptoonAuto`)는 미등록 상태로 두거나(`.\setup-automation.ps1 -Remove`), 오프라인 보조 수단으로만 사용하십시오.
@@ -25,51 +25,45 @@
 ### 설정 파일 위치
 - 경로: `C:\Users\kbu39\.gemini\config\sidecars\wow-sloptoon-factory\sidecar.json`
 - 표시 이름(`display_name`): **`WOW 포에버 슬롭툰 6시간 자동 양산 봇`**
-- 스케줄: `CRON_TZ=Asia/Seoul 0 */6 * * *` (한국 시간 매일 00:00, 06:00, 12:00, 18:00 정각 실행)
+- 실행 모델: `--model=gemini-4-neon-xhigh` (**Gemini 4 Neon (XHigh)** 고정)
+- 스케줄: `CRON_TZ=Asia/Seoul 0 */6 * * *` (한국 시간 매일 00:00, 06:00, 12:00, 18:00 — 하루 최대 4편)
 
 ### 활성화 방법 (최초 1회)
 보안 정책상 에이전트가 `user_config.json`을 직접 수정하여 자동화를 강제 활성화하지 않습니다.
 1. Antigravity 내 **Automations 대시보드**(`sidecar://dashboard`)를 엽니다.
 2. 목록에서 **`WOW 포에버 슬롭툰 6시간 자동 양산 봇`** (`wow-sloptoon-factory`)을 찾아 토글을 **켜기(Enable)**로 전환합니다.
-3. 외장 Chrome이 실행되어 있고 디시인사이드 고정닉 **`와포슬롭툰`** 계정이 로그인된 상태인지 확인합니다.
 
-### 핵심 제작·업로드 규칙 (최신 반영 완료)
-1. **원본 념글 제목 100% 일치 & `[와포슬롭툰]{원본념글제목}`**:
-   - `script.source_title` 및 `EpisodeRecord.title`은 원본 개념글 제목(`post.title.strip()`)을 요약·변형 없이 **100% 그대로** 사용합니다.
-   - 디시인사이드 게시글 제목은 **`[와포슬롭툰]{원본념글제목}`** (예: `[와포슬롭툰]오늘자 RP, 상상도 못한 편지.jpg`)으로 고정합니다 (`EP.{N} — ` 및 `[만화]` 표기 금지).
-2. **실제 와우 아이템 툴팁 오버레이 (`ComicCut.item_tooltip` / `ItemTooltipSpec`)**:
-   - 개념글에 특정 와우 아이템이 등장할 때(실제 플레이어 닉네임은 철저히 제외, 오직 실제 와우 아이템만 해당!), `ComicCut`의 `item_tooltip` 필드를 통해 해당 컷 빈 모서리에 **실제 다크 네이비(`#0B0D16`) 와우 툴팁 카드**를 무겹침(`tooltip_overlap_px == 0`)으로 합성합니다:
-     - **원본 스샷 툴팁 사용**: 원본 글의 아이템 툴팁 스샷을 `assets/items/<slug>.png`에 저장 후 `{"image_path": "assets/items/<slug>.png", "item_name": "...", "quality": "uncommon"}` 지정
-     - **한국어 클래식 와우헤드 자동 조회**: `{"wowhead_item_id": 7722, "quality": "rare"}` 지정 시 `https://nether.wowhead.com/tooltip/item/{id}?dataEnv=4&locale=1` 한국어 스탯·착용 효과 및 `wow.zamimg.com` 아이콘을 자동 렌더링 (오프라인·거북이와우 커스텀 아이템 수동 스탯 폴백 지원)
-3. **실시간 알림(`#alarm`) 토스트 가림 방지 제출**:
-   - 외장 Chrome 업로드 시 디시 실시간 댓글 알림(`#alarm`)이 우측 하단 `등록` 버튼 좌표를 덮어도 클릭이 씹히지 않도록 `evaluate_script`(`(el) => el.click()`)로 안전하게 제출합니다.
+### 핵심 제작·검수 규칙 (최신 반영 완료)
+1. **최근 3일 이내 사건·사고 엄선 및 억지 제작 금지**:
+   - 최근 3일(72시간) 이내 등록된 포에버갤 미제작 념글 중 닌자·먹튀·입찰 분쟁·이중특성 궤변·파티 참사 등 공감과 재미가 확실한 사건·사고 1편만 선정합니다.
+   - `🎬RP` 말머리·장문 RP 연재, 지루한 진영 비교/일반론, 정치·현실 분쟁, 패치노트는 영구 제외하며, 최근 3일 내 적절한 소재가 없으면 억지로 만들지 않고 `[SKIP]` 보고 후 종료합니다.
+2. **원본 념글 제목 100% 일치 & 100% 익명성 (고소 방지)**:
+   - `script.source_title` 및 `EpisodeRecord.title`은 원본 념글 제목(`post.title.strip()`) 그대로 사용하며 디시 등록 제목은 **`[와포슬롭툰]{원본념글제목}`**으로 고정합니다.
+   - 사고 당사자의 실제 아이디·닉네임·길드명(패러디 포함)은 대사·부제·크롭 이미지 어디에도 절대 적지 않고 오직 직업 호칭만 사용합니다.
+3. **실제 와우 아이템 툴팁 오버레이 (`ComicCut.item_tooltip`)**:
+   - 원글 첨부 공식 `WOWF.IO`/인게임 툴팁 스샷(`assets/items/<slug>.png`) 또는 한국어 클래식 와우헤드(`https://nether.wowhead.com/tooltip/item/{id}?dataEnv=4&locale=1` + `wow.zamimg.com` 아이콘)를 `tooltip_overlap_px == 0`으로 합성합니다.
+4. **선(先) 사이트 배포 · 후(後) 검수 승인 업로드**:
+   - 방문자 클린 사이트(`https://slopwow.github.io/`, `publish.html`/글쓰기 링크 0개) 배포 및 로컬 `upload_pack/` 준비까지만 자동 수행하고, 병욱님이 검수 후 지시하실 때만 외장 Chrome으로 포에버갤에 게시합니다.
 
 ### 매 6시간 실행 파이프라인 요약
 ```mermaid
 flowchart TD
-    A["6시간 스케줄 트리거 (00/06/12/18시 KST)"] --> B["wowforever 개념글 정찰 (기제작 source_post_no 제외)"]
-    B --> C{"신규 적합 개념글 존재?"}
-    C -- "예" --> D["원본 제목 그대로 시안 C 4~6컷 script.json 작성 + item_tooltip 설정"]
-    D --> E["image-generator 서브에이전트 순백(#FFFFFF) 원화 생성 & 시각 검수"]
-    E --> F["composer 무겹침(overlap_px == 0) 말풍선 + 와우 아이템 툴팁 + 하단 워터마크"]
-    F --> G["episodes.json 갱신 -> pack-dc -> deploy-pages.ps1 실서버 배포"]
-    C -- "아니오" --> H["기존 미게시 큐(publish_queue.json) 점검"]
-    G --> H
-    H --> I{"미게시 에피소드 존재?"}
-    I -- "예" --> J["외장 Chrome MCP로 [와포슬롭툰]{원본념글제목} 업로드 (evaluate_script 등록)"]
-    J --> K{"캡차(자동등록방지) 발생?"}
-    K -- "아니오" --> L["등록 완료 검증 -> mark-published -> deploy-pages.ps1 재동기화"]
-    K -- "예" --> M["즉시 중단 (우회 금지) & 큐 보존 후 사용자 인계 보고"]
-    I -- "아니오" --> N["실행 완료 요약 보고"]
+    A["6시간 스케줄 트리거 (00/06/12/18시 KST · Neon XHigh)"] --> B["최근 3일 이내 미제작 wowforever 념글 정찰"]
+    B --> C{"자극적 사건·사고 적합 소재 존재?"}
+    C -- "아니오" --> S["[SKIP] 억지 제작 없이 즉시 종료 보고"]
+    C -- "예" --> D["스웜(/swarm) 편성: script-studio + qa-releaser + monitor"]
+    D --> E["100% 익명 대본 + 실제 와우 아이템 툴팁 + 3병렬 image-generator 6컷 생성"]
+    E --> F["composer 무겹침(overlap_px == 0, tooltip_overlap_px == 0) + 하단 워터마크"]
+    F --> G["qa-releaser 익명성·품질 검수 -> pytest -> slopwow.github.io 실서버 배포"]
+    G --> H["upload_pack 준비 및 병욱님 검수 대기 보고 (디시 자동 게시 안 함)"]
 ```
 
 ### 스코프된 최소 권한 (`agent_permissions`)
-와일드카드(`command(*)`, `mcp(*)`, `read_url(*)` 등) 없이 검증된 최소 권한만 부여되어 있습니다:
+와일드카드(`command(*)`, `mcp(*)`, `read_url(*)` 등) 없이 검증된 15개 최소 권한만 부여되어 있습니다:
 - **워크스페이스**: `file:///C:/Users/kbu39/Desktop/antigravity/sloptoon`
-- **파일 접근**: `C:/Users/kbu39/Desktop/antigravity/sloptoon` 읽기·쓰기, `C:/Users/kbu39/.gemini/antigravity/mcp/chrome-devtools` 스키마 읽기
-- **도메인 조회**: `gall.dcinside.com`, `nether.wowhead.com`, `ko.classic.wowhead.com`
-- **검증된 CLI 명령**: `python -m wow_sloptoon.cli`, `python -m pytest`, `python -c`, `powershell -ExecutionPolicy Bypass -File`, `git`, `gh api`, `Copy-Item`, `Remove-Item`
-- **외장 Chrome MCP (`chrome-devtools`)**: `list_pages`, `select_page`, `new_page`, `close_page`, `navigate_page`, `take_snapshot`, `click`, `fill`, `upload_file`, `evaluate_script`, `handle_dialog`, `wait_for`
+- **파일 접근**: `C:/Users/kbu39/Desktop/antigravity/sloptoon` 읽기·쓰기, 스웜 내장 스킬(`native_swarm`, `swarm_pane`, `swarm_monitor`) 읽기
+- **도메인 조회**: `gall.dcinside.com`, `nether.wowhead.com`, `ko.classic.wowhead.com`, `wow.zamimg.com`
+- **검증된 CLI 명령**: `python -m wow_sloptoon.cli`, `python -m pytest`, `python -c`, `powershell -ExecutionPolicy Bypass -File`, `git`, `gh api`
 
 ---
 
