@@ -3,7 +3,7 @@
   "source_post_no": "105798",
   "source_title": "장트라제 처먹고 파탈한 도둑놈ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ",
   "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=105798",
-  "subtitle": "줄파락 술트라제 완성 직전 도적 먹튀 대참사 — 100% 인던 상황극",
+  "subtitle": "줄파락 술트라제 완성 직전 도적 먹튀 대참사",
   "cuts": [
     {
       "cut_index": 1,
@@ -14,14 +14,15 @@
         "노움 도적"
       ],
       "speaker": "언데드 성기사",
-      "dialogue": "술트라제 완성이다 세상에!!\n감사합니다 여러분!!",
+      "dialogue": "드디어 장트라제 떴다!!\n술트라제 완성이다 세상에!!\n감사합니다 여러분!!",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white background (no dungeon scenery, no desert sand, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero speech bubbles). On the lower-left, the Undead Paladin girl (top-row #2 on Draft C cast sheet: round white cartoon skull hood with dark eye sockets, chin-length silver-white bob hair with icy blue inner tips, crisp white-and-gold paladin cloak with cream neck bow ribbon, shiny golden warhammer resting beside her) throws both hands up joyfully in ecstatic tearful celebration with huge sparkling starry golden-yellow eyes, rosy flushed cheeks, and a radiant open-mouthed joy smile, looking up toward a floating gleaming cobalt-blue and gold one-handed fantasy broadsword radiating crisp blue rare-loot sparkles between them. On the lower-right, the Gnome Rogue girl (top-row #3 on Draft C cast sheet: blonde twin pigtails fading into hot-pink and electric-blue tips, green-lensed steampunk aviator goggles on her forehead, cross and star hairpins, bright blue eyes, black stealth mask pulled down below her chin, dark charcoal rogue cloak, dual glowing poison-green daggers at her waist) glances slyly sideways at the gleaming blue sword with a sneaky mischievous half-lidded smirk, secretly reaching one gloved hand out toward a tiny floating golden loot-dice icon (pure graphic icon only, zero letters or numbers). Keep both characters and the floating sword strictly in the lower two-thirds of the 4:3 frame with generous pure #FFFFFF white headroom across the top 38%.",
+      "visual_prompt": "Low-angle dynamic dungeon celebration shot over a small soft organic floating patch of warm Zul'Farrak desert sandstone temple steps (NO straight horizon or wall lines!) with a tiny comical defeated Zul'Farrak troll boss silhouette sprawled face-down with dizzy spiral eyes at the lower-center. On the lower-left, the Undead Paladin chibi girl (round white cartoon skull hood with dark eye sockets, chin-length silver-white bob hair with icy blue inner tips, white-and-gold paladin cloak with cream neck bow, her golden warhammer strapped cleanly across her back — Clean Hand Rule!) leaps jubilantly into the air throwing both empty hands skyward with huge starry sparkling golden eyes, rosy flushed cheeks, and an ecstatic cheering open-mouth smile toward a compact one-handed cobalt-blue-and-gold fantasy sword (strictly modest compact 1-hand chibi sword scale — NEVER a giant two-handed greatsword!) hovering brightly in blue rare-loot sparkles above the boss. Crouching slyly in the lower-right foreground is the Gnome Rogue chibi girl (blonde twin pigtails fading into hot-pink and electric-blue tips, green-lensed steampunk aviator goggles on forehead, black stealth mask below chin, dark charcoal cloak, dual poison-green daggers neatly sheathed at her waist belt!) peeking sideways with gleaming scheming blue eyes and a devilish smirk as she flicks a chunky white-and-gold 6-sided loot die showing ONLY simple round black dot pips (strictly ZERO digits, ZERO numbers, ZERO letters!) upward with her thumb. Keep all figures, sword, and organic sandstone patch strictly inside the lower two-thirds with 100% pure solid #FFFFFF white headroom across the entire top 38% (both top-left and top-right corners pure white for speech bubble and item tooltip). Zero text, zero UI.",
       "tail_target": "left",
       "item_tooltip": {
         "wowhead_item_id": 11086,
         "item_name": "보호의 장트라제",
-        "quality": "rare"
+        "quality": "rare",
+        "preferred_corner": "top_right"
       }
     },
     {
@@ -29,12 +30,13 @@
       "aspect_ratio": "16:9",
       "layout_slot": "bottom",
       "characters": [
+        "노움 도적",
         "스카이본 마법사"
       ],
       "speaker": "스카이본 마법사",
-      "dialogue": "어... 기사님, 그거\n도적님이 입찰해서 드셨는데요...",
+      "dialogue": "어... 기사님, 잠깐만요!\n그거 도적님이 입찰해서\n지금 바로 채갔는데요?!",
       "wordless": false,
-      "visual_prompt": "Solo cute anime chibi girl from the Draft C cast sheet on a 100% pure solid #FFFFFF white background (no scenery, no gray tint, no panel borders, zero text, zero letters, zero speech bubbles). Positioned cleanly on the right half of the wide 16:9 frame facing slightly left (leaving the entire left 46% completely empty pure #FFFFFF white space for a left speech bubble), the Skyborne Mage girl (bottom-row #4 on Draft C cast sheet: pointed elf ears, long golden-blonde hair fading into pastel sky-blue and aqua tips, big sapphire-blue eyes, blue-and-white sailor-collar mage uniform with a teal ribbon bow) clutches her steaming warm round mage bun and glowing corked blue mana-water flask awkwardly to her chest, giving an uneasy apologetic grimace with nervous side-glancing eyes, worried angled eyebrows, and a crisp cartoon sweat drop on her cheek as she hesitantly points one thumb backward off-frame.",
+      "visual_prompt": "Side-profile 90-degree dynamic heist action shot positioned cleanly on the right half of the wide 16:9 frame (leaving the entire left 46% completely empty pure #FFFFFF white space for the speech bubble!). In the center-right, the Skyborne Mage chibi girl (pointed elf ears, golden-blonde hair fading into sky-blue tips, delicate white feather charm, blue-and-white sailor mage uniform, hands completely empty with NO bread or water flask!) leans sharply backward in alarmed shock with wide pale sapphire eyes, jaw dropped, and a crisp cartoon sweat drop pointing urgently toward the far-right edge. Vaulting mid-air across the far-right edge with comic speed lines is the Gnome Rogue chibi girl (blonde-pink-blue pigtails flying, green goggles, dark charcoal cloak, her own poison-green daggers neatly sheathed at her belt — Clean Hand Rule!) triumphantly snatching the compact one-handed cobalt-blue-and-gold sword (modest 1-hand scale!) in one gloved hand with a mischievous sparkling wink and cheeky tongue-out grin. 100% pure solid #FFFFFF white outer background, zero text, zero letters, zero UI.",
       "tail_target": "right"
     },
     {
@@ -45,11 +47,11 @@
         "언데드 성기사",
         "노움 도적"
       ],
-      "speaker": "언데드 성기사",
-      "dialogue": "저 술트라제 만드는데 주시면 안 되나요 ㅠㅠ\n10골... 아니 20골 드릴게요!!\n(도적: 저도 이거 보고 온 거라서 지송지송~)",
+      "speaker": "노움 도적",
+      "dialogue": "20골이요? 에이~\n저도 이거 보고 온 거라서 지송지송!\n그럼 수고요~ 칼파탈♪",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white background (no dungeon scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero speech bubbles). On the lower-left, the Undead Paladin girl (top-row #2 on Draft C cast sheet: round white cartoon skull hood with dark eye sockets, chin-length silver-white bob hair with icy blue inner tips, crisp white-and-gold paladin cloak with cream neck bow ribbon) drops to her knees leaning forward desperately with huge teary pleading golden-yellow puppy eyes and trembling hands holding out a plump brown leather pouch overflowing with shiny golden coins. On the lower-right, the Gnome Rogue girl (top-row #3 on Draft C cast sheet: blonde twin pigtails fading into hot-pink and electric-blue tips, green-lensed steampunk aviator goggles on her forehead, cross and star hairpins, bright blue eyes, black stealth mask pulled down below her chin, dark charcoal rogue cloak, glowing green daggers at her belt) turns casually away walking toward the right edge, hoisting the gleaming cobalt-blue and gold broadsword over one shoulder while flashing a breezy dismissive V-sign over her other shoulder with a cheeky unapologetic closed-eye grin, as pale translucent cyan-blue logout teleport sparkles swirl around her boots and cloak hem. Keep both characters strictly in the lower two-thirds of the 4:3 frame with generous pure #FFFFFF white headroom across the top 36%.",
-      "tail_target": "left"
+      "visual_prompt": "Over-the-shoulder (OTS) diagonal getaway shot across the lower two-thirds of the 4:3 frame! Foreground-left: the Undead Paladin chibi girl (white skull hood, silver-white bob hair, white-and-gold paladin cloak, warhammer stowed away) drops desperately to her knees lunging forward with huge streaming tearful puppy-dog golden eyes, thrusting out a plump brown leather coin pouch overflowing with gleaming round golden coins (NO paper bills or symbols!). Striding jauntily away toward the lower-right edge seen partially from behind is the Gnome Rogue chibi girl (blonde-pink-blue pigtails, green goggles, charcoal rogue cloak, her own green daggers cleanly sheathed at her belt — Clean Hand Rule!), hoisting the compact one-handed cobalt-blue-and-gold sword (modest 1-hand scale!) casually over one shoulder while flashing a breezy unapologetic V-sign back over her shoulder with a shameless closed-eye smirk as a billowing cartoon puff of gray Vanish stealth smoke and swirling cyan party-leave teleport sparkles erupt around her boots! Keep all figures and smoke puffs strictly inside the lower two-thirds with 100% pure solid #FFFFFF white headroom across the entire top 38%. Zero text, zero letters, zero UI.",
+      "tail_target": "right"
     },
     {
       "cut_index": 4,
@@ -61,7 +63,7 @@
       "speaker": null,
       "dialogue": null,
       "wordless": true,
-      "visual_prompt": "Tight centered comedic close-up bust portrait of ONLY the Undead Paladin chibi girl from the Draft C cast sheet on a 100% pure solid #FFFFFF white background (no scenery, no panel border, zero text, zero letters, zero speech bubbles, zero symbols). Squarely centered in the 16:9 canvas: cute chibi girl wearing her round white cartoon skull hood with dark eye sockets, chin-length silver-white bob hair with icy blue inner tips, and crisp white-and-gold paladin cloak collar with cream neck bow ribbon. Classic anime deadpan horror and soul-crushed stunned disbelief freeze-frame expression matching the silent bottom reaction panel of Reference Image 2: deep ominous dark blue-gray gloom shadow cast heavily across her forehead and upper eyes, wide-open golden-yellow eyes with tiny contracted trembling pinpoint pupils staring straight ahead into the void, a single crisp cartoon cold sweat drop rolling down her pale cheek, tiny frozen parted mouth, completely petrified and speechless in utter disbelief.",
+      "visual_prompt": "Dutch-tilt dramatic close-up comedic freeze-frame of ONLY the Undead Paladin chibi girl (filling ~80% of canvas height, tilted diagonally on a 100% pure solid #FFFFFF white background). Round white cartoon skull hood with dark eye sockets, chin-length silver-white bob hair with icy blue inner tips, crisp white-and-gold paladin cloak collar with cream bow. Heavy ominous dark slate-indigo gloom shadow crashes down over her forehead and upper eyes; her wide-open golden-yellow eyes shrink into terrified trembling white pinpoint rings staring straight ahead into the void, a large crisp cold sweat drop rolling down her pale cheek, mouth frozen wide open in utter soul-shattered disbelief as faint wisps of Vanish smoke drift past her shoulder. Strictly zero text, zero letters, zero UI, zero borders.",
       "tail_target": "center"
     },
     {
@@ -73,14 +75,15 @@
         "언데드 성기사"
       ],
       "speaker": "스카이본 마법사",
-      "dialogue": "도적이 저걸 왜 먹지...\n1안은 기사님 리액션 보고 일부러 굴린 거임.",
+      "dialogue": "도적이 저걸 왜 먹지...\n1안은 기사님 신나하는 거 보고\n일부러 입찰 굴린 거임.",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white background (no dungeon scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero speech bubbles). On the lower-left, the Skyborne Mage girl (bottom-row #4 on Draft C cast sheet: pointed elf ears, long golden-blonde hair fading into pastel sky-blue and aqua tips, sapphire-blue eyes, blue-and-white sailor-collar mage uniform with teal ribbon bow, holding her corked blue mana-water flask in one hand) leans toward the Paladin with a tired deadpan sighing expression, half-lidded unimpressed eyes, and one hand pointing up toward a faint ghostly translucent purple-glowing epic two-handed broadsword vision dissolving away into tiny purple sparkles above them. On the lower-right, the Undead Paladin girl (top-row #2 on Draft C cast sheet: round white cartoon skull hood with dark eye sockets, chin-length silver-white bob hair with icy blue inner tips, crisp white-and-gold paladin cloak with cream neck bow ribbon, golden warhammer slumped at her side) sits hunched over deflated like a crushed plushie with blank hollow golden eyes and dark gloom vertical lines above her hood, still clutching her rejected gold coin pouch weakly. Keep both characters and the faint sword vision strictly in the lower two-thirds of the 4:3 frame with generous pure #FFFFFF white headroom across the top 38%.",
+      "visual_prompt": "High-angle diagonal aftermath shot looking down at a small soft organic floating patch of Zul'Farrak desert sandstone tiles (NO straight horizon or wall lines!). Sprawled hunched face-down like a crushed deflated plushie on the lower-right is the Undead Paladin chibi girl (white skull hood, silver-white bob hair, paladin cloak) beside her dropped rejected brown leather gold coin pouch with hollow deadpan eyes and dark vertical gloom lines while a faint ghostly translucent purple silhouette of an epic two-handed broadsword shatters and dissolves into tiny purple dust sparkles just above her hood. Leaning in from the lower-left is the Skyborne Mage chibi girl (pointed elf ears, golden-blonde-to-sky-blue hair, sailor mage uniform, hands free with NO bread or flask) resting one hand on her hip and gesturing tiredly with the other, wearing half-lidded exasperated eyes and a weary sweat drop, while two tiny extra chibi dungeon party silhouettes shake their heads sympathetically in the small lower-center background. Keep all figures and dissolving sword strictly inside the lower two-thirds with 100% pure solid #FFFFFF white headroom across the entire top 38% (both top-left and top-right corners pure white for speech bubble and item tooltip). Zero text, zero UI.",
       "tail_target": "left",
       "item_tooltip": {
         "wowhead_item_id": 9372,
         "item_name": "질풍의 술트라제",
-        "quality": "epic"
+        "quality": "epic",
+        "preferred_corner": "top_right"
       }
     },
     {
@@ -91,9 +94,9 @@
         "인간 흑마법사"
       ],
       "speaker": "인간 흑마법사",
-      "dialogue": "악마보다 더한 인간이 있네...\n템 뜰 때 절대 좋아하지 마라!!",
+      "dialogue": "악마보다 더한 인간이 있네...\n얘들아, 인던에서 템 뜰 땐\n절대 좋아하지 마라!!",
       "wordless": false,
-      "visual_prompt": "Solo cute anime chibi girl from the Draft C cast sheet on a 100% pure solid #FFFFFF white background (no scenery, no gray tint, no panel borders, zero text, zero letters, zero speech bubbles). Positioned cleanly on the right half of the wide 16:9 frame facing slightly left (leaving the entire left 46% completely empty pure #FFFFFF white space for a left speech bubble), the Human Warlock girl (bottom-row #3 on Draft C cast sheet: deep dark-purple warlock hood over long jet-black twin pigtails with vivid purple highlights, dark purple robe, floating purple soul-shard crystals around her) hugs her plump grumpy red plush imp doll tightly against her chest in genuine pale-faced horror — her sharp violet eyes wide open and trembling with a cold sweat drop on her cheek as even the little red plush imp doll in her arms shivers with shocked wide cartoon eyes and a tiny sweat drop, looking genuinely terrified of human greed.",
+      "visual_prompt": "Low-angle dramatic comedy gag shot positioned cleanly on the right half of the wide 16:9 frame facing slightly left (leaving the entire left 46% completely empty pure #FFFFFF white space for the speech bubble!). The Human Warlock chibi girl (deep dark-purple warlock hood over long jet-black twin pigtails with vivid purple highlights, dark purple robe, floating purple soul-shard crystals jittering nervously around her) hunches backward shivering in genuine pale-faced horror with wide trembling violet eyes, chattering mouth, cold sweat drop, and jagged purple chill lines as she hugs her plump grumpy red plush imp doll tightly up to her chin — and even the little red plush imp doll in her arms shivers in sheer terror with huge wide white shocked eyes and tiny paws covering its mouth! 100% pure solid #FFFFFF white outer background, zero text, zero letters, zero UI.",
       "tail_target": "right"
     }
   ]

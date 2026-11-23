@@ -3,21 +3,21 @@
   "source_post_no": "78596",
   "source_title": "와뉴비 다들 왜 사제 안키우는 지 알거같다",
   "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=78596",
-  "subtitle": "수도원 주특입 8바퀴 천템 전쟁과 착한 보기님 — 100% 인던 상황극",
+  "subtitle": "수도원 주특입 8바퀴 — 화이트메인 템 쟁탈전과 착한 보기님",
   "cuts": [
     {
       "cut_index": 1,
       "aspect_ratio": "4:3",
       "layout_slot": "top",
       "characters": [
-        "트롤 주술사",
-        "나이트엘프 사제"
+        "나이트엘프 사제",
+        "트롤 주술사"
       ],
       "speaker": "트롤 주술사",
       "dialogue": "힐모자요? 주문력·정신력 붙었으니\n고술인 저도 주특 맞죠! ㅎㅎ",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white background (no dungeon scenery, no floor shading, no gray backdrop, zero text, zero speech bubbles, zero panel borders). On the lower-left, the Troll Shaman girl (sky-blue plush troll onesie hood with bright red spiky mohawk crest, floppy pierced long ears and tiny white hood tusks, mint-teal bob hair, winking bright green eye and cheeky blep tongue-out grin, patterned tribal scarf, crackling blue lightning sparks) proudly balances an ornate crimson-and-gold Scarlet bishop miter hat on top of her troll hood while flashing a carefree V-sign. On the lower-right, the Night Elf Priest girl (long silky lavender-silver hair, long pointed elf ears, golden crescent-moon forehead circlet, tired lilac-purple eyes with dark under-eye circles, white-and-gold priestess robe with cream collar bow, holding her golden crescent-moon staff) reaches one hand out weakly toward the hat with watery bewildered eyes and a tiny sweat drop. Keep both characters strictly in the lower two-thirds with generous pure #FFFFFF white headroom across the top 35%.",
-      "tail_target": "left",
+      "visual_prompt": "Over-the-shoulder (OTS) diagonal action shot recreating the Scarlet Monastery Cathedral boss room right after defeating High Inquisitor Whitemane. Foreground-left: seen over the slumped lavender-haired shoulder of the Night Elf Priest chibi girl (pointed elf ears, golden crescent circlet, white-and-gold priestess robe, her golden crescent staff leaned aside so both hands reach out weakly in dismay). Looking diagonally across a small soft organic floating patch of crimson Scarlet Cathedral carpet (NO straight horizon or wall lines!) where a tiny comical collapsed chibi boss silhouette of white-haired red-robed High Inquisitor Whitemane lies with dizzy spiral eyes beside an open wooden loot chest: on the lower-right, the fair peach-ivory-skinned Troll Shaman chibi girl (sky-blue plush troll hood with bright red spiky mohawk, floppy pierced ears, mint-teal bob hair, patterned tribal scarf, crackling blue lightning sparks) leaps jubilantly balancing an ornate crimson-and-gold Scarlet cloth bishop hat right atop her troll hood while flashing a shameless winking blep tongue-out grin and V-sign; in the tiny lower-center background, a generic chibi hooded mage extra scurries off hugging a gleaming ruby amulet. Keep all characters, fallen boss, and organic carpet patch strictly inside the lower two-thirds, fading seamlessly into 100% pure solid #FFFFFF white headroom across the entire top 38% (both top-left and top-right corners completely pure white for speech bubble and item tooltip). Zero text, zero letters, zero UI.",
+      "tail_target": "right",
       "item_tooltip": {
         "wowhead_item_id": 7720,
         "item_name": "화이트메인의 모자",
@@ -34,7 +34,8 @@
         ],
         "equip_effects": [
           "착용 효과: 마법 주문 및 효과로 입히는 피해와 치유량이 최대 18만큼 증가합니다."
-        ]
+        ],
+        "preferred_corner": "top_left"
       }
     },
     {
@@ -42,14 +43,13 @@
       "aspect_ratio": "16:9",
       "layout_slot": "bottom",
       "characters": [
-        "인간 흑마법사",
-        "스카이본 마법사"
+        "나이트엘프 사제"
       ],
-      "speaker": "인간 흑마법사",
-      "dialogue": "어머 치유량 옆에 주문력 붙었네?\n천 클래스면 다 굴리는 거 아님?",
+      "speaker": "나이트엘프 사제",
+      "dialogue": "주특입 8바퀴째인데...\n캐스터에 하이브리드까지\n왜 죄다 천을 굴려대냐고!!",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet positioned side-by-side on the right half of the wide 16:9 frame (leaving the entire left 45% completely empty pure #FFFFFF white space for a left speech bubble), on a 100% pure solid #FFFFFF white background (no scenery, no gray tint, zero text, zero speech bubbles, zero borders). Left of the pair (center-right): the Human Warlock girl (deep dark-purple warlock hood over long jet-black twin pigtails with vivid purple highlights, sharp violet eyes, cheeky fang smirk, floating tiny purple soul-shard crystals, dark purple robe, hugging her grumpy red plush imp doll) gleefully holds up a second crimson-and-gold cloth bishop hat with sparkling loot stars. Right of the pair (far-right): the Skyborne Mage girl (pointed elf ears, long golden-blonde hair fading into pastel sky-blue and aqua tips, sparkling sapphire-blue eyes, blue-and-white sailor-collar mage uniform with teal ribbon bow, holding her blue mana flask) cheerfully wears a shiny ruby-gold caster amulet around her neck with a bright innocent smile.",
-      "tail_target": "right"
+      "visual_prompt": "High-angle diagonal shot looking down across the left half of the wide 16:9 frame (leaving the entire right 46% completely empty pure #FFFFFF white space for the speech bubble!). On a small soft organic floating patch of Scarlet Monastery cobblestone tiles (NO straight horizon or divider lines!), on the far-left sits the exhausted Night Elf Priest chibi girl (lavender-silver hair, pointed elf ears, golden crescent circlet, heavy dark under-eye circles, white-and-gold priestess robe, crescent staff leaned aside) slumped hugging her knees with twitching half-lidded furious eyes, puffed exasperated cheeks, and a tiny plain wand drooping weakly in one hand. Right beside her toward center-left, a chaotic cartoon scramble of 3 chibi party extras (a dark-hooded warlock, a blue-robed mage, and a leafy leather druid) dive headfirst in a puff of comic dust onto a glittering pile of crimson cloth hats and chunky white-and-gold 6-sided loot dice showing ONLY simple round black dot pips (strictly ZERO digits, ZERO numbers, ZERO letters!). 100% pure solid #FFFFFF white outer background, zero text, zero UI.",
+      "tail_target": "left"
     },
     {
       "cut_index": 3,
@@ -62,12 +62,13 @@
       "speaker": "오크 전사",
       "dialogue": "어우 힐무기인 줄 몰랐네요 ㅈㅅ!\n이미 착용해서 못 드림 수고요~!",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white background (no scenery, no gray floor, zero text, zero speech bubbles, zero panel borders). On the lower-left, the Night Elf Priest girl (long silky lavender-silver hair, pointed elf ears, golden crescent-moon circlet, dark under-eye circles, white-and-gold priestess robe with cream bow) leans forward in desperate disbelief reaching both hands out with wide shocked teary lilac eyes. On the lower-right, the Orc Warrior girl (vibrant green plush orc animal-onesie hood with curved cream horns, tiny fangs, piggy snout and pointed green ears, black high ponytail, spiky red pauldrons over silver plate armor) sheepishly tiptoes away toward the right while sweating nervously with an awkward apologetic grin, gripping her silver battle axe in one hand and an ornate glowing golden holy healer mace in her other hand (radiating golden soulbound sparkles) as faint blue teleport sparkles swirl at her heels. Keep both characters in the lower two-thirds with generous pure #FFFFFF white headroom across the top 35%.",
+      "visual_prompt": "Side-profile 90-degree dynamic chase action shot across the lower two-thirds of the 4:3 frame! On the lower-right, the fair peach-ivory-skinned Orc Warrior chibi girl (vibrant green plush orc onesie hood with curved cream horns and tiny fangs, black high ponytail, crimson eyes, spiky red pauldrons over silver plate armor, her chunky silver battle axe strapped cleanly across her back — Clean Hand Rule!) sprints frantically rightward in a guilty tiptoe dash kicking up comic dust puffs and swirling cyan instance-exit sparkles, gripping a newly equipped gleaming golden one-handed healer mace (radiating golden soulbound sparkles!) in one hand while glancing back over her shoulder with a sweaty sheepish apologetic grin. Lunging horizontally from the lower-left in mid-stumble is the Night Elf Priest chibi girl (lavender hair flying wildly backward, golden crescent circlet, white-and-gold robe, her crescent staff dropped behind her) tripping forward with jaw dropped wide open and watery panicked eyes reaching both desperate hands after the fleeing Warrior. Keep all figures and dust puffs strictly inside the lower two-thirds with 100% pure solid #FFFFFF white headroom across the entire top 38% (both top-left and top-right corners completely pure white for item tooltip and speech bubble). Zero text, zero letters, zero UI.",
       "tail_target": "right",
       "item_tooltip": {
         "image_path": "assets/items/scepter_of_the_librarian.png",
         "item_name": "사서의 홀",
-        "quality": "uncommon"
+        "quality": "uncommon",
+        "preferred_corner": "top_left"
       }
     },
     {
@@ -80,7 +81,7 @@
       "speaker": null,
       "dialogue": null,
       "wordless": true,
-      "visual_prompt": "Tight centered comedic close-up bust portrait of the Night Elf Priest chibi girl from the Draft C cast sheet on a 100% pure solid #FFFFFF white background (no scenery, no panel border, zero text, zero speech bubbles, zero letters). Squarely centered in the 16:9 canvas: slender chibi girl with long silky lavender-silver hair, long pointed elf ears, golden crescent-moon forehead circlet, and white-and-gold priestess robe collar with cream bow. Iconic anime deadpan horror and soul-crushed freeze-frame expression matching the silent bottom reaction panel of Reference Image 2: deep dark gloom shadow cast across her forehead and upper eyes, pronounced dark under-eye circles, wide-open lilac-purple eyes with tiny contracted trembling pupils staring into the void, a single crisp cold sweat drop on her cheek, and a tiny translucent white cartoon wisp of her soul drifting slightly out of her frozen parted mouth.",
+      "visual_prompt": "Dutch-tilt dramatic close-up comedic freeze-frame of ONLY the Night Elf Priest chibi girl (filling ~80% of canvas height, dynamically tilted diagonally on a 100% pure solid #FFFFFF white background). Long silky lavender-silver hair, pointed elf ears, golden crescent-moon circlet, white-and-gold priestess robe collar with cream bow. Deep ominous dark-indigo gloom shadow falls heavily across her forehead and prominent dark under-eye circles; wide-open lilac-purple eyes shrink to hollow trembling white pinpoint pupils staring straight ahead into the void, a crisp cold sweat drop rolling down her cheek, and a cute tiny translucent white cartoon ghost-wisp of her soul drifting out of her frozen parted mouth while one slumped hand weakly clutches her tiny plain wand. Strictly zero text, zero letters, zero UI, zero borders.",
       "tail_target": "center"
     },
     {
@@ -92,9 +93,9 @@
         "언데드 성기사"
       ],
       "speaker": "언데드 성기사",
-      "dialogue": "힐러님 그렇게 간절하게 보시는데...\n전 패스할게요. 드세요.",
+      "dialogue": "원래 주문력 붙어서 보기 비스긴 한데...\n힐러님 너무 간절해 보이시네요.\n전 패스할게요. 드세요.",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white background (no scenery, no gray backdrop, zero text, zero speech bubbles, zero panel borders). On the lower-left, the Night Elf Priest girl (long silky lavender-silver hair, pointed elf ears, golden crescent-moon circlet, dark under-eye circles, white-and-gold priestess robe with cream bow) clasps both hands tightly under her chin, trembling nervously and staring with huge pleading watery puppy-dog lilac eyes at a glowing ornate golden holy healer mace resting between them. On the lower-right, the Undead Paladin girl (round white cartoon skull hood with dark eye sockets, chin-length silver-white bob hair with icy blue inner tips, deadpan sleepy half-lidded golden-yellow eyes, crisp white-and-gold paladin cloak with cream neck bow, resting her own golden warhammer over one shoulder) calmly and coolly gestures her open palm toward the Priest, gently sliding the glowing holy healer mace over to her in stoic kindness. Keep both characters in the lower two-thirds with generous pure #FFFFFF white headroom across the top 35%.",
+      "visual_prompt": "Low-angle heroic comedic shot looking slightly upward across a soft organic floating patch of Scarlet Cathedral stone floor (NO straight horizon or wall lines!). Standing tall and cool on the lower-right is the Undead Protection Paladin tank chibi girl (round white cartoon skull hood with dark eye sockets, chin-length silver-white bob hair with icy blue inner tips, crisp white-and-gold paladin cloak with cream neck bow) wearing a sturdy shiny golden paladin crest shield strapped cleanly on her left forearm (her own one-handed weapon neatly sheathed at her waist — Tank Shield & Clean Hand Rules!), calmly extending the radiant glowing golden one-handed healer mace forward in her right gloved hand with soft warm golden light rays behind her and a stoic half-lidded gentle smile. Crouched kneeling low on the lower-left is the Night Elf Priest chibi girl (crescent staff leaned aside) leaning eagerly upward with tightly clasped trembling hands, rosy cheeks, and gigantic shimmering starry tearful puppy-dog lilac eyes gazing in awe at the mace. Keep all figures and golden rays strictly inside the lower two-thirds with 100% pure solid #FFFFFF white headroom across the entire top 38%. Zero text, zero letters, zero UI.",
       "tail_target": "right"
     },
     {
@@ -106,10 +107,10 @@
         "언데드 성기사"
       ],
       "speaker": "나이트엘프 사제",
-      "dialogue": "고맙다 보기야...!!\n넌 진짜 착한 기사야아아!!",
+      "dialogue": "고맙다 보기야...!!\n무기 먹었으니 사제 더 열심히 할게!!\n넌 진짜 착한 기사야아아!!",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white background (no scenery, no gray floor, zero text, zero speech bubbles, zero panel borders), positioned cleanly across the lower two-thirds of the wide 16:9 frame (leaving clean pure #FFFFFF white headroom along the top 34% for a top-center speech bubble). On the left, the Night Elf Priest girl (long silky lavender-silver hair, pointed elf ears, golden crescent-moon circlet, white-and-gold priestess robe with cream bow) hugs her brand-new radiant golden holy healer mace tightly against her chest with both hands, bawling waterfalls of joyful anime tears of pure happiness with rosy blushing cheeks and warm golden sparkles around her. On the right, the Undead Paladin girl (round white cartoon skull hood with dark eye sockets, silver-white bob hair with icy blue inner tips, sleepy half-lidded deadpan golden-yellow eyes, white-and-gold paladin cloak with cream bow) gives a tiny deadpan stoic thumbs-up with a subtle warm blush.",
-      "tail_target": "center"
+      "visual_prompt": "Back-view and joyful celebration split shot positioned cleanly on the left half of the wide 16:9 frame (leaving the entire right 46% completely empty pure #FFFFFF white space for the speech bubble!). On the far-left, the Night Elf Priest chibi girl leaps joyfully off the ground hugging her brand-new radiant glowing golden one-handed healer mace tightly against her chest with both hands (her old staff stowed away), bawling comical twin waterfalls of sparkling anime joy tears with bright rosy blushing cheeks and warm golden heart sparkles. Right beside her toward center-left, the Undead Protection Paladin tank chibi girl strolls coolly away seen from behind (her sturdy shiny golden paladin crest shield strapped cleanly across her back over her crisp white-and-gold cloak, one-handed mace sheathed at her waist — Tank Shield & Clean Hand Rules!), turning her skull-hooded head back over her shoulder with a cool stoic half-lidded wink, tiny warm blush, and casual thumbs-up. 100% pure solid #FFFFFF white outer background, zero text, zero letters, zero UI.",
+      "tail_target": "left"
     }
   ]
 }

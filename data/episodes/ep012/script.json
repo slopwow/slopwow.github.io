@@ -3,7 +3,7 @@
   "source_post_no": "109482",
   "source_title": "마라우돈 흑석반지 흑마가 입찰함 ㅋㅋ",
   "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=109482&exception_mode=recommend&page=1",
-  "subtitle": "마라우돈 '흑석 반지' 흑마 대리 입찰 & 반지 칸 비워둔 고술 현장 검거",
+  "subtitle": "새벽 6시 마라우돈 '흑석 반지' 흑마 입찰 & 반지 칸 비워둔 고술 검거",
   "cuts": [
     {
       "cut_index": 1,
@@ -14,9 +14,9 @@
         "인간 흑마법사"
       ],
       "speaker": "드워프 사냥꾼",
-      "dialogue": "흑석 반지 떴다!\n냥꾼이랑 고술님\n둘이 굴리면 되겠네~",
+      "dialogue": "새벽 6시에 드디어 흑석 반지!\n냥꾼이랑 고술님\n둘이 굴리면 되겠네~",
       "wordless": false,
-      "visual_prompt": "Over-the-shoulder (OTS) diagonal shot from behind the green-hooded shoulder of the Dwarf Hunter girl in foreground-left, pointing eagerly toward a rustic wooden dungeon chest on the right. Above the chest hovers the gleaming golden Blackstone Ring. In the background-right, the Human Warlock girl (dark purple horned cowl, black twintails, violet eyes) leans forward with starry-eyed obsession and a cunning smile, lantern staff stowed on her back. Lower two-thirds framing, top 35% pure white (#FFFFFF) headroom for tooltip and bubble. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
+      "visual_prompt": "Over-the-shoulder (OTS) diagonal shot from behind the forest-green fur-trimmed hood and shoulder of the Dwarf Hunter girl in the foreground-left (wooden blunderbuss slung across her back, leaning excitedly forward toward a mossy wooden dungeon boss chest vignette in the lower center), where a sleek dark obsidian-black stone fantasy ring set in silver glows with blue rare-quality loot sparkles. Across from her on the lower-right, the Human Warlock girl (deep dark-purple warlock hood over long jet-black twin pigtails with vivid purple highlights, sharp violet eyes, dark purple robe, red plush imp doll tucked under one arm) leans in with starry-eyed greedy delight and a sly fang smirk, secretly hiding a chunky white-and-gold 6-sided loot die (round black dot pips ONLY, zero digits) behind her back. Keep everything strictly in the lower two-thirds with generous 100% pure solid #FFFFFF white headroom across the entire top 38% (top-right especially clear for item tooltip). Zero text, zero UI.",
       "tail_target": "left",
       "item_tooltip": {
         "image_path": null,
@@ -28,7 +28,7 @@
         "lines": [],
         "equip_effects": [],
         "icon_name": null,
-        "preferred_corner": "auto",
+        "preferred_corner": "top_right",
         "target_width": 288
       }
     },
@@ -40,9 +40,9 @@
         "인간 흑마법사"
       ],
       "speaker": "인간 흑마법사",
-      "dialogue": "어머~ 저도 눌렀는데\n제가 먹었네요?\n반지 잘 쓸게요~",
+      "dialogue": "어머~ 저도 눌렀는데\n제가 먹었네요?\n수고하셨습니당~",
       "wordless": false,
-      "visual_prompt": "Low-angle shot looking up at the Human Warlock girl standing proudly on the right half, holding the glowing golden Blackstone Ring pinched between her thumb and index finger. She rests her other hand against her cheek with an exaggerated innocent smug sneer and fluttering eyelashes, pretending it was an honest accident. Dark purple robe flowing, soul staff sheathed on back. Positioned cleanly on the right half, leaving generous pure white (#FFFFFF) space across the left 48% for dialogue bubble. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
+      "visual_prompt": "Low-angle shot looking up at the Human Warlock girl positioned cleanly on the right half of the wide 16:9 frame (medium 2.5-3 head waist-up chibi scale, deep dark-purple warlock hood over jet-black twin pigtails with vivid purple highlights, dark purple robe). She triumphantly pinches the glowing dark obsidian-black stone ring between two fingers beside her cheek with an exaggerated fake-innocent smug sneer, fluttering eyelashes, and sparkling loot aura while a chunky white-and-gold 6-sided dot-pip loot die (ONLY black round dots, ZERO digits) tumbles past with dynamic motion streaks. Her grumpy red plush imp doll sits perched smugly beside her hip (Clean Hand Rule). Leave the entire left 48% completely empty pure #FFFFFF white space for the left speech bubble. 100% pure solid #FFFFFF white outer background, zero text, zero UI.",
       "tail_target": "right",
       "item_tooltip": null
     },
@@ -55,9 +55,9 @@
         "인간 흑마법사"
       ],
       "speaker": "드워프 사냥꾼",
-      "dialogue": "캐스터 흑마님이\n전투력 반지를\n왜 굴려요??",
+      "dialogue": "흑석 굴리는 흑마는 첨봐요 ㅎㅎ\n지인 고술 대신 굴렸나?\n아니면 돈이 궁하셨나?",
       "wordless": false,
-      "visual_prompt": "Dutch-tilt slapstick action camera with dramatic diagonal composition. Dwarf Hunter girl on the left slams both hands onto a floating stone pedestal in utter outrage, her jaw dropping open in a cartoon scream with sharp jagged teeth and flying sweat drops, blunderbuss on back. On the right, Human Warlock casually polishes the golden ring against her sleeve with closed eyes and a smug hum. Lower two-thirds framing, top 35% pure white (#FFFFFF) headroom. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
+      "visual_prompt": "Dutch-tilt slapstick comedic shot with dramatic diagonal energy! On the lower-left, the Dwarf Hunter girl (forest-green ranger hood, braided ginger pigtails, wooden blunderbuss slung on back) leans aggressively forward with a deadpan icy sarcastic glare, sharp twitching eyebrow, and one accusing finger jabbed straight toward the Warlock amidst jagged comic indignation sparks. On the lower-right, the Human Warlock girl (dark purple warlock hood, black-and-purple twin pigtails, hugging her red plush imp doll with one arm) turns her cheek away whistling innocently with eyes squeezed shut and a giant nervous cartoon sweat drop sliding down her temple while hiding the black stone ring behind her cloak. Keep everything strictly in the lower two-thirds with 100% pure solid #FFFFFF white headroom across the entire top 38%. Zero text, zero UI.",
       "tail_target": "left",
       "item_tooltip": null
     },
@@ -70,9 +70,9 @@
         "트롤 주술사"
       ],
       "speaker": "드워프 사냥꾼",
-      "dialogue": "둘이 같은 길드였어?!\n고술님 살펴보기...\n반지 칸 하나 비었네?!",
+      "dialogue": "어라, 고술님 살펴보니\n반지 칸 하나 비었네?\n진짜 티 나게 비워뒀다!",
       "wordless": false,
-      "visual_prompt": "Side-profile 90-degree action shot of Dwarf Hunter girl tiptoeing sneaking right up behind the Troll Shaman girl (teal hood, tusks, spiky blue hair). Hunter inspects her with an oversized magnifying glass, eyes narrowed in sharp detective suspicion. Troll Shaman flinches with giant cartoon sweat droplets spraying from her head, clutching her empty finger in panic, totem staff stowed on back. Positioned on the left and center, leaving generous pure white (#FFFFFF) space on the right 46% for dialogue bubble. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
+      "visual_prompt": "Side-profile 90-degree comedic detective action shot positioned cleanly on the left half of the wide 16:9 frame (medium 2.5-3 head waist-up chibi scale). On the far-left, the Dwarf Hunter girl (forest-green hood, ginger braids, blunderbuss on back) sneaks forward leaning low peering through a chunky brass spyglass/magnifying glass with razor-sharp detective suspicion. Right beside her in the center-left, the Troll Shaman girl (sky-blue plush troll onesie hood with bright red spiky mohawk crest, floppy pierced ears, tiny white hood tusks, mint-teal bob hair, patterned tribal scarf, light-blue sleeves; NO lightning, hands free) jolts stiffly in panic with flying sweat drops, awkwardly holding up one bare empty ring finger sparkling with a tiny comedic void gleam while hiding her other hand behind her back. Leave the entire right 46% completely empty pure #FFFFFF white space for the right speech bubble. 100% pure solid #FFFFFF white outer background, zero text, zero UI.",
       "tail_target": "left",
       "item_tooltip": null
     },
@@ -86,7 +86,7 @@
       "speaker": null,
       "dialogue": null,
       "wordless": true,
-      "visual_prompt": "High-angle shot looking down at the Troll Shaman girl in a signature comedic freeze-frame, completely wordless. Caught dead red-handed, she is kneeling on the floor with her hands rigidly clamped behind her back, her face drained pale blue, eyes turned into chaotic spinning spirals with waterfall anime sweat gushing down her cheeks. Totem staff propped on the ground beside her. Centered dramatic framing filling ~78% of canvas height. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
+      "visual_prompt": "High-angle shot looking down at ONLY the Troll Shaman girl in a hilarious silent freeze-frame (filling ~78% of canvas height, completely wordless!). Caught dead red-handed, the Troll Shaman girl (sky-blue plush troll onesie hood with bright red spiky mohawk crest, floppy pierced ears, tiny white hood tusks, mint-teal bob hair, patterned tribal scarf) crouches flustered on the floor hastily trying to shove a plain spare silver ring back onto her bare finger with both trembling hands, her face drained pale blue under ominous gloom shadows, wide green eyes turned into frantic wobbling pinpoint spirals, waterfall anime sweat gushing down her cheeks, clenched grimace. 100% pure solid #FFFFFF white outer background, zero text, zero letters, zero UI.",
       "tail_target": "center",
       "item_tooltip": null
     },
@@ -99,10 +99,10 @@
         "인간 흑마법사"
       ],
       "speaker": "드워프 사냥꾼",
-      "dialogue": "반지 넘겨주고 둘 다\n동시에 파탈하네…\n와 진짜 레전드다 ㅋ",
+      "dialogue": "들키니까 칼파탈하고\n자러 간다네…\n다들 해 떴으니 자러 가요 ㅠ",
       "wordless": false,
-      "visual_prompt": "Back-view shot seen from behind of the Human Warlock and Troll Shaman sneaking away together into a swirling cyan Hearthstone vortex on the right, seen from behind with smug giggles and ring pocketed. On the left, Dwarf Hunter stands alone in front of the empty dungeon chest, arms dropped limp, staring in disbelief at the empty party list. Clean framing with generous pure white (#FFFFFF) space on the left 48% for dialogue bubble. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
-      "tail_target": "left",
+      "visual_prompt": "Back-view comedic parting shot in wide 16:9 framing. Positioned cleanly on the right half: in the mid-right background, the Human Warlock girl (dark purple hood, black-and-purple twin pigtails, red plush imp doll tucked under arm) and a shadowy extra Troll Shaman companion silhouette beside her bolt away seen from behind straight into twin glowing cyan-blue Hearthstone swirl vortices waving smugly as they flee the party; in the foreground center-right, the exhausted Dwarf Hunter girl (forest-green hood, ginger braids, blunderbuss resting on floor) slumps drooping forward with heavy tired dark circles under her amber eyes and a tiny ghostly sigh puff drifting from her mouth as warm golden dawn light rays softly hint at 6 AM sunrise behind her shoulders. Leave the entire left 46% completely empty pure #FFFFFF white space for the left speech bubble. 100% pure solid #FFFFFF white outer background, zero text, zero UI.",
+      "tail_target": "right",
       "item_tooltip": null
     }
   ]

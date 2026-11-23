@@ -3,7 +3,7 @@
   "source_post_no": "110173",
   "source_title": "호드 쪼렙새끼들 싸가지없노",
   "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=110173&exception_mode=recommend&page=1",
-  "subtitle": "침낭퀘 가던 호드 쪼렙들과 /인사 한 번의 무게 — 필드 PvP 상황극",
+  "subtitle": "탄돌 교각 침낭퀘 길목 — /인사 씹고 지나간 호드 쪼렙들의 최후",
   "cuts": [
     {
       "cut_index": 1,
@@ -13,9 +13,9 @@
         "드워프 사냥꾼"
       ],
       "speaker": "드워프 사냥꾼",
-      "dialogue": "오, 호드 쪼렙들\n침낭 메고 가네~\n귀여우니 봐준다.",
+      "dialogue": "오, 탄돌 교각 밑에\n호드 쪼렙들 침낭퀘 오네?\n귀여우니 봐준다.",
       "wordless": false,
-      "visual_prompt": "Over-the-shoulder (OTS) diagonal shot from behind the forest-green hood and shoulder of the Dwarf Hunter girl in the foreground-left, looking down along the Thandol Span stone bridge corridor where a line of tiny distant Horde travelers with quilted bedrolls stroll past. Dwarf Hunter (forest-green hood, orange braided pigtails like a beard, amber eyes) sits munching popcorn from a blank red-striped bucket with a warm benevolent veteran smile, wooden blunderbuss slung across her back. Lower two-thirds framing, top 35% pure white (#FFFFFF) headroom. 100% pure solid #FFFFFF white borderless background, zero text, zero UI, medium 2.5-3 head chibi scale.",
+      "visual_prompt": "Over-the-shoulder (OTS) diagonal shot from behind the forest-green fur-trimmed hood and shoulder of the Dwarf Hunter girl in the foreground-left (her wooden blunderbuss slung across her back, holding a warm mug/snack with a benevolent veteran grin), looking down toward a compact floating cobblestone vignette of the Thandol Span stone bridge underside on the lower-right where a lively group of 4-5 tiny chibi Horde lowbie extras (an Orc, a Tauren, a Troll, an Undead wearing starter leather gear and bulky rolled tan sleeping-bag bedrolls on their backs) trot past cheerfully. Place all artwork and bridge stones strictly in the lower two-thirds, fading cleanly into 100% pure solid #FFFFFF white headroom across the entire top 38% for the speech bubble. Zero text, zero letters, zero UI.",
       "tail_target": "left",
       "item_tooltip": null
     },
@@ -29,7 +29,7 @@
       "speaker": "드워프 사냥꾼",
       "dialogue": "/인사 /인사~\n반가워 쪼렙들!\n조심히 지나가렴♪",
       "wordless": false,
-      "visual_prompt": "Side-profile 90-degree action shot of the Dwarf Hunter girl standing on the right half of the Thandol Span stone bridge, leaning forward with lively momentum and waving one hand high enthusiastically in a friendly /wave emote. Her face beams with a wide closed-eye anime smile, cute pink blushing cheeks, and tiny floating heart sparkles. Her wooden blunderbuss rifle is sheathed on her back, hands free. Positioned cleanly on the right half, leaving generous pure white (#FFFFFF) space across the entire left 48% for dialogue bubble. 100% pure solid #FFFFFF white borderless background, zero text, zero UI, medium chibi scale.",
+      "visual_prompt": "Side-profile 90-degree dynamic action shot of the Dwarf Hunter girl positioned cleanly on the right half of the wide 16:9 frame (medium 2.5-3 head waist-up chibi scale), leaning eagerly forward to the left and waving one hand high in an enthusiastic friendly /wave emote. Wide beaming closed-eye anime smile, rosy cheeks, cheerful heart sparkles floating near her waving hand; wooden blunderbuss slung safely on her back (hands free). Leave the entire left 48% completely empty pure #FFFFFF white space for the left speech bubble. 100% pure solid #FFFFFF white outer background, zero text, zero UI.",
       "tail_target": "right",
       "item_tooltip": null
     },
@@ -42,9 +42,9 @@
         "타우렌 드루이드"
       ],
       "speaker": "오크 전사",
-      "dialogue": "흥, 얼라 고렙이\n손 흔드네?\n씹고 침낭퀘 가자~",
+      "dialogue": "얼라 고렙이 손 흔드네?\n괜히 말 섞지 말고\n그냥 씹고 가자~",
       "wordless": false,
-      "visual_prompt": "Low-angle shot looking up at the two lowbie Horde girls marching arrogantly toward the right through the stone corridor, leading a column of lowbie travelers with quilted tan wool bedrolls strapped on their backs. On the left, the Orc Warrior girl (green onesie hood, piggy snout, black ponytail, crimson eyes) tilts her nose up with a smug sneer and waves dismissively sideways. On the right, the Tauren Druid girl (cow hood with horns and golden nose ring) sticks her tongue out childishly. Axe and staff stowed on backs. Lower two-thirds framing, top 35% pure white (#FFFFFF) headroom. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
+      "visual_prompt": "Low-angle diagonal action shot looking up at a briskly jogging pack of Horde lowbie travelers (4-5 characters total!) hustling rightward past a weathered stone bridge pillar vignette. Leading in front on the lower-left is the Orc Warrior chibi girl (green plush orc onesie hood, black ponytail, crimson eyes) jogging forward with a bulky rolled tan sleeping bag strapped to her pack, glancing dismissively sideways with a bored half-lidded side-eye and shrugging; right beside her is the Tauren Druid chibi girl (fluffy brown cow hood with horns and golden nose ring) puffing her cheeks hurrying along with her own rolled bedroll; behind them 2-3 extra chibi Horde lowbies (a Troll and Undead in low-level rags with bedrolls) sprint right past without waving back, kicking up tiny comic dust puffs. Weapons stowed on backs. Keep all figures strictly in the lower two-thirds with 100% pure solid #FFFFFF white headroom across the entire top 38%. Zero text, zero UI.",
       "tail_target": "left",
       "item_tooltip": null
     },
@@ -58,7 +58,7 @@
       "speaker": null,
       "dialogue": null,
       "wordless": true,
-      "visual_prompt": "Dutch-tilt dramatic close-up comedic freeze-frame of the Dwarf Hunter girl, completely wordless and frozen in shock. A deep sinister purple shadow falls over her amber eyes, which have turned into blank unblinking pinpoint white dots. Her mouth is frozen in an eerie polite smile with a twitching eyebrow, while dark purple cartoon aura sparks crackle around her. Her hands slowly grip the blunderbuss rifle from her back. Centered framing filling ~78% of canvas height, tilted dynamic angle. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
+      "visual_prompt": "Dutch-tilt dramatic close-up comedic freeze-frame of ONLY the Dwarf Hunter girl, completely silent and wordless (filling ~80% of canvas height, tilted dynamic angle). Deep ominous purple-indigo gloom shadow falls heavily across her forehead and eyes beneath her forest-green ranger hood, her amber eyes shrinking into chilling pinpoint blank white dots, her mouth frozen in an eerie twitching polite smile with a sharp anime anger vein pulsing near her temple, while both hands calmly rack and level her wooden blunderbuss rifle across her chest with dramatic dark speed-line sparks. 100% pure solid #FFFFFF white outer background, zero text, zero letters, zero UI.",
       "tail_target": "center",
       "item_tooltip": null
     },
@@ -71,9 +71,9 @@
         "오크 전사"
       ],
       "speaker": "드워프 사냥꾼",
-      "dialogue": "인사만 받아줬어도\n너네들은 무사히\n침낭퀘 했을 텐데…",
+      "dialogue": "인사만 받아줬어도\n너네들은 무사히\n침낭퀘 하고 갔을 거다.",
       "wordless": false,
-      "visual_prompt": "High-angle shot looking down directly recreating the author's real screenshot: inside the Thandol Span stone bridge corridor, the cobblestone floor is completely littered with a sprawling comic pile of 6-7 defeated lowbie Horde corpses and cute cartoon skeletons! Knocked-out lowbies lie face down and sprawled flat in slapstick postures with swirling spiral eyes, their tan wool bedrolls knocked loose and scattered everywhere across the stone corridor. Standing above the bridge corridor carnage on the left, Dwarf Hunter rests the smoking barrel of her wooden blunderbuss on her shoulder with a cold, sarcastic smirk. Lower two-thirds framing, top 35% pure white (#FFFFFF) headroom. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
+      "visual_prompt": "High-angle shot looking down directly recreating the original DCInside screenshot: a crisp minimalist floor vignette of the warm brown Thandol Span cobblestone stone-bridge corridor flanked by short weathered stone pillar bases at the lower left and right edges (fading cleanly into 100% pure solid #FFFFFF white headroom across the entire top 38% for the speech bubble!). Strewn all across the cobblestone corridor are 6-7 comically defeated lowbie Horde chibi characters (including the Orc Warrior girl in her green orc hood and 5-6 extra lowbie Horde Orc/Troll/Undead/Tauren travelers) lying face-down and starfish-sprawled on the stones with cute dizzy spiral eyes, cartoon stars orbiting their heads, and unrolled tan sleeping-bag bedrolls scattered around them (cute chibi manga slapstick ONLY — strictly ZERO blood and ZERO gore!). Standing casually in the lower-left foreground above the corridor carnage, the Dwarf Hunter girl rests the smoking barrel of her wooden blunderbuss over one shoulder with a cold deadpan smirk and half-lidded eyes. Zero text, zero UI.",
       "tail_target": "left",
       "item_tooltip": null
     },
@@ -88,7 +88,7 @@
       "speaker": "드워프 사냥꾼",
       "dialogue": "근데 인사를\n안 받아줬잖아?\n/인사~♪",
       "wordless": false,
-      "visual_prompt": "Back-view shot seen from behind of the Dwarf Hunter girl walking away toward the left along the Thandol Span cobblestone corridor, turning her back to the knocked-out Tauren Druid and scattered lowbie skeletons in the background. The Dwarf Hunter looks back over her shoulder with a cheerful closed-eye wink, tossing a playful peace sign /wave emote, blunderbuss slung on her back. Cleanly framed with generous pure white (#FFFFFF) space on the right 46% for dialogue bubble. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
+      "visual_prompt": "Back-view shot seen from behind of the Dwarf Hunter girl on the left half of the wide 16:9 frame strolling jauntily away down the cobblestone vignette (wooden blunderbuss slung on her back), turning her head back over her shoulder with a bright cheeky closed-eye wink and waving goodbye playfully with cheerful musical sparkles; behind her in the lower-center-left lies the knocked-out Tauren Druid girl (cow hood, swirling dizzy spiral eyes, soul-puff drifting up) sprawled beside two comical fallen lowbie chibi extras and a rolled bedroll (cute cartoon slapstick, zero gore). Leave the entire right 46% completely empty pure #FFFFFF white space for the speech bubble. 100% pure solid #FFFFFF white outer background, zero text, zero UI.",
       "tail_target": "left",
       "item_tooltip": null
     }

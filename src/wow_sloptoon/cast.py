@@ -64,7 +64,8 @@ CAST_BIBLE: tuple[CastMember, ...] = (
             "포에버갤 대표 전사."
         ),
         appearance_anchor=(
-            "Cute anime chibi girl wearing a vibrant green plush orc animal-onesie hood "
+            "Cute fair-skinned anime chibi girl (warm peach-ivory human skin — NEVER green skin!) "
+            "wearing a vibrant green plush orc animal-onesie hood "
             "with curved cream horns, tiny upturned fangs, piggy snout and pointed green ears "
             "on top of the hood; black high ponytail hair with bangs, bright crimson-red eyes; "
             "spiky red shoulder pauldrons over silver plate armor (top-left #1 on Draft C cast sheet)."
@@ -216,7 +217,8 @@ CAST_BIBLE: tuple[CastMember, ...] = (
             "날리는 하이텐션 주술사."
         ),
         appearance_anchor=(
-            "Playful anime chibi girl wearing a sky-blue plush troll onesie hood with a bright "
+            "Playful fair-skinned anime chibi girl (warm peach-ivory human skin — NEVER blue skin!) "
+            "wearing a sky-blue plush troll onesie hood with a bright "
             "red spiky mohawk crest, floppy pierced long ears and tiny white hood tusks; "
             "mint-teal bob hair, bright green eyes; patterned tribal scarf and light-blue sleeves "
             "(top-row #5 on Draft C cast sheet)."
