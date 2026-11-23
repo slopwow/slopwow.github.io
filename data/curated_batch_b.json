@@ -1,0 +1,997 @@
+{
+  "slice": "377..end",
+  "total_reviewed": 377,
+  "fetched_details_count": 43,
+  "rate_limited_note": "DCInside returned HTTP 200 with Content-Length: 0 (soft IP rate-limit) during Wave 1 concurrent scouting and remained rate-limited after a 4+ min pause. Stopped immediately with zero retry loops or bypass attempts. Wave 1 curates all 43 validly fetched posts (12 selected, 4 image-only deferred to Wave 2, 27 rejected); 57 additional high-priority unfetched Slice B posts are queued in `pending_rate_limited` for Wave 2 after cooldown.",
+  "selected": [
+    {
+      "post_no": "23385",
+      "title": "팁) 병신 냥꾼 거르는 방법",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=23385&exception_mode=recommend&page=9",
+      "date_str": "2026-10-31 17:18:23",
+      "recommends": 17,
+      "comments_count": 10,
+      "views": 1586,
+      "body": "일제사격 장애인처럼 써서 애드내는건 다 알꺼고\n펫애드 <- 이건 이유가 있음\n펫을 새로 뽑았는데 렙업이 귀찮은거임..\n그래서 인던파티로 경험치를 채우려는거\n문제는 펫 레벨이 너무 낮아서 어그로 존나 끌리고, 애드나면 냥꾼새끼는 모르는척함\n파티 전멸하면 냥꾼새끼는 느긋하게 죽은척 풀고 물빵 처먹고있음\n이게 냥꾼 혐오하는 이유임\n어케 잘아냐고?\n해봤으니까",
+      "comments": [],
+      "image_urls": [
+        "https://dcimg4.dcinside.co.kr/viewimage.php?id=3ab2c720eac03db06bad&no=24b0d769e1d32ca73de782fa1bd6253180d7c2ae01f81a731996377260827965ce6ed97d4fd1fe9847c70efcd4ae7ae9d952f703e254c586a8c0c6ec2decc7929654c02649ae"
+      ],
+      "downloaded_images": [],
+      "category": "dungeon_disaster",
+      "comic_pitch": "필드에서 새로 길들인 저렙 펫을 키우기 귀찮아 인던 파티에 몰래 데려가 경험치를 빨아먹으려는 냥꾼이, 저렙 펫 애드와 일제 사격으로 파티를 전멸시킨 뒤 혼자 죽은 척하기로 살아남아 태연하게 물빵을 먹으며 '어떻게 이렇게 잘 아냐고? 내가 해봤으니까!'라고 뻔뻔하게 자백하는 반전 코미디.",
+      "wow_forever_hooks": [
+        "사냥꾼 펫 레벨링(저렙 펫의 넓은 애드 범위)",
+        "일제 사격 애드 + 펫 애드 콤보 전멸",
+        "죽은 척하기(죽척) 생존 후 마법사 창조 물빵 여유롭게 취식",
+        "전멸한 파티원 영혼 앞 뻔뻔한 경험담 자백 반전"
+      ],
+      "recommended_cast": [
+        "드워프 사냥꾼",
+        "오크 전사",
+        "나이트엘프 사제",
+        "스카이본 마법사"
+      ],
+      "priority": "S"
+    },
+    {
+      "post_no": "7793",
+      "title": "탱커없다길래 가서 폐광에서 길따라 몹잡는데 냥꾼이",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=7793&exception_mode=recommend&page=12",
+      "date_str": "2026-10-07 16:41:49",
+      "recommends": 17,
+      "comments_count": 25,
+      "views": 2529,
+      "body": "그렇게 가는거 아닌데 스킵해야하는데 그걸 다 잡네 어쩌네 개장수가 시비건 이후로 뭐하러 탱커하나 싶어서 걍 딜로만 인던 도는중\n그렇게 잘하시면 탱커하라니까 피곤해서 싫다더라 씨발년",
+      "comments": [
+        "솔직히 딜러 하나 없다고 던전 못 도는 수준 아님 걍짤라",
+        "그냥 듣는순간 짜증이 존나 확 올라옴 자르는건 자르는건데",
+        "개장수도 스킵시켜",
+        "정식오픈하면 그런틀딱들 더보겠지",
+        "하필 그 직업이네 ㅋㅋㅋㅋㅋㅋ"
+      ],
+      "image_urls": [],
+      "downloaded_images": [],
+      "category": "dungeon_disaster",
+      "comic_pitch": "탱커 구인난 때문에 착하게 방패를 들고 죽음의 폐광 탱킹에 나섰는데, 냥꾼이 내내 '그렇게 가면 안 되고 스킵해야 한다'며 시비를 걸자 '그렇게 잘 아시면 님이 탱커 하세요'라고 되물었더니 '피곤해서 싫은데요?'라는 답변을 듣고 전탱이 방패를 집어던지며 딜러로 전향해 버리는 사이다 공감극.",
+      "wow_forever_hooks": [
+        "죽음의 폐광(폐광) 인던 길찾기 및 스킵 루트 논쟁",
+        "탱커 구인난 속 전탱(방패+한손무기 필수)",
+        "딜러의 끝없는 훈수 vs '피곤해서 탱은 싫다' 뻔뻔 화법",
+        "댓글 명대사 '냥꾼도 스킵시켜' 파티 공감 포인트"
+      ],
+      "recommended_cast": [
+        "오크 전사",
+        "드워프 사냥꾼",
+        "나이트엘프 사제"
+      ],
+      "priority": "S"
+    },
+    {
+      "post_no": "19080",
+      "title": "유입들좀 아껴라 제발",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=19080&exception_mode=recommend&page=10",
+      "date_str": "2026-10-29 19:56:03",
+      "recommends": 52,
+      "comments_count": 40,
+      "views": 2097,
+      "body": "오늘날의 와우가 그래서 유입들 골라받을만큼 존나게 잘나가고 인구 바글바글한 게임이냐? 배가 쳐 불렀지 아주 구더기 무서워서 장 못 담그는 소리하네\n지금이 20년 전도 아니고, 그 누구도 요새 게임을 시작하면서 '아 내가 여기에 뼈를 묻어야겠다!!!' 이지랄을 하지는 않음. 특히 갤에서 다들 오매불망 간절히 염원하는, 와우 특유의 틀내 중화시켜줄 젊은 애들은 더더욱.\n뭐가 됐건 간에 시류가 잘 맞아 운이 좋아서 유입이 넘쳐흐르면 걔네 어르고 달래서 정착시킬 생각을 하던가 뭔 반찬투정하는 애새끼마냥 \"우웅 좆방충 보는 애들은 좀~, 아이온로아기타알피지 즐기던 애들은 좀~\" 이러고 있는거임.\n당연히 몇 달 지나고 유행 꺼지면 떠나는 애들이 나오겠지. 이건 불변의 사실임. 근데 100명이 온다 치면 100명이 다 떠나겠냐? '이겜 그래도 생각보다 할만한데?' 싶어서 잔류하는 애들이 ㄹㅇ 한 명도 없을것 같음? 그건 와우를 너무 내려치기 하는거지. 니들이 와우에 왜 감겼는지 생각해봐. 결국 유입들이 이 겜 하면서 겪은 경험과 추억이 걔들을 잔류시킬 가장 강력한 요인인데 이 존나게 당연한걸 왜 몇몇은 모르는것처럼 이야기하는지 난 모르겠다 진짜.\n그냥 뉴비들 인겜에서 보이면 따뜻하게 인사라도 잘 해주고, 좋은 추억거리라도 하나 만들어줘. 그러면 걔들이 계정시간 끝나갈때쯤 누가 뭐라고 안 해도 '아 그래도 조금만 더 해볼까' 생각이 자연히 들게끔.\nP.S. 나는 와우 구 하드코어로 첫 입문해서, 수도원 파티 같이갔던 전사분 (아쉽지만 이젠 이름도 기억 안 난다)이 내 실수로 애드난 언데드 경비병 대신 어글 끌어주고 죽어준 그 경험 이후로 와우에 제대로 빠졌음. 그 전까지만 해도 와우 이렇게 계속 할 줄은 몰랐고. 내가 미안해서 어쩔줄 모르는데 개 쿨하게 파티챗으로 '님 살았으면 됐음ㅇㅇ' 이러고 끄던데 존나 멋있더라.",
+      "comments": [],
+      "image_urls": [],
+      "downloaded_images": [],
+      "category": "newbie_story",
+      "comic_pitch": "붉은십자군 수도원에서 초보 뉴비가 실수로 경비병 무리를 애드내 패닉에 빠지자, 고수 전탱이 방패를 치켜들고 모든 몹의 어그로를 대신 끌어 희생한 뒤 미안해 어쩔 줄 모르는 뉴비에게 '님 살았으면 됐음 ㅇㅇ' 한 마디만 쿨하게 남기고 떠나 뉴비를 평생 와우에 감겨버리게 만든 훈훈 감동 반전극.",
+      "wow_forever_hooks": [
+        "붉은십자군 수도원 경비병 애드 대참사",
+        "전탱(방패+한손무기)의 도발 희생 플레이",
+        "뉴비의 공황 사과 vs 베테랑의 시크한 한 줄 '님 살았으면 됐음 ㅇㅇ'",
+        "뉴비를 와우 포에버에 정착시키는 결정적 인게임 추억"
+      ],
+      "recommended_cast": [
+        "오크 전사",
+        "스카이본 마법사",
+        "나이트엘프 사제"
+      ],
+      "priority": "A"
+    },
+    {
+      "post_no": "20810",
+      "title": "늙크크 꼰대 와우플레이어란게 이런거구나",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=20810&exception_mode=recommend&page=10",
+      "date_str": "2026-10-30 14:05:50",
+      "recommends": 18,
+      "comments_count": 7,
+      "views": 1650,
+      "body": "(베타플레이 저습지 인던가서 랩터들한테 한땀한땀 5중첩 방어구 가르기를 하며)\n무슨 스킬이 신념인줄 아는 미친 틀딱이 여기있누\n딜러구성원이 캐스터 위주이고 다량몹있으면 외침이랑 천벼로 어글부터 먹을 생각을 해야지\n무조건 컨베이어벨트 시퀀스대로 방어구 가르기 만능에 사로잡혀서 사고가 멈춰버린 마인드는 오히려 좀 불쌍하다고 느낌\n심지어 chat GPT 도 방어구 가르기는 어글 획득량과 다량의 몹 인터셉트에는 불리하다고 이야기 하고 있어요",
+      "comments": [],
+      "image_urls": [
+        "https://dcimg4.dcinside.co.kr/viewimage.php?id=3ab2c720eac03db06bad&no=24b0d769e1d32ca73de782fa1bd6253180d7c2ae01f81a731996377260827865fe9419b9f262ad68fe5ab9d8bb4795bd2aea7524ec227c086d38da9b5988a02ab77dd4ecf60784"
+      ],
+      "downloaded_images": [],
+      "category": "dungeon_disaster",
+      "comic_pitch": "저습지 신규 인던(발굴 현장)에서 캐스터 위주 파티로 랩터 무리를 잡는데, 고집불통 베테랑 전탱이 천둥벼락·외침 대신 공장 컨베이어벨트처럼 랩터마다 한 땀 한 땀 방어구 가르기 5중첩만 고집하다가 캐스터들이 죄다 찢기자 '아제로스 현자도 광역 어글엔 방가 불리하대요!' 팩폭에 동공지진하는 상황극.",
+      "wow_forever_hooks": [
+        "와우 포에버 신규 인던 발굴 현장(저습지 24-29) 랩터 무리",
+        "전탱(방패+한손무기)의 5중첩 방어구 가르기 맹신 vs 천둥벼락/외침 광역 어그로",
+        "캐스터 파티 어그로 튐 대참사",
+        "구식 공식만 고집하는 베테랑의 사고 정지 개그"
+      ],
+      "recommended_cast": [
+        "오크 전사",
+        "스카이본 마법사",
+        "인간 흑마법사"
+      ],
+      "priority": "A"
+    },
+    {
+      "post_no": "23641",
+      "title": "<틀>초창기 호드 언데드는 정말로 언데드였단다..txt",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=23641&exception_mode=recommend&page=9",
+      "date_str": "2026-10-31 19:31:47",
+      "recommends": 22,
+      "comments_count": 16,
+      "views": 1840,
+      "body": "언데드는 항시 변이도 면역 혼절도 면역\n포세이큰의 의지고 뭐고 그딴거 필요없이\n공포도 면역 현혹도 면역이었고 사실상 거의 모든 상태이상에 면역이었지....\n수중호흡도 그냥 길어지는게 아니라 무한대였단다....\n아니 지랄하지 마세요 그러면 개좆사기잖아요 좆같이 생긴거빼고 단점이 하나도없는 무적종족이네\n그럼 그때 얼라이언스는 맨날 개쳐발리는 병신진영이었나요?\n아...물론 언데드 자체는 사기종족이 맞았지!\n하지만...그게...그것이..얼라이언스에는......\n언데게이왔노ㅋㅋㅋㅋ\n언데게이왔노ㅋㅋㅋㅋ\n언데게이왔노ㅋㅋㅋㅋ\n언데게이왔노ㅋㅋㅋㅋ\n언데게이왔노ㅋㅋㅋㅋ\n언데게이왔노ㅋㅋㅋㅋ\n얼라이언스에는 성기사가 있었거든...그것도 존나게 많이\n어느날 언더시티에 만렙풀템 성기사 3인 파티가 쳐들어왔고\n만렙언데드가 수십명씩 떼로 덤벼들었음에도 모조리 몰살당하는 대참사가 벌어졌단다...\n결국 밸런스패치로 언데드는 인간형으로 변경되고 포세이큰의 의지라는 종족특성이 생기게되었지....\n지금도 그때 맞은 퇴마술로 입은 화상이 욱신거리는구나...",
+      "comments": [],
+      "image_urls": [
+        "https://dcimg4.dcinside.co.kr/viewimage.php?id=3ab2c720eac03db06bad&no=24b0d769e1d32ca73de782fa1bd6253180d7c2ae01f81a731996377260827965ce6ed97d4fd1fe9847c70efcd4ae178fc3ce89a1f69a0774801ab07463875b26748617eca73d6b",
+        "https://dcimg4.dcinside.co.kr/viewimage.php?id=3ab2c720eac03db06bad&no=24b0d769e1d32ca73de782fa1bd6253180d7c2ae01f81a731996377260827965ce6ed97d4fd1fe9847c70efcd4ae178fc6ca81a5f39a017d851eb0773d805a7121a87eaf1a2393",
+        "https://dcimg4.dcinside.co.kr/viewimage.php?id=3ab2c720eac03db06bad&no=24b0d769e1d32ca73de782fa1bd6253180d7c2ae01f81a731996377260827965ce6ed97d4fd1fe9847c70efcd4ae178fcdcd8ba3f69f0073831ab0773d855f244e4faa5d701990",
+        "https://dcimg4.dcinside.co.kr/viewimage.php?id=3ab2c720eac03db06bad&no=24b0d769e1d32ca73de782fa1bd6253180d7c2ae01f81a731996377260827965ce6ed97d4fd1fe9847c70ebf88fe16e35734d8006988d234b9a9ee66bc927deecc0ccb",
+        "https://dcimg4.dcinside.co.kr/viewimage.php?id=3ab2c720eac03db06bad&no=24b0d769e1d32ca73de782fa1bd6253180d7c2ae01f81a731996377260827965ce6ed97d4fd1fe9847c70ebe81fc16e1bc873397aca6928bb43e6cc14832cf39e506f4",
+        "https://dcimg4.dcinside.co.kr/viewimage.php?id=3ab2c720eac03db06bad&no=24b0d769e1d32ca73de782fa1bd6253180d7c2ae01f81a731996377260827965ce6ed97d4fd1fe9847c70eb288ff10e13b9d3961f02d7381caaa16b779c733b5c39735",
+        "https://dcimg4.dcinside.co.kr/viewimage.php?id=3ab2c720eac03db06bad&no=24b0d769e1d32ca73de782fa1bd6253180d7c2ae01f81a731996377260827965ce6ed97d4fd1fe9847c70eba85fa14e1dd4acfd3c8d0ae025a267a3bf9330e6d3e323b",
+        "https://dcimg4.dcinside.co.kr/viewimage.php?id=3ab2c720eac03db06bad&no=24b0d769e1d32ca73de782fa1bd6253180d7c2ae01f81a731996377260827965ce6ed97d4fd1fe9847c70ebd87f510e9e6163cb5c5e7bd0f6ab89f628c0768e0478487",
+        "https://dcimg4.dcinside.co.kr/viewimage.php?id=3ab2c720eac03db06bad&no=24b0d769e1d32ca73de782fa1bd6253180d7c2ae01f81a731996377260827965ce6ed97d4fd1fe9847c70ebc88f515e15da6838d3fb11d79312eaaf7281804bd2ea2df",
+        "https://dcimg4.dcinside.co.kr/viewimage.php?id=3ab2c720eac03db06bad&no=24b0d769e1d32ca73de782fa1bd6253180d7c2ae01f81a731996377260827965ce6ed97d4fd1fe9847c70efcd4ae178fc6c888a0f39e0772831db07662d35a74aee06d9014448b",
+        "https://dcimg4.dcinside.co.kr/viewimage.php?id=3ab2c720eac03db06bad&no=24b0d769e1d32ca73de782fa1bd6253180d7c2ae01f81a731996377260827965ce6ed97d4fd1fe9847c70efcd4ae178fc3c88ba7f49a07728118b0273dd05c75f3237cc213bc9e",
+        "https://dcimg4.dcinside.co.kr/viewimage.php?id=3ab2c720eac03db06bad&no=24b0d769e1d32ca73de782fa1bd6253180d7c2ae01f81a731996377260827965ce6ed97d4fd1fe9847c70efcd4ae178fc4c889a4f59e0f76811fb07563845c7293e0d16b756841",
+        "https://dcimg4.dcinside.co.kr/viewimage.php?id=3ab2c720eac03db06bad&no=24b0d769e1d32ca73de782fa1bd6253180d7c2ae01f81a731996377260827965ce6ed97d4fd1fe9847c70efcd4ae178fc3c580a3f29a037d801cb0726fd708761a61415bb63c63",
+        "https://dcimg4.dcinside.co.kr/viewimage.php?id=3ab2c720eac03db06bad&no=24b0d769e1d32ca73de782fa1bd6253180d7c2ae01f81a731996377260827965ce6ed97d4fd1fe9847c70efcd4ae178fc0c48aa8f89e037d851ab0716ed65e75f57cdfcde4ebb4"
+      ],
+      "downloaded_images": [],
+      "category": "class_meme",
+      "comic_pitch": "초창기 언데드는 정말로 언데드 판정이라 양변·혼절·공포에 모두 면역이고 수중호흡도 무한이었다며 무용담을 뽐내던 베테랑이, '그럼 무적 사기 종족 아니었어요?'라는 뉴비의 질문에 언더시티를 습격한 성기사들의 퇴마술·신의 격노에 몰살당하던 PTSD를 떠올리며 정작 와우 포에버에서는 자신이 언데드 성기사가 되어버린 아이러니를 겪는 코미디.",
+      "wow_forever_hooks": [
+        "초창기 언데드 종족 타입(언데드 -> 인간형 패치 및 포세이큰의 의지 탄생 비화)",
+        "양변·혼절·공포 면역 vs 성기사 퇴마술·신의 격노 언데드 특효",
+        "언더시티 습격 회상 씬",
+        "와우 포에버 신규 종족-직업 조합 '언데드 성기사'의 절묘한 아이러니"
+      ],
+      "recommended_cast": [
+        "언데드 성기사",
+        "스카이본 마법사",
+        "인간 흑마법사"
+      ],
+      "priority": "A"
+    },
+    {
+      "post_no": "19829",
+      "title": "와우 틀딱들은 대화하는 법을 모르는거 같음",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=19829&exception_mode=recommend&page=10",
+      "date_str": "2026-10-30 07:18:28",
+      "recommends": 20,
+      "comments_count": 21,
+      "views": 1276,
+      "body": "무슨 말을 해도 듣기에 좆같이 말 하는 힘이 있음\n\"탱님 왼쪽 벽 붙어서 쭉 진행하시면 돼요\"\n\"풀링할때는 몹 오고 쳐주세요 어그로 바껴요\"\n이정도만 해도 되는 걸\n지가 생각한 루트랑 다르면 말을 하면 되지 아가리는 쳐닫고 핑만 존나 찍음\n유튜브 댓글이나 생방채팅 같은 것도 마찬가지임\n\"저 상황에 법사가 이렇게 하면 효과적임\" 이라는 의도를 전달하고 싶으면\n와우 틀딱들은 이렇게 함\n\"법사 개못하네 할 줄 아는 법사면 어쩌구저쩌구로 해야지 저딴식하네\" 라고 씀(심지어 이런 훈수도 틀릴 확률 70%임)\n누가 훈수 좆같이한다고 뭐라하면 20년차 마법사만하는 사람이다 내 말대로 해라 ㅇㅈㄹ함\n진짜 40 50 쳐먹을때까지 게임만하고 사람 안만나는 개백수들은 거의 없잖아 다들 직장생활하고 가족도 있고 친구도 있잖아\n뭔가 마음에 걸리거나 하고 싶은 말이 있으면 니 기분만 배설하지 말고 대화를 하세요\n말 한마디만 정상적으로 하면 아무것도 아닌 상황을 좆같이 만드는 능력이 있음",
+      "comments": [],
+      "image_urls": [],
+      "downloaded_images": [],
+      "category": "dungeon_disaster",
+      "comic_pitch": "던전에서 '왼쪽 벽 붙어서 가세요'라고 한 마디만 좋게 말하면 끝날 상황을, 입은 꾹 닫은 채 미니맵 핑만 미친 듯이 찍다가 갑자기 '법사 개못하네! 내가 20년차 마법사인데 내 말대로 해!'라고 폭발했지만 정작 포에버에서 바뀐 스킬이라 틀린 훈수였던 민망 폭소극.",
+      "wow_forever_hooks": [
+        "인던 벽붙 스킵 루트 및 풀링 대기 매너",
+        "채팅 없이 미니맵 핑 난사하는 파티원 클리셰",
+        "'20년차 마법사' 자부심 훈수가 와우 포에버 변경점 때문에 70% 틀리는 반전",
+        "정상 대화 vs 공격적 훈수 극명한 대비 연출"
+      ],
+      "recommended_cast": [
+        "스카이본 마법사",
+        "오크 전사",
+        "트롤 주술사"
+      ],
+      "priority": "A"
+    },
+    {
+      "post_no": "23184",
+      "title": "노움 ai짤보고 노움사제 한다는놈 다시 생각해봐라",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=23184&exception_mode=recommend&page=9",
+      "date_str": "2026-10-31 15:54:23",
+      "recommends": 21,
+      "comments_count": 10,
+      "views": 1732,
+      "body": "나도 당했다",
+      "comments": [],
+      "image_urls": [
+        "https://dcimg4.dcinside.co.kr/viewimage.php?id=3ab2c720eac03db06bad&no=24b0d769e1d32ca73de782fa1bd6253180d7c2ae01f81a731996377260827965ce6ed97d4fd1fe9847c70efcd4ae7ae81a2ef3649821e3c6d8c2a41877802b033507b963cf5f",
+        "https://dcimg4.dcinside.co.kr/viewimage.php?id=3ab2c720eac03db06bad&no=24b0d769e1d32ca73de782fa1bd6253180d7c2ae01f81a731996377260827965ce6ed97d4fd1fe9847c70efcd4ae178fc1cd8fa4f89f047d8219b024398c08729303072c7161ac"
+      ],
+      "downloaded_images": [],
+      "category": "class_meme",
+      "comic_pitch": "와우 포에버에 새로 추가된 '노움 사제' 소식에 초미소녀 팬아트만 보고 설레며 캐릭터를 생성했다가, 실제 인게임 노움 사제의 묘하게 킹받는 비주얼을 마주하고 '나도 당했다...'며 영혼이 빠져나가는 기대 vs 현실 개그.",
+      "wow_forever_hooks": [
+        "와우 포에버 신규 6종 종족-직업 조합 중 '노움 사제'",
+        "초미소녀 팬아트 기대 vs 인게임 클래식 노움 모델링 현실 괴리",
+        "신규 조합에 낚인 유저들의 집단 공감 ('나도 당했다')"
+      ],
+      "recommended_cast": [
+        "노움 도적",
+        "나이트엘프 사제",
+        "스카이본 마법사"
+      ],
+      "priority": "B"
+    },
+    {
+      "post_no": "20595",
+      "title": "개장수들 전사는 양손무기 안쓴다고 작업 치는거보소 ㅋㅋ",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=20595&exception_mode=recommend&page=10",
+      "date_str": "2026-10-30 13:06:17",
+      "recommends": 22,
+      "comments_count": 4,
+      "views": 1000,
+      "body": "그걸 개장수 니가 왜 판단해 천민새끼가\n전사가 솔플할때 재미로 쓰던 어디에 쓰던 전사님 맘이지\n니가 왜 판단하냐고 개장수년아",
+      "comments": [],
+      "image_urls": [],
+      "downloaded_images": [],
+      "category": "loot_ninja",
+      "comic_pitch": "인던 보스에서 멋진 양손무기가 떨어지자 냥꾼이 '전탱은 방패 드니까 양손무기 안 쓰잖아요? 스탯용으로 제가 먹을게요!'라며 여론전을 걸고, 방패 든 전탱이 '솔플할 때 쓸 양손무기를 왜 냥꾼이 결정하냐!'며 맞붙어 한손·양손 가리지 않고 입찰하는 영원한 냥꾼 vs 전사 무기 전쟁이 터지는 소동극.",
+      "wow_forever_hooks": [
+        "인던 양손무기 주사위 입찰 분쟁",
+        "전탱(방패+한손무기 착용 중)의 솔플용 양손무기 소유권 주장",
+        "'모든 무기는 냥꾼 스탯 스틱' 클래식 밈",
+        "옆에서 팝콘 먹으며 둘 다 견제하는 도적"
+      ],
+      "recommended_cast": [
+        "오크 전사",
+        "드워프 사냥꾼",
+        "노움 도적"
+      ],
+      "priority": "B"
+    },
+    {
+      "post_no": "23097",
+      "title": "호드 싹 지우고 얼라로 옮겼다",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=23097&exception_mode=recommend&page=9",
+      "date_str": "2026-10-31 15:17:43",
+      "recommends": 23,
+      "comments_count": 13,
+      "views": 1691,
+      "body": "성능충으로 언데드 성기사랑 흑마 만들었는데 싹 삭제하고 얼라로 옮겼다.\n이유?\n스톰윈드의 웅장한 브금과 느낌이 너무 그리움.\n개 좆같은 시뻘건 땅에 움막같은데 있으니까 겜 하는 거 같지가 않음.\n호드하면 금방 접을 거 같음.",
+      "comments": [],
+      "image_urls": [],
+      "downloaded_images": [],
+      "category": "quest_system",
+      "comic_pitch": "종족 특성 성능만 보고 호드 언데드 성기사와 흑마를 야심 차게 키우던 성능충이, 메마르고 시뻘건 듀로타 흙바닥과 오그리마 움막 생활에 현타가 와서 호드 캐릭을 싹 지우고 스톰윈드의 웅장한 브금과 비 내리는 엘윈숲 감성에 취해 얼라이언스로 망명해 버리는 진영 대이동 개그.",
+      "wow_forever_hooks": [
+        "와우 포에버 신규 조합 언데드 성기사 성능 픽",
+        "호드 듀로타 붉은 황무지·오그리마 움막 vs 얼라 스톰윈드 웅장한 BGM·엘윈숲 날씨 감성",
+        "진영별 야외/대도시 환경 격차 밈"
+      ],
+      "recommended_cast": [
+        "언데드 성기사",
+        "오크 전사",
+        "나이트엘프 사제"
+      ],
+      "priority": "B"
+    },
+    {
+      "post_no": "18848",
+      "title": "솔직히 얼라 하면 이거 하나는 확실해 ㅇㅇ",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=18848&exception_mode=recommend&page=10",
+      "date_str": "2026-10-29 17:13:03",
+      "recommends": 11,
+      "comments_count": 6,
+      "views": 451,
+      "body": "일단 얼라 하잖아?\n호드를 다굴로 조지든 비열하게 조지든 죄책감이 안생겨;;\n그저 괴물을 조진다는 생각뿐이야ㅋ\n그래서 뭔가 조지고 시체 내려다보면 기분이 좋아짐. '후...오늘도 몇마리 조져놨구나', '얼라로써 역할을 오늘도 했구나' 이런 생각이 들어 ㅇㅇ",
+      "comments": [],
+      "image_urls": [
+        "https://dcimg4.dcinside.co.kr/viewimage.php?id=3ab2c720eac03db06bad&no=24b0d769e1d32ca73de782fa1bd6253180d7c2ae01f81a7319963772608371658d94f36a8d047aa7c9b05053de97e47249566bddd38f2b45040dcca645c2da79d4cba024547289"
+      ],
+      "downloaded_images": [],
+      "category": "field_pvp",
+      "comic_pitch": "분쟁 지역 필드에서 호드 유저를 비열하게 다굴로 눕혀 놓고도 '괴물을 퇴치했는데 왜 죄책감이 듦?'이라며 뿌듯하게 '후... 오늘도 얼라이언스 영웅의 의무를 다했다'고 정신승리하는 얼라 파티와 어이없어하는 호드 피해자의 온도차 코미디.",
+      "wow_forever_hooks": [
+        "분쟁 지역 필드 PvP 다굴 기습(은신 도적 + 냥꾼)",
+        "얼라이언스 특유의 '괴물 퇴치' 정신승리 밈",
+        "진영 간 극명한 시각차 개그"
+      ],
+      "recommended_cast": [
+        "드워프 사냥꾼",
+        "노움 도적",
+        "오크 전사"
+      ],
+      "priority": "B"
+    },
+    {
+      "post_no": "20899",
+      "title": "전사가 젤 이기적임",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=20899&exception_mode=recommend&page=10",
+      "date_str": "2026-10-30 14:42:43",
+      "recommends": 16,
+      "comments_count": 7,
+      "views": 1490,
+      "body": "죽으면 힐러탓\n어글튀면 딜러탓\n지가 잘하면 되는걸 꼭 남탓만 ㅈㄴ함\n반박시 거름",
+      "comments": [],
+      "image_urls": [],
+      "downloaded_images": [],
+      "category": "class_meme",
+      "comic_pitch": "인던에서 힐러 마나도 안 보고 돌진했다가 녹으면 '힐러 뭐함?!', 광역 어글을 못 잡아 몹이 튀면 '딜러 어글 관리 안 함?!'이라며 모든 사고를 완벽하게 남 탓으로 돌리는 전탱의 뻔뻔함에 힐러와 딜러가 동시에 할 말을 잃고 정지해 버리는 4컷 공감극.",
+      "wow_forever_hooks": [
+        "전탱(방패+한손무기)의 힐러 마나 미확인 돌진",
+        "죽으면 힐러 탓 / 어그로 튀면 딜러 탓 클래식 탱커 남탓 밈",
+        "다크서클 짙어진 힐러와 칼소멸 대기 도적의 환장 케미"
+      ],
+      "recommended_cast": [
+        "오크 전사",
+        "나이트엘프 사제",
+        "노움 도적"
+      ],
+      "priority": "B"
+    },
+    {
+      "post_no": "20013",
+      "title": "난 호드로 입문했다가 얼라만한다",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=20013&exception_mode=recommend&page=10",
+      "date_str": "2026-10-30 10:04:18",
+      "recommends": 15,
+      "comments_count": 5,
+      "views": 825,
+      "body": "밑도 끝도 없이 검은 용군단은 호드의 위협이 될거같으니\n선제타격을 한다!!\n오닉시아 왜 잡는지도 몰랐다가 얼라이언스하니까\n너무 설명이 되는거임.\n거기에 언데드들 퀘스트보면 이새끼들은 스컬지랑 다를게 없다.\n붉은십자군 아닌 인간들한테도 하는 짓이 진짜",
+      "comments": [],
+      "image_urls": [],
+      "downloaded_images": [],
+      "category": "quest_system",
+      "comic_pitch": "호드로 와우에 입문해 영문도 모른 채 '위협이 될 것 같으니 검은 용군단을 선제타격하라!'는 지시와 스컬지 뺨치는 언데드 퀘스트를 수행하며 혼란스러워하던 유저가, 얼라이언스로 넘어와 오닉시아 정체와 퀘스트 서사를 깨닫고 '우리가 악당이었잖아?!' 충격에 빠지는 진영 퀘스트 비교 개그.",
+      "wow_forever_hooks": [
+        "호드 vs 얼라이언스 오닉시아 입장 퀘스트 서사 온도차",
+        "언데드 초반 퀘스트의 스컬지급 살벌한 임무 내용",
+        "얼라이언스 스톰윈드 서사 체험 후 진영 정체성 충격"
+      ],
+      "recommended_cast": [
+        "오크 전사",
+        "언데드 성기사",
+        "인간 흑마법사"
+      ],
+      "priority": "B"
+    }
+  ],
+  "pending_rate_limited": [
+    {
+      "post_no": "20910",
+      "title": "탱거카 길을 알아야돼?",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=20910&exception_mode=recommend&page=10",
+      "date_str": "2026-10-30 14:49:31",
+      "recommends": 42,
+      "comments_count": 37,
+      "views": 2513,
+      "wave2_reason": "rate_limited_unfetched_priority"
+    },
+    {
+      "post_no": "6426",
+      "title": "이걸 법사가 쳐먹네 ㅋㅋ",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=6426&exception_mode=recommend&page=13",
+      "date_str": "2026-10-03 14:54:08",
+      "recommends": 12,
+      "comments_count": 14,
+      "views": 1622,
+      "wave2_reason": "rate_limited_unfetched_priority"
+    },
+    {
+      "post_no": "6388",
+      "title": "인게임으로 블리자드가 사과함 ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=6388&exception_mode=recommend&page=13",
+      "date_str": "2026-10-03 12:18:26",
+      "recommends": 16,
+      "comments_count": 7,
+      "views": 1388,
+      "wave2_reason": "rate_limited_unfetched_priority"
+    },
+    {
+      "post_no": "6229",
+      "title": "유입 필독) 흑마 고르면 겪을 일들jpg",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=6229&exception_mode=recommend&page=13",
+      "date_str": "2026-10-02 22:01:12",
+      "recommends": 18,
+      "comments_count": 14,
+      "views": 1929,
+      "wave2_reason": "rate_limited_unfetched_priority"
+    },
+    {
+      "post_no": "6064",
+      "title": "중국인 너무 착하다 시벌 ㅋㅋㅋㅋ",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=6064&exception_mode=recommend&page=13",
+      "date_str": "2026-10-02 13:36:31",
+      "recommends": 17,
+      "comments_count": 14,
+      "views": 1122,
+      "wave2_reason": "rate_limited_unfetched_priority"
+    },
+    {
+      "post_no": "5841",
+      "title": "전딜은진짜 인던데리고가는게아니구나.txt",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=5841&exception_mode=recommend&page=14",
+      "date_str": "2026-10-02 00:37:28",
+      "recommends": 12,
+      "comments_count": 20,
+      "views": 1241,
+      "wave2_reason": "rate_limited_unfetched_priority"
+    },
+    {
+      "post_no": "5553",
+      "title": "포에버 던전 가보니까 힐러 할 자신이 사라짐…",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=5553&exception_mode=recommend&page=14",
+      "date_str": "2026-10-01 11:23:45",
+      "recommends": 6,
+      "comments_count": 16,
+      "views": 1110,
+      "wave2_reason": "rate_limited_unfetched_priority"
+    },
+    {
+      "post_no": "4482",
+      "title": "신규지역 강물터에서 발생한 500vs500 필드쟁",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=4482&exception_mode=recommend&page=14",
+      "date_str": "2026-09-28 19:07:08",
+      "recommends": 7,
+      "comments_count": 12,
+      "views": 1416,
+      "wave2_reason": "rate_limited_unfetched_priority"
+    },
+    {
+      "post_no": "2497",
+      "title": "한자 길드명이 존나 길길래 뭔 뜻인지 궁금해서 번역해봄 ㅋㅋ",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=2497&exception_mode=recommend&page=15",
+      "date_str": "2026-09-23 03:11:42",
+      "recommends": 28,
+      "comments_count": 6,
+      "views": 868,
+      "wave2_reason": "rate_limited_unfetched_priority"
+    },
+    {
+      "post_no": "2386",
+      "title": "와우 첨하는데 시발 미친겜이네",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=2386&exception_mode=recommend&page=15",
+      "date_str": "2026-09-22 20:43:51",
+      "recommends": 21,
+      "comments_count": 9,
+      "views": 1412,
+      "wave2_reason": "rate_limited_unfetched_priority"
+    },
+    {
+      "post_no": "2112",
+      "title": "양형들이랑 영주의전당 다녀왔는데 싸움구경 하고 옴 ㅋㅋㅋ",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=2112&exception_mode=recommend&page=16",
+      "date_str": "2026-09-22 00:38:02",
+      "recommends": 17,
+      "comments_count": 10,
+      "views": 1407,
+      "wave2_reason": "rate_limited_unfetched_priority"
+    },
+    {
+      "post_no": "7783",
+      "title": "출시부터 30 사제,냥꾼 찍고 만난 인간들 솔직후기",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=7783&exception_mode=recommend&page=12",
+      "date_str": "2026-10-07 16:10:55",
+      "recommends": 22,
+      "comments_count": 14,
+      "views": 2571,
+      "wave2_reason": "rate_limited_unfetched_priority"
+    },
+    {
+      "post_no": "6498",
+      "title": "디커에서 딱한번 템 시비있던거",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=6498&exception_mode=recommend&page=13",
+      "date_str": "2026-10-03 19:08:16",
+      "recommends": 22,
+      "comments_count": 6,
+      "views": 1351,
+      "wave2_reason": "rate_limited_unfetched_priority"
+    },
+    {
+      "post_no": "7493",
+      "title": "무법항총 개웃김 ㅋㅋ",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=7493&exception_mode=recommend&page=12",
+      "date_str": "2026-10-06 17:50:27",
+      "recommends": 8,
+      "comments_count": 8,
+      "views": 810,
+      "wave2_reason": "rate_limited_unfetched_priority"
+    },
+    {
+      "post_no": "7920",
+      "title": "니네들 꼭 이거해라 꿀퀘발견",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=7920&exception_mode=recommend&page=12",
+      "date_str": "2026-10-08 00:52:49",
+      "recommends": 9,
+      "comments_count": 5,
+      "views": 1331,
+      "wave2_reason": "rate_limited_unfetched_priority"
+    },
+    {
+      "post_no": "7788",
+      "title": "갑니다충 틀니햄 좀 데려가라",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=7788&exception_mode=recommend&page=12",
+      "date_str": "2026-10-07 16:30:15",
+      "recommends": 14,
+      "comments_count": 22,
+      "views": 1644,
+      "wave2_reason": "rate_limited_unfetched_priority"
+    },
+    {
+      "post_no": "7161",
+      "title": "어글 훈수두는거 보나마나 본섭애들임",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=7161&exception_mode=recommend&page=12",
+      "date_str": "2026-10-05 19:58:24",
+      "recommends": 13,
+      "comments_count": 25,
+      "views": 1111,
+      "wave2_reason": "rate_limited_unfetched_priority"
+    },
+    {
+      "post_no": "7075",
+      "title": "훈수하는 틀컬지 보기 힘든데 한번 만나면 존나 역하네",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=7075&exception_mode=recommend&page=12",
+      "date_str": "2026-10-05 14:29:06",
+      "recommends": 15,
+      "comments_count": 8,
+      "views": 721,
+      "wave2_reason": "rate_limited_unfetched_priority"
+    },
+    {
+      "post_no": "5125",
+      "title": "19클때 진짜 개 씹좆같은 틀딱 길드원 본적 있음",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=5125&exception_mode=recommend&page=14",
+      "date_str": "2026-09-30 10:20:42",
+      "recommends": 8,
+      "comments_count": 8,
+      "views": 510,
+      "wave2_reason": "rate_limited_unfetched_priority"
+    },
+    {
+      "post_no": "4926",
+      "title": "파티없어서 북미서버 다녀온 후기...txt",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=4926&exception_mode=recommend&page=14",
+      "date_str": "2026-09-29 18:04:06",
+      "recommends": 8,
+      "comments_count": 11,
+      "views": 1618,
+      "wave2_reason": "rate_limited_unfetched_priority"
+    },
+    {
+      "post_no": "3899",
+      "title": "길마 새끼 짝녀 ntr한 썰 생각나네 ㅋㅋㅋ",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=3899&exception_mode=recommend&page=15",
+      "date_str": "2026-09-27 11:56:19",
+      "recommends": 15,
+      "comments_count": 15,
+      "views": 1285,
+      "wave2_reason": "rate_limited_unfetched_priority"
+    },
+    {
+      "post_no": "3770",
+      "title": "뉴비중에 흑마할사람 이짤보고 고민한후 결정",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=3770&exception_mode=recommend&page=15",
+      "date_str": "2026-09-26 23:36:01",
+      "recommends": 13,
+      "comments_count": 10,
+      "views": 1754,
+      "wave2_reason": "rate_limited_unfetched_priority"
+    },
+    {
+      "post_no": "2249",
+      "title": "궁금해서 여자같은 닉으로 겜해봤는데",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=2249&exception_mode=recommend&page=16",
+      "date_str": "2026-09-22 13:24:49",
+      "recommends": 8,
+      "comments_count": 8,
+      "views": 476,
+      "wave2_reason": "rate_limited_unfetched_priority"
+    },
+    {
+      "post_no": "1943",
+      "title": "어제 본 공챗 중국인",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=1943&exception_mode=recommend&page=16",
+      "date_str": "2026-09-21 16:05:53",
+      "recommends": 7,
+      "comments_count": 4,
+      "views": 368,
+      "wave2_reason": "rate_limited_unfetched_priority"
+    },
+    {
+      "post_no": "5426",
+      "title": "오늘도 공개창에 븅신이 많음",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=5426&exception_mode=recommend&page=14",
+      "date_str": "2026-09-30 23:38:51",
+      "recommends": 12,
+      "comments_count": 5,
+      "views": 767,
+      "wave2_reason": "rate_limited_unfetched_priority"
+    },
+    {
+      "post_no": "5795",
+      "title": "틀컬지들은 고맙습니다라는 말을 어지간하면 안하네",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=5795&exception_mode=recommend&page=14",
+      "date_str": "2026-10-01 20:48:10",
+      "recommends": 10,
+      "comments_count": 8,
+      "views": 460,
+      "wave2_reason": "rate_limited_unfetched_priority"
+    },
+    {
+      "post_no": "5824",
+      "title": "와우는 결국 사람이랑 함께하는 게임이다",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=5824&exception_mode=recommend&page=14",
+      "date_str": "2026-10-01 23:25:30",
+      "recommends": 8,
+      "comments_count": 6,
+      "views": 748,
+      "wave2_reason": "rate_limited_unfetched_priority"
+    },
+    {
+      "post_no": "5864",
+      "title": "호드스럽다.jpg",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=5864&exception_mode=recommend&page=14",
+      "date_str": "2026-10-02 02:55:00",
+      "recommends": 12,
+      "comments_count": 6,
+      "views": 996,
+      "wave2_reason": "rate_limited_unfetched_priority"
+    },
+    {
+      "post_no": "2355",
+      "title": "선생님들 이거 베타에여",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=2355&exception_mode=recommend&page=15",
+      "date_str": "2026-09-22 18:37:53",
+      "recommends": 8,
+      "comments_count": 13,
+      "views": 941,
+      "wave2_reason": "rate_limited_unfetched_priority"
+    },
+    {
+      "post_no": "2157",
+      "title": "게임은 재밌는데 사람 새끼들이 문제임",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=2157&exception_mode=recommend&page=16",
+      "date_str": "2026-09-22 08:53:47",
+      "recommends": 8,
+      "comments_count": 9,
+      "views": 738,
+      "wave2_reason": "rate_limited_unfetched_priority"
+    },
+    {
+      "post_no": "7438",
+      "title": "뉴비들 필독) 각 진영별 특징….txt",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=7438&exception_mode=recommend&page=12",
+      "date_str": "2026-10-06 15:44:14",
+      "recommends": 59,
+      "comments_count": 28,
+      "views": 3335,
+      "wave2_reason": "rate_limited_unfetched_priority"
+    },
+    {
+      "post_no": "15321",
+      "title": "뉴비들이 알아야할 불편한진실",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=15321&exception_mode=recommend&page=11",
+      "date_str": "2026-10-27 15:15:23",
+      "recommends": 46,
+      "comments_count": 31,
+      "views": 2807,
+      "wave2_reason": "rate_limited_unfetched_priority"
+    },
+    {
+      "post_no": "11261",
+      "title": "이번에 입문해서 모든 캐릭터 다 키워본 뉴비 후기",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=11261&exception_mode=recommend&page=11",
+      "date_str": "2026-10-18 04:39:36",
+      "recommends": 42,
+      "comments_count": 21,
+      "views": 7983,
+      "wave2_reason": "rate_limited_unfetched_priority"
+    },
+    {
+      "post_no": "10426",
+      "title": "반상의 법도.",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=10426&exception_mode=recommend&page=11",
+      "date_str": "2026-10-15 12:35:54",
+      "recommends": 37,
+      "comments_count": 39,
+      "views": 2045,
+      "wave2_reason": "rate_limited_unfetched_priority"
+    },
+    {
+      "post_no": "7727",
+      "title": "진지하게 본섭 열리기전에 폐사할거같음",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=7727&exception_mode=recommend&page=12",
+      "date_str": "2026-10-07 13:13:52",
+      "recommends": 30,
+      "comments_count": 19,
+      "views": 2192,
+      "wave2_reason": "rate_limited_unfetched_priority"
+    },
+    {
+      "post_no": "1234",
+      "title": "ㅆ발 이 새끼도 개같이 복귀했노 ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ.jpg",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=1234&exception_mode=recommend&page=16",
+      "date_str": "2026-09-19 00:43:23",
+      "recommends": 29,
+      "comments_count": 0,
+      "views": 1855,
+      "wave2_reason": "rate_limited_unfetched_priority"
+    },
+    {
+      "post_no": "6459",
+      "title": "”실례지만 어디 서버 출신이세요?“",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=6459&exception_mode=recommend&page=13",
+      "date_str": "2026-10-03 16:42:28",
+      "recommends": 27,
+      "comments_count": 9,
+      "views": 1276,
+      "wave2_reason": "rate_limited_unfetched_priority"
+    },
+    {
+      "post_no": "22765",
+      "title": "10년후 포에버 틀딱들 근황....jpg",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=22765&exception_mode=recommend&page=9",
+      "date_str": "2026-10-31 13:07:36",
+      "recommends": 26,
+      "comments_count": 14,
+      "views": 2564,
+      "wave2_reason": "rate_limited_unfetched_priority"
+    },
+    {
+      "post_no": "6381",
+      "title": "본인 인생은 진짜 망함",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=6381&exception_mode=recommend&page=13",
+      "date_str": "2026-10-03 12:05:37",
+      "recommends": 26,
+      "comments_count": 52,
+      "views": 1298,
+      "wave2_reason": "rate_limited_unfetched_priority"
+    },
+    {
+      "post_no": "13886",
+      "title": "뉴비들아 길드 선택할때 꿀팁준다",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=13886&exception_mode=recommend&page=11",
+      "date_str": "2026-10-25 11:37:37",
+      "recommends": 25,
+      "comments_count": 15,
+      "views": 2192,
+      "wave2_reason": "rate_limited_unfetched_priority"
+    },
+    {
+      "post_no": "17747",
+      "title": "야 이런 거 다 신고해라",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=17747&exception_mode=recommend&page=10",
+      "date_str": "2026-10-28 18:17:26",
+      "recommends": 24,
+      "comments_count": 8,
+      "views": 2331,
+      "wave2_reason": "rate_limited_unfetched_priority"
+    },
+    {
+      "post_no": "17429",
+      "title": "정출후 10인 레이드 프레임 예상도",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=17429&exception_mode=recommend&page=10",
+      "date_str": "2026-10-28 14:31:36",
+      "recommends": 24,
+      "comments_count": 18,
+      "views": 2476,
+      "wave2_reason": "rate_limited_unfetched_priority"
+    },
+    {
+      "post_no": "13522",
+      "title": "난 이거 농담인줄 알았는데 진짜였구나",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=13522&exception_mode=recommend&page=11",
+      "date_str": "2026-10-23 22:26:24",
+      "recommends": 24,
+      "comments_count": 9,
+      "views": 2544,
+      "wave2_reason": "rate_limited_unfetched_priority"
+    },
+    {
+      "post_no": "13319",
+      "title": "와틀딱.jpg",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=13319&exception_mode=recommend&page=11",
+      "date_str": "2026-10-23 08:04:43",
+      "recommends": 24,
+      "comments_count": 12,
+      "views": 1864,
+      "wave2_reason": "rate_limited_unfetched_priority"
+    },
+    {
+      "post_no": "7349",
+      "title": "좆문가가 알려주는 포에버에서 피해야할 인간들 (긴글주의)",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=7349&exception_mode=recommend&page=12",
+      "date_str": "2026-10-06 12:25:08",
+      "recommends": 23,
+      "comments_count": 35,
+      "views": 2477,
+      "wave2_reason": "rate_limited_unfetched_priority"
+    },
+    {
+      "post_no": "23753",
+      "title": "플포 성기사 게시판 레전드.jpg",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=23753&exception_mode=recommend&page=9",
+      "date_str": "2026-10-31 20:36:11",
+      "recommends": 19,
+      "comments_count": 7,
+      "views": 1946,
+      "wave2_reason": "rate_limited_unfetched_priority"
+    },
+    {
+      "post_no": "10192",
+      "title": "난 뉴비한테 흑마 절대 추천안한다",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=10192&exception_mode=recommend&page=11",
+      "date_str": "2026-10-14 15:32:38",
+      "recommends": 19,
+      "comments_count": 35,
+      "views": 2043,
+      "wave2_reason": "rate_limited_unfetched_priority"
+    },
+    {
+      "post_no": "11661",
+      "title": "정신못차리는애 있는데 얘 어떻함.jpg",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=11661&exception_mode=recommend&page=11",
+      "date_str": "2026-10-19 14:33:10",
+      "recommends": 18,
+      "comments_count": 15,
+      "views": 2536,
+      "wave2_reason": "rate_limited_unfetched_priority"
+    },
+    {
+      "post_no": "4625",
+      "title": "와우는 필드쟁이지 외치는 노인들 현실...gif",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=4625&exception_mode=recommend&page=14",
+      "date_str": "2026-09-29 09:36:55",
+      "recommends": 18,
+      "comments_count": 12,
+      "views": 1683,
+      "wave2_reason": "rate_limited_unfetched_priority"
+    },
+    {
+      "post_no": "14897",
+      "title": "타우렌으로 스카이본하면 이속이 얼마냐 ㄷㄷ",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=14897&exception_mode=recommend&page=11",
+      "date_str": "2026-10-27 09:19:55",
+      "recommends": 16,
+      "comments_count": 22,
+      "views": 2050,
+      "wave2_reason": "rate_limited_unfetched_priority"
+    },
+    {
+      "post_no": "14713",
+      "title": "4050들의 화심은 이런거임……….",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=14713&exception_mode=recommend&page=11",
+      "date_str": "2026-10-27 00:31:11",
+      "recommends": 13,
+      "comments_count": 16,
+      "views": 2998,
+      "wave2_reason": "rate_limited_unfetched_priority"
+    },
+    {
+      "post_no": "8875",
+      "title": "북미충들 북미가면 보는 대화창..",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=8875&exception_mode=recommend&page=12",
+      "date_str": "2026-10-10 18:37:21",
+      "recommends": 13,
+      "comments_count": 27,
+      "views": 2198,
+      "wave2_reason": "rate_limited_unfetched_priority"
+    },
+    {
+      "post_no": "5630",
+      "title": "난 아제로스를 알고싶음은 진짜 새로운 초식이네",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=5630&exception_mode=recommend&page=14",
+      "date_str": "2026-10-01 14:49:11",
+      "recommends": 13,
+      "comments_count": 9,
+      "views": 742,
+      "wave2_reason": "rate_limited_unfetched_priority"
+    },
+    {
+      "post_no": "10325",
+      "title": "애기 지우고 겜방 왔는데 시벌",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=10325&exception_mode=recommend&page=11",
+      "date_str": "2026-10-15 00:03:29",
+      "recommends": 12,
+      "comments_count": 15,
+      "views": 2259,
+      "wave2_reason": "rate_limited_unfetched_priority"
+    },
+    {
+      "post_no": "706",
+      "title": "도적만들고 하루종일 학살하고다녀야지 ㅋㅋㅋ",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=706&exception_mode=recommend&page=16",
+      "date_str": "2026-09-17 19:51:40",
+      "recommends": 11,
+      "comments_count": 14,
+      "views": 1782,
+      "wave2_reason": "rate_limited_unfetched_priority"
+    },
+    {
+      "post_no": "707",
+      "title": "존나 빠르게 레벨올려서 출근전 와우하는새기들 다죽여야지 ㅋㅋ",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=707&exception_mode=recommend&page=16",
+      "date_str": "2026-09-17 20:00:39",
+      "recommends": 10,
+      "comments_count": 6,
+      "views": 1827,
+      "wave2_reason": "rate_limited_unfetched_priority"
+    },
+    {
+      "post_no": "323",
+      "title": "나이트본 스카이본 나는",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=323&exception_mode=recommend&page=16",
+      "date_str": "2026-09-15 20:45:44",
+      "recommends": 17,
+      "comments_count": 3,
+      "views": 1138,
+      "wave2_reason": "rate_limited_unfetched_priority"
+    },
+    {
+      "post_no": "24989",
+      "title": "이게 월드오브워크래프트임",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=24989&exception_mode=recommend&page=9",
+      "date_str": "2026-11-01 14:32:10",
+      "recommends": 24,
+      "comments_count": 29,
+      "views": 2901,
+      "image_urls": [
+        "https://dcimg4.dcinside.co.kr/viewimage.php?id=3ab2c720eac03db06bad&no=24b0d769e1d32ca73de782fa1bd6253180d7c2ae01f81a7319963773608179657ba8f11c6b7eba27d24930b11e276160b30dcc646f7b2d0825d7242e1c5c03749869fa3a9a9c",
+        "https://dcimg4.dcinside.co.kr/viewimage.php?id=3ab2c720eac03db06bad&no=24b0d769e1d32ca73de782fa1bd6253180d7c2ae01f81a7319963773608179657ba8f11c6b7eba27d24930b11e27616d4b412f23c4f29d441d02b5947b03a48946afee0ecdf6",
+        "https://dcimg4.dcinside.co.kr/viewimage.php?id=3ab2c720eac03db06bad&no=24b0d769e1d32ca73de782fa1bd6253180d7c2ae01f81a7319963773608179657ba8f11c6b7eba27d24930b11e270c07716086a75fd543dd22bdff66246680fb7b9fd8756528ec",
+        "https://dcimg4.dcinside.co.kr/viewimage.php?id=3ab2c720eac03db06bad&no=24b0d769e1d32ca73de782fa1bd6253180d7c2ae01f81a7319963773608179657ba8f11c6b7eba27d24930b11e270c077e698dae57db41d923baff3f2735d6a761db65cb9dfdd9",
+        "https://dcimg4.dcinside.co.kr/viewimage.php?id=3ab2c720eac03db06bad&no=24b0d769e1d32ca73de782fa1bd6253180d7c2ae01f81a7319963773608179657ba8f11c6b7eba27d24930b11e270c077b698eae5bdb43d829beff30736584f6587b791ac22d73",
+        "https://dcimg4.dcinside.co.kr/viewimage.php?id=3ab2c720eac03db06bad&no=24b0d769e1d32ca73de782fa1bd6253180d7c2ae01f81a7319963773608179657ba8f11c6b7eba27d24930b11e270c077e6887aa56d445da26bfff357236d6a2cc2079a45102b6",
+        "https://dcimg4.dcinside.co.kr/viewimage.php?id=3ab2c720eac03db06bad&no=24b0d769e1d32ca73de782fa1bd6253180d7c2ae01f81a7319963773608179657ba8f11c6b7eba27d24930b11e270c077e608bad5adb4ad727b0ff377764d5f666703174491bb3"
+      ],
+      "wave2_reason": "fetched_html_but_needs_image_inspection_after_cooldown"
+    },
+    {
+      "post_no": "24111",
+      "title": "필수 메모 애드온.jpg",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=24111&exception_mode=recommend&page=9",
+      "date_str": "2026-10-31 23:52:13",
+      "recommends": 14,
+      "comments_count": 20,
+      "views": 2176,
+      "image_urls": [
+        "https://dcimg4.dcinside.co.kr/viewimage.php?id=3ab2c720eac03db06bad&no=24b0d769e1d32ca73de782fa11d028315b16038a51180b889cf1820a1aa96b07b590cb73a81d079c2eea30df09ae7458096d6a0492088ecdb3f67f9c335908a56f164819136a98e624dcee88d2d64806b00e754b5ed08a161b32fc9254aeaa93b14aa84592cf003a3d64"
+      ],
+      "wave2_reason": "fetched_html_but_needs_image_inspection_after_cooldown"
+    },
+    {
+      "post_no": "20881",
+      "title": "방가방가 탱토리 스틸한놈 누구냐",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=20881&exception_mode=recommend&page=10",
+      "date_str": "2026-10-30 14:33:01",
+      "recommends": 21,
+      "comments_count": 16,
+      "views": 1635,
+      "image_urls": [
+        "https://dcimg4.dcinside.co.kr/viewimage.php?id=3ab2c720eac03db06bad&no=24b0d769e1d32ca73de782fa1bd6253180d7c2ae01f81a731996377260827865fe9419b9f262ad68fe5ab9d8bb47f8d1b29d377252e04ad8fff72c2953d4c9ae7a53ae8b1175"
+      ],
+      "wave2_reason": "fetched_html_but_needs_image_inspection_after_cooldown"
+    },
+    {
+      "post_no": "19970",
+      "title": "이게 법사 현실임",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=19970&exception_mode=recommend&page=10",
+      "date_str": "2026-10-30 09:23:32",
+      "recommends": 26,
+      "comments_count": 10,
+      "views": 2087,
+      "image_urls": [
+        "https://dcimg4.dcinside.co.kr/viewimage.php?id=3ab2c720eac03db06bad&no=24b0d769e1d32ca73de782fa11d028315b16038a51180b889cf1820a1aa86b079a23a09ac689879a1f168c9241adec899abe63518db01b75f695c117297a595b6fa58344f68caa2b84c0cec477796f8ecc7a34a875bd084d6d8c3cf0caad747ea2add9d428dea4aee04252"
+      ],
+      "wave2_reason": "fetched_html_but_needs_image_inspection_after_cooldown"
+    }
+  ],
+  "rejected_summary": {
+    "meta_server_pop_balance_opinion": 147,
+    "gdkp_rmt_gold_monetization_debate": 31,
+    "guide_addon_patch_site_info": 38,
+    "age_gender_politics_flamebait_or_inven": 33,
+    "faction_racial_nick_banter_no_story": 34,
+    "video_or_unreadable_media_only": 1,
+    "low_effort_gaechu_refund_or_old_retail": 20
+  }
+}

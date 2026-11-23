@@ -1,0 +1,97 @@
+{
+  "episode_number": 34,
+  "source_post_no": "20899",
+  "source_title": "전사가 젤 이기적임",
+  "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=20899&exception_mode=recommend&page=10",
+  "subtitle": "죽으면 힐러 탓, 어글 튀면 딜러 탓 — 반박 시 거름 전탱",
+  "cuts": [
+    {
+      "cut_index": 1,
+      "aspect_ratio": "4:3",
+      "layout_slot": "top",
+      "characters": [
+        "나이트엘프 사제",
+        "오크 전사"
+      ],
+      "speaker": "오크 전사",
+      "dialogue": "마나 확인? 그런 거 없다!\n쫄 4팩 한 번에 간다!!",
+      "wordless": false,
+      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet at a consistent medium 2.5-to-3-head waist-up chibi scale on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray tint, no ground shadow, no panel borders, zero text, zero letters, zero digits, zero numbers, zero speech bubbles, zero UI frames). On the lower-left, the Night Elf Priest girl (bottom-row #2 on Draft C cast sheet: long silky lavender-silver hair, long pointed elf ears, delicate golden crescent-moon circlet on her forehead, tired lilac-purple eyes with pronounced dark under-eye circles, white-and-gold priestess robe with cream collar bow, golden crescent-moon staff leaned beside her, slumped exhausted and sipping from a nearly empty corked blue glass mana potion flask, heavy dark circles and a desperate sweat drop). On the lower-right, the Orc Warrior girl (top-row #1 on Draft C cast sheet: vibrant green plush orc animal-onesie hood with curved cream horns, tiny upturned fangs, piggy snout and pointed green ears on top of the hood, black high ponytail hair with bangs, bright crimson-red eyes, spiky red shoulder pauldrons over silver plate armor, as a protection tank with a sturdy steel kite shield on her left arm and a compact one-handed steel sword in her right hand, charging forward to the right with a reckless battle-cry grin and red motion streaks, not even glancing back). Keep both characters strictly in the lower two-thirds of the 4:3 frame with generous completely empty pure #FFFFFF white headroom across the entire top 38% (both top corners strictly pure white).",
+      "tail_target": "right",
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 2,
+      "aspect_ratio": "16:9",
+      "layout_slot": "bottom",
+      "characters": [
+        "오크 전사"
+      ],
+      "speaker": "오크 전사",
+      "dialogue": "힐러 뭐 함?!\n탱 죽는 거 안 보여?!",
+      "wordless": false,
+      "visual_prompt": "Solo cute anime chibi girl from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray tint, no ground shadow, no panel borders, zero text, zero letters, zero digits, zero numbers, zero speech bubbles, zero UI frames). Positioned cleanly at a consistent medium 2.5-to-3-head waist-up chibi scale on the right half of the wide 16:9 frame facing slightly left (never a tiny distant micro-chibi), leaving the entire left 48% completely empty pure #FFFFFF white space for a speech bubble: the Orc Warrior girl (top-row #1 on Draft C cast sheet: vibrant green plush orc animal-onesie hood with curved cream horns, tiny upturned fangs, piggy snout and pointed green ears on top of the hood, black high ponytail hair with bangs, bright crimson-red eyes, spiky red shoulder pauldrons over silver plate armor, steel kite shield fallen beside her, sprawled flat on the floor defeated with dizzy cartoon spiral eyes and a tiny translucent ghost wisp rising above her, yet still pointing an accusing finger and shouting angrily).",
+      "tail_target": "right",
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 3,
+      "aspect_ratio": "4:3",
+      "layout_slot": "top",
+      "characters": [
+        "오크 전사",
+        "노움 도적"
+      ],
+      "speaker": "오크 전사",
+      "dialogue": "어글 튀었잖아!\n딜러들 어글 관리\n안 하냐고!!",
+      "wordless": false,
+      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet at a consistent medium 2.5-to-3-head waist-up chibi scale on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray tint, no ground shadow, no panel borders, zero text, zero letters, zero digits, zero numbers, zero speech bubbles, zero UI frames). On the lower-left, the Orc Warrior girl (top-row #1 on Draft C cast sheet: vibrant green plush orc animal-onesie hood with curved cream horns, tiny upturned fangs, piggy snout and pointed green ears on top of the hood, black high ponytail hair with bangs, bright crimson-red eyes, spiky red shoulder pauldrons over silver plate armor, freshly resurrected with faint golden resurrection sparkles, as a protection tank with a sturdy steel kite shield on her left arm and a compact one-handed steel sword in her right hand, yelling with an anger vein and pointing her sword at the rogue). On the lower-right, the Gnome Rogue girl (top-row #3 on Draft C cast sheet: petite chibi girl with blonde twin pigtails fading into hot-pink and electric-blue tips, green-lensed steampunk aviator goggles on her forehead, cross and star hairpins, bright blue eyes, black stealth mask pulled down below her chin, dark charcoal rogue cloak, daggers sheathed at her belt, sprinting away in panic with tears flying, a menacing angry red aggro glow swirling right behind her). Keep both characters strictly in the lower two-thirds of the 4:3 frame with generous completely empty pure #FFFFFF white headroom across the entire top 38% (both top corners strictly pure white).",
+      "tail_target": "left",
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 4,
+      "aspect_ratio": "16:9",
+      "layout_slot": "bottom",
+      "characters": [
+        "나이트엘프 사제"
+      ],
+      "speaker": null,
+      "dialogue": null,
+      "wordless": true,
+      "visual_prompt": "Centered dramatic comedic chest-up close-up freeze-frame of a single cute anime chibi girl from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray tint, no ground shadow, no panel borders, zero text, zero letters, zero digits, zero numbers, zero speech bubbles, zero UI frames): the Night Elf Priest girl (bottom-row #2 on Draft C cast sheet: long silky lavender-silver hair, long pointed elf ears, delicate golden crescent-moon circlet on her forehead, tired lilac-purple eyes with pronounced dark under-eye circles, white-and-gold priestess robe with cream collar bow, staff leaned on her shoulder, empty mana flask dangling from limp fingers, lilac eyes gone completely dead and blank, ultra-heavy dark circles, frozen deadpan with a ghostly soul wisp drifting up and a single sweat drop). Pure silent frozen reaction, crisp comedic impact.",
+      "tail_target": "center",
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 5,
+      "aspect_ratio": "4:3",
+      "layout_slot": "top",
+      "characters": [
+        "노움 도적",
+        "오크 전사"
+      ],
+      "speaker": "노움 도적",
+      "dialogue": "탱님... 도발\n한 번도 안 누르셨는데요?",
+      "wordless": false,
+      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet at a consistent medium 2.5-to-3-head waist-up chibi scale on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray tint, no ground shadow, no panel borders, zero text, zero letters, zero digits, zero numbers, zero speech bubbles, zero UI frames). On the lower-left, the Gnome Rogue girl (top-row #3 on Draft C cast sheet: petite chibi girl with blonde twin pigtails fading into hot-pink and electric-blue tips, green-lensed steampunk aviator goggles on her forehead, cross and star hairpins, bright blue eyes, black stealth mask pulled down below her chin, dark charcoal rogue cloak, daggers sheathed at her belt, raising one timid hand with a flat deadpan face and a sweat drop). On the lower-right, the Orc Warrior girl (top-row #1 on Draft C cast sheet: vibrant green plush orc animal-onesie hood with curved cream horns, tiny upturned fangs, piggy snout and pointed green ears on top of the hood, black high ponytail hair with bangs, bright crimson-red eyes, spiky red shoulder pauldrons over silver plate armor, shield on her left arm and one-handed sword sheathed at her hip, arms crossed with a smug shameless pout, looking away). Keep both characters strictly in the lower two-thirds of the 4:3 frame with generous completely empty pure #FFFFFF white headroom across the entire top 38% (both top corners strictly pure white).",
+      "tail_target": "left",
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 6,
+      "aspect_ratio": "16:9",
+      "layout_slot": "bottom",
+      "characters": [
+        "오크 전사",
+        "노움 도적"
+      ],
+      "speaker": "오크 전사",
+      "dialogue": "지금 탱한테 반박?\n반박 시 거름!!",
+      "wordless": false,
+      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray tint, no ground shadow, no panel borders, zero text, zero letters, zero digits, zero numbers, zero speech bubbles, zero UI frames), framed snugly together near the center of the wide 16:9 frame at a consistent medium 2.5-to-3-head waist-up chibi scale (matching the 4:3 panel size, never tiny distant micro-chibis), kept in the lower 65% with the entire top 35% completely empty pure #FFFFFF white space. On the left, the Orc Warrior girl (top-row #1 on Draft C cast sheet: vibrant green plush orc animal-onesie hood with curved cream horns, tiny upturned fangs, piggy snout and pointed green ears on top of the hood, black high ponytail hair with bangs, bright crimson-red eyes, spiky red shoulder pauldrons over silver plate armor, shield on her left arm and one-handed sword sheathed at her hip, pointing dramatically with a furious shameless glare and a booming yell). On the right, the Gnome Rogue girl (top-row #3 on Draft C cast sheet: petite chibi girl with blonde twin pigtails fading into hot-pink and electric-blue tips, green-lensed steampunk aviator goggles on her forehead, cross and star hairpins, bright blue eyes, black stealth mask pulled down below her chin, dark charcoal rogue cloak, daggers sheathed at her belt, calmly vanishing into a swirling white-gray cartoon smoke puff with a deadpan farewell wave, half her body already translucent).",
+      "tail_target": "left",
+      "item_tooltip": null
+    }
+  ]
+}

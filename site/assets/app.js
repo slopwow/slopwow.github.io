@@ -2,7 +2,7 @@
 (function () {
   "use strict";
 
-  var PUBLISH_STORAGE_KEY = "wow_sloptoon_dc_published_v1";
+  var HOME_PAGE_SIZE = 24;
 
   function showToast(msg) {
     var toast = document.getElementById("toast");
@@ -74,7 +74,7 @@
     });
   }
 
-  /* ---------------- HOME PAGE (SEARCH / FILTER / SORT) ---------------- */
+  /* ---------------- HOME PAGE (SEARCH / FILTER / SORT / PAGINATION) ---------------- */
   function initHomePage() {
     var grid = document.getElementById("episodeGrid");
     var searchInput = document.getElementById("searchInput");
@@ -83,11 +83,17 @@
     var resultCount = document.getElementById("resultCount");
     var emptyFilter = document.getElementById("emptyFilter");
     var resetBtn = document.getElementById("resetFiltersBtn");
+    var loadMoreWrap = document.getElementById("loadMoreWrap");
+    var loadMoreBtn = document.getElementById("loadMoreBtn");
+    var showAllBtn = document.getElementById("showAllBtn");
     if (!grid) return;
 
     var cards = Array.prototype.slice.call(grid.querySelectorAll(".ep-card"));
+    var totalAll = cards.length;
     var activeCast = "";
     var sortOrder = "desc";
+    var renderedOrder = "desc";
+    var visibleLimit = HOME_PAGE_SIZE;
 
     // Sync initial ?cast= query parameter if linked from cast.html
     var params = new URLSearchParams(window.location.search);
@@ -100,17 +106,31 @@
       });
     }
 
-    function applyFilters() {
-      var q = (searchInput ? searchInput.value : "").trim().toLowerCase();
-      var visible = 0;
-
+    function reorderDomIfNeeded() {
+      if (renderedOrder === sortOrder) return;
       cards.sort(function (a, b) {
         var na = parseInt(a.getAttribute("data-num") || "0", 10);
         var nb = parseInt(b.getAttribute("data-num") || "0", 10);
         return sortOrder === "desc" ? nb - na : na - nb;
       });
+      var frag = document.createDocumentFragment();
       cards.forEach(function (card) {
-        grid.appendChild(card);
+        frag.appendChild(card);
+      });
+      grid.appendChild(frag);
+      renderedOrder = sortOrder;
+    }
+
+    function applyFilters() {
+      var q = (searchInput ? searchInput.value : "").trim().toLowerCase();
+      var qNoHash = q.replace(/^#/, "");
+      var matched = [];
+
+      reorderDomIfNeeded();
+
+      cards.forEach(function (card) {
+        var epId = (card.getAttribute("data-id") || "").toLowerCase();
+        var epNum = (card.getAttribute("data-num") || "").toLowerCase();
         var title = card.getAttribute("data-title") || "";
         var sub = card.getAttribute("data-sub") || "";
         var post = card.getAttribute("data-post") || "";
@@ -122,30 +142,60 @@
           !q ||
           title.indexOf(q) !== -1 ||
           sub.indexOf(q) !== -1 ||
-          post.indexOf(q.replace(/^#/, "")) !== -1 ||
+          post.indexOf(qNoHash) !== -1 ||
+          epId.indexOf(q) !== -1 ||
+          ("ep." + epNum).indexOf(q) !== -1 ||
+          (epNum + "화").indexOf(q) !== -1 ||
           castStr.toLowerCase().indexOf(q) !== -1;
 
-        var show = matchesCast && matchesQuery;
-        card.hidden = !show;
-        if (show) visible += 1;
+        if (matchesCast && matchesQuery) {
+          matched.push(card);
+        } else {
+          card.hidden = true;
+        }
       });
 
+      var totalMatched = matched.length;
+      var shownCount = 0;
+      for (var i = 0; i < totalMatched; i++) {
+        var showCard = i < visibleLimit;
+        matched[i].hidden = !showCard;
+        if (showCard) shownCount += 1;
+      }
+
       if (resultCount) {
-        resultCount.textContent = "총 " + visible + "개의 에피소드";
+        if (q || activeCast) {
+          resultCount.textContent = "검색 결과 " + totalMatched + "화 (전체 " + totalAll + "화)";
+        } else if (shownCount < totalMatched) {
+          resultCount.textContent = "총 " + totalMatched + "개의 에피소드 중 " + shownCount + "화 표시 중";
+        } else {
+          resultCount.textContent = "총 " + totalMatched + "개의 에피소드";
+        }
       }
       if (emptyFilter) {
-        emptyFilter.hidden = visible > 0;
+        emptyFilter.hidden = totalMatched > 0;
+      }
+      if (loadMoreWrap) {
+        var remaining = totalMatched - shownCount;
+        loadMoreWrap.hidden = remaining <= 0;
+        if (loadMoreBtn && remaining > 0) {
+          loadMoreBtn.textContent = "더 보기 (남은 " + remaining + "화)";
+        }
       }
     }
 
     if (searchInput) {
-      searchInput.addEventListener("input", applyFilters);
+      searchInput.addEventListener("input", function () {
+        visibleLimit = HOME_PAGE_SIZE;
+        applyFilters();
+      });
     }
     if (filterBar) {
       filterBar.addEventListener("click", function (ev) {
         var btn = ev.target.closest(".filter-chip");
         if (!btn) return;
         activeCast = btn.getAttribute("data-cast") || "";
+        visibleLimit = HOME_PAGE_SIZE;
         filterBar.querySelectorAll(".filter-chip").forEach(function (b) {
           b.classList.toggle("is-active", b === btn);
         });
@@ -157,12 +207,26 @@
         sortOrder = sortOrder === "desc" ? "asc" : "desc";
         sortToggle.setAttribute("data-order", sortOrder);
         sortToggle.textContent = sortOrder === "desc" ? "최신순 ↓" : "1화부터 ↑";
+        visibleLimit = HOME_PAGE_SIZE;
+        applyFilters();
+      });
+    }
+    if (loadMoreBtn) {
+      loadMoreBtn.addEventListener("click", function () {
+        visibleLimit += HOME_PAGE_SIZE;
+        applyFilters();
+      });
+    }
+    if (showAllBtn) {
+      showAllBtn.addEventListener("click", function () {
+        visibleLimit = Math.max(totalAll, HOME_PAGE_SIZE);
         applyFilters();
       });
     }
     if (resetBtn) {
       resetBtn.addEventListener("click", function () {
         activeCast = "";
+        visibleLimit = HOME_PAGE_SIZE;
         if (searchInput) searchInput.value = "";
         if (filterBar) {
           filterBar.querySelectorAll(".filter-chip").forEach(function (b) {
@@ -477,15 +541,40 @@
       });
     });
 
+    // Wire quick episode jump dropdown
+    var jumpSelect = document.getElementById("epJumpSelect");
+    if (jumpSelect) {
+      jumpSelect.value = ep.episode_id;
+      jumpSelect.addEventListener("change", function () {
+        if (jumpSelect.value && jumpSelect.value !== ep.episode_id) {
+          window.location.href = episodeHref(rootPrefix, jumpSelect.value);
+        }
+      });
+    }
+
     // Keyboard prev/next navigation
     document.addEventListener("keydown", function (ev) {
-      if (ev.target && /INPUT|TEXTAREA/.test(ev.target.tagName)) return;
+      if (ev.target && /INPUT|TEXTAREA|SELECT/.test(ev.target.tagName)) return;
       if (ev.key === "ArrowLeft" && prevEp) {
         window.location.href = episodeHref(rootPrefix, prevEp.episode_id);
       } else if (ev.key === "ArrowRight" && nextEp) {
         window.location.href = episodeHref(rootPrefix, nextEp.episode_id);
       }
     });
+  }
+
+  /* ---------------- GLOBAL BACK TO TOP ---------------- */
+  function initBackToTop() {
+    var btn = document.getElementById("backToTopBtn");
+    if (!btn) return;
+    function toggleBtn() {
+      btn.hidden = window.scrollY < 420;
+    }
+    window.addEventListener("scroll", toggleBtn, { passive: true });
+    btn.addEventListener("click", function () {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+    toggleBtn();
   }
 
   /* ---------------- CAST PAGE (SHEET SWITCH + LIGHTBOX) ---------------- */
@@ -529,5 +618,6 @@
     if (page === "episode") initEpisodePage();
     if (page === "cast") initCastPage();
     initRandomButtons();
+    initBackToTop();
   });
 })();

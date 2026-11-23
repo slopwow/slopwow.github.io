@@ -1,7 +1,8 @@
 """Comic cut illustrator powered by Google GenAI Interactions API (`gemini-nano-banana-2.1`).
 
-Generates pure `#FFFFFF` borderless Draft C cute pop-gag chibi cuts using both the official
-Draft C cast sheet and the sloptoon layout/linework reference image.
+Generates pure `#FFFFFF` borderless Draft C cute pop-gag chibi cuts using the official
+Draft C cast sheet, the sloptoon layout/linework reference image, Clean Hand anchors,
+consistent medium chibi framing, and WoW Forever visual anti-hallucination guardrails.
 """
 
 from __future__ import annotations
@@ -22,6 +23,7 @@ from wow_sloptoon.config import (
     load_settings,
 )
 from wow_sloptoon.models import ComicCut, EpisodeScript
+from wow_sloptoon.wow_lore import build_cut_visual_lore_hints
 
 
 def _guess_mime_type(path: Path) -> str:
@@ -41,28 +43,41 @@ def _encode_image_base64(path: Path) -> tuple[str, str]:
 
 
 def build_cut_image_prompt(cut: ComicCut) -> str:
-    """Construct the exact image-generation prompt with Draft C anchors & #FFFFFF rules."""
+    """Construct the exact image-generation prompt with Draft C Clean Hand anchors & WoW Forever rules."""
     anchors = build_character_anchors_block(cut.characters)
+    lore_hints = build_cut_visual_lore_hints(cut.visual_prompt, cut.characters)
 
     if cut.wordless:
         framing_note = (
-            "COMPOSITION: Centered solo comedic freeze-frame reaction shot (silent panel). "
-            "Place the character squarely in the center with expressive deadpan/shocked "
-            "trembling pupils and crisp comedic impact. No room needed for speech bubbles."
+            "COMPOSITION & SCALE: Centered solo comedic chest-up close-up freeze-frame reaction shot "
+            "(silent panel; character fills ~75-85% of canvas height). Place the character squarely in "
+            "the center with expressive deadpan/shocked trembling pupils and crisp comedic impact. "
+            "No room needed for speech bubbles."
         )
     elif cut.layout_slot == "top":
         framing_note = (
-            "COMPOSITION: Open top-slot 4:3 comic panel. Place characters slightly toward "
-            "the lower two-thirds of the canvas, leaving generous pure white (#FFFFFF) "
-            "headroom at the top 30% for external speech-bubble placement. "
-            f"Primary speaker position cue: {cut.tail_target}."
+            "COMPOSITION & SCALE: Open top-slot 4:3 comic panel. Frame the character(s) at a consistent "
+            "medium 2.5-to-3-head waist-up or knee-up chibi scale (filling ~55-68% of canvas height) "
+            "in the lower two-thirds of the canvas, leaving generous pure white (#FFFFFF) headroom at "
+            "the top 30-35% for external speech-bubble placement. NEVER shrink characters into tiny "
+            f"distant full-body micro-chibis. Primary speaker position cue: {cut.tail_target}."
+        )
+    elif len(cut.characters) >= 2:
+        framing_note = (
+            "COMPOSITION & SCALE: Wide bottom-slot 16:9 two-character reaction panel. Frame BOTH "
+            "characters prominently at a consistent medium 2.5-to-3-head waist-up/knee-up chibi scale "
+            "(filling ~55-68% of canvas height, matching the 4:3 panel character size — NEVER zoom out "
+            "into tiny distant full-body micro-chibis!). Arrange them snugly in the lower two-thirds or "
+            "speaker-side half with generous pure white (#FFFFFF) space near the upper/opposite side "
+            f"for external speech-bubble placement. Primary speaker position cue: {cut.tail_target}."
         )
     else:
         framing_note = (
-            "COMPOSITION: Wide bottom-slot 16:9 reaction panel. Frame the character(s) "
-            "cleanly with generous pure white (#FFFFFF) space near the upper/opposite side "
-            "for external speech-bubble placement. "
-            f"Primary speaker position cue: {cut.tail_target}."
+            "COMPOSITION & SCALE: Wide bottom-slot 16:9 solo reaction panel. Frame the character "
+            "prominently at a consistent medium 2.5-to-3-head waist-up/knee-up chibi scale "
+            "(filling ~58-70% of canvas height, matching the 4:3 panel character size) positioned cleanly "
+            "toward the speaker side with generous pure white (#FFFFFF) space near the upper/opposite "
+            f"side for external speech-bubble placement. Primary speaker position cue: {cut.tail_target}."
         )
 
     return (
@@ -71,14 +86,20 @@ def build_cut_image_prompt(cut: ComicCut) -> str:
         "linework feel of Reference Image 2 (Sloptoon Style Reference).\n\n"
         f"{anchors}\n\n"
         f"SCENE ACTION (Cut #{cut.cut_index}):\n{cut.visual_prompt.strip()}\n\n"
+        f"{lore_hints}\n\n"
         f"{framing_note}\n\n"
         "ABSOLUTE TECHNICAL REQUIREMENTS:\n"
         "- 100% PURE SOLID WHITE (#FFFFFF) BACKGROUND ONLY — zero scenery, zero gray shading, "
         "zero gradient backdrop, zero ground shadows outside tiny contact lines.\n"
-        "- ZERO TEXT, ZERO KOREAN/ENGLISH LETTERS, ZERO SPEECH BUBBLES, ZERO SOUND EFFECTS, "
-        "ZERO PANEL BORDERS, ZERO WATERMARKS.\n"
-        "- Match every character's exact hood, horns, hair color/gradient, eye color, outfit, "
-        "and signature prop from Reference Image 1 with 100% visual consistency."
+        "- ZERO TEXT, ZERO KOREAN/ENGLISH LETTERS, ZERO DIGITS/NUMBERS, ZERO SPEECH BUBBLES, "
+        "ZERO SOUND EFFECTS, ZERO PANEL BORDERS, ZERO WATERMARKS.\n"
+        "- Match every character's exact hood, horns/ears, hair color/gradient, eye color, and "
+        "outfit from Reference Image 1 with 100% visual consistency; HOWEVER, obey the CLEAN HAND "
+        "RULE — sheath/stow on back or waist, or omit a character's default weapon/prop whenever "
+        "holding scene-specific loot, a tank shield, a loot die, a hearthstone, a potion flask, "
+        "or gesturing (NEVER draw 3+ weapons/props in one character's hands).\n"
+        "- CONSISTENT MEDIUM CHIBI SCALE: Maintain consistent 2.5-to-3-head waist-up/knee-up chibi "
+        "proportions across both 4:3 and 16:9 cuts (never shrink characters to tiny micro-chibis)."
     )
 
 
