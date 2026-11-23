@@ -16,8 +16,9 @@
       "speaker": "노움 도적",
       "dialogue": "법사님~ 물빵\n좀 주세요오~\n거래 걸게요!",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). On the lower-left, the Gnome Rogue girl (top-row #3 on Draft C cast sheet: petite chibi girl with blonde twin pigtails fading into hot-pink and electric-blue tips, green-lensed steampunk aviator goggles on her forehead, cross and star hairpins, bright blue eyes, black stealth mask pulled down below her chin, dark charcoal rogue cloak) sidles up with a sugary fake-innocent grin, clasping both hands together pleadingly with puppy-dog sparkle eyes, her poison-green daggers sheathed at her waist belt. On the lower-right, the Skyborne Mage girl (bottom-row #4 on Draft C cast sheet: pointed elf ears, long golden-blonde hair fading into pastel sky-blue and aqua tips with a tiny white Skyborne feather hair charm, big sparkling sapphire-blue eyes, blue-and-white sailor-collar mage uniform with a teal ribbon bow) turns with a kind warm helpful smile, hands empty. Both characters at a consistent medium 2.5-to-3-head knee-up chibi scale (never tiny distant micro-chibis), kept strictly in the lower two-thirds of the 4:3 frame with completely empty pure #FFFFFF white headroom across the entire top 37% (both top corners strictly pure white).",
-      "tail_target": "left"
+      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero speech bubbles). Over-the-shoulder (OTS) diagonal shot. In the foreground right, the large back and shoulder of the Skyborne Mage girl (golden hair fading to aqua tips, sailor collar) frames the scene. In the background left, the petite Gnome Rogue girl (top-row #3: blonde pigtails with pink/blue tips, steampunk aviator goggles, cross hairpins, black cloak, daggers sheathed at waist) tiptoes forward with a cheeky wheedling smile, rubbing her gloved hands together eagerly demanding water and bread. Generous pure #FFFFFF white headroom across top 35%.",
+      "tail_target": "left",
+      "item_tooltip": null
     },
     {
       "cut_index": 2,
@@ -29,9 +30,10 @@
       "speaker": "스카이본 마법사",
       "dialogue": "그럼요~ 방금 만든\n최고급 결정수\n20개 드릴게요!",
       "wordless": false,
-      "visual_prompt": "Solo cute anime chibi girl from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). the Skyborne Mage girl (bottom-row #4 on Draft C cast sheet: pointed elf ears, long golden-blonde hair fading into pastel sky-blue and aqua tips with a tiny white Skyborne feather hair charm, big sparkling sapphire-blue eyes, blue-and-white sailor-collar mage uniform with a teal ribbon bow) proudly holds out a glowing corked blue fantasy glass mana-water flask with sparkling crystal-clear water in one hand and a steaming warm round conjured bread bun in the other, beaming generously with a sunny closed-eye smile and little golden sparkles. Positioned cleanly on the right half of the wide 16:9 frame at a consistent medium 2.5-to-3-head waist-up chibi scale matching the 4:3 panels (never a tiny micro-chibi), leaving the entire left 47% completely empty pure #FFFFFF white space for a speech bubble.",
+      "visual_prompt": "Solo cute anime chibi girl from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero speech bubbles). Dynamic action motion shot positioned cleanly on the right half of the wide 16:9 canvas (leaving left 48% pure white for tooltip). The Skyborne Mage girl (bottom-row #4: pointed elf ears, aqua-tipped blonde hair, sapphire eyes) cheerfully conjures water, proudly presenting two ornate fantasy corked glass flasks filled with sparkling azure-blue Created Crystal Water radiating cyan arcane magic circles and glowing sparkles, beaming with a bright hospitable smile. Generous pure white headroom across top 35%.",
       "tail_target": "right",
       "item_tooltip": {
+        "image_path": null,
         "item_name": "창조된 결정수",
         "wowhead_item_id": 8079,
         "quality": "common",
@@ -61,8 +63,9 @@
       "speaker": "노움 도적",
       "dialogue": "아니 이거 말고\n레벨 높은 거요ㅡㅡ",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). On the lower-left, the Gnome Rogue girl (top-row #3 on Draft C cast sheet: petite chibi girl with blonde twin pigtails fading into hot-pink and electric-blue tips, green-lensed steampunk aviator goggles on her forehead, cross and star hairpins, bright blue eyes, black stealth mask pulled down below her chin, dark charcoal rogue cloak) doesn't even glance at the glowing blue corked flask she just received, holding it dangling carelessly by two fingers while waving her other hand dismissively, with a bored annoyed half-lidded side-eye and a flat pouting mouth, daggers sheathed at her waist. On the lower-right, the Skyborne Mage girl (bottom-row #4 on Draft C cast sheet: pointed elf ears, long golden-blonde hair fading into pastel sky-blue and aqua tips with a tiny white Skyborne feather hair charm, big sparkling sapphire-blue eyes, blue-and-white sailor-collar mage uniform with a teal ribbon bow) freezes mid-smile, her smile starting to crack, hands empty. Both characters at a consistent medium 2.5-to-3-head knee-up chibi scale (never tiny distant micro-chibis), kept strictly in the lower two-thirds of the 4:3 frame with completely empty pure #FFFFFF white headroom across the entire top 37% (both top corners strictly pure white).",
-      "tail_target": "left"
+      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero speech bubbles). Dutch-tilt dynamic angle comic cut. On the lower-left, the Gnome Rogue girl arrogantly pushes away the glowing blue crystal water flask with the back of her hand, puffing her sulky cheeks with narrowed condescending side-eye disgust and an entitled frown. On the lower-right, the Skyborne Mage recoils in sheer disbelief, her cheerful smile instantly freezing with a massive question mark and cold sweat drops forming on her temple. Generous pure #FFFFFF white headroom across the top 35%.",
+      "tail_target": "left",
+      "item_tooltip": null
     },
     {
       "cut_index": 4,
@@ -74,8 +77,9 @@
       "speaker": null,
       "dialogue": null,
       "wordless": true,
-      "visual_prompt": "Tight centered comedic chest-up close-up freeze-frame of ONLY the Skyborne Mage girl (bottom-row #4 on Draft C cast sheet: pointed elf ears, long golden-blonde hair fading into pastel sky-blue and aqua tips with a tiny white Skyborne feather hair charm, big sparkling sapphire-blue eyes, blue-and-white sailor-collar mage uniform with a teal ribbon bow) on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). Squarely dead-centered, filling about 80% of the canvas height. Instant brain-meltdown fury freeze-frame: a stiff twitching forced smile, a big pulsing red cartoon anger-vein cross mark on her temple, tiny trembling pinpoint pupils, comic white steam puffs blasting out of both pointed elf ears, her golden-blonde-to-sky-blue hair frizzing upward from static rage, faint crackling frost sparks around her head. Completely silent and speechless frozen reaction, hands empty, no weapons or props in hand.",
-      "tail_target": "center"
+      "visual_prompt": "Solo cute anime chibi girl from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero speech bubbles). Dramatic low-angle shot looking up at the snapping Mage. Centered waist-up freeze-frame of the Skyborne Mage girl: a heavy sinister dark-purple shadow cast over her forehead and eyes, her sapphire eyes turned into glowing blank white circles of unfathomable rage, twitching eyelid, holding a wooden Duel Banner flag in one hand ready to slam it down, surrounded by eerie crackling arcane sparks.",
+      "tail_target": "center",
+      "item_tooltip": null
     },
     {
       "cut_index": 5,
@@ -88,8 +92,9 @@
       "speaker": "스카이본 마법사",
       "dialogue": "결투 신청\n보냈어요.\n수락하세요.",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). On the lower-left, the Skyborne Mage girl (bottom-row #4 on Draft C cast sheet: pointed elf ears, long golden-blonde hair fading into pastel sky-blue and aqua tips with a tiny white Skyborne feather hair charm, big sparkling sapphire-blue eyes, blue-and-white sailor-collar mage uniform with a teal ribbon bow) slams a tall plain red-and-gold fantasy duel banner flag on a wooden pole straight into the ground with a dramatic impact burst, glaring with a dark shadowed smile and glowing icy eyes, frost aura swirling around her. On the lower-right, the Gnome Rogue girl (top-row #3 on Draft C cast sheet: petite chibi girl with blonde twin pigtails fading into hot-pink and electric-blue tips, green-lensed steampunk aviator goggles on her forehead, cross and star hairpins, bright blue eyes, black stealth mask pulled down below her chin, dark charcoal rogue cloak) jolts backward in shock with sweat drops flying and wide panicked eyes, daggers still sheathed at her waist. The banner cloth is completely blank with no emblem or letters. Both characters at a consistent medium 2.5-to-3-head knee-up chibi scale (never tiny distant micro-chibis), kept strictly in the lower two-thirds of the 4:3 frame with completely empty pure #FFFFFF white headroom across the entire top 37% (both top corners strictly pure white).",
-      "tail_target": "left"
+      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero speech bubbles). Dynamic side-profile 90-degree action shot. On the lower-left, the Skyborne Mage girl slams a chunky wooden and brass Duel Banner violently into the ground with dynamic comic speed lines, flying rock dust puffs, and a chillingly polite dead-eyed smile, pointing her glowing wooden wand directly at the Rogue. On the lower-right, the Gnome Rogue stumbles backward in sudden shock, goggles rattling and jaw dropping in panic. Generous pure #FFFFFF white headroom across the top 35%.",
+      "tail_target": "left",
+      "item_tooltip": null
     },
     {
       "cut_index": 6,
@@ -102,8 +107,9 @@
       "speaker": "나이트엘프 사제",
       "dialogue": "도적님… 그거\n55레벨 최고급\n물이었어요…",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi figures from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). On the center-left, the Gnome Rogue has been polymorphed into a round fluffy white cartoon sheep still wearing her green-lensed steampunk aviator goggles, with tiny blonde-pink-blue pigtail tufts poking out of the wool, bleating with teary dazed eyes beside a small fallen plain duel banner flag. Right beside her on the center-right, the Night Elf Priest girl (bottom-row #2 on Draft C cast sheet: long silky lavender-silver hair, long pointed elf ears, delicate golden crescent-moon circlet on her forehead, tired lilac-purple eyes with pronounced dark under-eye circles, white-and-gold priestess robe with cream collar bow) crouches down beside the sheep, gently poking its wool with one finger, deadpan tired half-lidded expression and a cartoon sweat drop, her golden crescent-moon staff leaning on her shoulder. Both characters placed snugly side-by-side on the left half of the wide 16:9 frame at a consistent medium 2.5-to-3-head waist-up/knee-up chibi scale matching the 4:3 panels (never tiny distant micro-chibis), leaving the entire right 46% completely empty pure #FFFFFF white space for a speech bubble.",
-      "tail_target": "right"
+      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero speech bubbles). High-angle shot looking down at the comedic aftermath. On the lower-left, the Gnome Rogue has been polymorphed into a fluffy white sheep with spiraling dizzy eyes and steampunk goggles drooping over its woolly head, bleating helplessly in a small patch of grass. On the lower-right, the Night Elf Priest girl (top-row #2: lavender hair, white clergy robe) kneels beside the sheep facepalming with an exhausted sigh and sweat drops. Generous pure #FFFFFF white headroom across the top 35%.",
+      "tail_target": "right",
+      "item_tooltip": null
     }
   ]
 }

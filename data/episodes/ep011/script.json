@@ -15,8 +15,9 @@
       "speaker": "드워프 사냥꾼",
       "dialogue": "오, 호드 쪼렙들\n침낭 메고 가네~\n귀여우니 봐준다.",
       "wordless": false,
-      "visual_prompt": "Solo cute anime chibi girl from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). Lower-center slightly left: the Dwarf Hunter girl (top-row #4 on Draft C cast sheet: forest-green fur-trimmed ranger hood, vivid orange-ginger hair in two thick braided pigtails wrapping under her chin like a cozy playful braid-beard, warm amber eyes, puffed cheeks, fur-trimmed brown leather hunter coat) sits relaxed cross-legged, hugging a red-and-white striped popcorn bucket (blank stripes, zero text) in one arm and munching popcorn with the other hand, her wooden blunderbuss rifle slung across her back, gazing sideways toward the right edge with a warm amused benevolent smile and tiny sparkles, like a kind veteran watching cute newbies walk by. Keep everything strictly in the lower two-thirds of the 4:3 frame at a consistent medium 2.5-3 head waist-up/knee-up chibi scale (never tiny distant micro-chibis), with generous completely empty pure #FFFFFF white headroom across the entire top 38% (both top corners strictly pure white).",
-      "tail_target": "left"
+      "visual_prompt": "Over-the-shoulder (OTS) diagonal shot from behind the forest-green hood and shoulder of the Dwarf Hunter girl in the foreground-left, looking down along the Thandol Span stone bridge corridor where a line of tiny distant Horde travelers with quilted bedrolls stroll past. Dwarf Hunter (forest-green hood, orange braided pigtails like a beard, amber eyes) sits munching popcorn from a blank red-striped bucket with a warm benevolent veteran smile, wooden blunderbuss slung across her back. Lower two-thirds framing, top 35% pure white (#FFFFFF) headroom. 100% pure solid #FFFFFF white borderless background, zero text, zero UI, medium 2.5-3 head chibi scale.",
+      "tail_target": "left",
+      "item_tooltip": null
     },
     {
       "cut_index": 2,
@@ -28,8 +29,9 @@
       "speaker": "드워프 사냥꾼",
       "dialogue": "/인사 /인사~\n반가워 쪼렙들!\n조심히 지나가렴♪",
       "wordless": false,
-      "visual_prompt": "Solo cute anime chibi girl from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). the Dwarf Hunter girl (top-row #4 on Draft C cast sheet: forest-green fur-trimmed ranger hood, vivid orange-ginger hair in two thick braided pigtails wrapping under her chin like a cozy playful braid-beard, warm amber eyes, puffed cheeks, fur-trimmed brown leather hunter coat) waves one hand high in an enthusiastic friendly greeting with a big bright smile and closed happy eyes, cute little heart sparkles floating around her, popcorn bucket set down at her feet, blunderbuss rifle slung on her back. Positioned cleanly on the right half of the wide 16:9 frame at a consistent medium 2.5-3 head waist-up chibi scale filling ~65% of canvas height (never tiny micro-chibis), facing slightly left, leaving the entire left 48% completely empty pure #FFFFFF white space for a speech bubble.",
-      "tail_target": "right"
+      "visual_prompt": "Side-profile 90-degree action shot of the Dwarf Hunter girl standing on the right half of the Thandol Span stone bridge, leaning forward with lively momentum and waving one hand high enthusiastically in a friendly /wave emote. Her face beams with a wide closed-eye anime smile, cute pink blushing cheeks, and tiny floating heart sparkles. Her wooden blunderbuss rifle is sheathed on her back, hands free. Positioned cleanly on the right half, leaving generous pure white (#FFFFFF) space across the entire left 48% for dialogue bubble. 100% pure solid #FFFFFF white borderless background, zero text, zero UI, medium chibi scale.",
+      "tail_target": "right",
+      "item_tooltip": null
     },
     {
       "cut_index": 3,
@@ -42,8 +44,9 @@
       "speaker": "오크 전사",
       "dialogue": "흥, 얼라 고렙이\n손 흔드네?\n씹고 침낭퀘 가자~",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames), both walking toward the right with warm quilted tan-and-brown wool traveler's bedrolls strapped with leather straps on their backs. Left (speaker): the Orc Warrior girl (top-row #1 on Draft C cast sheet: vibrant green plush orc animal-onesie hood with curved cream horns, tiny upturned fangs, piggy snout and pointed green ears on top of the hood, black high ponytail hair with bangs, bright crimson-red eyes, spiky red shoulder pauldrons over silver plate armor) wearing simple low-level gear, her chunky battle axe tucked beside the bedroll on her back, sticks her piggy-snout hood nose up in the air with a smug sassy sideways smirk and one hand waving dismissively. Right: the Tauren Druid girl (bottom-row #1 on Draft C cast sheet: fluffy warm-brown plush tauren cow hood with curved ivory horns, cute cow snout with golden nose ring and floppy ears, chestnut-brown bangs, big watery glossy brown eyes, blushing cheeks, leafy green foliage mantle over brown druid tunic) turns her head away with puffed cheeks and a cheeky tongue-out bleh face, gnarled wooden staff stowed on her back. Keep everything strictly in the lower two-thirds of the 4:3 frame at a consistent medium 2.5-3 head waist-up/knee-up chibi scale (never tiny distant micro-chibis), with generous completely empty pure #FFFFFF white headroom across the entire top 38% (both top corners strictly pure white).",
-      "tail_target": "left"
+      "visual_prompt": "Low-angle shot looking up at the two lowbie Horde girls marching arrogantly toward the right through the stone corridor, leading a column of lowbie travelers with quilted tan wool bedrolls strapped on their backs. On the left, the Orc Warrior girl (green onesie hood, piggy snout, black ponytail, crimson eyes) tilts her nose up with a smug sneer and waves dismissively sideways. On the right, the Tauren Druid girl (cow hood with horns and golden nose ring) sticks her tongue out childishly. Axe and staff stowed on backs. Lower two-thirds framing, top 35% pure white (#FFFFFF) headroom. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
+      "tail_target": "left",
+      "item_tooltip": null
     },
     {
       "cut_index": 4,
@@ -55,8 +58,9 @@
       "speaker": null,
       "dialogue": null,
       "wordless": true,
-      "visual_prompt": "Tight centered comedic chest-up close-up freeze-frame of ONLY the Dwarf Hunter girl (top-row #4 on Draft C cast sheet: forest-green fur-trimmed ranger hood, vivid orange-ginger hair in two thick braided pigtails wrapping under her chin like a cozy playful braid-beard, warm amber eyes, puffed cheeks, fur-trimmed brown leather hunter coat), squarely dead-centered and filling ~80% of the canvas height, on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). Completely speechless and frozen. Her friendly smile is frozen rigidly in place while a deep ominous dark gloom shadow falls across her upper face, warm amber eyes turned into tiny cold glinting pinpoint pupils, a single popcorn kernel tumbling from her slack fingers in mid-air, one throbbing comic anger-vein mark on her hood, a dead-silent menacing aura.",
-      "tail_target": "center"
+      "visual_prompt": "Dutch-tilt dramatic close-up comedic freeze-frame of the Dwarf Hunter girl, completely wordless and frozen in shock. A deep sinister purple shadow falls over her amber eyes, which have turned into blank unblinking pinpoint white dots. Her mouth is frozen in an eerie polite smile with a twitching eyebrow, while dark purple cartoon aura sparks crackle around her. Her hands slowly grip the blunderbuss rifle from her back. Centered framing filling ~78% of canvas height, tilted dynamic angle. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
+      "tail_target": "center",
+      "item_tooltip": null
     },
     {
       "cut_index": 5,
@@ -67,10 +71,11 @@
         "오크 전사"
       ],
       "speaker": "드워프 사냥꾼",
-      "dialogue": "인사만 받아줬어도\n무사히 침낭퀘\n하고 갔을 거다…",
+      "dialogue": "인사만 받아줬어도\n너네들은 무사히\n침낭퀘 했을 텐데…",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). Left (speaker): the Dwarf Hunter girl (top-row #4 on Draft C cast sheet: forest-green fur-trimmed ranger hood, vivid orange-ginger hair in two thick braided pigtails wrapping under her chin like a cozy playful braid-beard, warm amber eyes, puffed cheeks, fur-trimmed brown leather hunter coat) calmly aims her wooden blunderbuss rifle with both hands, a cartoon puff of white smoke and orange muzzle spark bursting from the barrel, cool half-lidded deadpan eyes, popcorn bucket gone. Right: the Orc Warrior girl (top-row #1 on Draft C cast sheet: vibrant green plush orc animal-onesie hood with curved cream horns, tiny upturned fangs, piggy snout and pointed green ears on top of the hood, black high ponytail hair with bangs, bright crimson-red eyes, spiky red shoulder pauldrons over silver plate armor) wearing simple low-level gear flees in comedic panic with tear-sprayed waterfall eyes, arms flailing, her bedroll bouncing loose on her back, crisp speed lines behind her (cute slapstick, zero gore). Keep everything strictly in the lower two-thirds of the 4:3 frame at a consistent medium 2.5-3 head waist-up/knee-up chibi scale (never tiny distant micro-chibis), with generous completely empty pure #FFFFFF white headroom across the entire top 38% (both top corners strictly pure white).",
-      "tail_target": "left"
+      "visual_prompt": "High-angle shot looking down directly recreating the author's real screenshot: inside the Thandol Span stone bridge corridor, the cobblestone floor is completely littered with a sprawling comic pile of 6-7 defeated lowbie Horde corpses and cute cartoon skeletons! Knocked-out lowbies lie face down and sprawled flat in slapstick postures with swirling spiral eyes, their tan wool bedrolls knocked loose and scattered everywhere across the stone corridor. Standing above the bridge corridor carnage on the left, Dwarf Hunter rests the smoking barrel of her wooden blunderbuss on her shoulder with a cold, sarcastic smirk. Lower two-thirds framing, top 35% pure white (#FFFFFF) headroom. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
+      "tail_target": "left",
+      "item_tooltip": null
     },
     {
       "cut_index": 6,
@@ -83,8 +88,9 @@
       "speaker": "드워프 사냥꾼",
       "dialogue": "근데 인사를\n안 받아줬잖아?\n/인사~♪",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). Right: the Tauren Druid girl (bottom-row #1 on Draft C cast sheet: fluffy warm-brown plush tauren cow hood with curved ivory horns, cute cow snout with golden nose ring and floppy ears, chestnut-brown bangs, big watery glossy brown eyes, blushing cheeks, leafy green foliage mantle over brown druid tunic) lies flat on her back knocked out with cartoon dizzy spiral eyes and tiny circling stars, still hugging her quilted tan wool bedroll (cute slapstick, zero gore). Center-right (speaker, facing left): the Dwarf Hunter girl (top-row #4 on Draft C cast sheet: forest-green fur-trimmed ranger hood, vivid orange-ginger hair in two thick braided pigtails wrapping under her chin like a cozy playful braid-beard, warm amber eyes, puffed cheeks, fur-trimmed brown leather hunter coat) crouches cheerfully beside her, blunderbuss slung on her back, giving a bright sunny closed-eye smile and a friendly little wave of her hand toward the knocked-out druid. Both characters snugly side-by-side on the right half of the wide 16:9 frame at a consistent medium 2.5-3 head waist-up chibi scale filling ~62% of canvas height (matching the 4:3 panel size, never tiny micro-chibis), leaving the entire left 46% completely empty pure #FFFFFF white space for a speech bubble.",
-      "tail_target": "right"
+      "visual_prompt": "Back-view shot seen from behind of the Dwarf Hunter girl walking away toward the left along the Thandol Span cobblestone corridor, turning her back to the knocked-out Tauren Druid and scattered lowbie skeletons in the background. The Dwarf Hunter looks back over her shoulder with a cheerful closed-eye wink, tossing a playful peace sign /wave emote, blunderbuss slung on her back. Cleanly framed with generous pure white (#FFFFFF) space on the right 46% for dialogue bubble. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
+      "tail_target": "left",
+      "item_tooltip": null
     }
   ]
 }

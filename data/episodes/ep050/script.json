@@ -14,10 +14,11 @@
         "오크 전사"
       ],
       "speaker": "오크 전사",
-      "dialogue": "어… 사냥꾼님?\n한손검이랑 사슬까지\n전부 입찰하셨네…",
+      "dialogue": "어… 사냥꾼님?\n한손검이랑 사슬 갑옷까지\n전부 주사위 굴리셨네…?",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). On the lower-left, the Dwarf Hunter girl (top-row #4 on Draft C cast sheet: forest-green fur-trimmed ranger hood, vivid orange-ginger hair in two thick braided pigtails wrapping under her chin like a cozy playful braid-beard, warm amber eyes, puffed cheeky cheeks, fur-trimmed brown leather hunter coat) happily tosses a chunky 6-sided white-and-gold loot die showing ONLY simple round black dot pips (strictly ZERO digits, ZERO numbers, ZERO letters) while clutching a compact one-handed steel sword and an ornate interlocking silver ring-mesh mail-armor waist belt with metallic buckle (medieval ring-mesh armor, NOT metal chains), her wooden blunderbuss slung across her back. On the lower-right, the Orc Warrior girl (top-row #1 on Draft C cast sheet: vibrant green plush orc animal-onesie hood with curved cream horns, tiny upturned fangs, piggy snout and pointed green ears on top of the hood, black high ponytail hair with bangs, bright crimson-red eyes, spiky red shoulder pauldrons over silver plate armor) watches with a confused tilted head and sweat drop, silver battle axe strapped across her back. Both characters at a consistent medium 2.5-to-3-head knee-up chibi scale (never tiny distant micro-chibis), kept strictly in the lower two-thirds of the 4:3 frame with completely empty pure #FFFFFF white headroom across the entire top 37% (both top corners strictly pure white).",
-      "tail_target": "right"
+      "visual_prompt": "Over-the-shoulder (OTS) diagonal shot from behind the armored shoulder and helmet of the Orc Warrior girl on the lower-right. In the lower-left, the Dwarf Hunter girl (middle-row #5 on Draft C cast sheet) is diving into an open wooden dungeon loot chest with greedy starry eyes, snatching both a 1H sword and a ring-mesh mail armor vest into her arms! 100% pure solid #FFFFFF white borderless background, medium 2.5-to-3-head chibi scale, top 35% pure white headroom. Zero text, zero digits, zero speech bubbles.",
+      "tail_target": "right",
+      "item_tooltip": null
     },
     {
       "cut_index": 2,
@@ -27,10 +28,11 @@
         "나이트엘프 사제"
       ],
       "speaker": "나이트엘프 사제",
-      "dialogue": "파티창은 민망하니\n끝나고 조용히\n귓말로 알려드리자.",
+      "dialogue": "파티창에 쓰면 민망하실 테니\n던전 끝나고 조용히\n귓말로 매너 알려드리자~",
       "wordless": false,
-      "visual_prompt": "Solo cute anime chibi girl from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). the Night Elf Priest girl (bottom-row #2 on Draft C cast sheet: long silky lavender-silver hair, long pointed elf ears, delicate golden crescent-moon circlet on her forehead, tired lilac-purple eyes with pronounced dark under-eye circles, white-and-gold priestess robe with cream collar bow) clasps both hands gently at her chest with a warm kind considerate smile and soft pastel sparkles, her golden crescent-moon staff leaning gently beside her shoulder. Positioned cleanly on the right half of the wide 16:9 frame at a consistent medium 2.5-to-3-head waist-up chibi scale matching the 4:3 panels (never a tiny micro-chibi), leaving the entire left 47% completely empty pure #FFFFFF white space for a speech bubble.",
-      "tail_target": "right"
+      "visual_prompt": "Side-profile 90-degree action shot on a 100% pure solid #FFFFFF white borderless background. The Night Elf Priest girl (bottom-row #2 on Draft C cast sheet) is tiptoeing sideways toward the right with hands folded over a small fantasy parchment scroll, wearing a gentle angelic smile and a tiny glowing halo above her head, looking thoughtful and kind. Positioned on the right, leaving the left 46% clear white space. Medium 2.5-to-3-head chibi scale. Zero text, zero digits, zero speech bubbles.",
+      "tail_target": "right",
+      "item_tooltip": null
     },
     {
       "cut_index": 3,
@@ -41,10 +43,11 @@
         "드워프 사냥꾼"
       ],
       "speaker": "나이트엘프 사제",
-      "dialogue": "사냥꾼님~ 안 쓰는\n장비는 차비 누르는\n매너가 있어요^^",
+      "dialogue": "사냥꾼님~ 안 쓰는 장비는\n차비나 포기 누르는 게\n와우 암묵의 룰이에요^^",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). On the lower-left, the Night Elf Priest girl (bottom-row #2 on Draft C cast sheet: long silky lavender-silver hair, long pointed elf ears, delicate golden crescent-moon circlet on her forehead, tired lilac-purple eyes with pronounced dark under-eye circles, white-and-gold priestess robe with cream collar bow) whispers politely with one hand cupped neatly beside her cheek and a gentle sweet smile, golden staff resting on her shoulder. On the lower-right, the Dwarf Hunter girl (top-row #4 on Draft C cast sheet: forest-green fur-trimmed ranger hood, vivid orange-ginger hair in two thick braided pigtails wrapping under her chin like a cozy playful braid-beard, warm amber eyes, puffed cheeky cheeks, fur-trimmed brown leather hunter coat) freezes mid-step turning around with narrowing annoyed amber eyes and puffed indignant cheeks, blunderbuss slung across her back, hands empty. Both characters at a consistent medium 2.5-to-3-head knee-up chibi scale (never tiny distant micro-chibis), kept strictly in the lower two-thirds of the 4:3 frame with completely empty pure #FFFFFF white headroom across the entire top 37% (both top corners strictly pure white).",
-      "tail_target": "left"
+      "visual_prompt": "Dramatic low-angle shot looking up at the Night Elf Priest girl on the lower-left, politely bending down with a cordial sweat drop and hands clasped together in gentle guidance, holding a whispered parchment notice. On the lower-right, the Dwarf Hunter girl stands clutching a bulky loot bag, looking sideways with a suspicious furrowed brow. 100% pure solid #FFFFFF white borderless background, medium 2.5-to-3-head chibi scale, top 35% clear headroom. Zero text, zero digits.",
+      "tail_target": "left",
+      "item_tooltip": null
     },
     {
       "cut_index": 4,
@@ -54,10 +57,11 @@
         "드워프 사냥꾼"
       ],
       "speaker": "드워프 사냥꾼",
-      "dialogue": "누르는 버튼이\n있어서 눌렀는데요?\n무슨 법 있어요?!",
+      "dialogue": "누르는 주사위 버튼이\n있길래 눌렀는데 왜요?!\n공통된 법이라도 있어요?!",
       "wordless": false,
-      "visual_prompt": "Solo cute anime chibi girl from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). the Dwarf Hunter girl (top-row #4 on Draft C cast sheet: forest-green fur-trimmed ranger hood, vivid orange-ginger hair in two thick braided pigtails wrapping under her chin like a cozy playful braid-beard, warm amber eyes, puffed cheeky cheeks, fur-trimmed brown leather hunter coat) leans forward shamelessly with hands on her hips, jabbing one index finger boldly into the air as a chunky 6-sided white-and-gold loot die showing ONLY simple round black dot pips (ZERO digits, ZERO text) bounces smugly beside her, cheeky defiant scowl, wooden blunderbuss slung across her back. Positioned cleanly on the right half of the wide 16:9 frame at a consistent medium 2.5-to-3-head waist-up chibi scale matching the 4:3 panels (never a tiny micro-chibi), leaving the entire left 47% completely empty pure #FFFFFF white space for a speech bubble.",
-      "tail_target": "right"
+      "visual_prompt": "Dynamic Dutch tilt diagonal angle frame with tilted camera on a 100% pure solid #FFFFFF white borderless background, recreating the exact confrontation from the screenshot whisper log! The Dwarf Hunter girl (middle-row #5) stomps both feet aggressively, hands planted firmly on her hips, chin thrust out in a brazen smug sneer, roaring back with jagged teeth and flying comical spit droplets! Two 6-sided dice with black dot pips only bounce in the air. Medium 2.5-to-3-head chibi scale, right-biased, left 46% clear space. Zero text, zero digits, zero speech bubbles.",
+      "tail_target": "right",
+      "item_tooltip": null
     },
     {
       "cut_index": 5,
@@ -69,8 +73,9 @@
       "speaker": null,
       "dialogue": null,
       "wordless": true,
-      "visual_prompt": "Tight centered comedic chest-up close-up freeze-frame of ONLY the Night Elf Priest girl (bottom-row #2 on Draft C cast sheet: long silky lavender-silver hair, long pointed elf ears, delicate golden crescent-moon circlet on her forehead, tired lilac-purple eyes with pronounced dark under-eye circles, white-and-gold priestess robe with cream collar bow) on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). Squarely dead-centered, filling about 80% of the canvas height. Speechless boiling-rage freeze-frame: a stiff trembling smile, a pulsing red cartoon anger-vein cross mark on her forehead, dark under-eye circles deepening under heavy gloom shadow, tiny shaking pinpoint pupils, faint comic steam puffing from her pointed elf ears. Completely silent and speechless frozen reaction, hands empty, no weapons or props in hand.",
-      "tail_target": "center"
+      "visual_prompt": "High-angle shot looking down at the Night Elf Priest girl (bottom-row #2 on Draft C cast sheet) in an expressive comedic shock freeze-frame on a 100% pure solid #FFFFFF white borderless background. She is frozen stiff in mid-step, her halo cracked into crooked jagged halves, her eyes blank white soulless voids, jaw dropped wide open in utter speechlessness at the brazen reply. Expressive solo close-up filling ~76% height. Zero text, zero digits, zero speech bubbles.",
+      "tail_target": "center",
+      "item_tooltip": null
     },
     {
       "cut_index": 6,
@@ -81,10 +86,11 @@
         "나이트엘프 사제"
       ],
       "speaker": "오크 전사",
-      "dialogue": "착하게 팁 줬다가\n무슨 법 타령…\n그냥 차단 박아요.",
+      "dialogue": "착하게 팁 알려줬더니\n적반하장 법 타령 실화냐…\n그냥 조용히 차단 박으시죠.",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). On the center-left, the Orc Warrior girl (top-row #1 on Draft C cast sheet: vibrant green plush orc animal-onesie hood with curved cream horns, tiny upturned fangs, piggy snout and pointed green ears on top of the hood, black high ponytail hair with bangs, bright crimson-red eyes, spiky red shoulder pauldrons over silver plate armor) gently pats the Priest's shoulder with a resigned deadpan sigh and sweat drop, silver battle axe strapped across her back. Right beside her on the center-right, the Night Elf Priest girl (bottom-row #2 on Draft C cast sheet: long silky lavender-silver hair, long pointed elf ears, delicate golden crescent-moon circlet on her forehead, tired lilac-purple eyes with pronounced dark under-eye circles, white-and-gold priestess robe with cream collar bow) clutches the back of her neck staggering in comedic blood-pressure shock with dizzy swirl eyes and puffing steam, staff dropped beside her. Both characters placed snugly side-by-side on the left half of the wide 16:9 frame at a consistent medium 2.5-to-3-head waist-up/knee-up chibi scale matching the 4:3 panels (never tiny distant micro-chibis), leaving the entire right 46% completely empty pure #FFFFFF white space for a speech bubble.",
-      "tail_target": "left"
+      "visual_prompt": "Back-view shot on a 100% pure solid #FFFFFF white borderless background. In the center-left, the Orc Warrior girl is seen from behind turning her back on the hunter, waving a dismissive hand over her shoulder while gently pulling the petrified Night Elf Priest girl away by her robe sleeve, both walking away with heavy deadpan sighs. Medium 2.5-to-3-head chibi scale, top 34% pure white headroom. Zero text, zero digits, zero speech bubbles.",
+      "tail_target": "left",
+      "item_tooltip": null
     }
   ]
 }

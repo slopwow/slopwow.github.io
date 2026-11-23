@@ -14,9 +14,9 @@
         "오크 전사"
       ],
       "speaker": "나이트엘프 사제",
-      "dialogue": "전탱님, 이번 인던\n길 아시죠?\n앞장 서주세요~",
+      "dialogue": "전탱님, 이번 인던\n길 잘 아시죠?\n앞장서서 이끌어 주세요~",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet at a consistent medium 2.5-to-3-head waist-up chibi scale on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray tint, no ground shadow, no panel borders, zero text, zero letters, zero digits, zero numbers, zero speech bubbles, zero UI frames). On the lower-left, the Night Elf Priest girl (bottom-row #2 on Draft C cast sheet: long silky lavender-silver hair, long pointed elf ears, delicate golden crescent-moon circlet on her forehead, tired lilac-purple eyes with pronounced dark under-eye circles, white-and-gold priestess robe with cream collar bow, golden crescent-moon staff leaned beside her, clasping her hands politely with a hopeful tired smile and dark under-eye circles). On the lower-right, the Orc Warrior girl (top-row #1 on Draft C cast sheet: vibrant green plush orc animal-onesie hood with curved cream horns, tiny upturned fangs, piggy snout and pointed green ears on top of the hood, black high ponytail hair with bangs, bright crimson-red eyes, spiky red shoulder pauldrons over silver plate armor, as a protection tank with a sturdy steel kite shield strapped on her left arm and a compact one-handed steel sword in her right hand, puffing her chest heroically while facing completely the wrong direction with sparkling confident eyes). Keep both characters strictly in the lower two-thirds of the 4:3 frame with generous completely empty pure #FFFFFF white headroom across the entire top 38% (both top corners strictly pure white).",
+      "visual_prompt": "Over-the-shoulder (OTS) diagonal shot from behind the bulky armored shoulder and spiked pauldron of the Orc Warrior girl on the right. On the lower-left, the Night Elf Priest girl (bottom-row #2 on Draft C cast sheet) politely tilts her head with hands folded over her staff, pointing a slender finger toward the dark dungeon path with an earnest trusting smile. 100% pure solid #FFFFFF white borderless background, medium 2.5-to-3-head chibi scale, top 35% pure white headroom. Zero text, zero digits, zero speech bubbles.",
       "tail_target": "left",
       "item_tooltip": null
     },
@@ -28,9 +28,9 @@
         "오크 전사"
       ],
       "speaker": "오크 전사",
-      "dialogue": "탱커가 길을 알아야 돼?\n내가 가는 길이\n곧 길인데?",
+      "dialogue": "탱커가 꼭 길을 알아야 돼?!\n상남자 탱커가 가는 곳이\n곧 길이고 역사다!!",
       "wordless": false,
-      "visual_prompt": "Solo cute anime chibi girl from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray tint, no ground shadow, no panel borders, zero text, zero letters, zero digits, zero numbers, zero speech bubbles, zero UI frames). Positioned cleanly at a consistent medium 2.5-to-3-head waist-up chibi scale on the right half of the wide 16:9 frame facing slightly left (never a tiny distant micro-chibi), leaving the entire left 48% completely empty pure #FFFFFF white space for a speech bubble: the Orc Warrior girl (top-row #1 on Draft C cast sheet: vibrant green plush orc animal-onesie hood with curved cream horns, tiny upturned fangs, piggy snout and pointed green ears on top of the hood, black high ponytail hair with bangs, bright crimson-red eyes, spiky red shoulder pauldrons over silver plate armor, as a protection tank with a sturdy steel kite shield strapped on her left arm and a compact one-handed steel sword in her right hand, pointing her one-handed sword boldly toward a completely random off-screen direction with blazing triumphant sparkles and a fearless toothy grin).",
+      "visual_prompt": "Dramatic low-angle shot looking up at the Orc Warrior tank girl (top-row #1 on Draft C cast sheet) on a 100% pure solid #FFFFFF white borderless background, recreating Juno's hilarious ultra-confident face from the original screenshot! She beams with radiant, blissful, pure unearned confidence, 1H axe rested over one shoulder and sturdy spiked shield strapped to her arm, puffing out her chest as she proclaims her philosophy with bold comic speed lines! Medium 2.5-to-3-head chibi scale, right-biased, left 46% clear space. Zero text, zero digits, zero speech bubbles.",
       "tail_target": "right",
       "item_tooltip": null
     },
@@ -43,9 +43,9 @@
         "오크 전사"
       ],
       "speaker": "노움 도적",
-      "dialogue": "그리핀 마차 탔는데\n길 모르면 바로\n내리는 거잖아요!!",
+      "dialogue": "그리핀 탔는데 조종사가\n길 모르면 추락하는 거잖아요!\n지도 보고 가시라고요!!",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet at a consistent medium 2.5-to-3-head waist-up chibi scale on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray tint, no ground shadow, no panel borders, zero text, zero letters, zero digits, zero numbers, zero speech bubbles, zero UI frames). On the lower-left, the Gnome Rogue girl (top-row #3 on Draft C cast sheet: petite chibi girl with blonde twin pigtails fading into hot-pink and electric-blue tips, green-lensed steampunk aviator goggles on her forehead, cross and star hairpins, bright blue eyes, black stealth mask pulled down below her chin, dark charcoal rogue cloak, poison-green daggers sheathed at her waist belt, leaning forward with wide outraged blue eyes and a cartoon anger vein, jabbing a pointing finger in exasperation). On the lower-right, the Orc Warrior girl (top-row #1 on Draft C cast sheet: vibrant green plush orc animal-onesie hood with curved cream horns, tiny upturned fangs, piggy snout and pointed green ears on top of the hood, black high ponytail hair with bangs, bright crimson-red eyes, spiky red shoulder pauldrons over silver plate armor, as a protection tank with a sturdy steel kite shield strapped on her left arm and a compact one-handed steel sword sheathed at her hip, crossing her arms smugly with an unbothered deadpan grin). Keep both characters strictly in the lower two-thirds of the 4:3 frame with generous completely empty pure #FFFFFF white headroom across the entire top 38% (both top corners strictly pure white).",
+      "visual_prompt": "Side-profile 90-degree action shot on a 100% pure solid #FFFFFF white borderless background. The tiny Gnome Rogue girl (top-row #2 on Draft C cast sheet) is sprinting alongside the Orc Warrior, waving both arms frantically in the air with sweat beads flying, shouting in protest at the warrior who marches forward heedlessly. Medium 2.5-to-3-head chibi scale, top 35% pure white headroom. Zero text, zero digits, zero speech bubbles.",
       "tail_target": "left",
       "item_tooltip": null
     },
@@ -54,14 +54,13 @@
       "aspect_ratio": "16:9",
       "layout_slot": "bottom",
       "characters": [
-        "오크 전사",
-        "노움 도적"
+        "오크 전사"
       ],
       "speaker": "오크 전사",
-      "dialogue": "수리비 한 푼 안 보태고\n마차 비유 꼬라지 보소!\n꼬우면 걸어가든가!",
+      "dialogue": "수리비 한 푼 안 보태면서\n마차 기사 비유 보소?!\n꼬우면 네가 앞에서 걸어가든가!!",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray tint, no ground shadow, no panel borders, zero text, zero letters, zero digits, zero numbers, zero speech bubbles, zero UI frames), framed snugly together near the center of the wide 16:9 frame at a consistent medium 2.5-to-3-head waist-up chibi scale (matching the 4:3 panel size, never tiny distant micro-chibis), kept in the lower 65% with the entire top 35% completely empty pure #FFFFFF white space. On the left, the Orc Warrior girl (top-row #1 on Draft C cast sheet: vibrant green plush orc animal-onesie hood with curved cream horns, tiny upturned fangs, piggy snout and pointed green ears on top of the hood, black high ponytail hair with bangs, bright crimson-red eyes, spiky red shoulder pauldrons over silver plate armor, as a protection tank with a sturdy steel kite shield strapped on her left arm and a compact one-handed steel sword sheathed at her hip, thrusting her empty open palm out indignantly with fiery crimson eyes and bared fangs). On the right, the Gnome Rogue girl (top-row #3 on Draft C cast sheet: petite chibi girl with blonde twin pigtails fading into hot-pink and electric-blue tips, green-lensed steampunk aviator goggles on her forehead, cross and star hairpins, bright blue eyes, black stealth mask pulled down below her chin, dark charcoal rogue cloak, daggers sheathed at her belt, flinching backward with wide eyes and flying cartoon sweat drops).",
-      "tail_target": "left",
+      "visual_prompt": "Dynamic Dutch tilt diagonal angle frame with tilted camera on a 100% pure solid #FFFFFF white borderless background. The Orc Warrior girl slams her heavy metal shield edge aggressively against a rough dungeon stone wall with flying sparks and stone chips, spinning around to snarl with furious jagged teeth and comic steam venting from her nostrils! Medium 2.5-to-3-head chibi scale, right-biased, left 46% clear white space. Zero text, zero digits, zero speech bubbles.",
+      "tail_target": "right",
       "item_tooltip": null
     },
     {
@@ -69,12 +68,12 @@
       "aspect_ratio": "4:3",
       "layout_slot": "top",
       "characters": [
-        "노움 도적"
+        "오크 전사"
       ],
       "speaker": null,
       "dialogue": null,
       "wordless": true,
-      "visual_prompt": "Centered dramatic comedic chest-up close-up freeze-frame of a single cute anime chibi girl from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray tint, no ground shadow, no panel borders, zero text, zero letters, zero digits, zero numbers, zero speech bubbles, zero UI frames): the Gnome Rogue girl (top-row #3 on Draft C cast sheet: petite chibi girl with blonde twin pigtails fading into hot-pink and electric-blue tips, green-lensed steampunk aviator goggles on her forehead, cross and star hairpins, bright blue eyes, black stealth mask pulled down below her chin, dark charcoal rogue cloak, daggers sheathed at her belt, both empty hands frozen awkwardly mid-air, bright blue eyes shrunk to tiny trembling pupils, mouth open speechless with a huge cartoon sweat drop). Pure silent frozen reaction, crisp comedic impact.",
+      "visual_prompt": "High-angle shot looking down at the Orc Warrior girl (top-row #1 on Draft C cast sheet) in an expressive comedic freeze-frame on a 100% pure solid #FFFFFF white borderless background. She has faceplanted straight into a solid gray dungeon dead-end wall, stuck flat with little cartoon spiral stars circling around her helmet, completely silent and motionless in comedic humiliation. Expressive solo close-up filling ~78% height. Zero text, zero digits.",
       "tail_target": "center",
       "item_tooltip": null
     },
@@ -84,12 +83,12 @@
       "layout_slot": "bottom",
       "characters": [
         "나이트엘프 사제",
-        "오크 전사"
+        "노움 도적"
       ],
       "speaker": "나이트엘프 사제",
-      "dialogue": "이게 프로 탱커의 자세죠...\n일단 막다른 벽 나올 때까지\n따라갑시다...",
+      "dialogue": "…당당하게 벽으로 직진하셨네.\n이게 바로 길치 탱커의 패기인가.\n그냥 벽 파고 들어갑시다…",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray tint, no ground shadow, no panel borders, zero text, zero letters, zero digits, zero numbers, zero speech bubbles, zero UI frames), framed snugly together near the center of the wide 16:9 frame at a consistent medium 2.5-to-3-head waist-up chibi scale (matching the 4:3 panel size, never tiny distant micro-chibis), kept in the lower 65% with the entire top 35% completely empty pure #FFFFFF white space. On the left, the Night Elf Priest girl (bottom-row #2 on Draft C cast sheet: long silky lavender-silver hair, long pointed elf ears, delicate golden crescent-moon circlet on her forehead, tired lilac-purple eyes with pronounced dark under-eye circles, white-and-gold priestess robe with cream collar bow, staff leaned against her shoulder, trudging forward with a resigned exhausted smile, extra-heavy dark under-eye circles and a tiny sweat drop). On the right, the Orc Warrior girl (top-row #1 on Draft C cast sheet: vibrant green plush orc animal-onesie hood with curved cream horns, tiny upturned fangs, piggy snout and pointed green ears on top of the hood, black high ponytail hair with bangs, bright crimson-red eyes, spiky red shoulder pauldrons over silver plate armor, as a protection tank with a sturdy steel kite shield strapped on her left arm and a compact one-handed steel sword in her right hand, marching proudly in the wrong direction with heroic sparkles and a beaming confident grin).",
+      "visual_prompt": "Back-view shot on a 100% pure solid #FFFFFF white borderless background. In the lower-left, the Night Elf Priest girl and tiny Gnome Rogue girl are seen from behind standing side-by-side, heads tilted in a synchronized facepalm sigh, watching the warrior stuck in the wall ahead with comic sweat drops hanging. Medium 2.5-to-3-head chibi scale, top 34% pure white headroom. Zero text, zero digits, zero speech bubbles.",
       "tail_target": "left",
       "item_tooltip": null
     }

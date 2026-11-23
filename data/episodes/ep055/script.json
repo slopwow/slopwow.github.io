@@ -14,9 +14,9 @@
         "드워프 사냥꾼"
       ],
       "speaker": "스카이본 마법사",
-      "dialogue": "맵은 미치게 큰데\n40렙까지 두 발로\n뚜벅뚜벅 걸으라고?!",
+      "dialogue": "맵은 무슨 대륙급으로 넓은데\n40렙까지 두 발로 뚜벅뚜벅\n걸어 다니라고?! 미친 게임 아냐?!",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet at a consistent medium 2.5-to-3-head waist-up chibi scale on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray tint, no ground shadow, no panel borders, zero text, zero letters, zero digits, zero numbers, zero speech bubbles, zero UI frames). On the lower-left, the Skyborne Mage girl (bottom-row #4 on Draft C cast sheet: pointed elf ears, long golden-blonde hair fading into pastel sky-blue and aqua tips with a tiny white Skyborne feather hair charm, big sparkling sapphire-blue eyes, blue-and-white sailor-collar mage uniform with a teal ribbon bow, bun and mana flask put away, hunched over panting heavily with dizzy tired sapphire eyes, wiping sweat off her forehead while small cartoon dust puffs rise from her worn boots). On the lower-right, the Dwarf Hunter girl (top-row #4 on Draft C cast sheet: forest-green fur-trimmed ranger hood, vivid orange-ginger hair in two thick braided pigtails wrapping under her chin like a cozy braid-beard, warm amber eyes, puffed cheeky cheeks, fur-trimmed brown leather hunter coat, wooden blunderbuss slung across her back, watching calmly with an amused knowing smirk and arms crossed). Keep both characters strictly in the lower two-thirds of the 4:3 frame with generous completely empty pure #FFFFFF white headroom across the entire top 38% (both top corners strictly pure white).",
+      "visual_prompt": "Over-the-shoulder (OTS) diagonal shot from behind the shoulder and hood of the Dwarf Hunter girl on the right. On the lower-left, the newbie Skyborne Mage girl (bottom-row #4 on Draft C cast sheet) clutches a wide-open parchment world map, red puffed cheeks of pure indignation, shaking her little fists with angry cartoon cat-mouth! 100% pure solid #FFFFFF white borderless background, medium 2.5-to-3-head chibi scale, top 35% pure white headroom. Zero text, zero digits, zero speech bubbles.",
       "tail_target": "left",
       "item_tooltip": null
     },
@@ -28,9 +28,9 @@
         "스카이본 마법사"
       ],
       "speaker": "스카이본 마법사",
-      "dialogue": "스킬도 상급자 찾아가서\n직접 배우고 정보도 없고...\n뭐야 이 구렁내 나는 겜!",
+      "dialogue": "스킬도 상급자 직접 찾아가야 하고\n퀘스트 위치도 안 알려주고…\n뭐야 이 20년 전 구렁내 겜은!!",
       "wordless": false,
-      "visual_prompt": "Solo cute anime chibi girl from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray tint, no ground shadow, no panel borders, zero text, zero letters, zero digits, zero numbers, zero speech bubbles, zero UI frames). Positioned cleanly at a consistent medium 2.5-to-3-head waist-up chibi scale on the right half of the wide 16:9 frame facing slightly left (never a tiny distant micro-chibi), leaving the entire left 48% completely empty pure #FFFFFF white space for a speech bubble: the Skyborne Mage girl (bottom-row #4 on Draft C cast sheet: pointed elf ears, long golden-blonde hair fading into pastel sky-blue and aqua tips with a tiny white Skyborne feather hair charm, big sparkling sapphire-blue eyes, blue-and-white sailor-collar mage uniform with a teal ribbon bow, bun and flask put away, waving a rolled parchment spell scroll in one hand and throwing her other empty hand up in exasperated complaint with puffed cheeks).",
+      "visual_prompt": "Dynamic Dutch tilt diagonal angle frame with tilted camera on a 100% pure solid #FFFFFF white borderless background. The Skyborne Mage girl is stumbling backward in theatrical rage, kicking up little comic dust clouds, waving her wooden staff toward the heavens with jagged shouting mouth and flying sweat droplets! Positioned on the right, leaving the left 46% clear white space. Medium 2.5-to-3-head chibi scale. Zero text, zero digits, zero speech bubbles.",
       "tail_target": "right",
       "item_tooltip": null
     },
@@ -43,9 +43,9 @@
         "스카이본 마법사"
       ],
       "speaker": "드워프 사냥꾼",
-      "dialogue": "그래 놓고 한 번도\n안 쉬고 벌써\n15렙 찍었잖아 ㅋㅋ",
+      "dialogue": "구렁내 난다면서 밥도 안 먹고\n한 번도 안 쉬더니 벌써 15렙 찍었냐? ㅋㅋㅋ",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet at a consistent medium 2.5-to-3-head waist-up chibi scale on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray tint, no ground shadow, no panel borders, zero text, zero letters, zero digits, zero numbers, zero speech bubbles, zero UI frames). On the lower-left, the Dwarf Hunter girl (top-row #4 on Draft C cast sheet: forest-green fur-trimmed ranger hood, vivid orange-ginger hair in two thick braided pigtails wrapping under her chin like a cozy braid-beard, warm amber eyes, puffed cheeky cheeks, fur-trimmed brown leather hunter coat, blunderbuss slung on her back, sipping smugly from a rustic wooden tavern mug and pointing playfully with her other hand). On the lower-right, the Skyborne Mage girl (bottom-row #4 on Draft C cast sheet: pointed elf ears, long golden-blonde hair fading into pastel sky-blue and aqua tips with a tiny white Skyborne feather hair charm, big sparkling sapphire-blue eyes, blue-and-white sailor-collar mage uniform with a teal ribbon bow, bun and flask put away, leaning forward intensely with starry sparkling sapphire eyes clutching a brown leather quest satchel, completely absorbed). Keep both characters strictly in the lower two-thirds of the 4:3 frame with generous completely empty pure #FFFFFF white headroom across the entire top 38% (both top corners strictly pure white).",
+      "visual_prompt": "Side-profile 90-degree action shot on a 100% pure solid #FFFFFF white borderless background. The Dwarf Hunter girl (middle-row #5 on Draft C cast sheet) leans casually against a wooden trail signpost with arms crossed, pointing her thumb sideways with a teasing sly smirk at the panting Skyborne Mage who sits catching her breath. Medium 2.5-to-3-head chibi scale, top 35% pure white headroom. Zero text, zero digits, zero speech bubbles.",
       "tail_target": "left",
       "item_tooltip": null
     },
@@ -59,7 +59,7 @@
       "speaker": null,
       "dialogue": null,
       "wordless": true,
-      "visual_prompt": "Centered dramatic comedic chest-up close-up freeze-frame of a single cute anime chibi girl from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray tint, no ground shadow, no panel borders, zero text, zero letters, zero digits, zero numbers, zero speech bubbles, zero UI frames): the Skyborne Mage girl (bottom-row #4 on Draft C cast sheet: pointed elf ears, long golden-blonde hair fading into pastel sky-blue and aqua tips with a tiny white Skyborne feather hair charm, big sparkling sapphire-blue eyes, blue-and-white sailor-collar mage uniform with a teal ribbon bow, hands empty, sapphire eyes suddenly blown wide with tiny trembling pupils, mouth hanging open in shock, a huge cartoon sweat drop on her temple while a glowing golden crescent moon and tiny stars twinkle beside her head signaling nightfall). Pure silent frozen reaction, crisp comedic impact.",
+      "visual_prompt": "High-angle shot looking down at the Skyborne Mage girl (bottom-row #4 on Draft C cast sheet) on a 100% pure solid #FFFFFF white borderless background. She freezes mid-step, looking down at a small fantasy pocket sundial clock in sheer horror: it's 9:00 PM! Eyes transformed into giant dizzy spiral whirlpools, jaw dropped to her collarbone in disbelief! Expressive solo close-up filling ~76% height. Zero text, zero digits, zero speech bubbles.",
       "tail_target": "center",
       "item_tooltip": null
     },
@@ -72,9 +72,9 @@
         "드워프 사냥꾼"
       ],
       "speaker": "스카이본 마법사",
-      "dialogue": "헉 벌써 밤 9시야?!\n나 아직 99년 된 와인\n찾으러 가야 하는데!!",
+      "dialogue": "헉 벌써 밤 9시라고?!\n나 아직 저기 지하 창고에 숨겨진\n99년 된 와인 찾으러 가야 해!!",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet at a consistent medium 2.5-to-3-head waist-up chibi scale on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray tint, no ground shadow, no panel borders, zero text, zero letters, zero digits, zero numbers, zero speech bubbles, zero UI frames). On the lower-left, the Skyborne Mage girl (bottom-row #4 on Draft C cast sheet: pointed elf ears, long golden-blonde hair fading into pastel sky-blue and aqua tips with a tiny white Skyborne feather hair charm, big sparkling sapphire-blue eyes, blue-and-white sailor-collar mage uniform with a teal ribbon bow, bun and flask put away, gripping her head with both hands in frantic joyful panic, starry gleaming eyes already leaning eagerly toward the next quest). On the lower-right, the Dwarf Hunter girl (top-row #4 on Draft C cast sheet: forest-green fur-trimmed ranger hood, vivid orange-ginger hair in two thick braided pigtails wrapping under her chin like a cozy braid-beard, warm amber eyes, puffed cheeky cheeks, fur-trimmed brown leather hunter coat, blunderbuss slung on her back, chuckling knowingly with a sly grin and hands on her hips). Keep both characters strictly in the lower two-thirds of the 4:3 frame with generous completely empty pure #FFFFFF white headroom across the entire top 38% (both top corners strictly pure white).",
+      "visual_prompt": "Dramatic low-angle shot looking up at the Skyborne Mage girl on the lower-left, eyes sparkling with sudden wild mania, gripping her staff with both hands and pivoting into high sprint gear, kicking up dust puffs! On the right, the Dwarf Hunter laughs into her hand. 100% pure solid #FFFFFF white borderless background, medium 2.5-to-3-head chibi scale, top 35% pure white headroom. Zero text, zero digits, zero speech bubbles.",
       "tail_target": "left",
       "item_tooltip": null
     },
@@ -87,9 +87,9 @@
         "드워프 사냥꾼"
       ],
       "speaker": "스카이본 마법사",
-      "dialogue": "이 구렁내 청국장 겜\n절대 하지 마라!!\n나만 할 거니까!!",
+      "dialogue": "이 마약 같은 청국장 겜\n절대 아무도 발 들이지 마라!!\n중독은 나 혼자만 될 거니까!!",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray tint, no ground shadow, no panel borders, zero text, zero letters, zero digits, zero numbers, zero speech bubbles, zero UI frames), framed snugly together near the center of the wide 16:9 frame at a consistent medium 2.5-to-3-head waist-up chibi scale (matching the 4:3 panel size, never tiny distant micro-chibis), kept in the lower 65% with the entire top 35% completely empty pure #FFFFFF white space. On the left, the Skyborne Mage girl (bottom-row #4 on Draft C cast sheet: pointed elf ears, long golden-blonde hair fading into pastel sky-blue and aqua tips with a tiny white Skyborne feather hair charm, big sparkling sapphire-blue eyes, blue-and-white sailor-collar mage uniform with a teal ribbon bow, bun and flask put away, dashing eagerly sideways with dynamic speed lines holding a rustic corked dark-glass vintage wine bottle aloft, glancing back with a wildly hooked grin). On the right, the Dwarf Hunter girl (top-row #4 on Draft C cast sheet: forest-green fur-trimmed ranger hood, vivid orange-ginger hair in two thick braided pigtails wrapping under her chin like a cozy braid-beard, warm amber eyes, puffed cheeky cheeks, fur-trimmed brown leather hunter coat, blunderbuss slung on her back, casually waving goodbye with a warm laughing grin and holding a small wooden bowl of popcorn).",
+      "visual_prompt": "Back-view shot on a 100% pure solid #FFFFFF white borderless background. The Skyborne Mage girl is seen from behind sprinting full speed toward the distant horizon with massive comic dust clouds billowing behind her feet, turning her head back over her shoulder to shake a fiery fist at the viewer! In the background, Dwarf Hunter waves farewell. Medium 2.5-to-3-head chibi scale, top 34% pure white headroom. Zero text, zero digits, zero speech bubbles.",
       "tail_target": "left",
       "item_tooltip": null
     }

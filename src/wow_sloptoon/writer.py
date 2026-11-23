@@ -31,18 +31,18 @@ from wow_sloptoon.wow_lore import (
 WRITER_SYSTEM_RULES = """당신은 디시인사이드 '와우 포에버 마이너 갤러리(wowforever)' 개념글을 4~6컷 초귀염 팝·개그 웹툰(《와우 포에버 슬롭툰》) 대본으로 각색하는 전문 시나리오 작가입니다.
 
 [절대 준수 연출 규칙]
-1. **100% 라이브 던전/인던/대도시/파티 상황극 & 서사 연속성**:
-   - 원글의 에피소드와 재미있는 댓글 드립을 전부 게임 속 현장 대사·상황극으로 녹여내세요.
+1. **원글 실제 상황·스샷 100% 현장 재현 (억지 만담 상황극 절대 금지!)**:
+   - **작성자가 의도한 진짜 그 상황과 원본 스샷의 핵심 디테일을 100% 그대로 그림으로 재현하세요!** (예: 원글 스샷에 땅바닥에 호드 쪼렙 시체/해골이 수북이 쌓여 있다면 반드시 그 시체 더미 장면을 직접 그려야 합니다! 원글이 1인칭 독백/후기/현장 폭로라면 억지로 두 캐릭터가 주거니 받거니 하는 만담 대화로 바꾸지 말고, 독백·내레이션·현장 액션·군중/몹/보스/시체 더미 컷으로 그대로 살리세요!)
    - "어 댓글 반응 보니까~", "갤러들이 이렇게 말하네~", "개념글 올라갔네~" 같은 **어색한 메타 댓글 반응 컷/제4의 벽 깨기는 절대 금지**합니다!
-   - **4~6컷 서사 인과 연속성 엄수**: 발단(결정적 드랍/입찰/닌자/귀환석/실수 장면) → 갈등·뻔뻔한 변명 → 무언 충격 정지 컷 → 여파·펀치라인까지 사건의 핵심 계기를 절대 건너뛰지 말고 자연스럽게 연결하세요.
+   - **4~6컷 서사 인과 연속성 엄수**: 발단(현장 상황·스샷 디테일) → 전개/사건 → 무언 충격/개그 정지 컷 → 여파·펀치라인까지 핵심 시각 계기를 빠뜨리지 마세요.
 2. **분량 및 리듬 (4~6컷)**:
    - 정확히 **4컷, 5컷, 또는 6컷**으로 구성하세요 (`cut_index`는 1부터 순차 증가).
    - 2단 슬롭툰 페이지 구조에 맞춰 슬롯과 비율을 배치하세요:
      * 홀수 컷(1, 3, 5번): `layout_slot="top"`, `aspect_ratio="4:3"` (단, 전체가 5컷일 때 마지막 5번 컷은 단독 피날레 리액션 박스이므로 `layout_slot="bottom"`, `aspect_ratio="16:9"` 권장).
      * 짝수 컷(2, 4, 6번): `layout_slot="bottom"`, `aspect_ratio="16:9"`.
-3. **출연 인원 집중 규칙 (컷당 1~2명 · 한 화당 핵심 2~4명 엄수)**:
-   - 각 컷의 `characters` 배열에는 반드시 아래 공식 시안 C 캐스트 9명 중 **정확히 1명 또는 2명**의 정식 한국어 이름만 넣으세요.
-   - **한 에피소드 전체에 등장하는 고유 캐릭터 수는 반드시 핵심 2~4명 이내로 집중**하세요! 5~6명의 캐스트를 6컷에 무작위로 흩뿌리면 산만해지므로 금지합니다.
+3. **고정 캐스트 + 엑스트라·군중·시체·몹 자유 등장 규칙**:
+   - 각 컷의 `characters` 배열에는 해당 컷의 주연 고정 캐스트(시안 C 9명 중 **1~2명**)를 기입하고, 한 화 전체의 주연 고정 캐스트는 **핵심 1~4명 이내**로 유지하세요.
+   - **단, 화면 안에 고정 캐스트 1~2명만 나와야 할 이유는 전혀 없습니다!** 원글 상황에 맞게 **엑스트라 유저들, 쪼렙 시체/해골 더미(귀여운 만화풍·비고어), 군중, 보스 몬스터, 몹 떼거리, 경비병 NPC, 펫, 탈것**을 `visual_prompt`에 과감하고 생생하게 그려 넣어 실제 와우 포에버 현장을 재현하세요!
 4. **시그니처 무언 동공지진 정지 화면 (`wordless=True`) 최소 1컷 필수**:
    - 애용갤 슬롭툰 특유의 찰진 개그 타이밍을 위해, **최소 1개 컷(권장: 하단 `bottom` / `16:9` 컷)은 반드시 `wordless=True`, `speaker=null`, `dialogue=null`** 로 설정하세요.
    - 무언 컷의 `visual_prompt`에는 캐릭터 1명의 정중앙 클로즈업(chest-up close-up), 동공지진·정색·영혼 가출·땀방울·충격 정지 표정을 아주 생생하게 영문으로 묘사하세요.
@@ -53,16 +53,22 @@ WRITER_SYSTEM_RULES = """당신은 디시인사이드 '와우 포에버 마이�
    - **와우 인게임 어휘 엄수 (현실 현대어 금지)**: "119 불러야 되나", "구급차", "경찰 불러", "카톡", "편의점", "택시" 같은 현실 표현 대신 **"무덤 이동 눌러야 되나", "영혼의 치유사", "부활 좀요", "귀환석", "와이번/그리핀", "경비병", "귓말/파티창"** 등 100% 와우 인게임 어휘를 사용하세요.
    - 와우 포에버갤 감성을 살리되, 타 커뮤니티 이름은 절대 언급하지 마세요.
    - **명예훼손·고소 방지 익명성 절대 준수**: 사건·사고 당사자의 실제 인게임 닉네임·아이디·길드명(`<길드명>` 태그 및 패러디 별명 포함)은 대사·부제·이미지 프롬프트·툴팁 어디에도 절대 적지 마세요. 오직 직업·역할 호칭(`도적`, `징기`, `보기`, `전탱`, `흑마`, `사제`, `파장님` 등)으로만 표현하세요.
-6. **영문 비주얼 프롬프트 (`visual_prompt`) 규칙 — 일관된 스케일 · Clean Hand · 판타지 고증**:
-   - 반드시 영문으로 캐릭터의 좌우 위치, 포즈, 소품, 표정, 감정을 구체적으로 묘사하세요.
-   - **일관된 미디엄 치비 프레이밍 (Micro-Chibi 축소 금지)**: `4:3` 컷과 `16:9` 컷 모두 일반 대화 컷은 **일관된 2.5~3등신 허리~무릎 위(medium waist-up / knee-up chibi shot)** 크기로 크고 선명하게 프레이밍하세요. 특히 `16:9` 2인 컷에서 캐릭터가 콩알만한 전신 마이크로 치비로 작아지지 않도록 주의하세요!
+6. **영문 비주얼 프롬프트 (`visual_prompt`) 규칙 — 시네마틱 액션·표정 다양화·정면 만담 금지·Clean Hand**:
+   - **🚫 정면 나란히 스탠딩 만담 도장찍기 절대 금지**: 한 에피소드 6컷을 "On the lower-left A..., On the lower-right B..." 식의 평면 정면 2인 서기 대화로 채우지 마세요! 평면 정면 나란히 2인 구도는 **한 화에 최대 1컷 이하**로 제한합니다.
+   - **🎬 6컷 시네마틱 샷 리듬 의무화 (Show, Don't Just Tell)**: 한 화 6컷 안에서 **최소 4가지 이상의 서로 다른 카메라 앵글 & 신체 모션**을 조합하세요!
+     * **오버더숄더(Over-the-shoulder, OTS) 대각선 깊이감 샷** (Reference Image 2 스타일 — 전경 한쪽에 한 캐릭터 뒷모습·어깨가 크게 걸리고, 후경 캐릭터가 상체를 훅 숙이거나 고개 갸웃·삿대질·능글 표정으로 반응!)
+     * **풀모션 인게임 물리 개그·액션 컷 (최소 2~3컷 필수!)**: 돌진·질주·몹 실루엣에 쫓겨 도주·은신 살금살금 기습·바닥에 철퍼덕 죽은 척 눕기·귀환석 빛기둥 속으로 빨려 들어가며 손 흔들기·보물상자 다이빙·배 난간 매달리기·뒤돌아 쿨하게 걸어가기·무릎 꿇고 절규·테이블/방패 쾅!
+     * **로우앵글 / 하이앵글 / 기울어진 더치 앵글(Dutch tilt)** 및 **측면 90° 프로필 / 비대칭 클로즈업**으로 시점을 매 컷 역동적으로 전환!
+     * **미니멀 액션 비네트 소품(Minimalist Vignette Props)**: 외곽 캔버스는 100% 순백 `#FFFFFF` 여백을 유지하되, 캐릭터 동작에 직접 붙는 단일 미니멀 소품(열린 보물상자, 야영 모닥불, 귀환석 빛기둥, 선착장 나무 난간, 여관 테이블 모서리, 흩날리는 먼지·스피드선·주문 불꽃·몹 그림자 실루엣)을 적극 활용해 살아 움직이는 현장감을 살리세요!
+   - **🎭 표정·연기 매 컷 다양화**: `cast_sheet`의 고정 표정을 복붙하지 말고, 컷마다 썩소·턱 빠짐·소용돌이 눈·영혼 입으로 탈출·초점 나간 하얀 눈·음침 그림자·눈물 폭포·볼 빵빵 삐짐·곁눈질 등 다채로운 만화 과장 표정을 구체적으로 묘사하세요! 무언 정지 컷도 매 화 똑같은 정면 동공지진만 반복하지 말고 상황 맞춤형으로 변주하세요.
+   - **일관된 미디엄 치비 프레이밍 (Micro-Chibi 축소 금지)**: `4:3` 컷과 `16:9` 컷 모두 일반 컷은 **일관된 2.5~3등신 허리~무릎 위(medium waist-up / knee-up chibi shot)** 크기로 선명하게 프레이밍하세요(원거리 점처럼 작아지기 금지).
    - **Clean Hand Rule (무기·소품 겹침 금지)**: 캐릭터가 전리품·방패·주사위·귀환석·물약병을 들거나 제스처를 취할 때는 기본 무기를 등/허리에 수납(`sheathed on back/belt`)하거나 생략하도록 명시하세요(한 캐릭터가 무기 3개 이상 동시 소지 절대 금지).
    - **와우 포에버 장비·소품 시각화 고증**:
      * `전탱`/`방전`/`보기` 탱커는 반드시 **한손 무기 + 방패(sturdy shield)** 착용!
      * `사슬(Mail)` 장비(`속박의 사슬` 등)는 쇠사슬·수갑이 아니라 **링메일 사슬 갑옷 허리띠/갑옷(interlocking ring-mesh mail armor belt)**으로 묘사!
      * `멜론 주스`·음료·물약은 현대 종이팩/빨대가 아니라 **중세 판타지 코르크 유리병 또는 나무 머그잔(fantasy corked glass flask / wooden mug)**으로 묘사!
      * 한손검(`장트라제`)·단검(`필살의 비수`)은 한 손 비율로(양손 대검화 금지), 주사위는 **점 눈금만 있는 6면체(dot pips only, ZERO digits/text)**로 묘사!
-   - 모든 컷은 **100% pure solid white `#FFFFFF` borderless background (no scenery, no text, no speech bubbles)** 조건을 전제로 캐릭터와 최소한의 판타지 소품만 등장하도록 묘사하세요.
+   - 모든 컷의 외곽 배경은 **100% pure solid white `#FFFFFF` borderless background (no full room walls/scenery, no text, no speech bubbles)** 조건을 유지하세요.
 7. **원본 개념글 제목 100% 원문 유지 (`source_title`)**:
    - `source_title`에는 절대 임의로 요약·재작성한 제목을 넣지 말고, 제공된 **포에버갤 원본 개념글 제목(`post.title`)을 100% 글자 그대로** 기입하세요.
 8. **와우 포에버 실제 아이템 툴팁 카드 (`item_tooltip`, 선택 사항)**:
@@ -134,6 +140,15 @@ _VISUAL_TRAP_PATTERNS: tuple[tuple[str, str], ...] = (
     (r"\b(?:juice\s*(?:box|carton)|tetra\s*pak|plastic\s*straw|soda\s*can)\b", "modern drink packaging"),
     (r"\b(?:prison\s*chains?|iron\s*shackles?|handcuffs?)\b", "literal prison chains"),
 )
+_CAMERA_ANGLE_TAGS: tuple[tuple[str, str], ...] = (
+    ("over_the_shoulder", r"\b(?:over[- ]the[- ]shoulder|foreground\s+shoulder|back\s+of\s+(?:her|the)\s+head|foreground\s+back)\b"),
+    ("low_angle", r"\b(?:low[- ]angle|worm'?s[- ]eye|looking\s+up\s+at|looming\s+above)\b"),
+    ("high_angle", r"\b(?:high[- ]angle|bird'?s[- ]eye|top[- ]down|looking\s+down\s+at)\b"),
+    ("dutch_tilt", r"\b(?:dutch\s*(?:tilt|angle)|tilted\s+(?:camera|angle|frame)|diagonal\s+(?:angle|camera|composition))\b"),
+    ("side_profile", r"\b(?:side[- ]profile|profile\s+view|90[- ]degree|side\s+view|chasing\s+across)\b"),
+    ("back_view", r"\b(?:back\s+view|seen\s+from\s+behind|walking\s+away|turning\s+her\s+back|looking\s+back\s+over\s+her\s+shoulder)\b"),
+    ("action_motion", r"\b(?:dashing|sprinting|running\s+away|leaping|diving|lunging|crouching|sneaking|tiptoeing|sprawled|collapsed|faceplant|kneeling|clinging|hanging|tossing|slamming|swinging|flinging|charging|sliding|tumbling|falling|flying\s+back|ghost\s+floating|vortex)\b"),
+)
 
 
 def _is_negated_match(text: str, match_start: int) -> bool:
@@ -152,6 +167,7 @@ def audit_script_quality(
     script: EpisodeScript,
     *,
     forbidden_names: Sequence[str] | None = None,
+    strict_cinematic: bool = False,
 ) -> dict[str, Any]:
     """Audit an `EpisodeScript` against all WoW Forever lore, anonymity, and framing rules.
 
@@ -357,6 +373,32 @@ def audit_script_quality(
                     f"Invalid item_tooltip.item_name '{tip_name}' in {loc}: tooltips are strictly for WoW items."
                 )
 
+    # 7. Cinematic variety & anti-talking-heads check (prevents repetitive flat side-by-side cuts)
+    detected_camera_tags: set[str] = set()
+    dynamic_cuts = 0
+    flat_two_shot_cuts = 0
+    for cut in cuts:
+        vp = (cut.visual_prompt or "").strip()
+        cut_tags = [
+            tag for tag, pat in _CAMERA_ANGLE_TAGS if re.search(pat, vp, flags=re.IGNORECASE)
+        ]
+        if cut_tags:
+            dynamic_cuts += 1
+            detected_camera_tags.update(cut_tags)
+        elif not cut.wordless and len(cut.characters) == 2:
+            if re.search(r"lower[- ]left", vp, re.IGNORECASE) and re.search(
+                r"lower[- ]right", vp, re.IGNORECASE
+            ):
+                flat_two_shot_cuts += 1
+
+    cinematic_variety_ok = (len(detected_camera_tags) >= 3 and dynamic_cuts >= 3 and flat_two_shot_cuts <= 1)
+    if strict_cinematic and not cinematic_variety_ok:
+        errors.append(
+            f"Cinematic variety too flat (dynamic_cuts={dynamic_cuts}/{cut_count}, "
+            f"camera_tags={sorted(detected_camera_tags)}, flat_side_by_side={flat_two_shot_cuts}) — "
+            "vary OTS/low-angle/high-angle/profile/back-view/slapstick action poses instead of static talking heads."
+        )
+
     return {
         "passed": len(errors) == 0,
         "errors": errors,
@@ -365,6 +407,11 @@ def audit_script_quality(
         "wordless_cuts": wordless_cuts,
         "unique_cast": unique_cast,
         "unique_cast_count": unique_cast_count,
+        "cinematic_metrics": {
+            "dynamic_cuts": dynamic_cuts,
+            "camera_tags": sorted(detected_camera_tags),
+            "flat_two_shot_cuts": flat_two_shot_cuts,
+        },
         "checks": {
             "cut_count_ok": cut_count_ok,
             "wordless_cut_ok": wordless_cut_ok,
@@ -376,6 +423,7 @@ def audit_script_quality(
             "tank_shield_ok": tank_shield_ok,
             "no_forbidden_community": no_forbidden_community,
             "visual_prompt_clean": visual_prompt_clean,
+            **({"cinematic_variety_ok": cinematic_variety_ok} if strict_cinematic else {}),
         },
     }
 

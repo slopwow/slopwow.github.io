@@ -11,12 +11,12 @@
       "layout_slot": "top",
       "characters": [
         "노움 도적",
-        "트롤 주술사"
+        "오크 전사"
       ],
       "speaker": "노움 도적",
-      "dialogue": "미접 기준이요?\n어제 공지대로\n이틀 미접 추방이래요~",
+      "dialogue": "미접속 추방 기준이요?\n어제 길마님 공지대로\n이틀 미접속이면 칼추방이래요~",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet at a consistent medium 2.5-to-3-head waist-up chibi scale on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray tint, no ground shadow, no panel borders, zero text, zero letters, zero digits, zero numbers, zero speech bubbles, zero UI frames). On the lower-left, the Gnome Rogue girl (top-row #3 on Draft C cast sheet: petite chibi girl with blonde twin pigtails fading into hot-pink and electric-blue tips, green-lensed steampunk aviator goggles on her forehead, cross and star hairpins, bright blue eyes, black stealth mask pulled down below her chin, dark charcoal rogue cloak, daggers sheathed at her waist belt, smiling helpfully and holding up two fingers with a cheerful informative expression). On the lower-right, the Troll Shaman girl (top-row #5 on Draft C cast sheet: sky-blue plush troll onesie hood with a bright red spiky mohawk crest, floppy pierced long ears and tiny white hood tusks, mint-teal bob hair, bright green eyes, patterned tribal scarf and light-blue sleeves, hands empty, tilting her head with curious attentive green eyes, a small carved wooden totem resting on the floor beside her). Keep both characters strictly in the lower two-thirds of the 4:3 frame with generous completely empty pure #FFFFFF white headroom across the entire top 38% (both top corners strictly pure white).",
+      "visual_prompt": "Over-the-shoulder (OTS) diagonal shot from behind the broad armored shoulder of the Orc Warrior guild master on the right. On the lower-left, the tiny Gnome Rogue girl (top-row #2 on Draft C cast sheet) stands on tiptoes in the guild hall holding an official guild parchment scroll, smiling cheerfully as she explains the policy with an innocent helpful expression. In the far background, silhouette extras of guild members mingle. 100% pure solid #FFFFFF white borderless background, medium 2.5-to-3-head chibi scale, top 35% pure white headroom. Zero text, zero digits.",
       "tail_target": "left",
       "item_tooltip": null
     },
@@ -28,9 +28,9 @@
         "오크 전사"
       ],
       "speaker": "오크 전사",
-      "dialogue": "누가 그럼?!\n난 그런 적 없는데?\n그럼 여행도 못 감?",
+      "dialogue": "누가 그런 헛소리를 해?!\n내가 언제 이틀이랬어?\n그럼 주말에 여행도 못 가냐?!",
       "wordless": false,
-      "visual_prompt": "Solo cute anime chibi girl from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray tint, no ground shadow, no panel borders, zero text, zero letters, zero digits, zero numbers, zero speech bubbles, zero UI frames). Positioned cleanly at a consistent medium 2.5-to-3-head waist-up chibi scale on the right half of the wide 16:9 frame facing slightly left (never a tiny distant micro-chibi), leaving the entire left 48% completely empty pure #FFFFFF white space for a speech bubble: the Orc Warrior girl (top-row #1 on Draft C cast sheet: vibrant green plush orc animal-onesie hood with curved cream horns, tiny upturned fangs, piggy snout and pointed green ears on top of the hood, black high ponytail hair with bangs, bright crimson-red eyes, spiky red shoulder pauldrons over silver plate armor, silver battle axe strapped across her back, placing both empty hands on her hips with a sharp suspicious glare, puffed cheeks and a cartoon anger vein).",
+      "visual_prompt": "Dramatic low-angle shot looking up at the authoritarian Orc Warrior guild master (top-row #1 on Draft C cast sheet) looming above on a 100% pure solid #FFFFFF white borderless background. Arms folded tightly over her chest, terrifying dark comic shadow cast across her eyes, snarling with deep displeasure and furrowed brows, surrounded by dynamic comic pressure lines! Medium 2.5-to-3-head chibi scale, right-biased, left 46% clear space. Zero text, zero digits.",
       "tail_target": "right",
       "item_tooltip": null
     },
@@ -43,9 +43,9 @@
         "오크 전사"
       ],
       "speaker": "노움 도적",
-      "dialogue": "어... 너요 했다가\n제가 착각했나 봐요!\n실수했습니다 죄송해요!",
+      "dialogue": "헉… ‘너요’ 하려다가…\n제가 다른 길드랑 착각했나 봐요!\n실수했습니다 진짜 죄송해요!!",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet at a consistent medium 2.5-to-3-head waist-up chibi scale on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray tint, no ground shadow, no panel borders, zero text, zero letters, zero digits, zero numbers, zero speech bubbles, zero UI frames). On the lower-left, the Gnome Rogue girl (top-row #3 on Draft C cast sheet: petite chibi girl with blonde twin pigtails fading into hot-pink and electric-blue tips, green-lensed steampunk aviator goggles on her forehead, cross and star hairpins, bright blue eyes, black stealth mask pulled down below her chin, dark charcoal rogue cloak, daggers sheathed at her belt, nervously clasping her hands together and bowing slightly with flying cartoon sweat drops and a panicked apologetic smile). On the lower-right, the Orc Warrior girl (top-row #1 on Draft C cast sheet: vibrant green plush orc animal-onesie hood with curved cream horns, tiny upturned fangs, piggy snout and pointed green ears on top of the hood, black high ponytail hair with bangs, bright crimson-red eyes, spiky red shoulder pauldrons over silver plate armor, battle axe strapped across her back, looming coldly with arms folded and ominously narrowed crimson eyes). Keep both characters strictly in the lower two-thirds of the 4:3 frame with generous completely empty pure #FFFFFF white headroom across the entire top 38% (both top corners strictly pure white).",
+      "visual_prompt": "Side-profile 90-degree action shot on a 100% pure solid #FFFFFF white borderless background. The tiny Gnome Rogue girl steps backward in terror with both hands waving frantically in front of her, sweat droplets flying, bowing in an exaggerated apologetic cringe before the stern Orc Warrior who looks down coldly. Medium 2.5-to-3-head chibi scale, top 35% pure white headroom. Zero text, zero digits, zero speech bubbles.",
       "tail_target": "left",
       "item_tooltip": null
     },
@@ -57,9 +57,9 @@
         "오크 전사"
       ],
       "speaker": "오크 전사",
-      "dialogue": "실수는\n용납 못 합니다.\n추방.",
+      "dialogue": "우리 길드에서\n실수는 용납 못 합니다.\n[길드에서 추방되었습니다].",
       "wordless": false,
-      "visual_prompt": "Solo cute anime chibi girl from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray tint, no ground shadow, no panel borders, zero text, zero letters, zero digits, zero numbers, zero speech bubbles, zero UI frames). Positioned cleanly at a consistent medium 2.5-to-3-head waist-up chibi scale on the right half of the wide 16:9 frame facing slightly left (never a tiny distant micro-chibi), leaving the entire left 48% completely empty pure #FFFFFF white space for a speech bubble: the Orc Warrior girl (top-row #1 on Draft C cast sheet: vibrant green plush orc animal-onesie hood with curved cream horns, tiny upturned fangs, piggy snout and pointed green ears on top of the hood, black high ponytail hair with bangs, bright crimson-red eyes, spiky red shoulder pauldrons over silver plate armor, battle axe strapped across her back, dramatic dark shadow cast over her upper forehead, cold merciless crimson eyes, dramatically slamming a wooden gavel downward with crisp crimson impact sparkles).",
+      "visual_prompt": "Dynamic Dutch tilt diagonal angle frame with tilted camera on a 100% pure solid #FFFFFF white borderless background. The Orc Warrior dramatically thrusts one heavy gauntleted index finger forward like an executioner, her eyes narrowed into cold merciless slits with an unyielding scowl! Cartoon lightning sparks crackle around her finger. Medium 2.5-to-3-head chibi scale, right-biased, left 46% clear space. Zero text, zero digits, zero speech bubbles.",
       "tail_target": "right",
       "item_tooltip": null
     },
@@ -73,7 +73,7 @@
       "speaker": null,
       "dialogue": null,
       "wordless": true,
-      "visual_prompt": "Centered dramatic comedic chest-up close-up freeze-frame of a single cute anime chibi girl from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray tint, no ground shadow, no panel borders, zero text, zero letters, zero digits, zero numbers, zero speech bubbles, zero UI frames): the Gnome Rogue girl (top-row #3 on Draft C cast sheet: petite chibi girl with blonde twin pigtails fading into hot-pink and electric-blue tips, green-lensed steampunk aviator goggles on her forehead, cross and star hairpins, bright blue eyes, black stealth mask pulled down below her chin, dark charcoal rogue cloak, daggers sheathed at her belt, bright blue eyes shrunk to tiny trembling pupils, jaw dropped in utter disbelief, a pale ghostly soul wisp floating out of her mouth and a small torn fabric guild ribbon drifting down beside her). Pure silent frozen reaction, crisp comedic impact.",
+      "visual_prompt": "High-angle shot looking down at the tiny Gnome Rogue girl (top-row #2 on Draft C cast sheet) on a 100% pure solid #FFFFFF white borderless background, recreating Patrick Star's blank dumbfounded expression from the original image! She sits dumped outside on the cobblestones, eyes wide open into blank hollow white voids, mouth hanging open in total stunned bewilderment, processing being kicked in 60 seconds. Solo close-up filling ~75% height. Zero text, zero digits.",
       "tail_target": "center",
       "item_tooltip": null
     },
@@ -86,9 +86,9 @@
         "노움 도적"
       ],
       "speaker": "트롤 주술사",
-      "dialogue": "1분 컷 추방 실화냐...\n근데 미리 쫓겨난 게\n인생 이득 같은데?",
+      "dialogue": "대화 시작하고 1분 컷 추방 실화냐 ㅋㅋㅋ\n근데 저런 꼰대 길드에서 탈출한 게\n오히려 인생 최대 이득이다!",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray tint, no ground shadow, no panel borders, zero text, zero letters, zero digits, zero numbers, zero speech bubbles, zero UI frames), framed snugly together near the center of the wide 16:9 frame at a consistent medium 2.5-to-3-head waist-up chibi scale (matching the 4:3 panel size, never tiny distant micro-chibis), kept in the lower 65% with the entire top 35% completely empty pure #FFFFFF white space. On the left, the Troll Shaman girl (top-row #5 on Draft C cast sheet: sky-blue plush troll onesie hood with a bright red spiky mohawk crest, floppy pierced long ears and tiny white hood tusks, mint-teal bob hair, bright green eyes, patterned tribal scarf and light-blue sleeves, hands clear of lightning, gently patting the rogue's shoulder with a dry sympathetic smirk and half-lidded green eyes). On the right, the Gnome Rogue girl (top-row #3 on Draft C cast sheet: petite chibi girl with blonde twin pigtails fading into hot-pink and electric-blue tips, green-lensed steampunk aviator goggles on her forehead, cross and star hairpins, bright blue eyes, black stealth mask pulled down below her chin, dark charcoal rogue cloak, daggers sheathed at her belt, sitting dazed with blank staring eyes and a single tear drop on her cheek).",
+      "visual_prompt": "Back-view shot on a 100% pure solid #FFFFFF white borderless background. In the lower-left foreground, the Troll Shaman girl (middle-row #8 on Draft C cast sheet) is seen from behind walking away with staff on back, turning her head to look back over her shoulder with an amused smirk and offering an encouraging thumbs-up to the kicked rogue. Medium 2.5-to-3-head chibi scale, top 34% pure white headroom. Zero text, zero digits, zero speech bubbles.",
       "tail_target": "left",
       "item_tooltip": null
     }

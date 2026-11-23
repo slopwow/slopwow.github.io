@@ -105,9 +105,9 @@ CAST_BIBLE: tuple[CastMember, ...] = (
         ),
         appearance_anchor=(
             "Cute anime chibi girl wearing a round white cartoon skull hood/cap with dark eye "
-            "sockets, chin-length silver-white bob hair with icy blue inner tips, deadpan "
-            "half-lidded golden-yellow eyes with faint tired eye bags and stoic face; crisp "
-            "white-and-gold paladin cloak with a cream neck bow ribbon (top-row #2 on Draft C cast sheet)."
+            "sockets, chin-length silver-white bob hair with icy blue inner tips, golden-yellow "
+            "eyes with faint tired eye bags; crisp white-and-gold paladin cloak with a cream neck "
+            "bow ribbon (top-row #2 on Draft C cast sheet — vary facial expression freely per scene!)."
         ),
         default_prop=(
             "Shiny golden warhammer for Retribution/징기 (when tanking as 보기/Protection, MUST equip "
@@ -182,8 +182,8 @@ CAST_BIBLE: tuple[CastMember, ...] = (
         appearance_anchor=(
             "Cute anime chibi girl wearing a forest-green fur-trimmed ranger hood, vivid "
             "orange-ginger hair in two thick braided pigtails wrapping under her chin like a "
-            "cozy playful braid-beard, warm amber eyes, puffed cheeky cheeks; fur-trimmed brown "
-            "leather hunter coat (top-row #4 on Draft C cast sheet)."
+            "cozy playful braid-beard, warm amber eyes; fur-trimmed brown leather hunter coat "
+            "(top-row #4 on Draft C cast sheet — vary facial expression freely per scene!)."
         ),
         default_prop=(
             "Classic wooden blunderbuss rifle (sling across back or set aside whenever holding "
@@ -255,10 +255,10 @@ CAST_BIBLE: tuple[CastMember, ...] = (
             "억울할 때 볼을 빵빵하게 부풀린다."
         ),
         appearance_anchor=(
-            "Adorable shy anime chibi girl wearing a fluffy warm-brown plush tauren cow hood "
+            "Adorable anime chibi girl wearing a fluffy warm-brown plush tauren cow hood "
             "with curved ivory horns, cute cow snout with golden nose ring and floppy ears; "
-            "chestnut-brown bangs, big watery glossy brown eyes, blushing cheeks; leafy green "
-            "foliage mantle over brown druid tunic (bottom-row #1 on Draft C cast sheet)."
+            "chestnut-brown bangs, warm brown eyes; leafy green foliage mantle over brown "
+            "druid tunic (bottom-row #1 on Draft C cast sheet — vary facial expression freely per scene!)."
         ),
         default_prop=(
             "Gnarled sprouting wooden staff (lean against shoulder or stow on back whenever holding "
@@ -296,9 +296,9 @@ CAST_BIBLE: tuple[CastMember, ...] = (
         ),
         appearance_anchor=(
             "Slender graceful anime chibi girl with long silky lavender-silver hair, long "
-            "pointed elf ears, delicate golden crescent-moon circlet on her forehead, tired "
-            "lilac-purple eyes with pronounced dark under-eye circles; white-and-gold priestess "
-            "robe with cream collar bow (bottom-row #2 on Draft C cast sheet)."
+            "pointed elf ears, delicate golden crescent-moon circlet on her forehead, "
+            "lilac-purple eyes with faint dark under-eye circles; white-and-gold priestess "
+            "robe with cream collar bow (bottom-row #2 on Draft C cast sheet — vary facial expression freely per scene!)."
         ),
         default_prop=(
             "Glowing golden crescent-moon staff (lean beside her or stow behind shoulder whenever "
@@ -492,6 +492,13 @@ def build_character_anchors_block(characters: list[str]) -> str:
 
     lines = [
         "STRICT CHARACTER VISUAL ANCHORS (match attached Draft C cast sheet 100% for head/hood/hair/eyes/outfit):",
+        (
+            "DYNAMIC POSE & EXPRESSION MANDATE (CRITICAL): NEVER copy the stiff front-facing passport "
+            "portrait pose or default facial expression from Reference Image 1! Use Reference Image 1 "
+            "STRICTLY for character identity (hood, horns/ears, hair colors, eye color, outfit) — "
+            "invent lively 3D body angles, turned/leaning/crouching/running/sprawling poses, and "
+            "vivid exaggerated anime gag expressions dictated by the scene action!"
+        ),
         (
             "CLEAN HAND RULE (MANDATORY): Each character's default weapon/prop from Reference Image 1 is OPTIONAL. "
             "Whenever the scene action has a character holding scene-specific loot, a tank shield, a loot die, "

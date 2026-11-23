@@ -14,10 +14,11 @@
         "언데드 성기사"
       ],
       "speaker": "오크 전사",
-      "dialogue": "탱커하는 뉴비들\n아구창 돌려버리고\n싶네 진짜!!",
+      "dialogue": "탱커 잡은 뉴비들 진짜\n아구창 돌려버리고\n싶네 답답해 죽겠다!!",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). On the lower-left, the Orc Warrior girl (top-row #1 on Draft C cast sheet: vibrant green plush orc animal-onesie hood with curved cream horns, tiny upturned fangs, piggy snout and pointed green ears on top of the hood, black high ponytail hair with bangs, bright crimson-red eyes, spiky red shoulder pauldrons over silver plate armor) as a veteran tank slams her sturdy steel kite shield down fiercely with a compact one-handed axe in her other hand (big battle axe omitted), glaring intensely with fiery comic flames behind her. On the lower-right, the Undead Paladin girl (top-row #2 on Draft C cast sheet: round white cartoon skull hood/cap with dark eye sockets, chin-length silver-white bob hair with icy blue inner tips, deadpan half-lidded golden-yellow eyes with faint tired eye bags, crisp white-and-gold paladin cloak with a cream neck bow ribbon) as a rookie Protection Paladin shrinks back trembling in terror hugging her shiny golden paladin shield close to her chest with a compact one-handed mace held shakily in her other hand, tiny shaking pupils and sweat drops. Both characters at a consistent medium 2.5-to-3-head knee-up chibi scale (never tiny distant micro-chibis), kept strictly in the lower two-thirds of the 4:3 frame with completely empty pure #FFFFFF white headroom across the entire top 37% (both top corners strictly pure white).",
-      "tail_target": "left"
+      "visual_prompt": "Dramatic low-angle shot looking up at the veteran Orc Warrior tank girl (top-row #1 on Draft C cast sheet) on a 100% pure solid #FFFFFF white borderless background. Looming above with a furious red-faced grimace, wielding a 1H mace and heavy spiked shield, furrowed brow with fiery anime eyes venting pure rage, dramatic comic speed lines radiating behind her. In the lower-right background, the Undead Paladin shrinks in terror. Medium 2.5-to-3-head chibi scale, top 35% pure white headroom. Zero text, zero digits, zero speech bubbles.",
+      "tail_target": "left",
+      "item_tooltip": null
     },
     {
       "cut_index": 2,
@@ -27,10 +28,11 @@
         "언데드 성기사"
       ],
       "speaker": "언데드 성기사",
-      "dialogue": "죄, 죄송해요…\n초행이라 무서워서\n한 마리씩만…",
+      "dialogue": "죄, 죄송해요 흑흑…\n초행이라 파티 전멸할까 봐\n한 마리씩만 데려온 건데…",
       "wordless": false,
-      "visual_prompt": "Solo cute anime chibi girl from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). the Undead Paladin girl (top-row #2 on Draft C cast sheet: round white cartoon skull hood/cap with dark eye sockets, chin-length silver-white bob hair with icy blue inner tips, deadpan half-lidded golden-yellow eyes with faint tired eye bags, crisp white-and-gold paladin cloak with a cream neck bow ribbon) crouches nervously peeking over the rim of her shiny golden paladin shield with trembling watery golden eyes, holding a compact one-handed mace timidly in her other hand, cartoon sweat drops flying. Positioned cleanly on the right half of the wide 16:9 frame at a consistent medium 2.5-to-3-head waist-up chibi scale matching the 4:3 panels (never a tiny micro-chibi), leaving the entire left 47% completely empty pure #FFFFFF white space for a speech bubble.",
-      "tail_target": "right"
+      "visual_prompt": "High-angle shot looking down at the timid newbie Undead Paladin girl (bottom-row #3 on Draft C cast sheet) crouching on the floor on a 100% pure solid #FFFFFF white borderless background. She is clinging tightly behind her paladin shield, trembling violently with anime waterfall tears gushing from her hollow eyes, her skull hood quivering with anxiety. Positioned on the lower-right, leaving opposite left 46% clear white space. Medium 2.5-to-3-head chibi scale. Zero text, zero digits.",
+      "tail_target": "right",
+      "item_tooltip": null
     },
     {
       "cut_index": 3,
@@ -41,37 +43,40 @@
         "언데드 성기사"
       ],
       "speaker": "오크 전사",
-      "dialogue": "왜 쭈뼛거려!!\n꼬우면 니들이 해라\n하고 5마리 몰아!!",
+      "dialogue": "누가 쫄보처럼 한 마리만 잡아?!\n죽더라도 화끈하게 세 마리 몰아!\n힐은 내가 사제 멱살 잡고 시킨다!",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). On the lower-left, the Orc Warrior girl (top-row #1 on Draft C cast sheet: vibrant green plush orc animal-onesie hood with curved cream horns, tiny upturned fangs, piggy snout and pointed green ears on top of the hood, black high ponytail hair with bangs, bright crimson-red eyes, spiky red shoulder pauldrons over silver plate armor) suddenly flips into a blazingly enthusiastic mentor cheer, giving a huge fierce thumbs-up with sparkling stars around her, steel kite shield strapped securely on her left forearm and one-handed axe stowed at her belt. On the lower-right, the Undead Paladin girl (top-row #2 on Draft C cast sheet: round white cartoon skull hood/cap with dark eye sockets, chin-length silver-white bob hair with icy blue inner tips, deadpan half-lidded golden-yellow eyes with faint tired eye bags, crisp white-and-gold paladin cloak with a cream neck bow ribbon) blinks wide-eyed in stunned surprise as golden motivation sparkles begin blooming around her, golden paladin shield on her arm and one-handed mace at her side. Both characters at a consistent medium 2.5-to-3-head knee-up chibi scale (never tiny distant micro-chibis), kept strictly in the lower two-thirds of the 4:3 frame with completely empty pure #FFFFFF white headroom across the entire top 37% (both top corners strictly pure white).",
-      "tail_target": "left"
+      "visual_prompt": "Over-the-shoulder (OTS) diagonal shot from behind the Undead Paladin's trembling shoulder and skull hood on right. In the center-left, the Orc Warrior girl (top-row #1) leans forward aggressively, pointing an armored gauntlet right into the frame with an unexpected fierce grin and raised eyebrow, 1H weapon sheathed, inspiring rough battlefield mentorship! 100% pure solid #FFFFFF white borderless background, top 35% pure white headroom. Zero text, zero digits.",
+      "tail_target": "left",
+      "item_tooltip": null
     },
     {
       "cut_index": 4,
       "aspect_ratio": "16:9",
       "layout_slot": "bottom",
       "characters": [
-        "오크 전사",
-        "나이트엘프 사제"
+        "언데드 성기사",
+        "오크 전사"
       ],
-      "speaker": "오크 전사",
-      "dialogue": "어글 튀면 딜 탓!\n죽으면 힐러 탓!\n넌 인던의 왕이야!",
+      "speaker": "언데드 성기사",
+      "dialogue": "어…? 욕하면서 응원해 주는\n진짜 고인물 츤데레 형…?!",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). On the center-left, the Orc Warrior girl (top-row #1 on Draft C cast sheet: vibrant green plush orc animal-onesie hood with curved cream horns, tiny upturned fangs, piggy snout and pointed green ears on top of the hood, black high ponytail hair with bangs, bright crimson-red eyes, spiky red shoulder pauldrons over silver plate armor) laughs heartily with a booming proud mentor grin, clapping one hand on her hip while holding her steel kite shield on the other arm (one-handed axe stowed at belt). Right beside her on the center-right, the Night Elf Priest girl (bottom-row #2 on Draft C cast sheet: long silky lavender-silver hair, long pointed elf ears, delicate golden crescent-moon circlet on her forehead, tired lilac-purple eyes with pronounced dark under-eye circles, white-and-gold priestess robe with cream collar bow) jolts in shocked outrage pointing at herself with trembling fingers, heavy dark under-eye circles and flying sweat drops, golden crescent-moon staff leaning on her shoulder. Both characters placed snugly side-by-side on the left half of the wide 16:9 frame at a consistent medium 2.5-to-3-head waist-up/knee-up chibi scale matching the 4:3 panels (never tiny distant micro-chibis), leaving the entire right 46% completely empty pure #FFFFFF white space for a speech bubble.",
-      "tail_target": "left"
+      "visual_prompt": "Dynamic Dutch tilt diagonal angle frame with tilted camera on a 100% pure solid #FFFFFF white borderless background. The Orc Warrior girl vigorously slams a heavy encouraging gauntlet onto the Undead Paladin's back, knocking up flying dust puffs and comic impact shockwaves! The paladin tumbles forward a step in shock, her eyes transforming into sparkling starry anime revelation with a blushing skeletal grin. Medium 2.5-to-3-head chibi scale, top 34% clear space. Zero text, zero digits.",
+      "tail_target": "right",
+      "item_tooltip": null
     },
     {
       "cut_index": 5,
       "aspect_ratio": "4:3",
       "layout_slot": "top",
       "characters": [
-        "나이트엘프 사제"
+        "언데드 성기사"
       ],
       "speaker": null,
       "dialogue": null,
       "wordless": true,
-      "visual_prompt": "Tight centered comedic chest-up close-up freeze-frame of ONLY the Night Elf Priest girl (bottom-row #2 on Draft C cast sheet: long silky lavender-silver hair, long pointed elf ears, delicate golden crescent-moon circlet on her forehead, tired lilac-purple eyes with pronounced dark under-eye circles, white-and-gold priestess robe with cream collar bow) on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). Squarely dead-centered, filling about 80% of the canvas height. Betrayed healer freeze-frame: pronounced dark under-eye circles, lilac eyes shrunk to tiny trembling pinpoint pupils staring straight ahead in utter disbelief, heavy dark gloom shadow across her forehead, quivering pale lips and vertical comic gloom lines. Completely silent and speechless frozen reaction, hands empty, no weapons or props in hand.",
-      "tail_target": "center"
+      "visual_prompt": "Dramatic low-angle shot looking up at the Undead Paladin girl (bottom-row #3 on Draft C cast sheet) in an intense heroic comedic freeze-frame on a 100% pure solid #FFFFFF white borderless background. Her face is glowing with golden holy energy sparks, a resolute smirk on her lips, one fist clenched tightly to her chest, brimming with newborn tanking courage! Expressive close-up filling ~78% height. Zero text, zero digits, zero speech bubbles.",
+      "tail_target": "center",
+      "item_tooltip": null
     },
     {
       "cut_index": 6,
@@ -79,13 +84,14 @@
       "layout_slot": "bottom",
       "characters": [
         "언데드 성기사",
-        "나이트엘프 사제"
+        "오크 전사"
       ],
       "speaker": "언데드 성기사",
-      "dialogue": "알겠어요 사부님!!\n5마리 바로\n돌진 박습니다!!",
+      "dialogue": "형님 말대로 이번엔\n다섯 마리 몰아옵니다!!\n성스러운 빛으로 나를 치유하라!!",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). On the center-left, the Undead Paladin girl (top-row #2 on Draft C cast sheet: round white cartoon skull hood/cap with dark eye sockets, chin-length silver-white bob hair with icy blue inner tips, deadpan half-lidded golden-yellow eyes with faint tired eye bags, crisp white-and-gold paladin cloak with a cream neck bow ribbon) charges fearlessly forward with blazing starry eyes and a heroic determined battle cry, raising her shiny golden paladin shield high and swinging a compact one-handed mace with golden holy speed lines. Right beside her on the center-right, the Night Elf Priest girl (bottom-row #2 on Draft C cast sheet: long silky lavender-silver hair, long pointed elf ears, delicate golden crescent-moon circlet on her forehead, tired lilac-purple eyes with pronounced dark under-eye circles, white-and-gold priestess robe with cream collar bow) chases frantically behind waving both hands in panic with waterfall tears, her crescent-moon staff tucked under one arm. Both characters placed snugly side-by-side on the left half of the wide 16:9 frame at a consistent medium 2.5-to-3-head waist-up/knee-up chibi scale matching the 4:3 panels (never tiny distant micro-chibis), leaving the entire right 46% completely empty pure #FFFFFF white space for a speech bubble.",
-      "tail_target": "left"
+      "visual_prompt": "Side-profile 90-degree action shot on a 100% pure solid #FFFFFF white borderless background. On the left, the Undead Paladin girl is dashing sprinting boldly forward across the frame with shield raised and 1H mace held high, charging headlong toward cartoon monster silhouettes and kicking up dust puffs! In the right background, the Orc Warrior watches her charge with arms crossed and a proud smug older-sister smirk. Medium 2.5-to-3-head chibi scale, top 34% pure white headroom. Zero text, zero digits.",
+      "tail_target": "left",
+      "item_tooltip": null
     }
   ]
 }

@@ -14,9 +14,9 @@
         "오크 전사"
       ],
       "speaker": "타우렌 드루이드",
-      "dialogue": "포에버 초반 던전...\n도트힐 한 번 걸고 나니\n할 게 없어서 졸리네...",
+      "dialogue": "포에버 초반 던전…\n도트힐 하나 감아두고 나니\n할 게 없어서 너무 졸리네…",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet at a consistent medium 2.5-to-3-head waist-up chibi scale on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray tint, no ground shadow, no panel borders, zero text, zero letters, zero digits, zero numbers, zero speech bubbles, zero UI frames). On the lower-left, the Tauren Druid girl (bottom-row #1 on Draft C cast sheet: fluffy warm-brown plush tauren cow hood with curved ivory horns, cute cow snout with golden nose ring and floppy ears, chestnut-brown bangs, big watery glossy brown eyes, blushing cheeks, leafy green foliage mantle over brown druid tunic, gnarled wooden staff leaned against her shoulder, lazily flicking one hand to release a gentle swirling green nature-leaf heal sparkle while covering a huge sleepy yawn with her other hand, drowsy half-closed brown eyes). On the lower-right, the Orc Warrior girl (top-row #1 on Draft C cast sheet: vibrant green plush orc animal-onesie hood with curved cream horns, tiny upturned fangs, piggy snout and pointed green ears on top of the hood, black high ponytail hair with bangs, bright crimson-red eyes, spiky red shoulder pauldrons over silver plate armor, as a protection tank with a sturdy steel kite shield strapped on her left arm and a compact one-handed steel sword in her right hand, standing completely unscratched and sturdy with a confident relaxed grin). Keep both characters strictly in the lower two-thirds of the 4:3 frame with generous completely empty pure #FFFFFF white headroom across the entire top 38% (both top corners strictly pure white).",
+      "visual_prompt": "Over-the-shoulder (OTS) diagonal shot from behind the shoulder of the Orc Warrior girl on the lower-right. On the lower-left, the Tauren Druid girl (bottom-row #8 on Draft C cast sheet) sits comfortably on a wooden camp stool, gently flicking a single green healing leaf spell into the air with one hand while covering a lazy yawn with the other. 100% pure solid #FFFFFF white borderless background, medium 2.5-to-3-head chibi scale, top 35% pure white headroom. Zero text, zero digits, zero speech bubbles.",
       "tail_target": "left",
       "item_tooltip": null
     },
@@ -28,9 +28,9 @@
         "타우렌 드루이드"
       ],
       "speaker": "타우렌 드루이드",
-      "dialogue": "저녁에 인던 돌다가\n무릎 강아지 쓰다듬다\n잠들겠는데... 음냐...",
+      "dialogue": "인던 돌면서 강아지\n쓰다듬다 보면 저절로\n잠들겠는데… 냐암…",
       "wordless": false,
-      "visual_prompt": "Solo cute anime chibi girl from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray tint, no ground shadow, no panel borders, zero text, zero letters, zero digits, zero numbers, zero speech bubbles, zero UI frames). Positioned cleanly at a consistent medium 2.5-to-3-head waist-up chibi scale on the right half of the wide 16:9 frame facing slightly left (never a tiny distant micro-chibi), leaving the entire left 48% completely empty pure #FFFFFF white space for a speech bubble: the Tauren Druid girl (bottom-row #1 on Draft C cast sheet: fluffy warm-brown plush tauren cow hood with curved ivory horns, cute cow snout with golden nose ring and floppy ears, chestnut-brown bangs, big watery glossy brown eyes, blushing cheeks, leafy green foliage mantle over brown druid tunic, wooden staff leaned aside, cozily cradling a tiny fluffy beige cartoon puppy on her lap and gently petting its head with blissful sleepy closed eyes and tiny floating sleep bubbles).",
+      "visual_prompt": "Side-profile 90-degree action shot on a 100% pure solid #FFFFFF white borderless background. The Tauren Druid girl leans back comfortably in a side-profile view, softly petting a cute fluffy cartoon wolf pup curled on her lap, eyes half-closed in sleepy bliss with a tiny floating snot bubble from her nose. Positioned on the right, leaving the left 46% clear white space. Medium 2.5-to-3-head chibi scale. Zero text, zero digits, zero speech bubbles.",
       "tail_target": "right",
       "item_tooltip": null
     },
@@ -43,9 +43,9 @@
         "타우렌 드루이드"
       ],
       "speaker": "트롤 주술사",
-      "dialogue": "아니 회드님!\n하품만 하지 말고\n근접 딜이라도 좀 하쇼!!",
+      "dialogue": "아니 회드님!\n파티원들 피는 안 닳아도\n남는 마나로 근접 평타라도 치쇼!!",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet at a consistent medium 2.5-to-3-head waist-up chibi scale on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray tint, no ground shadow, no panel borders, zero text, zero letters, zero digits, zero numbers, zero speech bubbles, zero UI frames). On the lower-left, the Troll Shaman girl (top-row #5 on Draft C cast sheet: sky-blue plush troll onesie hood with a bright red spiky mohawk crest, floppy pierced long ears and tiny white hood tusks, mint-teal bob hair, bright green eyes, patterned tribal scarf and light-blue sleeves, crackling cyan-blue lightning sparks popping around one raised hand, pointing impatiently at the druid with wide exasperated green eyes and a small carved wooden totem on the floor beside her). On the lower-right, the Tauren Druid girl (bottom-row #1 on Draft C cast sheet: fluffy warm-brown plush tauren cow hood with curved ivory horns, cute cow snout with golden nose ring and floppy ears, chestnut-brown bangs, big watery glossy brown eyes, blushing cheeks, leafy green foliage mantle over brown druid tunic, wooden staff leaned against her shoulder, empty hands resting calmly, blinking slowly with a serene drowsy tilt of her head). Keep both characters strictly in the lower two-thirds of the 4:3 frame with generous completely empty pure #FFFFFF white headroom across the entire top 38% (both top corners strictly pure white).",
+      "visual_prompt": "Dynamic Dutch tilt diagonal angle frame with tilted camera on a 100% pure solid #FFFFFF white borderless background. The Troll Shaman girl (middle-row #8 on Draft C cast sheet) is flinging her arms in frantic exasperation, clutching her wooden healing totem in one hand while yelling with sharp jagged shark teeth and flying sweat drops at the unperturbed druid! Medium 2.5-to-3-head chibi scale, top 35% pure white headroom. Zero text, zero digits.",
       "tail_target": "left",
       "item_tooltip": null
     },
@@ -57,9 +57,9 @@
         "타우렌 드루이드"
       ],
       "speaker": "타우렌 드루이드",
-      "dialogue": "어째서 내가\n그런 천한 행동을\n해야 하는 것이지..?",
+      "dialogue": "어째서 고귀한 힐러인 내가\n그런 천하고 야만스러운 행동을\n직접 해야 하는 것이지..?",
       "wordless": false,
-      "visual_prompt": "Solo cute anime chibi girl from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray tint, no ground shadow, no panel borders, zero text, zero letters, zero digits, zero numbers, zero speech bubbles, zero UI frames). Positioned cleanly at a consistent medium 2.5-to-3-head waist-up chibi scale on the right half of the wide 16:9 frame facing slightly left (never a tiny distant micro-chibi), leaving the entire left 48% completely empty pure #FFFFFF white space for a speech bubble: the Tauren Druid girl (bottom-row #1 on Draft C cast sheet: fluffy warm-brown plush tauren cow hood with curved ivory horns, cute cow snout with golden nose ring and floppy ears, chestnut-brown bangs, big watery glossy brown eyes, blushing cheeks, leafy green foliage mantle over brown druid tunic, wooden staff held gracefully upright in one hand, chin tilted proudly upward with ultra-haughty aristocratic half-lidded brown eyes, her other hand poised delicately near her chest, surrounded by dazzling regal golden sparkles).",
+      "visual_prompt": "Dramatic low-angle shot looking up at the Tauren Druid girl (bottom-row #8 on Draft C cast sheet) on a 100% pure solid #FFFFFF white borderless background. She looks down her snout with supreme aristocrat disdain, a small folding fan delicately covering her mouth, eyes narrowed in pure noble contempt and royal haughtiness! Positioned on the right, left 46% clear space. Medium 2.5-to-3-head chibi scale. Zero text, zero digits, zero speech bubbles.",
       "tail_target": "right",
       "item_tooltip": null
     },
@@ -73,7 +73,7 @@
       "speaker": null,
       "dialogue": null,
       "wordless": true,
-      "visual_prompt": "Centered dramatic comedic chest-up close-up freeze-frame of a single cute anime chibi girl from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray tint, no ground shadow, no panel borders, zero text, zero letters, zero digits, zero numbers, zero speech bubbles, zero UI frames): the Troll Shaman girl (top-row #5 on Draft C cast sheet: sky-blue plush troll onesie hood with a bright red spiky mohawk crest, floppy pierced long ears and tiny white hood tusks, mint-teal bob hair, bright green eyes, patterned tribal scarf and light-blue sleeves, lightning sparks completely fizzled into tiny puffs of smoke, bright green eyes shrunk to tiny trembling pupils, jaw dropped speechless in stunned comedic awe with a huge cartoon sweat drop). Pure silent frozen reaction, crisp comedic impact.",
+      "visual_prompt": "High-angle shot looking down at the Troll Shaman girl (middle-row #8 on Draft C cast sheet) in an expressive comedic freeze-frame on a 100% pure solid #FFFFFF white borderless background. She is falling backward in utter shock, her totem dropping to the floor, eyes spinning in dizzy spiral circles, completely struck dumb by the unbelievable noble arrogance! Expressive solo close-up filling ~78% height. Zero text, zero digits, zero speech bubbles.",
       "tail_target": "center",
       "item_tooltip": null
     },
@@ -86,9 +86,9 @@
         "타우렌 드루이드"
       ],
       "speaker": "오크 전사",
-      "dialogue": "와... 기세에 압도됐다.\n저분이야말로 진정한\n귀족 힐러다...",
+      "dialogue": "와… 기세에 완전히 눌렸다.\n저분이야말로 이 험한 아제로스의\n진정한 황족 귀족 힐러다…!",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray tint, no ground shadow, no panel borders, zero text, zero letters, zero digits, zero numbers, zero speech bubbles, zero UI frames), framed snugly together near the center of the wide 16:9 frame at a consistent medium 2.5-to-3-head waist-up chibi scale (matching the 4:3 panel size, never tiny distant micro-chibis), kept in the lower 65% with the entire top 35% completely empty pure #FFFFFF white space. On the left, the Orc Warrior girl (top-row #1 on Draft C cast sheet: vibrant green plush orc animal-onesie hood with curved cream horns, tiny upturned fangs, piggy snout and pointed green ears on top of the hood, black high ponytail hair with bangs, bright crimson-red eyes, spiky red shoulder pauldrons over silver plate armor, as a protection tank with a sturdy steel kite shield strapped on her left arm and a compact one-handed steel sword sheathed at her hip, giving an impressed respectful salute with her free hand and sparkling awestruck crimson eyes). On the right, the Tauren Druid girl (bottom-row #1 on Draft C cast sheet: fluffy warm-brown plush tauren cow hood with curved ivory horns, cute cow snout with golden nose ring and floppy ears, chestnut-brown bangs, big watery glossy brown eyes, blushing cheeks, leafy green foliage mantle over brown druid tunic, wooden staff leaned aside, smugly smiling with regal closed eyes while serenely petting the tiny fluffy beige cartoon puppy nestled in her lap).",
+      "visual_prompt": "Back-view shot on a 100% pure solid #FFFFFF white borderless background. In the lower-left, the Orc Warrior girl is seen from behind with 1H axe and sturdy shield on back, bowing slightly with hands clasped in awe-struck starry-eyed reverence toward the queenly Tauren Druid on the right who poses with serene elegance. Medium 2.5-to-3-head chibi scale, top 34% pure white headroom. Zero text, zero digits, zero speech bubbles.",
       "tail_target": "left",
       "item_tooltip": null
     }

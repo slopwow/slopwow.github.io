@@ -16,27 +16,19 @@
       "speaker": "드워프 사냥꾼",
       "dialogue": "흑석 반지 떴다!\n냥꾼이랑 고술님\n둘이 굴리면 되겠네~",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). On the lower-left, the Dwarf Hunter girl (forest-green fur-trimmed ranger hood, vivid orange-ginger hair in two thick braided pigtails wrapping under her chin, warm amber eyes, fur-trimmed brown leather hunter coat) cheers with both arms up and sparkling starry amber eyes, her wooden blunderbuss slung across her back, gazing at a small dark obsidian-black stone fantasy ring with a polished black gem setting, glowing with soft blue rare-quality loot sparkles hovering in mid-air in the lower-center. On the lower-right, the Human Warlock girl (deep dark-purple warlock hood over long jet-black twin pigtails with purple highlights, sharp violet eyes, tiny fang, dark purple robe) watches the floating ring with a sly narrow-eyed scheming smirk, her plump red plush imp doll tucked under one arm and her other hand secretly hiding a chunky glossy white-and-gold 6-sided loot die showing ONLY simple round black dot pips (strictly ZERO digits, ZERO numbers, ZERO letters) behind her back. Keep everything strictly in the lower two-thirds of the 4:3 frame at a consistent medium 2.5-to-3-head waist-up/knee-up chibi scale (never tiny micro-chibis), with generous completely empty pure #FFFFFF headroom across the entire top 38% (both top corners strictly pure white). Keep the top-right corner especially empty.",
+      "visual_prompt": "Over-the-shoulder (OTS) diagonal shot from behind the green-hooded shoulder of the Dwarf Hunter girl in foreground-left, pointing eagerly toward a rustic wooden dungeon chest on the right. Above the chest hovers the gleaming golden Blackstone Ring. In the background-right, the Human Warlock girl (dark purple horned cowl, black twintails, violet eyes) leans forward with starry-eyed obsession and a cunning smile, lantern staff stowed on her back. Lower two-thirds framing, top 35% pure white (#FFFFFF) headroom for tooltip and bubble. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
       "tail_target": "left",
       "item_tooltip": {
         "image_path": null,
         "item_name": "흑석 반지",
         "wowhead_item_id": 17713,
         "quality": "rare",
-        "slot_left": "손가락",
+        "slot_left": "",
         "slot_right": "",
-        "lines": [
-          "획득 시 귀속",
-          "고유 아이템",
-          "체력 +6",
-          "요구 레벨 49"
-        ],
-        "equip_effects": [
-          "착용 효과: 전투력 +20",
-          "착용 효과: 무기의 적중률이 1%만큼 증가합니다."
-        ],
-        "icon_name": "inv_jewelry_ring_17",
-        "preferred_corner": "top_right",
+        "lines": [],
+        "equip_effects": [],
+        "icon_name": null,
+        "preferred_corner": "auto",
         "target_width": 288
       }
     },
@@ -50,7 +42,7 @@
       "speaker": "인간 흑마법사",
       "dialogue": "어머~ 저도 눌렀는데\n제가 먹었네요?\n반지 잘 쓸게요~",
       "wordless": false,
-      "visual_prompt": "Solo cute anime chibi girl on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). Positioned cleanly and snugly on the right half of the wide 16:9 frame at a consistent medium 2.5-to-3-head waist-up/knee-up chibi scale matching the 4:3 panels (never zoomed-out micro-chibis), leaving the entire left 48% completely empty pure #FFFFFF white space for an external speech bubble. the Human Warlock girl (deep dark-purple warlock hood over long jet-black twin pigtails with purple highlights, sharp violet eyes, tiny fang, dark purple robe) faces slightly left with a smug sparkly closed-eye victory smile, triumphantly pinching a small dark obsidian-black stone fantasy ring with a polished black gem setting, glowing with soft blue rare-quality loot sparkles up beside her cheek with one hand, while a chunky glossy white-and-gold 6-sided loot die showing ONLY simple round black dot pips (strictly ZERO digits, ZERO numbers, ZERO letters) tumbles away in front of her with crisp comic motion streaks. Her red plush imp doll is set down at her feet (hands otherwise empty).",
+      "visual_prompt": "Low-angle shot looking up at the Human Warlock girl standing proudly on the right half, holding the glowing golden Blackstone Ring pinched between her thumb and index finger. She rests her other hand against her cheek with an exaggerated innocent smug sneer and fluttering eyelashes, pretending it was an honest accident. Dark purple robe flowing, soul staff sheathed on back. Positioned cleanly on the right half, leaving generous pure white (#FFFFFF) space across the left 48% for dialogue bubble. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
       "tail_target": "right",
       "item_tooltip": null
     },
@@ -65,7 +57,7 @@
       "speaker": "드워프 사냥꾼",
       "dialogue": "캐스터 흑마님이\n전투력 반지를\n왜 굴려요??",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). On the lower-left, the Dwarf Hunter girl (forest-green fur-trimmed ranger hood, vivid orange-ginger hair in two thick braided pigtails wrapping under her chin, warm amber eyes, fur-trimmed brown leather hunter coat) leans forward in bewildered outrage, pointing one gloved finger at the Warlock, mouth wide open, big cartoon sweat drops, blunderbuss slung on her back. On the lower-right, the Human Warlock girl (deep dark-purple warlock hood over long jet-black twin pigtails with purple highlights, sharp violet eyes, tiny fang, dark purple robe) turns her face away with eyes shut, innocently whistling with puckered lips and a tiny cartoon sweat drop, hiding the black stone ring behind her back, imp doll hugged under her other arm. Keep everything strictly in the lower two-thirds of the 4:3 frame at a consistent medium 2.5-to-3-head waist-up/knee-up chibi scale (never tiny micro-chibis), with generous completely empty pure #FFFFFF headroom across the entire top 38% (both top corners strictly pure white).",
+      "visual_prompt": "Dutch-tilt slapstick action camera with dramatic diagonal composition. Dwarf Hunter girl on the left slams both hands onto a floating stone pedestal in utter outrage, her jaw dropping open in a cartoon scream with sharp jagged teeth and flying sweat drops, blunderbuss on back. On the right, Human Warlock casually polishes the golden ring against her sleeve with closed eyes and a smug hum. Lower two-thirds framing, top 35% pure white (#FFFFFF) headroom. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
       "tail_target": "left",
       "item_tooltip": null
     },
@@ -78,9 +70,9 @@
         "트롤 주술사"
       ],
       "speaker": "드워프 사냥꾼",
-      "dialogue": "둘이 지인팟이었어?\n고술님 살펴보기...\n반지 칸 하나 비었네?",
+      "dialogue": "둘이 같은 길드였어?!\n고술님 살펴보기...\n반지 칸 하나 비었네?!",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). Positioned cleanly and snugly on the left half of the wide 16:9 frame at a consistent medium 2.5-to-3-head waist-up/knee-up chibi scale matching the 4:3 panels (never zoomed-out micro-chibis), leaving the entire right 48% completely empty pure #FFFFFF white space for an external speech bubble. On the far-left, the Dwarf Hunter girl (forest-green fur-trimmed ranger hood, vivid orange-ginger hair in two thick braided pigtails wrapping under her chin, warm amber eyes, fur-trimmed brown leather hunter coat) squints suspiciously through a small brass spyglass held up to one eye, blunderbuss slung on her back. Right beside her, the Troll Shaman girl (sky-blue plush troll onesie hood with bright red spiky mohawk crest, floppy pierced long ears, tiny white hood tusks, mint-teal bob hair, bright green eyes, patterned tribal scarf) stands stiffly looking away whistling with a big nervous sweat drop, her left hand raised awkwardly showing one bare empty ring finger outlined with a faint dotted sparkle, her right hand hiding behind her back. No totem, no lightning.",
+      "visual_prompt": "Side-profile 90-degree action shot of Dwarf Hunter girl tiptoeing sneaking right up behind the Troll Shaman girl (teal hood, tusks, spiky blue hair). Hunter inspects her with an oversized magnifying glass, eyes narrowed in sharp detective suspicion. Troll Shaman flinches with giant cartoon sweat droplets spraying from her head, clutching her empty finger in panic, totem staff stowed on back. Positioned on the left and center, leaving generous pure white (#FFFFFF) space on the right 46% for dialogue bubble. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
       "tail_target": "left",
       "item_tooltip": null
     },
@@ -94,7 +86,7 @@
       "speaker": null,
       "dialogue": null,
       "wordless": true,
-      "visual_prompt": "Tight centered comedic chest-up close-up freeze-frame of ONLY this one character, squarely dead-center filling ~80% of the canvas height; silent reaction panel, completely speechless. the Troll Shaman girl (sky-blue plush troll onesie hood with bright red spiky mohawk crest, floppy pierced long ears, tiny white hood tusks, mint-teal bob hair, bright green eyes, patterned tribal scarf) on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). Caught red-handed: she freezes mid-motion while hastily jamming a plain silver ring back onto her bare finger with both trembling hands held up near her chin, tiny shrunken pinpoint pupils darting sideways, a waterfall of comedic cold-sweat drops, stiff frozen grimace, faint blue gloom lines on her forehead. Hands hold nothing else.",
+      "visual_prompt": "High-angle shot looking down at the Troll Shaman girl in a signature comedic freeze-frame, completely wordless. Caught dead red-handed, she is kneeling on the floor with her hands rigidly clamped behind her back, her face drained pale blue, eyes turned into chaotic spinning spirals with waterfall anime sweat gushing down her cheeks. Totem staff propped on the ground beside her. Centered dramatic framing filling ~78% of canvas height. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
       "tail_target": "center",
       "item_tooltip": null
     },
@@ -103,13 +95,13 @@
       "aspect_ratio": "16:9",
       "layout_slot": "bottom",
       "characters": [
-        "트롤 주술사",
-        "드워프 사냥꾼"
+        "드워프 사냥꾼",
+        "인간 흑마법사"
       ],
-      "speaker": "트롤 주술사",
-      "dialogue": "이 반지요?\n원래 쭉 끼던 건데요?\n아무 일 없었어요~",
+      "speaker": "드워프 사냥꾼",
+      "dialogue": "반지 넘겨주고 둘 다\n동시에 파탈하네…\n와 진짜 레전드다 ㅋ",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). Positioned cleanly and snugly on the left half of the wide 16:9 frame at a consistent medium 2.5-to-3-head waist-up/knee-up chibi scale matching the 4:3 panels (never zoomed-out micro-chibis), leaving the entire right 48% completely empty pure #FFFFFF white space for an external speech bubble. On the far-left, the Troll Shaman girl (sky-blue plush troll onesie hood with bright red spiky mohawk crest, floppy pierced long ears, tiny white hood tusks, mint-teal bob hair, bright green eyes, patterned tribal scarf) beams an exaggerated angelic innocent smile with sparkles, proudly showing the back of her hand with the plain silver ring back on her finger, still sweating a single giveaway sweat drop. Right beside her, the Dwarf Hunter girl (forest-green fur-trimmed ranger hood, vivid orange-ginger hair in two thick braided pigtails wrapping under her chin, warm amber eyes, fur-trimmed brown leather hunter coat) stares at her with flat half-lidded dead-fish deadpan eyes and a tiny flat mouth, arms crossed, blunderbuss slung on her back.",
+      "visual_prompt": "Back-view shot seen from behind of the Human Warlock and Troll Shaman sneaking away together into a swirling cyan Hearthstone vortex on the right, seen from behind with smug giggles and ring pocketed. On the left, Dwarf Hunter stands alone in front of the empty dungeon chest, arms dropped limp, staring in disbelief at the empty party list. Clean framing with generous pure white (#FFFFFF) space on the left 48% for dialogue bubble. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
       "tail_target": "left",
       "item_tooltip": null
     }

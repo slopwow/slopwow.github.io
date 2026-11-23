@@ -16,8 +16,9 @@
       "speaker": "노움 도적",
       "dialogue": "수도원 2·3번인데\n왜 이렇게 느리지?\n보기님 또 멈췄네…",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). Lower-left (speaker): the Gnome Rogue girl (top-row #3 on Draft C cast sheet: petite chibi girl with blonde twin pigtails fading into hot-pink and electric-blue tips, green-lensed steampunk aviator goggles on her forehead, cross and star hairpins, bright blue eyes, black stealth mask pulled down below her chin, dark charcoal rogue cloak) crosses her arms and squints suspiciously with a puzzled sweat drop (dual poison-green daggers neatly sheathed at her belt). Lower-right: the Undead Paladin girl (top-row #2 on Draft C cast sheet: round white cartoon skull hood/cap with dark eye sockets, chin-length silver-white bob hair with icy blue inner tips, deadpan half-lidded golden-yellow eyes with faint tired eye bags, crisp white-and-gold paladin cloak with a cream neck bow ribbon) geared as a Protection tank holding a shiny golden crest paladin shield on her left arm and a compact one-handed mace in her right hand (2H warhammer omitted), frozen completely rigid like a stiff wooden mannequin mid-step with blank hollow unfocused eyes. Keep everything strictly in the lower two-thirds of the 4:3 frame at a consistent medium 2.5-3 head waist-up/knee-up chibi scale (never tiny distant micro-chibis), with generous completely empty pure #FFFFFF white headroom across the entire top 38% (both top corners strictly pure white).",
-      "tail_target": "left"
+      "visual_prompt": "Over-the-shoulder diagonal shot on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). Framed over the large foreground shoulder and back of the head of the Gnome Rogue girl on the lower-left (blonde twin pigtails with pink-blue tips, aviator goggles on forehead, poison daggers neatly sheathed at belt). In the background on the lower-right, the Undead Paladin Protection tank (round white skull cap, silver-white bob hair, golden crest shield on left arm, compact 1H mace in right hand, zero 2H weapon) stands completely frozen rigid mid-stride like a wooden statue with blank hollow unfocused eyes. Medium 2.5-to-3-head chibi scale in lower two-thirds, leaving generous pure #FFFFFF white headroom across top 38%.",
+      "tail_target": "left",
+      "item_tooltip": null
     },
     {
       "cut_index": 2,
@@ -30,8 +31,9 @@
       "speaker": "트롤 주술사",
       "dialogue": "아, 보기 멈췄다.\n이번엔 복술 차례~\n토템 톡.",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). Left: the Undead Paladin girl (top-row #2 on Draft C cast sheet: round white cartoon skull hood/cap with dark eye sockets, chin-length silver-white bob hair with icy blue inner tips, deadpan half-lidded golden-yellow eyes with faint tired eye bags, crisp white-and-gold paladin cloak with a cream neck bow ribbon) as a Protection tank (golden crest shield on arm, one-handed mace in hand) remains frozen totally stiff like an unmoving statue with blank hollow eyes. Right (speaker): the Troll Shaman girl (top-row #5 on Draft C cast sheet: sky-blue plush troll onesie hood with a bright red spiky mohawk crest, floppy pierced long ears and tiny white hood tusks, mint-teal bob hair, bright green eyes, patterned tribal scarf and light-blue sleeves) suddenly springs into brisk bouncy motion with a bright mechanical grin, setting a small carved rustic wooden totem down on the floor with crisp action lines around her. Both characters arranged in the lower 65% of the wide 16:9 frame at a consistent medium 2.5-3 head waist-up chibi scale filling ~62% of canvas height (never tiny micro-chibis), leaving the entire top 35% completely empty pure #FFFFFF white space for a speech bubble.",
-      "tail_target": "right"
+      "visual_prompt": "Side-profile 90-degree action shot on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). On the left, the Undead Paladin tank remains frozen totally stiff like a mannequin; on the right half, the Troll Shaman girl (sky-blue troll hood with red mohawk, mint-teal bob hair, green eyes) suddenly springs into bouncy mechanical action with a manic robotic smile, slamming a carved rustic wooden totem down on the floor with dynamic speed lines. Consistent medium 2.5-to-3-head chibi scale filling ~62% of canvas height, leaving the entire top 35% completely empty pure #FFFFFF white space for a speech bubble.",
+      "tail_target": "right",
+      "item_tooltip": null
     },
     {
       "cut_index": 3,
@@ -42,10 +44,11 @@
         "트롤 주술사"
       ],
       "speaker": "노움 도적",
-      "dialogue": "잠깐만요!!\n보기랑 복술 둘이서\n무고지 투클라였어요?!",
+      "dialogue": "시작 전에 말해야죠!!\n투클이라 ㅈㄴ 느리고\n남의 시간 다 뺏잖아요!",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). Lower-left (speaker): the Gnome Rogue girl (top-row #3 on Draft C cast sheet: petite chibi girl with blonde twin pigtails fading into hot-pink and electric-blue tips, green-lensed steampunk aviator goggles on her forehead, cross and star hairpins, bright blue eyes, black stealth mask pulled down below her chin, dark charcoal rogue cloak) points accusingly with wide outraged blue eyes, mouth wide open shouting and cartoon sweat drops flying (daggers sheathed at belt). Lower-right: the Troll Shaman girl (top-row #5 on Draft C cast sheet: sky-blue plush troll onesie hood with a bright red spiky mohawk crest, floppy pierced long ears and tiny white hood tusks, mint-teal bob hair, bright green eyes, patterned tribal scarf and light-blue sleeves) is now frozen completely stiff mid-step like a mannequin with blank hollow eyes and a tiny wooden totem beside her feet (because the player tabbed back to the tank). Keep everything strictly in the lower two-thirds of the 4:3 frame at a consistent medium 2.5-3 head waist-up/knee-up chibi scale (never tiny distant micro-chibis), with generous completely empty pure #FFFFFF white headroom across the entire top 38% (both top corners strictly pure white).",
-      "tail_target": "left"
+      "visual_prompt": "Dramatic low-angle shot looking up at the Gnome Rogue girl on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). On the lower-left, the Gnome Rogue girl leaps forward in outraged discovery, pointing an accusing finger with shouting jaw-drop and flying sweat drops (daggers sheathed at belt); on the lower-right, the Troll Shaman girl has instantly frozen stiff mid-step like an unmoving statue with blank hollow eyes (tabbed back to tank). Medium 2.5-to-3-head chibi scale, leaving generous pure #FFFFFF white headroom across top 38%.",
+      "tail_target": "left",
+      "item_tooltip": null
     },
     {
       "cut_index": 4,
@@ -55,10 +58,11 @@
         "언데드 성기사"
       ],
       "speaker": "언데드 성기사",
-      "dialogue": "전멸 안 했잖아.\n그래서 님이\n피해 본 거 있냐?",
+      "dialogue": "혹시 투클로 뭐\n피해보신 거 있으신가용?\n전멸 안 했잖아요.",
       "wordless": false,
-      "visual_prompt": "Solo cute anime chibi girl from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). the Undead Paladin girl (top-row #2 on Draft C cast sheet: round white cartoon skull hood/cap with dark eye sockets, chin-length silver-white bob hair with icy blue inner tips, deadpan half-lidded golden-yellow eyes with faint tired eye bags, crisp white-and-gold paladin cloak with a cream neck bow ribbon) geared as a Protection tank (shiny golden crest paladin shield strapped on her left arm, one-handed mace sheathed at her hip so her right hand is free, zero 2H hammer) turns calmly with flat deadpan half-lidded golden eyes and a totally shameless bored expression, waving one gloved hand dismissively. Positioned cleanly on the right half of the wide 16:9 frame at a consistent medium 2.5-3 head waist-up chibi scale filling ~65% of canvas height (never tiny micro-chibis), facing slightly left, leaving the entire left 48% completely empty pure #FFFFFF white space for a speech bubble.",
-      "tail_target": "right"
+      "visual_prompt": "Dynamic back-view shot on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). Positioned on the right half facing left: the Undead Paladin tank (golden crest shield on left arm, 1H mace sheathed at hip) is seen from behind, walking away casually, turning her head with a dismissive side-eye sneer and looking back over her shoulder while waving one gloved hand dismissively. Consistent medium 2.5-to-3-head waist-up chibi scale filling ~65% of canvas height, leaving the entire left 48% completely empty pure #FFFFFF white space for an external speech bubble.",
+      "tail_target": "right",
+      "item_tooltip": null
     },
     {
       "cut_index": 5,
@@ -70,8 +74,9 @@
       "speaker": null,
       "dialogue": null,
       "wordless": true,
-      "visual_prompt": "Tight centered comedic chest-up close-up freeze-frame of ONLY the Gnome Rogue girl (top-row #3 on Draft C cast sheet: petite chibi girl with blonde twin pigtails fading into hot-pink and electric-blue tips, green-lensed steampunk aviator goggles on her forehead, cross and star hairpins, bright blue eyes, black stealth mask pulled down below her chin, dark charcoal rogue cloak), squarely dead-centered and filling ~80% of the canvas height, on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). Completely speechless and frozen. Iconic speechless shock freeze-frame: green aviator goggles knocked slightly crooked on her forehead, deep ominous dark blue-gray gloom shadow across her upper face, bright blue eyes shrunk to tiny trembling pinpoint pupils, mouth hanging open in stunned disbelief, faint comic steam puffing silently from her pink-blue twin pigtails, big cartoon sweat drop.",
-      "tail_target": "center"
+      "visual_prompt": "High-angle shot looking down at the Gnome Rogue girl kneeling on the ground in stunned speechless defeat, on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). Squarely centered and filling ~80% of canvas height. Speechless shock freeze-frame: green aviator goggles knocked crooked on her forehead, deep dark blue gloom shadow across her face, blue eyes shrunk to trembling pinpoint pupils, mouth agape, steam puffing silently from her pink-blue twin pigtails.",
+      "tail_target": "center",
+      "item_tooltip": null
     },
     {
       "cut_index": 6,
@@ -82,10 +87,11 @@
         "트롤 주술사"
       ],
       "speaker": "노움 도적",
-      "dialogue": "남의 시간 다 뺏어놓고\n피해가 없대…\n아, 복술 또 멈췄네.",
+      "dialogue": "와 적반하장 레전드…\n아, 팟원 탈출하니까\n복술 또 멈췄네.",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). Far-right: the Troll Shaman girl (top-row #5 on Draft C cast sheet: sky-blue plush troll onesie hood with a bright red spiky mohawk crest, floppy pierced long ears and tiny white hood tusks, mint-teal bob hair, bright green eyes, patterned tribal scarf and light-blue sleeves) stands completely frozen stiff like a motionless statue with blank hollow eyes and a tiny cobweb forming on her wooden totem. Center-right (speaker, facing left): the Gnome Rogue girl (top-row #3 on Draft C cast sheet: petite chibi girl with blonde twin pigtails fading into hot-pink and electric-blue tips, green-lensed steampunk aviator goggles on her forehead, cross and star hairpins, bright blue eyes, black stealth mask pulled down below her chin, dark charcoal rogue cloak) (daggers sheathed at belt) throws both hands up in exasperated defeat with half-lidded tired eyes and a big cartoon sweat drop, gesturing back at the frozen Shaman. Both characters snugly side-by-side on the right half of the wide 16:9 frame at a consistent medium 2.5-3 head waist-up chibi scale filling ~62% of canvas height (matching the 4:3 panel size, never tiny micro-chibis), leaving the entire left 46% completely empty pure #FFFFFF white space for a speech bubble.",
-      "tail_target": "right"
+      "visual_prompt": "Tilted dutch-tilt diagonal composition on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). Positioned on the right half facing left: the Gnome Rogue girl flings both hands in the air in theatrical exasperated defeat with drooping half-lidded eyes and a giant sweat drop; in the background, the Troll Shaman stands frozen solid like a museum mannequin with a tiny comic cobweb forming on her nose. Medium 2.5-to-3-head chibi scale, leaving the left 46% pure white.",
+      "tail_target": "right",
+      "item_tooltip": null
     }
   ]
 }

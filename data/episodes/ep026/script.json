@@ -16,8 +16,9 @@
       "speaker": "언데드 성기사",
       "dialogue": "옛날 언데드는\n양변·공포·혼절\n다 면역이었단다…",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames), sitting beside a tiny cozy camping campfire of crossed logs with warm orange flames (WoW Forever Camping). On the lower-left, the Undead Paladin girl (top-row #2 on Draft C cast sheet: round white cartoon skull hood/cap with dark eye sockets, chin-length silver-white bob hair with icy blue inner tips, deadpan half-lidded golden-yellow eyes with faint tired eye bags, crisp white-and-gold paladin cloak with a cream neck bow ribbon) sits cross-legged like a wise old storyteller grandma, holding a rustic wooden mug in both hands with a nostalgic distant half-lidded gaze, her golden warhammer laid on the ground beside her. On the lower-right, the Skyborne Mage girl (bottom-row #4 on Draft C cast sheet: pointed elf ears, long golden-blonde hair fading into pastel sky-blue and aqua tips with a tiny white Skyborne feather hair charm, big sparkling sapphire-blue eyes, blue-and-white sailor-collar mage uniform with a teal ribbon bow) hugs her knees listening with huge curious sparkling eyes, hands empty. Both characters at a consistent medium 2.5-to-3-head knee-up chibi scale (never tiny distant micro-chibis), kept strictly in the lower two-thirds of the 4:3 frame with completely empty pure #FFFFFF white headroom across the entire top 37% (both top corners strictly pure white).",
-      "tail_target": "left"
+      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero speech bubbles). Over-the-shoulder (OTS) diagonal shot recreating the screenshot's scholarly storytelling. In the foreground right, the large back and shoulder of the Skyborne Mage frames the view. In the background left, the Undead Paladin girl (top-row #2: stitched skull hood, silver plate armor) leans back comfortably beside crackling orange campfire embers, comically adjusting round Pepe-scholar reading glasses with one bony finger and a nostalgic, worldly smile as she recounts ancient beta lore. Generous pure white headroom top 35%.",
+      "tail_target": "left",
+      "item_tooltip": null
     },
     {
       "cut_index": 2,
@@ -30,8 +31,9 @@
       "speaker": "인간 흑마법사",
       "dialogue": "에이 그럼 무적\n사기 종족이잖아요?\n얼라는 맨날 털림?",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). On the center-left, the Human Warlock girl (bottom-row #3 on Draft C cast sheet: deep dark-purple warlock hood over long jet-black twin pigtails with vivid purple highlights, sharp violet eyes, tiny fang, dark purple robe with tiny floating purple soul-shard crystals) leans forward skeptically with a raised eyebrow and a cheeky fanged smirk, hugging her plump grumpy red plush imp doll under one arm and pointing with her other hand. Right beside her on the center, the Skyborne Mage girl (bottom-row #4 on Draft C cast sheet: pointed elf ears, long golden-blonde hair fading into pastel sky-blue and aqua tips with a tiny white Skyborne feather hair charm, big sparkling sapphire-blue eyes, blue-and-white sailor-collar mage uniform with a teal ribbon bow) nods eagerly in agreement with wide curious eyes, hands empty. Both characters placed snugly side-by-side on the left half of the wide 16:9 frame at a consistent medium 2.5-to-3-head waist-up/knee-up chibi scale matching the 4:3 panels (never tiny distant micro-chibis), leaving the entire right 46% completely empty pure #FFFFFF white space for a speech bubble.",
-      "tail_target": "left"
+      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero speech bubbles). Dramatic low-angle shot looking up. On the lower-left, the Human Warlock girl (bottom-row #3: purple warlock hood, black pigtails, sharp violet eyes) leaps forward in enthusiastic fascination, clutching her plump red plush imp doll tightly to her chest with starry sparkling eyes and an intrigued grin. Beside her on the right, the Skyborne Mage nods attentively. Generous pure white headroom top 35%.",
+      "tail_target": "left",
+      "item_tooltip": null
     },
     {
       "cut_index": 3,
@@ -43,8 +45,9 @@
       "speaker": "언데드 성기사",
       "dialogue": "성기사 셋이\n언더시티에 와서\n퇴마술로 다 지웠지…",
       "wordless": false,
-      "visual_prompt": "Solo cute anime chibi girl from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). On the lower-left center, the Undead Paladin girl (top-row #2 on Draft C cast sheet: round white cartoon skull hood/cap with dark eye sockets, chin-length silver-white bob hair with icy blue inner tips, deadpan half-lidded golden-yellow eyes with faint tired eye bags, crisp white-and-gold paladin cloak with a cream neck bow ribbon) shivers in haunted flashback trauma, hugging her own shoulders, staring into the distance with hollow thousand-yard-stare golden eyes and cold sweat, a tiny comic smoke wisp rising from a scorched spot on her arm, while faint ghostly translucent golden holy-light flame wisps and radiant sun-rune glyph shapes (pure symbols, no letters) swirl menacingly around her. Hands empty, warhammer omitted. Single character at a consistent medium 2.5-to-3-head waist-up chibi scale (never a tiny micro-chibi), kept strictly in the lower two-thirds of the 4:3 frame with completely empty pure #FFFFFF white headroom across the entire top 37%.",
-      "tail_target": "left"
+      "visual_prompt": "Solo cute anime chibi girl from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero speech bubbles). Dutch-tilt dynamic angle shot. The Undead Paladin girl cringes backward in comic dread, clutching her skull hood with trembling hands, pupils shrunk to tiny dots and blue sweat drops flying, surrounded by dramatic dark shadow mob silhouettes of three towering Paladins casting blinding beams of holy Exorcism light, reliving her ultimate historical trauma. Generous pure white headroom top 35%.",
+      "tail_target": "left",
+      "item_tooltip": null
     },
     {
       "cut_index": 4,
@@ -57,8 +60,9 @@
       "speaker": "스카이본 마법사",
       "dialogue": "근데 선배님…\n지금 본인 직업이\n성기사잖아요?",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). On the center-left, the Skyborne Mage girl (bottom-row #4 on Draft C cast sheet: pointed elf ears, long golden-blonde hair fading into pastel sky-blue and aqua tips with a tiny white Skyborne feather hair charm, big sparkling sapphire-blue eyes, blue-and-white sailor-collar mage uniform with a teal ribbon bow) tilts her head innocently and points with one finger toward the Paladin's gear, a puzzled sweat drop on her cheek. Right beside her on the center, the Undead Paladin girl (top-row #2 on Draft C cast sheet: round white cartoon skull hood/cap with dark eye sockets, chin-length silver-white bob hair with icy blue inner tips, deadpan half-lidded golden-yellow eyes with faint tired eye bags, crisp white-and-gold paladin cloak with a cream neck bow ribbon) is still mid-story with her wooden mug, while her shiny golden warhammer and a golden paladin shield with a holy sun crest rest prominently beside her, softly glowing with warm golden holy light. Both characters placed snugly side-by-side on the left half of the wide 16:9 frame at a consistent medium 2.5-to-3-head waist-up/knee-up chibi scale matching the 4:3 panels (never tiny distant micro-chibis), leaving the entire right 46% completely empty pure #FFFFFF white space for a speech bubble.",
-      "tail_target": "left"
+      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero speech bubbles). Dynamic side-profile 90-degree action shot recreating the screenshot's confused Pepe shrug. On the lower-left, the Skyborne Mage girl stares deadpan sideways with narrowed unamused eyes, surrounded by comical floating red question mark icons, pointing directly at the holy silver libram and holy warhammer strapped to the Paladin's belt. On the lower-right, the Undead Paladin flinches with an awkward sweat drop. Generous pure #FFFFFF white headroom across top 35%.",
+      "tail_target": "left",
+      "item_tooltip": null
     },
     {
       "cut_index": 5,
@@ -70,8 +74,9 @@
       "speaker": null,
       "dialogue": null,
       "wordless": true,
-      "visual_prompt": "Tight centered comedic chest-up close-up freeze-frame of ONLY the Undead Paladin girl (top-row #2 on Draft C cast sheet: round white cartoon skull hood/cap with dark eye sockets, chin-length silver-white bob hair with icy blue inner tips, deadpan half-lidded golden-yellow eyes with faint tired eye bags, crisp white-and-gold paladin cloak with a cream neck bow ribbon) on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). Squarely dead-centered, filling about 80% of the canvas height. Ironic realization freeze-frame: deadpan stoic face completely frozen, golden-yellow eyes shrunk to tiny trembling pinpoint pupils, a single fat cartoon sweat drop sliding down her cheek, faint golden holy sparkles drifting around her skull hood, heavy blue gloom shadow across her forehead. Completely silent and speechless frozen reaction, hands empty, no weapons or props in hand.",
-      "tail_target": "center"
+      "visual_prompt": "Solo cute anime chibi girl from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero speech bubbles). High-angle shot looking down at the guilty Paladin. Comedic chest-up close-up freeze-frame of the Undead Paladin girl: blank soulless white eyes, nervous guilty sweat waterfall pouring down her face, mouth twisted into an awkward zigzag grimace, frozen solid under the undeniable hypocritical reality.",
+      "tail_target": "center",
+      "item_tooltip": null
     },
     {
       "cut_index": 6,
@@ -79,13 +84,14 @@
       "layout_slot": "bottom",
       "characters": [
         "언데드 성기사",
-        "스카이본 마법사"
+        "인간 흑마법사"
       ],
       "speaker": "언데드 성기사",
       "dialogue": "이길 수 없으면\n합류하라\n했단다.",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). On the center-left, the Undead Paladin girl (top-row #2 on Draft C cast sheet: round white cartoon skull hood/cap with dark eye sockets, chin-length silver-white bob hair with icy blue inner tips, deadpan half-lidded golden-yellow eyes with faint tired eye bags, crisp white-and-gold paladin cloak with a cream neck bow ribbon) stands tall and solemnly raises her shiny golden warhammer high, radiating warm golden holy light with perfect deadpan dignity, while tiny comic smoke wisps sizzle from her own fingertips touching the holy glow. Right beside her on the center, the Skyborne Mage girl (bottom-row #4 on Draft C cast sheet: pointed elf ears, long golden-blonde hair fading into pastel sky-blue and aqua tips with a tiny white Skyborne feather hair charm, big sparkling sapphire-blue eyes, blue-and-white sailor-collar mage uniform with a teal ribbon bow) claps slowly with an awed yet sweat-dropped expression, hands empty except for clapping. Both characters placed snugly side-by-side on the left half of the wide 16:9 frame at a consistent medium 2.5-to-3-head waist-up/knee-up chibi scale matching the 4:3 panels (never tiny distant micro-chibis), leaving the entire right 46% completely empty pure #FFFFFF white space for a speech bubble.",
-      "tail_target": "left"
+      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero speech bubbles). Dynamic back-view shot. On the lower-left, the Undead Paladin girl is seen from behind walking away into the distance with her cape fluttering, resting her holy one-handed hammer over her shoulder and coolly tossing a carefree two-finger salute back over her shoulder with an unbothered smirk. On the lower-right, the Human Warlock girl sweatdrops in stunned exasperation. Generous pure white headroom top 35%.",
+      "tail_target": "left",
+      "item_tooltip": null
     }
   ]
 }

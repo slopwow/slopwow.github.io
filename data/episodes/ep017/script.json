@@ -13,10 +13,11 @@
         "나이트엘프 사제"
       ],
       "speaker": "나이트엘프 사제",
-      "dialogue": "원정대 여러분!\n언더시티 옆 언덕\n야영지 구축 완료!",
+      "dialogue": "한국성기사협회 원정대!\n언더시티 옆 언덕\n야영지 구축 완료!",
       "wordless": false,
-      "visual_prompt": "Solo cute anime chibi girl from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). Centered slightly left: the Night Elf Priest girl (bottom-row #2 on Draft C cast sheet: long silky lavender-silver hair, long pointed elf ears, delicate golden crescent-moon circlet on her forehead, tired lilac-purple eyes with pronounced dark under-eye circles, white-and-gold priestess robe with cream collar bow) kneels proudly beside a tiny cozy crackling campfire and a rolled-up quilted tan-and-brown wool traveler's bedroll with leather straps, a small blank blue-and-gold triangular pennant flag (plain fabric, zero emblems, zero letters) planted in the ground beside her; she raises one fist in a bright determined cheer with sparkling eyes and a confident smile despite her tired dark circles, her golden crescent-moon staff leaned against the bedroll (hands otherwise empty). Keep everything strictly in the lower two-thirds of the 4:3 frame at a consistent medium 2.5-3 head waist-up/knee-up chibi scale (never tiny distant micro-chibis), with generous completely empty pure #FFFFFF white headroom across the entire top 38% (both top corners strictly pure white).",
-      "tail_target": "left"
+      "visual_prompt": "Low-angle shot looking up recreating the original post's screenshot: an impressive single-file marching column of a dozen chibi paladins with glowing golden banners, warhammers, and shining armor marching along a hillside road! At the front, the Night Elf Priestess plants a glowing silver banner beside a crackling campfire with an inspiring heroic smile, staff on back. Lower two-thirds framing, top 35% pure white (#FFFFFF) headroom. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
+      "tail_target": "left",
+      "item_tooltip": null
     },
     {
       "cut_index": 2,
@@ -29,8 +30,9 @@
       "speaker": "나이트엘프 사제",
       "dialogue": "기사님들! 이단\n언데드 성기사 발견!\n심판 날려요!!",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). On the left (speaker): the Night Elf Priest girl (bottom-row #2 on Draft C cast sheet: long silky lavender-silver hair, long pointed elf ears, delicate golden crescent-moon circlet on her forehead, tired lilac-purple eyes with pronounced dark under-eye circles, white-and-gold priestess robe with cream collar bow) points her glowing golden crescent-moon staff dramatically forward with one hand, eyes blazing with righteous zeal and a triumphant shouting mouth. On the right: the Undead Paladin girl (top-row #2 on Draft C cast sheet: round white cartoon skull hood/cap with dark eye sockets, chin-length silver-white bob hair with icy blue inner tips, deadpan half-lidded golden-yellow eyes with faint tired eye bags, crisp white-and-gold paladin cloak with a cream neck bow ribbon) is comically bonked on her skull hood by a big glowing golden hammer-shaped beam of holy judgement light falling from above the frame, cartoon dizzy swirl eyes, crisp sweat drops, her golden warhammer strapped on her back, totally deadpan even while being smitten (cute slapstick only, zero gore). Both characters arranged in the lower 65% of the wide 16:9 frame at a consistent medium 2.5-3 head waist-up chibi scale filling ~62% of canvas height (never tiny micro-chibis), leaving the entire top 35% completely empty pure #FFFFFF white space for a speech bubble.",
-      "tail_target": "left"
+      "visual_prompt": "Over-the-shoulder (OTS) diagonal shot from behind the shoulder of the Undead Paladin in foreground-right, who has just wandered onto the Brill road with an innocent head tilt. Looking toward the Night Elf Priest on the left who points her glowing staff forward with righteous fury, while background paladins raise hammers ready to cast Judgement! Positioned cleanly leaving generous pure white (#FFFFFF) space on right 46% for dialogue bubble. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
+      "tail_target": "left",
+      "item_tooltip": null
     },
     {
       "cut_index": 3,
@@ -43,8 +45,9 @@
       "speaker": "나이트엘프 사제",
       "dialogue": "심판 완료~\n이제 로데론까지\n평화롭게 정화 행진♪",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). Lower-left (speaker): the Night Elf Priest girl (bottom-row #2 on Draft C cast sheet: long silky lavender-silver hair, long pointed elf ears, delicate golden crescent-moon circlet on her forehead, tired lilac-purple eyes with pronounced dark under-eye circles, white-and-gold priestess robe with cream collar bow) marches cheerfully forward with a skipping step, happily waving a small blank blue-and-gold triangular pennant flag (plain fabric, zero emblems, zero letters) in one hand, her crescent staff stowed behind her shoulder, eyes closed in a blissful smile with musical sparkle accents. Lower-right behind her: the Undead Paladin girl (top-row #2 on Draft C cast sheet: round white cartoon skull hood/cap with dark eye sockets, chin-length silver-white bob hair with icy blue inner tips, deadpan half-lidded golden-yellow eyes with faint tired eye bags, crisp white-and-gold paladin cloak with a cream neck bow ribbon) floats as a pale translucent bluish spirit ghost with a faint wispy tail instead of legs, arms crossed, glaring at the priest's back with flat deadpan half-lidded eyes and a tiny grumpy pout. Keep everything strictly in the lower two-thirds of the 4:3 frame at a consistent medium 2.5-3 head waist-up/knee-up chibi scale (never tiny distant micro-chibis), with generous completely empty pure #FFFFFF white headroom across the entire top 38% (both top corners strictly pure white).",
-      "tail_target": "left"
+      "visual_prompt": "Side-profile 90-degree action shot of the Night Elf Priest and her paladin army marching cheerfully toward the right with bouncy steps, eyes closed in bliss, making cute peace signs. In the background-left, the Undead Paladin lies sprawled on the ground with comical spiral eyes. Lower two-thirds framing, top 35% pure white (#FFFFFF) headroom. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
+      "tail_target": "left",
+      "item_tooltip": null
     },
     {
       "cut_index": 4,
@@ -57,8 +60,9 @@
       "speaker": "언데드 성기사",
       "dialogue": "이단의 반격이다.\n…쪼렙이라도\n무적은 있다.",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). Center-left (speaker, facing right): the Undead Paladin girl (top-row #2 on Draft C cast sheet: round white cartoon skull hood/cap with dark eye sockets, chin-length silver-white bob hair with icy blue inner tips, deadpan half-lidded golden-yellow eyes with faint tired eye bags, crisp white-and-gold paladin cloak with a cream neck bow ribbon) stands fully revived inside a translucent glowing golden Divine Shield bubble, a compact golden one-handed mace in one hand and a shiny golden crest paladin shield on her other arm (warhammer omitted), stoic deadpan stare with a tiny smug glint. Far-left beside her: the Troll Shaman girl (top-row #5 on Draft C cast sheet: sky-blue plush troll onesie hood with a bright red spiky mohawk crest, floppy pierced long ears and tiny white hood tusks, mint-teal bob hair, bright green eyes, patterned tribal scarf and light-blue sleeves) grins wildly with a toothy battle-cry, crackling cyan-blue chain lightning arcing from both raised hands while two small carved rustic wooden totems stand at her feet. Both characters snugly side-by-side on the left half of the wide 16:9 frame at a consistent medium 2.5-3 head waist-up chibi scale filling ~62% of canvas height (matching the 4:3 panel size, never tiny micro-chibis), leaving the entire right 46% completely empty pure #FFFFFF white space for a speech bubble.",
-      "tail_target": "left"
+      "visual_prompt": "Dutch-tilt slapstick action camera with a tilted dynamic composition! The Undead Paladin suddenly leaps back up on the right, encased inside a blazing golden spherical Divine Shield (Paladin bubble)! Beside her, Troll Shaman plants a wooden totem into the ground with crackling lightning, backed by cartoon Horde reinforcement silhouettes charging! Clean framing on right half, leaving generous pure white (#FFFFFF) space on left 48% for dialogue bubble. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
+      "tail_target": "right",
+      "item_tooltip": null
     },
     {
       "cut_index": 5,
@@ -70,8 +74,9 @@
       "speaker": null,
       "dialogue": null,
       "wordless": true,
-      "visual_prompt": "Tight centered comedic chest-up close-up freeze-frame of ONLY the Night Elf Priest girl (bottom-row #2 on Draft C cast sheet: long silky lavender-silver hair, long pointed elf ears, delicate golden crescent-moon circlet on her forehead, tired lilac-purple eyes with pronounced dark under-eye circles, white-and-gold priestess robe with cream collar bow), squarely dead-centered and filling ~80% of the canvas height, on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). Completely speechless and frozen. Iconic anime horror freeze: deep dark blue-gray gloom shadow across her forehead, wide lilac eyes with tiny trembling pinpoint pupils reflecting several glowing golden bubble glints, her under-eye circles darker than ever, big cartoon sweat drops, tiny quivering open mouth, her small blank pennant flag drooping limply over her shoulder, faint crackling cyan lightning sparks fizzling in the air around her hair.",
-      "tail_target": "center"
+      "visual_prompt": "High-angle shot looking down at the Night Elf Priest girl in a signature comedic freeze-frame, completely wordless. Caught entirely off guard, she has tumbled backward onto her rear, eyes spinning in frantic spiral shock, hands flailing in mid-air, seeing the invincible golden bubbles and Horde horde charging straight at her! Centered dramatic framing filling ~78% of canvas height. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
+      "tail_target": "center",
+      "item_tooltip": null
     },
     {
       "cut_index": 6,
@@ -82,10 +87,11 @@
         "나이트엘프 사제"
       ],
       "speaker": "언데드 성기사",
-      "dialogue": "역정화 완료.\n영혼의 치유사는\n저쪽이다.",
+      "dialogue": "원정대 정화당함 완료.\n영혼의 치유사는\n저쪽이다.",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). Right side: the Night Elf Priest girl (bottom-row #2 on Draft C cast sheet: long silky lavender-silver hair, long pointed elf ears, delicate golden crescent-moon circlet on her forehead, tired lilac-purple eyes with pronounced dark under-eye circles, white-and-gold priestess robe with cream collar bow) lies flat face-down on the white floor knocked out with cartoon dizzy spiral eyes and a little pale translucent spirit wisp of herself floating up from her back, her tiny blank pennant flag fallen beside her (cute slapstick, zero gore). Center-right (speaker, facing left): the Undead Paladin girl (top-row #2 on Draft C cast sheet: round white cartoon skull hood/cap with dark eye sockets, chin-length silver-white bob hair with icy blue inner tips, deadpan half-lidded golden-yellow eyes with faint tired eye bags, crisp white-and-gold paladin cloak with a cream neck bow ribbon) crouches beside her with flat deadpan half-lidded eyes, shield and mace set down on the floor, politely pointing one gloved finger toward the empty left side of the frame like a calm tour guide. Both characters snugly side-by-side on the right half of the wide 16:9 frame at a consistent medium 2.5-3 head waist-up chibi scale filling ~62% of canvas height (matching the 4:3 panel size, never tiny micro-chibis), leaving the entire left 46% completely empty pure #FFFFFF white space for a speech bubble.",
-      "tail_target": "right"
+      "visual_prompt": "Back-view shot seen from behind recreating the author's real punchline ('정화당함 완료'): Undead Paladin rests her heavy holy hammer over her shoulder, seen from behind walking away toward the left, pointing with her thumb over her shoulder toward the graveyard. In the background-right, the entire paladin expedition and Night Elf Priest sit or lie slumped as translucent blue ghosts in the Lordaeron courtyard, sulking with puffed cheeks! Clean framing leaving generous pure white (#FFFFFF) space on left 48% for dialogue bubble. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
+      "tail_target": "right",
+      "item_tooltip": null
     }
   ]
 }

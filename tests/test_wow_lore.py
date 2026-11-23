@@ -275,7 +275,7 @@ def test_writer_and_artist_prompts_enforce_scale_clean_hand_and_lore() -> None:
         comments=["보기였으면 방패라도 들었지"],
     )
     w_prompt = build_writer_prompt(post, episode_number=11)
-    assert "핵심 2~4명" in w_prompt
+    assert "핵심 1~4명" in w_prompt
     assert "괄호 다중 화자 편법 절대 금지" in w_prompt
     assert "일관된 2.5~3등신" in w_prompt
     assert "크롤도크 보루" in w_prompt
@@ -494,3 +494,59 @@ def test_site_builder_scales_cleanly_to_40_episodes(tmp_path: Path) -> None:
             assert "publish.html" not in body
             assert "인벤" not in body
             assert "inven" not in body.lower(), f"Forbidden 'inven' substring in {generated}"
+
+
+def test_cinematic_variety_rules_and_strict_audit() -> None:
+    # Artist prompt and cast anchors must enforce dynamic poses & forbid copying cast sheet default pose
+    anchors = build_character_anchors_block(["언데드 성기사", "드워프 사냥꾼"])
+    assert "DYNAMIC POSE & EXPRESSION MANDATE" in anchors
+    assert "stiff front-facing" in anchors
+
+    sample_cut = ComicCut(
+        cut_index=1,
+        aspect_ratio="4:3",
+        layout_slot="top",
+        characters=["오크 전사", "노움 도적"],
+        speaker="노움 도적",
+        dialogue="전탱님 뒤 좀 보세요!",
+        wordless=False,
+        visual_prompt=(
+            "Dynamic over-the-shoulder diagonal shot: foreground back of Orc Warrior's shoulder with "
+            "steel shield, background Gnome Rogue crouching low on a dungeon crate grinning smugly."
+        ),
+        tail_target="right",
+    )
+    art_prompt = build_cut_image_prompt(sample_cut)
+    assert "CINEMATIC ACTING, FAITHFUL SCENE RECREATION & EXTRAS" in art_prompt
+    assert "over-the-shoulder" in art_prompt.lower()
+
+    # Flat side-by-side talking-heads script fails strict_cinematic=True
+    flat_script = _make_clean_script()
+    flat_cuts = [
+        c.model_copy(
+            update={
+                "visual_prompt": (
+                    "On the lower-left Troll Shaman stands smiling. On the lower-right Undead Paladin stands talking."
+                    if not c.wordless
+                    else "Centered face close-up."
+                )
+            }
+        )
+        for c in flat_script.cuts
+    ]
+    rep_flat = audit_script_quality(flat_script.model_copy(update={"cuts": flat_cuts}), strict_cinematic=True)
+    assert rep_flat["passed"] is False
+    assert rep_flat["checks"]["cinematic_variety_ok"] is False
+
+    # Varied cinematic script passes strict_cinematic=True
+    cinematic_prompts = [
+        "Dynamic over-the-shoulder diagonal shot: foreground shoulder of Undead Paladin, background Troll Shaman leaning forward over an open loot chest reaching for a silver interlocking ring-mesh mail armor waist belt (NOT prison chains).",
+        "Low-angle dramatic shot looking up at Undead Paladin tossing a dot-pip loot die while Orc Warrior tank with 1H sword and steel shield dives sideways in panic.",
+        "Dutch-tilt tight freeze-frame close-up of Troll Shaman jaw-dropped with soul floating out of her mouth.",
+        "High-angle view looking down at Troll Shaman kneeling on the floor in despair while Orc Warrior tank (shield + 1H sword) walks away seen from behind waving goodbye.",
+    ]
+    dyn_cuts = [c.model_copy(update={"visual_prompt": vp}) for c, vp in zip(flat_script.cuts, cinematic_prompts)]
+    rep_dyn = audit_script_quality(flat_script.model_copy(update={"cuts": dyn_cuts}), strict_cinematic=True)
+    assert rep_dyn["passed"] is True, f"Unexpected strict cinematic errors: {rep_dyn['errors']}"
+    assert rep_dyn["checks"]["cinematic_variety_ok"] is True
+

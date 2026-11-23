@@ -14,10 +14,11 @@
         "오크 전사"
       ],
       "speaker": "스카이본 마법사",
-      "dialogue": "2026 파티찾기\n게시판 나왔어요!\n클릭 한 번 끝~",
+      "dialogue": "2026 파티찾기 게시판\n업데이트 됐어요!\n클릭 한 번이면 출발~",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). On the lower-left, the Skyborne Mage girl (bottom-row #4 on Draft C cast sheet: pointed elf ears, long golden-blonde hair fading into pastel sky-blue and aqua tips with a tiny white Skyborne feather hair charm, big sparkling sapphire-blue eyes, blue-and-white sailor-collar mage uniform with a teal ribbon bow) beams with sparkling eyes, happily gesturing beside a tidy neat wooden medieval tavern quest notice board with clean blank pinned parchment cards (pure blank parchment, ZERO text, ZERO letters), hands empty. On the lower-right, the Orc Warrior girl (top-row #1 on Draft C cast sheet: vibrant green plush orc animal-onesie hood with curved cream horns, tiny upturned fangs, piggy snout and pointed green ears on top of the hood, black high ponytail hair with bangs, bright crimson-red eyes, spiky red shoulder pauldrons over silver plate armor) crosses her arms scowling stubbornly with grumpy narrowed eyes, silver battle axe strapped across her back. Both characters at a consistent medium 2.5-to-3-head knee-up chibi scale (never tiny distant micro-chibis), kept strictly in the lower two-thirds of the 4:3 frame with completely empty pure #FFFFFF white headroom across the entire top 37% (both top corners strictly pure white).",
-      "tail_target": "left"
+      "visual_prompt": "Over-the-shoulder (OTS) diagonal shot on a 100% pure solid #FFFFFF white borderless background. Foreground shoulder and spiky pauldron of the Orc Warrior on the lower-right. In the center-left, the Skyborne Mage girl (bottom-row #4 on Draft C cast sheet) cheerfully presents a glowing floating magical UI board displaying colorful role crests (shield, green cross, crossed swords) with starry sparkle eyes, both hands gesturing excitedly (staff sheathed on back). Medium 2.5-to-3-head chibi scale in lower two-thirds, top 35% pure white headroom. Zero text, zero digits.",
+      "tail_target": "left",
+      "item_tooltip": null
     },
     {
       "cut_index": 2,
@@ -27,10 +28,11 @@
         "오크 전사"
       ],
       "speaker": "오크 전사",
-      "dialogue": "게시판 안 써!!\n10초마다 공개창에\n외쳐야 제맛이지!!",
+      "dialogue": "기계 게시판 따위 안 써!!\n10초마다 공개창에\n외쳐야 참맛이지!!",
       "wordless": false,
-      "visual_prompt": "Solo cute anime chibi girl from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). the Orc Warrior girl (top-row #1 on Draft C cast sheet: vibrant green plush orc animal-onesie hood with curved cream horns, tiny upturned fangs, piggy snout and pointed green ears on top of the hood, black high ponytail hair with bangs, bright crimson-red eyes, spiky red shoulder pauldrons over silver plate armor) cups both hands around her mouth like a megaphone and bellows at full lung power with dramatic expanding comic sound-wave arcs rippling outward (pure curved shock lines, ZERO text or letters), veins popping enthusiastically, silver battle axe strapped across her back. Positioned cleanly on the right half of the wide 16:9 frame at a consistent medium 2.5-to-3-head waist-up chibi scale matching the 4:3 panels (never a tiny micro-chibi), leaving the entire left 47% completely empty pure #FFFFFF white space for a speech bubble.",
-      "tail_target": "right"
+      "visual_prompt": "Dramatic low-angle shot looking up at the veteran boomer Orc Warrior girl (top-row #1 on Draft C cast sheet) on a 100% pure solid #FFFFFF white borderless background, recreating the bewildered elderly kiosk meme! She hunches forward suspiciously in front of a standing fantasy touch-screen kiosk pillar, poking an armored index finger with extreme squinting confusion and an indignant open mouth, refusing to use the screen while blowing cartoon steam from her nose! Medium 2.5-to-3-head chibi scale, right-biased, left 46% clear space. Zero text, zero digits, zero speech bubbles.",
+      "tail_target": "right",
+      "item_tooltip": null
     },
     {
       "cut_index": 3,
@@ -41,10 +43,11 @@
         "오크 전사"
       ],
       "speaker": "노움 도적",
-      "dialogue": "전사님… 거기\n게시판에 탱커만\n비어 있는데요?",
+      "dialogue": "전사님… 거기 게시판에\n지금 탱커 자리만\n텅 비어 있는데요?!",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). On the lower-left, the Gnome Rogue girl (top-row #3 on Draft C cast sheet: petite chibi girl with blonde twin pigtails fading into hot-pink and electric-blue tips, green-lensed steampunk aviator goggles on her forehead, cross and star hairpins, bright blue eyes, black stealth mask pulled down below her chin, dark charcoal rogue cloak) points helplessly at the neat blank wooden notice board with an exasperated half-lidded stare and a sweat drop, her poison-green daggers sheathed at her waist belt. On the lower-right, the Orc Warrior girl (top-row #1 on Draft C cast sheet: vibrant green plush orc animal-onesie hood with curved cream horns, tiny upturned fangs, piggy snout and pointed green ears on top of the hood, black high ponytail hair with bangs, bright crimson-red eyes, spiky red shoulder pauldrons over silver plate armor) covers both ears with her hands and squeezes her eyes shut stubbornly humming in refusal, axe strapped on her back. Both characters at a consistent medium 2.5-to-3-head knee-up chibi scale (never tiny distant micro-chibis), kept strictly in the lower two-thirds of the 4:3 frame with completely empty pure #FFFFFF white headroom across the entire top 37% (both top corners strictly pure white).",
-      "tail_target": "left"
+      "visual_prompt": "Side-profile 90-degree action shot on a 100% pure solid #FFFFFF white borderless background. From the left, the tiny Gnome Rogue girl (top-row #2 on Draft C cast sheet) comes running in and skidding to a sudden halt with flying dust puffs, pointing an accusing little finger toward the right with deadpan squinting side-eye. On the right, the Orc Warrior turns sideways with an irritated grimace. Medium 2.5-to-3-head chibi scale, top 35% pure white headroom. Zero text, zero digits, zero speech bubbles.",
+      "tail_target": "left",
+      "item_tooltip": null
     },
     {
       "cut_index": 4,
@@ -54,10 +57,11 @@
         "오크 전사"
       ],
       "speaker": "오크 전사",
-      "dialogue": "어차피 나중에\n다 공개창 쓸 걸?\n그냥 외쳐!!",
+      "dialogue": "어차피 나중엔 다들\n공개창 다시 켜게 돼 있어!\n통곡의 동굴 전탱 모셔라!!",
       "wordless": false,
-      "visual_prompt": "Solo cute anime chibi girl from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). the Orc Warrior girl (top-row #1 on Draft C cast sheet: vibrant green plush orc animal-onesie hood with curved cream horns, tiny upturned fangs, piggy snout and pointed green ears on top of the hood, black high ponytail hair with bangs, bright crimson-red eyes, spiky red shoulder pauldrons over silver plate armor) strikes a smug arrogant arms-crossed pose with chin tilted high and eyes closed in stubborn veteran pride, ignoring everything, silver battle axe strapped across her back. Positioned cleanly on the right half of the wide 16:9 frame at a consistent medium 2.5-to-3-head waist-up chibi scale matching the 4:3 panels (never a tiny micro-chibi), leaving the entire left 47% completely empty pure #FFFFFF white space for a speech bubble.",
-      "tail_target": "right"
+      "visual_prompt": "Dynamic Dutch tilt diagonal angle frame with tilted camera on a 100% pure solid #FFFFFF white borderless background. The Orc Warrior girl cups both armored gauntlets around her roaring mouth, shouting at the top of her lungs toward the sky with bulging forehead veins, flying comical saliva droplets and explosive comic sound effect rays (pure visual lines, no letters). Medium 2.5-to-3-head chibi scale, right-biased, left 46% clear headroom. Zero text, zero digits.",
+      "tail_target": "right",
+      "item_tooltip": null
     },
     {
       "cut_index": 5,
@@ -69,8 +73,9 @@
       "speaker": null,
       "dialogue": null,
       "wordless": true,
-      "visual_prompt": "Tight centered comedic chest-up close-up freeze-frame of ONLY the Skyborne Mage girl (bottom-row #4 on Draft C cast sheet: pointed elf ears, long golden-blonde hair fading into pastel sky-blue and aqua tips with a tiny white Skyborne feather hair charm, big sparkling sapphire-blue eyes, blue-and-white sailor-collar mage uniform with a teal ribbon bow) on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). Squarely dead-centered, filling about 80% of the canvas height. Exhausted eye-strain freeze-frame: both sapphire eyes comically stretched and looking slightly opposite ways in sheer mental fatigue, faint tired under-eye shadows, dizzy spirals and flying sweat drops, stiff hollow smile, feather hair charm drooping limply. Completely silent and speechless frozen reaction, hands empty, no weapons or props in hand.",
-      "tail_target": "center"
+      "visual_prompt": "High-angle shot looking down at the Skyborne Mage girl (bottom-row #4 on Draft C cast sheet) on a 100% pure solid #FFFFFF white borderless background. She has collapsed onto her knees, hands clutching her temples in sheer mental exhaustion, eyes spinning in dizzy spiral circles, a tiny ghostly soul floating out of her open mouth into the air with comic sweat drops. Expressive solo comedic close-up filling 75% height. Zero text, zero digits, zero speech bubbles.",
+      "tail_target": "center",
+      "item_tooltip": null
     },
     {
       "cut_index": 6,
@@ -81,10 +86,11 @@
         "노움 도적"
       ],
       "speaker": "노움 도적",
-      "dialogue": "편하라고 만든 건데\n게시판·공개창\n둘 다 보는 중…",
+      "dialogue": "편하라고 만든 시스템인데\n게시판이랑 공개창 둘 다\n감시하느라 두 배로 피곤해…",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). On the center-left, the Skyborne Mage girl (bottom-row #4 on Draft C cast sheet: pointed elf ears, long golden-blonde hair fading into pastel sky-blue and aqua tips with a tiny white Skyborne feather hair charm, big sparkling sapphire-blue eyes, blue-and-white sailor-collar mage uniform with a teal ribbon bow) frantically whips her head back and forth with comic motion blur lines between a small blank parchment board on one side and swirling shouting wind-wave arcs on the other, holding her head in exhaustion. Right beside her on the center-right, the Gnome Rogue girl (top-row #3 on Draft C cast sheet: petite chibi girl with blonde twin pigtails fading into hot-pink and electric-blue tips, green-lensed steampunk aviator goggles on her forehead, cross and star hairpins, bright blue eyes, black stealth mask pulled down below her chin, dark charcoal rogue cloak) slumps tiredly with dark eye bags and a flat deadpan mouth, chin resting in her palm, daggers sheathed at her waist belt. Both characters placed snugly side-by-side on the left half of the wide 16:9 frame at a consistent medium 2.5-to-3-head waist-up/knee-up chibi scale matching the 4:3 panels (never tiny distant micro-chibis), leaving the entire right 46% completely empty pure #FFFFFF white space for a speech bubble.",
-      "tail_target": "right"
+      "visual_prompt": "Back-view shot on a 100% pure solid #FFFFFF white borderless background. The Gnome Rogue girl and Skyborne Mage girl are seen from behind with slumped shoulders, walking away from the shouting warrior into the distance, both turning their heads slightly to look back over their shoulders with weary deadpan expressions and comic sweat drops hanging. Medium 2.5-to-3-head chibi scale, top 34% pure white headroom. Zero text, zero digits, zero speech bubbles.",
+      "tail_target": "right",
+      "item_tooltip": null
     }
   ]
 }

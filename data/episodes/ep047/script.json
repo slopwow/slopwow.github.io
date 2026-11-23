@@ -14,10 +14,11 @@
         "스카이본 마법사"
       ],
       "speaker": "스카이본 마법사",
-      "dialogue": "신규 인던\n영주의 전당…\n전사님 벌써 누움?",
+      "dialogue": "신규 인던 영주의 전당…\n전사님 입던하자마자\n낙사로 누움?!",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). On the lower-left, the Orc Warrior girl (top-row #1 on Draft C cast sheet: vibrant green plush orc animal-onesie hood with curved cream horns, tiny upturned fangs, piggy snout and pointed green ears on top of the hood, black high ponytail hair with bangs, bright crimson-red eyes, spiky red shoulder pauldrons over silver plate armor) sits comically charred with little soot smudges and tiny rising smoke wisps off her plush green orc hood, dizzy spiral eyes and a goofy embarrassed grin after falling in lava, her silver battle axe laid flat beside her. On the lower-right, the Skyborne Mage girl (bottom-row #4 on Draft C cast sheet: pointed elf ears, long golden-blonde hair fading into pastel sky-blue and aqua tips with a tiny white Skyborne feather hair charm, big sparkling sapphire-blue eyes, blue-and-white sailor-collar mage uniform with a teal ribbon bow) stares down at her with a sweat drop and baffled sparkling eyes, hands empty. Both characters at a consistent medium 2.5-to-3-head knee-up chibi scale (never tiny distant micro-chibis), kept strictly in the lower two-thirds of the 4:3 frame with completely empty pure #FFFFFF white headroom across the entire top 37% (both top corners strictly pure white).",
-      "tail_target": "right"
+      "visual_prompt": "High-angle shot looking down at the stone dungeon entrance of the Lord's Hall on a 100% pure solid #FFFFFF white borderless background. On the lower-left, the Orc Warrior girl (top-row #1 on Draft C cast sheet) has faceplanted flat on the cobblestones after failing an entrance jump, an axe knocked aside, tiny dust puff rising with a cute translucent cartoon ghost soul floating upward from her limp body with dizzy spiral eyes. On the lower-right, the Skyborne Mage girl (bottom-row #4) stands leaning forward in disbelief with a dramatic jaw-drop and floating blue sweat drops. In the far background, silhouette extras of party members watch in silence. Medium 2.5-to-3-head chibi scale in lower two-thirds, top 35% pure white headroom. Zero text, zero digits, zero speech bubbles.",
+      "tail_target": "right",
+      "item_tooltip": null
     },
     {
       "cut_index": 2,
@@ -28,10 +29,11 @@
         "오크 전사"
       ],
       "speaker": "타우렌 드루이드",
-      "dialogue": "주문력+치유 템을\n힐러가 왜 먹어!!\n무조건 딜템이지!!",
+      "dialogue": "주문력 18 붙은 단검을\n탱딜이 왜 굴려?!\n무조건 캐스터 딜템이지!!",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). On the center-left, the Tauren Druid girl (bottom-row #1 on Draft C cast sheet: fluffy warm-brown plush tauren cow hood with curved ivory horns, cute cow snout with golden nose ring and floppy ears, chestnut-brown bangs, big watery glossy brown eyes, blushing cheeks, leafy green foliage mantle over brown druid tunic) puffs up her cheeks furiously and stamps her foot, waving both fists angrily with fiery comic aura while her gnarled wooden staff is strapped across her back, gesturing at a glowing blue-rare caster wand hovering between them. Right beside her on the center, the Orc Warrior girl (top-row #1 on Draft C cast sheet: vibrant green plush orc animal-onesie hood with curved cream horns, tiny upturned fangs, piggy snout and pointed green ears on top of the hood, black high ponytail hair with bangs, bright crimson-red eyes, spiky red shoulder pauldrons over silver plate armor) leans back with hands on her hips and a scoffing eyebrow raise, silver battle axe strapped across her back. Both characters placed snugly side-by-side on the left half of the wide 16:9 frame at a consistent medium 2.5-to-3-head waist-up/knee-up chibi scale matching the 4:3 panels (never tiny distant micro-chibis), leaving the entire right 46% completely empty pure #FFFFFF white space for a speech bubble.",
-      "tail_target": "left"
+      "visual_prompt": "Over-the-shoulder (OTS) diagonal shot on a 100% pure solid #FFFFFF white borderless background. In the right foreground, the bulky armored back and foreground shoulder of the Orc Warrior frame the cut. In the left background, the Tauren Druid girl (bottom-row #8 on Draft C cast sheet) angrily slams her open hand against a rustic wooden dungeon chest edge, pointing fiercely at a gleaming fantasy ceremonial dagger (Magmatus's Fang) lying on the chest, puffing out sulky red cheeks with cartoon steam jetting from her horns! Medium 2.5-to-3-head chibi scale, leaving upper-right 46% clear white space for speech bubbles. Zero text, zero digits, zero speech bubbles.",
+      "tail_target": "left",
+      "item_tooltip": null
     },
     {
       "cut_index": 3,
@@ -42,10 +44,11 @@
         "타우렌 드루이드"
       ],
       "speaker": "오크 전사",
-      "dialogue": "이거 포에버\n신규 템이잖아!!\n너도 나도 뉴비임!",
+      "dialogue": "골렘수호 사슬 갑옷도\n나왔잖아 다 뉴비인데\n누가 누굴 가르쳐!!",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). On the lower-left, the Orc Warrior girl (top-row #1 on Draft C cast sheet: vibrant green plush orc animal-onesie hood with curved cream horns, tiny upturned fangs, piggy snout and pointed green ears on top of the hood, black high ponytail hair with bangs, bright crimson-red eyes, spiky red shoulder pauldrons over silver plate armor) yells right back pointing furiously with one finger, comic lightning-bolt glare clashing between their eyes, silver battle axe strapped across her back. On the lower-right, the Tauren Druid girl (bottom-row #1 on Draft C cast sheet: fluffy warm-brown plush tauren cow hood with curved ivory horns, cute cow snout with golden nose ring and floppy ears, chestnut-brown bangs, big watery glossy brown eyes, blushing cheeks, leafy green foliage mantle over brown druid tunic) glares straight back puffing steam from her cow hood nostrils, wooden staff strapped on her back. Both characters at a consistent medium 2.5-to-3-head knee-up chibi scale (never tiny distant micro-chibis), kept strictly in the lower two-thirds of the 4:3 frame with completely empty pure #FFFFFF white headroom across the entire top 37% (both top corners strictly pure white).",
-      "tail_target": "left"
+      "visual_prompt": "Dramatic low-angle shot looking up at the Orc Warrior girl (top-row #1 on Draft C cast sheet) on the lower-left, wielding a 1H war axe and a sturdy spiked metal shield, leaning aggressively forward in a fierce shouting stance with jagged shark-teeth yell, vein popping on forehead with dynamic comic speed lines! Beside her, a dropped ring-mesh mail chestguard gleams on the floor. On the lower-right, the Tauren Druid flinches with round spiral eyes. 100% pure solid #FFFFFF white borderless background, medium 2.5-to-3-head chibi scale, top 35% clear headroom. Zero text, zero digits.",
+      "tail_target": "left",
+      "item_tooltip": null
     },
     {
       "cut_index": 4,
@@ -56,10 +59,11 @@
         "스카이본 마법사"
       ],
       "speaker": "언데드 성기사",
-      "dialogue": "…법사님, 저 물\n좀 더 주셈.",
+      "dialogue": "…싸우든 말든,\n법사님 물 한 병만\n더 주실래요?",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). On the center-left, the Undead Paladin girl (top-row #2 on Draft C cast sheet: round white cartoon skull hood/cap with dark eye sockets, chin-length silver-white bob hair with icy blue inner tips, deadpan half-lidded golden-yellow eyes with faint tired eye bags, crisp white-and-gold paladin cloak with a cream neck bow ribbon) quietly slips a whole pile of glowing green-uncommon and blue-rare fantasy gear pieces (an ornate plate helm and rings) into a bulging brown adventurer's loot sack with one hand while casually holding out her other empty hand toward the Mage with a totally deadpan innocent face, golden warhammer strapped on her back. Right beside her on the center-right, the Skyborne Mage girl (bottom-row #4 on Draft C cast sheet: pointed elf ears, long golden-blonde hair fading into pastel sky-blue and aqua tips with a tiny white Skyborne feather hair charm, big sparkling sapphire-blue eyes, blue-and-white sailor-collar mage uniform with a teal ribbon bow) blinks in bewildered disbelief, hands empty. Both characters placed snugly side-by-side on the right half of the wide 16:9 frame at a consistent medium 2.5-to-3-head waist-up/knee-up chibi scale matching the 4:3 panels (never tiny distant micro-chibis), leaving the entire left 46% completely empty pure #FFFFFF white space for a speech bubble.",
-      "tail_target": "left"
+      "visual_prompt": "Side-profile 90-degree action shot on a 100% pure solid #FFFFFF white borderless background. On the left, the Undead Paladin girl (bottom-row #3 on Draft C cast sheet) is tiptoeing sneaking sideways while holding an empty fantasy corked glass flask in both hands (1H mace sheathed on belt), totally deadpan emotionless face with dark comic shadow over her hollow eyes, tapping the shoulder of the Skyborne Mage girl on the right. The mage turns around with a baffled side-eye expression. Medium 2.5-to-3-head chibi scale, generous pure white upper space for dialogue. Zero text, zero digits.",
+      "tail_target": "left",
+      "item_tooltip": null
     },
     {
       "cut_index": 5,
@@ -71,8 +75,9 @@
       "speaker": null,
       "dialogue": null,
       "wordless": true,
-      "visual_prompt": "Tight centered comedic chest-up close-up freeze-frame of ONLY the Skyborne Mage girl (bottom-row #4 on Draft C cast sheet: pointed elf ears, long golden-blonde hair fading into pastel sky-blue and aqua tips with a tiny white Skyborne feather hair charm, big sparkling sapphire-blue eyes, blue-and-white sailor-collar mage uniform with a teal ribbon bow) on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). Squarely dead-centered, filling about 80% of the canvas height. Realization freeze-frame: wide sapphire eyes with tiny trembling pinpoint pupils, a single fat cartoon sweat drop, stiff frozen smile cracking as she realizes who the real loot goblin was, faint vertical gloom lines beside her head, feather hair charm tilting. Completely silent and speechless frozen reaction, hands empty, no weapons or props in hand.",
-      "tail_target": "center"
+      "visual_prompt": "Dynamic Dutch tilt diagonal angle frame with tilted camera on a 100% pure solid #FFFFFF white borderless background. Centered dramatic comedic freeze-frame of ONLY the Skyborne Mage girl (bottom-row #4 on Draft C cast sheet). She is frozen in utter blank white-eyed petrified disbelief, jaw dropped wide open in an exaggerated comic gasp, a tiny ghost soul floating out of her mouth, two large blue teardrop sweat bubbles hovering beside her head. Zero text, zero digits.",
+      "tail_target": "center",
+      "item_tooltip": null
     },
     {
       "cut_index": 6,
@@ -83,10 +88,11 @@
         "스카이본 마법사"
       ],
       "speaker": "스카이본 마법사",
-      "dialogue": "초록템 판금 싹\n쓸고 귀환석?!\n진짜 흑막이었네!",
+      "dialogue": "싸우는 틈에 초록 판금템\n혼자 싹쓸이하고 귀환?!\n네가 진짜 흑막이었냐!!",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). On the center-left, the Undead Paladin girl (top-row #2 on Draft C cast sheet: round white cartoon skull hood/cap with dark eye sockets, chin-length silver-white bob hair with icy blue inner tips, deadpan half-lidded golden-yellow eyes with faint tired eye bags, crisp white-and-gold paladin cloak with a cream neck bow ribbon) clutches a smooth oval hearthstone carved with a glowing cyan-blue spiral rune in one hand and hugs her bulging sparkling loot sack under the other arm as swirling cyan teleport light ribbons wrap around her vanishing body, maintaining a serene deadpan poker face, warhammer strapped on her back. Right beside her on the center-right, the Skyborne Mage girl (bottom-row #4 on Draft C cast sheet: pointed elf ears, long golden-blonde hair fading into pastel sky-blue and aqua tips with a tiny white Skyborne feather hair charm, big sparkling sapphire-blue eyes, blue-and-white sailor-collar mage uniform with a teal ribbon bow) points frantically in outrage with flying sweat drops, hands otherwise empty. Both characters placed snugly side-by-side on the left half of the wide 16:9 frame at a consistent medium 2.5-to-3-head waist-up/knee-up chibi scale matching the 4:3 panels (never tiny distant micro-chibis), leaving the entire right 46% completely empty pure #FFFFFF white space for a speech bubble.",
-      "tail_target": "right"
+      "visual_prompt": "Back-view shot on a 100% pure solid #FFFFFF white borderless background. In the lower-left, the Undead Paladin girl is seen from behind stepping into a glowing cyan Hearthstone magical vortex, a sack stuffed with green plate armor heaved over her back, casually waving goodbye over her shoulder with an unrepentant smirk. On the lower-right, the Skyborne Mage girl screams in comical fury with waterfall anime tears shooting from both eyes, waving her wooden staff wildly! Medium 2.5-to-3-head chibi scale, top 34% pure white headroom. Zero text, zero digits, zero speech bubbles.",
+      "tail_target": "right",
+      "item_tooltip": null
     }
   ]
 }
