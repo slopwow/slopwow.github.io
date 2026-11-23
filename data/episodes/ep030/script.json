@@ -1,22 +1,22 @@
 {
   "episode_number": 30,
-  "source_post_no": "102815",
-  "source_title": "념글 개장수 ㅅㅂㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ",
-  "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=102815&exception_mode=recommend&page=2",
-  "subtitle": "달라란 목걸이 닌자 후 상점 처분, 진짜 '고독한 늑대'가 된 사냥꾼",
+  "source_post_no": "104746",
+  "source_title": "\"틀딱 씨, 우리 파티에서 나가주세요.\"",
+  "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=104746&exception_mode=recommend&page=5",
+  "subtitle": "죽음의 폐광 뉴비 낭만팟 vs 40인 공대장 출신 틀딱의 효율 훈수 — 인던 상황극",
   "cuts": [
     {
       "cut_index": 1,
       "aspect_ratio": "4:3",
       "layout_slot": "top",
       "characters": [
-        "스카이본 마법사",
-        "드워프 사냥꾼"
+        "오크 전사",
+        "스카이본 마법사"
       ],
-      "speaker": "스카이본 마법사",
-      "dialogue": "와 목걸이 떴다!\n지능 붙은 거니까\n법사 거죠?",
+      "speaker": "오크 전사",
+      "dialogue": "와~ 죽음의 폐광\n퀘스트 지문 재밌다!\n천천히 구경하며 가요♪",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero speech bubbles). Over-the-shoulder (OTS) diagonal shot recreating the screenshot's Triune Amulet drop. In the foreground right, the large shoulder and aqua-tipped hair of the Skyborne Mage frames the view, pointing with starry sparkling sapphire eyes toward the glowing blue Triune Amulet gemstone necklace hovering in mid-air with bright rare loot sparkles. In the background left, the Dwarf Hunter watches greedily. Generous pure white headroom top 35%.",
+      "visual_prompt": "Over-the-shoulder diagonal shot on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). Framed over the large foreground shoulder and back of the head of the Skyborne Mage girl on the lower-right (blonde hair with aqua tips, feather charm, sailor collar). In the background on the lower-left, newbie Orc Warrior girl (green orc onesie hood, silver battle axe on back) holds open a rolled rustic parchment quest scroll (blank wavy lines, zero text) with wide starry adventurous crimson eyes and an excited smile. Medium 2.5-to-3-head chibi scale, leaving generous pure #FFFFFF white headroom across top 38%.",
       "tail_target": "left",
       "item_tooltip": null
     },
@@ -25,13 +25,13 @@
       "aspect_ratio": "16:9",
       "layout_slot": "bottom",
       "characters": [
-        "드워프 사냥꾼"
+        "언데드 성기사"
       ],
-      "speaker": "드워프 사냥꾼",
-      "dialogue": "입찰 꾹~!\n목걸이는 냥꾼도\n찰 수 있거든~",
+      "speaker": "언데드 성기사",
+      "dialogue": "시간 낭비죠.\n화약 주워 대포로 문 땄음.\n바로 밴클리프 가죠.",
       "wordless": false,
-      "visual_prompt": "Solo cute anime chibi girl from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero speech bubbles). Dynamic action motion shot positioned cleanly in the lower frame. The Dwarf Hunter girl (top-row #4: fluffy snowy bear hood, braided crimson hair) lunges forward with dynamic comic speed lines, tossing and slamming a chunky white-and-gold fantasy loot die (simple black dot pips only, ZERO digits) onto the ground with a greedy mischievous toothy grin, snatching the glowing Triune Amulet necklace into her paws. Generous pure #FFFFFF white space across top 35%.",
-      "tail_target": "left",
+      "visual_prompt": "Side-profile 90-degree action shot on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). Positioned cleanly on the right half facing left, the Undead Paladin veteran (round white skull cap, silver-white bob hair, heavy spiked armor pauldrons, golden warhammer on back) sprints ahead beside a smoking rustic iron cannon with dynamic speed lines and a huge cartoon puff of smoke, dusting off gloves with a smug sneer of speedrun efficiency. Consistent medium 2.5-to-3-head chibi scale filling ~65% of canvas height, leaving the left 48% pure white.",
+      "tail_target": "right",
       "item_tooltip": null
     },
     {
@@ -39,13 +39,13 @@
       "aspect_ratio": "4:3",
       "layout_slot": "top",
       "characters": [
-        "트롤 주술사",
-        "드워프 사냥꾼"
+        "오크 전사",
+        "언데드 성기사"
       ],
-      "speaker": "트롤 주술사",
-      "dialogue": "잠깐, 그 목걸이\n상점에 팔았다고?!",
+      "speaker": "오크 전사",
+      "dialogue": "틀딱 씨, 제발\n우리 파티에서\n나가주세요…",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero speech bubbles). Dutch-tilt dynamic angle comic cut. On the lower-left, the Troll Shaman girl (voodoo mask, wild pink hair) lunges forward in utter shock, gripping the Hunter's bear hood with wide trembling orange eyes and dropped jaw, screaming in disbelief. On the lower-right, the Dwarf Hunter sweats nervously with an unrepentant toothy smirk. Generous pure #FFFFFF white headroom top 35%.",
+      "visual_prompt": "Dramatic low-angle shot looking up at the confrontation on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). On the lower-left, the newbie Orc Warrior girl stands tall with both hands on her hips, glaring with a dead-serious fed-up frown and tired sweat drop; on the lower-right, the veteran Paladin tilts her head with a self-absorbed smug smirk, completely failing to read the room. Medium 2.5-to-3-head chibi scale, leaving generous pure #FFFFFF white headroom across top 38%.",
       "tail_target": "left",
       "item_tooltip": null
     },
@@ -54,13 +54,13 @@
       "aspect_ratio": "16:9",
       "layout_slot": "bottom",
       "characters": [
-        "드워프 사냥꾼"
+        "언데드 성기사"
       ],
-      "speaker": "드워프 사냥꾼",
-      "dialogue": "먹어보니 달라란\n퀘템 목보다 구려서~\n바로 팔았지 ㅋㅋ",
+      "speaker": "언데드 성기사",
+      "dialogue": "내가 오리 40인 공대장 출신인데!\n전사할 거면 성기사 하지~\n법사가 진짜 사긴데…",
       "wordless": false,
-      "visual_prompt": "Solo cute anime chibi girl from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero speech bubbles). Dramatic low-angle shot looking up recreating the screenshot character sheet. The Dwarf Hunter girl stands tall proudly tapping her equipped Dalaran quest necklace (faceted green gemstone pendant) on her chest, while tossing a chunky pouch of shiny vendor gold coins up and down in her hand with cheeky carefree satisfaction and closed eyes, completely unapologetic. Generous pure white headroom top 35%.",
-      "tail_target": "left",
+      "visual_prompt": "Tilted dutch-tilt diagonal angle on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). Positioned on the right half facing left, the veteran Paladin raises one lecturing finger high in unstoppable veteran raid-leader mode, flinging her arms with eyes half-closed in smug preaching bliss as golden lecture aura sparkles swirl endlessly around her. Consistent medium 2.5-to-3-head chibi scale filling ~65% of canvas height, leaving the left 48% pure white.",
+      "tail_target": "right",
       "item_tooltip": null
     },
     {
@@ -73,7 +73,7 @@
       "speaker": null,
       "dialogue": null,
       "wordless": true,
-      "visual_prompt": "Solo cute anime chibi girl from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero speech bubbles). High-angle shot looking down at the devastated Mage. Centered comedic chest-up freeze-frame of the Skyborne Mage girl: her huge sapphire eyes have turned into hollow blank white circles, faint ghostly soul vapors drifting from her open mouth, frozen in utterly shattered disbelief at the vendor ninja.",
+      "visual_prompt": "High-angle shot looking down at the newbie Skyborne Mage girl crouching low on the ground in silent horror, on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). Squarely centered and filling ~80% of canvas height. Sensory overload freeze-frame: sapphire eyes blown wide with trembling pinpoint pupils, deep blue gloom shadow across her forehead, both hands clapped tightly over her pointed elf ears in silent agony, quivering mouth and flying cold sweat drops.",
       "tail_target": "center",
       "item_tooltip": null
     },
@@ -82,13 +82,13 @@
       "aspect_ratio": "16:9",
       "layout_slot": "bottom",
       "characters": [
-        "드워프 사냥꾼",
-        "트롤 주술사"
+        "언데드 성기사",
+        "오크 전사"
       ],
-      "speaker": "트롤 주술사",
-      "dialogue": "사격 32 고독한 늑대?\n축하해, 전원 차단이라\n이제 진짜 고독한 늑대야.",
+      "speaker": "언데드 성기사",
+      "dialogue": "어머, 왜 화내세요?\n와우는 만렙부터\n시작이란 말입니다…",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero speech bubbles). Dynamic back-view shot recreating the 32-point Lone Wolf talent screenshot. On the lower-left, the Dwarf Hunter is seen from behind standing completely isolated in an empty cold field with a stylized cartoon howling lone wolf shadow silhouette and a tumbleweed rolling past. On the lower-right, the Troll Shaman girl walks away into the distance, waving a snarky goodbye back over her shoulder with a sharp toothy grin. Generous pure #FFFFFF white headroom top 35%.",
+      "visual_prompt": "Dynamic back-view shot on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). On the left half, the Orc Warrior girl turns her back to the camera, clenching both trembling fists with cartoon steam shooting from her green hood ears in explosive fury; on the right half, the veteran Paladin looks back over her shoulder with an innocent clueless deadpan blink, folding her gloved hands politely. Medium 2.5-to-3-head chibi scale, leaving the left 46% pure white.",
       "tail_target": "right",
       "item_tooltip": null
     }

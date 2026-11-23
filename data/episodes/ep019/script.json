@@ -1,22 +1,21 @@
 {
   "episode_number": 19,
-  "source_post_no": "96439",
-  "source_title": "와우 뉴비인데 가끔 충격받음 (feat.파티찾기)",
-  "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=96439&exception_mode=recommend&page=2",
-  "subtitle": "줄파락 입구 40분 대기 — 다른 대륙 흑마의 적반하장 파티찾기 상황극",
+  "source_post_no": "109397",
+  "source_title": "늒네 겜후기",
+  "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=109397&exception_mode=recommend&page=1",
+  "subtitle": "찐뉴비 회드의 물개 변신 · 표범 초기화 · 빨간 이름 네임드 착각 · 무법항 댄스 배틀",
   "cuts": [
     {
       "cut_index": 1,
       "aspect_ratio": "4:3",
       "layout_slot": "top",
       "characters": [
-        "오크 전사",
-        "스카이본 마법사"
+        "타우렌 드루이드"
       ],
-      "speaker": "오크 전사",
-      "dialogue": "줄파락 파티 완성!\n흑마님만 오면\n바로 출발이다!",
+      "speaker": "타우렌 드루이드",
+      "dialogue": "물개로 변신하면\n물속에서 숨도\n쉬어진다고?! 대박!",
       "wordless": false,
-      "visual_prompt": "Over-the-shoulder (OTS) diagonal shot from behind Skyborne Mage's blue sailor collar in foreground-right, looking at Orc Warrior tank in foreground-left standing under a scorching desert sun outside the sand-duned Zul'Farrak entrance. Orc Warrior raises her 1H sword and sturdy round shield high with eager excitement, toothy smile, ready to dive in. Lower two-thirds framing, top 35% pure white (#FFFFFF) headroom. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
+      "visual_prompt": "Side-profile 90-degree action shot recreating the screenshot's cave pool: Tauren Druid girl (fluffy cow hood, golden nose ring, leaf mantle) splashing playfully in knee-deep water, holding up a cute plush aquatic seal form hood with glistening starry eyes and flushed pink cheeks, wooden staff stowed on her back. Little cartoon water splashes and air bubbles flying around. Lower two-thirds framing, top 35% pure white (#FFFFFF) headroom. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
       "tail_target": "left",
       "item_tooltip": null
     },
@@ -25,12 +24,12 @@
       "aspect_ratio": "16:9",
       "layout_slot": "bottom",
       "characters": [
-        "인간 흑마법사"
+        "타우렌 드루이드"
       ],
-      "speaker": "인간 흑마법사",
-      "dialogue": "저 스톰윈드 여관~\n배 타고 그리핀 타고\n30분이면 가요!",
+      "speaker": "타우렌 드루이드",
+      "dialogue": "20렙 표범 폼?!\n조화 접고 전재산\n털어서 초기화!!",
       "wordless": false,
-      "visual_prompt": "Low-angle shot looking up at the Human Warlock girl on the right half, leaning back comfortably in a rustic wooden tavern chair in the distant Stormwind inn on the other continent, sipping casually from a fantasy corked glass potion flask. She has a carefree, unbothered smile, soul lantern staff resting beside her chair, chatting through whispers while the party waits across the world! Positioned on the right half, leaving generous pure white (#FFFFFF) space on left 48% for dialogue bubble. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
+      "visual_prompt": "Low-angle shot looking up at the Tauren Druid girl standing on the right half, fiercely posing with cute feline claw gestures, pretending to be a ferocious cat with a determined toothy grin and sparkling amber eyes, having dumped all her copper coins at the class trainer! Staff on back. Positioned on the right half, leaving generous pure white (#FFFFFF) space on left 48% for dialogue bubble. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
       "tail_target": "right",
       "item_tooltip": null
     },
@@ -39,13 +38,13 @@
       "aspect_ratio": "4:3",
       "layout_slot": "top",
       "characters": [
-        "오크 전사",
-        "스카이본 마법사"
+        "타우렌 드루이드",
+        "노움 도적"
       ],
-      "speaker": "오크 전사",
-      "dialogue": "30분?! 다른 대륙에서\n파티 신청을\n왜 넣는 건데!!",
+      "speaker": "타우렌 드루이드",
+      "dialogue": "저 빨간 이름...\n네임드 몹이다!\n첫 보스전 두근..!",
       "wordless": false,
-      "visual_prompt": "Dutch-tilt slapstick action camera with a tilted diagonal angle! In the desert heat, Orc Warrior violently slams her sturdy shield against the ground in sheer rage, screaming with a massive jagged jaw-drop and flying spit drops! Beside her, Skyborne Mage clutches her head with both hands in despair, crystal staff bouncing. Lower two-thirds framing, top 35% pure white (#FFFFFF) headroom. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
+      "visual_prompt": "Over-the-shoulder (OTS) diagonal shot from behind the cow-eared hood of the Tauren Druid in foreground-left, crouching low in cat stealth and peeking nervously toward the background-right. Standing there is an Alliance player, the Gnome Rogue girl, with a red hostile faction name indicator, stretching her arms casually. Lower two-thirds framing, top 35% pure white (#FFFFFF) headroom. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
       "tail_target": "left",
       "item_tooltip": null
     },
@@ -54,13 +53,14 @@
       "aspect_ratio": "16:9",
       "layout_slot": "bottom",
       "characters": [
-        "인간 흑마법사"
+        "타우렌 드루이드",
+        "노움 도적"
       ],
-      "speaker": "인간 흑마법사",
-      "dialogue": "그럼 님이 제 위치\n미리 확인하고\n초대했어야죠~",
+      "speaker": "타우렌 드루이드",
+      "dialogue": "무법항 배 위에서\n얼라랑 댄스 배틀!\n말은 안 통해도 춤!",
       "wordless": false,
-      "visual_prompt": "Side-profile 90-degree action shot recreating the screenshot's exact punchline quote! Human Warlock girl on the right half, folding her arms haughtily with a smug sneer, tilting her nose up into the air with total audacity, staff stowed on her back. Positioned cleanly on the right half, leaving generous pure white (#FFFFFF) space across left 48% for dialogue bubble. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
-      "tail_target": "right",
+      "visual_prompt": "Dutch-tilt slapstick action camera with a tilted dynamic dance party frame recreating the author's ship dance battle! On the deck of the Booty Bay ship, Tauren Druid and Gnome Rogue are having an epic cartoon dance battle, kicking their legs high, spinning around with musical notes and disco sparkles bursting everywhere, staff and daggers sheathed on backs! Clean framing on left and center, leaving generous pure white (#FFFFFF) space on right 46% for dialogue bubble. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
+      "tail_target": "left",
       "item_tooltip": null
     },
     {
@@ -68,12 +68,12 @@
       "aspect_ratio": "4:3",
       "layout_slot": "top",
       "characters": [
-        "스카이본 마법사"
+        "노움 도적"
       ],
       "speaker": null,
       "dialogue": null,
       "wordless": true,
-      "visual_prompt": "High-angle shot looking down at the Skyborne Mage girl recreating the famous meme pose ('사고방식 자체가 우리와는 다릅니다')! Forty minutes later under the desert sun, she is sitting slumped on the ground like a melting candle, hollow unblinking white void eyes, a tiny tumbleweed rolling past her, completely drained of life and hope at the cultural shock. Centered dramatic framing filling ~78% of canvas height. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
+      "visual_prompt": "High-angle shot looking down at the Gnome Rogue girl in a signature comedic freeze-frame, completely wordless. Completely exhausted from the 20-minute endless dance battle, she has collapsed faceplant onto the deck planks, limbs splayed out like a starfish, anime swirl eyes, little white soul ghost floating out of her mouth. Centered dramatic framing filling ~78% of canvas height. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
       "tail_target": "center",
       "item_tooltip": null
     },
@@ -82,13 +82,13 @@
       "aspect_ratio": "16:9",
       "layout_slot": "bottom",
       "characters": [
-        "인간 흑마법사",
-        "오크 전사"
+        "타우렌 드루이드",
+        "노움 도적"
       ],
-      "speaker": "인간 흑마법사",
-      "dialogue": "40분 걸렸네요~\n근데 다들 계속\n기다리신 거예요?",
+      "speaker": "타우렌 드루이드",
+      "dialogue": "동굴 앞 노움 무리랑\n같이 퀘 밀기~\n와우 진짜 갓겜이다!",
       "wordless": false,
-      "visual_prompt": "Back-view shot seen from behind of the Human Warlock girl finally strolling into the desert portal, seen from behind walking away with a breezy little wave, turning her head back over her shoulder with an innocent oblivious smile. In the background-right, the Orc Warrior tank stands shaking with demonic anime rage veins, gripping her 1H sword with steam whistling from her ears! Clean framing leaving generous pure white (#FFFFFF) space on right 46% for dialogue bubble. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
+      "visual_prompt": "Back-view shot seen from behind recreating the author's final sweet memory: Tauren Druid seen from behind marching happily into a cave entrance alongside a cheerful cluster of three extra little gnome adventurers (one carrying a wrench, one with a lantern), waving goodbye over her shoulder to the defeated dance rival Gnome Rogue. Clean framing leaving generous pure white (#FFFFFF) space on right 46% for dialogue bubble. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
       "tail_target": "left",
       "item_tooltip": null
     }

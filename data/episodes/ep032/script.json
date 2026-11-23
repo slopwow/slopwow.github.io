@@ -1,22 +1,22 @@
 {
   "episode_number": 32,
-  "source_post_no": "20595",
-  "source_title": "개장수들 전사는 양손무기 안쓴다고 작업 치는거보소 ㅋㅋ",
-  "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=20595&exception_mode=recommend&page=10",
-  "subtitle": "전탱 솔플용 양손도끼 vs 냥꾼 스탯봉 여론전 — 인던 입찰 전쟁",
+  "source_post_no": "87387",
+  "source_title": "호드 갤길 영포티 전탱 길드추방당함 ㅋㅋ",
+  "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=87387&exception_mode=recommend&page=4",
+  "subtitle": "줄파락 대장 도안 실수 루팅 → '후회하게 해줌' 협박 파탈 → 길드 추방 엔딩",
   "cuts": [
     {
       "cut_index": 1,
       "aspect_ratio": "4:3",
       "layout_slot": "top",
       "characters": [
-        "드워프 사냥꾼",
+        "인간 흑마법사",
         "오크 전사"
       ],
-      "speaker": "드워프 사냥꾼",
-      "dialogue": "와 양손도끼 떴다!\n전탱님은 방패 쓰니까\n이건 제가 먹을게요~",
+      "speaker": "인간 흑마법사",
+      "dialogue": "앗, 안투술 대장 도안이\n획귀인지 몰랐어요!\n2시간 거래 되니까 드릴게요!",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero speech bubbles). Over-the-shoulder (OTS) diagonal shot. In the foreground right, the large shoulder and green hood of the Orc Warrior tank (carrying a sturdy steel kite shield strapped to her left arm) frames the scene. In the background left, the Dwarf Hunter girl (top-row #4: snowy bear hood, braided crimson hair) points slyly with a scheming toothy grin at a massive two-handed battle axe radiating bright blue rare loot sparkles hovering in mid-air. Generous pure #FFFFFF white headroom top 35%.",
+      "visual_prompt": "Over-the-shoulder diagonal shot on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). Framed over the large foreground shoulder and back of the head of the furious Orc Warrior tank on the lower-right (steel kite shield on left arm, 1H sword at hip). In the background on the lower-left, the Human Warlock girl (dark purple hood, jet-black twintails, violet eyes, imp doll sitting on floor) bows frantically with waterfall anime tears, holding out a rolled cream parchment blueprint scroll with both hands. Medium 2.5-to-3-head chibi scale, leaving generous pure #FFFFFF white headroom across top 38%.",
       "tail_target": "left",
       "item_tooltip": null
     },
@@ -25,14 +25,13 @@
       "aspect_ratio": "16:9",
       "layout_slot": "bottom",
       "characters": [
-        "오크 전사",
-        "노움 도적"
+        "오크 전사"
       ],
       "speaker": "오크 전사",
-      "dialogue": "누가 안 쓴대?!\n솔플할 땐 양손\n든다고 내가!!",
+      "dialogue": "빨리 내놔라.\n안 그러면 진짜\n후회하게 해줌.",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero speech bubbles). Dynamic side-profile 90-degree action shot arranged across the lower frame. On the lower-left, the Orc Warrior girl stomps forward sideways, brandishing her one-handed battle axe with bared fangs, furious crimson glare, and comic red steam puffing from her ears. On the lower-right, the Gnome Rogue giggles quietly behind her hand. Generous pure #FFFFFF white headroom top 35%.",
-      "tail_target": "left",
+      "visual_prompt": "Side-profile 90-degree action shot on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). Positioned cleanly on the right half facing left, the Orc Warrior tank (green orc hood, crimson eyes, spiky red pauldrons) stomps forward aggressively, pointing a compact 1H steel sword forward and slamming her sturdy steel kite shield with a menacing scowl, dark heavy brow shadows, and dark speed lines. Medium 2.5-to-3-head chibi scale filling ~65% of canvas height, leaving the left 48% empty pure white space.",
+      "tail_target": "right",
       "item_tooltip": null
     },
     {
@@ -40,13 +39,13 @@
       "aspect_ratio": "4:3",
       "layout_slot": "top",
       "characters": [
-        "드워프 사냥꾼",
+        "인간 흑마법사",
         "오크 전사"
       ],
-      "speaker": "드워프 사냥꾼",
-      "dialogue": "에이~ 탱은 방패죠!\n민첩도 붙었으니\n이건 냥꾼 스탯봉~",
+      "speaker": "인간 흑마법사",
+      "dialogue": "드린다는데 말이 좀...\n어, 진짜 파탈해요?!\n30분 기다려서 왔는데!!",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero speech bubbles). Dutch-tilt dynamic angle comic cut. On the lower-left, the Dwarf Hunter girl leans into the frame with an infuriatingly smug closed-eye smile, tapping her wooden hunting musket with one finger while gesturing toward the two-handed axe. On the lower-right, the Orc Warrior tank grits her teeth in outraged protest. Generous pure #FFFFFF white headroom top 35%.",
+      "visual_prompt": "Dramatic low-angle shot looking up at the rage-quitting tank on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). On the lower-right, the Orc Warrior tank turns away with an arrogant petulant huff, channeling a glowing cyan-blue Hearthstone vortex pillar that swirls around her boots (steel kite shield and 1H sword strapped to her back); on the lower-left, the Warlock clutches her blueprint in horrified disbelief! Medium 2.5-to-3-head chibi scale, leaving generous pure #FFFFFF white headroom across top 38%.",
       "tail_target": "left",
       "item_tooltip": null
     },
@@ -55,13 +54,13 @@
       "aspect_ratio": "16:9",
       "layout_slot": "bottom",
       "characters": [
-        "오크 전사",
-        "드워프 사냥꾼"
+        "트롤 주술사",
+        "오크 전사"
       ],
-      "speaker": "오크 전사",
-      "dialogue": "재미로 쓰든 어디 쓰든\n전사님 맘이야!\n입찰 간다!!",
+      "speaker": "트롤 주술사",
+      "dialogue": "외부인도 모셔놓고 뭐냐!\n당장 돌아와서 진행해!\n...아니 거기서 접종을?!",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero speech bubbles). Dramatic low-angle shot looking up. On the lower-left, the Orc Warrior girl slams a chunky white-and-gold fantasy loot cube die (showing simple black dot pips only, strictly ZERO digits) violently into the ground with dynamic comic speed lines and blazing red eyes. On the lower-right, the Dwarf Hunter recoils in shock. Generous pure #FFFFFF white headroom top 35%.",
+      "visual_prompt": "Tilted dutch-tilt diagonal angle on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). On the left half, the Troll Shaman Guild Master leaps forward shouting with crackling blue lightning sparks flying from her red mohawk hood; on the right half, the Orc Warrior tank fades into a semi-transparent logout poof with crossed arms and eyes squeezed shut. Medium 2.5-to-3-head chibi scale, leaving the right 48% empty pure white space.",
       "tail_target": "left",
       "item_tooltip": null
     },
@@ -70,12 +69,12 @@
       "aspect_ratio": "4:3",
       "layout_slot": "top",
       "characters": [
-        "오크 전사"
+        "트롤 주술사"
       ],
       "speaker": null,
       "dialogue": null,
       "wordless": true,
-      "visual_prompt": "Solo cute anime chibi girl from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero speech bubbles). High-angle shot looking down at the petrified contenders. Centered comedic chest-up freeze-frame of the Orc Warrior girl: her jaw dropped to the floor, eyes spinning in frantic spirals, frozen in dead silence looking at the winning loot roll result.",
+      "visual_prompt": "High-angle shot looking down at the Troll Shaman girl trembling in speechless fury, on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles). Squarely centered and filling ~80% of canvas height. Pure speechless rage freeze-frame: wide blazing green eyes with tiny pinpoint pupils, huge throbbing cartoon anger vein on her sky-blue troll hood, dark gloom shadow across her forehead, clenched jaw and crackling blue sparks.",
       "tail_target": "center",
       "item_tooltip": null
     },
@@ -84,13 +83,13 @@
       "aspect_ratio": "16:9",
       "layout_slot": "bottom",
       "characters": [
-        "노움 도적",
-        "드워프 사냥꾼"
+        "나이트엘프 사제",
+        "트롤 주술사"
       ],
-      "speaker": "노움 도적",
-      "dialogue": "둘이 싸우길래\n나도 입찰했지~\n상점가 짭짤하네♡",
+      "speaker": "나이트엘프 사제",
+      "dialogue": "길마님이 전탱 추방하고\n겜할 맛 안 난다며\n같이 접종하셨네요...",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero speech bubbles). Dynamic back-view shot. On the lower-left, the petite Gnome Rogue girl is seen from behind walking away stealthily, proudly carrying the massive glowing two-handed battle axe horizontally over her tiny shoulders, playfully winking back over her shoulder with a shiny pouch of gold coins. On the lower-right in the background, the Dwarf Hunter collapses in tears. Generous pure white headroom top 35%.",
+      "visual_prompt": "Dynamic back-view shot on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). On the right half, the Troll Shaman Guild Master is seen from behind, walking away into a semi-transparent logout smoke puff, waving one limp hand over her shoulder; on the left half, the Night Elf Priest girl slumps with drooping shoulders and dead-fish eyes, sighing deeply at the ruined party. Medium 2.5-to-3-head chibi scale, leaving the right 48% pure white.",
       "tail_target": "left",
       "item_tooltip": null
     }

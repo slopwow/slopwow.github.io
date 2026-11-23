@@ -1,22 +1,22 @@
 {
   "episode_number": 41,
-  "source_post_no": "73199",
-  "source_title": "도시괴담 성기사 첨봄 ㅋㅋㅋㅋ",
-  "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=73199&exception_mode=recommend&page=5",
-  "subtitle": "줄파락 출발 직전 신성 성기사의 '장트라제 도검 입찰' 선언",
+  "source_post_no": "64277",
+  "source_title": "내인생 가장황당한이유로 길드추방당햇다",
+  "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=64277&exception_mode=recommend&page=6",
+  "subtitle": "‘누가 그럼?’→‘너요’→‘실수는 용납 못합니다’ 1분 컷 길드 추방",
   "cuts": [
     {
       "cut_index": 1,
       "aspect_ratio": "4:3",
       "layout_slot": "top",
       "characters": [
-        "오크 전사",
-        "노움 도적"
+        "노움 도적",
+        "오크 전사"
       ],
-      "speaker": "오크 전사",
-      "dialogue": "줄파락 풀파 완료!\n힐러 신기님도 왔으니\n쾌적하게 출발하자~",
+      "speaker": "노움 도적",
+      "dialogue": "미접속 추방 기준이요?\n어제 길마님 공지대로\n이틀 미접속이면 칼추방이래요~",
       "wordless": false,
-      "visual_prompt": "Over-the-shoulder diagonal shot on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). Framed over the large foreground shoulder and back of the head of the Gnome Rogue girl on the lower-right (blonde twin pigtails with pink-blue tips, aviator goggles, daggers sheathed at belt). In the background on the lower-left, the Orc Warrior Protection tank (green orc onesie hood, sturdy steel kite shield on left arm, compact 1H steel sword in right hand, zero 2H weapon) grins cheerfully, ready for the dungeon. Medium 2.5-to-3-head chibi scale in lower two-thirds, leaving generous pure #FFFFFF white headroom across top 38%.",
+      "visual_prompt": "Over-the-shoulder (OTS) diagonal shot from behind the broad armored shoulder of the Orc Warrior guild master on the right. On the lower-left, the tiny Gnome Rogue girl (top-row #2 on Draft C cast sheet) stands on tiptoes in the guild hall holding an official guild parchment scroll, smiling cheerfully as she explains the policy with an innocent helpful expression. In the far background, silhouette extras of guild members mingle. 100% pure solid #FFFFFF white borderless background, medium 2.5-to-3-head chibi scale, top 35% pure white headroom. Zero text, zero digits.",
       "tail_target": "left",
       "item_tooltip": null
     },
@@ -25,12 +25,12 @@
       "aspect_ratio": "16:9",
       "layout_slot": "bottom",
       "characters": [
-        "언데드 성기사"
+        "오크 전사"
       ],
-      "speaker": "언데드 성기사",
-      "dialogue": "장트라제 뜨면 골드 줌.\n저 질풍 만들 거라\n도검 뜨면 굴릴게요.",
+      "speaker": "오크 전사",
+      "dialogue": "누가 그런 헛소리를 해?!\n내가 언제 이틀이랬어?\n그럼 주말에 여행도 못 가냐?!",
       "wordless": false,
-      "visual_prompt": "Side-profile 90-degree action shot on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). Positioned cleanly on the right half facing left, the Undead Paladin healer girl (round white skull cap, silver-white bob hair with icy tips, white-and-gold cloak, hands clean with default weapon omitted) steps forward raising one gloved finger matter-of-factly with a completely stoic deadpan expression, making her outrageous sword reservation announcement. Medium 2.5-to-3-head chibi scale filling ~65% of canvas height, leaving left 48% pure white.",
+      "visual_prompt": "Dramatic low-angle shot looking up at the authoritarian Orc Warrior guild master (top-row #1 on Draft C cast sheet) looming above on a 100% pure solid #FFFFFF white borderless background. Arms folded tightly over her chest, terrifying dark comic shadow cast across her eyes, snarling with deep displeasure and furrowed brows, surrounded by dynamic comic pressure lines! Medium 2.5-to-3-head chibi scale, right-biased, left 46% clear space. Zero text, zero digits.",
       "tail_target": "right",
       "item_tooltip": null
     },
@@ -39,50 +39,28 @@
       "aspect_ratio": "4:3",
       "layout_slot": "top",
       "characters": [
-        "언데드 성기사",
+        "노움 도적",
         "오크 전사"
       ],
-      "speaker": "언데드 성기사",
-      "dialogue": "도검 드냐고요?\n네, 낭만 있잖아요?\n포에버 1호 질풍 가자~",
+      "speaker": "노움 도적",
+      "dialogue": "헉… ‘너요’ 하려다가…\n제가 다른 길드랑 착각했나 봐요!\n실수했습니다 진짜 죄송해요!!",
       "wordless": false,
-      "visual_prompt": "Dramatic low-angle shot looking up at the Undead Paladin on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). On the lower-left, the Undead Paladin girl holds a compact ONE-HANDED curved troll sword (보호의 장트라제, strictly compact 1H chibi scale, NOT a giant greatsword) with a soft blue rare loot glow in one hand and a plump coin pouch in the other, starry-eyed with dreamy golden sparkles; on the lower-right, the Orc Warrior tank freezes in horror, drooping her 1H sword. Medium 2.5-to-3-head chibi scale, leaving generous pure #FFFFFF white headroom across top 38% and keeping top-right corner clear.",
+      "visual_prompt": "Side-profile 90-degree action shot on a 100% pure solid #FFFFFF white borderless background. The tiny Gnome Rogue girl steps backward in terror with both hands waving frantically in front of her, sweat droplets flying, bowing in an exaggerated apologetic cringe before the stern Orc Warrior who looks down coldly. Medium 2.5-to-3-head chibi scale, top 35% pure white headroom. Zero text, zero digits, zero speech bubbles.",
       "tail_target": "left",
-      "item_tooltip": {
-        "image_path": null,
-        "item_name": "보호의 장트라제",
-        "wowhead_item_id": 11086,
-        "quality": "rare",
-        "slot_left": "주장비",
-        "slot_right": "검",
-        "lines": [
-          "획득 시 귀속",
-          "고유 아이템",
-          "공격력 44 - 83\t속도 1.90",
-          "(초당 공격력 33.42)",
-          "요구 레벨 45"
-        ],
-        "equip_effects": [
-          "사용 효과: 장트라제와 상트라제를 결합하여 강력한 검 술트라제를 만듭니다.",
-          "발동 효과: 사용자를 보호막으로 감싸 55 에서 85의 물리 피해를 흡수합니다. 20초 동안 지속됩니다."
-        ],
-        "icon_name": "inv_sword_43",
-        "preferred_corner": "top_right",
-        "target_width": 288
-      }
+      "item_tooltip": null
     },
     {
       "cut_index": 4,
       "aspect_ratio": "16:9",
       "layout_slot": "bottom",
       "characters": [
-        "노움 도적",
         "오크 전사"
       ],
-      "speaker": "노움 도적",
-      "dialogue": "잠깐, 골팟도 아닌데\n풀파 되자마자 신기가\n도검 입찰 예고...?",
+      "speaker": "오크 전사",
+      "dialogue": "우리 길드에서\n실수는 용납 못 합니다.\n[길드에서 추방되었습니다].",
       "wordless": false,
-      "visual_prompt": "Tilted dutch-tilt diagonal composition on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). Positioned on the left half: the Gnome Rogue girl tiptoes in alarm, pointing a trembling finger sideways toward the Paladin with wide sweat-dropping eyes (daggers at belt); beside her, the Orc Warrior clutches her steel kite shield tightly to her chest in chilled shock. Medium 2.5-to-3-head chibi scale, leaving the right 48% completely empty pure white space.",
-      "tail_target": "left",
+      "visual_prompt": "Dynamic Dutch tilt diagonal angle frame with tilted camera on a 100% pure solid #FFFFFF white borderless background. The Orc Warrior dramatically thrusts one heavy gauntleted index finger forward like an executioner, her eyes narrowed into cold merciless slits with an unyielding scowl! Cartoon lightning sparks crackle around her finger. Medium 2.5-to-3-head chibi scale, right-biased, left 46% clear space. Zero text, zero digits, zero speech bubbles.",
+      "tail_target": "right",
       "item_tooltip": null
     },
     {
@@ -90,12 +68,12 @@
       "aspect_ratio": "4:3",
       "layout_slot": "top",
       "characters": [
-        "오크 전사"
+        "노움 도적"
       ],
       "speaker": null,
       "dialogue": null,
       "wordless": true,
-      "visual_prompt": "High-angle shot looking down at the Orc Warrior tank girl kneeling on the ground in icy shock, on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). Squarely centered and filling ~80% of canvas height. Petrified shock freeze-frame: crimson eyes shrunk to tiny pinpoint pupils, deep dark blue gloom shadow across her green orc hood, jaw frozen open, top rim of her steel kite shield resting on the floor in front of her.",
+      "visual_prompt": "High-angle shot looking down at the tiny Gnome Rogue girl (top-row #2 on Draft C cast sheet) on a 100% pure solid #FFFFFF white borderless background, recreating Patrick Star's blank dumbfounded expression from the original image! She sits dumped outside on the cobblestones, eyes wide open into blank hollow white voids, mouth hanging open in total stunned bewilderment, processing being kicked in 60 seconds. Solo close-up filling ~75% height. Zero text, zero digits.",
       "tail_target": "center",
       "item_tooltip": null
     },
@@ -104,13 +82,13 @@
       "aspect_ratio": "16:9",
       "layout_slot": "bottom",
       "characters": [
-        "노움 도적",
-        "언데드 성기사"
+        "트롤 주술사",
+        "노움 도적"
       ],
-      "speaker": "노움 도적",
-      "dialogue": "도시괴담 성기사 실화냐…\n아 그럼 탱 다른 분…\n분위기 싸해진 거 봐…",
+      "speaker": "트롤 주술사",
+      "dialogue": "대화 시작하고 1분 컷 추방 실화냐 ㅋㅋㅋ\n근데 저런 꼰대 길드에서 탈출한 게\n오히려 인생 최대 이득이다!",
       "wordless": false,
-      "visual_prompt": "Dynamic back-view shot on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). Positioned on the left half: the Gnome Rogue girl turns her back partially to the paladin, looking back over her shoulder with dead-fish deadpan eyes and cold sweat drops; on the right, the Undead Paladin stands peacefully seen in 3/4 angle with dreamy golden sparkles around her skull hood, oblivious to the silence. Medium 2.5-to-3-head chibi scale, leaving the right 48% pure white.",
+      "visual_prompt": "Back-view shot on a 100% pure solid #FFFFFF white borderless background. In the lower-left foreground, the Troll Shaman girl (middle-row #8 on Draft C cast sheet) is seen from behind walking away with staff on back, turning her head to look back over her shoulder with an amused smirk and offering an encouraging thumbs-up to the kicked rogue. Medium 2.5-to-3-head chibi scale, top 34% pure white headroom. Zero text, zero digits, zero speech bubbles.",
       "tail_target": "left",
       "item_tooltip": null
     }

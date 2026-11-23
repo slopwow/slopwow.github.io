@@ -1,22 +1,21 @@
 {
   "episode_number": 15,
-  "source_post_no": "109555",
-  "source_title": "새벽 나락팟 개염병났네",
-  "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=109555&exception_mode=recommend&page=1",
-  "subtitle": "새벽 검은바위 나락 풀퀘팟, 파장 도적의 'YES' 대참사 — 인던 상황극",
+  "source_post_no": "97410",
+  "source_title": "진짜 병신겜 씨발 좆같은거 접는다",
+  "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=97410&exception_mode=recommend&page=2",
+  "subtitle": "수양사제 한 땀 한 땀 남작 솔플, 루팅 직전 위상 변경 억까 — 필드 퀘스트 상황극",
   "cuts": [
     {
       "cut_index": 1,
       "aspect_ratio": "4:3",
       "layout_slot": "top",
       "characters": [
-        "스카이본 마법사",
-        "노움 도적"
+        "나이트엘프 사제"
       ],
-      "speaker": "스카이본 마법사",
-      "dialogue": "파장님, 나락\n풀퀘팟 맞죠?\n윈저 호위퀘까지요!",
+      "speaker": "나이트엘프 사제",
+      "dialogue": "바르두스 남작 현상수배…\n절벽 위에서 한 땀 한 땀\n풀링해서 잡는다.",
       "wordless": false,
-      "visual_prompt": "Over-the-shoulder (OTS) diagonal shot from behind the blonde aqua-tipped sailor collar of the Skyborne Mage girl in foreground-left, leaning forward with clasped hands and eager starry eyes. Looking toward the Gnome Rogue party leader (blonde pigtails with pink/blue tips, aviator goggles, rogue cloak) who stands rigidly with an eerily frozen doll-like smile and empty dot eyes, giving a stiff wooden thumbs-up. Daggers sheathed at belt. Lower two-thirds framing, top 35% pure white (#FFFFFF) headroom. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
+      "visual_prompt": "Side-profile 90-degree action shot recreating the author's real screenshot: Night Elf Priest girl (lavender-silver hair, dark eye circles, mooncloth robe) perches carefully on a steep rocky cliff slope, aiming a slender wooden wand down toward a bandit tent camp below where a large syndicate mob boss stands beside a campfire. Golden Power Word: Shield glowing around her, staff on back. Lower two-thirds framing, top 35% pure white (#FFFFFF) headroom. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
       "tail_target": "left",
       "item_tooltip": null
     },
@@ -25,12 +24,12 @@
       "aspect_ratio": "16:9",
       "layout_slot": "bottom",
       "characters": [
-        "노움 도적"
+        "나이트엘프 사제"
       ],
-      "speaker": "노움 도적",
-      "dialogue": "yes",
+      "speaker": "나이트엘프 사제",
+      "dialogue": "15분 만에 남작 처치!!\n이제 머리카락만\n루팅하면 완료야 ㅠㅠ",
       "wordless": false,
-      "visual_prompt": "Low-angle shot looking up at the Gnome Rogue girl standing alone on the right half, aviator goggles on her forehead, wooden robotic mannequin smile, holding up a stiff rigid thumbs-up with comic speed lines radiating around her. Absolutely unblinking doll eyes, daggers sheathed at belt. Cleanly framed on the right half, leaving generous pure white (#FFFFFF) space across the left 48% for the speech bubble. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
+      "visual_prompt": "Over-the-shoulder (OTS) diagonal shot from behind the shoulder of the Night Elf Priest in foreground-right, leaning forward on her knees reaching both hands with happy crying anime tears toward a sparkling golden quest loot bag on the ground. Staff sheathed on back. Positioned on the right half, leaving generous pure white (#FFFFFF) space across left 48% for dialogue bubble. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
       "tail_target": "right",
       "item_tooltip": null
     },
@@ -39,14 +38,14 @@
       "aspect_ratio": "4:3",
       "layout_slot": "top",
       "characters": [
-        "스카이본 마법사",
-        "드워프 사냥꾼"
+        "나이트엘프 사제",
+        "노움 도적"
       ],
-      "speaker": "스카이본 마법사",
-      "dialogue": "냥꾼님 호위퀘 싫다고\n중탈했어요!\n다시 구해요? 접어요?",
+      "speaker": "노움 도적",
+      "dialogue": "어? 언니 방금\n위상 바뀌었는데?\n여기 몹 다 리젠됨~",
       "wordless": false,
-      "visual_prompt": "Side-profile 90-degree action shot. On the right, the Dwarf Hunter girl is sprinting away toward the dungeon exit with blunderbuss on back, kicking up clouds of flying dust puffs and tossing a careless wave over her shoulder. On the left, Skyborne Mage flails both arms in frantic panic with flying sweat drops and tears, staff bouncing on her back. Lower two-thirds framing, top 35% pure white (#FFFFFF) headroom. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
-      "tail_target": "left",
+      "visual_prompt": "Dutch-tilt slapstick action camera with a tilted diagonal composition. The loot pile ripples and dissolves into shimmering rainbow server phase sparkles, vanishing! Night Elf Priest on the left freezes mid-reach, eyes bulging in utter confusion. On the right, Gnome Rogue pops into view with a cheeky grin, pointing at a freshly respawned full pack of dark cartoon syndicate mob silhouettes surrounding them! Lower two-thirds framing, top 35% pure white (#FFFFFF) headroom. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
+      "tail_target": "right",
       "item_tooltip": null
     },
     {
@@ -54,13 +53,13 @@
       "aspect_ratio": "16:9",
       "layout_slot": "bottom",
       "characters": [
-        "노움 도적"
+        "나이트엘프 사제"
       ],
-      "speaker": "노움 도적",
-      "dialogue": "yes",
-      "wordless": false,
-      "visual_prompt": "Dutch-tilt slapstick action camera with a tilted diagonal composition. The Gnome Rogue still maintains the frozen stiff smile and thumbs-up, but her lower body is now actively dissolving into a swirling white-gray cartoon Vanish smoke puff, stepping backward into a stealth vortex while posting a brand new party listing in the air! Clean framing on the right half, leaving generous pure white (#FFFFFF) space on left 48% for dialogue bubble. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
-      "tail_target": "right",
+      "speaker": null,
+      "dialogue": null,
+      "wordless": true,
+      "visual_prompt": "High-angle shot looking down at the Night Elf Priest girl in a signature comedic freeze-frame, completely wordless. She is frozen stiff in petrified horror, her golden shield bubble shattering into sharp glass fragments, eyes wide with pinpoint trembling pupils, a pitch-black gloom shadow over her forehead, surrounded by six menacing red-eyed cartoon bandit silhouettes closing in with clubs and daggers. Centered dramatic framing filling ~78% of canvas height. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
+      "tail_target": "center",
       "item_tooltip": null
     },
     {
@@ -68,13 +67,13 @@
       "aspect_ratio": "4:3",
       "layout_slot": "top",
       "characters": [
-        "스카이본 마법사"
+        "나이트엘프 사제"
       ],
-      "speaker": null,
-      "dialogue": null,
-      "wordless": true,
-      "visual_prompt": "High-angle shot looking down at the Skyborne Mage girl in a signature comedic freeze-frame, completely wordless. She has collapsed on her knees in the dirt, clutching both sides of her head with her hands, anime spiral eyes leaking massive comical waterfall tears that puddle on the floor, mouth agape in hollow existential ruin at 3 AM. Centered dramatic framing filling ~78% of canvas height. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
-      "tail_target": "center",
+      "speaker": "나이트엘프 사제",
+      "dialogue": "한 땀 한 땀 잡은\n남작이었는데!!\n이 겜 진짜 접는다!!",
+      "wordless": false,
+      "visual_prompt": "Low-angle shot looking up at the translucent blue ghost form of the Night Elf Priest girl, floating in mid-air and throwing a furious temper tantrum, bawling comedic waterfall tears and flailing both fists wildly with cartoon steam puffs blowing from her ears (matching the screaming Pepe in the original post!). Wispy ghost tail fluttering. Lower two-thirds framing, top 35% pure white (#FFFFFF) headroom. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
+      "tail_target": "left",
       "item_tooltip": null
     },
     {
@@ -82,14 +81,14 @@
       "aspect_ratio": "16:9",
       "layout_slot": "bottom",
       "characters": [
-        "스카이본 마법사",
-        "노움 도적"
+        "노움 도적",
+        "나이트엘프 사제"
       ],
-      "speaker": "스카이본 마법사",
-      "dialogue": "외국인이었어?! 아니 뭔\n예스야 파티 터뜨리고\n양심 터졌냐고!!",
+      "speaker": "노움 도적",
+      "dialogue": "접을 거면\n골드 주고 가요~♪",
       "wordless": false,
-      "visual_prompt": "Back-view shot seen from behind recreating the whisper chat explosion: Skyborne Mage girl furious, stamping her feet seen from behind waving a magic whisper scroll toward the ceiling with cartoon anger veins. In the far background, the vanished Gnome Rogue's translucent silhouette floats casually humming, giving one last wooden thumbs-up. Cleanly positioned leaving generous pure white (#FFFFFF) space on right 46% for dialogue bubble. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
-      "tail_target": "left",
+      "visual_prompt": "Back-view shot seen from behind of the sobbing ghost Priestess floating away toward the graveyard, seen from behind with slumped ethereal shoulders. In the foreground-right, Gnome Rogue leans forward with a shameless sweet grin, extending an open palm asking for quitting gold, daggers sheathed at belt. Positioned cleanly leaving generous pure white (#FFFFFF) space on the left 48% for dialogue bubble. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
+      "tail_target": "right",
       "item_tooltip": null
     }
   ]

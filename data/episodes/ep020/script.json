@@ -1,22 +1,22 @@
 {
   "episode_number": 20,
-  "source_post_no": "110883",
-  "source_title": "여기 걸쳐지는구나",
-  "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=110883&exception_mode=recommend&page=1",
-  "subtitle": "배 놓친 노움의 웃기려고 한 다이빙 — 배 난간에 기적의 걸침 도착",
+  "source_post_no": "107884",
+  "source_title": "개꿀팁) 하이잘 도착하면 사제들 꼭 해야할 일....TIP",
+  "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=107884&exception_mode=recommend&page=1",
+  "subtitle": "하이잘 절벽에서 사제가 꼭 해야 할 일 — 정신 지배 + 공손한 인사",
   "cuts": [
     {
       "cut_index": 1,
       "aspect_ratio": "4:3",
       "layout_slot": "top",
       "characters": [
-        "노움 도적",
-        "드워프 사냥꾼"
+        "나이트엘프 사제",
+        "노움 도적"
       ],
-      "speaker": "노움 도적",
-      "dialogue": "아아아 배 떠난다!!\n잠깐만요오오!!",
+      "speaker": "나이트엘프 사제",
+      "dialogue": "하이잘 도착하면\n사제가 꼭 해야 할\n개꿀팁 알려줄게~",
       "wordless": false,
-      "visual_prompt": "Side-profile 90-degree action shot. Gnome Rogue girl (aviator goggles, blonde twin pigtails with pink/blue tips, rogue cloak) sprinting desperately along a wooden harbor dock toward the right, arms flailing, face full of comedic anime tears and gaping scream, daggers at belt. Behind her on the dock, Dwarf Hunter watches with hands on hips, laughing. Lower two-thirds framing, top 35% pure white (#FFFFFF) headroom. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
+      "visual_prompt": "Over-the-shoulder (OTS) diagonal shot from behind the aviator goggles and pigtails of the Gnome Rogue in foreground-right. Looking toward the Night Elf Priest girl on the left, who holds her glowing crescent staff upright, smiling serenely with closed eyes and holding up one finger to share a secret tip beside the dizzying height of the Hyjal mountain peak. Lower two-thirds framing, top 35% pure white (#FFFFFF) headroom. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
       "tail_target": "left",
       "item_tooltip": null
     },
@@ -25,13 +25,14 @@
       "aspect_ratio": "16:9",
       "layout_slot": "bottom",
       "characters": [
-        "노움 도적"
+        "나이트엘프 사제",
+        "오크 전사"
       ],
-      "speaker": "노움 도적",
-      "dialogue": "에라 모르겠다!\n웃기라고 그냥\n뛰어보자아!!",
+      "speaker": "나이트엘프 사제",
+      "dialogue": "정신 지배~\n자, 예의 바르게\n인사부터 해야지?",
       "wordless": false,
-      "visual_prompt": "Low-angle shot looking up at the Gnome Rogue girl leaping heroically through mid-air toward the right edge with a wide reckless grin, goggles pushed up, cape flapping violently, diving over open water with comic speed lines radiating around her! Positioned on the right half, leaving generous pure white (#FFFFFF) space on the left 48% for dialogue bubble. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
-      "tail_target": "right",
+      "visual_prompt": "Low-angle shot looking up at the Night Elf Priest girl casting Mind Control, hands outstretched with hypnotic swirly pink-and-purple psychic rings radiating from her glowing eyes and palms, wearing an innocent sweet yet terrifying smile. In front of her, the Orc Warrior stands with eyes swirling in a hypnotic trance, woodenly raising one hand to /bow. Staff stowed on Priest's back. Positioned on the left, leaving generous pure white (#FFFFFF) space on right 46% for dialogue bubble. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
+      "tail_target": "left",
       "item_tooltip": null
     },
     {
@@ -39,13 +40,12 @@
       "aspect_ratio": "4:3",
       "layout_slot": "top",
       "characters": [
-        "노움 도적",
-        "드워프 사냥꾼"
+        "오크 전사"
       ],
-      "speaker": "노움 도적",
-      "dialogue": "어...?\n여기 걸쳐지는구나?!",
+      "speaker": "오크 전사",
+      "dialogue": "어... 어어...?\n몸이 멋대로...\n발밑이 없는데?!",
       "wordless": false,
-      "visual_prompt": "Dutch-tilt slapstick action camera with a tilted diagonal composition. Against all odds, the Gnome Rogue has landed clinging desperately by her fingertips to the outer wooden ship rail edge, her little legs dangling over empty air, eyes wide in shocked amazement and disbelief! On the ship deck above, Dwarf Hunter leans over the rail in astonishment. Lower two-thirds framing, top 35% pure white (#FFFFFF) headroom. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
+      "visual_prompt": "Dutch-tilt slapstick action camera with a dizzying steep cliff angle! The Orc Warrior is mind-controlled into walking right off the edge of a floating stone cliff, one foot stepping into empty air! Her jaw drops in hysterical terror, eyes bulging with tears, arms flailing frantically while her legs keep marching forward robotically! Lower two-thirds framing, top 35% pure white (#FFFFFF) headroom. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
       "tail_target": "left",
       "item_tooltip": null
     },
@@ -54,14 +54,13 @@
       "aspect_ratio": "16:9",
       "layout_slot": "bottom",
       "characters": [
-        "드워프 사냥꾼",
         "노움 도적"
       ],
-      "speaker": "드워프 사냥꾼",
-      "dialogue": "미친... 근데 대륙\n넘어가서 로딩되면\n바로 떨어질걸?",
-      "wordless": false,
-      "visual_prompt": "Over-the-shoulder (OTS) diagonal shot from behind the green hood of the Dwarf Hunter in foreground-left, peering down at the Gnome Rogue who is still hanging on by her chin and elbows to the wooden ship rail on the right, sweating profusely with an uneasy nervous smile. Clean framing leaving generous pure white (#FFFFFF) space on the right 46% for dialogue bubble. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
-      "tail_target": "left",
+      "speaker": null,
+      "dialogue": null,
+      "wordless": true,
+      "visual_prompt": "High-angle shot looking down at the Gnome Rogue girl in a signature comedic freeze-frame, completely wordless. Watching the mind-controlled victim plummet from the cliff, her aviator goggles slide down her nose, jaw unhinged to the floor in horrified disbelief, cold sweat drops pouring down like a shower, shivering uncontrollably at the Priest's cruelty. Centered dramatic framing filling ~78% of canvas height. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
+      "tail_target": "center",
       "item_tooltip": null
     },
     {
@@ -69,13 +68,13 @@
       "aspect_ratio": "4:3",
       "layout_slot": "top",
       "characters": [
-        "노움 도적"
+        "나이트엘프 사제"
       ],
-      "speaker": null,
-      "dialogue": null,
-      "wordless": true,
-      "visual_prompt": "High-angle shot looking down at the Gnome Rogue girl in a signature comedic freeze-frame, completely wordless. As the ship enters the ocean loading zone, she realizes her fate: her fingers are slipping from the wooden rail, eyes dilated into wild spinning spirals, jaw dropped down to her knees, screaming in silent terror with giant anime tear fountains spraying into the sky! Centered dramatic framing filling ~78% of canvas height. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
-      "tail_target": "center",
+      "speaker": "나이트엘프 사제",
+      "dialogue": "잘 가요~\n인사까지 했으니\n매너 플레이 맞죠?",
+      "wordless": false,
+      "visual_prompt": "Side-profile 90-degree action shot of the Night Elf Priest girl standing at the cliff edge on the left, leaning forward gracefully and waving a delicate white handkerchief goodbye into the abyss with a radiant angelic smile and sparkling halos. Lunar crescent staff resting beside her on the ground. Lower two-thirds framing, top 35% pure white (#FFFFFF) headroom. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
+      "tail_target": "left",
       "item_tooltip": null
     },
     {
@@ -84,12 +83,12 @@
       "layout_slot": "bottom",
       "characters": [
         "노움 도적",
-        "드워프 사냥꾼"
+        "나이트엘프 사제"
       ],
       "speaker": "노움 도적",
-      "dialogue": "무사히 도착함!\n다음 배 안 기다림!\n이게 족고수지 ㅋ",
+      "dialogue": "악마를 보았다...\n근데 도적은 혼란\n딸깍이면 되는데?",
       "wordless": false,
-      "visual_prompt": "Back-view shot seen from behind of the drenched Gnome Rogue girl striding proudly off the harbor dock on the new continent seen from behind, shaking water droplets from her twin pigtails and giving a triumphant two-handed V-sign. In the background-right, Dwarf Hunter sits on a wooden crate shaking her head with an incredulous smirk. Clean framing leaving generous pure white (#FFFFFF) space on the right 46% for dialogue bubble. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
+      "visual_prompt": "Back-view shot seen from behind of the Gnome Rogue backing away in slow stealth toward the left, turning her back to the serene Priest, whispering sideways with wide traumatized eyes and sweatdrops. In the background-right, the Priest calmly dusts her robes off. Clean framing leaving generous pure white (#FFFFFF) space on the right 46% for dialogue bubble. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
       "tail_target": "left",
       "item_tooltip": null
     }

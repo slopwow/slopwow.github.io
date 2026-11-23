@@ -550,46 +550,5 @@
       "assets/episodes/ep012/page_3.png"
     ],
     "canonical_url": "https://slopwow.github.io/episodes/ep012.html"
-  },
-  {
-    "episode_id": "ep013",
-    "episode_number": 13,
-    "title": "팁) 병신 냥꾼 거르는 방법",
-    "subtitle": "저렙 펫 애드 + 일제 사격 전멸 후 혼자 죽척 생존 물빵 냥꾼의 자백",
-    "source_post_no": "23385",
-    "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=23385&exception_mode=recommend&page=9",
-    "created_at": "2026-11-23T10:06:11+09:00",
-    "date_short": "2026-11-23",
-    "cut_count": 6,
-    "cast_used": [
-      "오크 전사",
-      "드워프 사냥꾼",
-      "나이트엘프 사제"
-    ],
-    "cast_chips": [
-      {
-        "id": "orc_warrior",
-        "name": "오크 전사",
-        "color": "#4CAF50"
-      },
-      {
-        "id": "dwarf_hunter",
-        "name": "드워프 사냥꾼",
-        "color": "#2E7D32"
-      },
-      {
-        "id": "nightelf_priest",
-        "name": "나이트엘프 사제",
-        "color": "#9575CD"
-      }
-    ],
-    "full_image": "assets/episodes/ep013/episode_full.jpg",
-    "thumb_image": "assets/episodes/ep013/thumb.jpg",
-    "page_images": [
-      "assets/episodes/ep013/page_1.png",
-      "assets/episodes/ep013/page_2.png",
-      "assets/episodes/ep013/page_3.png"
-    ],
-    "canonical_url": "https://slopwow.github.io/episodes/ep013.html"
   }
 ]

@@ -1,22 +1,22 @@
 {
   "episode_number": 25,
-  "source_post_no": "94651",
-  "source_title": "미터기 셀프박제하고 념삭한놈 박제.jpg",
-  "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=94651&exception_mode=recommend&page=2",
-  "subtitle": "미터기 초기화 안 하고 딜 꼴찌 박제한 성기사 — 셀프박제 무적귀환 엔딩",
+  "source_post_no": "72269",
+  "source_title": "성기사 이새끼들은 뉴비까지 등쳐먹으려드네ㅋㅋㅋ",
+  "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=72269&exception_mode=recommend&page=5",
+  "subtitle": "뉴비 사제 힐반지에 입찰 누른 징기와 곰왕 탱커의 사이다 저지 — 인던 상황극",
   "cuts": [
     {
       "cut_index": 1,
       "aspect_ratio": "4:3",
       "layout_slot": "top",
       "characters": [
-        "언데드 성기사",
-        "스카이본 마법사"
+        "나이트엘프 사제",
+        "언데드 성기사"
       ],
-      "speaker": "언데드 성기사",
-      "dialogue": "마법사님 딜 꼴찌.\n길드창에\n박제했음ㅋ",
+      "speaker": "나이트엘프 사제",
+      "dialogue": "우와! 치유량 반지 떴다!\n근데 제꺼 아니면…\n교환 거세요 드릴게요!",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero speech bubbles). Over-the-shoulder (OTS) diagonal shot recreating the original post screenshot. In the foreground right, the large shoulder and aqua-tipped hair of the Skyborne Mage frames the view. In the background left, the Undead Paladin girl (top-row #2: pale lilac skin, stitched skull hood, silver armor, yellow eyes) leans forward with a smug sneer, triumphantly holding up an unrolled damage meter parchment displaying a large glowing timer icon reading 32 minutes of unreset combat data, snickering maliciously. Generous pure white headroom top 35%.",
+      "visual_prompt": "Over-the-shoulder diagonal shot on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). Framed over the large foreground shoulder and back of the head of the Undead Paladin girl on the lower-right (round white cartoon skull cap, silver-white bob hair with icy tips, golden warhammer neatly stowed across her back). In the background on the lower-left, the timid newbie Night Elf Priest girl (long silky lavender-silver hair, pointed elf ears, golden crescent circlet, lilac eyes, white-and-gold robe) holds up a delicate silver-and-sapphire healing ring radiating bright rare-blue loot sparkles, tilting her head with innocent modest eyes (crescent staff leaned behind her shoulder). Medium 2.5-to-3-head waist-up chibi scale in lower two-thirds, leaving generous pure #FFFFFF white headroom across top 38%.",
       "tail_target": "left",
       "item_tooltip": null
     },
@@ -25,13 +25,13 @@
       "aspect_ratio": "16:9",
       "layout_slot": "bottom",
       "characters": [
-        "스카이본 마법사"
+        "언데드 성기사"
       ],
-      "speaker": "스카이본 마법사",
-      "dialogue": "앗 죄송해요ㅠㅠ\n더 열심히\n칠게요…",
+      "speaker": "언데드 성기사",
+      "dialogue": "가끔 저도 힐 하러\n가기도 해서요 ㅎ\n슬쩍 입찰 딸깍.",
       "wordless": false,
-      "visual_prompt": "Solo cute anime chibi girl from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero speech bubbles). High-angle shot looking down at the dejected Mage. Positioned cleanly on the left half of the wide 16:9 canvas, the Skyborne Mage girl is collapsed and kneeling on the floor in utter remorse, clutching her wooden wand to her chest with huge anime waterfall tears gushing from her trembling sapphire eyes, weeping apologetically with flushed red cheeks. Generous pure white space on the right.",
-      "tail_target": "left",
+      "visual_prompt": "Side-profile 90-degree action shot on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). Positioned cleanly on the right half facing left, the Undead Paladin girl (round white skull cap, silver-white bob hair, crisp white-and-gold cloak, golden warhammer stowed on her back so both hands are completely free) tiptoes forward in stealthy creeping motion with a sly smug sneer and sinister shadow over her golden eyes, sneaking and tossing a chunky 6-sided fantasy loot cube die with dynamic motion blur; the die faces show ONLY simple classic round black dot pips (strictly ZERO digits, ZERO letters). Consistent medium 2.5-to-3-head waist-up chibi scale filling ~65% of canvas height, leaving the entire left 48% completely empty pure #FFFFFF white space for an external speech bubble.",
+      "tail_target": "right",
       "item_tooltip": null
     },
     {
@@ -39,13 +39,13 @@
       "aspect_ratio": "4:3",
       "layout_slot": "top",
       "characters": [
-        "트롤 주술사",
+        "타우렌 드루이드",
         "언데드 성기사"
       ],
-      "speaker": "트롤 주술사",
-      "dialogue": "잠깐, 전투 시간\n47분…?\n초기화 안 했죠?",
+      "speaker": "타우렌 드루이드",
+      "dialogue": "힐러껍니다!!\n정리하자면 힐러꺼예여!\n징기가 어딜 입찰해?!",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero speech bubbles). Dutch-tilt dynamic angle shot recreating the screenshot call-out. On the lower-left, the Troll Shaman girl (middle-row #1: blue skin, voodoo mask, wild pink hair) lunges forward snatching the edge of the meter parchment, pointing an accusatory clawed finger directly at the unreset 32-minute combat timer with sharp narrowed orange eyes and a wicked grin. On the lower-right, the Undead Paladin recoils with sudden nervous sweat drops. Generous pure #FFFFFF white headroom top 35%.",
+      "visual_prompt": "Dramatic low-angle shot looking up at the heroic Tauren Druid Party Leader (곰 왕) on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). On the lower-left, the Tauren Druid girl (fluffy warm-brown plush cow hood with curved ivory horns, golden nose ring, chestnut bangs, watery brown eyes, leafy green foliage mantle, gnarled staff stowed on back) lunges forward with a ferocious bear-spirit roar, slamming her heavy clawed hands down to shield the loot, surrounded by blazing emerald-green spirit bear aura flames! On the lower-right, the Undead Paladin tumbles backward in shock with jaw-drop and flying sweat drops. Medium 2.5-to-3-head chibi scale, leaving generous pure #FFFFFF white headroom across top 38%.",
       "tail_target": "left",
       "item_tooltip": null
     },
@@ -54,14 +54,13 @@
       "aspect_ratio": "16:9",
       "layout_slot": "bottom",
       "characters": [
-        "트롤 주술사",
-        "스카이본 마법사"
+        "타우렌 드루이드"
       ],
-      "speaker": "트롤 주술사",
-      "dialogue": "필드 딜 합산ㅋ\n이번 넴만 보면\n법사님이 1등~",
+      "speaker": "타우렌 드루이드",
+      "dialogue": "안 쓰면 차라리 달라!\n뉴비 등쳐먹는 기사는\n곰왕이 절대 못 봐준다!!",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero speech bubbles). Dynamic side-profile 90-degree action shot arranged across the lower frame. On the lower-left, the Troll Shaman girl holds up the revealed combat scroll sideways, laughing uproariously with head thrown back and sharp tusks showing, pointing behind her. On the lower-right, the Skyborne Mage girl leaps to her feet with starry eyes sparkling with immense joy, pumping her fist in victory. Generous pure #FFFFFF white headroom across top 35%.",
-      "tail_target": "left",
+      "visual_prompt": "Tilted dutch-tilt diagonal composition on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). Positioned cleanly on the right half facing left, the Tauren Druid Party Leader (곰 왕) stands with puffed sulky cheeks, holding the glowing blue healing ring safely aloft in one protective palm while swinging her other fist sternly with swirling green nature leaves and tiny bear-king sparkles. Medium 2.5-to-3-head waist-up chibi scale filling ~65% of canvas height, leaving the entire left 48% completely empty pure #FFFFFF white space for an external speech bubble.",
+      "tail_target": "right",
       "item_tooltip": null
     },
     {
@@ -74,7 +73,7 @@
       "speaker": null,
       "dialogue": null,
       "wordless": true,
-      "visual_prompt": "Solo cute anime chibi girl from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero speech bubbles). Dramatic low-angle shot looking up at the humiliated Paladin. Centered comedic chest-up freeze-frame of the Undead Paladin girl: her lower jaw has literally dropped completely open in horrified disbelief, yellow eye orbs dilated into tiny shaking dots, ghostly soul vapor floating out of her open mouth, paralyzed in frozen mortification at her own self-own.",
+      "visual_prompt": "High-angle shot looking down at the Undead Paladin girl kneeling on the ground in guilty speechless defeat, on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). Squarely centered and filling ~80% of canvas height. Caught-red-handed freeze-frame: deep ominous blue-gray gloom shadow cast across her white skull cap, golden eyes shrunk to blank trembling pinpoint pupils, jaw hanging open with a tiny pale cartoon soul puff floating up out of her parted mouth, both empty gloved hands frozen mid-air in total humiliation, golden warhammer stowed on her back.",
       "tail_target": "center",
       "item_tooltip": null
     },
@@ -83,13 +82,13 @@
       "aspect_ratio": "16:9",
       "layout_slot": "bottom",
       "characters": [
-        "언데드 성기사",
-        "트롤 주술사"
+        "나이트엘프 사제",
+        "타우렌 드루이드"
       ],
-      "speaker": "트롤 주술사",
-      "dialogue": "무적귀환ㅋㅋ\n근데 길드창 박제는\n이미 다 봤음~",
+      "speaker": "나이트엘프 사제",
+      "dialogue": "곰왕 탱커님 최고예요!!\n다음부턴 성기사 빼고\n파티 가요♪",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero speech bubbles). Dynamic back-view shot in action. On the lower-left, the Undead Paladin is seen from behind stepping into a glowing golden Divine Shield bubble and swirling cyan Hearthstone vortex, frantically channeling escape with holy sparkles flaring. On the lower-right, the Troll Shaman girl leans on her wooden totem staff, waving snarkily with a smug teasing smile and side-eye. Generous pure #FFFFFF white headroom across the top 35%.",
+      "visual_prompt": "Dynamic back-view shot on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). Positioned on the right half facing left: the Night Elf Priest girl turns her back partially to the defeated paladin, hugging the proud Tauren Druid's arm and looking back over her shoulder with a cheeky wink, sparkling lilac eyes, and relieved waterfall anime tears, joyfully flashing the glowing blue healing ring on her finger; beside her, the Tauren Druid crosses her arms with a blushing warm grin. Medium 2.5-to-3-head chibi scale, leaving the entire left 46% completely empty pure #FFFFFF white space.",
       "tail_target": "right",
       "item_tooltip": null
     }

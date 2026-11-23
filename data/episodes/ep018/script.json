@@ -1,22 +1,22 @@
 {
   "episode_number": 18,
-  "source_post_no": "7793",
-  "source_title": "탱커없다길래 가서 폐광에서 길따라 몹잡는데 냥꾼이",
-  "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=7793&exception_mode=recommend&page=12",
-  "subtitle": "죽음의 폐광 착한 전탱 vs 훈수 냥꾼 — '피곤해서 탱은 싫은데요?'",
+  "source_post_no": "110883",
+  "source_title": "여기 걸쳐지는구나",
+  "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=110883&exception_mode=recommend&page=1",
+  "subtitle": "배 놓친 노움의 웃기려고 한 다이빙 — 배 난간에 기적의 걸침 도착",
   "cuts": [
     {
       "cut_index": 1,
       "aspect_ratio": "4:3",
       "layout_slot": "top",
       "characters": [
-        "오크 전사",
-        "나이트엘프 사제"
+        "노움 도적",
+        "드워프 사냥꾼"
       ],
-      "speaker": "오크 전사",
-      "dialogue": "탱커 없다길래\n방패 들고 왔어!\n폐광 바로 가자~",
+      "speaker": "노움 도적",
+      "dialogue": "아아아 배 떠난다!!\n잠깐만요오오!!",
       "wordless": false,
-      "visual_prompt": "Over-the-shoulder (OTS) diagonal shot from behind the Night Elf Priest's silver cowl in foreground-right, looking at the Orc Warrior tank in foreground-left standing beside a wooden minecart on iron rails. The Orc Warrior cheerfully presents her sturdy round iron shield and 1H broadsword, beaming with proud hero enthusiasm and a bright toothy grin. Lower two-thirds framing, top 35% pure white (#FFFFFF) headroom. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
+      "visual_prompt": "Side-profile 90-degree action shot. Gnome Rogue girl (aviator goggles, blonde twin pigtails with pink/blue tips, rogue cloak) sprinting desperately along a wooden harbor dock toward the right, arms flailing, face full of comedic anime tears and gaping scream, daggers at belt. Behind her on the dock, Dwarf Hunter watches with hands on hips, laughing. Lower two-thirds framing, top 35% pure white (#FFFFFF) headroom. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
       "tail_target": "left",
       "item_tooltip": null
     },
@@ -25,12 +25,12 @@
       "aspect_ratio": "16:9",
       "layout_slot": "bottom",
       "characters": [
-        "드워프 사냥꾼"
+        "노움 도적"
       ],
-      "speaker": "드워프 사냥꾼",
-      "dialogue": "아 그렇게 가는 거\n아닌데요? 거긴\n스킵해야 되는데;",
+      "speaker": "노움 도적",
+      "dialogue": "에라 모르겠다!\n웃기라고 그냥\n뛰어보자아!!",
       "wordless": false,
-      "visual_prompt": "Low-angle shot looking up at the Dwarf Hunter girl standing on the right half, leaning against her wooden blunderbuss like a cane with a smug, patronizing smirk and half-closed eyes. She wags an index finger sideways in a lecturing gesture with little sweatdrop annoyance lines. Cleanly positioned on the right half, leaving generous pure white (#FFFFFF) space on the left 48% for dialogue bubble. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
+      "visual_prompt": "Low-angle shot looking up at the Gnome Rogue girl leaping heroically through mid-air toward the right edge with a wide reckless grin, goggles pushed up, cape flapping violently, diving over open water with comic speed lines radiating around her! Positioned on the right half, leaving generous pure white (#FFFFFF) space on the left 48% for dialogue bubble. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
       "tail_target": "right",
       "item_tooltip": null
     },
@@ -39,13 +39,13 @@
       "aspect_ratio": "4:3",
       "layout_slot": "top",
       "characters": [
-        "오크 전사",
+        "노움 도적",
         "드워프 사냥꾼"
       ],
-      "speaker": "오크 전사",
-      "dialogue": "그렇게 잘 아시면\n냥꾼님이 탱커\n하시면 되겠네요!",
+      "speaker": "노움 도적",
+      "dialogue": "어...?\n여기 걸쳐지는구나?!",
       "wordless": false,
-      "visual_prompt": "Dutch-tilt slapstick action camera with a tilted diagonal composition. Orc Warrior tank steps forward aggressively, thrusting her sturdy round shield right into Dwarf Hunter's face with furious sharp teeth and anime anger vein popping, 1H sword held low. Dwarf Hunter stumbles backward in shock, hands flying up. Lower two-thirds framing, top 35% pure white (#FFFFFF) headroom. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
+      "visual_prompt": "Dutch-tilt slapstick action camera with a tilted diagonal composition. Against all odds, the Gnome Rogue has landed clinging desperately by her fingertips to the outer wooden ship rail edge, her little legs dangling over empty air, eyes wide in shocked amazement and disbelief! On the ship deck above, Dwarf Hunter leans over the rail in astonishment. Lower two-thirds framing, top 35% pure white (#FFFFFF) headroom. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
       "tail_target": "left",
       "item_tooltip": null
     },
@@ -54,13 +54,14 @@
       "aspect_ratio": "16:9",
       "layout_slot": "bottom",
       "characters": [
-        "드워프 사냥꾼"
+        "드워프 사냥꾼",
+        "노움 도적"
       ],
       "speaker": "드워프 사냥꾼",
-      "dialogue": "탱이요?\n피곤해서 싫은데요?",
+      "dialogue": "미친... 근데 대륙\n넘어가서 로딩되면\n바로 떨어질걸?",
       "wordless": false,
-      "visual_prompt": "Side-profile 90-degree action shot of the Dwarf Hunter girl on the right half, shrugging with both palms turned up in the air, puffing her cheeks with a nonchalant cheeky face, eyes rolling upward. Her blunderbuss is slung across her back, hands completely free. Positioned cleanly on the right half, leaving generous pure white (#FFFFFF) space on the left 48% for dialogue bubble. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
-      "tail_target": "right",
+      "visual_prompt": "Over-the-shoulder (OTS) diagonal shot from behind the green hood of the Dwarf Hunter in foreground-left, peering down at the Gnome Rogue who is still hanging on by her chin and elbows to the wooden ship rail on the right, sweating profusely with an uneasy nervous smile. Clean framing leaving generous pure white (#FFFFFF) space on the right 46% for dialogue bubble. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
+      "tail_target": "left",
       "item_tooltip": null
     },
     {
@@ -68,12 +69,12 @@
       "aspect_ratio": "4:3",
       "layout_slot": "top",
       "characters": [
-        "오크 전사"
+        "노움 도적"
       ],
       "speaker": null,
       "dialogue": null,
       "wordless": true,
-      "visual_prompt": "High-angle shot looking down at the Orc Warrior tank in a signature comedic freeze-frame, completely wordless. Completely dumbfounded and exasperated, her 1H sword slips from her fingers, she drops her sturdy shield onto the ground with a heavy clatter, her jaw dropping open with empty white hollow eyes and dark purple vertical gloom lines over her forehead. Centered dramatic framing filling ~78% of canvas height. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
+      "visual_prompt": "High-angle shot looking down at the Gnome Rogue girl in a signature comedic freeze-frame, completely wordless. As the ship enters the ocean loading zone, she realizes her fate: her fingers are slipping from the wooden rail, eyes dilated into wild spinning spirals, jaw dropped down to her knees, screaming in silent terror with giant anime tear fountains spraying into the sky! Centered dramatic framing filling ~78% of canvas height. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
       "tail_target": "center",
       "item_tooltip": null
     },
@@ -82,13 +83,13 @@
       "aspect_ratio": "16:9",
       "layout_slot": "bottom",
       "characters": [
-        "나이트엘프 사제",
-        "오크 전사"
+        "노움 도적",
+        "드워프 사냥꾼"
       ],
-      "speaker": "나이트엘프 사제",
-      "dialogue": "네~ 그럼 냥꾼님도\n깔끔하게 스킵하고\n출발할게요~",
+      "speaker": "노움 도적",
+      "dialogue": "무사히 도착함!\n다음 배 안 기다림!\n이게 족고수지 ㅋ",
       "wordless": false,
-      "visual_prompt": "Back-view shot seen from behind of the Night Elf Priest and Orc Warrior tank marching away together toward the dungeon door on the left, turning their backs to the Dwarf Hunter. The Priest gives a polite wave goodbye over her shoulder with a sweet, lethal smile, while Dwarf Hunter in the background is shown being kicked out in a cartoon flying boot puff! Clean framing leaving generous pure white (#FFFFFF) space on the right 46% for dialogue bubble. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
+      "visual_prompt": "Back-view shot seen from behind of the drenched Gnome Rogue girl striding proudly off the harbor dock on the new continent seen from behind, shaking water droplets from her twin pigtails and giving a triumphant two-handed V-sign. In the background-right, Dwarf Hunter sits on a wooden crate shaking her head with an incredulous smirk. Clean framing leaving generous pure white (#FFFFFF) space on the right 46% for dialogue bubble. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
       "tail_target": "left",
       "item_tooltip": null
     }

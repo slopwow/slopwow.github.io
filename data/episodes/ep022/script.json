@@ -1,22 +1,22 @@
 {
   "episode_number": 22,
-  "source_post_no": "107884",
-  "source_title": "개꿀팁) 하이잘 도착하면 사제들 꼭 해야할 일....TIP",
-  "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=107884&exception_mode=recommend&page=1",
-  "subtitle": "하이잘 절벽에서 사제가 꼭 해야 할 일 — 정신 지배 + 공손한 인사",
+  "source_post_no": "94651",
+  "source_title": "미터기 셀프박제하고 념삭한놈 박제.jpg",
+  "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=94651&exception_mode=recommend&page=2",
+  "subtitle": "미터기 초기화 안 하고 딜 꼴찌 박제한 성기사 — 셀프박제 무적귀환 엔딩",
   "cuts": [
     {
       "cut_index": 1,
       "aspect_ratio": "4:3",
       "layout_slot": "top",
       "characters": [
-        "나이트엘프 사제",
-        "노움 도적"
+        "언데드 성기사",
+        "스카이본 마법사"
       ],
-      "speaker": "나이트엘프 사제",
-      "dialogue": "하이잘 도착하면\n사제가 꼭 해야 할\n개꿀팁 알려줄게~",
+      "speaker": "언데드 성기사",
+      "dialogue": "마법사님 딜 꼴찌.\n길드창에\n박제했음ㅋ",
       "wordless": false,
-      "visual_prompt": "Over-the-shoulder (OTS) diagonal shot from behind the aviator goggles and pigtails of the Gnome Rogue in foreground-right. Looking toward the Night Elf Priest girl on the left, who holds her glowing crescent staff upright, smiling serenely with closed eyes and holding up one finger to share a secret tip beside the dizzying height of the Hyjal mountain peak. Lower two-thirds framing, top 35% pure white (#FFFFFF) headroom. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
+      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero speech bubbles). Over-the-shoulder (OTS) diagonal shot recreating the original post screenshot. In the foreground right, the large shoulder and aqua-tipped hair of the Skyborne Mage frames the view. In the background left, the Undead Paladin girl (top-row #2: pale lilac skin, stitched skull hood, silver armor, yellow eyes) leans forward with a smug sneer, triumphantly holding up an unrolled damage meter parchment displaying a large glowing timer icon reading 32 minutes of unreset combat data, snickering maliciously. Generous pure white headroom top 35%.",
       "tail_target": "left",
       "item_tooltip": null
     },
@@ -25,13 +25,12 @@
       "aspect_ratio": "16:9",
       "layout_slot": "bottom",
       "characters": [
-        "나이트엘프 사제",
-        "오크 전사"
+        "스카이본 마법사"
       ],
-      "speaker": "나이트엘프 사제",
-      "dialogue": "정신 지배~\n자, 예의 바르게\n인사부터 해야지?",
+      "speaker": "스카이본 마법사",
+      "dialogue": "앗 죄송해요ㅠㅠ\n더 열심히\n칠게요…",
       "wordless": false,
-      "visual_prompt": "Low-angle shot looking up at the Night Elf Priest girl casting Mind Control, hands outstretched with hypnotic swirly pink-and-purple psychic rings radiating from her glowing eyes and palms, wearing an innocent sweet yet terrifying smile. In front of her, the Orc Warrior stands with eyes swirling in a hypnotic trance, woodenly raising one hand to /bow. Staff stowed on Priest's back. Positioned on the left, leaving generous pure white (#FFFFFF) space on right 46% for dialogue bubble. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
+      "visual_prompt": "Solo cute anime chibi girl from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero speech bubbles). High-angle shot looking down at the dejected Mage. Positioned cleanly on the left half of the wide 16:9 canvas, the Skyborne Mage girl is collapsed and kneeling on the floor in utter remorse, clutching her wooden wand to her chest with huge anime waterfall tears gushing from her trembling sapphire eyes, weeping apologetically with flushed red cheeks. Generous pure white space on the right.",
       "tail_target": "left",
       "item_tooltip": null
     },
@@ -40,12 +39,13 @@
       "aspect_ratio": "4:3",
       "layout_slot": "top",
       "characters": [
-        "오크 전사"
+        "트롤 주술사",
+        "언데드 성기사"
       ],
-      "speaker": "오크 전사",
-      "dialogue": "어... 어어...?\n몸이 멋대로...\n발밑이 없는데?!",
+      "speaker": "트롤 주술사",
+      "dialogue": "잠깐, 전투 시간\n47분…?\n초기화 안 했죠?",
       "wordless": false,
-      "visual_prompt": "Dutch-tilt slapstick action camera with a dizzying steep cliff angle! The Orc Warrior is mind-controlled into walking right off the edge of a floating stone cliff, one foot stepping into empty air! Her jaw drops in hysterical terror, eyes bulging with tears, arms flailing frantically while her legs keep marching forward robotically! Lower two-thirds framing, top 35% pure white (#FFFFFF) headroom. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
+      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero speech bubbles). Dutch-tilt dynamic angle shot recreating the screenshot call-out. On the lower-left, the Troll Shaman girl (middle-row #1: blue skin, voodoo mask, wild pink hair) lunges forward snatching the edge of the meter parchment, pointing an accusatory clawed finger directly at the unreset 32-minute combat timer with sharp narrowed orange eyes and a wicked grin. On the lower-right, the Undead Paladin recoils with sudden nervous sweat drops. Generous pure #FFFFFF white headroom top 35%.",
       "tail_target": "left",
       "item_tooltip": null
     },
@@ -54,13 +54,14 @@
       "aspect_ratio": "16:9",
       "layout_slot": "bottom",
       "characters": [
-        "노움 도적"
+        "트롤 주술사",
+        "스카이본 마법사"
       ],
-      "speaker": null,
-      "dialogue": null,
-      "wordless": true,
-      "visual_prompt": "High-angle shot looking down at the Gnome Rogue girl in a signature comedic freeze-frame, completely wordless. Watching the mind-controlled victim plummet from the cliff, her aviator goggles slide down her nose, jaw unhinged to the floor in horrified disbelief, cold sweat drops pouring down like a shower, shivering uncontrollably at the Priest's cruelty. Centered dramatic framing filling ~78% of canvas height. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
-      "tail_target": "center",
+      "speaker": "트롤 주술사",
+      "dialogue": "필드 딜 합산ㅋ\n이번 넴만 보면\n법사님이 1등~",
+      "wordless": false,
+      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero speech bubbles). Dynamic side-profile 90-degree action shot arranged across the lower frame. On the lower-left, the Troll Shaman girl holds up the revealed combat scroll sideways, laughing uproariously with head thrown back and sharp tusks showing, pointing behind her. On the lower-right, the Skyborne Mage girl leaps to her feet with starry eyes sparkling with immense joy, pumping her fist in victory. Generous pure #FFFFFF white headroom across top 35%.",
+      "tail_target": "left",
       "item_tooltip": null
     },
     {
@@ -68,13 +69,13 @@
       "aspect_ratio": "4:3",
       "layout_slot": "top",
       "characters": [
-        "나이트엘프 사제"
+        "언데드 성기사"
       ],
-      "speaker": "나이트엘프 사제",
-      "dialogue": "잘 가요~\n인사까지 했으니\n매너 플레이 맞죠?",
-      "wordless": false,
-      "visual_prompt": "Side-profile 90-degree action shot of the Night Elf Priest girl standing at the cliff edge on the left, leaning forward gracefully and waving a delicate white handkerchief goodbye into the abyss with a radiant angelic smile and sparkling halos. Lunar crescent staff resting beside her on the ground. Lower two-thirds framing, top 35% pure white (#FFFFFF) headroom. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
-      "tail_target": "left",
+      "speaker": null,
+      "dialogue": null,
+      "wordless": true,
+      "visual_prompt": "Solo cute anime chibi girl from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero speech bubbles). Dramatic low-angle shot looking up at the humiliated Paladin. Centered comedic chest-up freeze-frame of the Undead Paladin girl: her lower jaw has literally dropped completely open in horrified disbelief, yellow eye orbs dilated into tiny shaking dots, ghostly soul vapor floating out of her open mouth, paralyzed in frozen mortification at her own self-own.",
+      "tail_target": "center",
       "item_tooltip": null
     },
     {
@@ -82,14 +83,14 @@
       "aspect_ratio": "16:9",
       "layout_slot": "bottom",
       "characters": [
-        "노움 도적",
-        "나이트엘프 사제"
+        "언데드 성기사",
+        "트롤 주술사"
       ],
-      "speaker": "노움 도적",
-      "dialogue": "악마를 보았다...\n근데 도적은 혼란\n딸깍이면 되는데?",
+      "speaker": "트롤 주술사",
+      "dialogue": "무적귀환ㅋㅋ\n근데 길드창 박제는\n이미 다 봤음~",
       "wordless": false,
-      "visual_prompt": "Back-view shot seen from behind of the Gnome Rogue backing away in slow stealth toward the left, turning her back to the serene Priest, whispering sideways with wide traumatized eyes and sweatdrops. In the background-right, the Priest calmly dusts her robes off. Clean framing leaving generous pure white (#FFFFFF) space on the right 46% for dialogue bubble. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
-      "tail_target": "left",
+      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero speech bubbles). Dynamic back-view shot in action. On the lower-left, the Undead Paladin is seen from behind stepping into a glowing golden Divine Shield bubble and swirling cyan Hearthstone vortex, frantically channeling escape with holy sparkles flaring. On the lower-right, the Troll Shaman girl leans on her wooden totem staff, waving snarkily with a smug teasing smile and side-eye. Generous pure #FFFFFF white headroom across the top 35%.",
+      "tail_target": "right",
       "item_tooltip": null
     }
   ]

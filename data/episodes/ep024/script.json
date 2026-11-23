@@ -1,22 +1,22 @@
 {
   "episode_number": 24,
-  "source_post_no": "108570",
-  "source_title": "법사들 1초만에 화나게 하는법",
-  "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=108570&exception_mode=recommend&page=1",
-  "subtitle": "물빵 귓말 진상의 '레벨 높은 거요' — 1초 만에 결투 깃발 꽂힌 법사",
+  "source_post_no": "102815",
+  "source_title": "념글 개장수 ㅅㅂㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ",
+  "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=102815&exception_mode=recommend&page=2",
+  "subtitle": "달라란 목걸이 닌자 후 상점 처분, 진짜 '고독한 늑대'가 된 사냥꾼",
   "cuts": [
     {
       "cut_index": 1,
       "aspect_ratio": "4:3",
       "layout_slot": "top",
       "characters": [
-        "노움 도적",
-        "스카이본 마법사"
+        "스카이본 마법사",
+        "드워프 사냥꾼"
       ],
-      "speaker": "노움 도적",
-      "dialogue": "법사님~ 물빵\n좀 주세요오~\n거래 걸게요!",
+      "speaker": "스카이본 마법사",
+      "dialogue": "와 목걸이 떴다!\n지능 붙은 거니까\n법사 거죠?",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero speech bubbles). Over-the-shoulder (OTS) diagonal shot. In the foreground right, the large back and shoulder of the Skyborne Mage girl (golden hair fading to aqua tips, sailor collar) frames the scene. In the background left, the petite Gnome Rogue girl (top-row #3: blonde pigtails with pink/blue tips, steampunk aviator goggles, cross hairpins, black cloak, daggers sheathed at waist) tiptoes forward with a cheeky wheedling smile, rubbing her gloved hands together eagerly demanding water and bread. Generous pure #FFFFFF white headroom across top 35%.",
+      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero speech bubbles). Over-the-shoulder (OTS) diagonal shot recreating the screenshot's Triune Amulet drop. In the foreground right, the large shoulder and aqua-tipped hair of the Skyborne Mage frames the view, pointing with starry sparkling sapphire eyes toward the glowing blue Triune Amulet gemstone necklace hovering in mid-air with bright rare loot sparkles. In the background left, the Dwarf Hunter watches greedily. Generous pure white headroom top 35%.",
       "tail_target": "left",
       "item_tooltip": null
     },
@@ -25,45 +25,27 @@
       "aspect_ratio": "16:9",
       "layout_slot": "bottom",
       "characters": [
-        "스카이본 마법사"
+        "드워프 사냥꾼"
       ],
-      "speaker": "스카이본 마법사",
-      "dialogue": "그럼요~ 방금 만든\n최고급 결정수\n20개 드릴게요!",
+      "speaker": "드워프 사냥꾼",
+      "dialogue": "입찰 꾹~!\n목걸이는 냥꾼도\n찰 수 있거든~",
       "wordless": false,
-      "visual_prompt": "Solo cute anime chibi girl from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero speech bubbles). Dynamic action motion shot positioned cleanly on the right half of the wide 16:9 canvas (leaving left 48% pure white for tooltip). The Skyborne Mage girl (bottom-row #4: pointed elf ears, aqua-tipped blonde hair, sapphire eyes) cheerfully conjures water, proudly presenting two ornate fantasy corked glass flasks filled with sparkling azure-blue Created Crystal Water radiating cyan arcane magic circles and glowing sparkles, beaming with a bright hospitable smile. Generous pure white headroom across top 35%.",
-      "tail_target": "right",
-      "item_tooltip": {
-        "image_path": null,
-        "item_name": "창조된 결정수",
-        "wowhead_item_id": 8079,
-        "quality": "common",
-        "slot_left": "",
-        "slot_right": "",
-        "lines": [
-          "창조 아이템",
-          "요구 레벨 55",
-          "최대 묶음 개수: 20"
-        ],
-        "equip_effects": [
-          "사용 효과: 30초에 걸쳐 총 4200의 마나가 회복됩니다. 음료를 마시려면 앉아 있어야 합니다."
-        ],
-        "icon_name": "inv_drink_18",
-        "preferred_corner": "top_left",
-        "target_width": 288
-      }
+      "visual_prompt": "Solo cute anime chibi girl from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero speech bubbles). Dynamic action motion shot positioned cleanly in the lower frame. The Dwarf Hunter girl (top-row #4: fluffy snowy bear hood, braided crimson hair) lunges forward with dynamic comic speed lines, tossing and slamming a chunky white-and-gold fantasy loot die (simple black dot pips only, ZERO digits) onto the ground with a greedy mischievous toothy grin, snatching the glowing Triune Amulet necklace into her paws. Generous pure #FFFFFF white space across top 35%.",
+      "tail_target": "left",
+      "item_tooltip": null
     },
     {
       "cut_index": 3,
       "aspect_ratio": "4:3",
       "layout_slot": "top",
       "characters": [
-        "노움 도적",
-        "스카이본 마법사"
+        "트롤 주술사",
+        "드워프 사냥꾼"
       ],
-      "speaker": "노움 도적",
-      "dialogue": "아니 이거 말고\n레벨 높은 거요ㅡㅡ",
+      "speaker": "트롤 주술사",
+      "dialogue": "잠깐, 그 목걸이\n상점에 팔았다고?!",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero speech bubbles). Dutch-tilt dynamic angle comic cut. On the lower-left, the Gnome Rogue girl arrogantly pushes away the glowing blue crystal water flask with the back of her hand, puffing her sulky cheeks with narrowed condescending side-eye disgust and an entitled frown. On the lower-right, the Skyborne Mage recoils in sheer disbelief, her cheerful smile instantly freezing with a massive question mark and cold sweat drops forming on her temple. Generous pure #FFFFFF white headroom across the top 35%.",
+      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero speech bubbles). Dutch-tilt dynamic angle comic cut. On the lower-left, the Troll Shaman girl (voodoo mask, wild pink hair) lunges forward in utter shock, gripping the Hunter's bear hood with wide trembling orange eyes and dropped jaw, screaming in disbelief. On the lower-right, the Dwarf Hunter sweats nervously with an unrepentant toothy smirk. Generous pure #FFFFFF white headroom top 35%.",
       "tail_target": "left",
       "item_tooltip": null
     },
@@ -72,13 +54,13 @@
       "aspect_ratio": "16:9",
       "layout_slot": "bottom",
       "characters": [
-        "스카이본 마법사"
+        "드워프 사냥꾼"
       ],
-      "speaker": null,
-      "dialogue": null,
-      "wordless": true,
-      "visual_prompt": "Solo cute anime chibi girl from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero speech bubbles). Dramatic low-angle shot looking up at the snapping Mage. Centered waist-up freeze-frame of the Skyborne Mage girl: a heavy sinister dark-purple shadow cast over her forehead and eyes, her sapphire eyes turned into glowing blank white circles of unfathomable rage, twitching eyelid, holding a wooden Duel Banner flag in one hand ready to slam it down, surrounded by eerie crackling arcane sparks.",
-      "tail_target": "center",
+      "speaker": "드워프 사냥꾼",
+      "dialogue": "먹어보니 달라란\n퀘템 목보다 구려서~\n바로 팔았지 ㅋㅋ",
+      "wordless": false,
+      "visual_prompt": "Solo cute anime chibi girl from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero speech bubbles). Dramatic low-angle shot looking up recreating the screenshot character sheet. The Dwarf Hunter girl stands tall proudly tapping her equipped Dalaran quest necklace (faceted green gemstone pendant) on her chest, while tossing a chunky pouch of shiny vendor gold coins up and down in her hand with cheeky carefree satisfaction and closed eyes, completely unapologetic. Generous pure white headroom top 35%.",
+      "tail_target": "left",
       "item_tooltip": null
     },
     {
@@ -86,14 +68,13 @@
       "aspect_ratio": "4:3",
       "layout_slot": "top",
       "characters": [
-        "스카이본 마법사",
-        "노움 도적"
+        "스카이본 마법사"
       ],
-      "speaker": "스카이본 마법사",
-      "dialogue": "결투 신청\n보냈어요.\n수락하세요.",
-      "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero speech bubbles). Dynamic side-profile 90-degree action shot. On the lower-left, the Skyborne Mage girl slams a chunky wooden and brass Duel Banner violently into the ground with dynamic comic speed lines, flying rock dust puffs, and a chillingly polite dead-eyed smile, pointing her glowing wooden wand directly at the Rogue. On the lower-right, the Gnome Rogue stumbles backward in sudden shock, goggles rattling and jaw dropping in panic. Generous pure #FFFFFF white headroom across the top 35%.",
-      "tail_target": "left",
+      "speaker": null,
+      "dialogue": null,
+      "wordless": true,
+      "visual_prompt": "Solo cute anime chibi girl from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero speech bubbles). High-angle shot looking down at the devastated Mage. Centered comedic chest-up freeze-frame of the Skyborne Mage girl: her huge sapphire eyes have turned into hollow blank white circles, faint ghostly soul vapors drifting from her open mouth, frozen in utterly shattered disbelief at the vendor ninja.",
+      "tail_target": "center",
       "item_tooltip": null
     },
     {
@@ -101,13 +82,13 @@
       "aspect_ratio": "16:9",
       "layout_slot": "bottom",
       "characters": [
-        "노움 도적",
-        "나이트엘프 사제"
+        "드워프 사냥꾼",
+        "트롤 주술사"
       ],
-      "speaker": "나이트엘프 사제",
-      "dialogue": "도적님… 그거\n55레벨 최고급\n물이었어요…",
+      "speaker": "트롤 주술사",
+      "dialogue": "사격 32 고독한 늑대?\n축하해, 전원 차단이라\n이제 진짜 고독한 늑대야.",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero speech bubbles). High-angle shot looking down at the comedic aftermath. On the lower-left, the Gnome Rogue has been polymorphed into a fluffy white sheep with spiraling dizzy eyes and steampunk goggles drooping over its woolly head, bleating helplessly in a small patch of grass. On the lower-right, the Night Elf Priest girl (top-row #2: lavender hair, white clergy robe) kneels beside the sheep facepalming with an exhausted sigh and sweat drops. Generous pure #FFFFFF white headroom across the top 35%.",
+      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero speech bubbles). Dynamic back-view shot recreating the 32-point Lone Wolf talent screenshot. On the lower-left, the Dwarf Hunter is seen from behind standing completely isolated in an empty cold field with a stylized cartoon howling lone wolf shadow silhouette and a tumbleweed rolling past. On the lower-right, the Troll Shaman girl walks away into the distance, waving a snarky goodbye back over her shoulder with a sharp toothy grin. Generous pure #FFFFFF white headroom top 35%.",
       "tail_target": "right",
       "item_tooltip": null
     }

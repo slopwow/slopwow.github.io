@@ -1,21 +1,22 @@
 {
   "episode_number": 17,
-  "source_post_no": "108678",
-  "source_title": "<한국성기사협회> 로데론 정화 원정대",
-  "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=108678&exception_mode=recommend&page=1",
-  "subtitle": "성기사 원정대의 브릴·로데론 정화 행진, 그리고 이단들의 역정화 — 필드 상황극",
+  "source_post_no": "96439",
+  "source_title": "와우 뉴비인데 가끔 충격받음 (feat.파티찾기)",
+  "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=96439&exception_mode=recommend&page=2",
+  "subtitle": "줄파락 입구 40분 대기 — 다른 대륙 흑마의 적반하장 파티찾기 상황극",
   "cuts": [
     {
       "cut_index": 1,
       "aspect_ratio": "4:3",
       "layout_slot": "top",
       "characters": [
-        "나이트엘프 사제"
+        "오크 전사",
+        "스카이본 마법사"
       ],
-      "speaker": "나이트엘프 사제",
-      "dialogue": "한국성기사협회 원정대!\n언더시티 옆 언덕\n야영지 구축 완료!",
+      "speaker": "오크 전사",
+      "dialogue": "줄파락 파티 완성!\n흑마님만 오면\n바로 출발이다!",
       "wordless": false,
-      "visual_prompt": "Low-angle shot looking up recreating the original post's screenshot: an impressive single-file marching column of a dozen chibi paladins with glowing golden banners, warhammers, and shining armor marching along a hillside road! At the front, the Night Elf Priestess plants a glowing silver banner beside a crackling campfire with an inspiring heroic smile, staff on back. Lower two-thirds framing, top 35% pure white (#FFFFFF) headroom. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
+      "visual_prompt": "Over-the-shoulder (OTS) diagonal shot from behind Skyborne Mage's blue sailor collar in foreground-right, looking at Orc Warrior tank in foreground-left standing under a scorching desert sun outside the sand-duned Zul'Farrak entrance. Orc Warrior raises her 1H sword and sturdy round shield high with eager excitement, toothy smile, ready to dive in. Lower two-thirds framing, top 35% pure white (#FFFFFF) headroom. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
       "tail_target": "left",
       "item_tooltip": null
     },
@@ -24,14 +25,13 @@
       "aspect_ratio": "16:9",
       "layout_slot": "bottom",
       "characters": [
-        "나이트엘프 사제",
-        "언데드 성기사"
+        "인간 흑마법사"
       ],
-      "speaker": "나이트엘프 사제",
-      "dialogue": "기사님들! 이단\n언데드 성기사 발견!\n심판 날려요!!",
+      "speaker": "인간 흑마법사",
+      "dialogue": "저 스톰윈드 여관~\n배 타고 그리핀 타고\n30분이면 가요!",
       "wordless": false,
-      "visual_prompt": "Over-the-shoulder (OTS) diagonal shot from behind the shoulder of the Undead Paladin in foreground-right, who has just wandered onto the Brill road with an innocent head tilt. Looking toward the Night Elf Priest on the left who points her glowing staff forward with righteous fury, while background paladins raise hammers ready to cast Judgement! Positioned cleanly leaving generous pure white (#FFFFFF) space on right 46% for dialogue bubble. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
-      "tail_target": "left",
+      "visual_prompt": "Low-angle shot looking up at the Human Warlock girl on the right half, leaning back comfortably in a rustic wooden tavern chair in the distant Stormwind inn on the other continent, sipping casually from a fantasy corked glass potion flask. She has a carefree, unbothered smile, soul lantern staff resting beside her chair, chatting through whispers while the party waits across the world! Positioned on the right half, leaving generous pure white (#FFFFFF) space on left 48% for dialogue bubble. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
+      "tail_target": "right",
       "item_tooltip": null
     },
     {
@@ -39,13 +39,13 @@
       "aspect_ratio": "4:3",
       "layout_slot": "top",
       "characters": [
-        "나이트엘프 사제",
-        "언데드 성기사"
+        "오크 전사",
+        "스카이본 마법사"
       ],
-      "speaker": "나이트엘프 사제",
-      "dialogue": "심판 완료~\n이제 로데론까지\n평화롭게 정화 행진♪",
+      "speaker": "오크 전사",
+      "dialogue": "30분?! 다른 대륙에서\n파티 신청을\n왜 넣는 건데!!",
       "wordless": false,
-      "visual_prompt": "Side-profile 90-degree action shot of the Night Elf Priest and her paladin army marching cheerfully toward the right with bouncy steps, eyes closed in bliss, making cute peace signs. In the background-left, the Undead Paladin lies sprawled on the ground with comical spiral eyes. Lower two-thirds framing, top 35% pure white (#FFFFFF) headroom. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
+      "visual_prompt": "Dutch-tilt slapstick action camera with a tilted diagonal angle! In the desert heat, Orc Warrior violently slams her sturdy shield against the ground in sheer rage, screaming with a massive jagged jaw-drop and flying spit drops! Beside her, Skyborne Mage clutches her head with both hands in despair, crystal staff bouncing. Lower two-thirds framing, top 35% pure white (#FFFFFF) headroom. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
       "tail_target": "left",
       "item_tooltip": null
     },
@@ -54,13 +54,12 @@
       "aspect_ratio": "16:9",
       "layout_slot": "bottom",
       "characters": [
-        "언데드 성기사",
-        "트롤 주술사"
+        "인간 흑마법사"
       ],
-      "speaker": "언데드 성기사",
-      "dialogue": "이단의 반격이다.\n…쪼렙이라도\n무적은 있다.",
+      "speaker": "인간 흑마법사",
+      "dialogue": "그럼 님이 제 위치\n미리 확인하고\n초대했어야죠~",
       "wordless": false,
-      "visual_prompt": "Dutch-tilt slapstick action camera with a tilted dynamic composition! The Undead Paladin suddenly leaps back up on the right, encased inside a blazing golden spherical Divine Shield (Paladin bubble)! Beside her, Troll Shaman plants a wooden totem into the ground with crackling lightning, backed by cartoon Horde reinforcement silhouettes charging! Clean framing on right half, leaving generous pure white (#FFFFFF) space on left 48% for dialogue bubble. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
+      "visual_prompt": "Side-profile 90-degree action shot recreating the screenshot's exact punchline quote! Human Warlock girl on the right half, folding her arms haughtily with a smug sneer, tilting her nose up into the air with total audacity, staff stowed on her back. Positioned cleanly on the right half, leaving generous pure white (#FFFFFF) space across left 48% for dialogue bubble. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
       "tail_target": "right",
       "item_tooltip": null
     },
@@ -69,12 +68,12 @@
       "aspect_ratio": "4:3",
       "layout_slot": "top",
       "characters": [
-        "나이트엘프 사제"
+        "스카이본 마법사"
       ],
       "speaker": null,
       "dialogue": null,
       "wordless": true,
-      "visual_prompt": "High-angle shot looking down at the Night Elf Priest girl in a signature comedic freeze-frame, completely wordless. Caught entirely off guard, she has tumbled backward onto her rear, eyes spinning in frantic spiral shock, hands flailing in mid-air, seeing the invincible golden bubbles and Horde horde charging straight at her! Centered dramatic framing filling ~78% of canvas height. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
+      "visual_prompt": "High-angle shot looking down at the Skyborne Mage girl recreating the famous meme pose ('사고방식 자체가 우리와는 다릅니다')! Forty minutes later under the desert sun, she is sitting slumped on the ground like a melting candle, hollow unblinking white void eyes, a tiny tumbleweed rolling past her, completely drained of life and hope at the cultural shock. Centered dramatic framing filling ~78% of canvas height. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
       "tail_target": "center",
       "item_tooltip": null
     },
@@ -83,14 +82,14 @@
       "aspect_ratio": "16:9",
       "layout_slot": "bottom",
       "characters": [
-        "언데드 성기사",
-        "나이트엘프 사제"
+        "인간 흑마법사",
+        "오크 전사"
       ],
-      "speaker": "언데드 성기사",
-      "dialogue": "원정대 정화당함 완료.\n영혼의 치유사는\n저쪽이다.",
+      "speaker": "인간 흑마법사",
+      "dialogue": "40분 걸렸네요~\n근데 다들 계속\n기다리신 거예요?",
       "wordless": false,
-      "visual_prompt": "Back-view shot seen from behind recreating the author's real punchline ('정화당함 완료'): Undead Paladin rests her heavy holy hammer over her shoulder, seen from behind walking away toward the left, pointing with her thumb over her shoulder toward the graveyard. In the background-right, the entire paladin expedition and Night Elf Priest sit or lie slumped as translucent blue ghosts in the Lordaeron courtyard, sulking with puffed cheeks! Clean framing leaving generous pure white (#FFFFFF) space on left 48% for dialogue bubble. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
-      "tail_target": "right",
+      "visual_prompt": "Back-view shot seen from behind of the Human Warlock girl finally strolling into the desert portal, seen from behind walking away with a breezy little wave, turning her head back over her shoulder with an innocent oblivious smile. In the background-right, the Orc Warrior tank stands shaking with demonic anime rage veins, gripping her 1H sword with steam whistling from her ears! Clean framing leaving generous pure white (#FFFFFF) space on right 46% for dialogue bubble. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
+      "tail_target": "left",
       "item_tooltip": null
     }
   ]

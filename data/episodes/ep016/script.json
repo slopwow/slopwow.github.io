@@ -1,9 +1,9 @@
 {
   "episode_number": 16,
-  "source_post_no": "97410",
-  "source_title": "진짜 병신겜 씨발 좆같은거 접는다",
-  "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=97410&exception_mode=recommend&page=2",
-  "subtitle": "수양사제 한 땀 한 땀 남작 솔플, 루팅 직전 위상 변경 억까 — 필드 퀘스트 상황극",
+  "source_post_no": "108678",
+  "source_title": "<한국성기사협회> 로데론 정화 원정대",
+  "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=108678&exception_mode=recommend&page=1",
+  "subtitle": "성기사 원정대의 브릴·로데론 정화 행진, 그리고 이단들의 역정화 — 필드 상황극",
   "cuts": [
     {
       "cut_index": 1,
@@ -13,9 +13,9 @@
         "나이트엘프 사제"
       ],
       "speaker": "나이트엘프 사제",
-      "dialogue": "바르두스 남작 현상수배…\n절벽 위에서 한 땀 한 땀\n풀링해서 잡는다.",
+      "dialogue": "한국성기사협회 원정대!\n언더시티 옆 언덕\n야영지 구축 완료!",
       "wordless": false,
-      "visual_prompt": "Side-profile 90-degree action shot recreating the author's real screenshot: Night Elf Priest girl (lavender-silver hair, dark eye circles, mooncloth robe) perches carefully on a steep rocky cliff slope, aiming a slender wooden wand down toward a bandit tent camp below where a large syndicate mob boss stands beside a campfire. Golden Power Word: Shield glowing around her, staff on back. Lower two-thirds framing, top 35% pure white (#FFFFFF) headroom. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
+      "visual_prompt": "Low-angle shot looking up recreating the original post's screenshot: an impressive single-file marching column of a dozen chibi paladins with glowing golden banners, warhammers, and shining armor marching along a hillside road! At the front, the Night Elf Priestess plants a glowing silver banner beside a crackling campfire with an inspiring heroic smile, staff on back. Lower two-thirds framing, top 35% pure white (#FFFFFF) headroom. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
       "tail_target": "left",
       "item_tooltip": null
     },
@@ -24,13 +24,14 @@
       "aspect_ratio": "16:9",
       "layout_slot": "bottom",
       "characters": [
-        "나이트엘프 사제"
+        "나이트엘프 사제",
+        "언데드 성기사"
       ],
       "speaker": "나이트엘프 사제",
-      "dialogue": "15분 만에 남작 처치!!\n이제 머리카락만\n루팅하면 완료야 ㅠㅠ",
+      "dialogue": "기사님들! 이단\n언데드 성기사 발견!\n심판 날려요!!",
       "wordless": false,
-      "visual_prompt": "Over-the-shoulder (OTS) diagonal shot from behind the shoulder of the Night Elf Priest in foreground-right, leaning forward on her knees reaching both hands with happy crying anime tears toward a sparkling golden quest loot bag on the ground. Staff sheathed on back. Positioned on the right half, leaving generous pure white (#FFFFFF) space across left 48% for dialogue bubble. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
-      "tail_target": "right",
+      "visual_prompt": "Over-the-shoulder (OTS) diagonal shot from behind the shoulder of the Undead Paladin in foreground-right, who has just wandered onto the Brill road with an innocent head tilt. Looking toward the Night Elf Priest on the left who points her glowing staff forward with righteous fury, while background paladins raise hammers ready to cast Judgement! Positioned cleanly leaving generous pure white (#FFFFFF) space on right 46% for dialogue bubble. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
+      "tail_target": "left",
       "item_tooltip": null
     },
     {
@@ -39,13 +40,13 @@
       "layout_slot": "top",
       "characters": [
         "나이트엘프 사제",
-        "노움 도적"
+        "언데드 성기사"
       ],
-      "speaker": "노움 도적",
-      "dialogue": "어? 언니 방금\n위상 바뀌었는데?\n여기 몹 다 리젠됨~",
+      "speaker": "나이트엘프 사제",
+      "dialogue": "심판 완료~\n이제 로데론까지\n평화롭게 정화 행진♪",
       "wordless": false,
-      "visual_prompt": "Dutch-tilt slapstick action camera with a tilted diagonal composition. The loot pile ripples and dissolves into shimmering rainbow server phase sparkles, vanishing! Night Elf Priest on the left freezes mid-reach, eyes bulging in utter confusion. On the right, Gnome Rogue pops into view with a cheeky grin, pointing at a freshly respawned full pack of dark cartoon syndicate mob silhouettes surrounding them! Lower two-thirds framing, top 35% pure white (#FFFFFF) headroom. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
-      "tail_target": "right",
+      "visual_prompt": "Side-profile 90-degree action shot of the Night Elf Priest and her paladin army marching cheerfully toward the right with bouncy steps, eyes closed in bliss, making cute peace signs. In the background-left, the Undead Paladin lies sprawled on the ground with comical spiral eyes. Lower two-thirds framing, top 35% pure white (#FFFFFF) headroom. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
+      "tail_target": "left",
       "item_tooltip": null
     },
     {
@@ -53,13 +54,14 @@
       "aspect_ratio": "16:9",
       "layout_slot": "bottom",
       "characters": [
-        "나이트엘프 사제"
+        "언데드 성기사",
+        "트롤 주술사"
       ],
-      "speaker": null,
-      "dialogue": null,
-      "wordless": true,
-      "visual_prompt": "High-angle shot looking down at the Night Elf Priest girl in a signature comedic freeze-frame, completely wordless. She is frozen stiff in petrified horror, her golden shield bubble shattering into sharp glass fragments, eyes wide with pinpoint trembling pupils, a pitch-black gloom shadow over her forehead, surrounded by six menacing red-eyed cartoon bandit silhouettes closing in with clubs and daggers. Centered dramatic framing filling ~78% of canvas height. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
-      "tail_target": "center",
+      "speaker": "언데드 성기사",
+      "dialogue": "이단의 반격이다.\n…쪼렙이라도\n무적은 있다.",
+      "wordless": false,
+      "visual_prompt": "Dutch-tilt slapstick action camera with a tilted dynamic composition! The Undead Paladin suddenly leaps back up on the right, encased inside a blazing golden spherical Divine Shield (Paladin bubble)! Beside her, Troll Shaman plants a wooden totem into the ground with crackling lightning, backed by cartoon Horde reinforcement silhouettes charging! Clean framing on right half, leaving generous pure white (#FFFFFF) space on left 48% for dialogue bubble. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
+      "tail_target": "right",
       "item_tooltip": null
     },
     {
@@ -69,11 +71,11 @@
       "characters": [
         "나이트엘프 사제"
       ],
-      "speaker": "나이트엘프 사제",
-      "dialogue": "한 땀 한 땀 잡은\n남작이었는데!!\n이 겜 진짜 접는다!!",
-      "wordless": false,
-      "visual_prompt": "Low-angle shot looking up at the translucent blue ghost form of the Night Elf Priest girl, floating in mid-air and throwing a furious temper tantrum, bawling comedic waterfall tears and flailing both fists wildly with cartoon steam puffs blowing from her ears (matching the screaming Pepe in the original post!). Wispy ghost tail fluttering. Lower two-thirds framing, top 35% pure white (#FFFFFF) headroom. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
-      "tail_target": "left",
+      "speaker": null,
+      "dialogue": null,
+      "wordless": true,
+      "visual_prompt": "High-angle shot looking down at the Night Elf Priest girl in a signature comedic freeze-frame, completely wordless. Caught entirely off guard, she has tumbled backward onto her rear, eyes spinning in frantic spiral shock, hands flailing in mid-air, seeing the invincible golden bubbles and Horde horde charging straight at her! Centered dramatic framing filling ~78% of canvas height. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
+      "tail_target": "center",
       "item_tooltip": null
     },
     {
@@ -81,13 +83,13 @@
       "aspect_ratio": "16:9",
       "layout_slot": "bottom",
       "characters": [
-        "노움 도적",
+        "언데드 성기사",
         "나이트엘프 사제"
       ],
-      "speaker": "노움 도적",
-      "dialogue": "접을 거면\n골드 주고 가요~♪",
+      "speaker": "언데드 성기사",
+      "dialogue": "원정대 정화당함 완료.\n영혼의 치유사는\n저쪽이다.",
       "wordless": false,
-      "visual_prompt": "Back-view shot seen from behind of the sobbing ghost Priestess floating away toward the graveyard, seen from behind with slumped ethereal shoulders. In the foreground-right, Gnome Rogue leans forward with a shameless sweet grin, extending an open palm asking for quitting gold, daggers sheathed at belt. Positioned cleanly leaving generous pure white (#FFFFFF) space on the left 48% for dialogue bubble. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
+      "visual_prompt": "Back-view shot seen from behind recreating the author's real punchline ('정화당함 완료'): Undead Paladin rests her heavy holy hammer over her shoulder, seen from behind walking away toward the left, pointing with her thumb over her shoulder toward the graveyard. In the background-right, the entire paladin expedition and Night Elf Priest sit or lie slumped as translucent blue ghosts in the Lordaeron courtyard, sulking with puffed cheeks! Clean framing leaving generous pure white (#FFFFFF) space on left 48% for dialogue bubble. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
       "tail_target": "right",
       "item_tooltip": null
     }

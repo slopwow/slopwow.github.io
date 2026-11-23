@@ -1,9 +1,9 @@
 {
   "episode_number": 31,
-  "source_post_no": "23097",
-  "source_title": "호드 싹 지우고 얼라로 옮겼다",
-  "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=23097&exception_mode=recommend&page=9",
-  "subtitle": "언기사 성능보다 스톰윈드 브금 — 호드 싹 지우고 얼라 망명",
+  "source_post_no": "73199",
+  "source_title": "도시괴담 성기사 첨봄 ㅋㅋㅋㅋ",
+  "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=73199&exception_mode=recommend&page=5",
+  "subtitle": "줄파락 출발 직전 신성 성기사의 '장트라제 도검 입찰' 선언",
   "cuts": [
     {
       "cut_index": 1,
@@ -11,12 +11,12 @@
       "layout_slot": "top",
       "characters": [
         "오크 전사",
-        "언데드 성기사"
+        "노움 도적"
       ],
       "speaker": "오크 전사",
-      "dialogue": "언기사 성능 최고지?\n오그리마 입성\n환영한다!!",
+      "dialogue": "줄파락 풀파 완료!\n힐러 신기님도 왔으니\n쾌적하게 출발하자~",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero speech bubbles). Over-the-shoulder (OTS) diagonal shot. In the foreground right, the large shoulder and stitched skull hood of the Undead Paladin girl (top-row #2: pale lilac skin, silver armor) frames the view. In the background left, the Orc Warrior girl (top-row #1: green plush orc hood, crimson eyes, spiky red pauldrons) spreads both arms wide in enthusiastic welcome with a huge toothy grin beside a crude wooden spiked Horde barricade vignette. Generous pure #FFFFFF white headroom across top 35%.",
+      "visual_prompt": "Over-the-shoulder diagonal shot on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). Framed over the large foreground shoulder and back of the head of the Gnome Rogue girl on the lower-right (blonde twin pigtails with pink-blue tips, aviator goggles, daggers sheathed at belt). In the background on the lower-left, the Orc Warrior Protection tank (green orc onesie hood, sturdy steel kite shield on left arm, compact 1H steel sword in right hand, zero 2H weapon) grins cheerfully, ready for the dungeon. Medium 2.5-to-3-head chibi scale in lower two-thirds, leaving generous pure #FFFFFF white headroom across top 38%.",
       "tail_target": "left",
       "item_tooltip": null
     },
@@ -28,10 +28,10 @@
         "언데드 성기사"
       ],
       "speaker": "언데드 성기사",
-      "dialogue": "근데 땅이 왜 다 빨개...\n움막에서 퀘하니까\n겜 하는 기분이 안 나.",
+      "dialogue": "장트라제 뜨면 골드 줌.\n저 질풍 만들 거라\n도검 뜨면 굴릴게요.",
       "wordless": false,
-      "visual_prompt": "Solo cute anime chibi girl from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero speech bubbles). Dynamic side-profile 90-degree action shot. Positioned cleanly in the lower frame, the Undead Paladin girl trudges dejectedly to the right with slumped shoulders, dragging her one-handed mace on the ground, looking down at dusty red ground with dull lifeless yellow eyes and deep melancholic blue sweat drops beside a crude thatched mud hut vignette. Generous pure white headroom top 35%.",
-      "tail_target": "left",
+      "visual_prompt": "Side-profile 90-degree action shot on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). Positioned cleanly on the right half facing left, the Undead Paladin healer girl (round white skull cap, silver-white bob hair with icy tips, white-and-gold cloak, hands clean with default weapon omitted) steps forward raising one gloved finger matter-of-factly with a completely stoic deadpan expression, making her outrageous sword reservation announcement. Medium 2.5-to-3-head chibi scale filling ~65% of canvas height, leaving left 48% pure white.",
+      "tail_target": "right",
       "item_tooltip": null
     },
     {
@@ -43,24 +43,46 @@
         "오크 전사"
       ],
       "speaker": "언데드 성기사",
-      "dialogue": "스톰윈드 그 웅장한\n브금이 그리워...\n언기사랑 흑마 다 지울래.",
+      "dialogue": "도검 드냐고요?\n네, 낭만 있잖아요?\n포에버 1호 질풍 가자~",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero speech bubbles). Dutch-tilt dynamic angle comic cut. On the lower-left, the Undead Paladin girl dramatically clutches both hands to her chest with anime waterfall tears streaming from her eyes, imagining majestic brass orchestra horns with glowing golden musical notes. On the lower-right, the Orc Warrior girl stumbles backward in absolute disbelief with popping eyes. Generous pure white headroom top 35%.",
+      "visual_prompt": "Dramatic low-angle shot looking up at the Undead Paladin on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). On the lower-left, the Undead Paladin girl holds a compact ONE-HANDED curved troll sword (보호의 장트라제, strictly compact 1H chibi scale, NOT a giant greatsword) with a soft blue rare loot glow in one hand and a plump coin pouch in the other, starry-eyed with dreamy golden sparkles; on the lower-right, the Orc Warrior tank freezes in horror, drooping her 1H sword. Medium 2.5-to-3-head chibi scale, leaving generous pure #FFFFFF white headroom across top 38% and keeping top-right corner clear.",
       "tail_target": "left",
-      "item_tooltip": null
+      "item_tooltip": {
+        "image_path": null,
+        "item_name": "보호의 장트라제",
+        "wowhead_item_id": 11086,
+        "quality": "rare",
+        "slot_left": "주장비",
+        "slot_right": "검",
+        "lines": [
+          "획득 시 귀속",
+          "고유 아이템",
+          "공격력 44 - 83\t속도 1.90",
+          "(초당 공격력 33.42)",
+          "요구 레벨 45"
+        ],
+        "equip_effects": [
+          "사용 효과: 장트라제와 상트라제를 결합하여 강력한 검 술트라제를 만듭니다.",
+          "발동 효과: 사용자를 보호막으로 감싸 55 에서 85의 물리 피해를 흡수합니다. 20초 동안 지속됩니다."
+        ],
+        "icon_name": "inv_sword_43",
+        "preferred_corner": "top_right",
+        "target_width": 288
+      }
     },
     {
       "cut_index": 4,
       "aspect_ratio": "16:9",
       "layout_slot": "bottom",
       "characters": [
+        "노움 도적",
         "오크 전사"
       ],
-      "speaker": null,
-      "dialogue": null,
-      "wordless": true,
-      "visual_prompt": "Solo cute anime chibi girl from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero speech bubbles). Dramatic low-angle shot looking up at the betrayed Warrior. Centered comedic chest-up freeze-frame of the Orc Warrior girl: jaw dropped completely open in horrified disbelief, crimson pupils shrunk to tiny dots, soul vapor drifting from her fangs, frozen in utter shock at her comrade abandoning the Horde for background music.",
-      "tail_target": "center",
+      "speaker": "노움 도적",
+      "dialogue": "잠깐, 골팟도 아닌데\n풀파 되자마자 신기가\n도검 입찰 예고...?",
+      "wordless": false,
+      "visual_prompt": "Tilted dutch-tilt diagonal composition on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). Positioned on the left half: the Gnome Rogue girl tiptoes in alarm, pointing a trembling finger sideways toward the Paladin with wide sweat-dropping eyes (daggers at belt); beside her, the Orc Warrior clutches her steel kite shield tightly to her chest in chilled shock. Medium 2.5-to-3-head chibi scale, leaving the right 48% completely empty pure white space.",
+      "tail_target": "left",
       "item_tooltip": null
     },
     {
@@ -68,14 +90,13 @@
       "aspect_ratio": "4:3",
       "layout_slot": "top",
       "characters": [
-        "인간 흑마법사",
-        "나이트엘프 사제"
+        "오크 전사"
       ],
-      "speaker": "인간 흑마법사",
-      "dialogue": "언기사 지우고\n인간 흑마로 왔어요!\n아 이 브금 미쳤다...",
-      "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero speech bubbles). High-angle shot looking down at the joyous arrival. On the lower-left, the Human Warlock girl (bottom-row #3: purple warlock hood, black pigtails, sharp violet eyes) hugs her plump red imp plushie tightly, eyes glistening with golden stars and tears of pure bliss beside a pristine white marble cathedral pillar vignette. On the lower-right, the Night Elf Priest smiles warmly. Generous pure white headroom top 35%.",
-      "tail_target": "left",
+      "speaker": null,
+      "dialogue": null,
+      "wordless": true,
+      "visual_prompt": "High-angle shot looking down at the Orc Warrior tank girl kneeling on the ground in icy shock, on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). Squarely centered and filling ~80% of canvas height. Petrified shock freeze-frame: crimson eyes shrunk to tiny pinpoint pupils, deep dark blue gloom shadow across her green orc hood, jaw frozen open, top rim of her steel kite shield resting on the floor in front of her.",
+      "tail_target": "center",
       "item_tooltip": null
     },
     {
@@ -83,13 +104,13 @@
       "aspect_ratio": "16:9",
       "layout_slot": "bottom",
       "characters": [
-        "인간 흑마법사",
-        "나이트엘프 사제"
+        "노움 도적",
+        "언데드 성기사"
       ],
-      "speaker": "인간 흑마법사",
-      "dialogue": "성능 1티어 언기사보다\n스톰윈드 브금이\n찐 1티어예요!!",
+      "speaker": "노움 도적",
+      "dialogue": "도시괴담 성기사 실화냐…\n아 그럼 탱 다른 분…\n분위기 싸해진 거 봐…",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero speech bubbles). Dynamic back-view shot. On the lower-left, the Human Warlock girl is seen from behind skipping joyfully into the distance, throwing both arms up in triumph toward golden orchestral rays and sparkles, casually tossing a radiant smile back over her shoulder. Beside her, the Night Elf Priest giggles with hands clasped. Generous pure #FFFFFF white headroom across top 35%.",
+      "visual_prompt": "Dynamic back-view shot on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). Positioned on the left half: the Gnome Rogue girl turns her back partially to the paladin, looking back over her shoulder with dead-fish deadpan eyes and cold sweat drops; on the right, the Undead Paladin stands peacefully seen in 3/4 angle with dreamy golden sparkles around her skull hood, oblivious to the silence. Medium 2.5-to-3-head chibi scale, leaving the right 48% pure white.",
       "tail_target": "left",
       "item_tooltip": null
     }

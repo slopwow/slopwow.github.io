@@ -1,22 +1,22 @@
 {
   "episode_number": 40,
-  "source_post_no": "104746",
-  "source_title": "\"틀딱 씨, 우리 파티에서 나가주세요.\"",
-  "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=104746&exception_mode=recommend&page=5",
-  "subtitle": "죽음의 폐광 뉴비 낭만팟 vs 40인 공대장 출신 틀딱의 효율 훈수 — 인던 상황극",
+  "source_post_no": "85615",
+  "source_title": "물을 씨발 6덩이를 달라고하냐",
+  "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=85615&exception_mode=recommend&page=4",
+  "subtitle": "인던 입구에서 마법사에게 물 6덩이 주문 — 정수기 취급 폭발 엔딩",
   "cuts": [
     {
       "cut_index": 1,
       "aspect_ratio": "4:3",
       "layout_slot": "top",
       "characters": [
-        "오크 전사",
+        "나이트엘프 사제",
         "스카이본 마법사"
       ],
-      "speaker": "오크 전사",
-      "dialogue": "와~ 죽음의 폐광\n퀘스트 지문 재밌다!\n천천히 구경하며 가요♪",
+      "speaker": "나이트엘프 사제",
+      "dialogue": "법사님 반가워요!\n인던 출발하기 전에\n시원한 물 6덩이만 주세요~",
       "wordless": false,
-      "visual_prompt": "Over-the-shoulder diagonal shot on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). Framed over the large foreground shoulder and back of the head of the Skyborne Mage girl on the lower-right (blonde hair with aqua tips, feather charm, sailor collar). In the background on the lower-left, newbie Orc Warrior girl (green orc onesie hood, silver battle axe on back) holds open a rolled rustic parchment quest scroll (blank wavy lines, zero text) with wide starry adventurous crimson eyes and an excited smile. Medium 2.5-to-3-head chibi scale, leaving generous pure #FFFFFF white headroom across top 38%.",
+      "visual_prompt": "Over-the-shoulder (OTS) diagonal shot from behind the shoulder and back of the Skyborne Mage girl on the right. On the lower-left, the Night Elf Priest girl (bottom-row #2 on Draft C cast sheet) extends both open hands forward cheerfully with a bright beaming smile and sparkling eyes, asking innocently. 100% pure solid #FFFFFF white borderless background, medium 2.5-to-3-head chibi scale, top 35% pure white headroom for dialogue. Zero text, zero digits.",
       "tail_target": "left",
       "item_tooltip": null
     },
@@ -25,12 +25,12 @@
       "aspect_ratio": "16:9",
       "layout_slot": "bottom",
       "characters": [
-        "언데드 성기사"
+        "스카이본 마법사"
       ],
-      "speaker": "언데드 성기사",
-      "dialogue": "시간 낭비죠.\n화약 주워 대포로 문 땄음.\n바로 밴클리프 가죠.",
+      "speaker": "스카이본 마법사",
+      "dialogue": "물 6덩이면 120병이야…\n마나탐 다섯 번 하면서\n서서 물만 뽑으라고?!",
       "wordless": false,
-      "visual_prompt": "Side-profile 90-degree action shot on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). Positioned cleanly on the right half facing left, the Undead Paladin veteran (round white skull cap, silver-white bob hair, heavy spiked armor pauldrons, golden warhammer on back) sprints ahead beside a smoking rustic iron cannon with dynamic speed lines and a huge cartoon puff of smoke, dusting off gloves with a smug sneer of speedrun efficiency. Consistent medium 2.5-to-3-head chibi scale filling ~65% of canvas height, leaving the left 48% pure white.",
+      "visual_prompt": "Dramatic low-angle shot looking up at the Skyborne Mage girl (bottom-row #4 on Draft C cast sheet) on a 100% pure solid #FFFFFF white borderless background. She stands rigidly with dark crosshatched comic shadow cast over her eyes, a huge angry vein pulsing on her temple, holding a single fantasy corked glass flask with trembling white knuckles, radiating an ominous aura. Positioned on the right, left 46% clear space. Medium 2.5-to-3-head chibi scale. Zero text, zero digits.",
       "tail_target": "right",
       "item_tooltip": null
     },
@@ -39,13 +39,13 @@
       "aspect_ratio": "4:3",
       "layout_slot": "top",
       "characters": [
-        "오크 전사",
-        "언데드 성기사"
+        "스카이본 마법사",
+        "나이트엘프 사제"
       ],
-      "speaker": "오크 전사",
-      "dialogue": "틀딱 씨, 제발\n우리 파티에서\n나가주세요…",
+      "speaker": "스카이본 마법사",
+      "dialogue": "내가 무슨 걸어 다니는\n정수기 기계냐고?!\n물 뽑다 인던 끝나겠다!!",
       "wordless": false,
-      "visual_prompt": "Dramatic low-angle shot looking up at the confrontation on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). On the lower-left, the newbie Orc Warrior girl stands tall with both hands on her hips, glaring with a dead-serious fed-up frown and tired sweat drop; on the lower-right, the veteran Paladin tilts her head with a self-absorbed smug smirk, completely failing to read the room. Medium 2.5-to-3-head chibi scale, leaving generous pure #FFFFFF white headroom across top 38%.",
+      "visual_prompt": "Dynamic Dutch tilt diagonal angle frame with tilted camera on a 100% pure solid #FFFFFF white borderless background. The Skyborne Mage girl flings her arms high in the air with an explosive yell, kicking up dust puffs as she stomps her foot, flying sweat drops and jagged manga teeth in furious exasperation! In front of her, an absurd towering pyramid of glass water bottles wobbles precariously. Across from her, the Night Elf Priest blinks innocently. Medium 2.5-to-3-head chibi scale, top 35% clear headroom. Zero text, zero digits, zero speech bubbles.",
       "tail_target": "left",
       "item_tooltip": null
     },
@@ -54,12 +54,13 @@
       "aspect_ratio": "16:9",
       "layout_slot": "bottom",
       "characters": [
-        "언데드 성기사"
+        "오크 전사",
+        "스카이본 마법사"
       ],
-      "speaker": "언데드 성기사",
-      "dialogue": "내가 오리 40인 공대장 출신인데!\n전사할 거면 성기사 하지~\n법사가 진짜 사긴데…",
+      "speaker": "오크 전사",
+      "dialogue": "저기 법사님… 화내지 말고…\n혹시 빵도 6덩이 정도\n비벼주실 수 있나요…?",
       "wordless": false,
-      "visual_prompt": "Tilted dutch-tilt diagonal angle on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). Positioned on the right half facing left, the veteran Paladin raises one lecturing finger high in unstoppable veteran raid-leader mode, flinging her arms with eyes half-closed in smug preaching bliss as golden lecture aura sparkles swirl endlessly around her. Consistent medium 2.5-to-3-head chibi scale filling ~65% of canvas height, leaving the left 48% pure white.",
+      "visual_prompt": "Side-profile 90-degree action shot on a 100% pure solid #FFFFFF white borderless background. From the right, the Orc Warrior girl is tiptoeing sneaking in with an awkward apologetic grin and nervous sweat beads, holding an empty wooden bowl in both hands, peeking sideways at the furious mage. The Skyborne Mage glares back with fiery red pupils. Medium 2.5-to-3-head chibi scale, top 34% pure white headroom. Zero text, zero digits, zero speech bubbles.",
       "tail_target": "right",
       "item_tooltip": null
     },
@@ -73,7 +74,7 @@
       "speaker": null,
       "dialogue": null,
       "wordless": true,
-      "visual_prompt": "High-angle shot looking down at the newbie Skyborne Mage girl crouching low on the ground in silent horror, on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). Squarely centered and filling ~80% of canvas height. Sensory overload freeze-frame: sapphire eyes blown wide with trembling pinpoint pupils, deep blue gloom shadow across her forehead, both hands clapped tightly over her pointed elf ears in silent agony, quivering mouth and flying cold sweat drops.",
+      "visual_prompt": "High-angle shot looking down at the Skyborne Mage girl (bottom-row #4 on Draft C cast sheet) in an expressive comedic freeze-frame on a 100% pure solid #FFFFFF white borderless background. She is petrified in pure murderous silence, her eyes blazing with bright yellow comic flames, mouth a flat razor-thin line, trembling with restrained fury! Solo waist-up close-up filling ~77% height. Zero text, zero digits, zero speech bubbles.",
       "tail_target": "center",
       "item_tooltip": null
     },
@@ -82,13 +83,13 @@
       "aspect_ratio": "16:9",
       "layout_slot": "bottom",
       "characters": [
-        "언데드 성기사",
-        "오크 전사"
+        "오크 전사",
+        "스카이본 마법사"
       ],
-      "speaker": "언데드 성기사",
-      "dialogue": "어머, 왜 화내세요?\n와우는 만렙부터\n시작이란 말입니다…",
+      "speaker": "스카이본 마법사",
+      "dialogue": "오늘부로 영업 종료다!!\n파티고 인던이고 다 때려치우고\n귀환석 탈 테니 알아서 해!!",
       "wordless": false,
-      "visual_prompt": "Dynamic back-view shot on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). On the left half, the Orc Warrior girl turns her back to the camera, clenching both trembling fists with cartoon steam shooting from her green hood ears in explosive fury; on the right half, the veteran Paladin looks back over her shoulder with an innocent clueless deadpan blink, folding her gloved hands politely. Medium 2.5-to-3-head chibi scale, leaving the left 46% pure white.",
+      "visual_prompt": "Back-view shot on a 100% pure solid #FFFFFF white borderless background. In the lower-right, the Skyborne Mage girl is seen from behind walking away toward the distance, turning her back on the party while tossing a glowing cyan Hearthstone into the air to summon a spiraling vortex! In the lower-left, the Orc Warrior reaches out a hand in desperate pleading. Medium 2.5-to-3-head chibi scale, top 34% pure white headroom. Zero text, zero digits, zero speech bubbles.",
       "tail_target": "right",
       "item_tooltip": null
     }

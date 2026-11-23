@@ -1,38 +1,56 @@
 {
   "episode_number": 29,
-  "source_post_no": "98610",
-  "source_title": "2005 와갤 패턴 그대로 반복 되는구나",
-  "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=98610&exception_mode=recommend&page=2",
-  "subtitle": "기사→도적→냥꾼 입찰 남탓 릴레이, 흑막은 무분 전사 — 100% 인던 상황극",
+  "source_post_no": "70711",
+  "source_title": "오늘 수도원에서본 레전드 사건..JPG",
+  "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=70711&exception_mode=recommend&page=5",
+  "subtitle": "붉은십자군 수도원 '화이트메인의 모자' 인던 가이드북 맹신 법사 대참사 — 인던 상황극",
   "cuts": [
     {
       "cut_index": 1,
       "aspect_ratio": "4:3",
       "layout_slot": "top",
       "characters": [
-        "노움 도적",
-        "언데드 성기사"
+        "나이트엘프 사제",
+        "스카이본 마법사"
       ],
-      "speaker": "노움 도적",
-      "dialogue": "기사님 또 입찰?!\n천 가죽 사슬\n다 굴리네!!",
+      "speaker": "나이트엘프 사제",
+      "dialogue": "드디어 화이트메인의\n모자 떴다…!!\n힐러 졸업템이에요!",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero speech bubbles). Over-the-shoulder (OTS) diagonal shot. In the foreground right, the large shoulder and stitched skull hood of the Undead Paladin frames the view. In the background left, the Gnome Rogue girl (top-row #3: blonde pigtails with pink/blue tips, steampunk aviator goggles, black stealth cloak, daggers sheathed at waist) stomps her feet in furious outrage, shaking both fists with sharp shark teeth and popping comic anger veins. Generous pure #FFFFFF white headroom across top 35%.",
+      "visual_prompt": "Over-the-shoulder diagonal shot on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). Framed over the large foreground shoulder and back of the head of the Skyborne Mage girl on the lower-right (blonde hair with aqua tips, feather charm, sailor collar, bread and flask put away). In the background on the lower-left, the Night Elf Priest girl (lavender-silver hair, pointed ears, golden circlet, white robe, staff stowed behind) clasps both hands with joyful tearful lilac eyes, gazing up at an ornate crimson-and-gold cloth bishop miter hat radiating rare-blue loot sparkles hovering between them. Keep characters in lower two-thirds, leaving generous pure #FFFFFF white headroom across top 38% and keeping the top-right corner completely empty for an item tooltip.",
       "tail_target": "left",
-      "item_tooltip": null
+      "item_tooltip": {
+        "image_path": null,
+        "item_name": "화이트메인의 모자",
+        "wowhead_item_id": 7720,
+        "quality": "rare",
+        "slot_left": "머리",
+        "slot_right": "천",
+        "lines": [
+          "획득 시 귀속",
+          "방어도 52",
+          "체력 +9",
+          "지능 +14",
+          "정신력 +14",
+          "요구 레벨 39"
+        ],
+        "equip_effects": [],
+        "icon_name": "inv_helmet_12",
+        "preferred_corner": "top_right",
+        "target_width": 288
+      }
     },
     {
       "cut_index": 2,
       "aspect_ratio": "16:9",
       "layout_slot": "bottom",
       "characters": [
-        "드워프 사냥꾼",
-        "노움 도적"
+        "스카이본 마법사"
       ],
-      "speaker": "드워프 사냥꾼",
-      "dialogue": "도적은 깨끗해?\n필비도 성검도\n다 도적 꺼라며!",
+      "speaker": "스카이본 마법사",
+      "dialogue": "오~ 인던 가이드북에\n캐스터템이라 써있네!\n바로 입찰해서 먹음♪",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero speech bubbles). Dynamic side-profile 90-degree action shot arranged across the lower frame. On the lower-left, the Dwarf Hunter girl (top-row #4: fluffy snowy bear hood, braided crimson hair, holding her wooden hunting musket) steps into frame sideways, wagging an accusatory gloved finger with a sly mocking grin. On the lower-right, the Gnome Rogue flinches sideways with puffed sulky cheeks and narrow side-eye. Generous pure #FFFFFF white headroom across top 35%.",
-      "tail_target": "left",
+      "visual_prompt": "Side-profile 90-degree action shot on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). Positioned cleanly on the right half facing left, the Skyborne Mage girl (golden-blonde hair with airy pastel sky-blue tips, sailor collar, bread and flask put away) sprints forward clutching a thick blank leather fantasy guidebook under her left arm while enthusiastically tossing a chunky 6-sided loot cube die with black dot pips only (strictly ZERO digits, ZERO letters), beaming with a starry-eyed greedy grin. Medium 2.5-to-3-head chibi scale filling ~65% of canvas height, leaving the left 48% empty pure #FFFFFF white space.",
+      "tail_target": "right",
       "item_tooltip": null
     },
     {
@@ -40,13 +58,13 @@
       "aspect_ratio": "4:3",
       "layout_slot": "top",
       "characters": [
-        "노움 도적",
-        "드워프 사냥꾼"
+        "나이트엘프 사제",
+        "스카이본 마법사"
       ],
-      "speaker": "노움 도적",
-      "dialogue": "냥꾼은 랩터크리\n한다고 근접무기\n다 굴리잖아!",
+      "speaker": "나이트엘프 사제",
+      "dialogue": "법사님!! 지금 낀 모자가\n주문력 훨씬 더 높은데\n왜 굴리셨어요?!",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero speech bubbles). Dutch-tilt dynamic angle comic cut. The Gnome Rogue and Dwarf Hunter lean aggressively forward nose-to-nose in a fiery slapstick feud, sparks flying between their glaring eyes with comical red anger lightning and clenched teeth, bickering over dungeon loot priority. Generous pure #FFFFFF white headroom across top 35%.",
+      "visual_prompt": "Dramatic low-angle shot looking up at the confrontation on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). On the lower-left, the Night Elf Priest girl lunges forward pointing at the Mage's head with trembling outraged lilac eyes, shouting jaw-drop, and flying sweat drops (staff stowed behind); on the lower-right, the Skyborne Mage girl stands totally unbothered with a breezy smug smile, casually balancing the crimson bishop miter hat right on top of her glowing wizard circlet. Medium 2.5-to-3-head chibi scale, leaving generous pure #FFFFFF white headroom across top 38%.",
       "tail_target": "left",
       "item_tooltip": null
     },
@@ -55,14 +73,13 @@
       "aspect_ratio": "16:9",
       "layout_slot": "bottom",
       "characters": [
-        "언데드 성기사",
-        "오크 전사"
+        "스카이본 마법사"
       ],
-      "speaker": "언데드 성기사",
-      "dialogue": "2005년에도 이랬지.\n싸움 끝엔 늘\n무분 전사가 웃었어.",
+      "speaker": "스카이본 마법사",
+      "dialogue": "그런 건 모르겠고\n가이드북에 써있다고요!\n님이 가이드북보다 잘 앎?!",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero speech bubbles). Dramatic low-angle shot looking up. On the lower-left, the Undead Paladin girl (stitched skull hood, silver plate armor) leans back with arms crossed, chuckling cynical veteran wisdom with half-closed eyes and a knowing smirk beside a minimalist dungeon stone vignette. On the lower-right in the background, the Orc Warrior stands watching. Generous pure #FFFFFF white headroom top 35%.",
-      "tail_target": "left",
+      "visual_prompt": "Tilted dutch-tilt diagonal angle on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). Positioned on the right half facing left, the Skyborne Mage girl (wearing the crimson-and-gold bishop miter hat perched proudly on her head) slams her thick blank leather fantasy guidebook against her chest with puffed sulky cheeks, pointing her other finger forward in righteous lecture with haughty closed eyes and golden sparkles. Consistent medium 2.5-to-3-head chibi scale filling ~65% of canvas height, leaving the left 48% pure white.",
+      "tail_target": "right",
       "item_tooltip": null
     },
     {
@@ -70,12 +87,12 @@
       "aspect_ratio": "4:3",
       "layout_slot": "top",
       "characters": [
-        "오크 전사"
+        "나이트엘프 사제"
       ],
       "speaker": null,
       "dialogue": null,
       "wordless": true,
-      "visual_prompt": "Solo cute anime chibi girl from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero speech bubbles). High-angle shot looking down at the scheming Warrior. Centered comedic chest-up freeze-frame of the Orc Warrior girl (top-row #1: green plush orc hood, crimson eyes, spiky pauldrons): rubbing her armored gauntlets together with a sneaky, greedy villainous grin, crimson eyes glittering with shameless delight as she plots to claim every single contested weapon.",
+      "visual_prompt": "High-angle shot looking down at the Night Elf Priest girl slumped kneeling on the ground in total speechless despair, on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). Squarely centered and filling ~80% of canvas height. Soul-leaving deadpan horror freeze-frame: deep ominous dark blue gloom shadow across her crescent circlet, heavy dark eye bags, lilac eyes blown wide with trembling pinpoint pupils, and a pale wispy cartoon soul puff floating up out of her parted mouth.",
       "tail_target": "center",
       "item_tooltip": null
     },
@@ -85,13 +102,13 @@
       "layout_slot": "bottom",
       "characters": [
         "오크 전사",
-        "언데드 성기사"
+        "나이트엘프 사제"
       ],
       "speaker": "오크 전사",
-      "dialogue": "근데 기사님...\n2005년 얘기면\n관짝에 몇 년 계셨어요?",
+      "dialogue": "사제님 진정해…\n가이드북 신도랑은\n대화하는 거 아냐.",
       "wordless": false,
-      "visual_prompt": "Two cute anime chibi girls from the Draft C cast sheet on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero speech bubbles). Dynamic back-view shot. On the lower-left, the Orc Warrior girl is seen from behind walking away carrying a bundle of looted swords and interlocking ring-mesh mail armor under her arm, casually tossing a savage boomer burn back over her shoulder with an unbothered smirk. On the lower-right, the Undead Paladin freezes in shocked stone stillness with jaw dropping. Generous pure white headroom top 35%.",
-      "tail_target": "left",
+      "visual_prompt": "Dynamic back-view shot on a 100% pure solid #FFFFFF white borderless background (no scenery, no floor shading, no gray backdrop, no panel borders, zero text, zero letters, zero digits, zero speech bubbles, zero UI frames). Positioned on the right half facing left: the Orc Warrior girl (green orc onesie hood, silver battle axe strapped across her back) is seen partially from behind, leaning down to pat the slumped Priest's shoulder, looking back over her shoulder with a wry sympathetic sweat-drop grimace; beside her, the Priest sits motionless with hollow dead-fish eyes. Medium 2.5-to-3-head chibi scale, leaving the left 46% pure white.",
+      "tail_target": "right",
       "item_tooltip": null
     }
   ]
