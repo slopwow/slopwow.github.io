@@ -520,5 +520,204 @@
       "assets/episodes/ep012/page_3.png"
     ],
     "canonical_url": "https://slopwow.github.io/episodes/ep012.html"
+  },
+  {
+    "episode_id": "ep013",
+    "episode_number": 13,
+    "title": "내가 징기로 골드 버는 법 공유함",
+    "subtitle": "징기의 부특 읍소 루팅으로 던전당 10골드 — 양심(?) 골드 파밍 상황극",
+    "source_post_no": "109167",
+    "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=109167&exception_mode=recommend&page=1",
+    "created_at": "2026-11-24T08:14:53+09:00",
+    "date_short": "2026-11-24",
+    "cut_count": 6,
+    "cast_used": [
+      "언데드 성기사",
+      "나이트엘프 사제",
+      "오크 전사"
+    ],
+    "cast_chips": [
+      {
+        "id": "undead_paladin",
+        "name": "언데드 성기사",
+        "color": "#9E9E9E"
+      },
+      {
+        "id": "nightelf_priest",
+        "name": "나이트엘프 사제",
+        "color": "#9575CD"
+      },
+      {
+        "id": "orc_warrior",
+        "name": "오크 전사",
+        "color": "#4CAF50"
+      }
+    ],
+    "full_image": "assets/episodes/ep013/episode_full.jpg",
+    "thumb_image": "assets/episodes/ep013/thumb.jpg",
+    "page_images": [
+      "assets/episodes/ep013/page_1.png",
+      "assets/episodes/ep013/page_2.png",
+      "assets/episodes/ep013/page_3.png"
+    ],
+    "canonical_url": "https://slopwow.github.io/episodes/ep013.html"
+  },
+  {
+    "episode_id": "ep014",
+    "episode_number": 14,
+    "title": "새벽 나락팟 개염병났네",
+    "subtitle": "새벽 검은바위 나락 풀퀘팟, 파장 도적의 'YES' 대참사 — 인던 상황극",
+    "source_post_no": "109555",
+    "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=109555&exception_mode=recommend&page=1",
+    "created_at": "2026-11-24T08:22:05+09:00",
+    "date_short": "2026-11-24",
+    "cut_count": 6,
+    "cast_used": [
+      "스카이본 마법사",
+      "노움 도적",
+      "드워프 사냥꾼"
+    ],
+    "cast_chips": [
+      {
+        "id": "skyborne_mage",
+        "name": "스카이본 마법사",
+        "color": "#29B6F6"
+      },
+      {
+        "id": "gnome_rogue",
+        "name": "노움 도적",
+        "color": "#FFC107"
+      },
+      {
+        "id": "dwarf_hunter",
+        "name": "드워프 사냥꾼",
+        "color": "#2E7D32"
+      }
+    ],
+    "full_image": "assets/episodes/ep014/episode_full.jpg",
+    "thumb_image": "assets/episodes/ep014/thumb.jpg",
+    "page_images": [
+      "assets/episodes/ep014/page_1.png",
+      "assets/episodes/ep014/page_2.png",
+      "assets/episodes/ep014/page_3.png"
+    ],
+    "canonical_url": "https://slopwow.github.io/episodes/ep014.html"
+  },
+  {
+    "episode_id": "ep015",
+    "episode_number": 15,
+    "title": "진짜 병신겜 씨발 좆같은거 접는다",
+    "subtitle": "수양사제 한 땀 한 땀 남작 솔플, 루팅 직전 위상 변경 억까 — 필드 퀘스트 상황극",
+    "source_post_no": "97410",
+    "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=97410&exception_mode=recommend&page=2",
+    "created_at": "2026-11-24T08:25:22+09:00",
+    "date_short": "2026-11-24",
+    "cut_count": 6,
+    "cast_used": [
+      "나이트엘프 사제",
+      "노움 도적"
+    ],
+    "cast_chips": [
+      {
+        "id": "nightelf_priest",
+        "name": "나이트엘프 사제",
+        "color": "#9575CD"
+      },
+      {
+        "id": "gnome_rogue",
+        "name": "노움 도적",
+        "color": "#FFC107"
+      }
+    ],
+    "full_image": "assets/episodes/ep015/episode_full.jpg",
+    "thumb_image": "assets/episodes/ep015/thumb.jpg",
+    "page_images": [
+      "assets/episodes/ep015/page_1.png",
+      "assets/episodes/ep015/page_2.png",
+      "assets/episodes/ep015/page_3.png"
+    ],
+    "canonical_url": "https://slopwow.github.io/episodes/ep015.html"
+  },
+  {
+    "episode_id": "ep016",
+    "episode_number": 16,
+    "title": "<한국성기사협회> 로데론 정화 원정대",
+    "subtitle": "성기사 원정대의 브릴·로데론 정화 행진, 그리고 이단들의 역정화 — 필드 상황극",
+    "source_post_no": "108678",
+    "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=108678&exception_mode=recommend&page=1",
+    "created_at": "2026-11-24T08:28:42+09:00",
+    "date_short": "2026-11-24",
+    "cut_count": 6,
+    "cast_used": [
+      "나이트엘프 사제",
+      "언데드 성기사",
+      "트롤 주술사"
+    ],
+    "cast_chips": [
+      {
+        "id": "nightelf_priest",
+        "name": "나이트엘프 사제",
+        "color": "#9575CD"
+      },
+      {
+        "id": "undead_paladin",
+        "name": "언데드 성기사",
+        "color": "#9E9E9E"
+      },
+      {
+        "id": "troll_shaman",
+        "name": "트롤 주술사",
+        "color": "#00ACC1"
+      }
+    ],
+    "full_image": "assets/episodes/ep016/episode_full.jpg",
+    "thumb_image": "assets/episodes/ep016/thumb.jpg",
+    "page_images": [
+      "assets/episodes/ep016/page_1.png",
+      "assets/episodes/ep016/page_2.png",
+      "assets/episodes/ep016/page_3.png"
+    ],
+    "canonical_url": "https://slopwow.github.io/episodes/ep016.html"
+  },
+  {
+    "episode_id": "ep017",
+    "episode_number": 17,
+    "title": "와우 뉴비인데 가끔 충격받음 (feat.파티찾기)",
+    "subtitle": "줄파락 입구 40분 대기 — 다른 대륙 흑마의 적반하장 파티찾기 상황극",
+    "source_post_no": "96439",
+    "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=96439&exception_mode=recommend&page=2",
+    "created_at": "2026-11-24T08:31:10+09:00",
+    "date_short": "2026-11-24",
+    "cut_count": 6,
+    "cast_used": [
+      "오크 전사",
+      "스카이본 마법사",
+      "인간 흑마법사"
+    ],
+    "cast_chips": [
+      {
+        "id": "orc_warrior",
+        "name": "오크 전사",
+        "color": "#4CAF50"
+      },
+      {
+        "id": "skyborne_mage",
+        "name": "스카이본 마법사",
+        "color": "#29B6F6"
+      },
+      {
+        "id": "human_warlock",
+        "name": "인간 흑마법사",
+        "color": "#7E57C2"
+      }
+    ],
+    "full_image": "assets/episodes/ep017/episode_full.jpg",
+    "thumb_image": "assets/episodes/ep017/thumb.jpg",
+    "page_images": [
+      "assets/episodes/ep017/page_1.png",
+      "assets/episodes/ep017/page_2.png",
+      "assets/episodes/ep017/page_3.png"
+    ],
+    "canonical_url": "https://slopwow.github.io/episodes/ep017.html"
   }
 ]
