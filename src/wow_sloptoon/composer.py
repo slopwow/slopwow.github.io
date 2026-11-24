@@ -3974,6 +3974,125 @@ def _compose_wide_slim_variable_panel(
         cur_fs = fs_start
         max_rx_s = min(206.0, W * 0.25)
         max_ry_s = min(110.0, H * 0.27)
+
+        # Natural full-scale pre-pass: if artwork with an L-shaped floor vignette already leaves
+        # pure #FFFFFF room in the upper-left / upper-right bubble corner near full panel height,
+        # place the bubble directly with minimal shrink instead of squashing into a tiny half-box!
+        full_avail_w = W - 2.0 * box_margin
+        full_avail_h = H - (4.0 if touches_bottom else 16.0)
+        base_full_scale = min(full_avail_w / cw, full_avail_h / ch)
+        for pre_s_mult in (1.0, 0.92, 0.84, 0.76):
+            full_scale = base_full_scale * pre_s_mult
+            f_nw = max(1, int(round(cw * full_scale)))
+            f_nh = max(1, int(round(ch * full_scale)))
+            f_px = float(W - box_margin - f_nw) if side_dir == "right" else float(box_margin)
+            f_py = float(H - f_nh) if touches_bottom else float((H - f_nh) / 2.0)
+            full_canvas = place_scaled_art(clean_raw, W, H, full_scale, f_px, f_py, crop_box=crop_box)
+            full_mask = get_art_mask(full_canvas, threshold=255)
+            full_bbox = extract_art_bbox(full_canvas, threshold=255)
+            if full_bbox is None:
+                continue
+            for pre_fs in (fs_start, max(15, fs_start - 2)):
+                pre_max_lw = 296.0 if pre_fs >= 20 else 276.0
+                pre_lines, pre_subs = wrap_korean_dialogue(
+                    dialogue, pre_fs, max_line_width_px=pre_max_lw, max_lines=4
+                )
+                pre_rx, pre_ry = _compute_snug_ellipse_radii(
+                    dummy,
+                    pre_lines,
+                    set(pre_subs),
+                    pre_fs,
+                    min_rx=min(118.0, max_rx_s),
+                    max_rx=max_rx_s,
+                    min_ry=min(46.0, max_ry_s),
+                    max_ry=max_ry_s,
+                    pad_x=30.0,
+                    pad_y=18.0,
+                )
+                pre_cx = (
+                    box_margin + pre_rx + stroke_px + 6.0
+                    if side_dir == "right"
+                    else W - box_margin - pre_rx - stroke_px - 6.0
+                )
+                pre_inner = (
+                    pre_cx + pre_rx + stroke_px if side_dir == "right" else pre_cx - pre_rx - stroke_px
+                )
+                for cy_ratio in (0.28, 0.34, 0.22):
+                    pre_cy = float(
+                        np.clip(
+                            H * cy_ratio,
+                            box_margin + pre_ry + stroke_px + 4.0,
+                            H - box_margin - pre_ry - stroke_px - 4.0,
+                        )
+                    )
+                    head_y = float(
+                        np.clip(
+                            full_bbox[1] + (full_bbox[3] - full_bbox[1]) * 0.28,
+                            pre_cy - pre_ry * 0.45,
+                            pre_cy + pre_ry * 0.45,
+                        )
+                    )
+                    by0, by1 = max(0, int(head_y - 40)), min(H, int(head_y + 40))
+                    _, bxs = np.where(full_mask[by0:by1, :])
+                    if side_dir == "right":
+                        lx = float(bxs.min()) if len(bxs) else float(full_bbox[0])
+                        m_reach = min(lx - 14.0, pre_cx + pre_rx + 64.0)
+                        b_ang = float(np.clip(np.rad2deg(np.arctan2((head_y - pre_cy) / pre_ry, 1.0)), -18.0, 18.0))
+                        t_crv = 4.5
+                    else:
+                        lx = float(bxs.max()) if len(bxs) else float(full_bbox[2])
+                        m_reach = max(lx + 14.0, pre_cx - pre_rx - 64.0)
+                        b_ang = 180.0 - float(np.clip(np.rad2deg(np.arctan2((head_y - pre_cy) / pre_ry, 1.0)), -18.0, 18.0))
+                        t_crv = -4.5
+
+                    for pull in (1.0, 0.72, 0.48):
+                        if side_dir == "right":
+                            if m_reach <= pre_inner + 12.0:
+                                t_tip = None
+                            else:
+                                tx = min(pre_inner + max(14.0, (m_reach - pre_inner) * pull), lx - 12.0)
+                                t_tip = (tx, head_y) if tx >= pre_inner + 14.0 else None
+                        else:
+                            if m_reach >= pre_inner - 12.0:
+                                t_tip = None
+                            else:
+                                tx = max(pre_inner - max(14.0, (pre_inner - m_reach) * pull), lx + 12.0)
+                                t_tip = (tx, head_y) if tx <= pre_inner - 14.0 else None
+                        if t_tip is None:
+                            continue
+                        b_lay, b_dst, b_met = _build_bubble_layer(
+                            panel_size=(W, H),
+                            center=(pre_cx, pre_cy),
+                            lines=pre_lines,
+                            radii=(pre_rx, pre_ry),
+                            tail_tip=t_tip,
+                            tail_base_angle_deg=b_ang,
+                            tail_half_deg=9.0,
+                            tail_curve=t_crv,
+                            font_size=pre_fs,
+                            stroke_px=stroke_px,
+                            sub_line_indices=pre_subs,
+                        )
+                        b_msk = _bubble_alpha_mask((W, H), b_lay, b_dst)
+                        if int((full_mask & b_msk).sum()) == 0:
+                            out_p = full_canvas.copy()
+                            if b_lay is not None:
+                                rgba = out_p.convert("RGBA")
+                                rgba.alpha_composite(b_lay, dest=b_dst)
+                                out_p = rgba.convert("RGB")
+                            return out_p, {
+                                "wordless": False,
+                                "bubble_count": 1,
+                                "overlap_px": 0,
+                                "min_clearance_px": compute_min_clearance(full_mask, b_msk),
+                                "font_size": b_met["font_size"],
+                                "art_bbox": list(full_bbox),
+                                "tail_target": cut.tail_target,
+                                "bubble_center": [round(pre_cx, 1), round(pre_cy, 1)],
+                                "bubble_side_resolved": "left" if side_dir == "right" else "right",
+                                "tail_tip": [round(t_tip[0], 1), round(t_tip[1], 1)],
+                            }
+
         for attempt in range(16):
             max_line_w = 292.0 if cur_fs >= 20 else 276.0
             lines, sub_indices = wrap_korean_dialogue(
@@ -4514,9 +4633,14 @@ def _compose_variable_panel(
     dialogue = (cut.dialogue or "").strip()
 
     if cut.wordless or not dialogue:
-        side_pad = 14 if is_narrow else (20 if border_style == "open" else 24)
-        top_pad = 16 if is_narrow else (24 if border_style == "open" else 16)
-        bottom_pad = 14
+        if border_style == "box":
+            side_pad = 6
+            top_pad = 6
+            bottom_pad = 6
+        else:
+            side_pad = 14 if is_narrow else 20
+            top_pad = 16 if is_narrow else 24
+            bottom_pad = 14
         panel, audit = _compose_wordless_panel(
             raw_im,
             target_w=target_w,
