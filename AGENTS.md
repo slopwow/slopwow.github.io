@@ -1,30 +1,49 @@
-# AGENTS.md — 와우 포에버 슬롭툰 (`sloptoon`)
+# 와우 포에버 슬롭툰 (`sloptoon`) — Cross-AI Project Instructions (SSOT)
 
-> **운영 모드**: 디시인사이드 업로드는 영구 중단(미게시) 상태이며, 자체 정적 웹 아카이브([slopwow.github.io](https://slopwow.github.io/)) 전용으로 제작·배포합니다.
+이 문서는 `slopwow/slopwow.github.io` 공개 저장소의 **100% 독립 완결형 단일 정본(SSOT) 지시서**입니다. Claude Code, Codex, Cursor, Gemini CLI, Antigravity 등 모든 AI 에이전트는 외부 별도 지시서 없이 이 문서만으로 작업 규칙을 준수합니다.
+
+> **운영 모드**: 디시인사이드 업로드는 영구 중단(자동 게시 금지·미게시) 상태이며, 자체 정적 웹 아카이브([slopwow.github.io](https://slopwow.github.io/)) 전용으로 제작·배포합니다.
 
 ## 1. 콘텐츠·익명성·제목 규칙 (절대 준수)
-- **포에버갤 전용·소재 기준** – 디시인사이드 WOW 포에버 마이너 갤러리(`wowforever`) **2026-11 정식 출시 이후** 실제 인게임 사건·사고(닌자, 먹튀, 입찰 분쟁, 억까, 파티 참사 등) 개념글만 다룹니다. 와우 인벤은 일절 언급하지 않습니다.
-- **영구 금지 소재** – 베타 시절(2026-10 이전) 게시글, `🎬RP` 말머리 및 장문 RP 연재/편지 글, 제목에 특정 닉네임·길드명이 직접 박힌 저격글, 일반론·진영 비교글은 웹툰화 영구 금지입니다(`scout.py` 자동 필터 + `audit_script_quality()` 적용).
-- **100% 익명화** – 명예훼손·신상 노출 방지를 위해 당사자의 실제 아이디·닉네임·길드명은 대본·말풍선·본문·툴팁·크롭 이미지 어디에도 절대 적지 않으며, 오직 직업 호칭(`도적`, `징기`, `보기`, `흑마`, `사제` 등)으로만 표기합니다.
+- **포에버갤(`wowforever`) 전용·소재 기준** – 디시인사이드 WOW 포에버 마이너 갤러리(`wowforever`) **2026-11 정식 출시 이후** 실제 인게임 사건·사고(닌자, 먹튀, 입찰 분쟁, 억까, 파티 참사 등) 개념글만 다룹니다. **와우 인벤은 일절 수집·언급하지 않습니다.**
+- **영구 금지 소재** – 베타 시절(2026-10 이전) 게시글, `🎬RP` 말머리 및 장문 RP 연재/편지 글, 제목에 특정 닉네임·길드명이 직접 박힌 저격글, 일반론·진영 비교글, 정치·현실 분쟁은 웹툰화 영구 금지입니다(`scout.py` 자동 필터 + `audit_script_quality()` 적용).
+- **100% 익명화 (명예훼손·신상 노출 방지)** – 당사자의 실제 아이디·닉네임·길드명(패러디 포함)은 대본·말풍선·본문·툴팁·크롭 이미지 어디에도 절대 적지 않으며, 오직 직업 호칭(`도적`, `징기`, `보기`, `흑마`, `사제` 등)으로만 표기합니다.
 - **원본 제목 100% 일치** – `script.source_title` 및 `EpisodeRecord.title`은 원본 개념글 제목을 토씨 하나 바꾸지 않은 원문 그대로 사용합니다(`EP.{N} — ` 및 `[만화]` 임의 치환 금지).
-- **디시 미게시·사이트 전용** – 모든 신규 제작분은 `slopwow.github.io` 정적 아카이브 전용으로 자동 빌드·배포합니다. 외부 커뮤니티 신규 게시는 명시적 사전 승인 없이는 금지하며 CAPTCHA는 절대 우회하지 않습니다.
+- **디시 자동 게시 금지·사이트 전용** – 모든 신규 제작분은 `slopwow.github.io` 정적 아카이브 전용으로 자동 빌드·배포합니다. 디시인사이드 자동 글쓰기 및 외부 커뮤니티 신규 게시는 명시적 사전 승인 없이 영구 금지하며, CAPTCHA는 절대 우회하지 않습니다.
 
 ## 2. 비주얼·편집 바이블 (시안 C)
-- **캐스트·화풍 정본** – `assets/cast_sheet_c.jpg`(클린) · `assets/cast_sheet_c_labeled.png`(라벨본, 9종족×9직업 시안 C 2.5–3등신 통일·Clean Hand), `assets/sloptoon_style_ref.jpg`, `src/wow_sloptoon/wow_lore.py`(Classic+ 고증 바이블)를 따릅니다.
-- **컷 구성** – 100% 순백색(`#FFFFFF`) 무경계 배경, 얇은 웹툰 셀 채색, 1컷당 1–2명 집중 구도, **4–6컷 100% 인게임 라이브 상황극**(갤러리 메타 댓글 컷 금지), 필수 **무언 충격 정지 클로즈업 1컷(`wordless=True`)**, 4배 슈퍼샘플링 타원 말풍선(`overlap_px == 0`).
+- **캐스트·화풍 일관성 정본** – `assets/cast_sheet_c.jpg`(클린) · `assets/cast_sheet_c_labeled.png`(라벨본, 9종족×9직업 시안 C 2.5–3등신 통일·Clean Hand), `assets/sloptoon_style_ref.jpg`, `src/wow_sloptoon/wow_lore.py`(Classic+ 고증 바이블)를 엄수합니다.
+- **순백 배경 및 컷 구성** – **100% 순백색(`#FFFFFF`) 무경계 배경**, 얇은 웹툰 셀 채색, 1컷당 1–2명 집중 구도, **4–6컷 100% 인게임 라이브 상황극**(갤러리 메타 댓글 컷 금지), 필수 **무언 충격 정지 클로즈업 1컷(`wordless=True`)**, 4배 슈퍼샘플링 타원 말풍선(`overlap_px == 0`)을 유지합니다.
 - **와우 아이템 툴팁** – `src/wow_sloptoon/item_tooltip.py`(`ComicCut.item_tooltip`)로 다크 네이비 와우 툴팁 카드를 무겹침(`tooltip_overlap_px == 0`) 합성합니다(유저 닉네임 제외).
 - **하단 주소 유인 워터마크** – 모든 통합본(`episode_full.jpg`) 최하단에 `slopwow.github.io` 900×132 순백 유인 배너를 필수 포함합니다(`episode_full_raw.jpg` 원본 별도 보관, 중복 찍힘 방지).
 
 ## 3. Gemini API 표준·명령·배포
-- **Gemini API 표준** – `google-genai >= 3.2.0` Interactions API만 사용합니다(`gemini-4-hydrogen` 대본, `gemini-nano-banana-2.1` 기본 작화 / 옵션 `gemini-3-pro-image`, `gemini-3.1-flash-lite-image`). 구형 `google-generativeai` 및 `gemini-2.5-*` 금지.
-- **공개 웹 클린 원칙** – 원격 배포는 `slopwow/slopwow.github.io`(`main`: 소스, `gh-pages`: 정적 사이트, 도감 `https://slopwow.github.io/cast.html`)입니다. `site/`에 `publish.html`, 업로드 도우미, 외부 글쓰기 링크, 관리/디버그 UI를 절대 노출하지 않습니다.
-- **실행·검증·배포 명령**
-  - 테스트: `python -m pytest -v`
-  - 사이트 빌드: `python -m wow_sloptoon.cli build-site`
-  - 파이프라인 CLI: `python -m wow_sloptoon.cli <scout|generate|build-site|watermark|queue|autopilot>`
-  - 원클릭 배포: `powershell -ExecutionPolicy Bypass -File .\deploy-pages.ps1` (배치 실행: `.\run-factory.ps1`)
+- **Gemini API 표준** – `google-genai >= 3.2.0` Interactions API만 사용합니다(`gemini-4-hydrogen` 대본, `gemini-nano-banana-2.1` 기본 작화 / 옵션 `gemini-3-pro-image`, `gemini-3.1-flash-lite-image`). 구형 `google-generativeai` 및 `gemini-2.5-*` 사용을 금지합니다.
+- **공개 웹 클린 원칙** – 원격 배포는 `slopwow/slopwow.github.io`(`main`: 소스, `gh-pages`: 정적 사이트, 도감 [slopwow.github.io/cast.html](https://slopwow.github.io/cast.html))입니다. `site/`에 `publish.html`, 업로드 도우미, 외부 글쓰기 링크, 관리/디버그 UI를 절대 노출하지 않습니다.
+- **필수 실행·검증·배포 명령**
+```powershell
+python -m pytest -v                                                    # 단위·통합 테스트 실행
+python -m wow_sloptoon.cli build-site                                  # site/ 정적 웹 아카이브 빌드
+python -m wow_sloptoon.cli <scout|generate|build-site|watermark|queue|autopilot>
+powershell -ExecutionPolicy Bypass -File .\deploy-pages.ps1            # main & gh-pages 원클릭 배포 (배치: .\run-factory.ps1)
+```
 
-## 4. 크로스-AI 공통 응답·실물검증·안전선
-- **응답 스타일** – 항상 자연스러운 한국어 존댓말로 답하고 **설명 → `### 결론` → `### 다음 확인 사항`(2개, 종결 시 생략 가능)** 구조를 유지합니다. 1단락 1–2문장, `**키워드** – 요약`, 3개 이상 비교는 표, URL·파일은 마크다운 링크를 사용합니다(한글 기울임꼴·취소선·과도한 느낌표 금지).
-- **자율 완결 및 실물 검증** – 수동 작업으로 떠넘기지 않고 CLI·스크립트로 구현·테스트·배포·임시 산출물 정리까지 완결합니다. Exit Code 0만으로 완료 선언하지 않고 `pytest` 통과·실제 산출물 무겹침·실서버 HTTP 200 등 실물 검증 후 보고합니다.
-- **보안·안전선** – API 키·토큰(`.env`의 `GEMINI_API_KEY` 등), 개인정보, 로컬 절대경로는 커밋·로그·응답에 절대 노출하지 않으며, 유료 과금·외부 게시 변경은 반드시 사전 확인합니다.
+## 4. 크로스-AI 공통 협업·실행·출력 원칙
+### 응답 형식 및 소통
+- **한국어 존댓말·고정 구조** – 항상 자연스러운 한국어 존댓말로 답하며 **설명 → `### 결론` → `### 다음 확인 사항`(2개)** 구조를 유지합니다(단순 확인·완전 종결 응답에서는 `### 다음 확인 사항` 생략 가능).
+- **간결한 마크다운 규칙** – `###` / `####` 제목으로 섹션을 나누고 1단락 1–2문장, 한 줄 불릿(`- **키워드** – 요약`), 3개 이상 비교 시 마크다운 표, 파일·URL은 클릭 가능한 마크다운 링크를 사용합니다(한글 기울임꼴·취소선·과도한 느낌표 금지).
+- **직설 판정 및 오류 처리** – 아부나 모호한 완곡어 대신 명확한 **Go / Pivot / Kill** 판정을 제시하며, 오류가 발생하면 변명 없이 1줄로 인정하고 즉시 수정합니다.
+
+### 자율 완결 및 병렬/스웜 우선 실행
+- **자율 완결(End-to-End)** – 로그인·패스키·CAPTCHA·결제·권한 승인 프롬프트를 제외하고 수동 작업을 떠넘기지 않으며, CLI·스크립트로 구현·테스트·배포·임시 산출물 정리까지 끝까지 완결합니다.
+- **병렬·스웜 실행 우선** – 다중 파일 수정, 개념글 리서치·크롤링, 멀티컷 원화 생성, 복합 구현·품질 감사는 순차 처리 대신 **병렬 에이전트·스웜(`/swarm`)·서브에이전트 팬아웃을 우선 적용**합니다.
+
+### 실물 E2E 검증 및 사실성·순수 SEO
+- **실물 E2E 검증 필수** – 빌드 성공이나 `Exit Code 0`만으로 완료를 선언하지 않습니다. `python -m pytest -v` 통과, 실제 렌더링 이미지의 말풍선·툴팁 무겹침(`overlap_px == 0`, `tooltip_overlap_px == 0`), 라이브 URL `HTTP 200`, 브라우저 콘솔 0에러, 실데이터 반영을 직접 확인한 뒤 완료를 보고합니다.
+- **고증·순수 기술 SEO** – 원본 개념글 팩트와 와우 Classic+ 고증에 기반해 AI 필러를 배제하며, 외부 커뮤니티 수동 홍보·스팸 대신 정적 아카이브의 기술적 SEO(메타태그·사이트맵·초고속 로딩·콘텐츠 완성도)에 집중합니다.
+
+## 5. 4대 절대 안전선
+1. **공개 웹·운영 도구 분리 및 PUBLIC 0바이트 PII/비밀정보** – `site/`에 관리·업로드·디버그 UI를 절대 노출하지 않습니다. PUBLIC 저장소에는 개인 실명·소속·거주지·로컬 절대경로·API 키·토큰(`.env`의 `GEMINI_API_KEY` 등)을 0바이트로 유지합니다.
+2. **100% 익명화·비식별 원칙** – 에피소드·데이터·로그·문서 어디에도 실제 아이디·닉네임·길드명·개인 신상정보를 남기지 않고 100% 익명 처리합니다.
+3. **소유 저장소 배포 자율 vs 외부 게시 사전 승인** – 소유 저장소(`slopwow/slopwow.github.io`) 커밋·정적 사이트 배포는 자율 완결하되, 디시인사이드 등 외부 커뮤니티·SNS 신규 게시는 반드시 명시적 사전 승인 후 진행합니다(CAPTCHA 우회 영구 금지).
+4. **유료 API·과금·계정 약관 리스크 사전 승인** – 유료 API 과금 확대·결제 발생·계정 약관 위반 소지가 있는 변경은 실행 전 반드시 사전 확인을 받습니다.
