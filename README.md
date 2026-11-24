@@ -16,14 +16,14 @@
 Antigravity 또는 IDE에서 아래 프로젝트 폴더를 **활성 워크스페이스(Active Workspace)**로 열어 작업하시는 것을 권장합니다.
 
 ```text
-C:\Users\kbu39\.gemini\antigravity\scratch\wow-forever-sloptoon
+<REPO_ROOT>
 ```
 
 ### 설치 및 로컬 웹 아카이브 즉시 실행
 
 ```powershell
 # 1) 프로젝트 폴더로 이동
-cd C:\Users\kbu39\.gemini\antigravity\scratch\wow-forever-sloptoon
+cd <REPO_ROOT>
 
 # 2) 개발 모드 패키지 설치
 pip install -e ".[dev]"

@@ -4,7 +4,7 @@
 
 .DESCRIPTION
     Provides one-command inspection and maintenance helpers for WOW Forever Sloptoon
-    (C:\Users\kbu39\Desktop\antigravity\sloptoon):
+    (<REPO_ROOT>):
       - Default / -Status : Read-only dashboard showing Antigravity sidecar status,
                             Windows Task Scheduler status, archive episode count, and
                             DCInside publish queue state (never mutates JSON/config files).
