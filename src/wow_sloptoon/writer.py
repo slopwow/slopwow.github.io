@@ -20,7 +20,8 @@ from wow_sloptoon.cast import (
     resolve_cast_member,
 )
 from wow_sloptoon.config import DEFAULT_TEXT_MODEL, Settings, load_settings
-from wow_sloptoon.models import ComicCut, EpisodeScript, GalleryPost
+from wow_sloptoon.layouts import PAGE_LAYOUTS, get_page_layout
+from wow_sloptoon.models import ActPage, ComicCut, EpisodeScript, GalleryPost
 from wow_sloptoon.wow_lore import (
     ALLIANCE_ZONES,
     HORDE_ZONES,
@@ -109,6 +110,100 @@ def build_writer_prompt(post: GalleryPost, episode_number: int) -> str:
     )
 
 
+V4_WRITER_SYSTEM_RULES = """당신은 디시인사이드 '와우 포에버 마이너 갤러리(wowforever)' 개념글을 **V4 5막 가변 레이아웃(5 Acts · 10~14컷 · 페이지 배치 작화)** 초귀염 팝·개그 웹툰(《와우 포에버 슬롭툰》) 대본으로 각색하는 전문 시나리오 작가입니다.
+
+[V4 5막 가변 레이아웃 절대 준수 규칙]
+1. **5막(5 Acts) · 10~14컷 장편 서사 리듬 (`layout_mode="v4_five_act"`)**:
+   - 반드시 `layout_mode`를 `"v4_five_act"`로 설정하고, `acts` 배열에 정확히 **5개의 막(`act_number`: 1, 2, 3, 4, 5)**을 순서대로 작성하세요.
+   - 각 막의 역할:
+     * **1막 (발단·현장 진입)**: 원글의 실제 인게임 상황·던전/필드 현장·스샷 디테일을 생생히 제시.
+     * **2막 (전개·조짐)**: 이상 징후, 갈등의 불씨, 파티챗 헛소리·입찰/어그로 사고 시동.
+     * **3막 (위기·확산)**: 사건 본격화, 물리 개그·티키타카·상황 악화.
+     * **4막 (절정·무언 충격 정지)**: `impact_freeze_2cut` 레이아웃 강력 권장! 하단 초대형 패널에 **시그니처 무언 충격 정지 클로즈업(`wordless=True`)**을 배치해 극대화된 개그 임팩트를 연출하세요.
+     * **5막 (여파·펀치라인)**: 해탈·폭소·현타·귀환석 도주 등 찰진 엔딩 펀치라인.
+   - 5개 막의 모든 컷을 합산한 총 컷 수는 반드시 **10~14컷(권장 12~13컷)**이어야 합니다.
+2. **6종 가변 페이지 레이아웃(`layout_id`) 조합 및 다양성 규칙**:
+   - 각 막(`ActPage`)은 아래 6종 `layout_id` 중 하나를 선택하고, `act.cuts` 개수를 해당 레이아웃의 **정확한 패널 수**와 100% 일치시켜야 합니다:
+     * `"open_top_split_bottom"` (3컷): 상단 보더리스 오픈 와이드 + 하단 좌/우 세로 분할 2컷.
+     * `"split_top_wide_bottom"` (3컷): 상단 좌/우 세로 분할 2컷 + 하단 와이드 1컷.
+     * `"diagonal_tempo_2cut"` (2컷): 상단 대형 오픈 컷 + 하단 와이드 1컷.
+     * `"impact_freeze_2cut"` (2컷): 상단 빌드업 와이드 컷 + 하단 초대형 클라이맥스/무언 정지 컷.
+     * `"wide_reaction_wide"` (3컷): 상/중/하 3단 시네마틱 와이드 스트립.
+     * `"four_beat_gag"` (4컷): 2×2 빠른 4박자 개그 그리드.
+   - **연속 동일 레이아웃 금지**: 인접한 두 막(예: 1막과 2막, 2막과 3막)에 같은 `layout_id`를 절대 연달아 쓰지 마세요!
+   - **최소 3종 이상 다양성**: 5개 막 전체에서 **최소 3종 이상(권장 4~5종)**의 서로 다른 `layout_id`를 조합해 페이지마다 리듬을 살리세요.
+   - V4 컷의 `aspect_ratio`는 `"auto"`, `layout_slot`은 `"panel"`로 기입하세요.
+3. **원글 실제 상황·스샷 100% 현장 재현 & 메타 댓글 컷 금지**:
+   - 원글의 실제 사건·스샷 디테일을 100% 인게임 라이브 상황극으로 재현하세요.
+   - "댓글 반응 보니까~", "개념글 갔네~" 같은 메타 댓글 컷/제4의 벽 깨기는 절대 금지합니다.
+   - 타 커뮤니티(와우 인벤 등) 언급은 영구 금지합니다.
+4. **고정 캐스트 집중 + 엑스트라·군중·몹·시체 자유 등장**:
+   - 각 컷의 `characters`에는 시안 C 9명 중 **1~2명**만 기입하고, 한 화 전체 주연 고정 캐스트는 **2~4명(최대 5인 파티 이내)**으로 집중하세요.
+   - 원글 상황에 맞게 엑스트라 유저, 쪼렙 시체/해골 더미(귀여운 만화풍·비고어), 보스 몬스터, 몹 떼거리, 경비병 NPC, 펫, 탈것은 `visual_prompt`에 적극 묘사하세요.
+5. **시그니처 무언 충격 정지 컷 (`wordless=True`) 최소 1컷 필수**:
+   - 최소 1컷(권장: 4막 `impact_freeze_2cut`의 2번 초대형 패널)은 반드시 `wordless=True`, `speaker=null`, `dialogue=null`로 설정하세요.
+6. **1말풍선 1화자 · 좁은 패널 압축 대사 · 와우 인게임 어휘 · 100% 익명화**:
+   - **괄호 다중 화자 편법 절대 금지**: `(도적: ...)`, `[전사: ...]` 금지! 한 컷 `dialogue`에는 `speaker` 단 1명의 대사만 적으세요.
+   - **세로 분할 좁은 컷(410px)**에서는 대사를 1~3줄(줄당 10~12자 내외, `\\n` 줄바꿈)로 짧고 임팩트 있게 압축하세요. 와이드 컷은 1~3줄(줄당 14자 내외).
+   - **현실 현대어 금지**: "119", "112", "구급차", "경찰", "카톡", "편의점", "택시", "배민" 대신 "무덤 이동", "영혼의 치유사", "경비병", "귓말/파티창", "여관 주인", "와이번/그리핀" 등 100% 와우 인게임 어휘만 사용하세요.
+   - **100% 익명성 준수**: 실제 닉네임·아이디·`<길드명>`(패러디 포함)을 대사·막 제목·부제·이미지 프롬프트·툴팁 어디에도 절대 적지 말고 오직 직업·역할 호칭(`도적`, `징기`, `보기`, `전탱`, `흑마`, `사제`, `파장님`)만 사용하세요.
+7. **시네마틱 연출 · 표정 다양화 · Clean Hand · 와우 포에버 고증**:
+   - 정면 나란히 서기 만담 도장찍기 금지! 5막 전체에서 OTS(오버더숄더), 로우앵글, 하이앵글, 더치 틸트, 측면 90° 프로필, 뒷모습, 물리 슬랩스틱(돌진·도주·죽은 척·은신·귀환석 소용돌이·무릎 꿇기 등)을 다채롭게 배합하세요.
+   - **Clean Hand Rule**: 전리품·방패·주사위·귀환석·물약을 들거나 제스처 시 기본 무기는 등/허리에 수납(`sheathed on back/belt`)하거나 생략하세요(한 캐릭터 무기 3개 동시 소지 금지).
+   - **고증 필수**: `전탱`/`보기` 탱커는 반드시 한손 무기 + 방패, `사슬(Mail)`은 링메일 사슬 갑옷(쇠사슬/수갑 금지), 음료·물약은 코르크 유리병/나무 머그잔(종이팩/빨대 금지), 주사위는 점 눈금만(숫자·글자 금지), 모든 패널 내부 배경은 **100% pure solid white `#FFFFFF`** 유지.
+   - **시안 C 최신 3면 도면 디테일 고정**: 노움 도적은 머리핀 0개(X·별핀 금지), 나이트엘프 사제는 평범한 뽀얀 피부·연보라 반묶음·은빛 발광눈·보라 사제복·허리 미니 성서 & 황금 묵주·황금 십자/성광 지팡이(천사링·날개 0개), 스카이본 마법사는 뽀얀 피부·하늘색 하이 사이드포니·웃는 구름/날개 뱃지 파란 마법사 모자·구름 망토·허리 미니 변이 양 키링·파란 수정구 지팡이(세일러복 금지).
+8. **원본 제목 100% 원문 유지 (`source_title`) & 선택적 `item_tooltip`**:
+   - `source_title`은 제공된 원본 개념글 제목(`post.title`)을 토씨 하나 바꾸지 말고 그대로 기입하세요.
+   - 실제 와우 아이템이 핵심 소재인 컷에만 선택적으로 `item_tooltip`을 붙이세요(유저 닉네임·길드명 절대 금지).
+"""
+
+
+def _format_v4_layouts_reference() -> str:
+    lines = ["=== V4 가변 페이지 레이아웃 6종 스펙 (900x1350, 2:3) ==="]
+    for layout_id, spec in PAGE_LAYOUTS.items():
+        slot_summary = ", ".join(
+            f"P{s.slot_index}({s.position_label}, {'narrow 410px' if s.is_narrow else 'wide 844px'}, {s.border_style})"
+            for s in spec.slots
+        )
+        lines.append(f"- `{layout_id}` ({spec.panel_count}컷): {spec.description}\n  구성: {slot_summary}")
+    return "\n".join(lines)
+
+
+def build_v4_writer_prompt(post: GalleryPost, episode_number: int) -> str:
+    """Assemble the complete V4 5-act variable-layout structured prompt."""
+    cast_bible = format_cast_bible_for_writer()
+    layouts_ref = _format_v4_layouts_reference()
+    comments_block = (
+        "\n".join(f"- {c}" for c in post.comments[:15])
+        if post.comments
+        else "(별도 댓글 없음 — 본문 에피소드의 현장감과 반전을 5막 호흡으로 극대화하세요)"
+    )
+    context_text = "\n".join(
+        [post.title or "", post.body or "", *post.comments[:15]]
+    )
+    lore_guidance = build_wow_lore_guidance(context_text)
+
+    return (
+        f"{V4_WRITER_SYSTEM_RULES}\n\n"
+        f"{layouts_ref}\n\n"
+        f"{lore_guidance}\n\n"
+        f"{cast_bible}\n\n"
+        f"=== 각색 대상 포에버갤 개념글 (V4 5막 10~14컷) ===\n"
+        f"- 예정 화수: EP.{episode_number}\n"
+        f"- 게시글 번호: #{post.post_no}\n"
+        f"- 원문 URL: {post.url}\n"
+        f"- 원문 제목 (100% 그대로 유지): {post.title.strip()}\n"
+        f"- 작성자: {post.author} | 추천: {post.recommends} | 댓글: {post.comments_count}\n"
+        f"- 본문:\n{post.body or '(본문 텍스트 없음 — 제목의 펀치라인을 5막 던전 상황극으로 풀어내세요)'}\n\n"
+        f"- 주요 댓글 (메타 해설 금지! 웃긴 포인트만 캐릭터 대사·상황극 소재로 흡수):\n{comments_block}\n\n"
+        f"위 JSON 스키마(`EpisodeScript`)에 정확히 맞춰 출력하세요. "
+        f"`layout_mode`는 \"v4_five_act\", `episode_number`는 {episode_number}, "
+        f"`source_post_no`는 \"{post.post_no}\", "
+        f"`source_title`은 원문 제목 100% 그대로인 {json.dumps(post.title.strip(), ensure_ascii=False)}, "
+        f"`source_url`은 \"{post.url}\" 로 기입하고, `acts`에 정확히 5개 막(총 10~14컷, 연속 동일 `layout_id` 금지, 최소 3종 이상 레이아웃 사용)을 작성하세요."
+    )
+
+
 # ---------------------------------------------------------------------------
 # Script Quality Auditor (catches EP.1–EP.10 flaws before expensive art gen)
 # ---------------------------------------------------------------------------
@@ -169,11 +264,13 @@ def audit_script_quality(
     forbidden_names: Sequence[str] | None = None,
     strict_cinematic: bool = False,
 ) -> dict[str, Any]:
-    """Audit an `EpisodeScript` against all WoW Forever lore, anonymity, and framing rules.
+    """Audit an `EpisodeScript` (classic 2-tier OR V4 5-act) against all WoW Forever rules.
 
-    Catches the exact quality regressions observed across EP.1–EP.10:
-    - Cut count outside 4–6 or missing wordless freeze-frame cut
-    - Cast sprawl (> 4 unique cast members across the episode)
+    Catches:
+    - Classic cut count outside 4–6, or V4 cut count outside 10–14 / invalid 5-act layout structure
+    - V4 layout diversity violations (consecutive identical `layout_id` or < 3 distinct layouts)
+    - Missing mandatory wordless freeze-frame cut (`wordless=True`)
+    - Cast sprawl (> 4 unique cast in classic, > 5 unique cast in V4 5-man party mode)
     - Parenthetical or multi-line dual-speaker hacks inside one bubble (e.g. `(도적: ...)`)
     - Modern real-world phrasing (e.g. `119`, `구급차`, `카톡`, `편의점`)
     - Real player nicknames / guild tags (`<Guild>`) / forbidden community (`인벤`)
@@ -184,18 +281,67 @@ def audit_script_quality(
     errors: list[str] = []
     warnings: list[str] = []
 
-    cuts = list(script.cuts)
+    is_v4 = (script.layout_mode == "v4_five_act") or (script.acts is not None)
+    act_cuts: list[ComicCut] = [c for act in (script.acts or []) for c in act.cuts]
+    cuts: list[ComicCut] = list(script.cuts) if script.cuts else list(act_cuts)
     cut_count = len(cuts)
-    cut_count_ok = 4 <= cut_count <= 6
-    if not cut_count_ok:
-        errors.append(f"Cut count must be 4–6, got {cut_count}.")
+
+    acts_ok = True
+    layout_diversity_ok = True
+
+    if is_v4:
+        cut_count_ok = 10 <= cut_count <= 14
+        if not cut_count_ok:
+            errors.append(f"V4 cut count must be 10–14, got {cut_count}.")
+
+        if script.acts is None or len(script.acts) != 5:
+            acts_ok = False
+            layout_diversity_ok = False
+            actual_acts = 0 if script.acts is None else len(script.acts)
+            errors.append(f"V4 script must have exactly 5 acts, got {actual_acts}.")
+        else:
+            act_nums = [a.act_number for a in script.acts]
+            if act_nums != [1, 2, 3, 4, 5]:
+                acts_ok = False
+                errors.append(f"V4 act_numbers must be [1, 2, 3, 4, 5], got {act_nums}.")
+            for act in script.acts:
+                try:
+                    spec = get_page_layout(act.layout_id)
+                    if len(act.cuts) != spec.panel_count:
+                        acts_ok = False
+                        errors.append(
+                            f"Act {act.act_number} layout '{act.layout_id}' expects {spec.panel_count} cuts, got {len(act.cuts)}."
+                        )
+                except ValueError as exc:
+                    acts_ok = False
+                    layout_diversity_ok = False
+                    errors.append(str(exc))
+
+            layout_ids = [act.layout_id for act in script.acts]
+            for idx in range(len(layout_ids) - 1):
+                if layout_ids[idx] == layout_ids[idx + 1]:
+                    layout_diversity_ok = False
+                    errors.append(
+                        f"Duplicate consecutive layout_id '{layout_ids[idx]}' on Act {idx + 1} and Act {idx + 2}."
+                    )
+            distinct_count = len(set(layout_ids))
+            if distinct_count < 3:
+                layout_diversity_ok = False
+                errors.append(
+                    f"Insufficient V4 layout diversity: {distinct_count} distinct layout(s) across 5 acts (need >= 3)."
+                )
+    else:
+        cut_count_ok = 4 <= cut_count <= 6
+        if not cut_count_ok:
+            errors.append(f"Cut count must be 4–6, got {cut_count}.")
 
     wordless_cuts = [cut.cut_index for cut in cuts if cut.wordless]
-    wordless_cut_ok = len(wordless_cuts) >= 1
+    act_has_wordless = (not act_cuts) or any(cut.wordless for cut in act_cuts)
+    wordless_cut_ok = (len(wordless_cuts) >= 1) and act_has_wordless
     if not wordless_cut_ok:
         errors.append("Missing mandatory wordless freeze-frame cut (wordless=True).")
 
-    # Cast sprawl check (2–4 core cast members)
+    # Cast sprawl check (<= 4 core cast in classic, <= 5 party members in V4)
     unique_cast: list[str] = []
     seen_cast: set[str] = set()
     for cut in cuts:
@@ -206,14 +352,15 @@ def audit_script_quality(
                 unique_cast.append(canon)
 
     unique_cast_count = len(unique_cast)
-    cast_focus_ok = unique_cast_count <= 4
-    if unique_cast_count > 4:
+    max_unique_cast = 5 if is_v4 else 4
+    cast_focus_ok = unique_cast_count <= max_unique_cast
+    if unique_cast_count > max_unique_cast:
         errors.append(
-            f"Cast sprawl: {unique_cast_count} unique cast members exceeds max 4 ({', '.join(unique_cast)})."
+            f"Cast sprawl: {unique_cast_count} unique cast members exceeds max {max_unique_cast} ({', '.join(unique_cast)})."
         )
     elif unique_cast_count < 2:
         warnings.append(
-            f"Only {unique_cast_count} unique cast member in episode; 2–4 core participants recommended."
+            f"Only {unique_cast_count} unique cast member in episode; 2–{max_unique_cast} core participants recommended."
         )
 
     no_dual_speaker_hack = True
@@ -241,7 +388,7 @@ def audit_script_quality(
             no_forbidden_community = False
             errors.append(f"Forbidden community mention ('인벤') in {location}.")
 
-    # Check subtitle
+    # Check subtitle & V4 act titles
     _check_text_anonymity_and_community(script.subtitle, "subtitle")
     if _GUILD_TAG_RE.search(script.subtitle) or _EXPLICIT_ID_LEAK_RE.search(script.subtitle):
         anonymity_ok = False
@@ -252,7 +399,27 @@ def audit_script_quality(
             f"Modern real-world phrasing '{label}' in subtitle (use WoW phrasing like '{replacement}')."
         )
 
-    for cut in cuts:
+    if script.acts:
+        for act in script.acts:
+            act_loc = f"act #{act.act_number} title"
+            _check_text_anonymity_and_community(act.act_title, act_loc)
+            if _GUILD_TAG_RE.search(act.act_title) or _EXPLICIT_ID_LEAK_RE.search(act.act_title):
+                anonymity_ok = False
+                errors.append(f"Possible guild tag / ID leak in {act_loc}: '{act.act_title}'.")
+            for label, replacement in find_modern_slang_violations(act.act_title):
+                no_modern_slang = False
+                errors.append(
+                    f"Modern real-world phrasing '{label}' in {act_loc} (use WoW phrasing like '{replacement}')."
+                )
+
+    # Audit every cut in `cuts`, plus any mutated cut present only in `script.acts`
+    seen_cut_obj_ids = {id(c) for c in cuts}
+    cuts_to_inspect: list[ComicCut] = list(cuts)
+    for c in act_cuts:
+        if id(c) not in seen_cut_obj_ids:
+            cuts_to_inspect.append(c)
+
+    for cut in cuts_to_inspect:
         loc = f"cut #{cut.cut_index}"
         dlg = (cut.dialogue or "").strip()
         vp = (cut.visual_prompt or "").strip()
@@ -391,7 +558,13 @@ def audit_script_quality(
             ):
                 flat_two_shot_cuts += 1
 
-    cinematic_variety_ok = (len(detected_camera_tags) >= 3 and dynamic_cuts >= 3 and flat_two_shot_cuts <= 1)
+    min_dynamic = 5 if is_v4 else 3
+    max_flat = 2 if is_v4 else 1
+    cinematic_variety_ok = (
+        len(detected_camera_tags) >= 3
+        and dynamic_cuts >= min_dynamic
+        and flat_two_shot_cuts <= max_flat
+    )
     if strict_cinematic and not cinematic_variety_ok:
         errors.append(
             f"Cinematic variety too flat (dynamic_cuts={dynamic_cuts}/{cut_count}, "
@@ -399,10 +572,29 @@ def audit_script_quality(
             "vary OTS/low-angle/high-angle/profile/back-view/slapstick action poses instead of static talking heads."
         )
 
+    checks: dict[str, bool] = {
+        "cut_count_ok": cut_count_ok,
+        "wordless_cut_ok": wordless_cut_ok,
+        "cast_focus_ok": cast_focus_ok,
+        "no_dual_speaker_hack": no_dual_speaker_hack,
+        "no_modern_slang": no_modern_slang,
+        "anonymity_ok": anonymity_ok,
+        "faction_zone_ok": faction_zone_ok,
+        "tank_shield_ok": tank_shield_ok,
+        "no_forbidden_community": no_forbidden_community,
+        "visual_prompt_clean": visual_prompt_clean,
+    }
+    if is_v4:
+        checks["acts_ok"] = acts_ok
+        checks["layout_diversity_ok"] = layout_diversity_ok
+    if strict_cinematic:
+        checks["cinematic_variety_ok"] = cinematic_variety_ok
+
     return {
         "passed": len(errors) == 0,
         "errors": errors,
         "warnings": warnings,
+        "layout_mode": script.layout_mode,
         "cut_count": cut_count,
         "wordless_cuts": wordless_cuts,
         "unique_cast": unique_cast,
@@ -412,19 +604,7 @@ def audit_script_quality(
             "camera_tags": sorted(detected_camera_tags),
             "flat_two_shot_cuts": flat_two_shot_cuts,
         },
-        "checks": {
-            "cut_count_ok": cut_count_ok,
-            "wordless_cut_ok": wordless_cut_ok,
-            "cast_focus_ok": cast_focus_ok,
-            "no_dual_speaker_hack": no_dual_speaker_hack,
-            "no_modern_slang": no_modern_slang,
-            "anonymity_ok": anonymity_ok,
-            "faction_zone_ok": faction_zone_ok,
-            "tank_shield_ok": tank_shield_ok,
-            "no_forbidden_community": no_forbidden_community,
-            "visual_prompt_clean": visual_prompt_clean,
-            **({"cinematic_variety_ok": cinematic_variety_ok} if strict_cinematic else {}),
-        },
+        "checks": checks,
     }
 
 
@@ -446,32 +626,73 @@ def _extract_interaction_text(interaction: Any) -> str:
     raise ValueError("Gemini Interactions API response did not contain JSON text output.")
 
 
+def _normalize_cut(
+    cut: ComicCut,
+    *,
+    cut_index: int,
+    act_number: int | None = None,
+    panel_index: int | None = None,
+) -> ComicCut:
+    norm_chars = [canonical_cast_name(c) for c in cut.characters]
+    norm_speaker = (
+        None
+        if cut.wordless or not cut.speaker
+        else canonical_cast_name(cut.speaker)
+    )
+    updates: dict[str, Any] = {
+        "cut_index": cut_index,
+        "characters": norm_chars,
+        "speaker": norm_speaker,
+        "dialogue": None if cut.wordless else cut.dialogue,
+    }
+    if act_number is not None:
+        updates["act_number"] = act_number
+    if panel_index is not None:
+        updates["panel_index"] = panel_index
+    return cut.model_copy(update=updates)
+
+
 def _normalize_script(
     script: EpisodeScript,
     post: GalleryPost,
     episode_number: int,
 ) -> EpisodeScript:
-    """Ensure canonical Draft C names and exact source post metadata on a parsed script."""
-    normalized_cuts: list[ComicCut] = []
-    for idx, cut in enumerate(script.cuts, start=1):
-        norm_chars = [canonical_cast_name(c) for c in cut.characters]
-        norm_speaker = (
-            None
-            if cut.wordless or not cut.speaker
-            else canonical_cast_name(cut.speaker)
-        )
-        normalized_cuts.append(
-            cut.model_copy(
-                update={
-                    "cut_index": idx,
-                    "characters": norm_chars,
-                    "speaker": norm_speaker,
-                    "dialogue": None if cut.wordless else cut.dialogue,
-                }
-            )
+    """Ensure canonical Draft C names and exact source post metadata on classic or V4 scripts."""
+    verbatim_title = post.title.strip() or script.source_title.strip()
+
+    if script.acts is not None:
+        normalized_acts: list[ActPage] = []
+        flattened_cuts: list[ComicCut] = []
+        seq = 1
+        for act in script.acts:
+            act_norm_cuts: list[ComicCut] = []
+            for p_idx, cut in enumerate(act.cuts, start=1):
+                norm_cut = _normalize_cut(
+                    cut,
+                    cut_index=seq,
+                    act_number=act.act_number,
+                    panel_index=p_idx,
+                )
+                act_norm_cuts.append(norm_cut)
+                flattened_cuts.append(norm_cut)
+                seq += 1
+            normalized_acts.append(act.model_copy(update={"cuts": act_norm_cuts}))
+
+        return script.model_copy(
+            update={
+                "episode_number": episode_number,
+                "source_post_no": str(post.post_no),
+                "source_title": verbatim_title,
+                "source_url": post.url,
+                "layout_mode": "v4_five_act",
+                "acts": normalized_acts,
+                "cuts": flattened_cuts,
+            }
         )
 
-    verbatim_title = post.title.strip() or script.source_title.strip()
+    normalized_cuts: list[ComicCut] = [
+        _normalize_cut(cut, cut_index=idx) for idx, cut in enumerate(script.cuts, start=1)
+    ]
     return script.model_copy(
         update={
             "episode_number": episode_number,
@@ -524,6 +745,52 @@ def generate_episode_script(
 
     # Validate JSON directly with Pydantic v2
     script = EpisodeScript.model_validate_json(raw_json)
+    return _normalize_script(script, post=post, episode_number=episode_number)
+
+
+def generate_v4_episode_script(
+    post: GalleryPost,
+    episode_number: int,
+    *,
+    client: Any | None = None,
+    settings: Settings | None = None,
+    model: str | None = None,
+) -> EpisodeScript:
+    """Generate and validate a V4 5-act (10~14 cut) `EpisodeScript` via Gemini Interactions API."""
+    cfg = settings or load_settings()
+    target_model = model or cfg.text_model or DEFAULT_TEXT_MODEL
+
+    if client is None:
+        if not cfg.gemini_api_key:
+            raise RuntimeError(
+                "GEMINI_API_KEY is not set. Configure GEMINI_API_KEY in .env or environment, "
+                "or run with --dry-run."
+            )
+        client = genai.Client(api_key=cfg.gemini_api_key)
+
+    prompt = build_v4_writer_prompt(post, episode_number=episode_number)
+    interaction = client.interactions.create(
+        model=target_model,
+        input=prompt,
+        response_format={
+            "type": "text",
+            "mime_type": "application/json",
+            "schema": EpisodeScript.model_json_schema(),
+        },
+    )
+
+    raw_json = _extract_interaction_text(interaction)
+    if raw_json.startswith("```"):
+        lines = raw_json.splitlines()
+        raw_json = "\n".join(
+            line for line in lines if not line.strip().startswith("```")
+        ).strip()
+
+    script = EpisodeScript.model_validate_json(raw_json)
+    if script.layout_mode != "v4_five_act" or not script.acts:
+        raise ValueError(
+            "Gemini V4 script response did not produce a valid 5-act `v4_five_act` EpisodeScript."
+        )
     return _normalize_script(script, post=post, episode_number=episode_number)
 
 
@@ -609,6 +876,316 @@ def build_dry_run_script(post: GalleryPost, episode_number: int) -> EpisodeScrip
         source_url=post.url,
         subtitle=f"포에버갤 #{post.post_no} 드라이런 상황극 프리뷰",
         cuts=cuts,
+    )
+
+
+def build_dry_run_v4_script(post: GalleryPost, episode_number: int) -> EpisodeScript:
+    """Build a deterministic offline V4 5-act (13-cut, 5 distinct variable layouts) Draft C script.
+
+    Uses the 5 distinct layouts (`open_top_split_bottom`, `diagonal_tempo_2cut`,
+    `split_top_wide_bottom`, `impact_freeze_2cut`, `wide_reaction_wide` -> 3+2+3+2+3 = 13 cuts),
+    updated 3-view turnaround descriptions, Clean Hand rules, and cinematic angle diversity.
+    """
+    verbatim_title = post.title.strip()
+    dialogue_hook = verbatim_title or f"개념글 #{post.post_no}"
+    snippet = (
+        (post.body.strip().splitlines()[0][:24] + "...")
+        if post.body.strip()
+        else dialogue_hook[:24]
+    )
+
+    acts = [
+        ActPage(
+            act_number=1,
+            act_title="발단 — 던전 앞 수상한 분위기",
+            layout_id="open_top_split_bottom",
+            cuts=[
+                ComicCut(
+                    cut_index=1,
+                    aspect_ratio="auto",
+                    layout_slot="panel",
+                    act_number=1,
+                    panel_index=1,
+                    characters=["나이트엘프 사제", "오크 전사"],
+                    speaker="나이트엘프 사제",
+                    dialogue=f"저기요...\n'{dialogue_hook[:16]}'\n진짜 이 파티 괜찮아요?",
+                    wordless=False,
+                    visual_prompt=(
+                        "Dynamic over-the-shoulder diagonal shot in crisp 2.5-head chibi style: "
+                        "foreground back shoulder of Orc Warrior chibi girl in vibrant green orc plush hood "
+                        "and red warrior cape with steel shield and 1H sword ready; background fair-skinned "
+                        "Night Elf Priest chibi girl with lavender half-up ponytail, golden Elune crescent "
+                        "forehead tiara, luminous glowing silver eyes, purple-and-gold Priestess vestments, "
+                        "waist mini Holy Prayer Book and golden Rosary (Holy Cross staff strapped across back) "
+                        "clasping her hands nervously. Pure solid white #FFFFFF background, no text, no speech bubbles."
+                    ),
+                    tail_target="left",
+                ),
+                ComicCut(
+                    cut_index=2,
+                    aspect_ratio="auto",
+                    layout_slot="panel",
+                    act_number=1,
+                    panel_index=2,
+                    characters=["오크 전사"],
+                    speaker="오크 전사",
+                    dialogue="걱정 마!\n전탱 방패 단단하니까\n믿고 따라와!",
+                    wordless=False,
+                    visual_prompt=(
+                        "Low-angle heroic comedic shot looking up at fair-skinned Orc Warrior chibi girl "
+                        "in vibrant green orc plush hood puffing her chest out proudly while holding a "
+                        "sturdy steel kite shield and compact 1H sword for tanking. Pure solid white #FFFFFF "
+                        "background, generous top pure-white headroom, no text, no speech bubbles."
+                    ),
+                    tail_target="center",
+                ),
+                ComicCut(
+                    cut_index=3,
+                    aspect_ratio="auto",
+                    layout_slot="panel",
+                    act_number=1,
+                    panel_index=3,
+                    characters=["노움 도적"],
+                    speaker="노움 도적",
+                    dialogue="헤헤, 탱님만\n믿고 빡딜\n준비 완료요!",
+                    wordless=False,
+                    visual_prompt=(
+                        "Side-profile crouching pose of petite Gnome Rogue chibi girl with blonde-pink-blue "
+                        "twin pigtails (zero hairpins), forehead green steampunk goggles, and sly fang grin "
+                        "peeking mischievously from behind a wooden dungeon crate with daggers sheathed at belt. "
+                        "Pure solid white #FFFFFF background, generous top pure-white headroom, no text, no speech bubbles."
+                    ),
+                    tail_target="center",
+                ),
+            ],
+        ),
+        ActPage(
+            act_number=2,
+            act_title="전개 — 풀링과 동시에 터진 변수",
+            layout_id="diagonal_tempo_2cut",
+            cuts=[
+                ComicCut(
+                    cut_index=4,
+                    aspect_ratio="auto",
+                    layout_slot="panel",
+                    act_number=2,
+                    panel_index=1,
+                    characters=["오크 전사", "노움 도적"],
+                    speaker="노움 도적",
+                    dialogue=f"어어 잠깐!\n{snippet}\n저 칼소멸 먼저 쓸게요!",
+                    wordless=False,
+                    visual_prompt=(
+                        "High-angle chaotic action shot: Orc Warrior chibi girl tanking with sturdy steel "
+                        "kite shield and 1H sword bracing against comedic cartoon dungeon mob silhouettes "
+                        "while Gnome Rogue chibi girl (zero hairpins, green goggles) sprints away sideways "
+                        "in a swirling cartoon Vanish smoke puff. Pure solid white #FFFFFF background, "
+                        "no text, no speech bubbles."
+                    ),
+                    tail_target="right",
+                ),
+                ComicCut(
+                    cut_index=5,
+                    aspect_ratio="auto",
+                    layout_slot="panel",
+                    act_number=2,
+                    panel_index=2,
+                    characters=["스카이본 마법사", "나이트엘프 사제"],
+                    speaker="스카이본 마법사",
+                    dialogue="잠깐만요, 보스 잡히기도 전에\n주사위 창부터 열리는데요?!",
+                    wordless=False,
+                    visual_prompt=(
+                        "Dutch-tilt dynamic reaction shot: Left, fair-skinned Skyborne Mage chibi girl with "
+                        "sky-blue high side-ponytail, pointed elf ears, oversized tilted royal-blue wizard hat "
+                        "with tiny smiling cloud-wing feather badge, cloud-trimmed blue capelet, waist Polymorph "
+                        "Sheep keychain charm, and sky-blue crystal staff strapped on back pointing wide-eyed; "
+                        "Right, fair-skinned Night Elf Priest in purple vestments clutching her brow in disbelief. "
+                        "Pure solid white #FFFFFF background, no text, no speech bubbles."
+                    ),
+                    tail_target="left",
+                ),
+            ],
+        ),
+        ActPage(
+            act_number=3,
+            act_title="위기 — 파밍보다 빠른 입찰 논리",
+            layout_id="split_top_wide_bottom",
+            cuts=[
+                ComicCut(
+                    cut_index=6,
+                    aspect_ratio="auto",
+                    layout_slot="panel",
+                    act_number=3,
+                    panel_index=1,
+                    characters=["나이트엘프 사제"],
+                    speaker="나이트엘프 사제",
+                    dialogue="힐러 마나 0%인데\n지금 입찰부터\n누르시는 거예요?!",
+                    wordless=False,
+                    visual_prompt=(
+                        "Dramatic tilted close-up of fair-skinned Night Elf Priest chibi girl with lavender "
+                        "half-up hair, golden Elune crescent forehead tiara, glowing silver eyes, purple Priestess "
+                        "capelet, waist mini Holy Prayer Book and golden Rosary (Holy Cross staff stowed on back) "
+                        "gesturing frantically with exasperated healer glare. Pure solid white #FFFFFF background, "
+                        "generous top pure-white headroom, no text, no speech bubbles."
+                    ),
+                    tail_target="center",
+                ),
+                ComicCut(
+                    cut_index=7,
+                    aspect_ratio="auto",
+                    layout_slot="panel",
+                    act_number=3,
+                    panel_index=2,
+                    characters=["오크 전사"],
+                    speaker="오크 전사",
+                    dialogue="이중특성으로\n언젠가 쓸 수도\n있지 않을까?!",
+                    wordless=False,
+                    visual_prompt=(
+                        "Cheeky low-angle waist-up shot of fair-skinned Orc Warrior chibi girl in green orc "
+                        "hood giving an overly innocent grin while cradling her sturdy steel kite shield and "
+                        "1H sword with cartoon sweat drops. Pure solid white #FFFFFF background, generous top "
+                        "pure-white headroom, no text, no speech bubbles."
+                    ),
+                    tail_target="center",
+                ),
+                ComicCut(
+                    cut_index=8,
+                    aspect_ratio="auto",
+                    layout_slot="panel",
+                    act_number=3,
+                    panel_index=3,
+                    characters=["노움 도적", "스카이본 마법사"],
+                    speaker="노움 도적",
+                    dialogue="어차피 주사위는 공정하잖아요!\n먼저 굴리는 사람이 임자지!",
+                    wordless=False,
+                    visual_prompt=(
+                        "Over-the-shoulder reveal shot past Skyborne Mage's cloud-trimmed blue capelet toward "
+                        "Gnome Rogue chibi girl (zero hairpins, daggers sheathed at belt) leaning over an open "
+                        "wooden dungeon loot chest tossing a chunky 6-sided white-and-gold loot die showing ONLY "
+                        "round black dot pips (strictly zero digits, zero letters). Pure solid white #FFFFFF "
+                        "background, no text, no speech bubbles."
+                    ),
+                    tail_target="left",
+                ),
+            ],
+        ),
+        ActPage(
+            act_number=4,
+            act_title="절정 — 모두의 영혼이 멈춘 순간",
+            layout_id="impact_freeze_2cut",
+            cuts=[
+                ComicCut(
+                    cut_index=9,
+                    aspect_ratio="auto",
+                    layout_slot="panel",
+                    act_number=4,
+                    panel_index=1,
+                    characters=["노움 도적", "오크 전사"],
+                    speaker="노움 도적",
+                    dialogue="와 대박! 올입찰 100 떴다!\n수고하셨습니다, 귀환석 탈게요!",
+                    wordless=False,
+                    visual_prompt=(
+                        "Dynamic Dutch-tilt slapstick leap: Gnome Rogue chibi girl (zero hairpins, green goggles, "
+                        "daggers sheathed) leaping gleefully holding a glowing cyan spiral-rune Hearthstone while "
+                        "Orc Warrior tank (steel shield and 1H sword) lunges sideways in total panic with flying "
+                        "dust puffs. Pure solid white #FFFFFF background, no text, no speech bubbles."
+                    ),
+                    tail_target="right",
+                ),
+                ComicCut(
+                    cut_index=10,
+                    aspect_ratio="auto",
+                    layout_slot="panel",
+                    act_number=4,
+                    panel_index=2,
+                    characters=["스카이본 마법사"],
+                    speaker=None,
+                    dialogue=None,
+                    wordless=True,
+                    visual_prompt=(
+                        "Massive centered dramatic chest-up close-up freeze-frame of fair-skinned Skyborne Mage "
+                        "chibi girl with sky-blue high side-ponytail, perky pointed elf ears, oversized tilted "
+                        "royal-blue wizard hat with tiny smiling cloud-wing feather badge, cloud-trimmed blue "
+                        "capelet, and waist Polymorph Sheep keychain charm; tiny trembling shocked pinpoint "
+                        "pupils, jaw dropped wide open, comedic cartoon ghost soul floating out of her mouth "
+                        "in pure disbelief. Pure solid white #FFFFFF background, no text, no speech bubbles."
+                    ),
+                    tail_target="center",
+                ),
+            ],
+        ),
+        ActPage(
+            act_number=5,
+            act_title="여파 — 무덤 이동 각",
+            layout_id="wide_reaction_wide",
+            cuts=[
+                ComicCut(
+                    cut_index=11,
+                    aspect_ratio="auto",
+                    layout_slot="panel",
+                    act_number=5,
+                    panel_index=1,
+                    characters=["나이트엘프 사제"],
+                    speaker="나이트엘프 사제",
+                    dialogue="마나 물약도 다 마셨는데...\n영혼의 치유사 면담 각이네요.",
+                    wordless=False,
+                    visual_prompt=(
+                        "High-angle comedic despair shot looking down at fair-skinned Night Elf Priest chibi "
+                        "girl in purple vestments (golden Elune crescent tiara, waist mini Holy Prayer Book & "
+                        "golden Rosary, Holy Cross staff resting beside her) kneeling slumped on the white floor "
+                        "beside an empty fantasy corked glass mana flask. Pure solid white #FFFFFF background, "
+                        "no text, no speech bubbles."
+                    ),
+                    tail_target="left",
+                ),
+                ComicCut(
+                    cut_index=12,
+                    aspect_ratio="auto",
+                    layout_slot="panel",
+                    act_number=5,
+                    panel_index=2,
+                    characters=["노움 도적"],
+                    speaker="노움 도적",
+                    dialogue="다음 파티도 화이팅!\n저는 먼저 여관으로 갑니다!",
+                    wordless=False,
+                    visual_prompt=(
+                        "Back-view action shot of petite Gnome Rogue chibi girl (zero hairpins, daggers sheathed "
+                        "at belt) seen from behind sprinting into a bright swirling cyan Hearthstone teleport "
+                        "vortex while looking back over her shoulder waving cheekily. Pure solid white #FFFFFF "
+                        "background, no text, no speech bubbles."
+                    ),
+                    tail_target="right",
+                ),
+                ComicCut(
+                    cut_index=13,
+                    aspect_ratio="auto",
+                    layout_slot="panel",
+                    act_number=5,
+                    panel_index=3,
+                    characters=["오크 전사", "스카이본 마법사"],
+                    speaker="오크 전사",
+                    dialogue="다음엔 파티찾기 포에버에서\n주사위 룰부터 정하고 가자...",
+                    wordless=False,
+                    visual_prompt=(
+                        "Side-profile exhausted aftermath shot: Orc Warrior chibi girl (green orc hood, resting "
+                        "her sturdy steel shield and 1H sword) and Skyborne Mage chibi girl (sky-blue high "
+                        "side-ponytail, tilted royal-blue wizard hat with cloud-wing badge, waist Polymorph Sheep "
+                        "keychain charm, crystal staff on back) slumping side-by-side staring blankly into space "
+                        "with cartoon sweat drops. Pure solid white #FFFFFF background, no text, no speech bubbles."
+                    ),
+                    tail_target="left",
+                ),
+            ],
+        ),
+    ]
+
+    return EpisodeScript(
+        episode_number=episode_number,
+        source_post_no=str(post.post_no),
+        source_title=verbatim_title or dialogue_hook,
+        source_url=post.url,
+        subtitle=f"포에버갤 #{post.post_no} V4 5막 드라이런 프리뷰",
+        layout_mode="v4_five_act",
+        acts=acts,
     )
 
 

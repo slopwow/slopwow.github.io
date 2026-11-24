@@ -129,53 +129,103 @@ def _generate_for_post(
     text_model: str | None = None,
     image_model: str | None = None,
     skip_site: bool = False,
+    layout: str = "classic",
 ) -> EpisodeRecord | EpisodeScript:
     records = load_episode_records(settings.episodes_json)
     ep_num = episode_number or _next_episode_number(records)
     ep_id = f"ep{ep_num:03d}"
+    layout_choice = (layout or "classic").strip().lower()
+    if layout_choice not in {"classic", "v4"}:
+        raise ValueError(f"Unsupported layout '{layout}'. Choose 'classic' or 'v4'.")
 
     if dry_run:
-        script = build_dry_run_script(post, episode_number=ep_num)
-        print(f"[DRY-RUN] Generated preview script for {ep_id} (source #{post.post_no}):")
+        if layout_choice == "v4":
+            from wow_sloptoon import writer as _writer
+
+            script = _writer.build_dry_run_v4_script(post, episode_number=ep_num)
+            print(
+                f"[DRY-RUN] Generated V4 5-act preview script for {ep_id} "
+                f"(source #{post.post_no}, {len(script.cuts)} cuts):"
+            )
+        else:
+            script = build_dry_run_script(post, episode_number=ep_num)
+            print(f"[DRY-RUN] Generated preview script for {ep_id} (source #{post.post_no}):")
         print(script_to_pretty_json(script))
         return script
 
     resolved_image_model = resolve_image_model(image_model, settings)
     resolved_text_model = text_model or settings.text_model or DEFAULT_TEXT_MODEL
-
-    print(
-        f"[1/4] Writing script for {ep_id} from #{post.post_no} "
-        f"(model={resolved_text_model})..."
-    )
-    script = generate_episode_script(
-        post,
-        episode_number=ep_num,
-        settings=settings,
-        model=resolved_text_model,
-    )
-
-    raw_cuts_dir = settings.data_dir / "raw_cuts" / ep_id
-    print(
-        f"[2/4] Generating {len(script.cuts)} pure-#FFFFFF Draft C cuts "
-        f"(model={resolved_image_model})..."
-    )
-    raw_cut_paths = generate_episode_cuts(
-        script,
-        raw_cuts_dir,
-        settings=settings,
-        model=resolved_image_model,
-    )
-
-    from wow_sloptoon import composer
-
     ep_dir = settings.episodes_dir / ep_id
-    print(f"[3/4] Composing speech bubbles & watermark CTA into {ep_dir}...")
-    composed = composer.compose_episode(
-        script,
-        raw_cut_paths,
-        ep_dir,
-        watermark_url=settings.archive_base_url,
-    )
+
+    if layout_choice == "v4":
+        from wow_sloptoon import artist as _artist
+        from wow_sloptoon import composer as _composer
+        from wow_sloptoon import writer as _writer
+
+        print(
+            f"[1/4] Writing V4 5-act script for {ep_id} from #{post.post_no} "
+            f"(model={resolved_text_model})..."
+        )
+        script = _writer.generate_v4_episode_script(
+            post,
+            episode_number=ep_num,
+            settings=settings,
+            model=resolved_text_model,
+        )
+
+        raw_pages_dir = settings.data_dir / "raw_pages" / ep_id
+        act_count = len(script.acts) if script.acts else 5
+        print(
+            f"[2/4] Generating {act_count} pure-#FFFFFF V4 2K act pages "
+            f"({len(script.cuts)} cuts total, model={resolved_image_model})..."
+        )
+        raw_page_paths = _artist.generate_v4_episode_pages(
+            script,
+            raw_pages_dir,
+            settings=settings,
+            model=resolved_image_model,
+        )
+
+        print(f"[3/4] Composing V4 variable-layout pages & watermark CTA into {ep_dir}...")
+        composed = _composer.compose_v4_episode(
+            script,
+            raw_page_paths,
+            ep_dir,
+            watermark_url=settings.archive_base_url,
+        )
+    else:
+        print(
+            f"[1/4] Writing script for {ep_id} from #{post.post_no} "
+            f"(model={resolved_text_model})..."
+        )
+        script = generate_episode_script(
+            post,
+            episode_number=ep_num,
+            settings=settings,
+            model=resolved_text_model,
+        )
+
+        raw_cuts_dir = settings.data_dir / "raw_cuts" / ep_id
+        print(
+            f"[2/4] Generating {len(script.cuts)} pure-#FFFFFF Draft C cuts "
+            f"(model={resolved_image_model})..."
+        )
+        raw_cut_paths = generate_episode_cuts(
+            script,
+            raw_cuts_dir,
+            settings=settings,
+            model=resolved_image_model,
+        )
+
+        from wow_sloptoon import composer
+
+        print(f"[3/4] Composing speech bubbles & watermark CTA into {ep_dir}...")
+        composed = composer.compose_episode(
+            script,
+            raw_cut_paths,
+            ep_dir,
+            watermark_url=settings.archive_base_url,
+        )
 
     # Save script alongside composed assets for reproducibility
     (ep_dir / "script.json").write_text(script_to_pretty_json(script), encoding="utf-8")
@@ -295,6 +345,7 @@ def cmd_generate(args: argparse.Namespace, settings: Settings) -> int:
         text_model=args.text_model,
         image_model=args.image_model,
         skip_site=args.skip_site,
+        layout=getattr(args, "layout", "classic"),
     )
     return 0
 
@@ -415,6 +466,7 @@ def cmd_run_once(args: argparse.Namespace, settings: Settings) -> int:
         text_model=args.text_model,
         image_model=args.image_model,
         skip_site=False,
+        layout=getattr(args, "layout", "classic"),
     )
 
     if isinstance(result, EpisodeRecord) and args.pack_dc:
@@ -702,6 +754,7 @@ def cmd_autopilot(args: argparse.Namespace, settings: Settings) -> int:
                 text_model=args.text_model,
                 image_model=args.image_model,
                 skip_site=True,
+                layout=getattr(args, "layout", "classic"),
             )
         else:
             print("[autopilot DRY-RUN] No new unproduced recommend candidates found.")
@@ -726,6 +779,7 @@ def cmd_autopilot(args: argparse.Namespace, settings: Settings) -> int:
             text_model=args.text_model,
             image_model=args.image_model,
             skip_site=True,
+            layout=getattr(args, "layout", "classic"),
         )
         if isinstance(res, EpisodeRecord):
             created_record = res
@@ -835,6 +889,13 @@ def build_parser() -> argparse.ArgumentParser:
         choices=list(SUPPORTED_IMAGE_MODELS),
         help="Select Gemini image model.",
     )
+    p_gen.add_argument(
+        "--layout",
+        type=str,
+        choices=["classic", "v4"],
+        default="classic",
+        help="Episode layout mode: 'classic' (4~6 cut 2-tier) or 'v4' (5-act 10~14 cut variable layout).",
+    )
     p_gen.add_argument("--episode-number", type=int, default=None, help="Override sequential episode number.")
     p_gen.add_argument("--pages", type=int, default=1, help="Pages to scan when using --auto.")
     p_gen.add_argument("--skip-site", action="store_true", help="Skip rebuilding static site after generation.")
@@ -885,6 +946,13 @@ def build_parser() -> argparse.ArgumentParser:
         default=None,
         choices=list(SUPPORTED_IMAGE_MODELS),
         help="Select Gemini image model.",
+    )
+    p_once.add_argument(
+        "--layout",
+        type=str,
+        choices=["classic", "v4"],
+        default="classic",
+        help="Episode layout mode: 'classic' (4~6 cut 2-tier) or 'v4' (5-act 10~14 cut variable layout).",
     )
     p_once.add_argument("--pages", type=int, default=1, help="Recommend list pages to scan.")
     p_once.add_argument("--pack-dc", action="store_true", help="Also generate a DCInside manual upload pack.")
@@ -953,6 +1021,13 @@ def build_parser() -> argparse.ArgumentParser:
         default=None,
         choices=list(SUPPORTED_IMAGE_MODELS),
         help="Select Gemini image model.",
+    )
+    p_auto.add_argument(
+        "--layout",
+        type=str,
+        choices=["classic", "v4"],
+        default="classic",
+        help="Episode layout mode: 'classic' (4~6 cut 2-tier) or 'v4' (5-act 10~14 cut variable layout).",
     )
     p_auto.add_argument("--pages", type=int, default=1, help="Recommend list pages to scan.")
     p_auto.add_argument("--no-notify", action="store_true", help="Suppress Windows toast notification (console output only).")
