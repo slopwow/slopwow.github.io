@@ -6,6 +6,7 @@ GitHub Pages, Vercel, Cloudflare Pages, local `http.server`, or direct `file://`
 
 from __future__ import annotations
 
+import hashlib
 import html
 import json
 import shutil
@@ -69,6 +70,17 @@ def _copy_if_different(src: Path, dst: Path) -> None:
     except OSError:
         pass
     shutil.copy2(src, dst)
+
+
+def _file_cache_suffix(path: Path) -> str:
+    """Return a deterministic `?v=<8-char-sha256>` cache-busting query suffix for synced images."""
+    try:
+        if path.exists() and path.is_file():
+            digest = hashlib.sha256(path.read_bytes()).hexdigest()[:8]
+            return f"?v={digest}"
+    except OSError:
+        pass
+    return ""
 
 
 def load_episodes(episodes_json: Path) -> list[EpisodeRecord]:
@@ -598,7 +610,7 @@ def _render_index_html(
 ) -> str:
     newest_first = list(reversed(site_episodes))
     latest = newest_first[0] if newest_first else None
-    og_image_rel = latest["thumb_image"] if latest else fallback_og_image
+    og_image_rel = (latest["thumb_image"] if latest else fallback_og_image).split("?", 1)[0]
     page_title = f"{SITE_NAME} — {SITE_TAGLINE}"
     social_meta = _render_social_meta(
         title=page_title,
@@ -783,7 +795,7 @@ def _render_episode_reader_html(
         else f"에피소드 리더 — {SITE_NAME}"
     )
     og_desc = ep["subtitle"] if ep else "와우 포에버 슬롭툰 웹툰 뷰어"
-    og_img_rel = ep["thumb_image"] if ep else fallback_og_image
+    og_img_rel = (ep["thumb_image"] if ep else fallback_og_image).split("?", 1)[0]
     if pinned_episode_id and ep:
         path_from_root = f"episodes/{ep['episode_id']}.html"
         relative_url = f"{ep['episode_id']}.html"
@@ -1002,7 +1014,7 @@ def _render_cast_html(
         if has_labeled_sheet
         else ("assets/cast/cast_sheet_c.jpg" if has_clean_sheet else "")
     )
-    og_image_rel = sheet_src or (site_episodes[-1]["thumb_image"] if site_episodes else "")
+    og_image_rel = (sheet_src or (site_episodes[-1]["thumb_image"] if site_episodes else "")).split("?", 1)[0]
     social_meta = _render_social_meta(
         title=page_title,
         description=page_desc,
@@ -3064,7 +3076,9 @@ def build_static_site(
                 ext = p_src.suffix.lower() or ".png"
                 p_name = f"page_{idx}{ext}"
                 _copy_if_different(p_src, ep_out_dir / p_name)
-                page_web_paths.append(f"assets/episodes/{record.episode_id}/{p_name}")
+                page_web_paths.append(
+                    f"assets/episodes/{record.episode_id}/{p_name}{_file_cache_suffix(ep_out_dir / p_name)}"
+                )
                 resolved_pages.append(p_src)
 
         # Resolve, copy, or auto-generate thumbnail
@@ -3110,8 +3124,8 @@ def build_static_site(
             "cut_count": record.cut_count,
             "cast_used": normalized_cast,
             "cast_chips": cast_chips,
-            "full_image": f"assets/episodes/{record.episode_id}/episode_full.jpg",
-            "thumb_image": f"assets/episodes/{record.episode_id}/thumb.jpg",
+            "full_image": f"assets/episodes/{record.episode_id}/episode_full.jpg{_file_cache_suffix(full_dst)}",
+            "thumb_image": f"assets/episodes/{record.episode_id}/thumb.jpg{_file_cache_suffix(thumb_dst)}",
             "page_images": page_web_paths,
             "canonical_url": canonical_ep_url,
         })

@@ -31,12 +31,12 @@
         "color": "#29B6F6"
       }
     ],
-    "full_image": "assets/episodes/ep001/episode_full.jpg",
-    "thumb_image": "assets/episodes/ep001/thumb.jpg",
+    "full_image": "assets/episodes/ep001/episode_full.jpg?v=d0aca78c",
+    "thumb_image": "assets/episodes/ep001/thumb.jpg?v=d64aa76c",
     "page_images": [
-      "assets/episodes/ep001/page_1.png",
-      "assets/episodes/ep001/page_2.png",
-      "assets/episodes/ep001/page_3.png"
+      "assets/episodes/ep001/page_1.png?v=b462087b",
+      "assets/episodes/ep001/page_2.png?v=2d503302",
+      "assets/episodes/ep001/page_3.png?v=3092959a"
     ],
     "canonical_url": "https://slopwow.github.io/episodes/ep001.html"
   },
@@ -78,12 +78,12 @@
         "color": "#4CAF50"
       }
     ],
-    "full_image": "assets/episodes/ep002/episode_full.jpg",
-    "thumb_image": "assets/episodes/ep002/thumb.jpg",
+    "full_image": "assets/episodes/ep002/episode_full.jpg?v=ec356ae3",
+    "thumb_image": "assets/episodes/ep002/thumb.jpg?v=b7503fbe",
     "page_images": [
-      "assets/episodes/ep002/page_1.png",
-      "assets/episodes/ep002/page_2.png",
-      "assets/episodes/ep002/page_3.png"
+      "assets/episodes/ep002/page_1.png?v=db0b8f04",
+      "assets/episodes/ep002/page_2.png?v=095d4dd3",
+      "assets/episodes/ep002/page_3.png?v=b77b0244"
     ],
     "canonical_url": "https://slopwow.github.io/episodes/ep002.html"
   },
@@ -125,12 +125,12 @@
         "color": "#7E57C2"
       }
     ],
-    "full_image": "assets/episodes/ep003/episode_full.jpg",
-    "thumb_image": "assets/episodes/ep003/thumb.jpg",
+    "full_image": "assets/episodes/ep003/episode_full.jpg?v=c4485483",
+    "thumb_image": "assets/episodes/ep003/thumb.jpg?v=398b6426",
     "page_images": [
-      "assets/episodes/ep003/page_1.png",
-      "assets/episodes/ep003/page_2.png",
-      "assets/episodes/ep003/page_3.png"
+      "assets/episodes/ep003/page_1.png?v=69fbe302",
+      "assets/episodes/ep003/page_2.png?v=e4e88011",
+      "assets/episodes/ep003/page_3.png?v=a9547c04"
     ],
     "canonical_url": "https://slopwow.github.io/episodes/ep003.html"
   },
@@ -160,12 +160,12 @@
         "color": "#7E57C2"
       }
     ],
-    "full_image": "assets/episodes/ep004/episode_full.jpg",
-    "thumb_image": "assets/episodes/ep004/thumb.jpg",
+    "full_image": "assets/episodes/ep004/episode_full.jpg?v=fe13a22b",
+    "thumb_image": "assets/episodes/ep004/thumb.jpg?v=e0d01be3",
     "page_images": [
-      "assets/episodes/ep004/page_1.png",
-      "assets/episodes/ep004/page_2.png",
-      "assets/episodes/ep004/page_3.png"
+      "assets/episodes/ep004/page_1.png?v=bd24e509",
+      "assets/episodes/ep004/page_2.png?v=b1d80205",
+      "assets/episodes/ep004/page_3.png?v=03919d71"
     ],
     "canonical_url": "https://slopwow.github.io/episodes/ep004.html"
   },
@@ -201,12 +201,12 @@
         "color": "#6A1B9A"
       }
     ],
-    "full_image": "assets/episodes/ep005/episode_full.jpg",
-    "thumb_image": "assets/episodes/ep005/thumb.jpg",
+    "full_image": "assets/episodes/ep005/episode_full.jpg?v=983aed46",
+    "thumb_image": "assets/episodes/ep005/thumb.jpg?v=1fea989e",
     "page_images": [
-      "assets/episodes/ep005/page_1.png",
-      "assets/episodes/ep005/page_2.png",
-      "assets/episodes/ep005/page_3.png"
+      "assets/episodes/ep005/page_1.png?v=3eba55f8",
+      "assets/episodes/ep005/page_2.png?v=0a6bde95",
+      "assets/episodes/ep005/page_3.png?v=5ca310a2"
     ],
     "canonical_url": "https://slopwow.github.io/episodes/ep005.html"
   },
@@ -248,12 +248,12 @@
         "color": "#9E9E9E"
       }
     ],
-    "full_image": "assets/episodes/ep006/episode_full.jpg",
-    "thumb_image": "assets/episodes/ep006/thumb.jpg",
+    "full_image": "assets/episodes/ep006/episode_full.jpg?v=a731aadb",
+    "thumb_image": "assets/episodes/ep006/thumb.jpg?v=65d1209c",
     "page_images": [
-      "assets/episodes/ep006/page_1.png",
-      "assets/episodes/ep006/page_2.png",
-      "assets/episodes/ep006/page_3.png"
+      "assets/episodes/ep006/page_1.png?v=9a117f6b",
+      "assets/episodes/ep006/page_2.png?v=8038ebc8",
+      "assets/episodes/ep006/page_3.png?v=966dbc08"
     ],
     "canonical_url": "https://slopwow.github.io/episodes/ep006.html"
   },
@@ -295,12 +295,12 @@
         "color": "#6A1B9A"
       }
     ],
-    "full_image": "assets/episodes/ep007/episode_full.jpg",
-    "thumb_image": "assets/episodes/ep007/thumb.jpg",
+    "full_image": "assets/episodes/ep007/episode_full.jpg?v=4f4933a6",
+    "thumb_image": "assets/episodes/ep007/thumb.jpg?v=da97f070",
     "page_images": [
-      "assets/episodes/ep007/page_1.png",
-      "assets/episodes/ep007/page_2.png",
-      "assets/episodes/ep007/page_3.png"
+      "assets/episodes/ep007/page_1.png?v=fd0e0095",
+      "assets/episodes/ep007/page_2.png?v=9434d822",
+      "assets/episodes/ep007/page_3.png?v=641e46f8"
     ],
     "canonical_url": "https://slopwow.github.io/episodes/ep007.html"
   },
@@ -336,12 +336,12 @@
         "color": "#4CAF50"
       }
     ],
-    "full_image": "assets/episodes/ep008/episode_full.jpg",
-    "thumb_image": "assets/episodes/ep008/thumb.jpg",
+    "full_image": "assets/episodes/ep008/episode_full.jpg?v=99fbfffb",
+    "thumb_image": "assets/episodes/ep008/thumb.jpg?v=e4850142",
     "page_images": [
-      "assets/episodes/ep008/page_1.png",
-      "assets/episodes/ep008/page_2.png",
-      "assets/episodes/ep008/page_3.png"
+      "assets/episodes/ep008/page_1.png?v=1d29d6a3",
+      "assets/episodes/ep008/page_2.png?v=846047c3",
+      "assets/episodes/ep008/page_3.png?v=2eac64f4"
     ],
     "canonical_url": "https://slopwow.github.io/episodes/ep008.html"
   },
@@ -383,12 +383,12 @@
         "color": "#7E57C2"
       }
     ],
-    "full_image": "assets/episodes/ep009/episode_full.jpg",
-    "thumb_image": "assets/episodes/ep009/thumb.jpg",
+    "full_image": "assets/episodes/ep009/episode_full.jpg?v=3238a6a1",
+    "thumb_image": "assets/episodes/ep009/thumb.jpg?v=c92b4a55",
     "page_images": [
-      "assets/episodes/ep009/page_1.png",
-      "assets/episodes/ep009/page_2.png",
-      "assets/episodes/ep009/page_3.png"
+      "assets/episodes/ep009/page_1.png?v=65f04ad3",
+      "assets/episodes/ep009/page_2.png?v=2824033a",
+      "assets/episodes/ep009/page_3.png?v=8a7cc59f"
     ],
     "canonical_url": "https://slopwow.github.io/episodes/ep009.html"
   },
@@ -430,12 +430,12 @@
         "color": "#2E7D32"
       }
     ],
-    "full_image": "assets/episodes/ep010/episode_full.jpg",
-    "thumb_image": "assets/episodes/ep010/thumb.jpg",
+    "full_image": "assets/episodes/ep010/episode_full.jpg?v=6019b859",
+    "thumb_image": "assets/episodes/ep010/thumb.jpg?v=a5e4b3c4",
     "page_images": [
-      "assets/episodes/ep010/page_1.png",
-      "assets/episodes/ep010/page_2.png",
-      "assets/episodes/ep010/page_3.png"
+      "assets/episodes/ep010/page_1.png?v=1c0b6650",
+      "assets/episodes/ep010/page_2.png?v=ecc697ef",
+      "assets/episodes/ep010/page_3.png?v=b49ab641"
     ],
     "canonical_url": "https://slopwow.github.io/episodes/ep010.html"
   },
@@ -471,12 +471,12 @@
         "color": "#8D6E63"
       }
     ],
-    "full_image": "assets/episodes/ep011/episode_full.jpg",
-    "thumb_image": "assets/episodes/ep011/thumb.jpg",
+    "full_image": "assets/episodes/ep011/episode_full.jpg?v=c4673456",
+    "thumb_image": "assets/episodes/ep011/thumb.jpg?v=175bc890",
     "page_images": [
-      "assets/episodes/ep011/page_1.png",
-      "assets/episodes/ep011/page_2.png",
-      "assets/episodes/ep011/page_3.png"
+      "assets/episodes/ep011/page_1.png?v=1fa68a17",
+      "assets/episodes/ep011/page_2.png?v=3d184d11",
+      "assets/episodes/ep011/page_3.png?v=ab614f82"
     ],
     "canonical_url": "https://slopwow.github.io/episodes/ep011.html"
   },
@@ -512,12 +512,12 @@
         "color": "#00ACC1"
       }
     ],
-    "full_image": "assets/episodes/ep012/episode_full.jpg",
-    "thumb_image": "assets/episodes/ep012/thumb.jpg",
+    "full_image": "assets/episodes/ep012/episode_full.jpg?v=94ace042",
+    "thumb_image": "assets/episodes/ep012/thumb.jpg?v=cad3f425",
     "page_images": [
-      "assets/episodes/ep012/page_1.png",
-      "assets/episodes/ep012/page_2.png",
-      "assets/episodes/ep012/page_3.png"
+      "assets/episodes/ep012/page_1.png?v=74b9865e",
+      "assets/episodes/ep012/page_2.png?v=7578544a",
+      "assets/episodes/ep012/page_3.png?v=a6d87672"
     ],
     "canonical_url": "https://slopwow.github.io/episodes/ep012.html"
   },
@@ -553,12 +553,12 @@
         "color": "#4CAF50"
       }
     ],
-    "full_image": "assets/episodes/ep013/episode_full.jpg",
-    "thumb_image": "assets/episodes/ep013/thumb.jpg",
+    "full_image": "assets/episodes/ep013/episode_full.jpg?v=5f9cef70",
+    "thumb_image": "assets/episodes/ep013/thumb.jpg?v=68803e03",
     "page_images": [
-      "assets/episodes/ep013/page_1.png",
-      "assets/episodes/ep013/page_2.png",
-      "assets/episodes/ep013/page_3.png"
+      "assets/episodes/ep013/page_1.png?v=de87a796",
+      "assets/episodes/ep013/page_2.png?v=c6bcd44a",
+      "assets/episodes/ep013/page_3.png?v=4d3cdd49"
     ],
     "canonical_url": "https://slopwow.github.io/episodes/ep013.html"
   },
@@ -594,12 +594,12 @@
         "color": "#2E7D32"
       }
     ],
-    "full_image": "assets/episodes/ep014/episode_full.jpg",
-    "thumb_image": "assets/episodes/ep014/thumb.jpg",
+    "full_image": "assets/episodes/ep014/episode_full.jpg?v=94a5e10d",
+    "thumb_image": "assets/episodes/ep014/thumb.jpg?v=066b7a21",
     "page_images": [
-      "assets/episodes/ep014/page_1.png",
-      "assets/episodes/ep014/page_2.png",
-      "assets/episodes/ep014/page_3.png"
+      "assets/episodes/ep014/page_1.png?v=e9c43078",
+      "assets/episodes/ep014/page_2.png?v=86b604e0",
+      "assets/episodes/ep014/page_3.png?v=08f50f5c"
     ],
     "canonical_url": "https://slopwow.github.io/episodes/ep014.html"
   },
@@ -629,12 +629,12 @@
         "color": "#FFC107"
       }
     ],
-    "full_image": "assets/episodes/ep015/episode_full.jpg",
-    "thumb_image": "assets/episodes/ep015/thumb.jpg",
+    "full_image": "assets/episodes/ep015/episode_full.jpg?v=ec00d4f4",
+    "thumb_image": "assets/episodes/ep015/thumb.jpg?v=5f2edbc8",
     "page_images": [
-      "assets/episodes/ep015/page_1.png",
-      "assets/episodes/ep015/page_2.png",
-      "assets/episodes/ep015/page_3.png"
+      "assets/episodes/ep015/page_1.png?v=c7f6589c",
+      "assets/episodes/ep015/page_2.png?v=61913e37",
+      "assets/episodes/ep015/page_3.png?v=877901ce"
     ],
     "canonical_url": "https://slopwow.github.io/episodes/ep015.html"
   },
@@ -670,12 +670,12 @@
         "color": "#00ACC1"
       }
     ],
-    "full_image": "assets/episodes/ep016/episode_full.jpg",
-    "thumb_image": "assets/episodes/ep016/thumb.jpg",
+    "full_image": "assets/episodes/ep016/episode_full.jpg?v=55e0d8b5",
+    "thumb_image": "assets/episodes/ep016/thumb.jpg?v=22c7c372",
     "page_images": [
-      "assets/episodes/ep016/page_1.png",
-      "assets/episodes/ep016/page_2.png",
-      "assets/episodes/ep016/page_3.png"
+      "assets/episodes/ep016/page_1.png?v=a69f2e25",
+      "assets/episodes/ep016/page_2.png?v=4c564218",
+      "assets/episodes/ep016/page_3.png?v=bf916edf"
     ],
     "canonical_url": "https://slopwow.github.io/episodes/ep016.html"
   },
@@ -711,12 +711,12 @@
         "color": "#6A1B9A"
       }
     ],
-    "full_image": "assets/episodes/ep017/episode_full.jpg",
-    "thumb_image": "assets/episodes/ep017/thumb.jpg",
+    "full_image": "assets/episodes/ep017/episode_full.jpg?v=457d39ab",
+    "thumb_image": "assets/episodes/ep017/thumb.jpg?v=a88b1887",
     "page_images": [
-      "assets/episodes/ep017/page_1.png",
-      "assets/episodes/ep017/page_2.png",
-      "assets/episodes/ep017/page_3.png"
+      "assets/episodes/ep017/page_1.png?v=7cd23690",
+      "assets/episodes/ep017/page_2.png?v=f86d1b2f",
+      "assets/episodes/ep017/page_3.png?v=56d53f71"
     ],
     "canonical_url": "https://slopwow.github.io/episodes/ep017.html"
   },
@@ -746,12 +746,12 @@
         "color": "#2E7D32"
       }
     ],
-    "full_image": "assets/episodes/ep018/episode_full.jpg",
-    "thumb_image": "assets/episodes/ep018/thumb.jpg",
+    "full_image": "assets/episodes/ep018/episode_full.jpg?v=9d68034c",
+    "thumb_image": "assets/episodes/ep018/thumb.jpg?v=42f4193d",
     "page_images": [
-      "assets/episodes/ep018/page_1.png",
-      "assets/episodes/ep018/page_2.png",
-      "assets/episodes/ep018/page_3.png"
+      "assets/episodes/ep018/page_1.png?v=31cb2b61",
+      "assets/episodes/ep018/page_2.png?v=4ed0f6e9",
+      "assets/episodes/ep018/page_3.png?v=2d03755c"
     ],
     "canonical_url": "https://slopwow.github.io/episodes/ep018.html"
   },
@@ -787,14 +787,14 @@
         "color": "#9E9E9E"
       }
     ],
-    "full_image": "assets/episodes/ep019/episode_full.jpg",
-    "thumb_image": "assets/episodes/ep019/thumb.jpg",
+    "full_image": "assets/episodes/ep019/episode_full.jpg?v=5e26ec48",
+    "thumb_image": "assets/episodes/ep019/thumb.jpg?v=bf864773",
     "page_images": [
-      "assets/episodes/ep019/page_1.png",
-      "assets/episodes/ep019/page_2.png",
-      "assets/episodes/ep019/page_3.png",
-      "assets/episodes/ep019/page_4.png",
-      "assets/episodes/ep019/page_5.png"
+      "assets/episodes/ep019/page_1.png?v=6f00c15a",
+      "assets/episodes/ep019/page_2.png?v=b835c2df",
+      "assets/episodes/ep019/page_3.png?v=ef76e28a",
+      "assets/episodes/ep019/page_4.png?v=dd8151b8",
+      "assets/episodes/ep019/page_5.png?v=ceb8a522"
     ],
     "canonical_url": "https://slopwow.github.io/episodes/ep019.html"
   },
@@ -805,7 +805,7 @@
     "subtitle": "하이잘 절벽 길 그림자 숨기 매복 → 정신 지배 핸들 꺾기·큰절 낙사·무덤 리스폰 재매복 — 5막 13컷",
     "source_post_no": "107884",
     "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=107884&exception_mode=recommend&page=1",
-    "created_at": "2026-11-25T00:13:58+09:00",
+    "created_at": "2026-11-25T00:46:19+09:00",
     "date_short": "2026-11-25",
     "cut_count": 13,
     "cast_used": [
@@ -830,14 +830,14 @@
         "color": "#8D6E63"
       }
     ],
-    "full_image": "assets/episodes/ep020/episode_full.jpg",
-    "thumb_image": "assets/episodes/ep020/thumb.jpg",
+    "full_image": "assets/episodes/ep020/episode_full.jpg?v=a978c9c7",
+    "thumb_image": "assets/episodes/ep020/thumb.jpg?v=ad925131",
     "page_images": [
-      "assets/episodes/ep020/page_1.png",
-      "assets/episodes/ep020/page_2.png",
-      "assets/episodes/ep020/page_3.png",
-      "assets/episodes/ep020/page_4.png",
-      "assets/episodes/ep020/page_5.png"
+      "assets/episodes/ep020/page_1.png?v=3c161d48",
+      "assets/episodes/ep020/page_2.png?v=4b90c495",
+      "assets/episodes/ep020/page_3.png?v=3c7b0dfa",
+      "assets/episodes/ep020/page_4.png?v=7601912e",
+      "assets/episodes/ep020/page_5.png?v=cc611ae8"
     ],
     "canonical_url": "https://slopwow.github.io/episodes/ep020.html"
   }
