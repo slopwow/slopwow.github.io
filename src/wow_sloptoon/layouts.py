@@ -299,11 +299,14 @@ def get_page_layout(layout_id: str) -> PageLayoutSpec:
 def render_layout_blueprint(
     layout_id: str,
     size: tuple[int, int] = (V4_PAGE_W, V4_PAGE_H),
+    *,
+    all_boxed: bool = False,
 ) -> Image.Image:
     """Render a zero-text structural panel blueprint on a pure solid `#FFFFFF` canvas.
 
-    Draws crisp 4px `#141414` rectangular frames for `box` slots and subtle 3px `#B0B0B0`
-    guide rectangles for `open` slots with ZERO text, digits, or labels.
+    Draws crisp 4px `#141414` rectangular frames for `box` slots (and for ALL slots
+    when `all_boxed=True`) and subtle 3px `#B0B0B0` guide rectangles for `open` slots
+    when `all_boxed=False`, with ZERO text, digits, or labels.
     """
     spec = get_page_layout(layout_id)
     w, h = int(size[0]), int(size[1])
@@ -323,7 +326,7 @@ def render_layout_blueprint(
         x1 = int(round(slot.rect[2] * sx))
         y1 = int(round(slot.rect[3] * sy))
 
-        if slot.border_style == "box":
+        if all_boxed or slot.border_style == "box":
             width = max(1, int(round(4 * scale_stroke)))
             draw.rectangle([x0, y0, x1, y1], outline=_BOX_BORDER_COLOR, width=width)
         else:
@@ -633,12 +636,15 @@ def _trim_residual_edge_borders(
     panel_im: Image.Image,
     edge_band_px: int = 14,
     deep_rule_ratio: float = 0.20,
+    *,
+    strict_dark_only: bool = False,
 ) -> Image.Image:
     """Trim residual straight borders from cropped panels without clipping real character art.
 
     Two safeguards:
     1. Outer `edge_band_px` (14px): trims any straight dark/gray border (`chroma <= 42`,
-       `cmin <= 220`, coverage `>= 0.55`).
+       `cmin <= 220` in clean-white mode, or `chroma <= 36`, `cmin <= 165` when
+       `strict_dark_only=True` for full-bleed colored panels, coverage `>= 0.55`).
     2. Outer `deep_rule_ratio` (20%): trims from any thin (`<= 16px`), continuous straight dark
        frame rule (`chroma <= 42`, `cmin <= 145`, coverage `> 0.60`, continuous span `>= 0.55`)
        outward to the edge so ZERO neighbor-panel bleed or stray black dividers ever leak in.
@@ -651,7 +657,10 @@ def _trim_residual_edge_borders(
     cmin = arr.min(axis=2)
     cmax = arr.max(axis=2)
     chroma = cmax - cmin
-    neutral_line = (chroma <= 42) & (cmin <= 220)
+    if strict_dark_only:
+        neutral_line = (chroma <= 36) & (cmin <= 165)
+    else:
+        neutral_line = (chroma <= 42) & (cmin <= 220)
     dark_rule = (chroma <= 42) & (cmin <= 145)
 
     x0, y0, x1, y1 = 0, 0, w, h
@@ -763,24 +772,367 @@ def _slot_edge_neighbors(
     return neighbors
 
 
+def _trim_stray_white_edge_strips(
+    panel_im: Image.Image,
+    max_strip_px: int = 10,
+) -> Image.Image:
+    """Trim accidental stray thin white strips (<= `max_strip_px`) on full-bleed panel edges
+    only when the immediately adjacent interior pixels are colored/non-white.
+    """
+    arr = np.asarray(panel_im.convert("RGB"))
+    h, w, _ = arr.shape
+    if h < 48 or w < 48:
+        return panel_im
+
+    white_px = (arr[:, :, 0] >= 246) & (arr[:, :, 1] >= 246) & (arr[:, :, 2] >= 246)
+    x0, y0, x1, y1 = 0, 0, w, h
+
+    # Top stray white strip
+    top_cap = min(max_strip_px, (y1 - y0) // 8)
+    lead = 0
+    while lead < top_cap and float(white_px[y0 + lead, x0:x1].mean()) >= 0.85:
+        lead += 1
+    if lead > 0 and (y0 + lead + 12) <= y1:
+        inner_nonwhite = float((~white_px[y0 + lead : y0 + lead + 12, x0:x1]).mean())
+        if inner_nonwhite >= 0.45:
+            y0 += lead
+
+    # Bottom stray white strip
+    bot_cap = min(max_strip_px, (y1 - y0) // 8)
+    lead = 0
+    while lead < bot_cap and float(white_px[y1 - 1 - lead, x0:x1].mean()) >= 0.85:
+        lead += 1
+    if lead > 0 and (y1 - lead - 12) >= y0:
+        inner_nonwhite = float((~white_px[y1 - lead - 12 : y1 - lead, x0:x1]).mean())
+        if inner_nonwhite >= 0.45:
+            y1 -= lead
+
+    # Left stray white strip
+    left_cap = min(max_strip_px, (x1 - x0) // 8)
+    lead = 0
+    while lead < left_cap and float(white_px[y0:y1, x0 + lead].mean()) >= 0.85:
+        lead += 1
+    if lead > 0 and (x0 + lead + 12) <= x1:
+        inner_nonwhite = float((~white_px[y0:y1, x0 + lead : x0 + lead + 12]).mean())
+        if inner_nonwhite >= 0.45:
+            x0 += lead
+
+    # Right stray white strip
+    right_cap = min(max_strip_px, (x1 - x0) // 8)
+    lead = 0
+    while lead < right_cap and float(white_px[y0:y1, x1 - 1 - lead].mean()) >= 0.85:
+        lead += 1
+    if lead > 0 and (x1 - lead - 12) >= x0:
+        inner_nonwhite = float((~white_px[y0:y1, x1 - lead - 12 : x1 - lead]).mean())
+        if inner_nonwhite >= 0.45:
+            x1 -= lead
+
+    if x1 - x0 < 32 or y1 - y0 < 32 or (x0, y0, x1, y1) == (0, 0, w, h):
+        return panel_im
+    return panel_im.crop((x0, y0, x1, y1))
+
+
+def _find_white_gutter_run(
+    white_mask: np.ndarray,
+    axis: Literal["h", "v"],
+    expected_mid: int,
+    perp_lo: int,
+    perp_hi: int,
+    search_lo: int,
+    search_hi: int,
+    *,
+    min_white_ratio: float = 0.85,
+    min_thickness: int = 4,
+) -> tuple[int, int] | None:
+    """Locate the pure-`#FFFFFF` gutter band closest to `expected_mid` along `axis`."""
+    h, w = white_mask.shape
+    if axis == "h":
+        s0 = max(0, search_lo)
+        s1 = min(h - 1, search_hi)
+        p0 = max(0, perp_lo)
+        p1 = min(w, perp_hi)
+        if s1 <= s0 or p1 - p0 < 24:
+            return None
+        profile = white_mask[s0 : s1 + 1, p0:p1].mean(axis=1)
+    else:
+        s0 = max(0, search_lo)
+        s1 = min(w - 1, search_hi)
+        p0 = max(0, perp_lo)
+        p1 = min(h, perp_hi)
+        if s1 <= s0 or p1 - p0 < 24:
+            return None
+        profile = white_mask[p0:p1, s0 : s1 + 1].mean(axis=0)
+
+    hits = np.where(profile >= min_white_ratio)[0] + s0
+    if len(hits) == 0:
+        return None
+
+    # Group contiguous white rows/cols (gutters can be wide, e.g. 6..80px)
+    runs: list[tuple[int, int]] = []
+    start = int(hits[0])
+    prev = start
+    for raw_idx in hits[1:]:
+        idx = int(raw_idx)
+        if idx == prev + 1:
+            prev = idx
+        else:
+            if (prev - start + 1) >= min_thickness:
+                runs.append((start, prev))
+            start = idx
+            prev = idx
+    if (prev - start + 1) >= min_thickness:
+        runs.append((start, prev))
+    if not runs:
+        return None
+
+    best_run: tuple[int, int] | None = None
+    best_key: tuple[float, float] | None = None
+    for r0, r1 in runs:
+        center = 0.5 * (r0 + r1)
+        dist = abs(center - expected_mid)
+        thickness = float(r1 - r0 + 1)
+        # Prefer closest clean gutter; slightly reward realistic gutter width (>= 8px)
+        key = (-dist + min(thickness, 32.0) * 0.15, thickness)
+        if best_key is None or key > best_key:
+            best_key = key
+            best_run = (r0, r1)
+    return best_run
+
+
+def _peel_black_box_frame(
+    panel_im: Image.Image,
+    max_frame_px: int = 12,
+) -> Image.Image:
+    """Peel ONLY the crisp neutral-black rectangular box frame (and <=4px outer white jitter)
+    from a white-gutter-segmented full-bleed panel, without touching dark colored interior art.
+    """
+    arr = np.asarray(panel_im.convert("RGB"))
+    h, w, _ = arr.shape
+    if h < 48 or w < 48:
+        return panel_im
+
+    cmin = arr.min(axis=2)
+    cmax = arr.max(axis=2)
+    chroma = cmax - cmin
+    # Strictly crisp neutral-black frame line (#141414), NOT mid-dark slate/stone interiors like (64,68,72)!
+    frame_px = (chroma <= 20) & (cmax <= 55)
+
+    def _peel_1d(line_frame: np.ndarray, limit: int) -> int:
+        n = min(limit, len(line_frame))
+        # Find the first crisp black frame row/col within the outer 5px (skipping white/gray AA transition)
+        start = -1
+        for i in range(min(5, n)):
+            if float(line_frame[i]) >= 0.55:
+                start = i
+                break
+        if start < 0:
+            return 0
+        end = start
+        while (end + 1) < n and (end - start + 1) < max_frame_px and float(line_frame[end + 1]) >= 0.55:
+            end += 1
+        # Peel through the frame plus 2px anti-aliasing inset
+        return min(n, end + 3)
+
+    top_lim = min(max_frame_px + 5, h // 8)
+    bot_lim = min(max_frame_px + 5, h // 8)
+    left_lim = min(max_frame_px + 5, w // 8)
+    right_lim = min(max_frame_px + 5, w // 8)
+
+    # Sample middle 80% along perpendicular axis so rounded corners don't skew frame density
+    mx0, mx1 = max(0, w // 10), min(w, w - w // 10)
+    my0, my1 = max(0, h // 10), min(h, h - h // 10)
+
+    top_peel = _peel_1d(frame_px[:top_lim, mx0:mx1].mean(axis=1), top_lim)
+    bot_peel = _peel_1d(frame_px[h - bot_lim : h, mx0:mx1].mean(axis=1)[::-1], bot_lim)
+    left_peel = _peel_1d(frame_px[my0:my1, :left_lim].mean(axis=0), left_lim)
+    right_peel = _peel_1d(frame_px[my0:my1, w - right_lim : w].mean(axis=0)[::-1], right_lim)
+
+    x0, y0, x1, y1 = left_peel, top_peel, w - right_peel, h - bot_peel
+    if x1 - x0 < 32 or y1 - y0 < 32:
+        return panel_im
+    return panel_im.crop((x0, y0, x1, y1))
+
+
+def _extract_all_boxed_panels(
+    page: Image.Image,
+    spec: PageLayoutSpec,
+) -> list[Image.Image] | None:
+    """Segment an all-boxed full-bleed V4 page directly from its pure-`#FFFFFF` page margins and
+    inter-panel gutters, then peel only the outer crisp `#141414` box frames.
+
+    Because full-bleed panels can contain dark neutral stone/cavern backgrounds, locating the
+    `#FFFFFF` gutters first guarantees ZERO cross-gutter neighbor bleed and ZERO false interior cuts.
+    Returns `None` only if outer/internal white gutters cannot be detected cleanly (triggering fallback).
+    """
+    arr = np.asarray(page)
+    h, w, _ = arr.shape
+    white_px = (arr[:, :, 0] >= 240) & (arr[:, :, 1] >= 240) & (arr[:, :, 2] >= 240)
+    all_neighbors = [_slot_edge_neighbors(spec.slots, i) for i in range(len(spec.slots))]
+
+    # 1. Detect outer non-white page content envelope (outside all black panel frames)
+    row_white = white_px.mean(axis=1)
+    col_white = white_px.mean(axis=0)
+    nonwhite_rows = np.where(row_white < 0.90)[0]
+    nonwhite_cols = np.where(col_white < 0.90)[0]
+    if len(nonwhite_rows) < 100 or len(nonwhite_cols) < 100:
+        return None
+    page_top = int(nonwhite_rows[0])
+    page_bot = int(nonwhite_rows[-1])
+    page_left = int(nonwhite_cols[0])
+    page_right = int(nonwhite_cols[-1])
+
+    # 2. Detect vertical span (outer top/bottom of each slot's black frame) via white horizontal gutters
+    box_y0: list[int] = [0] * len(spec.slots)
+    box_y1: list[int] = [0] * len(spec.slots)
+
+    # Cache detected internal horizontal gutters keyed by canonical midpoint
+    h_gutter_cache: dict[int, tuple[int, int] | None] = {}
+
+    def _get_h_gutter(upper_idx: int, lower_idx: int) -> tuple[int, int] | None:
+        u = spec.slots[upper_idx]
+        lo = spec.slots[lower_idx]
+        mid_y = (u.rect[3] + lo.rect[1]) // 2
+        key = round(mid_y / 8) * 8
+        if key not in h_gutter_cache:
+            radius = max(60, min(140, int(min(u.height, lo.height) * 0.34)))
+            h_gutter_cache[key] = _find_white_gutter_run(
+                white_px,
+                "h",
+                expected_mid=mid_y,
+                perp_lo=page_left + 16,
+                perp_hi=page_right - 16,
+                search_lo=max(page_top + 60, mid_y - radius),
+                search_hi=min(page_bot - 60, mid_y + radius),
+            )
+        return h_gutter_cache[key]
+
+    for idx, slot in enumerate(spec.slots):
+        nb = all_neighbors[idx]
+        # Top edge
+        if not nb["top"]:
+            # Scan down from top page margin within slot's approximate horizontal span
+            sx0 = max(page_left + 12, slot.rect[0] + 24)
+            sx1 = min(page_right - 12, slot.rect[2] - 24)
+            band_w = white_px[: min(h, slot.rect[1] + 96), sx0:sx1].mean(axis=1)
+            nw = np.where(band_w < 0.85)[0]
+            box_y0[idx] = int(nw[0]) if len(nw) > 0 else page_top
+        else:
+            gut = _get_h_gutter(nb["top"][0], idx)
+            if gut is None:
+                return None
+            box_y0[idx] = gut[1] + 1
+
+        # Bottom edge
+        if not nb["bottom"]:
+            sx0 = max(page_left + 12, slot.rect[0] + 24)
+            sx1 = min(page_right - 12, slot.rect[2] - 24)
+            y_start = max(0, slot.rect[3] - 96)
+            band_w = white_px[y_start:h, sx0:sx1].mean(axis=1)
+            nw = np.where(band_w < 0.85)[0]
+            box_y1[idx] = int(y_start + nw[-1]) if len(nw) > 0 else page_bot
+        else:
+            gut = _get_h_gutter(idx, nb["bottom"][0])
+            if gut is None:
+                return None
+            box_y1[idx] = gut[0] - 1
+
+    # 3. Detect horizontal span (outer left/right of each slot's black frame) via white vertical gutters
+    box_x0: list[int] = [0] * len(spec.slots)
+    box_x1: list[int] = [0] * len(spec.slots)
+
+    for idx, slot in enumerate(spec.slots):
+        nb = all_neighbors[idx]
+        sy0 = min(h - 1, box_y0[idx] + 20)
+        sy1 = max(sy0 + 24, box_y1[idx] - 20)
+
+        # Left edge
+        if not nb["left"]:
+            band_w = white_px[sy0:sy1, : min(w, slot.rect[0] + 96)].mean(axis=0)
+            nw = np.where(band_w < 0.85)[0]
+            box_x0[idx] = int(nw[0]) if len(nw) > 0 else page_left
+        else:
+            left_nb = spec.slots[nb["left"][0]]
+            mid_x = (left_nb.rect[2] + slot.rect[0]) // 2
+            radius = max(60, min(140, int(min(left_nb.width, slot.width) * 0.34)))
+            gut = _find_white_gutter_run(
+                white_px,
+                "v",
+                expected_mid=mid_x,
+                perp_lo=sy0,
+                perp_hi=sy1,
+                search_lo=max(page_left + 60, mid_x - radius),
+                search_hi=min(page_right - 60, mid_x + radius),
+            )
+            if gut is None:
+                return None
+            box_x0[idx] = gut[1] + 1
+
+        # Right edge
+        if not nb["right"]:
+            x_start = max(0, slot.rect[2] - 96)
+            band_w = white_px[sy0:sy1, x_start:w].mean(axis=0)
+            nw = np.where(band_w < 0.85)[0]
+            box_x1[idx] = int(x_start + nw[-1]) if len(nw) > 0 else page_right
+        else:
+            right_nb = spec.slots[nb["right"][0]]
+            mid_x = (slot.rect[2] + right_nb.rect[0]) // 2
+            radius = max(60, min(140, int(min(slot.width, right_nb.width) * 0.34)))
+            gut = _find_white_gutter_run(
+                white_px,
+                "v",
+                expected_mid=mid_x,
+                perp_lo=sy0,
+                perp_hi=sy1,
+                search_lo=max(page_left + 60, mid_x - radius),
+                search_hi=min(page_right - 60, mid_x + radius),
+            )
+            if gut is None:
+                return None
+            box_x1[idx] = gut[0] - 1
+
+    # 4. Crop each exact frame box, peel ONLY its outer crisp black frame, trim any <=10px stray white gap
+    extracted: list[Image.Image] = []
+    for idx in range(len(spec.slots)):
+        cx0 = max(0, min(w - 32, box_x0[idx]))
+        cy0 = max(0, min(h - 32, box_y0[idx]))
+        cx1 = max(cx0 + 32, min(w, box_x1[idx] + 1))
+        cy1 = max(cy0 + 32, min(h, box_y1[idx] + 1))
+        if (cx1 - cx0) < int(spec.slots[idx].width * 0.55) or (cy1 - cy0) < int(spec.slots[idx].height * 0.55):
+            return None
+        cropped = page.crop((cx0, cy0, cx1, cy1))
+        peeled = _peel_black_box_frame(cropped, max_frame_px=12)
+        cleaned = _trim_stray_white_edge_strips(peeled, max_strip_px=10)
+        extracted.append(cleaned)
+
+    return extracted
+
+
 def extract_panels_from_page(
     raw_page_im: Image.Image,
     layout_id: str,
+    *,
+    all_boxed: bool = False,
 ) -> list[Image.Image]:
-    """Extract clean, border-stripped, pure-`#FFFFFF` panel images from a generated V4 act page.
+    """Extract clean, border-stripped panel images from a generated V4 act page.
 
     Steps:
     1. Convert to RGB and normalize to `(V4_PAGE_W, V4_PAGE_H)` (900x1350) preserving 2:3 framing.
-    2. Detect actual drawn horizontal & vertical dark/gray panel frame lines using a wide search
-       window (up to `±140px` for internal dividers, `±56px` for outer edges) with corner-polarity
-       disambiguation, two-stage horizontal/vertical refinement, and adjacent-slot coupling so
-       both open top slots and bottom/split boxes snap cleanly to real drawn dividers.
-    3. Crop cleanly inside the snapped border + run outer-20% continuous-dark-rule & outer-14px
-       border-strip safeguards so zero neighbor bleed or stray frame lines leak in.
-    4. Level near-white neutral pixels to strict `#FFFFFF` so extracted panels composite seamlessly.
+    2. When `all_boxed=True` (full_bleed mode): segment every box directly via the pure-`#FFFFFF`
+       outer page margins & inter-panel gutters first (immune to dark neutral dungeon/cave interior
+       backgrounds!), peel only the outer crisp `#141414` box frames, and trim stray thin white
+       strips (`<= 10px`).
+    3. Otherwise (or if a synthetic page lacks white gutters): detect drawn horizontal & vertical
+       frame lines with a wide search window (`±140px` internal, `±56px` outer), corner-polarity
+       disambiguation, and adjacent-slot coupling, strip residual edge borders, and level
+       near-white neutral pixels to strict `#FFFFFF` in clean-white mode.
     """
     spec = get_page_layout(layout_id)
     page = _normalize_page_to_canvas(raw_page_im)
+    if all_boxed:
+        white_gutter_panels = _extract_all_boxed_panels(page, spec)
+        if white_gutter_panels is not None:
+            return white_gutter_panels
+
     arr = np.asarray(page)
     h, w, _ = arr.shape
 
@@ -789,7 +1141,11 @@ def extract_panels_from_page(
     chroma = cmax - cmin
     line_mask = (chroma <= 42) & (cmin <= 215)
     dark_mask = (chroma <= 42) & (cmin <= 145)
+    strict_black_mask = (chroma <= 24) & (cmin <= 48)
 
+    eff_styles: list[Literal["open", "box"]] = [
+        "box" if all_boxed else s.border_style for s in spec.slots
+    ]
     all_neighbors = [_slot_edge_neighbors(spec.slots, i) for i in range(len(spec.slots))]
 
     def _internal_search_radius(slot: PanelSlotSpec, nb_indices: list[int], axis: Literal["h", "v"]) -> int:
@@ -805,6 +1161,7 @@ def extract_panels_from_page(
     snapped_bounds: list[dict[str, tuple[int, int] | None]] = []
     for idx, slot in enumerate(spec.slots):
         x0, y0, x1, y1 = slot.rect
+        eff_style = eff_styles[idx]
         nb = all_neighbors[idx]
         top_r = _internal_search_radius(slot, nb["top"], "h")
         bot_r = _internal_search_radius(slot, nb["bottom"], "h")
@@ -813,18 +1170,30 @@ def extract_panels_from_page(
         bot_clamp = (180, h - 140) if nb["bottom"] else (max(0, y1 - 80), h - 1)
 
         top_run = _detect_horizontal_border(
-            line_mask, dark_mask, y0, slot.rect, "top", slot.border_style,
+            line_mask, dark_mask, y0, slot.rect, "top", eff_style,
             search_radius=top_r, clamp_bounds=top_clamp,
         )
+        if all_boxed and top_run is None:
+            top_run = _detect_horizontal_border(
+                strict_black_mask, strict_black_mask, y0, slot.rect, "top", "box",
+                search_radius=top_r, clamp_bounds=top_clamp,
+            )
+
         bot_run = _detect_horizontal_border(
-            line_mask, dark_mask, y1, slot.rect, "bottom", slot.border_style,
+            line_mask, dark_mask, y1, slot.rect, "bottom", eff_style,
             search_radius=bot_r, clamp_bounds=bot_clamp,
         )
+        if all_boxed and bot_run is None:
+            bot_run = _detect_horizontal_border(
+                strict_black_mask, strict_black_mask, y1, slot.rect, "bottom", "box",
+                search_radius=bot_r, clamp_bounds=bot_clamp,
+            )
+
         snapped_bounds.append({"left": None, "right": None, "top": top_run, "bottom": bot_run})
 
     # Sync row-mate box horizontal borders if one sibling detected a strong divider and another missed it
     for idx, slot in enumerate(spec.slots):
-        if slot.border_style != "box":
+        if eff_styles[idx] != "box":
             continue
         b = snapped_bounds[idx]
         for side in ("top", "bottom"):
@@ -832,7 +1201,7 @@ def extract_panels_from_page(
                 continue
             ref_coord = slot.rect[1] if side == "top" else slot.rect[3]
             for other_idx, other in enumerate(spec.slots):
-                if other_idx == idx or other.border_style != "box":
+                if other_idx == idx or eff_styles[other_idx] != "box":
                     continue
                 other_coord = other.rect[1] if side == "top" else other.rect[3]
                 if abs(other_coord - ref_coord) <= 6 and snapped_bounds[other_idx][side] is not None:
@@ -842,6 +1211,7 @@ def extract_panels_from_page(
     # Stage 2: Detect vertical borders using the snapped horizontal span (eff_y0..eff_y1)
     for idx, slot in enumerate(spec.slots):
         x0, y0, x1, y1 = slot.rect
+        eff_style = eff_styles[idx]
         b = snapped_bounds[idx]
         nb = all_neighbors[idx]
         eff_y0 = b["top"][0] if b["top"] is not None else y0
@@ -856,17 +1226,28 @@ def extract_panels_from_page(
         right_clamp = (120, w - 120) if nb["right"] else (max(0, x1 - 80), w - 1)
 
         b["left"] = _detect_vertical_border(
-            line_mask, dark_mask, x0, eff_rect, "left", slot.border_style,
+            line_mask, dark_mask, x0, eff_rect, "left", eff_style,
             search_radius=left_r, clamp_bounds=left_clamp,
         )
+        if all_boxed and b["left"] is None:
+            b["left"] = _detect_vertical_border(
+                strict_black_mask, strict_black_mask, x0, eff_rect, "left", "box",
+                search_radius=left_r, clamp_bounds=left_clamp,
+            )
+
         b["right"] = _detect_vertical_border(
-            line_mask, dark_mask, x1, eff_rect, "right", slot.border_style,
+            line_mask, dark_mask, x1, eff_rect, "right", eff_style,
             search_radius=right_r, clamp_bounds=right_clamp,
         )
+        if all_boxed and b["right"] is None:
+            b["right"] = _detect_vertical_border(
+                strict_black_mask, strict_black_mask, x1, eff_rect, "right", "box",
+                search_radius=right_r, clamp_bounds=right_clamp,
+            )
 
     # Sync column-mate box vertical borders if one sibling missed it
     for idx, slot in enumerate(spec.slots):
-        if slot.border_style != "box":
+        if eff_styles[idx] != "box":
             continue
         b = snapped_bounds[idx]
         for side in ("left", "right"):
@@ -874,7 +1255,7 @@ def extract_panels_from_page(
                 continue
             ref_coord = slot.rect[0] if side == "left" else slot.rect[2]
             for other_idx, other in enumerate(spec.slots):
-                if other_idx == idx or other.border_style != "box":
+                if other_idx == idx or eff_styles[other_idx] != "box":
                     continue
                 other_coord = other.rect[0] if side == "left" else other.rect[2]
                 if abs(other_coord - ref_coord) <= 6 and snapped_bounds[other_idx][side] is not None:
@@ -882,37 +1263,40 @@ def extract_panels_from_page(
                     break
 
     # Stage 3: Crop cleanly inside snapped borders & couple adjacent open/box slots to real dividers
+    inset_lo = 4 if all_boxed else 6
+    inset_hi = 3 if all_boxed else 5
     extracted: list[Image.Image] = []
     for idx, slot in enumerate(spec.slots):
         x0, y0, x1, y1 = slot.rect
+        eff_style = eff_styles[idx]
         b = snapped_bounds[idx]
         nb = all_neighbors[idx]
 
         # Open outer page edges with no drawn border keep generous margin so protruding props stay intact
         if b["left"] is not None:
-            cx0 = b["left"][1] + 6
-        elif slot.border_style == "open" and not nb["left"]:
+            cx0 = b["left"][1] + inset_lo
+        elif eff_style == "open" and not nb["left"]:
             cx0 = 4
         else:
             cx0 = x0 + 8
 
         if b["right"] is not None:
-            cx1 = b["right"][0] - 5
-        elif slot.border_style == "open" and not nb["right"]:
+            cx1 = b["right"][0] - inset_hi
+        elif eff_style == "open" and not nb["right"]:
             cx1 = w - 4
         else:
             cx1 = x1 - 8
 
         if b["top"] is not None:
-            cy0 = b["top"][1] + 6
-        elif slot.border_style == "open" and not nb["top"]:
+            cy0 = b["top"][1] + inset_lo
+        elif eff_style == "open" and not nb["top"]:
             cy0 = 4
         else:
             cy0 = y0 + 8
 
         if b["bottom"] is not None:
-            cy1 = b["bottom"][0] - 5
-        elif slot.border_style == "open" and not nb["bottom"]:
+            cy1 = b["bottom"][0] - inset_hi
+        elif eff_style == "open" and not nb["bottom"]:
             cy1 = h - 4
         else:
             cy1 = y1 - 8
@@ -926,7 +1310,7 @@ def extract_panels_from_page(
             ]
             if below_tops:
                 real_divider_y = min(below_tops)
-                if slot.border_style == "open":
+                if eff_style == "open":
                     # Follow the real downward/upward drift so open-panel artwork isn't clipped!
                     cy1 = real_divider_y - 3
                 else:
@@ -940,7 +1324,7 @@ def extract_panels_from_page(
             ]
             if above_bots:
                 real_divider_y = max(above_bots)
-                if slot.border_style == "open":
+                if eff_style == "open":
                     cy0 = real_divider_y + 4
                 else:
                     cy0 = max(cy0, real_divider_y + 5)
@@ -953,7 +1337,7 @@ def extract_panels_from_page(
             ]
             if right_lefts:
                 real_divider_x = min(right_lefts)
-                if slot.border_style == "open":
+                if eff_style == "open":
                     cx1 = real_divider_x - 3
                 else:
                     cx1 = min(cx1, real_divider_x - 4)
@@ -966,7 +1350,7 @@ def extract_panels_from_page(
             ]
             if left_rights:
                 real_divider_x = max(left_rights)
-                if slot.border_style == "open":
+                if eff_style == "open":
                     cx0 = real_divider_x + 4
                 else:
                     cx0 = max(cx0, real_divider_x + 5)
@@ -977,8 +1361,16 @@ def extract_panels_from_page(
         cy1 = max(cy0 + 32, min(h, cy1))
 
         cropped = page.crop((cx0, cy0, cx1, cy1))
-        trimmed = _trim_residual_edge_borders(cropped, edge_band_px=14, deep_rule_ratio=0.20)
-        cleaned = _level_near_white_bg(trimmed)
+        trimmed = _trim_residual_edge_borders(
+            cropped,
+            edge_band_px=14,
+            deep_rule_ratio=0.20,
+            strict_dark_only=all_boxed,
+        )
+        if all_boxed:
+            cleaned = _trim_stray_white_edge_strips(trimmed, max_strip_px=10)
+        else:
+            cleaned = _level_near_white_bg(trimmed)
         extracted.append(cleaned)
 
     return extracted

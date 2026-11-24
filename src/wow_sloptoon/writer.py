@@ -21,7 +21,7 @@ from wow_sloptoon.cast import (
 )
 from wow_sloptoon.config import DEFAULT_TEXT_MODEL, Settings, load_settings
 from wow_sloptoon.layouts import PAGE_LAYOUTS, get_page_layout
-from wow_sloptoon.models import ActPage, ComicCut, EpisodeScript, GalleryPost
+from wow_sloptoon.models import ActPage, BackgroundStyle, ComicCut, EpisodeScript, GalleryPost
 from wow_sloptoon.wow_lore import (
     ALLIANCE_ZONES,
     HORDE_ZONES,
@@ -138,8 +138,9 @@ V4_WRITER_SYSTEM_RULES = """당신은 디시인사이드 '와우 포에버 마�
    - 원글의 실제 사건·스샷 디테일을 100% 인게임 라이브 상황극으로 재현하세요.
    - "댓글 반응 보니까~", "개념글 갔네~" 같은 메타 댓글 컷/제4의 벽 깨기는 절대 금지합니다.
    - 타 커뮤니티(와우 인벤 등) 언급은 영구 금지합니다.
-4. **고정 캐스트 집중 + 몬스터 전투 씬 & 엑스트라·보스·NPC 필수 투입**:
+4. **고정 캐스트 집중 + 몬스터 전투 씬 & 엑스트라·보스·NPC 필수 투입 + 인접 컷 인물 연속성**:
    - 각 컷의 `characters`에는 시안 C 9명 중 **1~2명**만 기입하고, 한 화 전체 주연 고정 캐스트는 **2~4명(최대 5인 파티 이내)**으로 집중하세요.
+   - **인접 컷 인물 연속성 절대 엄수**: 직전 컷에서 캐릭터 A가 B에게 따졌다면 바로 다음 컷에서 B가 역공할 때 반드시 같은 대상 A가 맞받아쳐야 합니다(갑자기 다른 캐릭터 C로 대상이 바뀌는 콘티 연속성 오류 금지). 또한 배경 엑스트라에 주연 캐릭터와 똑같이 생긴 복제 인물을 넣지 마세요.
    - **몬스터 전투 씬 & 엑스트라·보스·NPC 필수 투입**: 한 화 5막(10~14컷) 중 **최소 2~3컷 이상에 던전 몬스터 때려잡는 전투 액션, 몹 떼거리, 보스 카메오(해적 선원·고블린·오우거·던전 네임드 등), 엑스트라 유저/경비병/NPC 군중**을 `visual_prompt`에 적극 배치해 살아있는 와우 인게임 현장감을 살리세요! (귀여운 만화풍·비고어 쪼렙 시체/해골 더미, 펫, 탈것도 적극 활용)
 5. **시그니처 무언 충격 정지 컷 (`wordless=True`) 최소 1컷 필수 — 풀-블리드 극장판 연출**:
    - 최소 1컷(권장: 4막 `impact_freeze_2cut`의 2번 초대형 패널)은 반드시 `wordless=True`, `speaker=null`, `dialogue=null`로 설정하세요.
@@ -149,10 +150,10 @@ V4_WRITER_SYSTEM_RULES = """당신은 디시인사이드 '와우 포에버 마�
    - **세로 분할 좁은 컷(410px)**에서는 대사를 1~3줄(줄당 10~12자 내외, `\\n` 줄바꿈)로 짧고 임팩트 있게 압축하세요. 와이드 컷은 1~3줄(줄당 14자 내외).
    - **현실 현대어 금지**: "119", "112", "구급차", "경찰", "카톡", "편의점", "택시", "배민" 대신 "무덤 이동", "영혼의 치유사", "경비병", "귓말/파티창", "여관 주인", "와이번/그리핀" 등 100% 와우 인게임 어휘만 사용하세요.
    - **100% 익명성 준수**: 실제 닉네임·아이디·`<길드명>`(패러디 포함)을 대사·막 제목·부제·이미지 프롬프트·툴팁 어디에도 절대 적지 말고 오직 직업·역할 호칭(`도적`, `징기`, `보기`, `전탱`, `흑마`, `사제`, `파장님`)만 사용하세요.
-7. **소프트 비네트 배경 · 시네마틱 연출 · 표정 다양화 · Clean Hand · 와우 포에버 고증**:
-   - **소프트 비네트 배경 & 무언 컷 풀-블리드 배경 환기 (13컷 내내 텅 빈 흰 배경 금지!)**:
-     * 10~14컷 내내 텅 빈 흰 배경에 캐릭터만 서 있는 심심한 구도를 절대 금지합니다!
-     * **대사 컷(`wordless=False`)**: 캐릭터·몬스터 뒤편과 발밑(**하단 60% 영역**)에 **던전(석조 갱도·나무 기둥·횃불·광차 레일), 필드, 선착장·해적선, 여관, 폭발 화염·연기, 흑화 오라/꽃밭 반전 등 파스텔·셀애니 톤 배경 비네트**를 생생히 그리되, **말풍선 존(세로 좁은 컷 상단 35~40% 또는 와이드 컷 상단 32~35%·좌우 46% 여백)만 `#FFFFFF` 순백으로 부드럽게 페이드아웃**하도록 `visual_prompt`에 명시하세요.
+7. **풀-블리드 엣지투엣지 박스 배경(`background_style="full_bleed"`) · 시네마틱 연출 · 표정 다양화 · Clean Hand · 와우 포에버 고증**:
+   - **V4.2 풀-블리드 엣지투엣지 박스 배경 기본 채택 (반쯤 빈 흰 스티커 공백 금지!)**:
+     * V4 에피소드는 기본 `background_style="full_bleed"`로 설정하고, 모든 박스 패널 내부를 상하좌우 100% 끝까지 꽉 차는 컬러 배경(던전 석조 갱도·나무 서까래·횃불·광차 레일, 필드, 선착장·해적선 돛과 갑판, 밤하늘, 여관 벽면, 폭발 화염·연기, 흑화 오라/꽃밭 반전 등)으로 채우도록 `visual_prompt`를 작성하세요! (페이지 외곽 여백·거터만 `#FFFFFF` 순백 유지!)
+     * **대사 컷(`wordless=False`) 말풍선 배경 존 확보**: 캐릭터·몬스터는 **하단 62~66%(또는 화자 측 절반)**에 깔끔히 배치하고, 말풍선이 올라갈 영역(와이드 컷 상단 30~35% / 세로 좁은 컷 상단 34~38% / 슬림 와이드 반대쪽 44% 또는 상단 34%)은 **동굴 천장·석벽·나무 서까래·밤하늘·선박 돛·은은한 분위기광 등 인물이 없는 트인 풀-블리드 배경 풍경**으로 채워 흰 말풍선이 얼굴을 가리지 않고 배경 위에 깔끔히 얹히게 설계하세요(절대 어색한 흰 공백 스티커 컷아웃으로 비우지 마세요!).
      * **무언 절정 컷(`wordless=True`)**: **풀-블리드 극장판 배경 + 엑스트라/보스 카메오**로 패널 내부를 꽉 채우세요(페이지 외곽 여백·거터만 `#FFFFFF` 순백 유지).
    - **시네마틱 카메라 & 물리 슬랩스틱**: 정면 나란히 서기 만담 도장찍기 금지! 5막 전체에서 OTS(오버더숄더), 로우앵글, 하이앵글, 더치 틸트, 측면 90° 프로필, 뒷모습, 물리 슬랩스틱(돌진·도주·죽은 척·은신·귀환석 소용돌이·두루마리 낚아채기·그을음 폭탄 머리·도끼 뽑기·무릎 꿇기 등)을 다채롭게 배합하세요.
    - **Clean Hand Rule**: 전리품·방패·주사위·귀환석·물약을 들거나 제스처 시 기본 무기는 등/허리에 수납(`sheathed on back/belt`)하거나 생략하세요(한 캐릭터 무기 3개 동시 소지 금지).
@@ -175,7 +176,12 @@ def _format_v4_layouts_reference() -> str:
     return "\n".join(lines)
 
 
-def build_v4_writer_prompt(post: GalleryPost, episode_number: int) -> str:
+def build_v4_writer_prompt(
+    post: GalleryPost,
+    episode_number: int,
+    *,
+    background_style: BackgroundStyle = "full_bleed",
+) -> str:
     """Assemble the complete V4 5-act variable-layout structured prompt."""
     cast_bible = format_cast_bible_for_writer()
     layouts_ref = _format_v4_layouts_reference()
@@ -203,7 +209,8 @@ def build_v4_writer_prompt(post: GalleryPost, episode_number: int) -> str:
         f"- 본문:\n{post.body or '(본문 텍스트 없음 — 제목의 펀치라인을 5막 던전 상황극으로 풀어내세요)'}\n\n"
         f"- 주요 댓글 (메타 해설 금지! 웃긴 포인트만 캐릭터 대사·상황극 소재로 흡수):\n{comments_block}\n\n"
         f"위 JSON 스키마(`EpisodeScript`)에 정확히 맞춰 출력하세요. "
-        f"`layout_mode`는 \"v4_five_act\", `episode_number`는 {episode_number}, "
+        f"`layout_mode`는 \"v4_five_act\", `background_style`은 \"{background_style}\", "
+        f"`episode_number`는 {episode_number}, "
         f"`source_post_no`는 \"{post.post_no}\", "
         f"`source_title`은 원문 제목 100% 그대로인 {json.dumps(post.title.strip(), ensure_ascii=False)}, "
         f"`source_url`은 \"{post.url}\" 로 기입하고, `acts`에 정확히 5개 막(총 10~14컷, 연속 동일 `layout_id` 금지, 최소 3종 이상 레이아웃 사용)을 작성하세요."
@@ -761,6 +768,7 @@ def generate_v4_episode_script(
     client: Any | None = None,
     settings: Settings | None = None,
     model: str | None = None,
+    background_style: BackgroundStyle | None = None,
 ) -> EpisodeScript:
     """Generate and validate a V4 5-act (10~14 cut) `EpisodeScript` via Gemini Interactions API."""
     cfg = settings or load_settings()
@@ -774,7 +782,11 @@ def generate_v4_episode_script(
             )
         client = genai.Client(api_key=cfg.gemini_api_key)
 
-    prompt = build_v4_writer_prompt(post, episode_number=episode_number)
+    prompt = build_v4_writer_prompt(
+        post,
+        episode_number=episode_number,
+        background_style=background_style or "full_bleed",
+    )
     interaction = client.interactions.create(
         model=target_model,
         input=prompt,
@@ -797,7 +809,10 @@ def generate_v4_episode_script(
         raise ValueError(
             "Gemini V4 script response did not produce a valid 5-act `v4_five_act` EpisodeScript."
         )
-    return _normalize_script(script, post=post, episode_number=episode_number)
+    normalized = _normalize_script(script, post=post, episode_number=episode_number)
+    if background_style is not None and normalized.background_style != background_style:
+        normalized = normalized.model_copy(update={"background_style": background_style})
+    return normalized
 
 
 def build_dry_run_script(post: GalleryPost, episode_number: int) -> EpisodeScript:
@@ -885,7 +900,12 @@ def build_dry_run_script(post: GalleryPost, episode_number: int) -> EpisodeScrip
     )
 
 
-def build_dry_run_v4_script(post: GalleryPost, episode_number: int) -> EpisodeScript:
+def build_dry_run_v4_script(
+    post: GalleryPost,
+    episode_number: int,
+    *,
+    background_style: BackgroundStyle = "clean_white",
+) -> EpisodeScript:
     """Build a deterministic offline V4 5-act (13-cut, 5 distinct variable layouts) Draft C script.
 
     Uses the 5 distinct layouts (`open_top_split_bottom`, `diagonal_tempo_2cut`,
@@ -1191,6 +1211,7 @@ def build_dry_run_v4_script(post: GalleryPost, episode_number: int) -> EpisodeSc
         source_url=post.url,
         subtitle=f"포에버갤 #{post.post_no} V4 5막 드라이런 프리뷰",
         layout_mode="v4_five_act",
+        background_style=background_style,
         acts=acts,
     )
 

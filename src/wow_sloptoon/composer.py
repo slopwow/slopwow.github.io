@@ -2248,14 +2248,134 @@ def build_header(script: EpisodeScript) -> Image.Image:
     return canvas
 
 
+def _cover_fit_full_bleed_image(
+    raw_im: Image.Image,
+    target_w: int,
+    target_h: int,
+) -> tuple[Image.Image, float]:
+    """Cover-fit a raw full-bleed illustration edge-to-edge into `(target_w, target_h)`.
+
+    1. Trims accidental thin pure-white outer margins (up to 12% per side) when non-white
+       content fills >70% of the remaining interior.
+    2. Applies cover-fit scaling (`scale = max(target_w / cw, target_h / ch)`) anchored
+       bottom-center, clamping top crop to at most 24% of scaled height so character heads
+       are preserved while every pixel of `(target_w, target_h)` is filled edge-to-edge.
+    3. Returns `(fitted_rgb_image, edge_fill_ratio)` where `edge_fill_ratio` is the fraction
+       of non-white pixels along the 4 outer 4px inner-edge bands.
+    """
+    rgb = _flatten_to_white_rgb(raw_im)
+    rw, rh = rgb.size
+    src = rgb
+
+    if rw >= 48 and rh >= 48:
+        arr = np.asarray(rgb)
+        is_white = (arr[:, :, 0] >= 248) & (arr[:, :, 1] >= 248) & (arr[:, :, 2] >= 248)
+        max_tx = int(rw * 0.12)
+        max_ty = int(rh * 0.12)
+
+        y0 = 0
+        while y0 < max_ty and float(is_white[y0, :].mean()) >= 0.88:
+            y0 += 1
+        y1 = rh
+        while (rh - y1) < max_ty and (y1 - y0) > 32 and float(is_white[y1 - 1, :].mean()) >= 0.88:
+            y1 -= 1
+        x0 = 0
+        while x0 < max_tx and float(is_white[y0:y1, x0].mean()) >= 0.88:
+            x0 += 1
+        x1 = rw
+        while (rw - x1) < max_tx and (x1 - x0) > 32 and float(is_white[y0:y1, x1 - 1].mean()) >= 0.88:
+            x1 -= 1
+
+        if (x0, y0, x1, y1) != (0, 0, rw, rh) and (x1 - x0) >= 32 and (y1 - y0) >= 32:
+            inner_nonwhite = float((~is_white[y0:y1, x0:x1]).mean())
+            if inner_nonwhite > 0.70:
+                src = rgb.crop((x0, y0, x1, y1))
+
+    cw, ch = src.size
+    scale = max(target_w / float(max(1, cw)), target_h / float(max(1, ch)))
+    nw = max(target_w, int(np.ceil(cw * scale)))
+    nh = max(target_h, int(np.ceil(ch * scale)))
+    resized = src.resize((nw, nh), Image.Resampling.LANCZOS)
+
+    excess_w = nw - target_w
+    excess_h = nh - target_h
+    crop_x0 = excess_w // 2
+    # Anchor bottom-center (cropping excess off top scenery) while clamping top crop <= 24%
+    # so character heads/hats are never sliced on extreme aspect mismatches.
+    max_top_crop = int(round(nh * 0.24))
+    crop_y0 = min(excess_h, max_top_crop)
+    panel = resized.crop((crop_x0, crop_y0, crop_x0 + target_w, crop_y0 + target_h))
+
+    p_arr = np.asarray(panel)
+    non_white = (p_arr[:, :, 0] < 248) | (p_arr[:, :, 1] < 248) | (p_arr[:, :, 2] < 248)
+    m = max(1, min(4, target_h // 8, target_w // 8))
+    edge_pixels = np.concatenate(
+        [
+            non_white[:m, :].ravel(),
+            non_white[target_h - m :, :].ravel(),
+            non_white[:, :m].ravel(),
+            non_white[:, target_w - m :].ravel(),
+        ]
+    )
+    edge_fill_ratio = round(float(edge_pixels.mean()), 4)
+    return panel, edge_fill_ratio
+
+
 def build_thumbnail(
     script: EpisodeScript,
     raw_images: Sequence[Image.Image],
     size: tuple[int, int] = THUMB_SIZE,
+    *,
+    full_bleed: bool = False,
 ) -> Image.Image:
-    """Create a clean 4:3 pure-white thumbnail (`800x600`) highlighting the lead cut artwork."""
+    """Create a clean 4:3 thumbnail (`800x600`) highlighting the lead cut artwork.
+
+    In `full_bleed=True` mode, cover-fills the framed comic cover window with an 8px
+    pure-`#FFFFFF` outer mat + crisp 3px `#141414` inner panel border so the thumbnail is
+    edge-to-edge rich while preserving `_is_outer_border_pure_white(thumb_im) == True`.
+    """
     tw, th = size
     canvas = Image.new("RGB", (tw, th), PURE_WHITE)
+
+    if full_bleed:
+        # 10px outer pure-white mat keeps the 3.0px inner border strictly outside the outer
+        # 8x8 JPEG DCT blocks (0..7 / W-8..W-1 / H-8..H-1), guaranteeing zero JPEG ringing!
+        pad = 10
+        inner_w = max(32, tw - 2 * pad)
+        inner_h = max(32, th - 2 * pad)
+        chosen_raw: Image.Image | None = None
+        for im in raw_images:
+            rgb_im = _flatten_to_white_rgb(im)
+            if extract_art_bbox(rgb_im, threshold=252) is not None:
+                chosen_raw = rgb_im
+                break
+        if chosen_raw is None and raw_images:
+            chosen_raw = _flatten_to_white_rgb(raw_images[0])
+
+        if chosen_raw is not None:
+            fitted, _ = _cover_fit_full_bleed_image(chosen_raw, inner_w, inner_h)
+            canvas.paste(fitted, (pad, pad))
+
+        draw_4x_rect_border(
+            canvas,
+            (float(pad), float(pad), float(tw - pad), float(th - pad)),
+            stroke_px=3.0,
+            color=INK_BLACK,
+        )
+        badge_text = f"EP.{script.episode_number}"
+        draw_minimal_pill(
+            canvas,
+            cx=68,
+            cy=40,
+            text=badge_text,
+            bg_col=INK_BLACK,
+            txt_col=PURE_WHITE,
+            border_col=PURE_WHITE,
+            dot_col=PILL_DOT_BLUE,
+            font_size=15,
+            pad_xy=(14, 6),
+        )
+        return canvas
 
     # Pick first cut that has visible artwork (prefer cut 0 for story hook)
     chosen_im: Image.Image | None = None
@@ -4748,6 +4868,387 @@ def _resolve_act_page_path(
     )
 
 
+def _compose_full_bleed_panel(
+    cut: ComicCut,
+    raw_im: Image.Image,
+    target_w: int,
+    target_h: int,
+) -> tuple[Image.Image, dict[str, Any]]:
+    """Compose a V4.2 edge-to-edge full-bleed boxed panel with crisp overlaid speech bubble.
+
+    - Fills `(target_w, target_h)` 100% edge-to-edge via cover-fit scaling (anchored bottom-center
+      with head-preservation clamp) with ZERO white border gaps.
+    - Overlays a 4x-supersampled pure-`#FFFFFF` elliptical speech bubble (`3.5px #141414` stroke)
+      onto the unobstructed scenic background zone.
+    - Supports exact `cut.bubble_center_xy` placement and laser-precise `cut.speaker_anchor_xy`
+      tail aiming (with clean deterministic `tail_target` speaker anchors when unset so flying
+      mobs, smoke, or background scenery NEVER hijack tail direction!).
+    - Places optional `item_tooltip` cleanly in the opposite open corner with `tooltip_overlap_px == 0`.
+    """
+    W, H = target_w, target_h
+    stroke_px = 3.5
+    panel, edge_fill_ratio = _cover_fit_full_bleed_image(raw_im, W, H)
+
+    is_narrow = W < 580
+    if is_narrow:
+        tip_max_w = min(248, max(120, W - 24))
+        tip_max_h = min(164, max(84, int(H * 0.26)))
+    elif H >= 540:
+        tip_max_w = min(306, max(160, int(W * 0.36)))
+        tip_max_h = min(240, max(110, int(H * 0.35)))
+    else:
+        tip_max_w = min(276, max(150, int(W * 0.33)))
+        tip_max_h = min(192, max(96, int(H * 0.45)))
+
+    tooltip_rgba = _prepare_cut_tooltip(cut, max_w=tip_max_w, max_h=tip_max_h)
+    pref_corner = cut.item_tooltip.preferred_corner if cut.item_tooltip else "auto"
+    dialogue = (cut.dialogue or "").strip()
+
+    # 1. Wordless / silent panel: return full-bleed artwork + optional corner tooltip
+    if cut.wordless or not dialogue:
+        audit: dict[str, Any] = {
+            "wordless": True,
+            "full_bleed_bg": True,
+            "bubble_count": 0,
+            "overlap_px": 0,
+            "min_clearance_px": 999.0,
+            "font_size": None,
+            "art_bbox": [0, 0, W - 1, H - 1],
+            "tail_target": cut.tail_target,
+            "edge_fill_ratio": edge_fill_ratio,
+        }
+        if tooltip_rgba is not None:
+            tw, th = tooltip_rgba.size
+            pad = 14
+            corners = _ordered_corner_candidates(W, H, tw, th, pad, pad, preferred=pref_corner)
+            _, tip_dest = corners[0]
+            tx0 = max(4, min(W - tw - 4, tip_dest[0]))
+            ty0 = max(4, min(H - th - 4, tip_dest[1]))
+            panel = _composite_rgba_card(panel, tooltip_rgba, (tx0, ty0))
+            audit["has_item_tooltip"] = True
+            audit["tooltip_bbox"] = [tx0, ty0, tx0 + tw, ty0 + th]
+            audit["tooltip_overlap_px"] = 0
+        return panel, audit
+
+    # 2. Dialogue panel: geometry regime selection + auto-fit typography
+    dummy = ImageDraw.Draw(Image.new("RGB", (16, 16), PURE_WHITE))
+    safe_margin = 12.0
+
+    if is_narrow:
+        regime = "narrow"
+        max_rx = min(184.0, W / 2.0 - 14.0, W / 2.0 - safe_margin - stroke_px)
+        max_ry = min(112.0, H * 0.22)
+        min_rx = min(104.0, max_rx)
+        min_ry = min(44.0, max_ry)
+        pad_x, pad_y = 26.0, 18.0
+        wrap_w = float(np.clip(max_rx * 1.40, 136.0, max(150.0, W - 74.0)))
+        fs_start = 20 if len(dialogue) <= 22 else (19 if len(dialogue) <= 34 else 18)
+        fs_candidates = [fs for fs in (fs_start, 19, 18, 16, 15, 14, 13) if fs <= fs_start]
+    elif H >= 540:
+        regime = "wide_tall"
+        max_rx = min(326.0, W * 0.40, W / 2.0 - safe_margin - stroke_px)
+        max_ry = min(108.0, H * 0.19)
+        min_rx = min(124.0, max_rx)
+        min_ry = min(48.0, max_ry)
+        pad_x, pad_y = 32.0, 20.0
+        wrap_w = float(np.clip(max_rx * 1.44, 240.0, 440.0))
+        fs_start = 22 if len(dialogue) <= 36 else 21
+        fs_candidates = [fs for fs in (fs_start, 21, 19, 17, 15, 14) if fs <= fs_start]
+    else:
+        # Wide slim panel (W >= 580, H < 540)
+        if (
+            cut.bubble_side == "center"
+            or (cut.bubble_side is None and (len(cut.characters) >= 2 or cut.tail_target == "center"))
+        ):
+            regime = "wide_slim_center"
+            max_rx = min(312.0, W * 0.38, W / 2.0 - safe_margin - stroke_px)
+            max_ry = min(78.0, H * 0.22)
+            min_rx = min(124.0, max_rx)
+            min_ry = min(40.0, max_ry)
+            pad_x, pad_y = 30.0, 16.0
+            wrap_w = float(np.clip(max_rx * 1.44, 220.0, 420.0))
+            fs_start = 20 if len(dialogue) <= 30 else (19 if len(dialogue) <= 42 else 18)
+            fs_candidates = [fs for fs in (fs_start, 19, 18, 16, 15, 14) if fs <= fs_start]
+        else:
+            if cut.bubble_side == "left":
+                regime = "wide_slim_left"
+            elif cut.bubble_side == "right":
+                regime = "wide_slim_right"
+            elif cut.tail_target == "right":
+                regime = "wide_slim_left"
+            else:
+                regime = "wide_slim_right"
+            max_rx = min(216.0, W * 0.27, W / 2.0 - safe_margin - stroke_px)
+            max_ry = min(92.0, H * 0.24)
+            min_rx = min(114.0, max_rx)
+            min_ry = min(44.0, max_ry)
+            pad_x, pad_y = 28.0, 18.0
+            wrap_w = float(np.clip(max_rx * 1.40, 180.0, 296.0))
+            fs_start = 21 if len(dialogue) <= 28 else (20 if len(dialogue) <= 38 else 19)
+            fs_candidates = [fs for fs in (fs_start, 20, 19, 17, 15, 14) if fs <= fs_start]
+
+    # Deduplicate candidate font sizes preserving descending order
+    ordered_fs: list[int] = []
+    for fs_v in fs_candidates:
+        if fs_v not in ordered_fs:
+            ordered_fs.append(fs_v)
+
+    chosen_fs = ordered_fs[-1]
+    lines: list[str] = []
+    sub_indices: list[int] = []
+    rx, ry = min_rx, min_ry
+    for fs_try in ordered_fs:
+        cand_lines, cand_subs = wrap_korean_dialogue(
+            dialogue, fs_try, max_line_width_px=wrap_w, max_lines=4
+        )
+        cand_rx, cand_ry = _compute_snug_ellipse_radii(
+            dummy,
+            cand_lines,
+            set(cand_subs),
+            fs_try,
+            min_rx=min_rx,
+            max_rx=max_rx,
+            min_ry=min_ry,
+            max_ry=max_ry,
+            pad_x=pad_x,
+            pad_y=pad_y,
+        )
+        f_m = load_font(fs_try, weight="Bold")
+        f_s = load_font(max(11, int(round(fs_try * 0.80))), weight="Medium")
+        gap_try = max(4, int(round(fs_try * 0.34)))
+        mw, tot_h, _, _, _, _ = _measure_text_block(
+            dummy, cand_lines, f_m, f_s, gap_try, set(cand_subs)
+        )
+        a = mw / 2.0 + 18.0
+        b = tot_h / 2.0 + 12.0
+        fits = ((a / max(1.0, cand_rx)) ** 2 + (b / max(1.0, cand_ry)) ** 2) <= 0.88
+        chosen_fs, lines, sub_indices, rx, ry = fs_try, cand_lines, cand_subs, cand_rx, cand_ry
+        if fits and len(cand_lines) <= 4:
+            break
+
+    # 3. Bubble center placement (exact `bubble_center_xy` override or regime default)
+    if regime == "narrow":
+        cx = W / 2.0
+        cy = 12.0 + ry + stroke_px
+        resolved_side = "center"
+    elif regime == "wide_tall":
+        side = cut.bubble_side or cut.tail_target
+        if side == "left":
+            cx = max(22.0 + rx + stroke_px, W * 0.30)
+            resolved_side = "left"
+        elif side == "right":
+            cx = min(W - 22.0 - rx - stroke_px, W * 0.70)
+            resolved_side = "right"
+        else:
+            cx = W / 2.0
+            resolved_side = "center"
+        cy = 14.0 + ry + stroke_px
+    elif regime == "wide_slim_center":
+        cx = W / 2.0
+        cy = 10.0 + ry + stroke_px
+        resolved_side = "center"
+    elif regime == "wide_slim_left":
+        cx = 16.0 + rx + stroke_px
+        cy = 16.0 + ry + stroke_px
+        resolved_side = "left"
+    else:  # wide_slim_right
+        cx = W - 16.0 - rx - stroke_px
+        cy = 16.0 + ry + stroke_px
+        resolved_side = "right"
+
+    # Clamp default placement strictly inside panel box with 12px margin
+    clamp_pad = safe_margin + stroke_px
+    cx_lo = clamp_pad + rx
+    cx_hi = max(cx_lo, W - clamp_pad - rx)
+    cy_lo = clamp_pad + ry
+    cy_hi = max(cy_lo, H - clamp_pad - ry)
+
+    if cut.bubble_center_xy is not None:
+        bx_r, by_r = float(cut.bubble_center_xy[0]), float(cut.bubble_center_xy[1])
+        cx = float(np.clip(bx_r * W, cx_lo, cx_hi))
+        cy = float(np.clip(by_r * H, cy_lo, cy_hi))
+        resolved_side = (
+            "center"
+            if abs(cx - W / 2.0) <= W * 0.08
+            else ("left" if cx < W / 2.0 else "right")
+        )
+    else:
+        cx = float(np.clip(cx, cx_lo, cx_hi))
+        cy = float(np.clip(cy, cy_lo, cy_hi))
+
+    # 4. Laser-precise speaker anchor & directional tail computation
+    if cut.speaker_anchor_xy is not None:
+        sx_r = float(np.clip(cut.speaker_anchor_xy[0], 0.02, 0.98))
+        sy_r = float(np.clip(cut.speaker_anchor_xy[1], 0.02, 0.98))
+        sx, sy = sx_r * W, sy_r * H
+        max_tail_ext = 54.0
+    else:
+        # Clean deterministic speaker anchors from `tail_target` (never misled by flying mobs/scenery!)
+        sx_r = 0.27 if cut.tail_target == "left" else (0.73 if cut.tail_target == "right" else 0.50)
+        sy_r = 0.56 if H >= 540 else 0.50
+        sx, sy = sx_r * W, sy_r * H
+        max_tail_ext = 38.0 if H >= 540 else 36.0
+
+    dx = sx - cx
+    dy = sy - cy
+    dist = float(np.hypot(dx, dy))
+
+    tail_tip: tuple[float, float] | None = None
+    tail_base_angle_deg: float | None = None
+    tail_curve = 0.0
+
+    if dist > 1e-3:
+        ux, uy = dx / dist, dy / dist
+        t_ell = 1.0 / float(np.hypot(ux / max(1.0, rx), uy / max(1.0, ry)))
+        gap = dist - (t_ell + stroke_px)
+        tail_base_angle_deg = float(np.rad2deg(np.arctan2(dy / max(1.0, ry), dx / max(1.0, rx))))
+
+        stop_short = 16.0
+        if gap >= 30.0:
+            ext = min(max_tail_ext, gap - stop_short)
+        elif gap >= 12.0:
+            ext = min(max_tail_ext, max(10.0, gap * 0.55))
+        else:
+            ext = 0.0
+
+        if ext > 0.0:
+            t_desired = t_ell + stroke_px + ext
+            # Clip strictly along the SAME ray `(ux, uy)` to stay within 8px of panel edges
+            edge_pad = 8.0
+            t_bound = t_desired
+            if ux > 1e-6:
+                t_bound = min(t_bound, (W - edge_pad - cx) / ux)
+            elif ux < -1e-6:
+                t_bound = min(t_bound, (edge_pad - cx) / ux)
+            if uy > 1e-6:
+                t_bound = min(t_bound, (H - edge_pad - cy) / uy)
+            elif uy < -1e-6:
+                t_bound = min(t_bound, (edge_pad - cy) / uy)
+
+            if t_bound > t_ell + stroke_px + 8.0:
+                tx = cx + t_bound * ux
+                ty = cy + t_bound * uy
+                tail_tip = (tx, ty)
+                tail_curve = 4.5 if dx > 6.0 else (-4.5 if dx < -6.0 else -4.0)
+
+    bub_layer, dest, b_metrics = _build_bubble_layer(
+        panel_size=(W, H),
+        center=(cx, cy),
+        lines=lines,
+        radii=(rx, ry),
+        tail_tip=tail_tip,
+        tail_base_angle_deg=tail_base_angle_deg,
+        tail_half_deg=6.8,
+        tail_curve=tail_curve,
+        font_size=chosen_fs,
+        stroke_px=stroke_px,
+        sub_line_indices=sub_indices,
+    )
+    bub_mask = _bubble_alpha_mask((W, H), bub_layer, dest)
+    out_panel = panel.copy()
+    if bub_layer is not None:
+        rgba = out_panel.convert("RGBA")
+        rgba.alpha_composite(bub_layer, dest=dest)
+        out_panel = rgba.convert("RGB")
+
+    audit_out: dict[str, Any] = {
+        "wordless": False,
+        "full_bleed_bg": True,
+        "bubble_count": 1,
+        "overlap_px": 0,
+        "min_clearance_px": 999.0,
+        "font_size": b_metrics["font_size"],
+        "art_bbox": [0, 0, W - 1, H - 1],
+        "tail_target": cut.tail_target,
+        "bubble_center": [round(cx, 1), round(cy, 1)],
+        "bubble_side_resolved": resolved_side,
+        "speaker_anchor": [round(sx, 1), round(sy, 1)],
+        "tail_tip": [round(tail_tip[0], 1), round(tail_tip[1], 1)] if tail_tip else None,
+        "edge_fill_ratio": edge_fill_ratio,
+    }
+
+    # 5. Optional item tooltip placed cleanly in opposite corner with zero bubble-tooltip overlap
+    if tooltip_rgba is not None:
+        pad = 14
+        cur_tip = tooltip_rgba
+        tw, th = cur_tip.size
+        if pref_corner in ("top_left", "top_right", "bottom_left", "bottom_right"):
+            preferred_order = pref_corner
+        elif cx <= W / 2.0:
+            preferred_order = "bottom_right"
+        else:
+            preferred_order = "bottom_left"
+
+        # Build prioritized corner order preferring opposite side from bubble center
+        if cx <= W / 2.0:
+            base_order = ["bottom_right", "top_right", "bottom_left", "top_left"]
+        else:
+            base_order = ["bottom_left", "top_left", "bottom_right", "top_right"]
+        if preferred_order in base_order:
+            order = [preferred_order] + [k for k in base_order if k != preferred_order]
+        else:
+            order = base_order
+
+        corner_coords = {
+            "top_right": (W - pad - tw, pad),
+            "top_left": (pad, pad),
+            "bottom_right": (W - pad - tw, H - pad - th),
+            "bottom_left": (pad, H - pad - th),
+        }
+
+        chosen_dest: tuple[int, int] | None = None
+        chosen_tip_mask: np.ndarray | None = None
+        for key in order:
+            cand_x, cand_y = corner_coords[key]
+            cand_x = max(4, min(W - tw - 4, cand_x))
+            cand_y = max(4, min(H - th - 4, cand_y))
+            tmask = _tooltip_alpha_mask((W, H), cur_tip, (cand_x, cand_y))
+            if int((bub_mask & tmask).sum()) == 0:
+                chosen_dest = (cand_x, cand_y)
+                chosen_tip_mask = tmask
+                break
+
+        if chosen_dest is None:
+            # Shrink tooltip to fit strictly below (or above) bubble with 0px overlap
+            bub_ys = np.where(bub_mask)[0]
+            bub_max_y = int(bub_ys.max()) if len(bub_ys) else int(cy + ry + stroke_px)
+            bub_min_y = int(bub_ys.min()) if len(bub_ys) else int(cy - ry - stroke_px)
+            space_below = H - pad - (bub_max_y + 10)
+            space_above = (bub_min_y - 10) - pad
+            if space_below >= space_above:
+                avail_th = max(48, space_below)
+                cur_tip = _fit_tooltip_card(cur_tip, max_w=min(tw, W - 2 * pad), max_h=avail_th)
+                tw, th = cur_tip.size
+                cand_x = (W - pad - tw) if cx <= W / 2.0 else pad
+                cand_y = H - pad - th
+            else:
+                avail_th = max(48, space_above)
+                cur_tip = _fit_tooltip_card(cur_tip, max_w=min(tw, W - 2 * pad), max_h=avail_th)
+                tw, th = cur_tip.size
+                cand_x = (W - pad - tw) if cx <= W / 2.0 else pad
+                cand_y = pad
+            cand_x = max(4, min(W - tw - 4, cand_x))
+            cand_y = max(4, min(H - th - 4, cand_y))
+            chosen_dest = (cand_x, cand_y)
+            chosen_tip_mask = _tooltip_alpha_mask((W, H), cur_tip, chosen_dest)
+
+        tip_ov = int((bub_mask & chosen_tip_mask).sum()) if chosen_tip_mask is not None else 0
+        out_panel = _composite_rgba_card(out_panel, cur_tip, chosen_dest)
+        audit_out["has_item_tooltip"] = True
+        audit_out["tooltip_bbox"] = [
+            chosen_dest[0],
+            chosen_dest[1],
+            chosen_dest[0] + tw,
+            chosen_dest[1] + th,
+        ]
+        audit_out["tooltip_overlap_px"] = tip_ov
+        audit_out["overlap_px"] = tip_ov
+        if chosen_tip_mask is not None:
+            audit_out["min_clearance_px"] = compute_min_clearance(bub_mask, chosen_tip_mask)
+
+    return out_panel, audit_out
+
+
 def compose_v4_episode(
     script: EpisodeScript,
     raw_page_paths: Mapping[int, Path | str],
@@ -4772,6 +5273,9 @@ def compose_v4_episode(
             f"compose_v4_episode requires act_numbers [1, 2, 3, 4, 5], "
             f"got {[a.act_number for a in ordered_acts]}"
         )
+
+    bg_style = getattr(script, "background_style", "clean_white")
+    is_full_bleed_ep = bg_style == "full_bleed"
 
     out_dir = Path(output_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -4804,7 +5308,11 @@ def compose_v4_episode(
         with Image.open(raw_page_path) as raw_im:
             raw_page_im = raw_im.copy()
 
-        extracted_panels = extract_panels_from_page(raw_page_im, act.layout_id)
+        extracted_panels = extract_panels_from_page(
+            raw_page_im,
+            act.layout_id,
+            all_boxed=is_full_bleed_ep,
+        )
         if len(extracted_panels) != len(layout_spec.slots):
             raise ValueError(
                 f"extract_panels_from_page returned {len(extracted_panels)} panels for "
@@ -4831,22 +5339,35 @@ def compose_v4_episode(
             x0, y0, x1, y1 = slot.rect
             slot_w = slot.width
             slot_h = slot.height
-            composed_panel, cut_audit = _compose_variable_panel(
-                cut,
-                raw_panel,
-                target_w=slot_w,
-                target_h=slot_h,
-                border_style=slot.border_style,
-            )
-            page.paste(composed_panel, (x0, y0))
-            if slot.border_style == "box":
+            use_full_bleed_panel = is_full_bleed_ep or bool(getattr(cut, "full_bleed_bg", False))
+            if use_full_bleed_panel:
+                composed_panel, cut_audit = _compose_full_bleed_panel(
+                    cut,
+                    raw_panel,
+                    target_w=slot_w,
+                    target_h=slot_h,
+                )
+                page.paste(composed_panel, (x0, y0))
                 draw_4x_rect_border(page, slot.rect, stroke_px=3.5, color=INK_BLACK)
+                eff_border_style = "box"
+            else:
+                composed_panel, cut_audit = _compose_variable_panel(
+                    cut,
+                    raw_panel,
+                    target_w=slot_w,
+                    target_h=slot_h,
+                    border_style=slot.border_style,
+                )
+                page.paste(composed_panel, (x0, y0))
+                if slot.border_style == "box":
+                    draw_4x_rect_border(page, slot.rect, stroke_px=3.5, color=INK_BLACK)
+                eff_border_style = slot.border_style
 
             cut_audit["cut_index"] = cut.cut_index
             cut_audit["act_number"] = act.act_number
             cut_audit["panel_index"] = slot.slot_index
             cut_audit["layout_id"] = act.layout_id
-            cut_audit["border_style"] = slot.border_style
+            cut_audit["border_style"] = eff_border_style
             cut_audit["slot_rect"] = [x0, y0, x1, y1]
             cut_audit["page"] = act.act_number
             cut_audits.append(cut_audit)
@@ -4888,7 +5409,12 @@ def compose_v4_episode(
     full_im.save(full_image_path, format="JPEG", quality=95, subsampling=0)
 
     # 4. Build clean 4:3 thumbnail (`800x600`) cropped from the best lead panel of Act 1
-    thumb_im = build_thumbnail(script, thumb_candidates, size=THUMB_SIZE)
+    thumb_im = build_thumbnail(
+        script,
+        thumb_candidates,
+        size=THUMB_SIZE,
+        full_bleed=is_full_bleed_ep,
+    )
     thumb_path = out_dir / "thumb.jpg"
     thumb_im.save(thumb_path, format="JPEG", quality=93, subsampling=0)
 
@@ -4906,6 +5432,7 @@ def compose_v4_episode(
             total_overlap_px == 0 and total_tooltip_overlap_px == 0 and border_pure_white
         ),
         "layout_mode": "v4_five_act",
+        "background_style": bg_style,
         "total_overlap_px": total_overlap_px,
         "total_tooltip_overlap_px": total_tooltip_overlap_px,
         "border_pure_white": border_pure_white,

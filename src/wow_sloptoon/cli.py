@@ -130,6 +130,7 @@ def _generate_for_post(
     image_model: str | None = None,
     skip_site: bool = False,
     layout: str = "classic",
+    bg: str | None = None,
 ) -> EpisodeRecord | EpisodeScript:
     records = load_episode_records(settings.episodes_json)
     ep_num = episode_number or _next_episode_number(records)
@@ -138,17 +139,32 @@ def _generate_for_post(
     if layout_choice not in {"classic", "v4"}:
         raise ValueError(f"Unsupported layout '{layout}'. Choose 'classic' or 'v4'.")
 
+    if bg is None:
+        bg_choice = "full_bleed" if layout_choice == "v4" else "clean_white"
+    else:
+        bg_choice = bg.strip().lower()
+        if bg_choice not in {"full_bleed", "clean_white"}:
+            raise ValueError(
+                f"Unsupported background style '{bg}'. Choose 'full_bleed' or 'clean_white'."
+            )
+
     if dry_run:
         if layout_choice == "v4":
             from wow_sloptoon import writer as _writer
 
-            script = _writer.build_dry_run_v4_script(post, episode_number=ep_num)
+            script = _writer.build_dry_run_v4_script(
+                post,
+                episode_number=ep_num,
+                background_style=bg_choice,  # type: ignore[arg-type]
+            )
             print(
                 f"[DRY-RUN] Generated V4 5-act preview script for {ep_id} "
-                f"(source #{post.post_no}, {len(script.cuts)} cuts):"
+                f"(source #{post.post_no}, {len(script.cuts)} cuts, bg={bg_choice}):"
             )
         else:
             script = build_dry_run_script(post, episode_number=ep_num)
+            if script.background_style != bg_choice:
+                script = script.model_copy(update={"background_style": bg_choice})
             print(f"[DRY-RUN] Generated preview script for {ep_id} (source #{post.post_no}):")
         print(script_to_pretty_json(script))
         return script
@@ -164,19 +180,23 @@ def _generate_for_post(
 
         print(
             f"[1/4] Writing V4 5-act script for {ep_id} from #{post.post_no} "
-            f"(model={resolved_text_model})..."
+            f"(model={resolved_text_model}, bg={bg_choice})..."
         )
         script = _writer.generate_v4_episode_script(
             post,
             episode_number=ep_num,
             settings=settings,
             model=resolved_text_model,
+            background_style=bg_choice,  # type: ignore[arg-type]
         )
+        if script.background_style != bg_choice:
+            script = script.model_copy(update={"background_style": bg_choice})
 
         raw_pages_dir = settings.data_dir / "raw_pages" / ep_id
         act_count = len(script.acts) if script.acts else 5
+        bg_label = "full-bleed boxed" if bg_choice == "full_bleed" else "pure-#FFFFFF"
         print(
-            f"[2/4] Generating {act_count} pure-#FFFFFF V4 2K act pages "
+            f"[2/4] Generating {act_count} {bg_label} V4 2K act pages "
             f"({len(script.cuts)} cuts total, model={resolved_image_model})..."
         )
         raw_page_paths = _artist.generate_v4_episode_pages(
@@ -346,6 +366,7 @@ def cmd_generate(args: argparse.Namespace, settings: Settings) -> int:
         image_model=args.image_model,
         skip_site=args.skip_site,
         layout=getattr(args, "layout", "classic"),
+        bg=getattr(args, "bg", None),
     )
     return 0
 
@@ -467,6 +488,7 @@ def cmd_run_once(args: argparse.Namespace, settings: Settings) -> int:
         image_model=args.image_model,
         skip_site=False,
         layout=getattr(args, "layout", "classic"),
+        bg=getattr(args, "bg", None),
     )
 
     if isinstance(result, EpisodeRecord) and args.pack_dc:
@@ -755,6 +777,7 @@ def cmd_autopilot(args: argparse.Namespace, settings: Settings) -> int:
                 image_model=args.image_model,
                 skip_site=True,
                 layout=getattr(args, "layout", "classic"),
+                bg=getattr(args, "bg", None),
             )
         else:
             print("[autopilot DRY-RUN] No new unproduced recommend candidates found.")
@@ -780,6 +803,7 @@ def cmd_autopilot(args: argparse.Namespace, settings: Settings) -> int:
             image_model=args.image_model,
             skip_site=True,
             layout=getattr(args, "layout", "classic"),
+            bg=getattr(args, "bg", None),
         )
         if isinstance(res, EpisodeRecord):
             created_record = res
@@ -896,6 +920,13 @@ def build_parser() -> argparse.ArgumentParser:
         default="classic",
         help="Episode layout mode: 'classic' (4~6 cut 2-tier) or 'v4' (5-act 10~14 cut variable layout).",
     )
+    p_gen.add_argument(
+        "--bg",
+        type=str,
+        choices=["full_bleed", "clean_white"],
+        default=None,
+        help="Panel background mode ('full_bleed' default for --layout v4, 'clean_white' default for --layout classic).",
+    )
     p_gen.add_argument("--episode-number", type=int, default=None, help="Override sequential episode number.")
     p_gen.add_argument("--pages", type=int, default=1, help="Pages to scan when using --auto.")
     p_gen.add_argument("--skip-site", action="store_true", help="Skip rebuilding static site after generation.")
@@ -953,6 +984,13 @@ def build_parser() -> argparse.ArgumentParser:
         choices=["classic", "v4"],
         default="classic",
         help="Episode layout mode: 'classic' (4~6 cut 2-tier) or 'v4' (5-act 10~14 cut variable layout).",
+    )
+    p_once.add_argument(
+        "--bg",
+        type=str,
+        choices=["full_bleed", "clean_white"],
+        default=None,
+        help="Panel background mode ('full_bleed' default for --layout v4, 'clean_white' default for --layout classic).",
     )
     p_once.add_argument("--pages", type=int, default=1, help="Recommend list pages to scan.")
     p_once.add_argument("--pack-dc", action="store_true", help="Also generate a DCInside manual upload pack.")
@@ -1028,6 +1066,13 @@ def build_parser() -> argparse.ArgumentParser:
         choices=["classic", "v4"],
         default="classic",
         help="Episode layout mode: 'classic' (4~6 cut 2-tier) or 'v4' (5-act 10~14 cut variable layout).",
+    )
+    p_auto.add_argument(
+        "--bg",
+        type=str,
+        choices=["full_bleed", "clean_white"],
+        default=None,
+        help="Panel background mode ('full_bleed' default for --layout v4, 'clean_white' default for --layout classic).",
     )
     p_auto.add_argument("--pages", type=int, default=1, help="Recommend list pages to scan.")
     p_auto.add_argument("--no-notify", action="store_true", help="Suppress Windows toast notification (console output only).")

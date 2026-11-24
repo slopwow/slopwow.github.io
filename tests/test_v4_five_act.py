@@ -1503,3 +1503,437 @@ def test_site_builder_v4_five_page_13_cut_episode_compatibility(
     assert len(site_data) == 1
     assert site_data[0]["cut_count"] == 13
     assert len(site_data[0]["page_images"]) == 5
+
+
+# ---------------------------------------------------------------------------
+# 8. V4.2 Edge-to-Edge Full-Bleed Boxed Panel Mode & Pinpoint Speaker Anchors
+# ---------------------------------------------------------------------------
+
+
+@pytest.mark.parametrize("layout_id", list(EXPECTED_LAYOUT_RECTS.keys()))
+def test_render_layout_blueprint_all_boxed_boxes_every_slot(layout_id: str) -> None:
+    bp = render_layout_blueprint(layout_id, all_boxed=True)
+    assert bp.size == (V4_PAGE_W, V4_PAGE_H)
+    assert bp.mode == "RGB"
+    arr = np.asarray(bp)
+
+    # Outer 16px margin stays 100% pure white
+    assert np.all(arr[:16, :, :] == 255)
+    assert np.all(arr[-16:, :, :] == 255)
+    assert np.all(arr[:, :16, :] == 255)
+    assert np.all(arr[:, -16:, :] == 255)
+
+    spec = get_page_layout(layout_id)
+    for slot in spec.slots:
+        x0, y0, x1, y1 = slot.rect
+        # Deep interior strictly pure white -> ZERO text/digits/numbers
+        interior = arr[y0 + 12 : y1 - 12, x0 + 12 : x1 - 12, :]
+        assert np.all(interior == 255)
+
+        # ALL slots (including open_top_split_bottom P1 & diagonal_tempo_2cut P1) must have dark #141414 frames
+        top_band = arr[max(0, y0 - 4) : y0 + 6, x0 + 20 : x1 - 20, :]
+        dark_px = np.sum((top_band[:, :, 0] < 40) & (top_band[:, :, 1] < 40) & (top_band[:, :, 2] < 40))
+        assert dark_px > 200, f"Missing all_boxed dark frame on {layout_id} slot {slot.slot_index}"
+
+
+@pytest.mark.parametrize(
+    "layout_id,page_size,drift_xy",
+    [
+        ("open_top_split_bottom", (900, 1350), (0, 0)),
+        ("diagonal_tempo_2cut", (1365, 2048), (14, -12)),
+        ("four_beat_gag", (1365, 2048), (-12, 10)),
+    ],
+)
+def test_extract_panels_from_page_all_boxed_preserves_full_bleed_and_strips_borders(
+    layout_id: str,
+    page_size: tuple[int, int],
+    drift_xy: tuple[int, int],
+) -> None:
+    spec = get_page_layout(layout_id)
+    raw_page = _make_synthetic_raw_v4_page(
+        layout_id,
+        size=page_size,
+        drift_xy=drift_xy,
+        border_width=6,
+        full_bleed_panels=True,
+        open_slot_border="dark",
+    )
+
+    panels = extract_panels_from_page(raw_page, layout_id, all_boxed=True)
+    assert len(panels) == spec.panel_count
+
+    for idx, (panel, slot) in enumerate(zip(panels, spec.slots)):
+        pw, ph = panel.size
+        assert pw >= int(slot.width * 0.75)
+        assert ph >= int(slot.height * 0.75)
+
+        arr = np.asarray(panel)
+        # Edge-to-edge full-bleed color pixels preserved right up to all 4 crop edges (no dark border or white gap!)
+        own_color = _SLOT_COLORS[idx % len(_SLOT_COLORS)]
+        for edge_name, strip in (
+            ("top", arr[:3, :, :]),
+            ("bottom", arr[-3:, :, :]),
+            ("left", arr[:, :3, :]),
+            ("right", arr[:, -3:, :]),
+        ):
+            dark_border_ratio = float(np.mean((strip[:, :, 0] < 45) & (strip[:, :, 1] < 45) & (strip[:, :, 2] < 45)))
+            assert dark_border_ratio < 0.15, (
+                f"Black frame residue on {edge_name} of {layout_id} slot {idx + 1}: {dark_border_ratio:.2f}"
+            )
+            colored_ratio = float(np.mean(np.any(strip < 245, axis=2)))
+            assert colored_ratio > 0.85, (
+                f"Expected full-bleed colored pixels on {edge_name} of {layout_id} slot {idx + 1}, got {colored_ratio:.2f}"
+            )
+
+        assert _count_color_match(arr, own_color) > 10000
+        for other_idx in range(spec.panel_count):
+            if other_idx != idx:
+                assert _count_color_match(arr, _SLOT_COLORS[other_idx % len(_SLOT_COLORS)]) < 50
+
+    # Verify accidental stray thin white strip (<= 10px) inside a boxed full-bleed panel gets trimmed cleanly
+    stray_page = Image.new("RGB", (V4_PAGE_W, V4_PAGE_H), (255, 255, 255))
+    sd = ImageDraw.Draw(stray_page)
+    for idx, slot in enumerate(spec.slots):
+        x0, y0, x1, y1 = slot.rect
+        # Leave an accidental 5px white gap inside the black frame before the colored background
+        sd.rectangle([x0 + 10, y0 + 10, x1 - 10, y1 - 10], fill=_SLOT_COLORS[idx % len(_SLOT_COLORS)])
+        sd.rectangle([x0, y0, x1, y1], outline=(20, 20, 20), width=4)
+
+    trimmed_panels = extract_panels_from_page(stray_page, layout_id, all_boxed=True)
+    for idx, panel in enumerate(trimmed_panels):
+        arr = np.asarray(panel)
+        for edge_name, strip in (
+            ("top", arr[:2, :, :]),
+            ("bottom", arr[-2:, :, :]),
+            ("left", arr[:, :2, :]),
+            ("right", arr[:, -2:, :]),
+        ):
+            colored_ratio = float(np.mean(np.any(strip < 245, axis=2)))
+            assert colored_ratio > 0.90, (
+                f"Stray thin white strip was not trimmed on {edge_name} of {layout_id} slot {idx + 1}"
+            )
+
+
+def test_artist_and_writer_v4_full_bleed_prompts_and_blueprint_attachment(tmp_path: Path) -> None:
+    settings = load_settings(PROJECT_ROOT)
+    post = _sample_post("99555")
+    v4_prompt = writer.build_v4_writer_prompt(post, episode_number=12, background_style="full_bleed")
+    assert "full_bleed" in v4_prompt
+    assert "인접 컷 인물 연속성 절대 엄수" in v4_prompt
+    assert "복제 인물" in v4_prompt
+    assert "#FFFFFF" in v4_prompt
+
+    script = _build_custom_v4_script(
+        ["open_top_split_bottom", "split_top_wide_bottom", "wide_reaction_wide", "impact_freeze_2cut", "diagonal_tempo_2cut"]
+    ).model_copy(update={"background_style": "full_bleed"})
+
+    buf = io.BytesIO()
+    Image.new("RGB", (90, 135), (255, 255, 255)).save(buf, format="PNG")
+    fake_png_b64 = base64.b64encode(buf.getvalue()).decode("ascii")
+
+    lock = threading.Lock()
+    captured_calls: list[dict[str, Any]] = []
+
+    class FakeInteractions:
+        def create(self, **kwargs: Any) -> Any:
+            with lock:
+                captured_calls.append(kwargs)
+            return SimpleNamespace(output_image=SimpleNamespace(data=fake_png_b64))
+
+    fake_client = SimpleNamespace(interactions=FakeInteractions())
+    artist.generate_v4_episode_pages(
+        script,
+        tmp_path / "fb_raw_pages",
+        client=fake_client,
+        settings=settings,
+    )
+    assert len(captured_calls) == 5
+
+    for call in captured_calls:
+        items = call["input"]
+        prompt_text = items[0]["text"]
+        assert "100% FULL-BLEED" in prompt_text
+        assert "UNOBSTRUCTED" in prompt_text
+        assert "#FFFFFF" in prompt_text
+        assert "ATTACHED CHARACTER 3-VIEW TURNAROUND BLUEPRINTS" in prompt_text
+        assert "ZERO TEXT" in prompt_text
+
+        # Image 3 must match render_layout_blueprint(act.layout_id, all_boxed=True)
+        bp_bytes = base64.b64decode(items[3]["data"])
+        with Image.open(io.BytesIO(bp_bytes)) as attached_bp:
+            attached_arr = np.asarray(attached_bp.convert("RGB"))
+        matched = any(
+            np.array_equal(attached_arr, np.asarray(render_layout_blueprint(a.layout_id, all_boxed=True)))
+            for a in (script.acts or [])
+        )
+        assert matched, "Full-bleed V4 artist call did not attach all_boxed=True blueprint!"
+
+
+def test_compose_v4_episode_full_bleed_edge_to_edge_all_boxed_and_pure_white_margins(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.setenv("SLOPTOON_OFFLINE_TOOLTIPS", "1")
+    layout_plan = [
+        "open_top_split_bottom",
+        "wide_reaction_wide",
+        "four_beat_gag",
+        "impact_freeze_2cut",
+        "diagonal_tempo_2cut",
+    ]
+    script = _build_custom_v4_script(
+        layout_plan,
+        include_wordless=True,
+        with_tooltips=True,
+    ).model_copy(update={"background_style": "full_bleed"})
+
+    raw_dir = tmp_path / "fb_pages"
+    raw_dir.mkdir(parents=True)
+    raw_paths: dict[int, Path] = {}
+    for act in script.acts or []:
+        raw_im = _make_synthetic_raw_v4_page(
+            act.layout_id,
+            size=(1365, 2048),
+            drift_xy=(10, -8) if act.act_number % 2 == 0 else (0, 0),
+            border_width=6,
+            full_bleed_panels=True,
+            open_slot_border="dark",
+        )
+        p = raw_dir / f"raw_page_{act.act_number:02d}.png"
+        raw_im.save(p, format="PNG")
+        raw_paths[act.act_number] = p
+
+    out_dir = tmp_path / "composed_full_bleed"
+    res = compose_v4_episode(script, raw_paths, out_dir)
+    audit = res.audit_report
+    assert audit["passed"] is True, f"Full-bleed V4 composition failed: {audit}"
+    assert audit["background_style"] == "full_bleed"
+    assert audit["border_pure_white"] is True
+    assert audit["total_overlap_px"] == 0
+    assert audit["total_tooltip_overlap_px"] == 0
+    assert len(res.page_paths) == 5
+
+    for c_audit in audit["cuts"]:
+        assert c_audit["full_bleed_bg"] is True
+        assert c_audit["border_style"] == "box"
+        assert c_audit["overlap_px"] == 0
+        assert c_audit["edge_fill_ratio"] > 0.95
+        if not c_audit["wordless"]:
+            assert c_audit["bubble_count"] == 1
+            assert c_audit["tail_tip"] is not None
+
+    for idx, (page_path, lid) in enumerate(zip(res.page_paths, layout_plan), start=1):
+        _assert_pure_white_outer_border(page_path, margin=4)
+        with Image.open(page_path) as pim:
+            assert pim.size == (V4_PAGE_W, V4_PAGE_H)
+            arr = np.asarray(pim.convert("RGB"))
+
+        spec = get_page_layout(lid)
+        for slot in spec.slots:
+            x0, y0, x1, y1 = slot.rect
+            # ALL slots (including open_top_split_bottom P1 & diagonal_tempo_2cut P1) have crisp 3.5px borders!
+            left_band = arr[y0 + 16 : y1 - 16, max(0, x0 - 3) : x0 + 5, :]
+            right_band = arr[y0 + 16 : y1 - 16, max(0, x1 - 5) : min(V4_PAGE_W, x1 + 3), :]
+            top_band = arr[max(0, y0 - 3) : y0 + 5, x0 + 16 : x1 - 16, :]
+            bot_band = arr[max(0, y1 - 5) : min(V4_PAGE_H, y1 + 3), x0 + 16 : x1 - 16, :]
+            for side_name, band, axis in (
+                ("left", left_band, 1),
+                ("right", right_band, 1),
+                ("top", top_band, 0),
+                ("bottom", bot_band, 0),
+            ):
+                cov = float(np.mean(np.any((band < 45).all(axis=2), axis=axis)))
+                assert cov > 0.90, f"Missing 3.5px box border on {side_name} of page {idx} ({lid}) slot {slot.slot_index}"
+
+            # Verify 4 inner edges immediately inside the 3.5px frame are filled with non-white background!
+            # (Inset 5px inside frame so we are strictly past the 3.5px border, and outside bubble's >=12px pad!)
+            in_top = arr[y0 + 4 : y0 + 8, x0 + 8 : x1 - 8, :]
+            in_bot = arr[y1 - 8 : y1 - 4, x0 + 8 : x1 - 8, :]
+            in_left = arr[y0 + 8 : y1 - 8, x0 + 4 : x0 + 8, :]
+            in_right = arr[y0 + 8 : y1 - 8, x1 - 8 : x1 - 4, :]
+            for edge_name, strip in (
+                ("inner_top", in_top),
+                ("inner_bot", in_bot),
+                ("inner_left", in_left),
+                ("inner_right", in_right),
+            ):
+                fill_ratio = float(np.mean(np.any(strip < 245, axis=2)))
+                assert fill_ratio > 0.90, (
+                    f"White gap found along {edge_name} of full-bleed page {idx} ({lid}) "
+                    f"slot {slot.slot_index}: fill_ratio={fill_ratio:.2f}"
+                )
+
+    # Framed full-bleed thumbnail keeps pure white outer border + rich colored interior
+    _assert_pure_white_outer_border(res.thumb_path, margin=2)
+    with Image.open(res.thumb_path) as tim:
+        assert tim.size == THUMB_SIZE
+        t_arr = np.asarray(tim.convert("RGB"))
+    interior_fill = float(np.mean(np.any(t_arr[24:-24, 24:-24, :] < 245, axis=2)))
+    assert interior_fill > 0.90
+
+
+def test_compose_full_bleed_panel_pinpoint_speaker_anchor_and_bubble_center_override() -> None:
+    """Regression test (#17): Pinpoint `speaker_anchor_xy` + `bubble_center_xy` aims the speech bubble
+    tail with laser precision at the actual speaking character's head, completely immune to distracting
+    flying mobs or explosions drawn in other parts of the full-bleed background."""
+    W, H = 844, 650
+    raw = Image.new("RGB", (W, H), (56, 74, 118))  # Deep dungeon twilight background
+    d = ImageDraw.Draw(raw)
+    # Distracting flying pirate mob / explosion high in the UPPER-RIGHT corner!
+    d.ellipse([610, 40, 810, 210], fill=(235, 92, 54), outline=(20, 20, 20), width=5)
+    # Actual Undead Paladin speaker in the LOWER-LEFT!
+    d.ellipse([110, 420, 260, 580], fill=(182, 204, 232), outline=(20, 20, 20), width=5)
+
+    cut = ComicCut(
+        cut_index=6,
+        aspect_ratio="auto",
+        layout_slot="panel",
+        characters=["언데드 성기사"],
+        speaker="언데드 성기사",
+        dialogue="야 해적 몹 날아다니는데\n지금 주사위 굴릴 때가 아니라고!",
+        wordless=False,
+        visual_prompt="Full-bleed dungeon pirate deck combat scene with flying mob in upper right.",
+        tail_target="left",
+        full_bleed_bg=True,
+        speaker_anchor_xy=(0.22, 0.76),
+        bubble_center_xy=(0.68, 0.22),
+    )
+
+    panel, audit = composer._compose_full_bleed_panel(cut, raw, target_w=W, target_h=H)
+    assert panel.size == (W, H)
+    assert audit["full_bleed_bg"] is True
+    assert audit["overlap_px"] == 0
+    assert audit["bubble_count"] == 1
+    assert audit["edge_fill_ratio"] > 0.98
+
+    cx, cy = audit["bubble_center"]
+    sx, sy = audit["speaker_anchor"]
+    assert abs(cx - 0.68 * W) <= 2.0
+    assert abs(cy - 0.22 * H) <= 2.0
+    assert abs(sx - 0.22 * W) <= 1.0
+    assert abs(sy - 0.76 * H) <= 1.0
+
+    tail_tip = audit["tail_tip"]
+    assert tail_tip is not None
+    tx, ty = tail_tip
+
+    # Vector from bubble center -> tail tip must align almost 100% with bubble center -> speaker anchor!
+    v_tip = np.array([tx - cx, ty - cy], dtype=np.float64)
+    v_spk = np.array([sx - cx, sy - cy], dtype=np.float64)
+    cos_sim = float(np.dot(v_tip, v_spk) / (np.linalg.norm(v_tip) * np.linalg.norm(v_spk)))
+    assert cos_sim > 0.999, f"Tail did not aim directly at speaker_anchor_xy (cos_sim={cos_sim:.4f})"
+
+    # Tail tip must point DOWN-LEFT toward lower-left speaker (never toward upper-right flying mob!)
+    assert tx < cx and ty > cy
+    # Tail stops crisply short of speaker anchor (does not overshoot past head!)
+    assert float(np.linalg.norm(v_tip)) < float(np.linalg.norm(v_spk)) - 10.0
+
+    # Deterministic fallback (speaker_anchor_xy=None) across narrow, wide-tall, and wide-slim panels
+    for (pw, ph), target, bside in (
+        ((410, 638), "left", None),
+        ((844, 650), "right", "right"),
+        ((844, 404), "left", "center"),
+        ((844, 404), "right", "left"),
+        ((844, 404), "left", "right"),
+    ):
+        c_det = ComicCut(
+            cut_index=7,
+            aspect_ratio="auto",
+            layout_slot="panel",
+            characters=["오크 전사", "언데드 성기사"],
+            speaker="오크 전사",
+            dialogue="결정론적 화자 조준 테스트 대사!",
+            wordless=False,
+            visual_prompt="Full-bleed colored dungeon scene.",
+            tail_target=target,  # type: ignore[arg-type]
+            bubble_side=bside,   # type: ignore[arg-type]
+            full_bleed_bg=True,
+        )
+        p_det, a_det = composer._compose_full_bleed_panel(c_det, raw, target_w=pw, target_h=ph)
+        assert p_det.size == (pw, ph)
+        assert a_det["overlap_px"] == 0
+        assert a_det["tail_tip"] is not None
+        exp_sx = (0.27 if target == "left" else 0.73) * pw
+        assert abs(a_det["speaker_anchor"][0] - exp_sx) <= 1.0
+
+    # Out-of-range ratios rejected cleanly by Pydantic
+    with pytest.raises(ValidationError):
+        ComicCut(
+            cut_index=8,
+            characters=["오크 전사"],
+            speaker="오크 전사",
+            dialogue="범위 초과 테스트",
+            visual_prompt="Invalid anchor.",
+            speaker_anchor_xy=(1.4, 0.5),
+        )
+
+
+def test_cli_generate_bg_flag_defaults_and_overrides(
+    monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
+) -> None:
+    monkeypatch.setattr(
+        cli.GalleryScout,
+        "fetch_post_detail",
+        lambda self, post_no, base_post=None: _sample_post(post_no=str(post_no)),
+    )
+
+    # --layout v4 defaults to --bg full_bleed
+    rc_v4 = cli.main(["generate", "--post-no", "99001", "--layout", "v4", "--dry-run"])
+    assert rc_v4 == 0
+    out_v4 = capsys.readouterr().out
+    v4_obj, _ = json.JSONDecoder().raw_decode(out_v4[out_v4.find("{") :])
+    assert EpisodeScript.model_validate(v4_obj).background_style == "full_bleed"
+
+    # --layout v4 --bg clean_white overrides back to clean_white
+    rc_cw = cli.main(["generate", "--post-no", "99001", "--layout", "v4", "--bg", "clean_white", "--dry-run"])
+    assert rc_cw == 0
+    out_cw = capsys.readouterr().out
+    cw_obj, _ = json.JSONDecoder().raw_decode(out_cw[out_cw.find("{") :])
+    assert EpisodeScript.model_validate(cw_obj).background_style == "clean_white"
+
+    # --layout classic (default) defaults to clean_white
+    rc_cl = cli.main(["generate", "--post-no", "99001", "--dry-run"])
+    assert rc_cl == 0
+    out_cl = capsys.readouterr().out
+    cl_obj, _ = json.JSONDecoder().raw_decode(out_cl[out_cl.find("{") :])
+    assert EpisodeScript.model_validate(cl_obj).background_style == "clean_white"
+
+
+def test_extract_panels_all_boxed_dark_neutral_cave_interiors_preserve_exact_white_gutters() -> None:
+    """Regression test: dark neutral slate/charcoal dungeon walls inside full-bleed boxes MUST NOT
+    fool all-boxed panel extraction into crossing `#FFFFFF` vertical/horizontal gutters or chopping
+    interior panel artwork."""
+    lid = "split_top_wide_bottom"
+    spec = get_page_layout(lid)
+    page = Image.new("RGB", (V4_PAGE_W, V4_PAGE_H), (255, 255, 255))
+    d = ImageDraw.Draw(page)
+
+    # Fill every box with dark neutral stone/slate walls (chroma <= 15, cmin <= 80) + internal dark pillars
+    dark_stone = (64, 68, 72)
+    pillar_dark = (36, 38, 42)
+    markers = [(230, 60, 60), (60, 210, 90), (70, 140, 240)]
+    for idx, slot in enumerate(spec.slots):
+        x0, y0, x1, y1 = slot.rect
+        d.rectangle([x0, y0, x1, y1], fill=dark_stone)
+        # Draw strong vertical & horizontal dark dungeon beams inside the panel interior!
+        d.rectangle([x0 + 48, y0 + 8, x0 + 62, y1 - 8], fill=pillar_dark)
+        d.rectangle([x1 - 62, y0 + 8, x1 - 48, y1 - 8], fill=pillar_dark)
+        d.rectangle([x0 + 8, y0 + 70, x1 - 8, y0 + 82], fill=pillar_dark)
+        # Put a distinct bright marker near the left & right edges so over-cropping or bleed is obvious
+        d.rectangle([x0 + 18, y0 + 140, x0 + 42, y0 + 220], fill=markers[idx])
+        d.rectangle([x1 - 42, y0 + 140, x1 - 18, y0 + 220], fill=markers[idx])
+        d.rectangle([x0, y0, x1, y1], outline=(20, 20, 20), width=4)
+
+    panels = extract_panels_from_page(page, lid, all_boxed=True)
+    assert len(panels) == 3
+    for idx, (panel, slot) in enumerate(zip(panels, spec.slots)):
+        pw, ph = panel.size
+        assert abs(pw - slot.width) <= 20, f"Slot {idx + 1} width over-cropped: {pw} vs {slot.width}"
+        assert abs(ph - slot.height) <= 20, f"Slot {idx + 1} height over-cropped: {ph} vs {slot.height}"
+        arr = np.asarray(panel)
+        # Own markers on BOTH sides preserved; zero cross-gutter neighbor bleed; zero internal white gutter strip!
+        assert _count_color_match(arr, markers[idx]) >= 3000
+        for other_idx in range(3):
+            if other_idx != idx:
+                assert _count_color_match(arr, markers[other_idx]) == 0
+        white_cols = (arr.min(axis=2) >= 245).mean(axis=0)
+        assert float(white_cols.max()) < 0.50, f"White vertical gutter leaked inside slot {idx + 1}!"

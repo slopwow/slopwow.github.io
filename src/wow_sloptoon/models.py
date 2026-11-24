@@ -18,6 +18,8 @@ PageLayoutId = Literal[
     "four_beat_gag",
 ]
 
+BackgroundStyle = Literal["clean_white", "full_bleed"]
+
 
 class GalleryPost(BaseModel):
     """A scraped post from the DCInside wowforever minor gallery."""
@@ -163,6 +165,27 @@ class ComicCut(BaseModel):
             "('left', 'right', or 'center'). Overrides auto side selection when needed."
         ),
     )
+    full_bleed_bg: bool = Field(
+        default=False,
+        description=(
+            "True to fill panel edge-to-edge with full-bleed background and overlay "
+            "speech bubble on open background area."
+        ),
+    )
+    speaker_anchor_xy: Optional[tuple[float, float]] = Field(
+        default=None,
+        description=(
+            "Optional normalized (x_ratio, y_ratio) in [0.05..0.95] pointing directly to "
+            "the speaker's head/mouth inside the panel for pinpoint speech-bubble tail aiming."
+        ),
+    )
+    bubble_center_xy: Optional[tuple[float, float]] = Field(
+        default=None,
+        description=(
+            "Optional normalized (x_ratio, y_ratio) override for exact speech-bubble "
+            "placement inside full-bleed panels."
+        ),
+    )
     item_tooltip: Optional[ItemTooltipSpec] = Field(
         default=None,
         description="Optional authentic WoW item tooltip card overlay displayed in an open corner of this cut.",
@@ -174,6 +197,16 @@ class ComicCut(BaseModel):
             raise ValueError(
                 f"Cut {self.cut_index} must feature 1 to 2 characters, got {len(self.characters)}."
             )
+        for field_name, coords in (
+            ("speaker_anchor_xy", self.speaker_anchor_xy),
+            ("bubble_center_xy", self.bubble_center_xy),
+        ):
+            if coords is not None:
+                x_r, y_r = coords
+                if not (0.0 <= float(x_r) <= 1.0 and 0.0 <= float(y_r) <= 1.0):
+                    raise ValueError(
+                        f"Cut {self.cut_index} {field_name} ratios must be within [0.0, 1.0], got {coords}."
+                    )
         if self.wordless:
             self.speaker = None
             self.dialogue = None
@@ -224,6 +257,13 @@ class EpisodeScript(BaseModel):
     layout_mode: Literal["classic_2tier", "v4_five_act"] = Field(
         default="classic_2tier",
         description="Page layout mode: 'classic_2tier' (4~6 cuts) or 'v4_five_act' (5 acts, 10~14 cuts).",
+    )
+    background_style: BackgroundStyle = Field(
+        default="clean_white",
+        description=(
+            "Panel background mode ('clean_white' for borderless white cuts, "
+            "'full_bleed' for edge-to-edge colored comic backgrounds)."
+        ),
     )
     acts: Optional[list[ActPage]] = Field(
         default=None,

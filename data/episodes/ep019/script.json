@@ -3,12 +3,13 @@
   "source_post_no": "104746",
   "source_title": "\"틀딱 씨, 우리 파티에서 나가주세요.\"",
   "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=104746&exception_mode=recommend&page=2",
-  "subtitle": "죽음의 폐광 뉴비 낭만팟 vs 광기 40인 공대장 틀딱의 몹 학살·대포 오폭·막장 훈수 — 5막 13컷",
+  "subtitle": "죽음의 폐광 뉴비 낭만팟 vs 광기 40인 공대장 틀딱의 몹 독주·대포 오폭·파탈 엔딩 — 5막 13컷",
   "layout_mode": "v4_five_act",
+  "background_style": "full_bleed",
   "acts": [
     {
       "act_number": 1,
-      "act_title": "1막: 죽음의 폐광 낭만 입성과 광기 자동수락 닥달",
+      "act_title": "1막: 죽음의 폐광 낭만 입성과 자동수락 닥달",
       "layout_id": "open_top_split_bottom",
       "cuts": [
         {
@@ -19,14 +20,23 @@
           "panel_index": 1,
           "characters": [
             "오크 전사",
-            "나이트엘프 사제"
+            "스카이본 마법사"
           ],
           "speaker": "오크 전사",
-          "dialogue": "우와 죽음의 폐광!!\n퀘스트 스토리 개꿀잼인데?\n천천히 음미하며 가요♪",
+          "dialogue": "와 죽음의 폐광이다!\n퀘스트 스토리 재밌네~\n우리 천천히 보면서 가요!",
           "wordless": false,
-          "visual_prompt": "Over-the-shoulder (OTS) diagonal webtoon shot inside the atmospheric Deadmines dungeon entrance! Rich soft-vignette background behind the lower two-thirds: rustic wooden mine support beams, flickering warm wall torches, iron minecart tracks, and two tiny cheerful extra chibi newbie adventurers exploring in the background distance, fading smoothly upward into 100% pure solid #FFFFFF white across the top 36% headroom. In lower-right foreground, back shoulder of Night Elf Priest (pastel-lavender half-up wavy ponytail with side braid, royal-purple gold-trimmed capelet, golden Holy Cross staff strapped diagonally on back, white mini Prayer Book & golden rosary at waist, strictly NO halo/wings). On lower-left, excited newbie Orc Warrior girl (fair peach-ivory skin, green plush orc monster hood with curved horns & black high ponytail, red spiked pauldrons, battle axe stowed on back) holds open a rustic blank parchment quest scroll (ZERO text) with starry sparkling crimson eyes and wide thrilled fang grin.",
+          "visual_prompt": "100% FULL-BLEED EDGE-TO-EDGE COLORED DUNGEON BACKGROUND (ZERO white fades or white margins inside the panel box!). Over-the-shoulder (OTS) diagonal shot inside the warm atmospheric Deadmines wooden mine entrance: rugged timber support beams, vaulted stone cavern ceiling spanning all the way to the TOP EDGE (keep the upper-left 34% open dimly-lit stone/timber ceiling unobstructed for speech bubble overlay!), glowing wall torches, iron minecart tracks, and two tiny distant silhouette red-bandana Defias miner mobs pushing a minecart far down the tunnel. In lower-right foreground, back/3-quarter view of her newbie buddy the Skyborne Mage girl (sky-blue high side-ponytail, pointed elf ears, tilted royal-blue wizard hat with gold band & tiny smiling cloud-wing badge, cloud-trimmed blue capelet, Polymorph Sheep waist keychain, ONE single blue crystal mage staff strapped diagonally on back, NO sailor uniform) smiling curiously. On lower-left, excited newbie Orc Warrior girl (fair peach-ivory skin, vibrant green plush orc monster hood with curved horns & black high ponytail behind, red spiked pauldrons, battle axe stowed on back) holds open a blank rolled parchment quest scroll (ZERO text) with starry sparkling crimson eyes and wide thrilled fang grin.",
           "tail_target": "left",
           "bubble_side": "left",
+          "full_bleed_bg": true,
+          "speaker_anchor_xy": [
+            0.29,
+            0.45
+          ],
+          "bubble_center_xy": [
+            0.31,
+            0.16
+          ],
           "item_tooltip": null
         },
         {
@@ -39,11 +49,20 @@
             "언데드 성기사"
           ],
           "speaker": "언데드 성기사",
-          "dialogue": "자동수락 켜라고!!\n글 읽을 시간에 몹 하나\n더 잡는 게 이득이거든?!",
+          "dialogue": "아 답답해! 퀘스트 자동수락\n켜라고요! 글 읽을 시간에\n몹 하나 더 잡아야지!",
           "wordless": false,
-          "visual_prompt": "Intense dramatic low-angle close-up action shot in the lower 60% of the vertical panel (top 38% fading cleanly to 100% pure solid #FFFFFF headroom)! Soft-vignette mine tunnel background with fiery red-orange manga anger speed lines behind her: the manic veteran Undead Paladin girl (fair skin, white cartoon skull cap, silky silver-white bob hair, white-and-gold cape & tunic, golden warhammer strapped on back) lunges aggressively forward, ruthlessly snatching and crumpling a blank quest scroll paper in her white-gloved fist while glaring with blazing manic golden eyes, sharp veins, and furious barking expression!",
+          "visual_prompt": "100% FULL-BLEED EDGE-TO-EDGE COLORED BACKGROUND (ZERO white gaps or fades inside the panel!). Dramatic low-angle shot filling the entire vertical box with fiery crimson-and-orange explosive manga anger speed lines & shadowy mine stone wall extending all the way to the TOP EDGE! Position the manic veteran Undead Paladin girl (fair skin, white cartoon skull cap, silky silver-white bob hair, white-and-gold cape & tunic, golden warhammer strapped on back) in the LOWER 64% (leaving the upper 34% pure fiery speed-line background with NO head up there for speech bubble overlay!), ruthlessly snatching and crumpling the exact blank parchment quest scroll from Panel 1 in her white-gloved fist while glaring furiously with blazing golden eyes!",
           "tail_target": "center",
           "bubble_side": "center",
+          "full_bleed_bg": true,
+          "speaker_anchor_xy": [
+            0.51,
+            0.36
+          ],
+          "bubble_center_xy": [
+            0.5,
+            0.16
+          ],
           "item_tooltip": null
         },
         {
@@ -53,14 +72,23 @@
           "act_number": 1,
           "panel_index": 3,
           "characters": [
-            "스카이본 마법사"
+            "오크 전사"
           ],
-          "speaker": "스카이본 마법사",
-          "dialogue": "어… 우리 뉴비끼리\n낭만 즐기려고 모인\n파티인데요…?!",
+          "speaker": "오크 전사",
+          "dialogue": "네?! 아니 저희 뉴비끼리\n던전 분위기 즐기려고\n모인 건데요…",
           "wordless": false,
-          "visual_prompt": "Expressive 3/4 front reaction shot in the lower 60% of the vertical panel (top 38% fading cleanly to 100% pure solid #FFFFFF headroom)! Soft-vignette wooden Deadmines mine wall and lantern glow behind her with crumpled white paper scraps fluttering past: the shocked newbie Skyborne Mage girl (fair skin, clear sky-blue high side-ponytail, pointed elf ears, tilted royal-blue wizard hat with gold band & tiny smiling cloud-wing badge, cloud-trimmed blue capelet, tiny fluffy white Polymorph Sheep waist keychain, ONE single crystal mage staff strapped on back, NO sailor uniform) clutches her hands to her chest trembling with teary starry blue eyes and horrified sweatdrops!",
+          "visual_prompt": "100% FULL-BLEED EDGE-TO-EDGE COLORED BACKGROUND (ZERO white gaps or fades inside the panel!). Direct reaction of the SAME newbie Orc Warrior girl whose scroll was just snatched! Atmospheric wooden Deadmines mine tunnel wall, timber rafters, stone ceiling, and warm hanging lantern extending all the way to all four borders! Place the shocked newbie Orc Warrior girl (fair skin, green plush orc monster hood with curved horns & black ponytail, red spiked pauldrons, battle axe on back) cleanly in the LOWER 64% (leaving upper 34% open dark-brown mine ceiling & rafters for speech bubble overlay!), staring blankly at her now-empty raised hands with wide bewildered crimson eyes and nervous sweatdrops as torn white scroll scraps flutter past!",
           "tail_target": "center",
           "bubble_side": "center",
+          "full_bleed_bg": true,
+          "speaker_anchor_xy": [
+            0.51,
+            0.35
+          ],
+          "bubble_center_xy": [
+            0.5,
+            0.16
+          ],
           "item_tooltip": null
         }
       ]
@@ -80,11 +108,20 @@
             "언데드 성기사"
           ],
           "speaker": "언데드 성기사",
-          "dialogue": "느려터져서 답답하네!\n다 비켜! 내가 혼자\n쓸어버릴 테니까!!",
+          "dialogue": "느려터져서 못 봐주겠네!\n다 비켜, 내가 알아서\n밀어버릴 테니까!",
           "wordless": false,
-          "visual_prompt": "EXPLOSIVE MONSTER COMBAT ACTION SHOT in the lower 62% of the vertical panel (top 38% fading cleanly to 100% pure solid #FFFFFF headroom)! Soft-vignette Deadmines cavern shaft with minecart and torchlight behind: the veteran Undead Paladin girl (white skull cap, silver-white bob, fluttering white-and-gold cape) leaps mid-air swinging her massive glowing golden Paladin warhammer in a dazzling golden shockwave arc, sending THREE cute-comic red-bandana Defias pirate/miner mob enemies (wearing red masks, holding pickaxes/cutlasses) flying comically through the air with swirling dizzy eyes, flying sparks, and comic impact bursts!",
+          "visual_prompt": "100% FULL-BLEED EDGE-TO-EDGE DUNGEON COMBAT BACKGROUND (ZERO white gaps!). Deep stone Deadmines cavern shaft, timber pillars, minecart, and flickering wall torches stretching edge-to-edge all the way to the top ceiling (upper 34% open shadowy stone ceiling unobstructed for speech bubble overlay!). In the LOWER 66%, ignoring the newbie behind her, the veteran Undead Paladin girl (white skull cap, silver-white bob, fluttering white-and-gold cape) leaps mid-air swinging her massive glowing golden Paladin warhammer in a dazzling golden shockwave arc, blasting THREE cute-comic red-bandana Defias pirate/miner mob enemies (red masks, pickaxes) flying comically through the air with dizzy spiral eyes and sparks!",
           "tail_target": "center",
           "bubble_side": "center",
+          "full_bleed_bg": true,
+          "speaker_anchor_xy": [
+            0.63,
+            0.52
+          ],
+          "bubble_center_xy": [
+            0.5,
+            0.16
+          ],
           "item_tooltip": null
         },
         {
@@ -94,14 +131,24 @@
           "act_number": 2,
           "panel_index": 2,
           "characters": [
-            "언데드 성기사"
+            "언데드 성기사",
+            "오크 전사"
           ],
           "speaker": "언데드 성기사",
-          "dialogue": "철문 기믹? 귀찮아!\n화약 싹 다 쑤셔 넣고\n날려버리면 그만이지!",
+          "dialogue": "철문 기믹 설명할 시간 없어!\n화약 쑤셔 넣고 대포로\n날리면 끝이야!",
           "wordless": false,
-          "visual_prompt": "Tilted dutch-tilt chaotic sprinting slapstick shot in the lower 62% of the vertical panel (top 38% fading cleanly to 100% pure solid #FFFFFF headroom)! Soft-vignette Deadmines goblin foundry background with crates and flickering forge glow: in the background two tiny green-skinned comic goblin miner mobs flee screaming in panic, while in front the manic Undead Paladin girl (white skull cap, white-and-gold cape, warhammer stowed on back) sprints at supersonic speed hoisting a towering stack of THREE lit sizzling wooden black-powder kegs overhead with a wild unhinged grin and flying dust clouds!",
+          "visual_prompt": "100% FULL-BLEED EDGE-TO-EDGE GOBLIN FOUNDRY BACKGROUND (ZERO white gaps!). Warm glowing Deadmines foundry stone walls, wooden crates, glowing forge furnace, and smoky rafters reaching all four borders (upper 34% open smoky rafters/stone wall unobstructed for speech bubble overlay!). In the LOWER 66%: in the mid-background left, the newbie Orc Warrior girl (green orc hood) runs up panting trying to wave and ask a question alongside a tiny panicked fleeing green goblin miner mob, while in the right foreground the manic Undead Paladin girl (white skull cap, white-and-gold cape, warhammer stowed on back) sprints right past her hoisting THREE sizzling lit wooden black-powder kegs overhead with an unhinged speedrun grin!",
           "tail_target": "center",
           "bubble_side": "center",
+          "full_bleed_bg": true,
+          "speaker_anchor_xy": [
+            0.7,
+            0.45
+          ],
+          "bubble_center_xy": [
+            0.5,
+            0.16
+          ],
           "item_tooltip": null
         },
         {
@@ -115,18 +162,27 @@
             "오크 전사"
           ],
           "speaker": "언데드 성기사",
-          "dialogue": "제가 해결했어요~\n이제 바로 밴클리프\n따러 가죠!",
+          "dialogue": "자, 제가 해결했어요.\n이제 바로 밴클리프\n잡으러 가죠!",
           "wordless": false,
-          "visual_prompt": "CHAOTIC WIDE EXPLOSION SLAPSTICK SHOT in the lower 64% of the wide panel (top 34% fading smoothly to 100% pure solid #FFFFFF headroom)! Soft-vignette shattered wooden dungeon gate and mine stonework background: on the left, a giant iron pirate cannon blasts a massive fiery orange-and-white comic explosion smoke plume blowing splinters and TWO red-bandana Defias pirate mob extras spinning head-over-heels into the air! Dead-center, the Undead Paladin girl (skull cap, white-and-gold cape, warhammer on back) stands completely spotless and sparkling, smugly dusting her white gloves with closed proud eyes. On the right, the newbie Orc Warrior girl (green orc hood, axe on back) is covered in hilarious black cartoon soot smudges with her hair blown into a smoking frizzy afro, wobbling dizzily with hollow shocked eyes!",
+          "visual_prompt": "100% FULL-BLEED EDGE-TO-EDGE EXPLOSIVE DUNGEON GATE BACKGROUND (ZERO white gaps!). Rugged stone Deadmines chamber walls, blasted-open massive wooden iron-bound gate, glowing amber smoke, and dark stone cave ceiling filling 100% of the wide box (keep the upper-center 34% open dark-gray cave ceiling unobstructed with NO mobs floating above the center-top so the speech bubble sits cleanly above the Paladin!). In the LOWER 64%: on the far-left, a giant iron pirate cannon blasts a huge fiery orange comic explosion blowing splinters and TWO red-bandana Defias pirate mob extras flying on the left; DEAD-CENTER (x=54%), the Undead Paladin girl (skull cap, white-and-gold cape, warhammer on back) stands completely spotless and sparkling smugly dusting her white gloves; on the right (x=80%), the newbie Orc Warrior girl (green orc hood, axe on back) is covered in hilarious black cartoon soot with smoking frizzy afro hair and dizzy spiral shocked eyes!",
           "tail_target": "center",
           "bubble_side": "center",
+          "full_bleed_bg": true,
+          "speaker_anchor_xy": [
+            0.52,
+            0.46
+          ],
+          "bubble_center_xy": [
+            0.52,
+            0.17
+          ],
           "item_tooltip": null
         }
       ]
     },
     {
       "act_number": 3,
-      "act_title": "3막: 선전포고와 40인 공대장 꼰대 흑화 각성",
+      "act_title": "3막: 틀딱 씨 나가주세요 정면 통보와 꼰대 흑화 역공",
       "layout_id": "diagonal_tempo_2cut",
       "cuts": [
         {
@@ -136,15 +192,24 @@
           "act_number": 3,
           "panel_index": 1,
           "characters": [
-            "나이트엘프 사제",
+            "오크 전사",
             "언데드 성기사"
           ],
-          "speaker": "나이트엘프 사제",
-          "dialogue": "틀딱 씨!! 당장 우리 파티에서\n나가주세요!! 게임 재미를\n다 박살 내시잖아요!!",
+          "speaker": "오크 전사",
+          "dialogue": "틀딱 씨, 우리 파티에서\n나가주세요! 우리가 즐길\n재미를 다 막고 계시잖아요!",
           "wordless": false,
-          "visual_prompt": "DRAMATIC MAKJANG OVER-THE-SHOULDER (OTS) CONFRONTATION inside the giant underground Deadmines pirate cove! Soft-vignette background in the lower 64%: huge shadowy pirate ship hull, red sails, wooden dock lanterns, and shimmering cavern water fading cleanly upward into 100% pure solid #FFFFFF across top 36% headroom. In lower-right foreground, the back of the Undead Paladin (white skull cap dome, silver-white bob, white-and-gold cape with golden warhammer diagonally on back). On lower-left, the usually calm Night Elf Priest girl (fair peach-ivory skin with a cute black soot smudge on cheek, fluffy pastel-lavender half-up hair, golden crescent tiara, glowing furious silver-white eyes, royal-purple & gold capelet, mini Holy Prayer Book & golden rosary at waist, golden Holy Cross staff on back, strictly NO halo/wings) snaps completely, leaning forward aggressively jabbing an accusing finger straight at the Paladin's face with fiery comic anger aura!",
+          "visual_prompt": "100% FULL-BLEED EDGE-TO-EDGE UNDERGROUND PIRATE COVE BACKGROUND (ZERO white gaps!). Direct 1-second continuation after the cannon blast! Grand Deadmines cavern dock: towering underground rock ceiling stalactites filling the TOP 34% (upper-left open dark-blue cavern ceiling unobstructed for speech bubble overlay!), giant shadowy red-sailed Defias pirate galleon docked on shimmering dark cavern water, glowing wooden dock lanterns, and weathered wooden pier planks across the bottom! In lower-right foreground (OTS back-view), the back of the Undead Paladin (white skull cap dome, silver-white bob, white-and-gold cape with golden warhammer diagonally on back). On lower-left, the EXACT SAME newbie Orc Warrior girl from Panel 6 (still with a cute black cannon-soot smudge on her cheek!, fair skin, green plush orc monster hood with curved horns & black ponytail, red spiked pauldrons, battle axe on back) snaps completely, erupting with fiery orange comic anger aura and jabbing an accusing finger straight at the Paladin's face!",
           "tail_target": "left",
           "bubble_side": "left",
+          "full_bleed_bg": true,
+          "speaker_anchor_xy": [
+            0.29,
+            0.46
+          ],
+          "bubble_center_xy": [
+            0.31,
+            0.16
+          ],
           "item_tooltip": null
         },
         {
@@ -155,14 +220,23 @@
           "panel_index": 2,
           "characters": [
             "언데드 성기사",
-            "스카이본 마법사"
+            "오크 전사"
           ],
           "speaker": "언데드 성기사",
-          "dialogue": "감히 뉴비 주제에?!\n오리부터 19클 다 뛴 내가\n이끌어야 겜이 재밌는 거야!",
+          "dialogue": "뭘 모르시네! 오리부터\n19클까지 다 한 내가 이끌어야\n더 재밌게 겜하는 거라고요!",
           "wordless": false,
-          "visual_prompt": "INTENSE LOW-ANGLE CONFRONTATION filling the FULL HORIZONTAL WIDTH (left edge to right edge!) across the LOWER 64% of the wide panel, while the TOP 36% smoothly fades into 100% PURE SOLID #FFFFFF WHITE empty headroom for speech-bubble placement (CRITICAL: keep the entire top 36% of this panel pure #FFFFFF white with ZERO dark purple background reaching the top edge!). In the lower 64% across the full width, a dramatic dark-purple & golden comic villain-aura soft-vignette background and wooden dock planks sit behind both characters: on the lower-right, the veteran Undead Paladin girl (white skull cap, silver-white bob, white-and-gold outfit, ONE golden warhammer stowed on back) leans aggressively into the newbie's face jabbing a condescending lecturing finger with sinister glowing golden eyes; on the lower-left, the Skyborne Mage girl (sky-blue high side-ponytail, tilted blue wizard hat with tiny smiling cloud-wing badge, cloud-trimmed capelet, Polymorph Sheep waist keychain, STRICTLY ONE single wooden crystal mage staff on back — ONLY ONE blue crystal tip!) leans far back grimacing in horror!",
+          "visual_prompt": "100% FULL-BLEED EDGE-TO-EDGE DARK VILLAIN-AURA COVE BACKGROUND (ZERO white gaps!). Direct 1-second retaliation against the EXACT SAME Orc Warrior girl from Panel 1! Dramatic deep-violet and smoky golden menacing veteran-aura cave atmosphere & wooden pirate dock planks stretching edge-to-edge across the ENTIRE wide box (keep upper-right 34% open dark-violet glowing aura ceiling with NO heads up there for speech bubble overlay!). On lower-right, the veteran Undead Paladin girl (white skull cap, silver-white bob, white-and-gold outfit, ONE golden warhammer stowed on back) explodes back in menacing retaliation, leaning forward right into the Orc Warrior's face jabbing a condescending lecturing finger with sinister glowing golden eyes and overwhelming smug veteran menace; on lower-left, the EXACT SAME Orc Warrior girl from Panel 1 (still with the cute black soot smudge on cheek, green orc monster hood, red spiked pauldrons, battle axe on back) recoils backward grimacing in sheer disbelief at the shameless counterattack!",
           "tail_target": "right",
           "bubble_side": "right",
+          "full_bleed_bg": true,
+          "speaker_anchor_xy": [
+            0.58,
+            0.33
+          ],
+          "bubble_center_xy": [
+            0.3,
+            0.14
+          ],
           "item_tooltip": null
         }
       ]
@@ -182,11 +256,20 @@
             "언데드 성기사"
           ],
           "speaker": "언데드 성기사",
-          "dialogue": "법사가 진짜 사긴데 광딜·물빵 안 해?!\n전사할 거면 성기사 하지 왜 해?!\n내가 40인 공대장 출신인데 말야!!",
+          "dialogue": "전사 어렵다는데 그냥 성기사 하지!\n법사가 사긴데 광딜·물빵 안 해?!\n내가 오리 40인 공대장 출신인데!!",
           "wordless": false,
-          "visual_prompt": "CHAOTIC DUTCH-TILT LECTURE FRENZY positioned cleanly on the RIGHT 52% of the wide panel (leaving the LEFT 46% 100% pure solid #FFFFFF empty white for speech bubble!). Behind her on the right half only, a dramatic soft-vignette blazing orange-gold sermon fire aura and ghostly silhouette of a medieval raid banner fade cleanly to pure white toward the left! The unhinged Undead Paladin girl (white skull cap, silver-white bob, white-and-gold cape, warhammer stowed on back) throws both arms wide ranting at maximum volume with manic sparkling eyes, foaming comic lecture shockwaves and golden sparks exploding around her!",
+          "visual_prompt": "100% FULL-BLEED EDGE-TO-EDGE FIERY SERMON HELLSCAPE BACKGROUND (ZERO white gaps!). Dramatic blazing amber-orange-and-crimson fiery sky, rising embers, and ghostly silhouettes of medieval 40-man raid banners filling 100% of the wide box edge-to-edge! Position the unhinged veteran Undead Paladin girl (white skull cap, silver-white bob, white-and-gold cape, warhammer stowed on back) cleanly on the RIGHT 46% of the panel (leaving the LEFT 52% open blazing orange-red sky & distant banner silhouettes unobstructed for speech bubble overlay!), throwing both arms wide ranting at maximum volume with manic sparkling eyes and golden lecture sparks!",
           "tail_target": "right",
           "bubble_side": "left",
+          "full_bleed_bg": true,
+          "speaker_anchor_xy": [
+            0.68,
+            0.42
+          ],
+          "bubble_center_xy": [
+            0.3,
+            0.22
+          ],
           "item_tooltip": null
         },
         {
@@ -196,22 +279,25 @@
           "act_number": 4,
           "panel_index": 2,
           "characters": [
-            "스카이본 마법사",
-            "나이트엘프 사제"
+            "오크 전사",
+            "스카이본 마법사"
           ],
           "speaker": null,
           "dialogue": null,
           "wordless": true,
-          "visual_prompt": "FULL-BLEED THEATRICAL WORDLESS CLIMAX FREEZE-FRAME filling the entire giant panel (ZERO text, ZERO speech bubbles)! Rich detailed Deadmines pirate ship deck background with wooden masts, red Defias sails, glowing hanging lanterns, and in the upper-mid background the dungeon boss Edwin VanCleef (masked red-bandana pirate captain with twin swords) plus THREE cute chibi red-bandana Defias pirate mob extras peering down from the ship railing with awkward sweatdrops and baffled 'what is wrong with these adventurers?' expressions! Dominating the foreground (filling 78% height) in hyper-expressive comedic mental breakdown: on the left, the Skyborne Mage girl (tilted blue wizard hat with tiny smiling cloud-wing badge, sky-blue high side-ponytail, pointed elf ears, cloud capelet, NO sailor uniform) clamps both hands tightly over her ears with giant spiral dizzy eyes and a cute white cartoon ghost soul flying out of her mouth; on the right, the Night Elf Priest girl (fair skin, pastel-lavender half-up hair, golden crescent tiara, purple-and-gold capelet, NO halo/wings) freezes with dark purple vertical doom shadow across her forehead, trembling pinpoint silver pupils, and cascading cold sweatdrops!",
+          "visual_prompt": "100% FULL-BLEED THEATRICAL WORDLESS CLIMAX FREEZE-FRAME filling the entire giant box edge-to-edge (ZERO text, ZERO speech bubbles!). Rich detailed Deadmines pirate ship deck background with wooden masts, red Defias sails, glowing hanging lanterns, and on the upper ship deck railing the dungeon boss Edwin VanCleef (red-bandana masked pirate captain with twin swords) plus THREE cute chibi red-bandana Defias pirate mob extras peering down with awkward sweatdrops and baffled 'what is wrong with these adventurers?' expressions! Dominating the foreground (filling 78% height) are the EXACT TWO newbies whose classes were just trashed in Panel 1: on the left, the Orc Warrior girl (fair skin, green plush orc monster hood with curved horns, red spiked pauldrons, battle axe on back) freezes petrified with dark purple vertical doom shadow across her forehead, blank white shocked pupils, and cascading cold sweatdrops; on the right, the Skyborne Mage girl (tilted royal-blue wizard hat with tiny smiling cloud-wing badge, sky-blue high side-ponytail, pointed elf ears, cloud capelet, Polymorph Sheep waist keychain, ONE crystal mage staff on back, NO sailor uniform) clamps both hands tightly over her pointed elf ears with giant spiral dizzy eyes and a cute white cartoon ghost soul flying out of her mouth!",
           "tail_target": "center",
           "bubble_side": null,
+          "full_bleed_bg": true,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
           "item_tooltip": null
         }
       ]
     },
     {
       "act_number": 5,
-      "act_title": "5막: 뉴비 극대노 폭발과 순정만화 맑눈광 엔딩",
+      "act_title": "5막: 전사 극대노 폭발, 뉴비 귀환석 파탈과 틀딱 억울 징징 엔딩",
       "layout_id": "wide_reaction_wide",
       "cuts": [
         {
@@ -226,9 +312,18 @@
           "speaker": "오크 전사",
           "dialogue": "아 씨발 진짜!! 게임 왜 하세요?!\n뉴비 꼽 주려고 파티 왔어요?!",
           "wordless": false,
-          "visual_prompt": "EXPLOSIVE 90-DEGREE SIDE-PROFILE RAGE ACTION positioned cleanly on the LEFT 52% of the slim wide panel (leaving the RIGHT 46% 100% pure solid #FFFFFF empty white for speech bubble!). Behind her on the left half only, a blazing comic crimson rage flame vignette & wooden ship deck planks fade smoothly to pure white toward the right! The pushed-too-far newbie Orc Warrior girl (fair skin, green plush orc monster hood with explosive white steam jets blasting out of both green ears, red spiked pauldrons) draws her chunky silver Horde battle axe overhead in fury, roaring with blazing crimson eyes and huge jagged anime anger vein!",
+          "visual_prompt": "100% FULL-BLEED EDGE-TO-EDGE BLAZING SHIP DECK BACKGROUND (ZERO white gaps!). Dramatic crimson-red volcanic rage flames & dark pirate ship deck railing/ropes filling 100% of the slim wide panel edge-to-edge! Position the pushed-too-far newbie Orc Warrior girl (fair skin, green plush orc monster hood with explosive white steam jets blasting from both green ears, red spiked pauldrons) cleanly on the LEFT 46% (leaving the RIGHT 52% open fiery red-orange rage sky & dark ship rigging unobstructed for speech bubble overlay!), drawing and hoisting her chunky silver Horde battle axe overhead in explosive fury, roaring with blazing crimson eyes and huge anime anger vein!",
           "tail_target": "left",
           "bubble_side": "right",
+          "full_bleed_bg": true,
+          "speaker_anchor_xy": [
+            0.44,
+            0.44
+          ],
+          "bubble_center_xy": [
+            0.78,
+            0.24
+          ],
           "item_tooltip": null
         },
         {
@@ -238,15 +333,24 @@
           "act_number": 5,
           "panel_index": 2,
           "characters": [
-            "나이트엘프 사제",
-            "스카이본 마법사"
+            "스카이본 마법사",
+            "오크 전사"
           ],
           "speaker": "스카이본 마법사",
-          "dialogue": "아… 진짜 못 해먹겠네…\n그냥 귀환석 타고\n도망치면 안 돼요…?!",
+          "dialogue": "전사님, 말 안 통해요…\n그냥 우리끼리 귀환석 타고\n파탈해서 나가요!!",
           "wordless": false,
-          "visual_prompt": "COMEDIC DESPAIR & EXTRAS RETREATING shot positioned cleanly on the LEFT 54% of the slim wide panel (leaving the RIGHT 44% 100% pure solid #FFFFFF empty white for speech bubble!). Soft-vignette wooden Deadmines pirate ship deck floor & crates fading cleanly to pure white on the right: in the mid-left background, TWO red-bandana chibi Defias pirate mob extras awkwardly tiptoe backward away from the fighting party with nervous sweatdrops; in foreground left, the Night Elf Priest girl (pastel-lavender hair, purple vestments, mini book & rosary, staff on floor, NO halo/wings) collapses facepalming in exhaustion while beside her the Skyborne Mage girl (sky-blue side-ponytail, crooked blue cloud-wing hat, Polymorph Sheep waist charm) bawls waterfall anime tears hugging a glowing blue-swirl Hearthstone tightly to her chest!",
+          "visual_prompt": "100% FULL-BLEED EDGE-TO-EDGE PIRATE SHIP DECK BACKGROUND (ZERO white gaps!). Full wooden Deadmines pirate ship deck, wooden crates, masts, hanging ropes, and moody blue cavern night sky filling 100% of the slim wide panel edge-to-edge! Place ALL characters cleanly on the LEFT 56% (leaving the RIGHT 42% open wooden ship rigging & dark cavern sky unobstructed for speech bubble overlay!): in mid-left background, TWO cute chibi red-bandana Defias pirate mob extras awkwardly tiptoe backward away from the screaming party with nervous sweatdrops; in foreground-left, the still-fuming Orc Warrior girl (green orc hood, axe lowered) is being urgently tugged by the arm by her buddy the Skyborne Mage girl (x=44%, sky-blue high side-ponytail, crooked blue cloud-wing wizard hat, cloud capelet, Polymorph Sheep waist keychain, ONE crystal staff on back) who is holding up a glowing blue-swirl Hearthstone with streaming anime tears begging to leave the party!",
           "tail_target": "right",
-          "bubble_side": "right",
+          "bubble_side": "left",
+          "full_bleed_bg": true,
+          "speaker_anchor_xy": [
+            0.44,
+            0.44
+          ],
+          "bubble_center_xy": [
+            0.22,
+            0.24
+          ],
           "item_tooltip": null
         },
         {
@@ -260,11 +364,20 @@
             "오크 전사"
           ],
           "speaker": "언데드 성기사",
-          "dialogue": "어머, 왜 욕하세요?\n전 좋게좋게 대화로 푸는 중인데…\n와우는 만렙부터 시작이란 말입니다!",
+          "dialogue": "아니 왜 욕하고 다 나가요?!\n난 좋게 좋게 알려준 건데 억울해!!\n와우는 만렙부터 시작이란 말입니다!!",
           "wordless": false,
-          "visual_prompt": "LEGENDARY MAKJANG CONTRAST FINALE! Keep the upper-center & upper-left/right top 42% cleanly fading to 100% pure solid #FFFFFF headroom for the speech bubble! On the lower-left foreground (seen from behind in 3-view turnaround back-view), the Orc Warrior girl (back of green orc hood with black high ponytail & red band, red cape with silver battle axe diagonally across back) freezes like turned-to-stone amid a tiny gloomy dark thundercloud & jagged lightning zigzags behind her shoulders. On the lower-right facing forward with a wildly contrasting shoujo-manga pastel pink rose-petal & sparkling halo-starlight soft vignette behind her ONLY, the completely clueless Undead Paladin girl (white skull cap, silver-white bob, white-and-gold cape & tunic, golden warhammer on back) clasps her white-gloved hands politely with blindingly innocent, unnervingly pure glowing golden eyes and a sweet clueless smile!",
+          "visual_prompt": "100% FULL-BLEED EDGE-TO-EDGE PIRATE SHIP DECK FINALE BACKGROUND (ZERO white gaps!). Full wooden Deadmines pirate ship deck, ship masts, hanging lanterns, and moody dark-blue cavern sky stretching all the way to all four edges (leaving the UPPER-CENTER 38% open dark-blue cavern sky & sails unobstructed for speech bubble overlay!). In the distant mid-background, two tiny red-bandana Defias pirate mob extras sweat awkwardly watching the abandoned party. On the lower-left (x=22%), seen from behind stepping briskly into a glowing cyan Hearthstone teleport vortex (with a faint sparkling cyan silhouette of a blue wizard hat already vanishing in teleport light beside her — the whole newbie party really left!), is the Orc Warrior girl (back of green orc hood with black high ponytail & red band, red cape with silver battle axe diagonally on back). On the lower-right (x=76%) left completely alone on deck, the veteran Undead Paladin girl (white skull cap, silver-white bob, white-and-gold cape & tunic, golden warhammer on back) stomps her feet throwing an intensely bitter, self-pitying whining tantrum — flushed cheeks, angry frustrated anime tears welling in her golden eyes, clenched trembling fists or one gloved hand reaching desperately after the disappearing newbies while yelling indignantly! STRICTLY NO pink flowers, NO angelic sparkles, NO smiling!",
           "tail_target": "right",
           "bubble_side": "center",
+          "full_bleed_bg": true,
+          "speaker_anchor_xy": [
+            0.73,
+            0.4
+          ],
+          "bubble_center_xy": [
+            0.46,
+            0.2
+          ],
           "item_tooltip": null
         }
       ]
@@ -279,14 +392,23 @@
       "panel_index": 1,
       "characters": [
         "오크 전사",
-        "나이트엘프 사제"
+        "스카이본 마법사"
       ],
       "speaker": "오크 전사",
-      "dialogue": "우와 죽음의 폐광!!\n퀘스트 스토리 개꿀잼인데?\n천천히 음미하며 가요♪",
+      "dialogue": "와 죽음의 폐광이다!\n퀘스트 스토리 재밌네~\n우리 천천히 보면서 가요!",
       "wordless": false,
-      "visual_prompt": "Over-the-shoulder (OTS) diagonal webtoon shot inside the atmospheric Deadmines dungeon entrance! Rich soft-vignette background behind the lower two-thirds: rustic wooden mine support beams, flickering warm wall torches, iron minecart tracks, and two tiny cheerful extra chibi newbie adventurers exploring in the background distance, fading smoothly upward into 100% pure solid #FFFFFF white across the top 36% headroom. In lower-right foreground, back shoulder of Night Elf Priest (pastel-lavender half-up wavy ponytail with side braid, royal-purple gold-trimmed capelet, golden Holy Cross staff strapped diagonally on back, white mini Prayer Book & golden rosary at waist, strictly NO halo/wings). On lower-left, excited newbie Orc Warrior girl (fair peach-ivory skin, green plush orc monster hood with curved horns & black high ponytail, red spiked pauldrons, battle axe stowed on back) holds open a rustic blank parchment quest scroll (ZERO text) with starry sparkling crimson eyes and wide thrilled fang grin.",
+      "visual_prompt": "100% FULL-BLEED EDGE-TO-EDGE COLORED DUNGEON BACKGROUND (ZERO white fades or white margins inside the panel box!). Over-the-shoulder (OTS) diagonal shot inside the warm atmospheric Deadmines wooden mine entrance: rugged timber support beams, vaulted stone cavern ceiling spanning all the way to the TOP EDGE (keep the upper-left 34% open dimly-lit stone/timber ceiling unobstructed for speech bubble overlay!), glowing wall torches, iron minecart tracks, and two tiny distant silhouette red-bandana Defias miner mobs pushing a minecart far down the tunnel. In lower-right foreground, back/3-quarter view of her newbie buddy the Skyborne Mage girl (sky-blue high side-ponytail, pointed elf ears, tilted royal-blue wizard hat with gold band & tiny smiling cloud-wing badge, cloud-trimmed blue capelet, Polymorph Sheep waist keychain, ONE single blue crystal mage staff strapped diagonally on back, NO sailor uniform) smiling curiously. On lower-left, excited newbie Orc Warrior girl (fair peach-ivory skin, vibrant green plush orc monster hood with curved horns & black high ponytail behind, red spiked pauldrons, battle axe stowed on back) holds open a blank rolled parchment quest scroll (ZERO text) with starry sparkling crimson eyes and wide thrilled fang grin.",
       "tail_target": "left",
       "bubble_side": "left",
+      "full_bleed_bg": true,
+      "speaker_anchor_xy": [
+        0.29,
+        0.45
+      ],
+      "bubble_center_xy": [
+        0.31,
+        0.16
+      ],
       "item_tooltip": null
     },
     {
@@ -299,11 +421,20 @@
         "언데드 성기사"
       ],
       "speaker": "언데드 성기사",
-      "dialogue": "자동수락 켜라고!!\n글 읽을 시간에 몹 하나\n더 잡는 게 이득이거든?!",
+      "dialogue": "아 답답해! 퀘스트 자동수락\n켜라고요! 글 읽을 시간에\n몹 하나 더 잡아야지!",
       "wordless": false,
-      "visual_prompt": "Intense dramatic low-angle close-up action shot in the lower 60% of the vertical panel (top 38% fading cleanly to 100% pure solid #FFFFFF headroom)! Soft-vignette mine tunnel background with fiery red-orange manga anger speed lines behind her: the manic veteran Undead Paladin girl (fair skin, white cartoon skull cap, silky silver-white bob hair, white-and-gold cape & tunic, golden warhammer strapped on back) lunges aggressively forward, ruthlessly snatching and crumpling a blank quest scroll paper in her white-gloved fist while glaring with blazing manic golden eyes, sharp veins, and furious barking expression!",
+      "visual_prompt": "100% FULL-BLEED EDGE-TO-EDGE COLORED BACKGROUND (ZERO white gaps or fades inside the panel!). Dramatic low-angle shot filling the entire vertical box with fiery crimson-and-orange explosive manga anger speed lines & shadowy mine stone wall extending all the way to the TOP EDGE! Position the manic veteran Undead Paladin girl (fair skin, white cartoon skull cap, silky silver-white bob hair, white-and-gold cape & tunic, golden warhammer strapped on back) in the LOWER 64% (leaving the upper 34% pure fiery speed-line background with NO head up there for speech bubble overlay!), ruthlessly snatching and crumpling the exact blank parchment quest scroll from Panel 1 in her white-gloved fist while glaring furiously with blazing golden eyes!",
       "tail_target": "center",
       "bubble_side": "center",
+      "full_bleed_bg": true,
+      "speaker_anchor_xy": [
+        0.51,
+        0.36
+      ],
+      "bubble_center_xy": [
+        0.5,
+        0.16
+      ],
       "item_tooltip": null
     },
     {
@@ -313,14 +444,23 @@
       "act_number": 1,
       "panel_index": 3,
       "characters": [
-        "스카이본 마법사"
+        "오크 전사"
       ],
-      "speaker": "스카이본 마법사",
-      "dialogue": "어… 우리 뉴비끼리\n낭만 즐기려고 모인\n파티인데요…?!",
+      "speaker": "오크 전사",
+      "dialogue": "네?! 아니 저희 뉴비끼리\n던전 분위기 즐기려고\n모인 건데요…",
       "wordless": false,
-      "visual_prompt": "Expressive 3/4 front reaction shot in the lower 60% of the vertical panel (top 38% fading cleanly to 100% pure solid #FFFFFF headroom)! Soft-vignette wooden Deadmines mine wall and lantern glow behind her with crumpled white paper scraps fluttering past: the shocked newbie Skyborne Mage girl (fair skin, clear sky-blue high side-ponytail, pointed elf ears, tilted royal-blue wizard hat with gold band & tiny smiling cloud-wing badge, cloud-trimmed blue capelet, tiny fluffy white Polymorph Sheep waist keychain, ONE single crystal mage staff strapped on back, NO sailor uniform) clutches her hands to her chest trembling with teary starry blue eyes and horrified sweatdrops!",
+      "visual_prompt": "100% FULL-BLEED EDGE-TO-EDGE COLORED BACKGROUND (ZERO white gaps or fades inside the panel!). Direct reaction of the SAME newbie Orc Warrior girl whose scroll was just snatched! Atmospheric wooden Deadmines mine tunnel wall, timber rafters, stone ceiling, and warm hanging lantern extending all the way to all four borders! Place the shocked newbie Orc Warrior girl (fair skin, green plush orc monster hood with curved horns & black ponytail, red spiked pauldrons, battle axe on back) cleanly in the LOWER 64% (leaving upper 34% open dark-brown mine ceiling & rafters for speech bubble overlay!), staring blankly at her now-empty raised hands with wide bewildered crimson eyes and nervous sweatdrops as torn white scroll scraps flutter past!",
       "tail_target": "center",
       "bubble_side": "center",
+      "full_bleed_bg": true,
+      "speaker_anchor_xy": [
+        0.51,
+        0.35
+      ],
+      "bubble_center_xy": [
+        0.5,
+        0.16
+      ],
       "item_tooltip": null
     },
     {
@@ -333,11 +473,20 @@
         "언데드 성기사"
       ],
       "speaker": "언데드 성기사",
-      "dialogue": "느려터져서 답답하네!\n다 비켜! 내가 혼자\n쓸어버릴 테니까!!",
+      "dialogue": "느려터져서 못 봐주겠네!\n다 비켜, 내가 알아서\n밀어버릴 테니까!",
       "wordless": false,
-      "visual_prompt": "EXPLOSIVE MONSTER COMBAT ACTION SHOT in the lower 62% of the vertical panel (top 38% fading cleanly to 100% pure solid #FFFFFF headroom)! Soft-vignette Deadmines cavern shaft with minecart and torchlight behind: the veteran Undead Paladin girl (white skull cap, silver-white bob, fluttering white-and-gold cape) leaps mid-air swinging her massive glowing golden Paladin warhammer in a dazzling golden shockwave arc, sending THREE cute-comic red-bandana Defias pirate/miner mob enemies (wearing red masks, holding pickaxes/cutlasses) flying comically through the air with swirling dizzy eyes, flying sparks, and comic impact bursts!",
+      "visual_prompt": "100% FULL-BLEED EDGE-TO-EDGE DUNGEON COMBAT BACKGROUND (ZERO white gaps!). Deep stone Deadmines cavern shaft, timber pillars, minecart, and flickering wall torches stretching edge-to-edge all the way to the top ceiling (upper 34% open shadowy stone ceiling unobstructed for speech bubble overlay!). In the LOWER 66%, ignoring the newbie behind her, the veteran Undead Paladin girl (white skull cap, silver-white bob, fluttering white-and-gold cape) leaps mid-air swinging her massive glowing golden Paladin warhammer in a dazzling golden shockwave arc, blasting THREE cute-comic red-bandana Defias pirate/miner mob enemies (red masks, pickaxes) flying comically through the air with dizzy spiral eyes and sparks!",
       "tail_target": "center",
       "bubble_side": "center",
+      "full_bleed_bg": true,
+      "speaker_anchor_xy": [
+        0.63,
+        0.52
+      ],
+      "bubble_center_xy": [
+        0.5,
+        0.16
+      ],
       "item_tooltip": null
     },
     {
@@ -347,14 +496,24 @@
       "act_number": 2,
       "panel_index": 2,
       "characters": [
-        "언데드 성기사"
+        "언데드 성기사",
+        "오크 전사"
       ],
       "speaker": "언데드 성기사",
-      "dialogue": "철문 기믹? 귀찮아!\n화약 싹 다 쑤셔 넣고\n날려버리면 그만이지!",
+      "dialogue": "철문 기믹 설명할 시간 없어!\n화약 쑤셔 넣고 대포로\n날리면 끝이야!",
       "wordless": false,
-      "visual_prompt": "Tilted dutch-tilt chaotic sprinting slapstick shot in the lower 62% of the vertical panel (top 38% fading cleanly to 100% pure solid #FFFFFF headroom)! Soft-vignette Deadmines goblin foundry background with crates and flickering forge glow: in the background two tiny green-skinned comic goblin miner mobs flee screaming in panic, while in front the manic Undead Paladin girl (white skull cap, white-and-gold cape, warhammer stowed on back) sprints at supersonic speed hoisting a towering stack of THREE lit sizzling wooden black-powder kegs overhead with a wild unhinged grin and flying dust clouds!",
+      "visual_prompt": "100% FULL-BLEED EDGE-TO-EDGE GOBLIN FOUNDRY BACKGROUND (ZERO white gaps!). Warm glowing Deadmines foundry stone walls, wooden crates, glowing forge furnace, and smoky rafters reaching all four borders (upper 34% open smoky rafters/stone wall unobstructed for speech bubble overlay!). In the LOWER 66%: in the mid-background left, the newbie Orc Warrior girl (green orc hood) runs up panting trying to wave and ask a question alongside a tiny panicked fleeing green goblin miner mob, while in the right foreground the manic Undead Paladin girl (white skull cap, white-and-gold cape, warhammer stowed on back) sprints right past her hoisting THREE sizzling lit wooden black-powder kegs overhead with an unhinged speedrun grin!",
       "tail_target": "center",
       "bubble_side": "center",
+      "full_bleed_bg": true,
+      "speaker_anchor_xy": [
+        0.7,
+        0.45
+      ],
+      "bubble_center_xy": [
+        0.5,
+        0.16
+      ],
       "item_tooltip": null
     },
     {
@@ -368,11 +527,20 @@
         "오크 전사"
       ],
       "speaker": "언데드 성기사",
-      "dialogue": "제가 해결했어요~\n이제 바로 밴클리프\n따러 가죠!",
+      "dialogue": "자, 제가 해결했어요.\n이제 바로 밴클리프\n잡으러 가죠!",
       "wordless": false,
-      "visual_prompt": "CHAOTIC WIDE EXPLOSION SLAPSTICK SHOT in the lower 64% of the wide panel (top 34% fading smoothly to 100% pure solid #FFFFFF headroom)! Soft-vignette shattered wooden dungeon gate and mine stonework background: on the left, a giant iron pirate cannon blasts a massive fiery orange-and-white comic explosion smoke plume blowing splinters and TWO red-bandana Defias pirate mob extras spinning head-over-heels into the air! Dead-center, the Undead Paladin girl (skull cap, white-and-gold cape, warhammer on back) stands completely spotless and sparkling, smugly dusting her white gloves with closed proud eyes. On the right, the newbie Orc Warrior girl (green orc hood, axe on back) is covered in hilarious black cartoon soot smudges with her hair blown into a smoking frizzy afro, wobbling dizzily with hollow shocked eyes!",
+      "visual_prompt": "100% FULL-BLEED EDGE-TO-EDGE EXPLOSIVE DUNGEON GATE BACKGROUND (ZERO white gaps!). Rugged stone Deadmines chamber walls, blasted-open massive wooden iron-bound gate, glowing amber smoke, and dark stone cave ceiling filling 100% of the wide box (keep the upper-center 34% open dark-gray cave ceiling unobstructed with NO mobs floating above the center-top so the speech bubble sits cleanly above the Paladin!). In the LOWER 64%: on the far-left, a giant iron pirate cannon blasts a huge fiery orange comic explosion blowing splinters and TWO red-bandana Defias pirate mob extras flying on the left; DEAD-CENTER (x=54%), the Undead Paladin girl (skull cap, white-and-gold cape, warhammer on back) stands completely spotless and sparkling smugly dusting her white gloves; on the right (x=80%), the newbie Orc Warrior girl (green orc hood, axe on back) is covered in hilarious black cartoon soot with smoking frizzy afro hair and dizzy spiral shocked eyes!",
       "tail_target": "center",
       "bubble_side": "center",
+      "full_bleed_bg": true,
+      "speaker_anchor_xy": [
+        0.52,
+        0.46
+      ],
+      "bubble_center_xy": [
+        0.52,
+        0.17
+      ],
       "item_tooltip": null
     },
     {
@@ -382,15 +550,24 @@
       "act_number": 3,
       "panel_index": 1,
       "characters": [
-        "나이트엘프 사제",
+        "오크 전사",
         "언데드 성기사"
       ],
-      "speaker": "나이트엘프 사제",
-      "dialogue": "틀딱 씨!! 당장 우리 파티에서\n나가주세요!! 게임 재미를\n다 박살 내시잖아요!!",
+      "speaker": "오크 전사",
+      "dialogue": "틀딱 씨, 우리 파티에서\n나가주세요! 우리가 즐길\n재미를 다 막고 계시잖아요!",
       "wordless": false,
-      "visual_prompt": "DRAMATIC MAKJANG OVER-THE-SHOULDER (OTS) CONFRONTATION inside the giant underground Deadmines pirate cove! Soft-vignette background in the lower 64%: huge shadowy pirate ship hull, red sails, wooden dock lanterns, and shimmering cavern water fading cleanly upward into 100% pure solid #FFFFFF across top 36% headroom. In lower-right foreground, the back of the Undead Paladin (white skull cap dome, silver-white bob, white-and-gold cape with golden warhammer diagonally on back). On lower-left, the usually calm Night Elf Priest girl (fair peach-ivory skin with a cute black soot smudge on cheek, fluffy pastel-lavender half-up hair, golden crescent tiara, glowing furious silver-white eyes, royal-purple & gold capelet, mini Holy Prayer Book & golden rosary at waist, golden Holy Cross staff on back, strictly NO halo/wings) snaps completely, leaning forward aggressively jabbing an accusing finger straight at the Paladin's face with fiery comic anger aura!",
+      "visual_prompt": "100% FULL-BLEED EDGE-TO-EDGE UNDERGROUND PIRATE COVE BACKGROUND (ZERO white gaps!). Direct 1-second continuation after the cannon blast! Grand Deadmines cavern dock: towering underground rock ceiling stalactites filling the TOP 34% (upper-left open dark-blue cavern ceiling unobstructed for speech bubble overlay!), giant shadowy red-sailed Defias pirate galleon docked on shimmering dark cavern water, glowing wooden dock lanterns, and weathered wooden pier planks across the bottom! In lower-right foreground (OTS back-view), the back of the Undead Paladin (white skull cap dome, silver-white bob, white-and-gold cape with golden warhammer diagonally on back). On lower-left, the EXACT SAME newbie Orc Warrior girl from Panel 6 (still with a cute black cannon-soot smudge on her cheek!, fair skin, green plush orc monster hood with curved horns & black ponytail, red spiked pauldrons, battle axe on back) snaps completely, erupting with fiery orange comic anger aura and jabbing an accusing finger straight at the Paladin's face!",
       "tail_target": "left",
       "bubble_side": "left",
+      "full_bleed_bg": true,
+      "speaker_anchor_xy": [
+        0.29,
+        0.46
+      ],
+      "bubble_center_xy": [
+        0.31,
+        0.16
+      ],
       "item_tooltip": null
     },
     {
@@ -401,14 +578,23 @@
       "panel_index": 2,
       "characters": [
         "언데드 성기사",
-        "스카이본 마법사"
+        "오크 전사"
       ],
       "speaker": "언데드 성기사",
-      "dialogue": "감히 뉴비 주제에?!\n오리부터 19클 다 뛴 내가\n이끌어야 겜이 재밌는 거야!",
+      "dialogue": "뭘 모르시네! 오리부터\n19클까지 다 한 내가 이끌어야\n더 재밌게 겜하는 거라고요!",
       "wordless": false,
-      "visual_prompt": "INTENSE LOW-ANGLE CONFRONTATION filling the FULL HORIZONTAL WIDTH (left edge to right edge!) across the LOWER 64% of the wide panel, while the TOP 36% smoothly fades into 100% PURE SOLID #FFFFFF WHITE empty headroom for speech-bubble placement (CRITICAL: keep the entire top 36% of this panel pure #FFFFFF white with ZERO dark purple background reaching the top edge!). In the lower 64% across the full width, a dramatic dark-purple & golden comic villain-aura soft-vignette background and wooden dock planks sit behind both characters: on the lower-right, the veteran Undead Paladin girl (white skull cap, silver-white bob, white-and-gold outfit, ONE golden warhammer stowed on back) leans aggressively into the newbie's face jabbing a condescending lecturing finger with sinister glowing golden eyes; on the lower-left, the Skyborne Mage girl (sky-blue high side-ponytail, tilted blue wizard hat with tiny smiling cloud-wing badge, cloud-trimmed capelet, Polymorph Sheep waist keychain, STRICTLY ONE single wooden crystal mage staff on back — ONLY ONE blue crystal tip!) leans far back grimacing in horror!",
+      "visual_prompt": "100% FULL-BLEED EDGE-TO-EDGE DARK VILLAIN-AURA COVE BACKGROUND (ZERO white gaps!). Direct 1-second retaliation against the EXACT SAME Orc Warrior girl from Panel 1! Dramatic deep-violet and smoky golden menacing veteran-aura cave atmosphere & wooden pirate dock planks stretching edge-to-edge across the ENTIRE wide box (keep upper-right 34% open dark-violet glowing aura ceiling with NO heads up there for speech bubble overlay!). On lower-right, the veteran Undead Paladin girl (white skull cap, silver-white bob, white-and-gold outfit, ONE golden warhammer stowed on back) explodes back in menacing retaliation, leaning forward right into the Orc Warrior's face jabbing a condescending lecturing finger with sinister glowing golden eyes and overwhelming smug veteran menace; on lower-left, the EXACT SAME Orc Warrior girl from Panel 1 (still with the cute black soot smudge on cheek, green orc monster hood, red spiked pauldrons, battle axe on back) recoils backward grimacing in sheer disbelief at the shameless counterattack!",
       "tail_target": "right",
       "bubble_side": "right",
+      "full_bleed_bg": true,
+      "speaker_anchor_xy": [
+        0.58,
+        0.33
+      ],
+      "bubble_center_xy": [
+        0.3,
+        0.14
+      ],
       "item_tooltip": null
     },
     {
@@ -421,11 +607,20 @@
         "언데드 성기사"
       ],
       "speaker": "언데드 성기사",
-      "dialogue": "법사가 진짜 사긴데 광딜·물빵 안 해?!\n전사할 거면 성기사 하지 왜 해?!\n내가 40인 공대장 출신인데 말야!!",
+      "dialogue": "전사 어렵다는데 그냥 성기사 하지!\n법사가 사긴데 광딜·물빵 안 해?!\n내가 오리 40인 공대장 출신인데!!",
       "wordless": false,
-      "visual_prompt": "CHAOTIC DUTCH-TILT LECTURE FRENZY positioned cleanly on the RIGHT 52% of the wide panel (leaving the LEFT 46% 100% pure solid #FFFFFF empty white for speech bubble!). Behind her on the right half only, a dramatic soft-vignette blazing orange-gold sermon fire aura and ghostly silhouette of a medieval raid banner fade cleanly to pure white toward the left! The unhinged Undead Paladin girl (white skull cap, silver-white bob, white-and-gold cape, warhammer stowed on back) throws both arms wide ranting at maximum volume with manic sparkling eyes, foaming comic lecture shockwaves and golden sparks exploding around her!",
+      "visual_prompt": "100% FULL-BLEED EDGE-TO-EDGE FIERY SERMON HELLSCAPE BACKGROUND (ZERO white gaps!). Dramatic blazing amber-orange-and-crimson fiery sky, rising embers, and ghostly silhouettes of medieval 40-man raid banners filling 100% of the wide box edge-to-edge! Position the unhinged veteran Undead Paladin girl (white skull cap, silver-white bob, white-and-gold cape, warhammer stowed on back) cleanly on the RIGHT 46% of the panel (leaving the LEFT 52% open blazing orange-red sky & distant banner silhouettes unobstructed for speech bubble overlay!), throwing both arms wide ranting at maximum volume with manic sparkling eyes and golden lecture sparks!",
       "tail_target": "right",
       "bubble_side": "left",
+      "full_bleed_bg": true,
+      "speaker_anchor_xy": [
+        0.68,
+        0.42
+      ],
+      "bubble_center_xy": [
+        0.3,
+        0.22
+      ],
       "item_tooltip": null
     },
     {
@@ -435,15 +630,18 @@
       "act_number": 4,
       "panel_index": 2,
       "characters": [
-        "스카이본 마법사",
-        "나이트엘프 사제"
+        "오크 전사",
+        "스카이본 마법사"
       ],
       "speaker": null,
       "dialogue": null,
       "wordless": true,
-      "visual_prompt": "FULL-BLEED THEATRICAL WORDLESS CLIMAX FREEZE-FRAME filling the entire giant panel (ZERO text, ZERO speech bubbles)! Rich detailed Deadmines pirate ship deck background with wooden masts, red Defias sails, glowing hanging lanterns, and in the upper-mid background the dungeon boss Edwin VanCleef (masked red-bandana pirate captain with twin swords) plus THREE cute chibi red-bandana Defias pirate mob extras peering down from the ship railing with awkward sweatdrops and baffled 'what is wrong with these adventurers?' expressions! Dominating the foreground (filling 78% height) in hyper-expressive comedic mental breakdown: on the left, the Skyborne Mage girl (tilted blue wizard hat with tiny smiling cloud-wing badge, sky-blue high side-ponytail, pointed elf ears, cloud capelet, NO sailor uniform) clamps both hands tightly over her ears with giant spiral dizzy eyes and a cute white cartoon ghost soul flying out of her mouth; on the right, the Night Elf Priest girl (fair skin, pastel-lavender half-up hair, golden crescent tiara, purple-and-gold capelet, NO halo/wings) freezes with dark purple vertical doom shadow across her forehead, trembling pinpoint silver pupils, and cascading cold sweatdrops!",
+      "visual_prompt": "100% FULL-BLEED THEATRICAL WORDLESS CLIMAX FREEZE-FRAME filling the entire giant box edge-to-edge (ZERO text, ZERO speech bubbles!). Rich detailed Deadmines pirate ship deck background with wooden masts, red Defias sails, glowing hanging lanterns, and on the upper ship deck railing the dungeon boss Edwin VanCleef (red-bandana masked pirate captain with twin swords) plus THREE cute chibi red-bandana Defias pirate mob extras peering down with awkward sweatdrops and baffled 'what is wrong with these adventurers?' expressions! Dominating the foreground (filling 78% height) are the EXACT TWO newbies whose classes were just trashed in Panel 1: on the left, the Orc Warrior girl (fair skin, green plush orc monster hood with curved horns, red spiked pauldrons, battle axe on back) freezes petrified with dark purple vertical doom shadow across her forehead, blank white shocked pupils, and cascading cold sweatdrops; on the right, the Skyborne Mage girl (tilted royal-blue wizard hat with tiny smiling cloud-wing badge, sky-blue high side-ponytail, pointed elf ears, cloud capelet, Polymorph Sheep waist keychain, ONE crystal mage staff on back, NO sailor uniform) clamps both hands tightly over her pointed elf ears with giant spiral dizzy eyes and a cute white cartoon ghost soul flying out of her mouth!",
       "tail_target": "center",
       "bubble_side": null,
+      "full_bleed_bg": true,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
       "item_tooltip": null
     },
     {
@@ -458,9 +656,18 @@
       "speaker": "오크 전사",
       "dialogue": "아 씨발 진짜!! 게임 왜 하세요?!\n뉴비 꼽 주려고 파티 왔어요?!",
       "wordless": false,
-      "visual_prompt": "EXPLOSIVE 90-DEGREE SIDE-PROFILE RAGE ACTION positioned cleanly on the LEFT 52% of the slim wide panel (leaving the RIGHT 46% 100% pure solid #FFFFFF empty white for speech bubble!). Behind her on the left half only, a blazing comic crimson rage flame vignette & wooden ship deck planks fade smoothly to pure white toward the right! The pushed-too-far newbie Orc Warrior girl (fair skin, green plush orc monster hood with explosive white steam jets blasting out of both green ears, red spiked pauldrons) draws her chunky silver Horde battle axe overhead in fury, roaring with blazing crimson eyes and huge jagged anime anger vein!",
+      "visual_prompt": "100% FULL-BLEED EDGE-TO-EDGE BLAZING SHIP DECK BACKGROUND (ZERO white gaps!). Dramatic crimson-red volcanic rage flames & dark pirate ship deck railing/ropes filling 100% of the slim wide panel edge-to-edge! Position the pushed-too-far newbie Orc Warrior girl (fair skin, green plush orc monster hood with explosive white steam jets blasting from both green ears, red spiked pauldrons) cleanly on the LEFT 46% (leaving the RIGHT 52% open fiery red-orange rage sky & dark ship rigging unobstructed for speech bubble overlay!), drawing and hoisting her chunky silver Horde battle axe overhead in explosive fury, roaring with blazing crimson eyes and huge anime anger vein!",
       "tail_target": "left",
       "bubble_side": "right",
+      "full_bleed_bg": true,
+      "speaker_anchor_xy": [
+        0.44,
+        0.44
+      ],
+      "bubble_center_xy": [
+        0.78,
+        0.24
+      ],
       "item_tooltip": null
     },
     {
@@ -470,15 +677,24 @@
       "act_number": 5,
       "panel_index": 2,
       "characters": [
-        "나이트엘프 사제",
-        "스카이본 마법사"
+        "스카이본 마법사",
+        "오크 전사"
       ],
       "speaker": "스카이본 마법사",
-      "dialogue": "아… 진짜 못 해먹겠네…\n그냥 귀환석 타고\n도망치면 안 돼요…?!",
+      "dialogue": "전사님, 말 안 통해요…\n그냥 우리끼리 귀환석 타고\n파탈해서 나가요!!",
       "wordless": false,
-      "visual_prompt": "COMEDIC DESPAIR & EXTRAS RETREATING shot positioned cleanly on the LEFT 54% of the slim wide panel (leaving the RIGHT 44% 100% pure solid #FFFFFF empty white for speech bubble!). Soft-vignette wooden Deadmines pirate ship deck floor & crates fading cleanly to pure white on the right: in the mid-left background, TWO red-bandana chibi Defias pirate mob extras awkwardly tiptoe backward away from the fighting party with nervous sweatdrops; in foreground left, the Night Elf Priest girl (pastel-lavender hair, purple vestments, mini book & rosary, staff on floor, NO halo/wings) collapses facepalming in exhaustion while beside her the Skyborne Mage girl (sky-blue side-ponytail, crooked blue cloud-wing hat, Polymorph Sheep waist charm) bawls waterfall anime tears hugging a glowing blue-swirl Hearthstone tightly to her chest!",
+      "visual_prompt": "100% FULL-BLEED EDGE-TO-EDGE PIRATE SHIP DECK BACKGROUND (ZERO white gaps!). Full wooden Deadmines pirate ship deck, wooden crates, masts, hanging ropes, and moody blue cavern night sky filling 100% of the slim wide panel edge-to-edge! Place ALL characters cleanly on the LEFT 56% (leaving the RIGHT 42% open wooden ship rigging & dark cavern sky unobstructed for speech bubble overlay!): in mid-left background, TWO cute chibi red-bandana Defias pirate mob extras awkwardly tiptoe backward away from the screaming party with nervous sweatdrops; in foreground-left, the still-fuming Orc Warrior girl (green orc hood, axe lowered) is being urgently tugged by the arm by her buddy the Skyborne Mage girl (x=44%, sky-blue high side-ponytail, crooked blue cloud-wing wizard hat, cloud capelet, Polymorph Sheep waist keychain, ONE crystal staff on back) who is holding up a glowing blue-swirl Hearthstone with streaming anime tears begging to leave the party!",
       "tail_target": "right",
-      "bubble_side": "right",
+      "bubble_side": "left",
+      "full_bleed_bg": true,
+      "speaker_anchor_xy": [
+        0.44,
+        0.44
+      ],
+      "bubble_center_xy": [
+        0.22,
+        0.24
+      ],
       "item_tooltip": null
     },
     {
@@ -492,11 +708,20 @@
         "오크 전사"
       ],
       "speaker": "언데드 성기사",
-      "dialogue": "어머, 왜 욕하세요?\n전 좋게좋게 대화로 푸는 중인데…\n와우는 만렙부터 시작이란 말입니다!",
+      "dialogue": "아니 왜 욕하고 다 나가요?!\n난 좋게 좋게 알려준 건데 억울해!!\n와우는 만렙부터 시작이란 말입니다!!",
       "wordless": false,
-      "visual_prompt": "LEGENDARY MAKJANG CONTRAST FINALE! Keep the upper-center & upper-left/right top 42% cleanly fading to 100% pure solid #FFFFFF headroom for the speech bubble! On the lower-left foreground (seen from behind in 3-view turnaround back-view), the Orc Warrior girl (back of green orc hood with black high ponytail & red band, red cape with silver battle axe diagonally across back) freezes like turned-to-stone amid a tiny gloomy dark thundercloud & jagged lightning zigzags behind her shoulders. On the lower-right facing forward with a wildly contrasting shoujo-manga pastel pink rose-petal & sparkling halo-starlight soft vignette behind her ONLY, the completely clueless Undead Paladin girl (white skull cap, silver-white bob, white-and-gold cape & tunic, golden warhammer on back) clasps her white-gloved hands politely with blindingly innocent, unnervingly pure glowing golden eyes and a sweet clueless smile!",
+      "visual_prompt": "100% FULL-BLEED EDGE-TO-EDGE PIRATE SHIP DECK FINALE BACKGROUND (ZERO white gaps!). Full wooden Deadmines pirate ship deck, ship masts, hanging lanterns, and moody dark-blue cavern sky stretching all the way to all four edges (leaving the UPPER-CENTER 38% open dark-blue cavern sky & sails unobstructed for speech bubble overlay!). In the distant mid-background, two tiny red-bandana Defias pirate mob extras sweat awkwardly watching the abandoned party. On the lower-left (x=22%), seen from behind stepping briskly into a glowing cyan Hearthstone teleport vortex (with a faint sparkling cyan silhouette of a blue wizard hat already vanishing in teleport light beside her — the whole newbie party really left!), is the Orc Warrior girl (back of green orc hood with black high ponytail & red band, red cape with silver battle axe diagonally on back). On the lower-right (x=76%) left completely alone on deck, the veteran Undead Paladin girl (white skull cap, silver-white bob, white-and-gold cape & tunic, golden warhammer on back) stomps her feet throwing an intensely bitter, self-pitying whining tantrum — flushed cheeks, angry frustrated anime tears welling in her golden eyes, clenched trembling fists or one gloved hand reaching desperately after the disappearing newbies while yelling indignantly! STRICTLY NO pink flowers, NO angelic sparkles, NO smiling!",
       "tail_target": "right",
       "bubble_side": "center",
+      "full_bleed_bg": true,
+      "speaker_anchor_xy": [
+        0.73,
+        0.4
+      ],
+      "bubble_center_xy": [
+        0.46,
+        0.2
+      ],
       "item_tooltip": null
     }
   ]
