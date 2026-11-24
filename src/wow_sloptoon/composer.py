@@ -1327,16 +1327,17 @@ def _compose_top_open_panel(
     def _compute_top_bubble_dims(fs: int) -> tuple[float, float, float, float]:
         f_m = load_font(fs, weight="Bold")
         f_s = load_font(max(12, int(round(fs * 0.80))), weight="Medium")
-        gap = max(5, int(round(fs * 0.34)))
+        gap = max(5, int(round(fs * 0.32)))
         mw, th, _, _, _, _ = _measure_text_block(dummy, lines, f_m, f_s, gap, sub_set)
-        rx = float(np.clip(mw * 0.64 + 44.0, 156.0, 365.0))
-        ry = float(np.clip(th * 0.68 + 28.0, 66.0, 128.0))
+        rx = float(np.clip(mw * 0.58 + 38.0, 140.0, 365.0))
+        ry = float(np.clip(th * 0.58 + 20.0, 52.0, 110.0))
         # Keep entire ellipse strictly inside y >= 8 so page outer border stays 100% #FFFFFF
-        cy = ry + 12.0
-        if cut.tail_target == "left":
-            cx = float(np.clip(336.0, rx + 24.0, W - rx - 24.0))
-        elif cut.tail_target == "right":
-            cx = float(np.clip(564.0, rx + 24.0, W - rx - 24.0))
+        cy = ry + 14.0
+        target_side = cut.bubble_side or cut.tail_target
+        if target_side == "left":
+            cx = float(np.clip(310.0, rx + 24.0, W - rx - 24.0))
+        elif target_side == "right":
+            cx = float(np.clip(590.0, rx + 24.0, W - rx - 24.0))
         else:
             cx = W / 2.0
         return cx, cy, rx, ry
@@ -1417,37 +1418,49 @@ def _compose_top_open_panel(
         else:
             head_x, local_top_y = cx, art_min_y
 
-        # Compute crisp tail pointing toward speaker head with safe clearance
-        tail_x = float(np.clip(0.55 * head_x + 0.45 * cx, cx - rx * 0.72, cx + rx * 0.72))
-        max_tail_y = min(bub_bot + 105.0, local_top_y - 16.0, art_min_y + 90.0)
-        min_tail_y = bub_bot + 26.0
+        # Pull top bubble down smoothly when large empty whitespace separates it from the speaker head
+        eff_cy = cy
+        eff_cx = cx
+        if cut.bubble_side is None and anchor is not None:
+            eff_cx = float(np.clip(0.55 * head_x + 0.45 * cx, rx + 24.0, W - rx - 24.0))
+        cur_gap = local_top_y - (eff_cy + ry + stroke_px)
+        if cur_gap > 92.0:
+            shift_y = min(cur_gap - 74.0, max(0.0, art_min_y - (eff_cy + ry + stroke_px) - 52.0))
+            if shift_y > 0.0:
+                eff_cy = cy + shift_y
+        eff_bub_bot = eff_cy + ry + stroke_px
+
+        # Compute crisp short tail pointing directly toward speaker head with safe clearance
+        tail_x = float(np.clip(0.72 * head_x + 0.28 * eff_cx, eff_cx - rx * 0.72, eff_cx + rx * 0.72))
+        max_tail_y = min(eff_bub_bot + 72.0, local_top_y - 16.0, art_min_y + 72.0)
+        min_tail_y = eff_bub_bot + 24.0
 
         # Try progressively shorter tail pullbacks before shrinking artwork scale
         pull_ratios = (1.0, 0.75, 0.52, 0.30)
         solved_this_scale = False
 
         for pull in pull_ratios:
-            if max_tail_y <= bub_bot + 14.0:
+            if max_tail_y <= eff_bub_bot + 14.0:
                 tail_tip: tuple[float, float] | None = None
                 base_deg = None
             else:
-                ty = bub_bot + max(18.0, (max_tail_y - bub_bot) * pull)
+                ty = eff_bub_bot + max(18.0, (max_tail_y - eff_bub_bot) * pull)
                 ty = min(ty, local_top_y - 14.0)
                 if ty < min_tail_y and pull == 1.0:
                     ty = min(min_tail_y, local_top_y - 12.0)
-                if ty <= bub_bot + 10.0:
+                if ty <= eff_bub_bot + 10.0:
                     tail_tip = None
                     base_deg = None
                 else:
-                    tx = cx + (tail_x - cx) * (0.65 + 0.35 * pull)
+                    tx = eff_cx + (tail_x - eff_cx) * (0.65 + 0.35 * pull)
                     tail_tip = (tx, ty)
-                    raw_deg = float(np.rad2deg(np.arctan2((ty - cy) / ry, (tx - cx) / rx)))
-                    base_deg = float(np.clip(raw_deg, 68.0, 112.0))
+                    raw_deg = float(np.rad2deg(np.arctan2((ty - eff_cy) / ry, (tx - eff_cx) / rx)))
+                    base_deg = float(np.clip(raw_deg, 66.0, 114.0))
 
-            tail_curve = -8.0 if (tail_tip is None or tail_tip[0] <= cx) else 8.0
+            tail_curve = -7.0 if (tail_tip is None or tail_tip[0] <= eff_cx) else 7.0
             bub_layer, dest, b_metrics = _build_bubble_layer(
                 panel_size=(W, H),
-                center=(cx, cy),
+                center=(eff_cx, eff_cy),
                 lines=lines,
                 radii=(rx, ry),
                 tail_tip=tail_tip,
@@ -1844,11 +1857,29 @@ def _compose_bottom_box_panel(
     box_margin = 14.0
     dummy = ImageDraw.Draw(Image.new("RGB", (16, 16), PURE_WHITE))
 
-    # Determine layout style:
-    # - tail_target == "right": bubble on LEFT, character on RIGHT (classic Sloptoon reaction box)
-    # - tail_target == "left":  character on LEFT, bubble on RIGHT
-    # - tail_target == "center": bubble at TOP-CENTER, character BELOW
-    mode = "top_center" if cut.tail_target == "center" else f"side_{cut.tail_target}"
+    # Determine bubble side and tail direction cleanly:
+    # - `bubble_side` (if explicitly set) directly specifies where the speech bubble sits:
+    #     * bubble_side == "left"   -> bubble on LEFT, tail points RIGHT into left-side speaker (`side_right`)
+    #     * bubble_side == "right"  -> bubble on RIGHT, tail points LEFT into right-side speaker (`side_left`)
+    #     * bubble_side == "center" -> bubble at TOP-CENTER (`top_center`)
+    # - Otherwise auto-resolve from speaker position (`tail_target`) and cast count:
+    #     * 1-character cut: bubble sits opposite the character (`tail_target == "right"` -> bubble left `side_right`;
+    #       `tail_target == "left"` -> bubble right `side_left`).
+    #     * 2-character cut: bubble sits on the SPEAKER'S outer side so the tail NEVER shoots across the listener!
+    #       (`tail_target == "left"` -> bubble on LEFT pointing right at left speaker `side_right`;
+    #        `tail_target == "right"` -> bubble on RIGHT pointing left at right speaker `side_left`).
+    if cut.bubble_side == "center":
+        mode = "top_center"
+    elif cut.bubble_side == "left":
+        mode = "side_right"
+    elif cut.bubble_side == "right":
+        mode = "side_left"
+    elif cut.tail_target == "center":
+        mode = "top_center"
+    elif len(cut.characters) >= 2:
+        mode = "side_right" if cut.tail_target == "left" else "side_left"
+    else:
+        mode = f"side_{cut.tail_target}"
 
     if raw_bbox is None:
         lines, sub_indices = wrap_korean_dialogue(dialogue, 22, max_line_width_px=330.0, max_lines=4)
@@ -1896,9 +1927,9 @@ def _compose_bottom_box_panel(
             gap = max(4, int(round(cur_fs * 0.34)))
             mw, th, _, _, _, _ = _measure_text_block(dummy, lines, f_m, f_s, gap, sub_set)
 
-            rx = float(np.clip(mw * 0.62 + 34.0, 128.0, 214.0))
-            ry = float(np.clip(th * 0.66 + 26.0, 56.0, 134.0))
-            cy = float(np.clip(154.0, box_margin + ry + 6.0, H - box_margin - ry - 6.0))
+            rx = float(np.clip(mw * 0.58 + 32.0, 120.0, 210.0))
+            ry = float(np.clip(th * 0.58 + 20.0, 48.0, 118.0))
+            cy = float(np.clip(148.0, box_margin + ry + 6.0, H - box_margin - ry - 6.0))
             if side_dir == "right":
                 cx = box_margin + rx + 6.0
                 bub_inner_edge = cx + rx + stroke_px
@@ -2018,6 +2049,8 @@ def _compose_bottom_box_panel(
                         "font_size": b_metrics["font_size"],
                         "art_bbox": list(placed_bbox),
                         "tail_target": cut.tail_target,
+                        "bubble_center": [round(cx, 1), round(cy, 1)],
+                        "bubble_side_resolved": "left" if side_dir == "right" else "right",
                     }
 
             if attempt in (3, 7, 11) and cur_fs > 13:

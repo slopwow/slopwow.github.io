@@ -90,7 +90,7 @@
       "dialogue": "아 몰라!! 나도 마나 채우게\n지능이랑 힘 다 굴린다!!\n알카즈 감옥 올입 가자!!",
       "wordless": false,
       "visual_prompt": "Back-view kinetic dungeon-chaos finale positioned cleanly on the right half of the wide 16:9 frame (medium 2.5-3 head chibi scale)! On the center-right, the furious Dwarf Hunter girl (forest-green fur-trimmed ranger hood, orange-ginger braids flying wildly, fiery red anime steam puffs erupting from her hood, flushed blazing cheeks) charges headlong across a soft organic floating patch of dungeon stones toward a gleaming Alkaz Prison boss chest vignette, hoisting her wooden blunderbuss in one hand and flinging a chunky 6-sided white-and-gold loot die (ONLY round black dot pips, strictly ZERO digits or text) forward with the other; right ahead of her on the far-right, seen turning her head back over her shoulder as she casually trots onward, the Undead Paladin girl (white cartoon skull hood, silver-white bob, golden warhammer stowed on back) glances back with an utterly oblivious sleepy half-lidded blink while admiring the sparkling emerald ring on her hand. Leave the entire left 46% completely empty pure #FFFFFF white space for the left speech bubble. 100% pure solid #FFFFFF white outer background, zero text, zero UI.",
-      "tail_target": "right",
+      "tail_target": "left",
       "item_tooltip": null
     }
   ]

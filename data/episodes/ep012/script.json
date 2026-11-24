@@ -102,7 +102,7 @@
       "dialogue": "들키니까 칼파탈하고\n자러 간다네…\n다들 해 떴으니 자러 가요 ㅠ",
       "wordless": false,
       "visual_prompt": "Back-view comedic parting shot in wide 16:9 framing. Positioned cleanly on the right half: in the mid-right background, the Human Warlock girl (dark purple hood, black-and-purple twin pigtails, red plush imp doll tucked under arm) and a shadowy extra Troll Shaman companion silhouette beside her bolt away seen from behind straight into twin glowing cyan-blue Hearthstone swirl vortices waving smugly as they flee the party; in the foreground center-right, the exhausted Dwarf Hunter girl (forest-green hood, ginger braids, blunderbuss resting on floor) slumps drooping forward with heavy tired dark circles under her amber eyes and a tiny ghostly sigh puff drifting from her mouth as warm golden dawn light rays softly hint at 6 AM sunrise behind her shoulders. Leave the entire left 46% completely empty pure #FFFFFF white space for the left speech bubble. 100% pure solid #FFFFFF white outer background, zero text, zero UI.",
-      "tail_target": "right",
+      "tail_target": "left",
       "item_tooltip": null
     }
   ]

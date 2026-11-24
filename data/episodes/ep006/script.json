@@ -49,7 +49,8 @@
       "dialogue": "주특입 8바퀴째인데...\n캐스터에 하이브리드까지\n왜 죄다 천을 굴려대냐고!!",
       "wordless": false,
       "visual_prompt": "High-angle diagonal shot looking down across the left half of the wide 16:9 frame (leaving the entire right 46% completely empty pure #FFFFFF white space for the speech bubble!). On a small soft organic floating patch of Scarlet Monastery cobblestone tiles (NO straight horizon or divider lines!), on the far-left sits the exhausted Night Elf Priest chibi girl (lavender-silver hair, pointed elf ears, golden crescent circlet, heavy dark under-eye circles, white-and-gold priestess robe, crescent staff leaned aside) slumped hugging her knees with twitching half-lidded furious eyes, puffed exasperated cheeks, and a tiny plain wand drooping weakly in one hand. Right beside her toward center-left, a chaotic cartoon scramble of 3 chibi party extras (a dark-hooded warlock, a blue-robed mage, and a leafy leather druid) dive headfirst in a puff of comic dust onto a glittering pile of crimson cloth hats and chunky white-and-gold 6-sided loot dice showing ONLY simple round black dot pips (strictly ZERO digits, ZERO numbers, ZERO letters!). 100% pure solid #FFFFFF white outer background, zero text, zero UI.",
-      "tail_target": "left"
+      "tail_target": "left",
+      "bubble_side": "left"
     },
     {
       "cut_index": 3,

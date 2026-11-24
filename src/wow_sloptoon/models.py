@@ -125,7 +125,14 @@ class ComicCut(BaseModel):
     )
     tail_target: Literal["left", "right", "center"] = Field(
         default="left",
-        description="Direction the speech-bubble tail points toward the speaker.",
+        description="Speaker side inside the cut ('left', 'right', or 'center') that the speech-bubble tail points toward.",
+    )
+    bubble_side: Optional[Literal["left", "right", "center"]] = Field(
+        default=None,
+        description=(
+            "Optional explicit horizontal side for placing the speech bubble inside a cut "
+            "('left', 'right', or 'center'). Overrides auto side selection when needed."
+        ),
     )
     item_tooltip: Optional[ItemTooltipSpec] = Field(
         default=None,

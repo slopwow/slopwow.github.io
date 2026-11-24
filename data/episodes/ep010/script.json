@@ -78,7 +78,7 @@
       "dialogue": "공속 빨라야 영격 한 번 더 치지!\n도적님도 도검 양보 안 하잖아~",
       "wordless": false,
       "visual_prompt": "Side-profile 90-degree comedic debate shot positioned cleanly on the left half of the wide 16:9 frame (leaving the entire right 46% completely empty pure #FFFFFF white space for the speech bubble!). Center-left: the fair peach-ivory-skinned Orc Warrior chibi girl (green plush orc hood, black ponytail, spiky red pauldrons, chunky silver battle axe strapped cleanly across her back — Clean Hand Rule!) leans casually back twirling the compact glowing violet-purple epic curved dagger lightly between two fingers like a dainty shiny toothpick with cheerful oblivious closed-eye innocence and sunny sparkles. Far-left right beside her: the fair peach-ivory-skinned Troll Shaman chibi girl (sky-blue plush troll hood with bright red spiky mohawk, mint-teal bob hair, tribal scarf) leans sharply away with deadpan half-lidded dumbfounded bright green eyes, a flat exasperated mouth, cold sweat drop, and choppy cyan static lightning sparks popping nervously off her raised hands. 100% pure solid #FFFFFF white outer background, zero text, zero letters, zero UI.",
-      "tail_target": "left"
+      "tail_target": "right"
     },
     {
       "cut_index": 5,
@@ -105,7 +105,7 @@
       "dialogue": "도적님 울지 마...\n다음부턴 전탱 말고\n보기랑 야드랑 가야지 뭐.",
       "wordless": false,
       "visual_prompt": "High-angle aftermath comedy shot positioned cleanly on the right half of the wide 16:9 frame (leaving the entire left 46% completely empty pure #FFFFFF white space for the speech bubble!). Center-right: the Dwarf Hunter chibi girl (forest-green fur-trimmed ranger hood, vivid orange-ginger hair in two thick braided pigtails wrapping under her chin like a cozy braid-beard, fur-trimmed brown leather hunter coat, classic wooden blunderbuss rifle slung cleanly across her back — Clean Hand Rule!) sits cross-legged casually cradling a cute blank red-and-white striped bucket overflowing with fluffy golden popcorn (blank stripes ONLY, ZERO text or letters!) in one arm while calmly munching popcorn with zen half-lidded amber eyes and puffed cheeks. Far-right on a small soft organic floating patch of charred Blackrock arena stone tiles (NO straight horizon lines!): the Gnome Rogue chibi girl lies collapsed curled into a tiny weeping ball hugging her knees and bawling comical streams of sparkly anime tears in total heartbreak as a faint cartoon soul-puff drifts up from her hood beside her dropped plain green dagger. 100% pure solid #FFFFFF white outer background, zero text, zero letters, zero UI.",
-      "tail_target": "right"
+      "tail_target": "left"
     }
   ]
 }

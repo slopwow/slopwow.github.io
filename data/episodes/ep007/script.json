@@ -37,7 +37,7 @@
       "dialogue": "어... 기사님, 잠깐만요!\n그거 도적님이 입찰해서\n지금 바로 채갔는데요?!",
       "wordless": false,
       "visual_prompt": "Side-profile 90-degree dynamic heist action shot positioned cleanly on the right half of the wide 16:9 frame (leaving the entire left 46% completely empty pure #FFFFFF white space for the speech bubble!). In the center-right, the Skyborne Mage chibi girl (pointed elf ears, golden-blonde hair fading into sky-blue tips, delicate white feather charm, blue-and-white sailor mage uniform, hands completely empty with NO bread or water flask!) leans sharply backward in alarmed shock with wide pale sapphire eyes, jaw dropped, and a crisp cartoon sweat drop pointing urgently toward the far-right edge. Vaulting mid-air across the far-right edge with comic speed lines is the Gnome Rogue chibi girl (blonde-pink-blue pigtails flying, green goggles, dark charcoal cloak, her own poison-green daggers neatly sheathed at her belt — Clean Hand Rule!) triumphantly snatching the compact one-handed cobalt-blue-and-gold sword (modest 1-hand scale!) in one gloved hand with a mischievous sparkling wink and cheeky tongue-out grin. 100% pure solid #FFFFFF white outer background, zero text, zero letters, zero UI.",
-      "tail_target": "right"
+      "tail_target": "left"
     },
     {
       "cut_index": 3,

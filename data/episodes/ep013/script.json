@@ -61,7 +61,8 @@
       "wordless": false,
       "visual_prompt": "Side-profile 90-degree action shot recreating the screenshot's vendor loot sell! Undead Paladin girl stands at a rustic wooden vendor merchant counter, gleefully dumping an armful of heavy armor and shields onto the table, while the merchant hands over a giant leather pouch bursting with gold and silver coins (nearly 10 gold!). Paladin's eyes sparkle with pure greed, hammer slung on back. Positioned on the right half, leaving generous pure white (#FFFFFF) space across left 48% for dialogue bubble. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
       "tail_target": "right",
-      "item_tooltip": null
+      "item_tooltip": null,
+      "bubble_side": "right"
     },
     {
       "cut_index": 5,

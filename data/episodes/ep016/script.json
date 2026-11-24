@@ -46,7 +46,7 @@
       "dialogue": "심판 완료~\n이제 로데론까지\n평화롭게 정화 행진♪",
       "wordless": false,
       "visual_prompt": "Side-profile 90-degree action shot of the Night Elf Priest and her paladin army marching cheerfully toward the right with bouncy steps, eyes closed in bliss, making cute peace signs. In the background-left, the Undead Paladin lies sprawled on the ground with comical spiral eyes. Lower two-thirds framing, top 35% pure white (#FFFFFF) headroom. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
-      "tail_target": "left",
+      "tail_target": "right",
       "item_tooltip": null
     },
     {
@@ -61,7 +61,7 @@
       "dialogue": "이단의 반격이다.\n…쪼렙이라도\n무적은 있다.",
       "wordless": false,
       "visual_prompt": "Dutch-tilt slapstick action camera with a tilted dynamic composition! The Undead Paladin suddenly leaps back up on the right, encased inside a blazing golden spherical Divine Shield (Paladin bubble)! Beside her, Troll Shaman plants a wooden totem into the ground with crackling lightning, backed by cartoon Horde reinforcement silhouettes charging! Clean framing on right half, leaving generous pure white (#FFFFFF) space on left 48% for dialogue bubble. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
-      "tail_target": "right",
+      "tail_target": "left",
       "item_tooltip": null
     },
     {
@@ -90,7 +90,7 @@
       "dialogue": "원정대 정화당함 완료.\n영혼의 치유사는\n저쪽이다.",
       "wordless": false,
       "visual_prompt": "Back-view shot seen from behind recreating the author's real punchline ('정화당함 완료'): Undead Paladin rests her heavy holy hammer over her shoulder, seen from behind walking away toward the left, pointing with her thumb over her shoulder toward the graveyard. In the background-right, the entire paladin expedition and Night Elf Priest sit or lie slumped as translucent blue ghosts in the Lordaeron courtyard, sulking with puffed cheeks! Clean framing leaving generous pure white (#FFFFFF) space on left 48% for dialogue bubble. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
-      "tail_target": "right",
+      "tail_target": "left",
       "item_tooltip": null
     }
   ]

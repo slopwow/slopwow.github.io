@@ -772,3 +772,58 @@ def test_policy_compliance_no_captcha_bypass_or_auto_post() -> None:
         content = file_path.read_text(encoding="utf-8").lower()
         for token in forbidden_tokens:
             assert token.lower() not in content, f"Forbidden policy/tech token '{token}' in {file_path.name}"
+
+
+def test_two_character_bottom_bubble_targets_actual_speaker() -> None:
+    """In 2-character bottom boxes, bubbles must sit on the speaker's side (never shoot across the listener)."""
+    from wow_sloptoon.composer import _compose_bottom_box_panel
+
+    raw = Image.new("RGB", (960, 540), (255, 255, 255))
+    d = ImageDraw.Draw(raw)
+    # Two characters side-by-side (left + right)
+    d.ellipse([120, 120, 380, 520], fill=(120, 180, 240))
+    d.ellipse([580, 120, 840, 520], fill=(240, 140, 140))
+
+    cut_left_speaker = ComicCut(
+        cut_index=2,
+        aspect_ratio="16:9",
+        layout_slot="bottom",
+        characters=["나이트엘프 사제", "언데드 성기사"],
+        speaker="나이트엘프 사제",
+        dialogue="왼쪽 캐릭터가 말하는 대사!",
+        visual_prompt="Left priest speaks while right paladin listens.",
+        tail_target="left",
+    )
+    _, audit_left = _compose_bottom_box_panel(cut_left_speaker, raw)
+    assert audit_left["overlap_px"] == 0
+    assert audit_left["bubble_side_resolved"] == "left"
+
+    cut_right_speaker = ComicCut(
+        cut_index=4,
+        aspect_ratio="16:9",
+        layout_slot="bottom",
+        characters=["나이트엘프 사제", "언데드 성기사"],
+        speaker="언데드 성기사",
+        dialogue="오른쪽 캐릭터가 말하는 대사!",
+        visual_prompt="Right paladin speaks while left priest listens.",
+        tail_target="right",
+    )
+    _, audit_right = _compose_bottom_box_panel(cut_right_speaker, raw)
+    assert audit_right["overlap_px"] == 0
+    assert audit_right["bubble_side_resolved"] == "right"
+
+    # Explicit bubble_side override works even on 1-character + NPC cuts
+    cut_npc_override = ComicCut(
+        cut_index=6,
+        aspect_ratio="16:9",
+        layout_slot="bottom",
+        characters=["언데드 성기사"],
+        speaker="언데드 성기사",
+        dialogue="오른쪽 캐릭터가 NPC 옆에서 말함!",
+        visual_prompt="Vendor NPC on left, Undead Paladin on right.",
+        tail_target="right",
+        bubble_side="right",
+    )
+    _, audit_override = _compose_bottom_box_panel(cut_npc_override, raw)
+    assert audit_override["overlap_px"] == 0
+    assert audit_override["bubble_side_resolved"] == "right"
