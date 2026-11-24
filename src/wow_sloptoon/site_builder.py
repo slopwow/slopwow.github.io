@@ -36,17 +36,17 @@ DC_GALLERY_WRITE_URL = (
     f"https://gall.dcinside.com/mgallery/board/write/?id={DEFAULT_GALLERY_ID}"
 )
 
-# Normalized (x0, y0, x1, y1) portrait crop boxes on the 1376x768 clean Draft C cast sheet.
+# Normalized (x0, y0, x1, y1) portrait crop boxes on the 1600x900 clean Draft C full-body cast sheet.
 _CAST_PORTRAIT_BOXES: dict[str, tuple[float, float, float, float]] = {
-    "orc_warrior": (0.012, 0.018, 0.215, 0.468),
-    "undead_paladin": (0.212, 0.018, 0.415, 0.468),
-    "gnome_rogue": (0.417, 0.018, 0.604, 0.468),
-    "dwarf_hunter": (0.604, 0.018, 0.790, 0.468),
-    "troll_shaman": (0.789, 0.018, 0.995, 0.468),
-    "tauren_druid": (0.041, 0.538, 0.300, 0.956),
-    "nightelf_priest": (0.299, 0.538, 0.500, 0.956),
-    "human_warlock": (0.503, 0.538, 0.744, 0.956),
-    "skyborne_mage": (0.749, 0.538, 0.988, 0.956),
+    "orc_warrior": (0.025, 0.015, 0.200, 0.495),
+    "undead_paladin": (0.215, 0.015, 0.395, 0.495),
+    "gnome_rogue": (0.400, 0.035, 0.598, 0.495),
+    "dwarf_hunter": (0.605, 0.015, 0.785, 0.495),
+    "troll_shaman": (0.798, 0.015, 0.975, 0.495),
+    "tauren_druid": (0.078, 0.505, 0.265, 0.988),
+    "nightelf_priest": (0.288, 0.505, 0.495, 0.988),
+    "human_warlock": (0.518, 0.505, 0.705, 0.988),
+    "skyborne_mage": (0.740, 0.505, 0.922, 0.988),
 }
 
 
@@ -358,6 +358,7 @@ def _cast_member_payload(
     member: CastMember,
     portrait_rel: str | None,
     ep_counts: dict[str, int],
+    turnaround_rel: str | None = None,
 ) -> dict[str, Any]:
     return {
         "id": member.id,
@@ -372,6 +373,7 @@ def _cast_member_payload(
         "personality": member.personality,
         "aliases": list(member.aliases[:5]),
         "portrait": portrait_rel or "",
+        "turnaround": turnaround_rel or "",
         "episode_count": ep_counts.get(member.name, 0),
     }
 
@@ -1061,6 +1063,19 @@ def _render_cast_html(
         alias_tags = "".join(f'<span class="alias-tag">#{html.escape(a)}</span>' for a in c["aliases"])
         faction_label = c.get("faction_label", "")
         faction_suffix = f" · {html.escape(faction_label)}" if faction_label else ""
+        turnaround_html = ""
+        if c.get("turnaround"):
+            t_src = html.escape(c["turnaround"])
+            turnaround_html = (
+                f'<div class="cast-turnaround-wrap">'
+                f'<button type="button" class="cast-turnaround-btn" data-lightbox-src="{t_src}" '
+                f'aria-label="{html.escape(c["name"])} 정면·측면·후면 3면 턴어라운드 확대 보기">'
+                f'<img src="{t_src}" alt="{html.escape(c["name"])} 정면 측면 후면 3면 턴어라운드 도면" '
+                f'class="cast-turnaround-img" loading="lazy" decoding="async">'
+                f'<span class="cast-turnaround-caption">3면 턴어라운드 도면 (클릭 확대)</span>'
+                f'</button>'
+                f'</div>'
+            )
 
         cards_parts.append(
             f"""
@@ -1083,6 +1098,7 @@ def _render_cast_html(
                 </div>
               </div>
               <p class="cast-bio">{html.escape(c['personality'])}</p>
+              {turnaround_html}
               <div class="alias-row">{alias_tags}</div>
               <div class="cast-card-foot">
                 <div class="cast-foot-label">출연 에피소드 ({len(appearances)}화)</div>
@@ -2141,6 +2157,33 @@ button, input { font-family: inherit; }
   color: var(--ink-muted);
   word-break: keep-all;
 }
+.cast-turnaround-wrap { padding: 0 18px 12px; }
+.cast-turnaround-btn {
+  display: block;
+  width: 100%;
+  padding: 6px;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  background: #ffffff;
+  cursor: zoom-in;
+  text-align: center;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+.cast-turnaround-btn:hover { border-color: var(--ink); transform: translateY(-1px); }
+.cast-turnaround-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  background: #ffffff;
+}
+.cast-turnaround-caption {
+  display: block;
+  margin-top: 5px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+}
 .alias-row { display: flex; flex-wrap: wrap; gap: 5px; padding: 0 18px 14px; }
 .alias-tag {
   font-size: 0.73rem;
@@ -2885,10 +2928,24 @@ _APP_JS = """/* 와우 포에버 슬롭툰 — 정적 웹 아카이브 인터랙
       });
     });
 
-    if (sheetImg && lightbox && lightboxImg) {
-      sheetImg.addEventListener("click", function () {
-        lightboxImg.src = sheetImg.src;
+    if (lightbox && lightboxImg) {
+      var openLightbox = function (src, alt) {
+        if (!src) return;
+        lightboxImg.src = src;
+        if (alt) lightboxImg.alt = alt;
         lightbox.hidden = false;
+      };
+      if (sheetImg) {
+        sheetImg.addEventListener("click", function () {
+          openLightbox(sheetImg.src, sheetImg.alt);
+        });
+      }
+      document.querySelectorAll("[data-lightbox-src]").forEach(function (el) {
+        el.addEventListener("click", function () {
+          var src = el.getAttribute("data-lightbox-src");
+          var img = el.querySelector("img");
+          openLightbox(src, img ? img.alt : "");
+        });
       });
       var closeLightbox = function () {
         lightbox.hidden = true;
@@ -2967,6 +3024,16 @@ def build_static_site(
         has_clean = True
 
     portraits = extract_cast_portraits(clean_src, site_cast_dir) if has_clean else {}
+    turnarounds_src_dir = assets_dir / "turnarounds"
+    site_turnarounds_dir = site_cast_dir / "turnarounds"
+    turnarounds: dict[str, str] = {}
+    if turnarounds_src_dir.exists():
+        site_turnarounds_dir.mkdir(parents=True, exist_ok=True)
+        for member in CAST_BIBLE:
+            t_src = turnarounds_src_dir / member.turnaround_filename
+            if t_src.exists() and t_src.is_file():
+                _copy_if_different(t_src, site_turnarounds_dir / member.turnaround_filename)
+                turnarounds[member.id] = f"assets/cast/turnarounds/{member.turnaround_filename}"
     fallback_og_image = (
         "assets/cast/cast_sheet_c_labeled.png"
         if has_labeled
@@ -3051,7 +3118,12 @@ def build_static_site(
 
     # 3. Build cast metadata payload
     cast_payload = [
-        _cast_member_payload(member, portraits.get(member.id), ep_counts)
+        _cast_member_payload(
+            member,
+            portraits.get(member.id),
+            ep_counts,
+            turnaround_rel=turnarounds.get(member.id),
+        )
         for member in CAST_BIBLE
     ]
 

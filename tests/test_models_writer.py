@@ -166,8 +166,10 @@ def test_cast_bible_has_9_draft_c_characters_and_alias_mapping() -> None:
     anchors = build_character_anchors_block(["흑마", "법사"])
     assert "인간 흑마법사" in anchors
     assert "스카이본 마법사" in anchors
-    assert "red plush imp doll" in anchors
-    assert "sailor-collar mage uniform" in anchors
+    assert "red plush Imp doll" in anchors
+    assert "royal-blue pointed wizard hat" in anchors
+    assert "Polymorph Sheep keychain charm" in anchors
+    assert "sailor-collar" not in anchors
 
 
 def test_writer_uses_interactions_api_gemini_4_hydrogen_and_normalizes_cast() -> None:
@@ -255,6 +257,9 @@ def test_artist_uses_interactions_api_nano_banana_and_attaches_reference_images(
     settings = load_settings()
     assert settings.cast_sheet_path.exists()
     assert settings.style_ref_path.exists()
+    assert settings.turnarounds_dir.exists()
+    for member in CAST_BIBLE:
+        assert (settings.turnarounds_dir / member.turnaround_filename).exists()
 
     # Create tiny valid PNG bytes as fake Gemini image response
     buf = io.BytesIO()
@@ -288,11 +293,14 @@ def test_artist_uses_interactions_api_nano_banana_and_attaches_reference_images(
         "aspect_ratio": script.cuts[0].aspect_ratio,
         "image_size": "1K",
     }
-    assert len(first_call["input"]) == 3
+    # 1 text prompt + cast sheet + style ref + individual 3-view turnaround sheets for active cast
+    expected_turnaround_count = len({resolve_cast_member(c).id for c in script.cuts[0].characters if resolve_cast_member(c)})
+    assert len(first_call["input"]) == 3 + expected_turnaround_count
     assert first_call["input"][0]["type"] == "text"
     assert "#FFFFFF" in first_call["input"][0]["text"]
-    assert first_call["input"][1]["type"] == "image"
-    assert first_call["input"][2]["type"] == "image"
+    assert "ATTACHED CHARACTER 3-VIEW TURNAROUND BLUEPRINTS" in first_call["input"][0]["text"]
+    for img_item in first_call["input"][1:]:
+        assert img_item["type"] == "image"
 
     for cut_idx, img_path in out_paths.items():
         assert img_path.exists()

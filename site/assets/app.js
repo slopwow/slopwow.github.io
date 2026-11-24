@@ -594,10 +594,24 @@
       });
     });
 
-    if (sheetImg && lightbox && lightboxImg) {
-      sheetImg.addEventListener("click", function () {
-        lightboxImg.src = sheetImg.src;
+    if (lightbox && lightboxImg) {
+      var openLightbox = function (src, alt) {
+        if (!src) return;
+        lightboxImg.src = src;
+        if (alt) lightboxImg.alt = alt;
         lightbox.hidden = false;
+      };
+      if (sheetImg) {
+        sheetImg.addEventListener("click", function () {
+          openLightbox(sheetImg.src, sheetImg.alt);
+        });
+      }
+      document.querySelectorAll("[data-lightbox-src]").forEach(function (el) {
+        el.addEventListener("click", function () {
+          var src = el.getAttribute("data-lightbox-src");
+          var img = el.querySelector("img");
+          openLightbox(src, img ? img.alt : "");
+        });
       });
       var closeLightbox = function () {
         lightbox.hidden = true;

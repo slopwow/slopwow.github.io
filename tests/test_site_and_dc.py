@@ -174,7 +174,7 @@ def test_build_static_site_end_to_end_and_link_integrity(tmp_path: Path) -> None
     assert "다른 레전드 념글 만화" in ep1_html
     assert "nav-ep-thumb" in ep1_html
 
-    # Verify cast.html has all 9 Draft C members and valid cropped portraits
+    # Verify cast.html has all 9 Draft C members, valid cropped portraits, and 3-view turnarounds
     cast_html = (out_site / "cast.html").read_text(encoding="utf-8")
     for member in CAST_BIBLE:
         assert member.name in cast_html
@@ -183,6 +183,9 @@ def test_build_static_site_end_to_end_and_link_integrity(tmp_path: Path) -> None
         assert portrait_path.exists()
         with Image.open(portrait_path) as im:
             assert im.size == (360, 360)
+        turnaround_path = out_site / "assets" / "cast" / "turnarounds" / member.turnaround_filename
+        assert turnaround_path.exists(), f"Missing synced turnaround sheet: {turnaround_path}"
+        assert f"assets/cast/turnarounds/{member.turnaround_filename}" in cast_html
 
     # Verify CSS pure-white aesthetic, #0ea5e9 accent, and collapsible :empty sponsor slot rule
     css_text = (out_site / "assets" / "style.css").read_text(encoding="utf-8")

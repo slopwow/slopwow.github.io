@@ -15,7 +15,7 @@ from typing import Any
 from google import genai
 from PIL import Image, ImageDraw
 
-from wow_sloptoon.cast import build_character_anchors_block
+from wow_sloptoon.cast import build_character_anchors_block, get_turnaround_paths
 from wow_sloptoon.config import (
     DEFAULT_IMAGE_MODEL,
     SUPPORTED_IMAGE_MODELS,
@@ -42,10 +42,24 @@ def _encode_image_base64(path: Path) -> tuple[str, str]:
     return base64.b64encode(raw).decode("ascii"), _guess_mime_type(path)
 
 
-def build_cut_image_prompt(cut: ComicCut) -> str:
-    """Construct the exact image-generation prompt with Draft C Clean Hand anchors & WoW Forever rules."""
+def build_cut_image_prompt(
+    cut: ComicCut,
+    *,
+    attached_turnarounds: list[str] | None = None,
+) -> str:
+    """Construct the exact image-generation prompt with Draft C Clean Hand anchors & 3-view turnaround refs."""
     anchors = build_character_anchors_block(cut.characters)
     lore_hints = build_cut_visual_lore_hints(cut.visual_prompt, cut.characters)
+
+    turnaround_ref_note = ""
+    if attached_turnarounds:
+        ref_lines = [
+            f"- Reference Image {idx}: 3-View Front/Side/Back Turnaround Blueprint for {label} "
+            "(lock 100% onto this character's exact front/side/back silhouette, headgear, hair, "
+            "outfit, waist charms, boots, thin variable-width ink linework, and 2-tier cel shading!)"
+            for idx, label in enumerate(attached_turnarounds, start=3)
+        ]
+        turnaround_ref_note = "\nATTACHED CHARACTER 3-VIEW TURNAROUND BLUEPRINTS:\n" + "\n".join(ref_lines) + "\n"
 
     if cut.wordless:
         framing_note = (
@@ -89,10 +103,13 @@ def build_cut_image_prompt(cut: ComicCut) -> str:
         )
 
     return (
-        "Draw a single lively, cinematic Korean pop-gag anime chibi comic cut in the exact cute "
-        "cel-shaded character design of Reference Image 1 (Draft C Cast Sheet) and the dynamic "
-        "over-the-shoulder webtoon posing, expressive acting, and crisp white-canvas linework "
-        "energy of Reference Image 2 (Sloptoon Style Reference).\n\n"
+        "Draw a single lively, cinematic Korean pop-gag 2.5-to-2.8 head anime chibi comic cut "
+        "in the exact razor-sharp thin variable-width ink linework, crisp 2-tier cel shading, "
+        "sparkling jewel eyes, and character design of Reference Image 1 (Draft C 9-Cast Master "
+        "Sheet) and any attached individual 3-view character turnaround blueprints (Reference "
+        "Images 3+), combined with the dynamic over-the-shoulder webtoon posing, expressive "
+        "acting, and crisp white-canvas energy of Reference Image 2 (Sloptoon Style Reference).\n"
+        f"{turnaround_ref_note}\n"
         f"{anchors}\n\n"
         f"SCENE ACTION (Cut #{cut.cut_index}):\n{cut.visual_prompt.strip()}\n\n"
         f"{lore_hints}\n\n"
@@ -195,15 +212,24 @@ def generate_cut_image(
 
     cast_b64, cast_mime = _encode_image_base64(cfg.cast_sheet_path)
     style_b64, style_mime = _encode_image_base64(cfg.style_ref_path)
-    prompt = build_cut_image_prompt(cut)
+    turnaround_pairs = get_turnaround_paths(cut.characters, cfg.turnarounds_dir)
+    prompt = build_cut_image_prompt(
+        cut,
+        attached_turnarounds=[f"{m.name} ({m.id})" for m, _ in turnaround_pairs],
+    )
+
+    input_items: list[dict[str, Any]] = [
+        {"type": "text", "text": prompt},
+        {"type": "image", "data": cast_b64, "mime_type": cast_mime},
+        {"type": "image", "data": style_b64, "mime_type": style_mime},
+    ]
+    for _member, turnaround_path in turnaround_pairs:
+        t_b64, t_mime = _encode_image_base64(turnaround_path)
+        input_items.append({"type": "image", "data": t_b64, "mime_type": t_mime})
 
     interaction = client.interactions.create(
         model=target_model,
-        input=[
-            {"type": "text", "text": prompt},
-            {"type": "image", "data": cast_b64, "mime_type": cast_mime},
-            {"type": "image", "data": style_b64, "mime_type": style_mime},
-        ],
+        input=input_items,
         response_format={
             "type": "image",
             "aspect_ratio": cut.aspect_ratio,

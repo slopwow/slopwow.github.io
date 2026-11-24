@@ -247,10 +247,16 @@ def test_cast_clean_hand_anchors_and_factions_backward_compatible() -> None:
         assert member.appearance_anchor in member.visual_anchor
         assert member.default_prop in member.visual_anchor
 
-    # Skyborne Mage default prop is separated & includes feather lore note
+    # Skyborne Mage default prop is separated & includes feather lore note + crystal staff
     sky = CAST_BY_ID["skyborne_mage"]
     assert "feather" in sky.appearance_anchor.lower() or "feather" in sky.lore_note.lower()
-    assert "mana-water" in sky.default_prop.lower()
+    assert "sky-blue diamond crystal" in sky.default_prop.lower()
+    assert "polymorph sheep" in sky.appearance_anchor.lower()
+    # Night Elf Priest uses purple vestments, Holy Tome & Rosary, and zero halo/wings
+    priest = CAST_BY_ID["nightelf_priest"]
+    assert "mini holy prayer book" in priest.appearance_anchor.lower()
+    assert "rosary" in priest.appearance_anchor.lower()
+    assert "holy cross" in priest.default_prop.lower()
 
     anchors = build_character_anchors_block(["스카이본 마법사", "오크 전사"])
     assert "CLEAN HAND RULE" in anchors

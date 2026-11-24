@@ -516,7 +516,7 @@ CLASS_SPEC_VISUAL_RULES: dict[str, ClassVisualSpec] = {
         wow_class="사제",
         english_class="Priest",
         role_specs="신사/수사 힐러, 암사 딜러",
-        equipment_rules="황금 초승달 지팡이(golden crescent-moon staff) 또는 마법봉; 두 손으로 기도/전리품 시 지팡이를 어깨에 기대거나 옆에 세워둠.",
+        equipment_rules="황금 십자·성광 성직자 지팡이(golden Holy Cross & Sunburst Cleric staff) + 허리 미니 성서(mini Holy Prayer Book) & 황금 묵주(golden Rosary); 두 손으로 기도/전리품 시 지팡이를 등에 수납.",
         spell_visual_cues=(
             "Translucent golden Power Word: Shield protective bubble, warm golden-white healing sparkles, "
             "translucent floating spirit-ghost / Spirit of Redemption form, purple Shadowform aura."
@@ -848,9 +848,11 @@ def build_cut_visual_lore_hints(visual_prompt: str, characters: list[str]) -> st
     # Skyborne subtle heritage cue when Skyborne Mage appears
     if any(tok in combined_lower for tok in ("스카이본", "skyborne")):
         hints.append(
-            "- SKYBORNE HERITAGE ACCENT: Keep Skyborne Mage 100% faithful to Draft C (pointed elf ears, "
-            "golden-blonde hair fading to airy sky-blue tips, sailor-collar mage uniform) with optional delicate "
-            "tiny white feather/wind charm; put away her steamed bun and flask whenever her hands perform another action."
+            "- SKYBORNE HERITAGE ACCENT: Keep Skyborne Mage 100% faithful to assets/turnarounds/skyborne_mage.jpg "
+            "(bright fair skin, sky-blue high side-ponytail, perky pointed elf ears, oversized tilted royal-blue "
+            "wizard hat with tiny smiling cloud-wing feather badge, cloud-trimmed blue capelet, white-and-blue flared "
+            "Mage tunic, tiny waist Polymorph Sheep keychain charm, and sky-blue crystal staff; STRICTLY NO sailor "
+            "uniform — stow staff on back whenever her hands hold conjured bread/water or perform another action)."
         )
 
     # Class spell/effect visual cues only when relevant action appears in prompt

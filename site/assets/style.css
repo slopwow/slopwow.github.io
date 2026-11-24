@@ -851,6 +851,33 @@ button, input { font-family: inherit; }
   color: var(--ink-muted);
   word-break: keep-all;
 }
+.cast-turnaround-wrap { padding: 0 18px 12px; }
+.cast-turnaround-btn {
+  display: block;
+  width: 100%;
+  padding: 6px;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  background: #ffffff;
+  cursor: zoom-in;
+  text-align: center;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+.cast-turnaround-btn:hover { border-color: var(--ink); transform: translateY(-1px); }
+.cast-turnaround-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  background: #ffffff;
+}
+.cast-turnaround-caption {
+  display: block;
+  margin-top: 5px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+}
 .alias-row { display: flex; flex-wrap: wrap; gap: 5px; padding: 0 18px 14px; }
 .alias-tag {
   font-size: 0.73rem;

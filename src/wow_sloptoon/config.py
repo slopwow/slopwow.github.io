@@ -55,6 +55,7 @@ class Settings:
     upload_pack_dir: Path
     cast_sheet_path: Path
     cast_sheet_labeled_path: Path
+    turnarounds_dir: Path
     style_ref_path: Path
     gemini_api_key: str
     text_model: str
@@ -110,6 +111,7 @@ def load_settings(project_root: Path | None = None) -> Settings:
         upload_pack_dir=upload_pack_dir,
         cast_sheet_path=assets_dir / "cast_sheet_c.jpg",
         cast_sheet_labeled_path=assets_dir / "cast_sheet_c_labeled.png",
+        turnarounds_dir=assets_dir / "turnarounds",
         style_ref_path=assets_dir / "sloptoon_style_ref.jpg",
         gemini_api_key=gemini_api_key,
         text_model=text_model,
