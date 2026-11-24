@@ -1876,19 +1876,33 @@ def test_cli_generate_bg_flag_defaults_and_overrides(
         lambda self, post_no, base_post=None: _sample_post(post_no=str(post_no)),
     )
 
-    # --layout v4 defaults to --bg full_bleed
+    # --layout v4 defaults to --bg selective_mix (40-60% full-bleed + 40-60% clean #FFFFFF)
     rc_v4 = cli.main(["generate", "--post-no", "99001", "--layout", "v4", "--dry-run"])
     assert rc_v4 == 0
     out_v4 = capsys.readouterr().out
     v4_obj, _ = json.JSONDecoder().raw_decode(out_v4[out_v4.find("{") :])
-    assert EpisodeScript.model_validate(v4_obj).background_style == "full_bleed"
+    v4_script = EpisodeScript.model_validate(v4_obj)
+    assert v4_script.background_style == "selective_mix"
+    fb_count = sum(1 for c in v4_script.cuts if c.full_bleed_bg)
+    assert 0.40 <= (fb_count / len(v4_script.cuts)) <= 0.60
+
+    # --layout v4 --bg full_bleed overrides explicitly to full_bleed
+    rc_fb = cli.main(["generate", "--post-no", "99001", "--layout", "v4", "--bg", "full_bleed", "--dry-run"])
+    assert rc_fb == 0
+    out_fb = capsys.readouterr().out
+    fb_obj, _ = json.JSONDecoder().raw_decode(out_fb[out_fb.find("{") :])
+    fb_script = EpisodeScript.model_validate(fb_obj)
+    assert fb_script.background_style == "full_bleed"
+    assert all(c.full_bleed_bg for c in fb_script.cuts)
 
     # --layout v4 --bg clean_white overrides back to clean_white
     rc_cw = cli.main(["generate", "--post-no", "99001", "--layout", "v4", "--bg", "clean_white", "--dry-run"])
     assert rc_cw == 0
     out_cw = capsys.readouterr().out
     cw_obj, _ = json.JSONDecoder().raw_decode(out_cw[out_cw.find("{") :])
-    assert EpisodeScript.model_validate(cw_obj).background_style == "clean_white"
+    cw_script = EpisodeScript.model_validate(cw_obj)
+    assert cw_script.background_style == "clean_white"
+    assert not any(c.full_bleed_bg for c in cw_script.cuts)
 
     # --layout classic (default) defaults to clean_white
     rc_cl = cli.main(["generate", "--post-no", "99001", "--dry-run"])
@@ -1937,3 +1951,449 @@ def test_extract_panels_all_boxed_dark_neutral_cave_interiors_preserve_exact_whi
                 assert _count_color_match(arr, markers[other_idx]) == 0
         white_cols = (arr.min(axis=2) >= 245).mean(axis=0)
         assert float(white_cols.max()) < 0.50, f"White vertical gutter leaked inside slot {idx + 1}!"
+
+
+# ---------------------------------------------------------------------------
+# 9. V4.3 Selective-Mix Per-Cut Background Rhythm (Full-Bleed + Clean #FFFFFF)
+# ---------------------------------------------------------------------------
+
+
+def _make_mixed_synthetic_raw_v4_page(
+    layout_id: str,
+    slot_full_bleed: list[bool],
+    *,
+    size: tuple[int, int] = (V4_PAGE_W, V4_PAGE_H),
+    drift_xy: tuple[int, int] = (0, 0),
+    border_width: int = 5,
+    offwhite_bg: tuple[int, int, int] = (250, 249, 248),
+    dark_cave_for_fb: bool = False,
+) -> Image.Image:
+    """Render a synthetic mixed V4 page with full-bleed colored/dark-cave slots AND pure-white slots."""
+    spec = get_page_layout(layout_id)
+    assert len(slot_full_bleed) == len(spec.slots)
+    w, h = size
+    sx = w / float(V4_PAGE_W)
+    sy = h / float(V4_PAGE_H)
+    dx, dy = drift_xy
+
+    im = Image.new("RGB", (w, h), offwhite_bg)
+    draw = ImageDraw.Draw(im)
+
+    for idx, (slot, is_fb) in enumerate(zip(spec.slots, slot_full_bleed)):
+        x0 = max(6, min(w - 20, int(round((slot.rect[0] + dx) * sx))))
+        y0 = max(6, min(h - 20, int(round((slot.rect[1] + dy) * sy))))
+        x1 = max(x0 + 40, min(w - 6, int(round((slot.rect[2] + dx) * sx))))
+        y1 = max(y0 + 40, min(h - 6, int(round((slot.rect[3] + dy) * sy))))
+
+        pw = x1 - x0
+        ph = y1 - y0
+        color = _SLOT_COLORS[idx % len(_SLOT_COLORS)]
+
+        if is_fb:
+            bg_col = (64, 68, 72) if dark_cave_for_fb else color
+            draw.rectangle([x0, y0, x1, y1], fill=bg_col)
+            if dark_cave_for_fb:
+                # Internal dark dungeon beams inside top/left/right 20% to ensure NO 20% interior chopper!
+                beam_w = max(8, int(round(12 * sx)))
+                beam_h = max(8, int(round(12 * sy)))
+                off_x = int(round(46 * sx))
+                off_y = int(round(68 * sy))
+                draw.rectangle([x0 + off_x, y0 + 8, x0 + off_x + beam_w, y1 - 8], fill=(36, 38, 42))
+                draw.rectangle([x1 - off_x - beam_w, y0 + 8, x1 - off_x, y1 - 8], fill=(36, 38, 42))
+                draw.rectangle([x0 + 8, y0 + off_y, x1 - 8, y0 + off_y + beam_h], fill=(36, 38, 42))
+                # Distinct signature color markers near BOTH left & right interior margins
+                m_in = int(round(18 * sx))
+                m_w = int(round(24 * sx))
+                draw.rectangle(
+                    [x0 + m_in, y0 + int(ph * 0.25), x0 + m_in + m_w, y0 + int(ph * 0.55)],
+                    fill=color,
+                )
+                draw.rectangle(
+                    [x1 - m_in - m_w, y0 + int(ph * 0.25), x1 - m_in, y0 + int(ph * 0.55)],
+                    fill=color,
+                )
+            else:
+                draw.ellipse(
+                    [x0 + pw // 4, y0 + ph // 3, x0 + (3 * pw) // 4, y0 + int(ph * 0.85)],
+                    fill=(245, 210, 130),
+                    outline=(25, 25, 25),
+                    width=4,
+                )
+            draw.rectangle([x0, y0, x1, y1], outline=(18, 18, 18), width=border_width)
+        else:
+            cx0 = x0 + int(pw * 0.24)
+            cx1 = x0 + int(pw * 0.76)
+            cy0 = y0 + int(ph * 0.42)
+            cy1 = y0 + int(ph * 0.88)
+            draw.ellipse(
+                [cx0, cy0, cx1, cy0 + int((cy1 - cy0) * 0.58)],
+                fill=color,
+                outline=(24, 24, 24),
+                width=4,
+            )
+            draw.rectangle(
+                [cx0 + int((cx1 - cx0) * 0.12), cy0 + int((cy1 - cy0) * 0.48), cx1 - int((cx1 - cx0) * 0.12), cy1],
+                fill=color,
+                outline=(24, 24, 24),
+                width=4,
+            )
+            if slot.border_style == "box":
+                draw.rectangle([x0, y0, x1, y1], outline=(18, 18, 18), width=border_width)
+            else:
+                draw.rectangle([x0, y0, x1, y1], outline=(176, 176, 176), width=max(2, border_width - 1))
+
+    return im
+
+
+def test_render_layout_blueprint_slot_boxed_selective_mix() -> None:
+    # 1. open_top_split_bottom with P1 open (False) and P2/P3 boxed -> P1 gray guide, P2/P3 dark box
+    bp_open = render_layout_blueprint("open_top_split_bottom", slot_boxed=[False, True, True])
+    arr_open = np.asarray(bp_open)
+    spec_otsb = get_page_layout("open_top_split_bottom")
+    x0, y0, x1, y1 = spec_otsb.slots[0].rect
+    p1_top = arr_open[max(0, y0 - 4) : y0 + 6, x0 + 20 : x1 - 20, :]
+    assert int(np.sum((p1_top[:, :, 0] < 40) & (p1_top[:, :, 1] < 40) & (p1_top[:, :, 2] < 40))) == 0
+    assert int(np.sum((p1_top[:, :, 0] > 120) & (p1_top[:, :, 0] < 210))) > 150
+
+    # 2. open_top_split_bottom with P1 boxed (True) and P2/P3 box defaults (False) -> ALL 3 crisp #141414 boxes!
+    bp_boxed = render_layout_blueprint("open_top_split_bottom", slot_boxed=[True, False, False])
+    arr_boxed = np.asarray(bp_boxed)
+    assert np.all(arr_boxed[:16, :, :] == 255)
+    for slot in spec_otsb.slots:
+        sx0, sy0, sx1, sy1 = slot.rect
+        assert np.all(arr_boxed[sy0 + 12 : sy1 - 12, sx0 + 12 : sx1 - 12, :] == 255)
+        band = arr_boxed[max(0, sy0 - 4) : sy0 + 6, sx0 + 20 : sx1 - 20, :]
+        dark_px = int(np.sum((band[:, :, 0] < 40) & (band[:, :, 1] < 40) & (band[:, :, 2] < 40)))
+        assert dark_px > 200
+
+    # 3. diagonal_tempo_2cut: slot_boxed=[True, False] boxes P1 & P2; [False, False] leaves P1 open & P2 boxed
+    bp_diag_fb = render_layout_blueprint("diagonal_tempo_2cut", slot_boxed=[True, False])
+    bp_diag_all = render_layout_blueprint("diagonal_tempo_2cut", all_boxed=True)
+    assert np.array_equal(np.asarray(bp_diag_fb), np.asarray(bp_diag_all))
+
+    bp_diag_open = render_layout_blueprint("diagonal_tempo_2cut", slot_boxed=[False, False])
+    bp_diag_default = render_layout_blueprint("diagonal_tempo_2cut")
+    assert np.array_equal(np.asarray(bp_diag_open), np.asarray(bp_diag_default))
+
+    # 4. Length mismatch rejected cleanly
+    with pytest.raises(ValueError):
+        render_layout_blueprint("open_top_split_bottom", slot_boxed=[True, False])
+
+
+@pytest.mark.parametrize(
+    "layout_id,slot_fb,page_size,drift_xy,dark_cave",
+    [
+        # All slots boxed via P1=True -> white-gutter segmentation preserves P1 full-bleed & cleans P2/P3!
+        ("open_top_split_bottom", [True, False, False], (1365, 2048), (10, -8), True),
+        # Mixed open P1 (False) + dark-cave full-bleed P2 (True) + clean-white boxed P3 (False) on SAME page!
+        ("open_top_split_bottom", [False, True, False], (900, 1350), (0, 0), True),
+        # All-box layout with mixed full-bleed dark-cave + clean-white reaction + full-bleed dark-cave + drift!
+        ("split_top_wide_bottom", [True, False, True], (1365, 2048), (12, -10), True),
+        # Mixed open P1 (False) + full-bleed P2 (True) on diagonal_tempo_2cut
+        ("diagonal_tempo_2cut", [False, True], (1365, 2048), (-8, 10), False),
+    ],
+)
+def test_extract_panels_selective_mix_preserves_full_bleed_and_cleans_white_same_page(
+    layout_id: str,
+    slot_fb: list[bool],
+    page_size: tuple[int, int],
+    drift_xy: tuple[int, int],
+    dark_cave: bool,
+) -> None:
+    spec = get_page_layout(layout_id)
+    raw_page = _make_mixed_synthetic_raw_v4_page(
+        layout_id,
+        slot_fb,
+        size=page_size,
+        drift_xy=drift_xy,
+        border_width=6,
+        offwhite_bg=(249, 248, 247),
+        dark_cave_for_fb=dark_cave,
+    )
+
+    panels = extract_panels_from_page(raw_page, layout_id, slot_full_bleed=slot_fb)
+    assert len(panels) == spec.panel_count
+
+    for idx, (panel, slot, is_fb) in enumerate(zip(panels, spec.slots, slot_fb)):
+        pw, ph = panel.size
+        assert pw >= int(slot.width * 0.78), f"{layout_id} slot {idx + 1} over-cropped width: {pw}"
+        assert ph >= int(slot.height * 0.78), f"{layout_id} slot {idx + 1} over-cropped height: {ph}"
+        arr = np.asarray(panel)
+        own_color = _SLOT_COLORS[idx % len(_SLOT_COLORS)]
+
+        if is_fb:
+            # Full-bleed slot: edge-to-edge non-white pixels right up to all 4 edges, NO frame residue, NO 20% chop!
+            for edge_name, strip in (
+                ("top", arr[:3, :, :]),
+                ("bottom", arr[-3:, :, :]),
+                ("left", arr[:, :3, :]),
+                ("right", arr[:, -3:, :]),
+            ):
+                dark_border_ratio = float(
+                    np.mean((strip[:, :, 0] < 35) & (strip[:, :, 1] < 35) & (strip[:, :, 2] < 35))
+                )
+                assert dark_border_ratio < 0.15, (
+                    f"Residual black border on {edge_name} of {layout_id} FB slot {idx + 1}: {dark_border_ratio:.2f}"
+                )
+                colored_ratio = float(np.mean(np.any(strip < 245, axis=2)))
+                assert colored_ratio > 0.85, (
+                    f"Expected edge-to-edge full-bleed pixels on {edge_name} of {layout_id} slot {idx + 1}: {colored_ratio:.2f}"
+                )
+            assert _count_color_match(arr, own_color) >= 1500
+        else:
+            # Clean-white slot: off-white leveled to strict pure #FFFFFF, zero border bars on edges!
+            for edge_name, strip in (
+                ("top", arr[:2, :, :]),
+                ("bottom", arr[-2:, :, :]),
+                ("left", arr[:, :2, :]),
+                ("right", arr[:, -2:, :]),
+            ):
+                assert float(np.mean(np.any(strip < 240, axis=2))) < 0.25, (
+                    f"Residual border on {edge_name} of {layout_id} clean slot {idx + 1}"
+                )
+            headroom = arr[4 : min(28, ph - 4), pw // 4 : (3 * pw) // 4, :]
+            assert float(np.mean(np.all(headroom == 255, axis=2))) > 0.92, (
+                f"Clean-white slot {idx + 1} of {layout_id} was not leveled to strict #FFFFFF!"
+            )
+            assert _count_color_match(arr, own_color) >= 1200
+
+        # Zero cross-gutter neighbor bleed across all slots
+        for other_idx in range(spec.panel_count):
+            if other_idx != idx:
+                assert _count_color_match(arr, _SLOT_COLORS[other_idx % len(_SLOT_COLORS)]) < 50
+
+    with pytest.raises(ValueError):
+        extract_panels_from_page(raw_page, layout_id, slot_full_bleed=[True])
+
+
+def test_artist_and_writer_v4_selective_mix_prompts_and_blueprints(tmp_path: Path) -> None:
+    settings = load_settings(PROJECT_ROOT)
+    post = _sample_post("99777")
+
+    # 1. Writer prompt for selective_mix explicitly teaches 40-60% mix & forbids half-vignette cutouts
+    w_prompt = writer.build_v4_writer_prompt(post, episode_number=20, background_style="selective_mix")
+    assert "selective_mix" in w_prompt
+    assert "40~60%" in w_prompt
+    assert "비네트" in w_prompt
+    assert "#FFFFFF" in w_prompt
+
+    # 2. Dry-run V4 selective_mix script sets ~50% full_bleed_bg=True and passes quality audit
+    script = writer.build_dry_run_v4_script(post, episode_number=20, background_style="selective_mix")
+    assert script.background_style == "selective_mix"
+    fb_flags = [c.full_bleed_bg for c in script.cuts]
+    assert any(fb_flags) and not all(fb_flags)
+    fb_ratio = sum(fb_flags) / len(fb_flags)
+    assert 0.40 <= fb_ratio <= 0.60
+    assert writer.audit_script_quality(script)["passed"] is True
+
+    # 3. Artist prompts for mixed, clean_white, and full_bleed pages NEVER contain rejected soft-vignette wording
+    act1 = script.acts[0]  # open_top_split_bottom: [True, False, False]
+    mixed_prompt = artist.build_page_batch_prompt(
+        act1,
+        attached_turnarounds=["나이트엘프 사제 (nightelf_priest)"],
+        background_style="selective_mix",
+    )
+    assert "ATMOSPHERIC SOFT-VIGNETTE" not in mixed_prompt.upper()
+    assert "SOFT-VIGNETTE" not in mixed_prompt.upper()
+    assert "SELECTIVE-MIX" in mixed_prompt
+    assert "FULL-BLEED BOX" in mixed_prompt
+    assert "UNOBSTRUCTED" in mixed_prompt
+    assert "100% PURE SOLID `#FFFFFF` CLEAN" in mixed_prompt
+    assert "ZERO partial vignette cutouts" in mixed_prompt
+    assert "#FFFFFF" in mixed_prompt
+    assert "ATTACHED CHARACTER 3-VIEW TURNAROUND BLUEPRINTS" in mixed_prompt
+    assert "ZERO TEXT" in mixed_prompt
+
+    clean_act = act1.model_copy(
+        update={"cuts": [c.model_copy(update={"full_bleed_bg": False}) for c in act1.cuts]}
+    )
+    clean_prompt = artist.build_page_batch_prompt(
+        clean_act,
+        attached_turnarounds=["나이트엘프 사제 (nightelf_priest)"],
+        background_style="clean_white",
+    )
+    assert "ATMOSPHERIC SOFT-VIGNETTE" not in clean_prompt.upper()
+    assert "SOFT-VIGNETTE" not in clean_prompt.upper()
+    assert "100% PURE SOLID `#FFFFFF` CLEAN" in clean_prompt
+    assert "ZERO TEXT" in clean_prompt
+
+    # 4. generate_v4_episode_pages attaches exact per-act slot_boxed blueprint for selective_mix
+    # Override Act 2 (diagonal_tempo_2cut) to [False, True] so open P1 stays open guide while P2 stays boxed!
+    mixed_acts = list(script.acts or [])
+    mixed_acts[1] = mixed_acts[1].model_copy(
+        update={
+            "cuts": [
+                mixed_acts[1].cuts[0].model_copy(update={"full_bleed_bg": False}),
+                mixed_acts[1].cuts[1].model_copy(update={"full_bleed_bg": True}),
+            ]
+        }
+    )
+    mixed_script = script.model_copy(
+        update={"acts": mixed_acts, "cuts": [c for a in mixed_acts for c in a.cuts]}
+    )
+
+    buf = io.BytesIO()
+    Image.new("RGB", (90, 135), (255, 255, 255)).save(buf, format="PNG")
+    fake_png_b64 = base64.b64encode(buf.getvalue()).decode("ascii")
+
+    lock = threading.Lock()
+    captured_calls: list[dict[str, Any]] = []
+
+    class FakeInteractions:
+        def create(self, **kwargs: Any) -> Any:
+            with lock:
+                captured_calls.append(kwargs)
+            return SimpleNamespace(output_image=SimpleNamespace(data=fake_png_b64))
+
+    artist.generate_v4_episode_pages(
+        mixed_script,
+        tmp_path / "mix_raw",
+        client=SimpleNamespace(interactions=FakeInteractions()),
+        settings=settings,
+    )
+    assert len(captured_calls) == 5
+
+    expected_blueprints: dict[int, np.ndarray] = {}
+    for act in mixed_script.acts or []:
+        spec = get_page_layout(act.layout_id)
+        slot_boxed = [bool(c.full_bleed_bg) or s.border_style == "box" for s, c in zip(spec.slots, act.cuts)]
+        expected_blueprints[act.act_number] = np.asarray(
+            render_layout_blueprint(act.layout_id, slot_boxed=slot_boxed)
+        )
+
+    matched_acts: set[int] = set()
+    for call in captured_calls:
+        items = call["input"]
+        prompt_text = items[0]["text"]
+        assert "SOFT-VIGNETTE" not in prompt_text.upper()
+        assert "#FFFFFF" in prompt_text
+        assert "ATTACHED CHARACTER 3-VIEW TURNAROUND BLUEPRINTS" in prompt_text
+        assert "ZERO TEXT" in prompt_text
+
+        bp_bytes = base64.b64decode(items[3]["data"])
+        with Image.open(io.BytesIO(bp_bytes)) as attached_bp:
+            attached_arr = np.asarray(attached_bp.convert("RGB"))
+        for act_num, exp_arr in expected_blueprints.items():
+            if f"(Act {act_num}:" in prompt_text:
+                assert np.array_equal(attached_arr, exp_arr), (
+                    f"Act {act_num} selective_mix blueprint mismatch!"
+                )
+                matched_acts.add(act_num)
+                break
+    assert matched_acts == {1, 2, 3, 4, 5}
+
+
+@pytest.mark.parametrize("lead_full_bleed", [True, False])
+def test_compose_v4_episode_selective_mix_end_to_end(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, lead_full_bleed: bool
+) -> None:
+    """Full 5-act selective_mix composition with mixed full_bleed_bg=True/False cuts on the same
+    pages (including open clean-white + dark-cave full-bleed + tooltips + wordless climax)."""
+    monkeypatch.setenv("SLOPTOON_OFFLINE_TOOLTIPS", "1")
+    layout_plan = [
+        "open_top_split_bottom",  # 3 cuts
+        "diagonal_tempo_2cut",    # 2 cuts
+        "split_top_wide_bottom",  # 3 cuts
+        "impact_freeze_2cut",     # 2 cuts
+        "wide_reaction_wide",     # 3 cuts -> 13 cuts total
+    ]
+    base_script = _build_custom_v4_script(
+        layout_plan,
+        include_wordless=True,
+        with_tooltips=True,
+    )
+    # Mix per-cut full_bleed_bg across all 5 acts (~54% True, ~46% False)
+    per_act_fb: list[list[bool]] = [
+        [lead_full_bleed, not lead_full_bleed, False],  # open_top_split_bottom: tests both P1 boxed & P1 open!
+        [False, True],                                  # diagonal_tempo_2cut: open clean P1 + FB boxed P2
+        [True, False, True],                            # split_top_wide_bottom: FB + clean + FB
+        [False, True],                                  # impact_freeze_2cut: clean buildup + FB wordless climax
+        [True, False, True],                            # wide_reaction_wide: FB + clean + FB ending
+    ]
+    mixed_acts: list[ActPage] = []
+    for act, fb_list in zip(base_script.acts or [], per_act_fb):
+        new_cuts = [
+            cut.model_copy(update={"full_bleed_bg": is_fb})
+            for cut, is_fb in zip(act.cuts, fb_list)
+        ]
+        mixed_acts.append(act.model_copy(update={"cuts": new_cuts}))
+    script = base_script.model_copy(
+        update={
+            "background_style": "selective_mix",
+            "acts": mixed_acts,
+            "cuts": [c for a in mixed_acts for c in a.cuts],
+        }
+    )
+
+    raw_dir = tmp_path / f"mix_raw_{lead_full_bleed}"
+    raw_dir.mkdir(parents=True)
+    raw_paths: dict[int, Path] = {}
+    for act, fb_list in zip(script.acts or [], per_act_fb):
+        raw_im = _make_mixed_synthetic_raw_v4_page(
+            act.layout_id,
+            fb_list,
+            size=(1365, 2048),
+            drift_xy=(8, -6) if act.act_number in (1, 3) else (0, 0),
+            border_width=6,
+            dark_cave_for_fb=(act.act_number in (1, 3)),
+        )
+        p = raw_dir / f"raw_page_{act.act_number:02d}.png"
+        raw_im.save(p, format="PNG")
+        raw_paths[act.act_number] = p
+
+    out_dir = tmp_path / f"mix_composed_{lead_full_bleed}"
+    res = compose_v4_episode(script, raw_paths, out_dir)
+    audit = res.audit_report
+    assert audit["passed"] is True, f"Selective-mix V4 composition failed: {audit}"
+    assert audit["background_style"] == "selective_mix"
+    assert audit["total_overlap_px"] == 0
+    assert audit["total_tooltip_overlap_px"] == 0
+    assert audit["border_pure_white"] is True
+    assert len(res.page_paths) == 5
+
+    flat_fb = [flag for sub in per_act_fb for flag in sub]
+    assert len(audit["cuts"]) == len(flat_fb)
+    for c_audit, exp_fb in zip(audit["cuts"], flat_fb):
+        assert c_audit["overlap_px"] == 0
+        assert c_audit["full_bleed_bg"] is exp_fb
+        if exp_fb:
+            assert c_audit["border_style"] == "box"
+            assert c_audit["edge_fill_ratio"] > 0.95
+
+    for idx, (page_path, lid, fb_list) in enumerate(zip(res.page_paths, layout_plan, per_act_fb), start=1):
+        _assert_pure_white_outer_border(page_path, margin=4)
+        with Image.open(page_path) as pim:
+            assert pim.size == (V4_PAGE_W, V4_PAGE_H)
+            arr = np.asarray(pim.convert("RGB"))
+        spec = get_page_layout(lid)
+        for slot, is_fb in zip(spec.slots, fb_list):
+            x0, y0, x1, y1 = slot.rect
+            left_band = arr[y0 + 16 : y1 - 16, max(0, x0 - 3) : x0 + 5, :]
+            right_band = arr[y0 + 16 : y1 - 16, max(0, x1 - 5) : min(V4_PAGE_W, x1 + 3), :]
+            left_cov = float(np.mean(np.any((left_band < 45).all(axis=2), axis=1)))
+            right_cov = float(np.mean(np.any((right_band < 45).all(axis=2), axis=1)))
+            expect_boxed = is_fb or (slot.border_style == "box")
+            if expect_boxed:
+                assert left_cov > 0.90 and right_cov > 0.90, (
+                    f"Missing box border on page {idx} ({lid}) slot {slot.slot_index}"
+                )
+            else:
+                assert left_cov < 0.20 and right_cov < 0.20, (
+                    f"Open clean-white slot unexpectedly boxed on page {idx} ({lid}) slot {slot.slot_index}"
+                )
+
+            if is_fb:
+                in_left = arr[y0 + 8 : y1 - 8, x0 + 4 : x0 + 8, :]
+                assert float(np.mean(np.any(in_left < 245, axis=2))) > 0.90
+
+    # Thumbnail respects lead panel's full_bleed_bg flag while keeping pure-white outer border
+    _assert_pure_white_outer_border(res.thumb_path, margin=2)
+    with Image.open(res.thumb_path) as tim:
+        assert tim.size == THUMB_SIZE
+        t_arr = np.asarray(tim.convert("RGB"))
+    interior_fill = float(np.mean(np.any(t_arr[24:-24, 24:-24, :] < 245, axis=2)))
+    if lead_full_bleed:
+        assert interior_fill > 0.90
+    else:
+        # Clean-white lead panel leaves crisp white background around the centered chibi artwork
+        assert interior_fill < 0.85

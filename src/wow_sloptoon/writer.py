@@ -150,11 +150,13 @@ V4_WRITER_SYSTEM_RULES = """당신은 디시인사이드 '와우 포에버 마�
    - **세로 분할 좁은 컷(410px)**에서는 대사를 1~3줄(줄당 10~12자 내외, `\\n` 줄바꿈)로 짧고 임팩트 있게 압축하세요. 와이드 컷은 1~3줄(줄당 14자 내외).
    - **현실 현대어 금지**: "119", "112", "구급차", "경찰", "카톡", "편의점", "택시", "배민" 대신 "무덤 이동", "영혼의 치유사", "경비병", "귓말/파티창", "여관 주인", "와이번/그리핀" 등 100% 와우 인게임 어휘만 사용하세요.
    - **100% 익명성 준수**: 실제 닉네임·아이디·`<길드명>`(패러디 포함)을 대사·막 제목·부제·이미지 프롬프트·툴팁 어디에도 절대 적지 말고 오직 직업·역할 호칭(`도적`, `징기`, `보기`, `전탱`, `흑마`, `사제`, `파장님`)만 사용하세요.
-7. **풀-블리드 엣지투엣지 박스 배경(`background_style="full_bleed"`) · 시네마틱 연출 · 표정 다양화 · Clean Hand · 와우 포에버 고증**:
-   - **V4.2 풀-블리드 엣지투엣지 박스 배경 기본 채택 (반쯤 빈 흰 스티커 공백 금지!)**:
-     * V4 에피소드는 기본 `background_style="full_bleed"`로 설정하고, 모든 박스 패널 내부를 상하좌우 100% 끝까지 꽉 차는 컬러 배경(던전 석조 갱도·나무 서까래·횃불·광차 레일, 필드, 선착장·해적선 돛과 갑판, 밤하늘, 여관 벽면, 폭발 화염·연기, 흑화 오라/꽃밭 반전 등)으로 채우도록 `visual_prompt`를 작성하세요! (페이지 외곽 여백·거터만 `#FFFFFF` 순백 유지!)
-     * **대사 컷(`wordless=False`) 말풍선 배경 존 확보**: 캐릭터·몬스터는 **하단 62~66%(또는 화자 측 절반)**에 깔끔히 배치하고, 말풍선이 올라갈 영역(와이드 컷 상단 30~35% / 세로 좁은 컷 상단 34~38% / 슬림 와이드 반대쪽 44% 또는 상단 34%)은 **동굴 천장·석벽·나무 서까래·밤하늘·선박 돛·은은한 분위기광 등 인물이 없는 트인 풀-블리드 배경 풍경**으로 채워 흰 말풍선이 얼굴을 가리지 않고 배경 위에 깔끔히 얹히게 설계하세요(절대 어색한 흰 공백 스티커 컷아웃으로 비우지 마세요!).
-     * **무언 절정 컷(`wordless=True`)**: **풀-블리드 극장판 배경 + 엑스트라/보스 카메오**로 패널 내부를 꽉 채우세요(페이지 외곽 여백·거터만 `#FFFFFF` 순백 유지).
+7. **V4.3 선별 믹스 배경 리듬(`background_style="selective_mix"` 기본) · 시네마틱 연출 · 표정 다양화 · Clean Hand · 와우 포에버 고증**:
+   - **V4.3 `selective_mix` 절대 원칙 — "넣을 컷은 100% 전면 풀-블리드 박스, 뺄 컷은 100% 깔끔한 순백 `#FFFFFF`!" (어설픈 반쪽짜리 비네트 컷아웃·박스 안 둥둥 떠 있는 부분 배경 영구 금지!)**:
+     * `background_style="selective_mix"`일 때 모든 컷에 배경을 억지로 욱여넣지 마세요! 전체 10~14컷 중 **40~60%**는 **현장 진입·전투 난장판·군중/몹/보스·클라이맥스 무언 정지·여운 엔딩 컷**으로 `full_bleed_bg=True`를 지정하고, 나머지 **40~60%**는 **찰진 티키타카 대화·리액션·몸개그 컷**으로 `full_bleed_bg=False`를 지정해 화면의 완급과 호흡을 살리세요!
+     * **`full_bleed_bg=True` 컷 규칙**: 패널 상하좌우 100% 끝까지 꽉 차는 풀-블리드 컬러 배경(던전 석조 갱도·나무 서까래·횃불·광차 레일, 선착장·해적선 돛과 갑판, 밤하늘, 여관 벽면, 폭발 화염·연기, 흑화 오라/꽃밭 반전 등)으로 `visual_prompt`를 작성하고, 대사 컷이라면 캐릭터를 **하단 62~66%(또는 화자 측 절반)**에 배치해 말풍선 영역(와이드 상단 30~35% / 세로 좁은 컷 상단 34~38% / 슬림 와이드 반대쪽 44% 또는 상단 34%)이 **인물이 없는 트인 풀-블리드 배경 풍경**이 되게 설계하세요.
+     * **`full_bleed_bg=False` 컷 규칙**: **100% 깔끔한 순백 `#FFFFFF` 배경**에 캐릭터 연기 + 최소한의 만화 개그 이펙트(땀방울·분노 마크·스피드선·충격선·영혼 탈출)만 넣도록 `visual_prompt`를 작성하세요(**어설픈 반쪽짜리 비네트 배경·박스 안 떠 있는 부분 배경 사각형 절대 금지!**).
+     * `background_style="full_bleed"`일 때는 모든 컷을 `full_bleed_bg=True`(100% 엣지투엣지 풀-블리드 박스)로, `background_style="clean_white"`일 때는 모든 컷을 `full_bleed_bg=False`(100% 순백 `#FFFFFF` 깔끔한 배경, 부분 비네트 금지)로 작성하세요.
+     * **페이지 외곽 여백·거터는 모든 모드에서 항상 `#FFFFFF` 순백 유지!**
    - **시네마틱 카메라 & 물리 슬랩스틱**: 정면 나란히 서기 만담 도장찍기 금지! 5막 전체에서 OTS(오버더숄더), 로우앵글, 하이앵글, 더치 틸트, 측면 90° 프로필, 뒷모습, 물리 슬랩스틱(돌진·도주·죽은 척·은신·귀환석 소용돌이·두루마리 낚아채기·그을음 폭탄 머리·도끼 뽑기·무릎 꿇기 등)을 다채롭게 배합하세요.
    - **Clean Hand Rule**: 전리품·방패·주사위·귀환석·물약을 들거나 제스처 시 기본 무기는 등/허리에 수납(`sheathed on back/belt`)하거나 생략하세요(한 캐릭터 무기 3개 동시 소지 금지).
    - **고증 필수**: `전탱`/`보기` 탱커는 반드시 한손 무기 + 방패, `사슬(Mail)`은 링메일 사슬 갑옷(쇠사슬/수갑 금지), 음료·물약은 코르크 유리병/나무 머그잔(종이팩/빨대 금지), 주사위는 점 눈금만(숫자·글자 금지).
@@ -180,7 +182,7 @@ def build_v4_writer_prompt(
     post: GalleryPost,
     episode_number: int,
     *,
-    background_style: BackgroundStyle = "full_bleed",
+    background_style: BackgroundStyle = "selective_mix",
 ) -> str:
     """Assemble the complete V4 5-act variable-layout structured prompt."""
     cast_bible = format_cast_bible_for_writer()
@@ -195,6 +197,23 @@ def build_v4_writer_prompt(
     )
     lore_guidance = build_wow_lore_guidance(context_text)
 
+    if background_style == "selective_mix":
+        bg_directive = (
+            "이번 화의 `background_style`은 `\"selective_mix\"`입니다. 전체 10~14컷 중 40~60% 핵심 현장·전투·군중·클라이맥스·엔딩 컷에는 "
+            "`full_bleed_bg=true`(100% 전면 풀-블리드 박스 배경)를, 나머지 40~60% 티키타카 대화·리액션 컷에는 "
+            "`full_bleed_bg=false`(100% 깔끔한 순백 `#FFFFFF` 배경, 반쪽짜리 비네트 컷아웃 절대 금지!)를 선별 배합하세요."
+        )
+    elif background_style == "full_bleed":
+        bg_directive = (
+            "이번 화의 `background_style`은 `\"full_bleed\"`입니다. 모든 컷에 `full_bleed_bg=true`를 설정하고 "
+            "각 박스 패널을 상하좌우 100% 풀-블리드 컬러 배경(말풍선 영역은 인물이 없는 트인 배경 풍경)으로 채우세요."
+        )
+    else:
+        bg_directive = (
+            "이번 화의 `background_style`은 `\"clean_white\"`입니다. 모든 컷에 `full_bleed_bg=false`를 설정하고 "
+            "100% 깔끔한 순백 `#FFFFFF` 배경(최소 만화 이펙트만, 반쪽짜리 비네트 컷아웃 절대 금지!)으로 작성하세요."
+        )
+
     return (
         f"{V4_WRITER_SYSTEM_RULES}\n\n"
         f"{layouts_ref}\n\n"
@@ -208,6 +227,7 @@ def build_v4_writer_prompt(
         f"- 작성자: {post.author} | 추천: {post.recommends} | 댓글: {post.comments_count}\n"
         f"- 본문:\n{post.body or '(본문 텍스트 없음 — 제목의 펀치라인을 5막 던전 상황극으로 풀어내세요)'}\n\n"
         f"- 주요 댓글 (메타 해설 금지! 웃긴 포인트만 캐릭터 대사·상황극 소재로 흡수):\n{comments_block}\n\n"
+        f"[배경 리듬 지정] {bg_directive}\n\n"
         f"위 JSON 스키마(`EpisodeScript`)에 정확히 맞춰 출력하세요. "
         f"`layout_mode`는 \"v4_five_act\", `background_style`은 \"{background_style}\", "
         f"`episode_number`는 {episode_number}, "
@@ -785,7 +805,7 @@ def generate_v4_episode_script(
     prompt = build_v4_writer_prompt(
         post,
         episode_number=episode_number,
-        background_style=background_style or "full_bleed",
+        background_style=background_style or "selective_mix",
     )
     interaction = client.interactions.create(
         model=target_model,
@@ -1203,6 +1223,37 @@ def build_dry_run_v4_script(
             ],
         ),
     ]
+
+    # Apply per-cut full_bleed_bg rhythm based on background_style:
+    # - full_bleed: every cut full_bleed_bg=True
+    # - selective_mix: ~50% key establishing/action/reveal/wordless/ending cuts (7/13 = 53.8%)
+    #   set full_bleed_bg=True; dialogue-reaction ping-pong cuts stay crisp #FFFFFF (False).
+    # - clean_white: every cut full_bleed_bg=False
+    selective_fb_indices: set[int] = {1, 4, 8, 9, 10, 12, 13}
+    if background_style in {"full_bleed", "selective_mix"}:
+        adjusted_acts: list[ActPage] = []
+        for act in acts:
+            adjusted_cuts: list[ComicCut] = []
+            for cut in act.cuts:
+                use_fb = (
+                    True
+                    if background_style == "full_bleed"
+                    else (cut.cut_index in selective_fb_indices)
+                )
+                vp = cut.visual_prompt
+                if use_fb:
+                    vp = vp.replace(
+                        "Pure solid white #FFFFFF background, generous top pure-white headroom, no text, no speech bubbles.",
+                        "100% edge-to-edge full-bleed stone dungeon background with unobstructed upper cavern ceiling for speech bubble, no text, no speech bubbles.",
+                    ).replace(
+                        "Pure solid white #FFFFFF background, no text, no speech bubbles.",
+                        "100% edge-to-edge full-bleed stone dungeon background with unobstructed upper scenery for speech bubble, no text, no speech bubbles.",
+                    )
+                adjusted_cuts.append(
+                    cut.model_copy(update={"full_bleed_bg": use_fb, "visual_prompt": vp})
+                )
+            adjusted_acts.append(act.model_copy(update={"cuts": adjusted_cuts}))
+        acts = adjusted_acts
 
     return EpisodeScript(
         episode_number=episode_number,

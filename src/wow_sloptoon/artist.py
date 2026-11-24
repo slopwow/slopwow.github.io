@@ -29,7 +29,7 @@ from wow_sloptoon.layouts import (
     get_page_layout,
     render_layout_blueprint,
 )
-from wow_sloptoon.models import ActPage, ComicCut, EpisodeScript
+from wow_sloptoon.models import ActPage, BackgroundStyle, ComicCut, EpisodeScript
 from wow_sloptoon.wow_lore import build_cut_visual_lore_hints
 
 
@@ -331,15 +331,50 @@ def _collect_act_characters(act: ActPage) -> list[str]:
     return ordered
 
 
+def _resolve_effective_background_style(
+    background_style: BackgroundStyle | None,
+    full_bleed_bg: bool | None = None,
+    *,
+    fallback: BackgroundStyle = "clean_white",
+) -> BackgroundStyle:
+    """Resolve effective V4 background style while preserving `full_bleed_bg` compatibility."""
+    if background_style is not None:
+        return background_style
+    if full_bleed_bg is True:
+        return "full_bleed"
+    if full_bleed_bg is False:
+        return "clean_white"
+    return fallback
+
+
+def _resolve_act_cut_full_bleed_flags(
+    act: ActPage,
+    eff_style: BackgroundStyle,
+) -> list[bool]:
+    """Return per-cut full-bleed boolean flags for `act` under `eff_style`."""
+    if eff_style == "full_bleed":
+        return [True for _ in act.cuts]
+    return [bool(cut.full_bleed_bg) for cut in act.cuts]
+
+
 def build_page_batch_prompt(
     act: ActPage,
     *,
     attached_turnarounds: list[str] | None = None,
     full_bleed_bg: bool = False,
+    background_style: BackgroundStyle | None = None,
 ) -> str:
     """Construct the V4 2:3 multi-panel page-batch prompt referencing cast sheet, style ref,
     exact layout blueprint, and every active character's 3-view turnaround sheet.
+
+    Supports `background_style` in `{"selective_mix", "full_bleed", "clean_white"}` while
+    staying backward-compatible with `full_bleed_bg=True/False`.
     """
+    eff_style = _resolve_effective_background_style(background_style, full_bleed_bg)
+    cut_fb_flags = _resolve_act_cut_full_bleed_flags(act, eff_style)
+    all_fb = all(cut_fb_flags)
+    any_fb = any(cut_fb_flags)
+
     layout = get_page_layout(act.layout_id)
     act_chars = _collect_act_characters(act)
     anchors = build_character_anchors_block(act_chars)
@@ -361,9 +396,9 @@ def build_page_batch_prompt(
         )
 
     panel_blocks: list[str] = []
-    for slot, cut in zip(layout.slots, act.cuts):
+    for slot, cut, cut_is_fb in zip(layout.slots, act.cuts, cut_fb_flags):
         chars_str = ", ".join(cut.characters)
-        if full_bleed_bg:
+        if cut_is_fb:
             if cut.wordless:
                 headroom_rule = (
                     "WORDLESS CLIMAX 100% EDGE-TO-EDGE FULL-BLEED PANEL (NO SPEECH BUBBLE): Draw a massive, "
@@ -415,37 +450,39 @@ def build_page_batch_prompt(
         else:
             if cut.wordless:
                 headroom_rule = (
-                    "WORDLESS CLIMAX FULL-BLEED BACKGROUND PANEL (NO SPEECH BUBBLE): Draw a massive, "
-                    "hyper-expressive comedic close-up or theatrical freeze-frame (character fills ~72-86% "
-                    "of panel height) set against a RICH FULL-PANEL DRAMATIC BACKGROUND filling the entire "
-                    "interior of the black box frame (dungeon hall, pirate ship deck, blazing mine shaft, "
-                    "watching boss/mob extras, dramatic comic lighting, or shock aura — NO sterile empty "
-                    "white void inside this box!). Still keep ZERO text, ZERO speech bubbles, and 100% pure "
-                    "solid `#FFFFFF` outer page margins and gutters outside the black frame."
+                    "WORDLESS CLIMAX 100% PURE SOLID `#FFFFFF` CLEAN BACKGROUND PANEL (NO SPEECH BUBBLE): "
+                    "Draw a massive, hyper-expressive comedic close-up or theatrical freeze-frame (character "
+                    "fills ~72-86% of panel height) on a 100% PURE SOLID `#FFFFFF` CLEAN BACKGROUND with "
+                    "punchy minimal manga gag FX ONLY (sweatdrops, anger veins, crisp speed lines, shock bursts, "
+                    "cartoon soul-leaving-body — STRICTLY ZERO painted scenery, ZERO partial vignette cutouts, "
+                    "and ZERO floating scenic rectangles inside the box!). Still keep ZERO TEXT, ZERO speech "
+                    "bubbles, and 100% pure solid `#FFFFFF` outer page margins and gutters."
                 )
             elif slot.is_narrow:
                 headroom_rule = (
-                    f"NARROW VERTICAL PANEL HEADROOM & SOFT-VIGNETTE BACKGROUND ({slot.width}x{slot.height}px "
-                    "— MANDATORY): Place the character(s), monsters, and a lively colorful Korean webtoon "
-                    "dungeon/field soft-vignette background cleanly in the LOWER 60-64% of this panel, "
-                    "fading softly like a clean manga vignette into 100% PURE EMPTY SOLID WHITE (#FFFFFF) "
-                    "ONLY in the reserved TOP 36-40% speech-bubble headroom zone! "
+                    f"NARROW VERTICAL 100% PURE SOLID `#FFFFFF` CLEAN PANEL ({slot.width}x{slot.height}px "
+                    "— MANDATORY): Place the character(s) cleanly in the LOWER 60-64% of this panel against "
+                    "a 100% PURE SOLID `#FFFFFF` CLEAN BACKGROUND with punchy minimal manga gag FX ONLY "
+                    "(sweatdrops, anger veins, speed lines, tiny motion puffs — STRICTLY ZERO partial vignette "
+                    "cutouts, ZERO floating scenic rectangles, ZERO painted walls/sky inside the box!), "
+                    "reserving the TOP 36-40% as 100% PURE EMPTY SOLID `#FFFFFF` speech-bubble headroom! "
                     f"Primary speaker position cue: {cut.tail_target}."
                 )
             else:
                 headroom_rule = (
-                    f"WIDE PANEL HEADROOM & SOFT-VIGNETTE BACKGROUND ({slot.width}x{slot.height}px "
-                    "— MANDATORY): Place character(s), combat action, and a lively colorful Korean webtoon "
-                    "dungeon/field soft-vignette background dynamically across the lower two-thirds or "
-                    "speaker side, fading softly like a clean manga vignette into 100% PURE EMPTY SOLID "
-                    "WHITE (#FFFFFF) ONLY in the reserved TOP 32% (or opposite 46% speaker-free side) "
-                    f"speech-bubble headroom zone! Primary speaker position cue: {cut.tail_target}."
+                    f"WIDE 100% PURE SOLID `#FFFFFF` CLEAN PANEL ({slot.width}x{slot.height}px — MANDATORY): "
+                    "Place the character(s) dynamically across the lower two-thirds or speaker side against "
+                    "a 100% PURE SOLID `#FFFFFF` CLEAN BACKGROUND with punchy minimal manga gag FX ONLY "
+                    "(sweatdrops, anger veins, speed lines, tiny motion puffs — STRICTLY ZERO partial vignette "
+                    "cutouts, ZERO floating scenic rectangles, ZERO painted walls/sky inside the box!), "
+                    "reserving the TOP 32% (or opposite 46% speaker-free side) as 100% PURE EMPTY SOLID "
+                    f"`#FFFFFF` speech-bubble headroom! Primary speaker position cue: {cut.tail_target}."
                 )
 
             border_note = (
-                "BORDERLESS OPEN PANEL (keep outer panel edges fading seamlessly into pure #FFFFFF — do NOT draw a black box around this panel!)"
+                "BORDERLESS OPEN CLEAN-WHITE PANEL (100% pure solid `#FFFFFF` background fading seamlessly into page margins — do NOT draw a black box around this panel!)"
                 if slot.border_style == "open"
-                else "CRISP BLACK-BORDERED BOX PANEL (match Reference Image 3's exact black rectangular frame cleanly)"
+                else "CRISP BLACK-BORDERED CLEAN-WHITE BOX PANEL (match Reference Image 3's exact black rectangular frame cleanly with 100% pure solid `#FFFFFF` background inside — ZERO floating scenic cutouts!)"
             )
 
         panel_blocks.append(
@@ -459,7 +496,7 @@ def build_page_batch_prompt(
 
     panels_section = "\n\n".join(panel_blocks)
 
-    if full_bleed_bg:
+    if all_fb:
         blueprint_ref_line = (
             f"- Reference Image 3: Exact 2:3 All-Boxed Page Layout Blueprint (`layout_blueprint.png` for `{act.layout_id}`) — "
             "follow its EXACT solid black rectangular panel frames, proportions, and pure `#FFFFFF` outer margins & gutters! "
@@ -493,6 +530,41 @@ def build_page_batch_prompt(
             "with crisp pure-white `#FFFFFF` gutters separating neighboring panels.\n"
             "- NO CLONE EXTRAS: Never draw duplicate clone copies of starring cast characters as background extras."
         )
+    elif any_fb:
+        blueprint_ref_line = (
+            f"- Reference Image 3: Exact 2:3 Selective-Mix Page Layout Blueprint (`layout_blueprint.png` for `{act.layout_id}`) — "
+            "follow its EXACT panel grid positions, proportions, and pure `#FFFFFF` outer margins & gutters! "
+            "Solid black rectangles mark boxed panels (including EVERY full-bleed panel and boxed clean-white panel); "
+            "subtle light-gray rectangles mark borderless `open` clean-white panels (leave `open` panels seamlessly "
+            "borderless on `#FFFFFF`, NEVER paint gray guide lines or panel numbers!)."
+        )
+        bg_section = (
+            "SELECTIVE-MIX PER-CUT BACKGROUND RHYTHM (STRICT ALL-OR-NOTHING — ZERO HALF-BAKED VIGNETTES!):\n"
+            "- Strictly obey EACH panel's individual Background & Headroom Rule above — NEVER compromise into "
+            "floating half-painted scenery inside boxes!\n"
+            "- FOR FULL-BLEED PANELS (marked FULL-BLEED BOX above): Fill 100% edge-to-edge inside all 4 black "
+            "frame lines with rich cohesive dungeon/field/comic-gag colored scenery (stone mine shafts, wooden "
+            "rafters, glowing torches, pirate decks, night skies, explosive flames/smoke, dramatic auras) with "
+            "STRICTLY ZERO white gaps or white fade-outs, keeping the bubble zone filled with UNOBSTRUCTED OPEN "
+            "BACKGROUND SCENERY (zero character faces/heads in the bubble zone).\n"
+            "- FOR CLEAN-WHITE PANELS (marked 100% PURE SOLID `#FFFFFF` CLEAN PANEL above): Render characters "
+            "on a 100% PURE SOLID `#FFFFFF` CLEAN BACKGROUND with punchy minimal manga gag FX ONLY (sweatdrops, "
+            "anger veins, speed lines, shock lines, tiny motion puffs) — STRICTLY ZERO partial vignette cutouts, "
+            "ZERO floating scenic rectangles, and ZERO painted room/sky walls inside the panel!\n"
+            "- KEEP ALL OUTER PAGE MARGINS & INTER-PANEL GUTTERS 100% PURE SOLID `#FFFFFF` WHITE!"
+        )
+        tech_constraints = (
+            "ABSOLUTE NEGATIVE & TECHNICAL CONSTRAINTS:\n"
+            "- PURE SOLID WHITE (`#FFFFFF`) OUTER PAGE MARGINS & INTER-PANEL GUTTERS: Keep outer page margins, "
+            "inter-panel gutters, open-panel edges, and every clean-white panel background 100% pure solid "
+            "`#FFFFFF` (ZERO gray smudges, ZERO partial vignette cutouts, ZERO floating scenic rectangles), "
+            "while every full-bleed panel interior is 100% edge-to-edge colored art with ZERO white gaps.\n"
+            "- ZERO TEXT, ZERO KOREAN/ENGLISH LETTERS, ZERO DIGITS/NUMBERS, ZERO PANEL NUMBERS, ZERO SPEECH "
+            "BUBBLES, ZERO SOUND EFFECTS, ZERO WATERMARKS ANYWHERE ON THE PAGE.\n"
+            "- STRICT 2:3 PAGE GEOMETRY: Keep every panel strictly aligned to Reference Image 3's layout frames "
+            "with crisp pure-white `#FFFFFF` gutters separating neighboring panels.\n"
+            "- NO CLONE EXTRAS: Never draw duplicate clone copies of starring cast characters as background extras."
+        )
     else:
         blueprint_ref_line = (
             f"- Reference Image 3: Exact 2:3 Page Layout Blueprint (`layout_blueprint.png` for `{act.layout_id}`) — "
@@ -501,30 +573,27 @@ def build_page_batch_prompt(
             "borderless on `#FFFFFF`, NEVER paint gray guide lines or panel numbers!)."
         )
         bg_section = (
-            "ATMOSPHERIC SOFT-VIGNETTE BACKGROUNDS (NO STERILE EMPTY WHITE VOID!):\n"
-            "- Render lively, colorful Korean webtoon dungeon/field background vignettes directly behind and around "
-            "characters & monsters (stone mine shafts, wooden beams, glowing torches, minecart rails, pirate ship "
-            "decks, tavern interiors, explosive flames/smoke, dramatic dark-aura or flower-field gags) in crisp "
-            "pastel/cel-anime tones.\n"
-            "- In dialogue panels, these atmospheric backgrounds MUST fade softly like a clean manga vignette into "
-            "100% pure solid `#FFFFFF` ONLY in the reserved speech-bubble headroom zone (top 36-40% for narrow "
-            "panels, top 32% or opposite 46% side for wide panels) AND along the outer page margins/gutters.\n"
-            "- WORDLESS CLIMAX FULL-BLEED BACKGROUND: For any `wordless` climax panel inside a black box frame, "
-            "render a rich FULL-PANEL dramatic background (dungeon hall, pirate ship deck, watching boss/mob "
-            "extras, dramatic comic lighting, speed lines) filling the entire panel interior while still keeping "
-            "ZERO text/speech bubbles and 100% pure `#FFFFFF` outer page margins and gutters!"
+            "100% PURE SOLID `#FFFFFF` CLEAN BACKGROUNDS (ZERO PARTIAL VIGNETTE CUTOUTS!):\n"
+            "- Render every panel against a 100% PURE SOLID WHITE (`#FFFFFF`) CLEAN BACKGROUND featuring "
+            "expressive Draft C characters and punchy minimal manga gag FX ONLY (sweatdrops, anger veins, "
+            "comic speed lines, shock bursts, tiny motion puffs).\n"
+            "- STRICTLY ZERO partial vignette cutouts, ZERO floating scenic rectangles inside boxes, ZERO "
+            "gray shading gradients, and ZERO painted room/sky walls.\n"
+            "- Reserve crisp 100% pure solid `#FFFFFF` empty speech-bubble headroom in every dialogue panel "
+            "(top 36-40% for narrow panels, top 32% or opposite 46% side for wide panels) AND along all outer "
+            "page margins and inter-panel gutters."
         )
         tech_constraints = (
             "ABSOLUTE NEGATIVE & TECHNICAL CONSTRAINTS:\n"
-            "- PURE SOLID WHITE (`#FFFFFF`) OUTER PAGE MARGINS, INTER-PANEL GUTTERS, AND BUBBLE HEADROOM: Keep "
-            "outer page margins, inter-panel gutters, open-panel edges, and every dialogue panel's reserved "
-            "speech-bubble headroom zone 100% pure solid `#FFFFFF` (ZERO gray smudges or off-white tint in the "
-            "white margins/headroom), while keeping rich atmospheric vignettes behind characters and full-bleed "
-            "dramatic backgrounds inside `wordless` box panels.\n"
+            "- PURE SOLID WHITE (`#FFFFFF`) OUTER PAGE MARGINS, INTER-PANEL GUTTERS, AND CLEAN BACKGROUNDS: "
+            "Keep outer page margins, inter-panel gutters, open-panel edges, and every panel's background "
+            "100% pure solid `#FFFFFF` (ZERO gray smudges, ZERO off-white tint, ZERO partial vignette cutouts, "
+            "ZERO floating scenic rectangles inside boxes).\n"
             "- ZERO TEXT, ZERO KOREAN/ENGLISH LETTERS, ZERO DIGITS/NUMBERS, ZERO PANEL NUMBERS, ZERO SPEECH "
             "BUBBLES, ZERO SOUND EFFECTS, ZERO WATERMARKS ANYWHERE ON THE PAGE.\n"
             "- STRICT 2:3 PAGE GEOMETRY: Keep every panel strictly aligned to Reference Image 3's layout zones "
-            "with crisp pure-white `#FFFFFF` gutters separating neighboring panels."
+            "with crisp pure-white `#FFFFFF` gutters separating neighboring panels.\n"
+            "- NO CLONE EXTRAS: Never draw duplicate clone copies of starring cast characters as background extras."
         )
 
     return (
@@ -565,10 +634,13 @@ def generate_act_page_image(
     model: str | None = None,
     image_size: str = "2K",
     full_bleed_bg: bool = False,
+    background_style: BackgroundStyle | None = None,
 ) -> Path:
     """Generate a single V4 2:3 multi-panel act page image via Gemini Interactions API."""
     cfg = settings or load_settings()
     target_model = resolve_image_model(model, cfg)
+    eff_style = _resolve_effective_background_style(background_style, full_bleed_bg)
+    cut_fb_flags = _resolve_act_cut_full_bleed_flags(act, eff_style)
 
     if client is None:
         if not cfg.gemini_api_key:
@@ -579,7 +651,18 @@ def generate_act_page_image(
 
     cast_b64, cast_mime = _encode_image_base64(cfg.cast_sheet_path)
     style_b64, style_mime = _encode_image_base64(cfg.style_ref_path)
-    blueprint_im = render_layout_blueprint(act.layout_id, all_boxed=full_bleed_bg)
+
+    layout = get_page_layout(act.layout_id)
+    if eff_style == "full_bleed":
+        blueprint_im = render_layout_blueprint(act.layout_id, all_boxed=True)
+    elif eff_style == "selective_mix" or any(cut_fb_flags):
+        slot_boxed = [
+            cut_is_fb or slot.border_style == "box"
+            for slot, cut_is_fb in zip(layout.slots, cut_fb_flags)
+        ]
+        blueprint_im = render_layout_blueprint(act.layout_id, slot_boxed=slot_boxed)
+    else:
+        blueprint_im = render_layout_blueprint(act.layout_id, all_boxed=False)
     bp_b64, bp_mime = _encode_pil_image_png_base64(blueprint_im)
 
     act_characters = _collect_act_characters(act)
@@ -587,7 +670,8 @@ def generate_act_page_image(
     prompt = build_page_batch_prompt(
         act,
         attached_turnarounds=[f"{m.name} ({m.id})" for m, _ in turnaround_pairs],
-        full_bleed_bg=full_bleed_bg,
+        full_bleed_bg=(eff_style == "full_bleed"),
+        background_style=eff_style,
     )
 
     input_items: list[dict[str, Any]] = [
@@ -624,6 +708,7 @@ def generate_v4_episode_pages(
     image_size: str = "2K",
     max_workers: int = 5,
     full_bleed_bg: bool | None = None,
+    background_style: BackgroundStyle | None = None,
 ) -> dict[int, Path]:
     """Generate all 5 V4 act page images in parallel (`raw_page_01.png` .. `raw_page_05.png`)."""
     if not script.acts:
@@ -631,10 +716,10 @@ def generate_v4_episode_pages(
 
     cfg = settings or load_settings()
     target_model = resolve_image_model(model, cfg)
-    use_full_bleed = (
-        (script.background_style == "full_bleed")
-        if full_bleed_bg is None
-        else bool(full_bleed_bg)
+    eff_style = _resolve_effective_background_style(
+        background_style,
+        full_bleed_bg,
+        fallback=script.background_style,
     )
 
     if client is None:
@@ -656,7 +741,8 @@ def generate_v4_episode_pages(
             settings=cfg,
             model=target_model,
             image_size=image_size,
-            full_bleed_bg=use_full_bleed,
+            full_bleed_bg=(eff_style == "full_bleed"),
+            background_style=eff_style,
         )
         return act.act_number, saved
 
@@ -670,13 +756,24 @@ def generate_v4_episode_pages(
     return {k: results[k] for k in sorted(results.keys())}
 
 
-def render_dry_run_v4_pages(script: EpisodeScript, output_dir: Path) -> dict[int, Path]:
+def render_dry_run_v4_pages(
+    script: EpisodeScript,
+    output_dir: Path,
+    *,
+    full_bleed_bg: bool | None = None,
+    background_style: BackgroundStyle | None = None,
+) -> dict[int, Path]:
     """Render clean deterministic pure-#FFFFFF 900x1350 V4 act pages for offline dry-run & testing."""
     if not script.acts:
         raise ValueError("render_dry_run_v4_pages requires a V4 EpisodeScript with `acts` populated.")
 
     output_dir.mkdir(parents=True, exist_ok=True)
-    is_full_bleed = script.background_style == "full_bleed"
+    eff_style = _resolve_effective_background_style(
+        background_style,
+        full_bleed_bg,
+        fallback=script.background_style,
+    )
+    is_full_bleed = eff_style == "full_bleed"
     palette: tuple[tuple[int, int, int], ...] = (
         (186, 230, 253),  # Skyborne sky-blue
         (221, 214, 254),  # Night Elf Priest lavender
@@ -695,15 +792,25 @@ def render_dry_run_v4_pages(script: EpisodeScript, output_dir: Path) -> dict[int
     page_paths: dict[int, Path] = {}
     for act in script.acts:
         layout = get_page_layout(act.layout_id)
-        img = render_layout_blueprint(act.layout_id, all_boxed=is_full_bleed)
+        cut_fb_flags = _resolve_act_cut_full_bleed_flags(act, eff_style)
+        if is_full_bleed:
+            img = render_layout_blueprint(act.layout_id, all_boxed=True)
+        elif eff_style == "selective_mix" or any(cut_fb_flags):
+            slot_boxed = [
+                cut_is_fb or slot.border_style == "box"
+                for slot, cut_is_fb in zip(layout.slots, cut_fb_flags)
+            ]
+            img = render_layout_blueprint(act.layout_id, slot_boxed=slot_boxed)
+        else:
+            img = render_layout_blueprint(act.layout_id, all_boxed=False)
         draw = ImageDraw.Draw(img)
 
-        for idx, (slot, cut) in enumerate(zip(layout.slots, act.cuts)):
+        for idx, (slot, cut, cut_is_fb) in enumerate(zip(layout.slots, act.cuts, cut_fb_flags)):
             x0, y0, x1, y1 = slot.rect
             sw, sh = slot.width, slot.height
             fill_col = palette[(act.act_number + idx) % len(palette)]
 
-            if is_full_bleed or cut.full_bleed_bg:
+            if cut_is_fb:
                 bg_col = bg_palette[(act.act_number + idx) % len(bg_palette)]
                 draw.rectangle([x0 + 4, y0 + 4, x1 - 4, y1 - 4], fill=bg_col)
 
@@ -739,7 +846,7 @@ def render_dry_run_v4_pages(script: EpisodeScript, output_dir: Path) -> dict[int
                 fill=(30, 41, 59),
             )
 
-            if is_full_bleed or cut.full_bleed_bg:
+            if cut_is_fb:
                 draw.rectangle([x0, y0, x1, y1], outline=(20, 20, 20), width=4)
 
         out_path = output_dir / f"raw_page_{act.act_number:02d}.png"

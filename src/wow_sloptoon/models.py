@@ -18,7 +18,7 @@ PageLayoutId = Literal[
     "four_beat_gag",
 ]
 
-BackgroundStyle = Literal["clean_white", "full_bleed"]
+BackgroundStyle = Literal["clean_white", "full_bleed", "selective_mix"]
 
 
 class GalleryPost(BaseModel):
@@ -261,8 +261,9 @@ class EpisodeScript(BaseModel):
     background_style: BackgroundStyle = Field(
         default="clean_white",
         description=(
-            "Panel background mode ('clean_white' for borderless white cuts, "
-            "'full_bleed' for edge-to-edge colored comic backgrounds)."
+            "Panel background mode ('clean_white' for pure #FFFFFF cuts, "
+            "'full_bleed' for edge-to-edge colored comic backgrounds on every panel, "
+            "'selective_mix' for per-cut mix of 100% full-bleed boxed cuts and 100% pure #FFFFFF cuts)."
         ),
     )
     acts: Optional[list[ActPage]] = Field(

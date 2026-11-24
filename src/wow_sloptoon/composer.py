@@ -5276,6 +5276,7 @@ def compose_v4_episode(
 
     bg_style = getattr(script, "background_style", "clean_white")
     is_full_bleed_ep = bg_style == "full_bleed"
+    is_mixed_ep = bg_style == "selective_mix"
 
     out_dir = Path(output_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -5291,6 +5292,7 @@ def compose_v4_episode(
     page_layouts: list[str] = []
     cut_audits: list[dict[str, Any]] = []
     thumb_candidates: list[Image.Image] = []
+    lead_cut_full_bleed = False
 
     for act in ordered_acts:
         layout_spec = get_page_layout(act.layout_id)
@@ -5308,10 +5310,27 @@ def compose_v4_episode(
         with Image.open(raw_page_path) as raw_im:
             raw_page_im = raw_im.copy()
 
+        act_cuts = sorted(
+            enumerate(act.cuts),
+            key=lambda pair: (
+                pair[1].panel_index if pair[1].panel_index is not None else (pair[0] + 1),
+                pair[1].cut_index,
+            ),
+        )
+        ordered_act_cuts = [pair[1] for pair in act_cuts]
+
+        slot_fb_flags: list[bool] | None = None
+        if is_mixed_ep or any(bool(getattr(c, "full_bleed_bg", False)) for c in ordered_act_cuts):
+            slot_fb_flags = [
+                is_full_bleed_ep or bool(getattr(c, "full_bleed_bg", False))
+                for c in ordered_act_cuts
+            ]
+
         extracted_panels = extract_panels_from_page(
             raw_page_im,
             act.layout_id,
             all_boxed=is_full_bleed_ep,
+            slot_full_bleed=slot_fb_flags,
         )
         if len(extracted_panels) != len(layout_spec.slots):
             raise ValueError(
@@ -5322,17 +5341,9 @@ def compose_v4_episode(
         if act.act_number == 1:
             # Prefer Act 1 lead panel (and other Act 1 panels) for episode thumbnail
             thumb_candidates = list(extracted_panels) + thumb_candidates
+            lead_cut_full_bleed = bool(getattr(ordered_act_cuts[0], "full_bleed_bg", False))
         else:
             thumb_candidates.extend(extracted_panels)
-
-        act_cuts = sorted(
-            enumerate(act.cuts),
-            key=lambda pair: (
-                pair[1].panel_index if pair[1].panel_index is not None else (pair[0] + 1),
-                pair[1].cut_index,
-            ),
-        )
-        ordered_act_cuts = [pair[1] for pair in act_cuts]
 
         page = Image.new("RGB", (V4_PAGE_W, V4_PAGE_H), PURE_WHITE)
         for slot, cut, raw_panel in zip(layout_spec.slots, ordered_act_cuts, extracted_panels):
@@ -5363,6 +5374,7 @@ def compose_v4_episode(
                     draw_4x_rect_border(page, slot.rect, stroke_px=3.5, color=INK_BLACK)
                 eff_border_style = slot.border_style
 
+            cut_audit["full_bleed_bg"] = bool(use_full_bleed_panel)
             cut_audit["cut_index"] = cut.cut_index
             cut_audit["act_number"] = act.act_number
             cut_audit["panel_index"] = slot.slot_index
@@ -5413,7 +5425,7 @@ def compose_v4_episode(
         script,
         thumb_candidates,
         size=THUMB_SIZE,
-        full_bleed=is_full_bleed_ep,
+        full_bleed=(is_full_bleed_ep or (is_mixed_ep and lead_cut_full_bleed)),
     )
     thumb_path = out_dir / "thumb.jpg"
     thumb_im.save(thumb_path, format="JPEG", quality=93, subsampling=0)
