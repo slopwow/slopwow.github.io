@@ -1,9 +1,10 @@
 {
   "passed": true,
   "total_overlap_px": 0,
+  "total_tooltip_overlap_px": 0,
   "border_pure_white": true,
-  "cut_count": 7,
-  "page_count": 4,
+  "cut_count": 6,
+  "page_count": 3,
   "page_sizes": [
     [
       900,
@@ -16,15 +17,11 @@
     [
       900,
       1320
-    ],
-    [
-      900,
-      486
     ]
   ],
   "full_size": [
     900,
-    4965
+    4464
   ],
   "thumb_size": [
     800,
@@ -37,23 +34,24 @@
       "wordless": false,
       "bubble_count": 1,
       "overlap_px": 0,
-      "min_clearance_px": 94.6,
-      "font_size": 21,
+      "min_clearance_px": 118.0,
+      "font_size": 23,
       "art_bbox": [
-        59,
-        332,
-        813,
-        829
+        119,
+        347,
+        853,
+        817
       ],
-      "tail_target": "left",
+      "tail_target": "right",
       "has_item_tooltip": true,
       "tooltip_bbox": [
-        584,
+        28,
         16,
-        872,
+        316,
         184
       ],
       "tooltip_overlap_px": 0,
+      "art_height_ratio": 0.5663,
       "cut_index": 1,
       "slot": "top",
       "page": 1
@@ -62,20 +60,22 @@
       "wordless": false,
       "bubble_count": 1,
       "overlap_px": 0,
-      "min_clearance_px": 44.6,
-      "font_size": 16,
+      "min_clearance_px": 10.8,
+      "font_size": 20,
       "art_bbox": [
-        14,
-        186,
-        443,
-        435
+        172,
+        138,
+        670,
+        429
       ],
       "tail_target": "right",
       "bubble_center": [
-        658.6,
-        148.0
+        537.2,
+        63.8
       ],
       "bubble_side_resolved": "right",
+      "layout_mode_resolved": "top_right",
+      "art_height_ratio": 0.6674,
       "cut_index": 2,
       "slot": "bottom",
       "page": 1
@@ -84,60 +84,27 @@
       "wordless": false,
       "bubble_count": 1,
       "overlap_px": 0,
-      "min_clearance_px": 12.4,
-      "font_size": 20,
+      "min_clearance_px": 80.4,
+      "font_size": 23,
       "art_bbox": [
-        16,
-        324,
-        883,
-        829
-      ],
-      "tail_target": "left",
-      "cut_index": 3,
-      "slot": "top",
-      "page": 2
-    },
-    {
-      "wordless": false,
-      "bubble_count": 1,
-      "overlap_px": 0,
-      "min_clearance_px": 129.0,
-      "font_size": 16,
-      "art_bbox": [
-        14,
-        206,
-        423,
-        435
+        61,
+        304,
+        853,
+        817
       ],
       "tail_target": "right",
       "has_item_tooltip": true,
       "tooltip_bbox": [
-        552,
-        278,
-        828,
-        422
+        28,
+        16,
+        316,
+        166
       ],
       "tooltip_overlap_px": 0,
-      "cut_index": 4,
-      "slot": "bottom",
-      "page": 2
-    },
-    {
-      "wordless": false,
-      "bubble_count": 1,
-      "overlap_px": 0,
-      "min_clearance_px": 14.9,
-      "font_size": 20,
-      "art_bbox": [
-        19,
-        206,
-        883,
-        829
-      ],
-      "tail_target": "left",
-      "cut_index": 5,
+      "art_height_ratio": 0.6181,
+      "cut_index": 3,
       "slot": "top",
-      "page": 3
+      "page": 2
     },
     {
       "wordless": true,
@@ -146,37 +113,63 @@
       "min_clearance_px": 999.0,
       "font_size": null,
       "art_bbox": [
-        82,
+        172,
         14,
-        761,
+        672,
         435
       ],
-      "art_cx": 421.5,
-      "cut_index": 6,
+      "art_cx": 422.0,
+      "art_height_ratio": 0.9656,
+      "cut_index": 4,
       "slot": "bottom",
+      "page": 2
+    },
+    {
+      "wordless": false,
+      "bubble_count": 1,
+      "overlap_px": 0,
+      "min_clearance_px": 15.6,
+      "font_size": 25,
+      "art_bbox": [
+        33,
+        308,
+        837,
+        817
+      ],
+      "tail_target": "left",
+      "bubble_center": [
+        323.8,
+        193.6
+      ],
+      "bubble_side_resolved": "left",
+      "art_height_ratio": 0.6133,
+      "cut_index": 5,
+      "slot": "top",
       "page": 3
     },
     {
       "wordless": false,
       "bubble_count": 1,
       "overlap_px": 0,
-      "min_clearance_px": 9.2,
-      "font_size": 17,
+      "min_clearance_px": 6.7,
+      "font_size": 20,
       "art_bbox": [
-        393,
-        94,
-        829,
-        342
+        178,
+        144,
+        664,
+        435
       ],
       "tail_target": "left",
       "bubble_center": [
-        181.9,
-        148.0
+        275.5,
+        64.5
       ],
       "bubble_side_resolved": "left",
-      "cut_index": 7,
-      "slot": "epilogue_box",
-      "page": 4
+      "layout_mode_resolved": "top_left",
+      "art_height_ratio": 0.6674,
+      "cut_index": 6,
+      "slot": "bottom",
+      "page": 3
     }
   ]
 }

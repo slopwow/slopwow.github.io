@@ -52,9 +52,7 @@ class Settings:
     episodes_json: Path
     episodes_dir: Path
     site_dir: Path
-    upload_pack_dir: Path
     cast_sheet_path: Path
-    cast_sheet_labeled_path: Path
     turnarounds_dir: Path
     style_ref_path: Path
     gemini_api_key: str
@@ -70,10 +68,6 @@ class Settings:
             f"?id={self.gallery_id}&exception_mode=recommend"
         )
 
-    @property
-    def gallery_write_url(self) -> str:
-        return f"https://gall.dcinside.com/mgallery/board/write/?id={self.gallery_id}"
-
 
 def load_settings(project_root: Path | None = None) -> Settings:
     """Load `.env` (if present) and construct immutable `Settings`."""
@@ -88,7 +82,6 @@ def load_settings(project_root: Path | None = None) -> Settings:
     data_dir = root / "data"
     episodes_dir = data_dir / "episodes"
     site_dir = root / "site"
-    upload_pack_dir = root / "upload_pack"
 
     text_model = os.getenv("SLOPTOON_TEXT_MODEL", DEFAULT_TEXT_MODEL).strip() or DEFAULT_TEXT_MODEL
     image_model = (
@@ -108,11 +101,9 @@ def load_settings(project_root: Path | None = None) -> Settings:
         episodes_json=data_dir / "episodes.json",
         episodes_dir=episodes_dir,
         site_dir=site_dir,
-        upload_pack_dir=upload_pack_dir,
         cast_sheet_path=assets_dir / "cast_sheet_c.jpg",
-        cast_sheet_labeled_path=assets_dir / "cast_sheet_c_labeled.png",
         turnarounds_dir=assets_dir / "turnarounds",
-        style_ref_path=assets_dir / "sloptoon_style_ref.jpg",
+        style_ref_path=assets_dir / "diorama_style_ref.jpg",
         gemini_api_key=gemini_api_key,
         text_model=text_model,
         image_model=image_model,

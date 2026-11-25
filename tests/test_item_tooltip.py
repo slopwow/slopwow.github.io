@@ -13,7 +13,6 @@ from PIL import Image, ImageDraw
 
 from wow_sloptoon import writer
 from wow_sloptoon.composer import compose_episode
-from wow_sloptoon.dc_packager import format_post_title
 from wow_sloptoon.item_tooltip import (
     EQUIP_GREEN,
     QUALITY_COLORS,
@@ -23,8 +22,7 @@ from wow_sloptoon.item_tooltip import (
     render_item_tooltip,
     resolve_tooltip_spec,
 )
-from wow_sloptoon.models import ComicCut, EpisodeRecord, EpisodeScript, GalleryPost
-from wow_sloptoon.site_builder import _build_dc_post_title
+from wow_sloptoon.models import ComicCut, EpisodeScript, GalleryPost
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
@@ -47,18 +45,17 @@ def _make_raw_cut(path: Path, size: tuple[int, int], *, full_bleed: bool = False
 
 
 def test_backwards_compatibility_existing_script_json_without_item_tooltip() -> None:
-    """Existing EP.1-EP.4 script.json files without `item_tooltip` must validate 100%."""
+    """All checked-in episode script.json files must validate cleanly under Route A (4~7 cuts)."""
     ep_dirs = sorted((PROJECT_ROOT / "data" / "episodes").glob("ep*"))
     validated = 0
     for ep_dir in ep_dirs:
         script_file = ep_dir / "script.json"
         if script_file.exists():
             script = EpisodeScript.model_validate_json(script_file.read_text(encoding="utf-8"))
-            assert len(script.cuts) >= 4
+            assert 4 <= len(script.cuts) <= 7
             validated += 1
     assert validated >= 1
 
-    # Explicit minimal dict without item_tooltip
     legacy_cut = ComicCut.model_validate(
         {
             "cut_index": 1,
@@ -68,61 +65,43 @@ def test_backwards_compatibility_existing_script_json_without_item_tooltip() -> 
             "speaker": "오크 전사",
             "dialogue": "기존 스크립트 호환 테스트",
             "wordless": False,
-            "visual_prompt": "Orc Warrior chibi on pure #FFFFFF white background.",
+            "visual_prompt": "Orc Warrior cute 2.5-head SD on pure #FFFFFF white background.",
             "tail_target": "left",
         }
     )
     assert legacy_cut.item_tooltip is None
 
 
-def test_verbatim_concept_post_title_and_dc_post_title_format() -> None:
-    verbatim = "  오늘자 RP, 상상도 못한 편지.jpg  "
+def test_verbatim_concept_post_title_preserved_by_writer() -> None:
+    verbatim = "  방금만난 기사님의 명-언.jpg  "
     post = GalleryPost(
-        post_no="80851",
+        post_no="96849",
         title=verbatim,
-        url="https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=80851",
+        url="https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=96849",
         author="포에버갤러",
         date_str="2026-11-21",
-        body="우편함을 열었더니 상상도 못한 편지가 도착해 있었다.",
+        body="던전에서 기사님이 무적 귀환 명언을 남겼다.",
     )
 
     # 1. Dry-run script preserves exact trimmed original title
-    dry = writer.build_dry_run_script(post, episode_number=7)
-    assert dry.source_title == "오늘자 RP, 상상도 못한 편지.jpg"
+    dry = writer.build_dry_run_script(post, episode_number=2)
+    assert dry.source_title == "방금만난 기사님의 명-언.jpg"
 
     # 2. Writer prompt explicitly embeds exact original title
-    prompt = writer.build_writer_prompt(post, episode_number=7)
-    assert '"오늘자 RP, 상상도 못한 편지.jpg"' in prompt
+    prompt = writer.build_writer_prompt(post, episode_number=2)
+    assert '"방금만난 기사님의 명-언.jpg"' in prompt
 
-    # 3. _normalize_script / generate_episode_script overwrites any LLM-rewritten title back to verbatim post.title
+    # 3. generate_episode_script overwrites any LLM-rewritten title back to verbatim post.title
     rewritten_llm_json = dry.model_copy(
-        update={"source_title": "상상도 못한 RP 편지 사건 요약본"}
+        update={"source_title": "방금 만난 기사님의 명언 요약본"}
     ).model_dump_json()
     fake_client = SimpleNamespace(
         interactions=SimpleNamespace(
             create=lambda **kwargs: SimpleNamespace(output_text=rewritten_llm_json)
         )
     )
-    normalized = writer.generate_episode_script(post, episode_number=7, client=fake_client)
-    assert normalized.source_title == "오늘자 RP, 상상도 못한 편지.jpg"
-
-    # 4. DCInside post title format is strictly `[와포슬롭툰]{원본념글제목}` with no `EP.{N} — `
-    rec = EpisodeRecord(
-        episode_id="ep007",
-        episode_number=7,
-        title=normalized.source_title,
-        subtitle="부제",
-        source_post_no="80851",
-        source_url=post.url,
-        created_at="2026-11-21",
-        cut_count=6,
-        cast_used=["인간 흑마법사"],
-        full_image_rel="data/episodes/ep007/episode_full.jpg",
-        thumb_image_rel="data/episodes/ep007/thumb.jpg",
-        page_images_rel=[],
-    )
-    assert format_post_title(rec) == "[와포슬롭툰]오늘자 RP, 상상도 못한 편지.jpg"
-    assert _build_dc_post_title(rec) == "[와포슬롭툰]오늘자 RP, 상상도 못한 편지.jpg"
+    normalized = writer.generate_episode_script(post, episode_number=2, client=fake_client)
+    assert normalized.source_title == "방금만난 기사님의 명-언.jpg"
 
 
 def test_user_librarian_scepter_asset_and_screenshot_rendering() -> None:
@@ -143,7 +122,6 @@ def test_user_librarian_scepter_asset_and_screenshot_rendering() -> None:
     assert 260 <= card.width <= 315
     assert 130 <= card.height <= 200
 
-    # Verify authentic green (#1EFF00) pixels from '사서의 홀' & '착용 효과:' are preserved crisply
     arr = np.asarray(card)
     green_px = np.sum((arr[:, :, 1] > 210) & (arr[:, :, 0] < 70) & (arr[:, :, 2] < 70))
     assert green_px > 200
@@ -179,7 +157,6 @@ def test_parse_wowhead_classic_html_and_programmatic_card_colors(monkeypatch: py
     assert all("디스커버리" not in ln and "판매 가격" not in ln for ln in parsed.lines)
     assert parsed.equip_effects == ("착용 효과: 모든 주문 및 효과에 의한 치유량이 최대 15만큼 증가합니다.",)
 
-    # Force offline mode to verify deterministic built-in Classic presets & dark tooltip colors
     monkeypatch.setenv("SLOPTOON_OFFLINE_TOOLTIPS", "1")
     triune_spec = resolve_tooltip_spec(ItemTooltipSpec(wowhead_item_id=7722), fetch_network=False)
     assert triune_spec.item_name == "삼위일체의 아뮬렛"
@@ -202,16 +179,11 @@ def test_parse_wowhead_classic_html_and_programmatic_card_colors(monkeypatch: py
     assert epic_card is not None
     assert 256 <= epic_card.width <= 320
     arr = np.asarray(epic_card)
-    # Dark navy interior (#0B0D16)
     dark_px = np.sum((arr[:, :, 0] < 28) & (arr[:, :, 1] < 30) & (arr[:, :, 2] < 45) & (arr[:, :, 3] > 220))
     assert dark_px > 10000
-    # Epic purple (#A335EE) title pixels
     epic_px = np.sum((arr[:, :, 0] > 120) & (arr[:, :, 1] < 90) & (arr[:, :, 2] > 180))
     assert epic_px > 40
-    # Equip green (#1EFF00) pixels
-    eq_px = np.sum(
-        (arr[:, :, 1] > 200) & (arr[:, :, 0] < 70) & (arr[:, :, 2] < 70)
-    )
+    eq_px = np.sum((arr[:, :, 1] > 200) & (arr[:, :, 0] < 70) & (arr[:, :, 2] < 70))
     assert eq_px > 60
     assert QUALITY_COLORS["epic"] == (163, 53, 238)
     assert QUALITY_COLORS["rare"] == (0, 112, 221)
@@ -233,7 +205,7 @@ def test_composer_places_item_tooltips_with_zero_overlap_across_all_cut_types(
             layout_slot="top",
             characters=["오크 전사", "언데드 성기사"],
             speaker="오크 전사",
-            dialogue="어어 잠깐만 저 목걸이 삼위일체의 아뮬렛이잖아?!",
+            dialogue="어어 저 목걸이\n삼위일체의 아뮬렛이네?!",
             wordless=False,
             visual_prompt="Orc Warrior and Undead Paladin looking at Rare amulet.",
             tail_target="left",
@@ -243,12 +215,12 @@ def test_composer_places_item_tooltips_with_zero_overlap_across_all_cut_types(
             cut_index=2,
             aspect_ratio="16:9",
             layout_slot="bottom",
-            characters=["나이트엘프 사제"],
+            characters=["나이트엘프 사제", "인간 흑마법사"],
             speaker="나이트엘프 사제",
-            dialogue="사서의 홀이랑 화이트메인 모자 둘 다 내 건데 왜 주사위를 굴려요?!",
+            dialogue="사서의 홀 내 건데\n왜 주사위를 굴려요?!",
             wordless=False,
-            visual_prompt="Shocked Night Elf Priest protesting in Scarlet Monastery.",
-            tail_target="right",
+            visual_prompt="Shocked Night Elf Priest protesting next to Human Warlock.",
+            tail_target="left",
             item_tooltip=ItemTooltipSpec(
                 image_path="assets/items/scepter_of_the_librarian.png",
                 item_name="사서의 홀",
@@ -261,10 +233,10 @@ def test_composer_places_item_tooltips_with_zero_overlap_across_all_cut_types(
             layout_slot="top",
             characters=["인간 흑마법사", "나이트엘프 사제"],
             speaker="인간 흑마법사",
-            dialogue="모자도 룩이 너무 예뻐서 입찰 눌렀어요 헤헤!",
+            dialogue="모자 룩이 예뻐서\n입찰 눌렀어!",
             wordless=False,
             visual_prompt="Human Warlock smiling innocently next to Priest.",
-            tail_target="right",
+            tail_target="left",
             item_tooltip=ItemTooltipSpec(wowhead_item_id=7720),
         ),
         ComicCut(
@@ -283,7 +255,7 @@ def test_composer_places_item_tooltips_with_zero_overlap_across_all_cut_types(
             layout_slot="bottom",
             characters=["드워프 사냥꾼"],
             speaker="드워프 사냥꾼",
-            dialogue="냥꾼도 지능 붙으면 다 사냥꾼 무기거든요!!",
+            dialogue="지능 붙으면 다\n냥꾼 무기거든!!",
             wordless=False,
             visual_prompt="Dwarf Hunter raising blunderbuss.",
             tail_target="left",
@@ -312,16 +284,17 @@ def test_composer_places_item_tooltips_with_zero_overlap_across_all_cut_types(
     res = compose_episode(script, raw_paths, tmp_path / f"out_{full_bleed}")
     assert res.audit_report["passed"] is True
     assert res.audit_report["total_overlap_px"] == 0
+    assert res.audit_report["total_tooltip_overlap_px"] == 0
     assert res.audit_report["border_pure_white"] is True
 
     for cut_audit in res.audit_report["cuts"]:
         assert cut_audit["overlap_px"] == 0
         assert cut_audit["has_item_tooltip"] is True
         assert cut_audit["tooltip_overlap_px"] == 0
+        assert cut_audit["art_height_ratio"] > 0.35
         bbox = cut_audit["tooltip_bbox"]
         assert len(bbox) == 4 and bbox[2] > bbox[0] and bbox[3] > bbox[1]
 
-    # Round-trip JSON serialization check
     dumped = json.loads(script.model_dump_json())
     reloaded = EpisodeScript.model_validate(dumped)
     assert reloaded.cuts[0].item_tooltip is not None

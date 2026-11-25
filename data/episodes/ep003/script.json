@@ -1,136 +1,104 @@
 {
   "episode_number": 3,
   "source_post_no": "89934",
-  "source_title": "놈리건 천장 압사 사건",
-  "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=89934&exception_mode=recommend&page=1",
-  "subtitle": "투력·은신 허리띠 구경하다 1넴 천장에 단체 압사",
-  "layout_mode": "classic_2tier",
-  "background_style": "clean_white",
-  "acts": null,
+  "source_title": "놈리건 레전드사건 발생 ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ",
+  "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=89934",
+  "subtitle": "허리띠 구경하다 돌무더기 엔딩",
   "cuts": [
     {
       "cut_index": 1,
       "aspect_ratio": "4:3",
       "layout_slot": "top",
-      "act_number": null,
-      "panel_index": null,
       "characters": [
         "노움 도적",
-        "오크 전사"
+        "타우렌 드루이드"
       ],
       "speaker": "노움 도적",
-      "dialogue": "오 대박! 놈리건 1넴이\n투력에 은신 증가 달린\n가죽 허리띠를 줬어!",
+      "dialogue": "놈리건 1넴 잡았다!\n투력에 은신 허리띠?!",
       "wordless": false,
-      "visual_prompt": "3 to 3.5-head-proportion sleek Korean gag webtoon style on a 100% pure solid white #FFFFFF background. High-angle three-quarter over-the-shoulder view looking past the back of the Orc Warrior tank (right, wielding a one-handed sword and sturdy kite shield, glancing back) toward the Gnome Rogue (left, daggers cleanly sheathed at her waist) holding up a glowing brown leather belt with a gleaming silver buckle in both hands with thrilled sparkling eyes. Minimal pale gray dungeon dust and a tiny defeated mechanical boss scrap silhouette at their feet.",
+      "visual_prompt": "High-angle three-quarter shot of cute 2.5-head chibi SD characters on pure #FFFFFF background. On the left, Gnome Rogue with daggers sheathed at her waist excitedly holds up a glowing leather belt in both hands. Beside her on the right, Tauren Druid leans in with sparkling eyes next to a defeated cute 2.5-head chibi SD mechanical trogg boss lying dizzy on minimal Gnomeregan floor tiles.",
       "tail_target": "left",
       "bubble_side": "left",
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
-      "bubble_center_xy": null,
       "item_tooltip": null
     },
     {
       "cut_index": 2,
       "aspect_ratio": "16:9",
       "layout_slot": "bottom",
-      "act_number": null,
-      "panel_index": null,
       "characters": [
-        "타우렌 드루이드",
-        "노움 도적"
+        "노움 도적",
+        "타우렌 드루이드"
       ],
       "speaker": "타우렌 드루이드",
-      "dialogue": "헐, 옵션 진짜 미쳤다!\n야드랑 도적 둘 다\n눈 돌아갈 만하네…!",
+      "dialogue": "우와, 야드랑 도적 둘 다\n딱 맞는 옵션이잖아?!",
       "wordless": false,
-      "visual_prompt": "3 to 3.5-head-proportion sleek Korean gag webtoon style on a 100% pure solid white #FFFFFF background. Dramatic low-angle close-up shot looking up from the glowing brown leather belt held in the foreground toward the Tauren Druid (left, gnarled wooden staff strapped neatly across her back, leaning in excitedly with huge starry eyes and clasped hands) and the Gnome Rogue (right, side profile, peering greedily at the belt with daggers sheathed). Minimal comic sparkle lines around the belt.",
-      "tail_target": "left",
-      "bubble_side": "left",
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
-      "bubble_center_xy": null,
+      "visual_prompt": "Medium side-profile shot on pure #FFFFFF background of cute 2.5-head chibi SD Gnome Rogue on the left (daggers sheathed) and Tauren Druid on the right huddling closely together over the glowing leather belt, completely absorbed in inspecting it. Small cartoon dust clouds and tiny pebbles drop silently from the top edge onto their heads.",
+      "tail_target": "right",
+      "bubble_side": "right",
       "item_tooltip": null
     },
     {
       "cut_index": 3,
       "aspect_ratio": "4:3",
       "layout_slot": "top",
-      "act_number": null,
-      "panel_index": null,
       "characters": [
         "오크 전사",
-        "노움 도적"
+        "나이트엘프 사제"
       ],
       "speaker": "오크 전사",
-      "dialogue": "야, 템 그만 구경해!\n놈리건 천장 무너진다!\n당장 튀어— 으악!!",
+      "dialogue": "야! 템 구경 그만해!\n천장 무너진다니까?!",
       "wordless": false,
-      "visual_prompt": "3 to 3.5-head-proportion sleek Korean gag webtoon style on a 100% pure solid white #FFFFFF background. Extreme low-angle Dutch-tilt action shot looking sharply upward as massive jagged grey dungeon boulders and dust streaks plummet from above. On the left, the Orc Warrior tank braces in panic with her one-handed axe and raised kite shield overhead, shouting desperately; on the right, the distracted Gnome Rogue (daggers sheathed) finally whips her head upward in mid-gasp while still clutching the leather belt.",
+      "visual_prompt": "Dynamic low-angle shot on pure #FFFFFF background looking up past cute 2.5-head chibi SD Orc Warrior on the left, wielding a one-handed axe and sturdy shield while shouting upward in panic. On the right, cute 2.5-head chibi SD Night Elf Priest holds her golden cross staff and blinks calmly at falling pebbles and crack lines overhead.",
       "tail_target": "left",
       "bubble_side": "left",
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
-      "bubble_center_xy": null,
       "item_tooltip": null
     },
     {
       "cut_index": 4,
       "aspect_ratio": "16:9",
       "layout_slot": "bottom",
-      "act_number": null,
-      "panel_index": null,
       "characters": [
-        "나이트엘프 사제"
+        "노움 도적",
+        "타우렌 드루이드"
       ],
       "speaker": null,
       "dialogue": null,
       "wordless": true,
-      "visual_prompt": "3 to 3.5-head-proportion sleek Korean gag webtoon style on a 100% pure solid white #FFFFFF background. High-angle wide back-view over-the-shoulder slapstick freeze-frame: the Night Elf Priest stands frozen in the left foreground holding her golden Holy Cross staff inside a fading translucent golden protective bubble, staring stiffly in deadpan shock at a huge comical mound of grey boulders on the right where small leather boots, a green leather-booted foot, and cute Tauren hooves stick helplessly out from under the rocks with swirling comic dust puffs.",
-      "tail_target": "left",
+      "visual_prompt": "Dutch-tilt big bust-up close-up filling 80 percent of frame height on pure #FFFFFF background of cute 2.5-head chibi SD Gnome Rogue on the left and Tauren Druid on the right frozen in exaggerated comic terror. Both have huge wide eyes, sweat drops, and gaping mouths looking straight up as a massive dark cartoon boulder shadow engulfs them from above.",
+      "tail_target": "center",
       "bubble_side": null,
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
-      "bubble_center_xy": null,
       "item_tooltip": null
     },
     {
       "cut_index": 5,
       "aspect_ratio": "4:3",
       "layout_slot": "top",
-      "act_number": null,
-      "panel_index": null,
       "characters": [
-        "나이트엘프 사제",
+        "오크 전사",
         "타우렌 드루이드"
       ],
-      "speaker": "나이트엘프 사제",
-      "dialogue": "어… 다들 허리띠 보다가\n진짜 돌무더기에\n깔려 죽으신 거예요…?",
+      "speaker": "오크 전사",
+      "dialogue": "다 같이 돌에 깔려서\n전멸이 이게 말이 되냐…",
       "wordless": false,
-      "visual_prompt": "3 to 3.5-head-proportion sleek Korean gag webtoon style on a 100% pure solid white #FFFFFF background. Side-profile over-the-shoulder close-up: the Night Elf Priest on the left leans forward slightly with dark exhausted deadpan eyes and her golden Holy Cross staff tucked under her arm, staring down at the right where the Tauren Druid's cute little head and ears peek flatly out from beneath a heavy grey boulder with tiny spinning dizzy stars.",
+      "visual_prompt": "Ground-level comedic shot on pure #FFFFFF background centered on a giant pile of cute 2.5-head chibi SD cartoon cave boulders. On the left side of the rubble, Orc Warrior's flattened head and shield poke out with dizzy swirling stars above her, while Tauren Druid's tiny hooves stick helplessly out from under the rocks on the right.",
       "tail_target": "left",
       "bubble_side": "left",
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
-      "bubble_center_xy": null,
       "item_tooltip": null
     },
     {
       "cut_index": 6,
       "aspect_ratio": "16:9",
       "layout_slot": "bottom",
-      "act_number": null,
-      "panel_index": null,
       "characters": [
-        "나이트엘프 사제",
-        "노움 도적"
+        "노움 도적",
+        "나이트엘프 사제"
       ],
       "speaker": "나이트엘프 사제",
-      "dialogue": "무덤 이동 누르지 마세요.\n영혼의 치유사 보러 가지 말고\n일단 한 분씩 부활 넣을게요…",
+      "dialogue": "허리띠 구경 잘했으니\n이제 무덤에서 걸어오시죠.",
       "wordless": false,
-      "visual_prompt": "3 to 3.5-head-proportion sleek Korean gag webtoon style on a 100% pure solid white #FFFFFF background. Dynamic high-angle diagonal aftermath shot: on the left, the weary Night Elf Priest raises her golden Holy Cross staff with both hands to channel warm golden-white resurrection sparkles toward the rubble mound on the right, where a tiny translucent ghostly Gnome Rogue (daggers sheathed, still clinging to a ghostly leather belt) floats dizzyingly above her crushed self, halting mid-reach.",
-      "tail_target": "left",
-      "bubble_side": "left",
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
-      "bubble_center_xy": null,
+      "visual_prompt": "Three-quarter shot on pure #FFFFFF background of translucent pale-blue ghostly cute 2.5-head chibi SD Gnome Rogue slumped dejectedly on the left with a glowing wispy spirit tail (strictly zero halo or ring above head). On the right, translucent pale-blue ghostly cute 2.5-head chibi SD Night Elf Priest floats with a wispy ghost tail leaning casually on her golden cross staff with an icy deadpan half-smile (strictly zero halo, zero ring, zero wings above head).",
+      "tail_target": "right",
+      "bubble_side": "right",
       "item_tooltip": null
     }
   ]

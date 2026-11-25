@@ -1,22 +1,22 @@
 ﻿<#
 .SYNOPSIS
-    Operations helper for the WOW Forever Sloptoon 6-hour mass-production factory.
+    Operations helper for the WOW Forever Sloptoon static archive pipeline.
 
 .DESCRIPTION
     Provides one-command inspection and maintenance helpers for WOW Forever Sloptoon
-    (<REPO_ROOT>):
+    (<REPO_ROOT>, static archive only at https://slopwow.github.io/):
       - Default / -Status : Read-only dashboard showing Antigravity sidecar status,
-                            Windows Task Scheduler status, archive episode count, and
-                            DCInside publish queue state (never mutates JSON/config files).
+                            optional Windows Task Scheduler status, and static archive
+                            summary (never mutates JSON/config files).
       - -Scout            : Scans unproduced DCInside wowforever recommend candidates.
-      - -SyncQueue        : Runs `python -m wow_sloptoon.cli queue` to sync & display queue.
-      - -BuildSite        : Rebuilds `site/` static archive locally (`build-site`).
-      - -Deploy           : Rebuilds & deploys `site/` + `main` to https://slopwow.github.io/.
       - -DryRun           : Runs `python -m wow_sloptoon.cli autopilot --dry-run`.
+      - -BuildSite        : Rebuilds `site/` static archive locally (`build-site`).
+      - -Watermark        : Applies the bottom `slopwow.github.io` banner (`watermark`).
+      - -Deploy           : Rebuilds & deploys `site/` + `main` to https://slopwow.github.io/.
 
 .EXAMPLE
     .\run-factory.ps1
-    Displays full read-only automation, archive, and publish-queue status.
+    Displays full read-only automation and static archive status.
 
 .EXAMPLE
     .\run-factory.ps1 -Scout -Pages 3
@@ -30,10 +30,10 @@
 param(
     [switch]$Status,
     [switch]$Scout,
-    [switch]$SyncQueue,
-    [switch]$BuildSite,
-    [switch]$Deploy,
     [switch]$DryRun,
+    [switch]$BuildSite,
+    [switch]$Watermark,
+    [switch]$Deploy,
     [ValidateRange(1, 10)]
     [int]$Pages = 2,
     [ValidateRange(1, 30)]
@@ -46,17 +46,17 @@ $SidecarId = "wow-sloptoon-factory"
 $SidecarPath = Join-Path $HOME ".gemini\config\sidecars\$SidecarId\sidecar.json"
 $UserConfigPath = Join-Path $HOME ".gemini\config\user_config.json"
 $EpisodesJsonPath = Join-Path $RootDir "data\episodes.json"
-$PublishQueuePath = Join-Path $RootDir "data\publish_queue.json"
+$SiteIndexPath = Join-Path $RootDir "site\index.html"
 $SetupAutoScript = Join-Path $RootDir "setup-automation.ps1"
 $DeployScript = Join-Path $RootDir "deploy-pages.ps1"
 
 function Show-FactoryStatus {
     Write-Host "==================================================================" -ForegroundColor Cyan
-    Write-Host "  WOW 포에버 슬롭툰 (sloptoon) — 자동 양산 팩토리 상태 점검" -ForegroundColor Cyan
+    Write-Host "  WOW Forever Sloptoon (sloptoon) - Static Archive Status" -ForegroundColor Cyan
     Write-Host "==================================================================" -ForegroundColor Cyan
     Write-Host "  Project Root : $RootDir"
     Write-Host "  Live Archive : https://slopwow.github.io/"
-    Write-Host "  Publish UI   : https://slopwow.github.io/publish.html"
+    Write-Host "  Publish Mode : Static Web Archive Only (Route A: 2~2.5-head SD)"
     Write-Host ""
 
     # 1. Antigravity Scheduled Automation Sidecar (read-only check)
@@ -92,7 +92,7 @@ function Show-FactoryStatus {
         Write-Host ("  Scoped Grants  : {0} verified permission grant(s)" -f $grantCount)
         Write-Host ("  Dashboard State: {0}" -f $enabledState)
     } else {
-        Write-Host ("  MISSING sidecar.json at {0}" -f $SidecarPath) -ForegroundColor Red
+        Write-Host ("  Sidecar config not found at {0}" -f $SidecarPath) -ForegroundColor Yellow
     }
     Write-Host ""
 
@@ -105,50 +105,31 @@ function Show-FactoryStatus {
     }
     Write-Host ""
 
-    # 3. Read-only Episode & Publish Queue Summary
-    Write-Host "[3/3] Archive & DCInside Publish Queue Summary (Read-Only)" -ForegroundColor Cyan
+    # 3. Read-only Static Archive Summary
+    Write-Host "[3/3] Static Archive Summary (Read-Only)" -ForegroundColor Cyan
     if (Test-Path $EpisodesJsonPath) {
         $rawEp = Get-Content -Raw -Encoding UTF8 $EpisodesJsonPath | ConvertFrom-Json
         $episodes = if ($rawEp -is [System.Array]) { $rawEp } elseif ($rawEp.episodes) { $rawEp.episodes } else { @($rawEp) }
         Write-Host ("  Produced Episodes (data/episodes.json) : {0}" -f $episodes.Count)
         if ($episodes.Count -gt 0) {
             $latest = $episodes | Sort-Object -Property episode_number | Select-Object -Last 1
-            Write-Host ("  Latest Episode                         : {0} (EP.{1} — {2}, #{3})" -f `
+            Write-Host ("  Latest Episode                         : {0} (EP.{1} - {2}, #{3})" -f `
                 $latest.episode_id, $latest.episode_number, $latest.title, $latest.source_post_no)
         }
     } else {
         Write-Host "  data/episodes.json not found." -ForegroundColor Yellow
     }
 
-    if (Test-Path $PublishQueuePath) {
-        $rawQueue = Get-Content -Raw -Encoding UTF8 $PublishQueuePath | ConvertFrom-Json
-        $qItems = if ($rawQueue -is [System.Array]) {
-            @($rawQueue)
-        } elseif ($null -ne $rawQueue.episodes) {
-            @($rawQueue.episodes)
-        } elseif ($null -ne $rawQueue.items) {
-            @($rawQueue.items)
-        } else {
-            @()
-        }
-        $pubCount = @($qItems | Where-Object { $_.status -eq "published" }).Count
-        $packedCount = @($qItems | Where-Object { $_.status -eq "packed" }).Count
-        $pendCount = @($qItems | Where-Object { $_.status -eq "pending" }).Count
-        Write-Host ("  Publish Queue (data/publish_queue.json): total={0} | published={1} | packed={2} | pending={3}" -f `
-            $qItems.Count, $pubCount, $packedCount, $pendCount)
-        $nextUnpub = $qItems | Where-Object { $_.status -ne "published" } | Sort-Object -Property episode_number | Select-Object -First 1
-        if ($null -ne $nextUnpub) {
-            Write-Host ("  Next Pending DC Upload                 : {0} (EP.{1} — {2})" -f `
-                $nextUnpub.episode_id, $nextUnpub.episode_number, $nextUnpub.title) -ForegroundColor Yellow
-        } else {
-            Write-Host "  Next Pending DC Upload                 : None (all queued episodes published!)" -ForegroundColor Green
-        }
+    if (Test-Path $SiteIndexPath) {
+        $siteDir = Split-Path -Parent $SiteIndexPath
+        $epHtmlCount = @(Get-ChildItem -Path (Join-Path $siteDir "episodes") -Filter "*.html" -ErrorAction SilentlyContinue).Count
+        Write-Host ("  Static Site (site/index.html)          : Present ({0} episode HTML page(s))" -f $epHtmlCount) -ForegroundColor Green
     } else {
-        Write-Host "  data/publish_queue.json not created yet (run .\run-factory.ps1 -SyncQueue)." -ForegroundColor Yellow
+        Write-Host "  Static Site (site/index.html)          : Missing (run .\run-factory.ps1 -BuildSite)" -ForegroundColor Yellow
     }
 }
 
-$hasActionSwitch = $Scout -or $SyncQueue -or $BuildSite -or $Deploy -or $DryRun
+$hasActionSwitch = $Scout -or $DryRun -or $BuildSite -or $Watermark -or $Deploy
 
 Push-Location $RootDir
 try {
@@ -163,18 +144,18 @@ try {
         if ($LASTEXITCODE -ne 0) { throw "scout command failed with exit code $LASTEXITCODE" }
     }
 
-    if ($SyncQueue) {
-        Write-Host ""
-        Write-Host ">>> Syncing and displaying DCInside publish queue..." -ForegroundColor Cyan
-        python -m wow_sloptoon.cli --project-root $RootDir queue
-        if ($LASTEXITCODE -ne 0) { throw "queue command failed with exit code $LASTEXITCODE" }
-    }
-
     if ($DryRun) {
         Write-Host ""
         Write-Host ">>> Running autopilot dry-run preview..." -ForegroundColor Cyan
         python -m wow_sloptoon.cli --project-root $RootDir autopilot --dry-run --pages $Pages
         if ($LASTEXITCODE -ne 0) { throw "autopilot --dry-run failed with exit code $LASTEXITCODE" }
+    }
+
+    if ($Watermark) {
+        Write-Host ""
+        Write-Host ">>> Applying bottom slopwow.github.io watermark banner..." -ForegroundColor Cyan
+        python -m wow_sloptoon.cli --project-root $RootDir watermark
+        if ($LASTEXITCODE -ne 0) { throw "watermark command failed with exit code $LASTEXITCODE" }
     }
 
     if ($BuildSite -and (-not $Deploy)) {

@@ -1,7 +1,7 @@
 """Static web archive builder for wow-forever-sloptoon.
 
-Generates a pure-white (#FFFFFF) Korean gag-sloptoon web archive deployable to
-GitHub Pages, Vercel, Cloudflare Pages, local `http.server`, or direct `file://`.
+Generates a pure-white (#FFFFFF) Korean 2~2.5-head SD gag-sloptoon web archive
+deployable to GitHub Pages (slopwow.github.io), local HTTP servers, or direct `file://`.
 """
 
 from __future__ import annotations
@@ -17,13 +17,15 @@ import numpy as np
 from PIL import Image
 
 from wow_sloptoon.cast import CAST_BIBLE, CAST_BY_NAME, CastMember, resolve_cast_member
+from wow_sloptoon.composer import clean_white_bg, extract_art_bbox
 from wow_sloptoon.config import DEFAULT_ARCHIVE_BASE_URL, DEFAULT_GALLERY_ID
 from wow_sloptoon.models import EpisodeRecord
 
 SITE_NAME = "와우 포에버 슬롭툰"
-SITE_TAGLINE = "디시 WOW 포에버 마이너 갤러리 개념글 상황극 봇"
+SITE_TAGLINE = "디시 WOW 포에버 마이너 갤러리 개념글 상황극 아카이브"
 SITE_DESCRIPTION = (
-    "디시인사이드 WOW 포에버 마이너 갤러리 개념글을 시안 C 귀염뽀짝 9×9 미소녀 4~6컷 상황극 웹툰으로 아카이빙합니다."
+    "디시인사이드 WOW 포에버 마이너 갤러리 개념글을 2~2.5등신 귀염뽀짝 SD 고정 9인 캐스트와 "
+    "동행 펫(아기 곰·공허방랑자)의 상황극 웹툰으로 아카이빙합니다."
 )
 LEGAL_NOTICE = (
     "본 사이트는 World of Warcraft 및 디시인사이드 WOW 포에버 마이너 갤러리 기반의 비공식 팬메이드 패러디 아카이브입니다. "
@@ -33,11 +35,8 @@ LEGAL_NOTICE = (
 DC_GALLERY_RECOMMEND_URL = (
     f"https://gall.dcinside.com/mgallery/board/lists/?id={DEFAULT_GALLERY_ID}&exception_mode=recommend"
 )
-DC_GALLERY_WRITE_URL = (
-    f"https://gall.dcinside.com/mgallery/board/write/?id={DEFAULT_GALLERY_ID}"
-)
 
-# Normalized (x0, y0, x1, y1) portrait crop boxes on the 1600x900 clean Draft C full-body cast sheet.
+# Fallback normalized (x0, y0, x1, y1) crop boxes on `cast_sheet_c.jpg` when a turnaround is absent.
 _CAST_PORTRAIT_BOXES: dict[str, tuple[float, float, float, float]] = {
     "orc_warrior": (0.025, 0.015, 0.200, 0.495),
     "undead_paladin": (0.215, 0.015, 0.395, 0.495),
@@ -121,9 +120,9 @@ def _resolve_media_path(
         return p
 
     candidates = [
-        episodes_json.parent.parent / p,  # project root (e.g. data/episodes/ep001/...)
-        episodes_json.parent / p,  # data/ dir (e.g. episodes/ep001/...)
-        assets_dir.parent / p,  # project root inferred from assets_dir
+        episodes_json.parent.parent / p,
+        episodes_json.parent / p,
+        assets_dir.parent / p,
         assets_dir / p,
         site_dir / p,
         Path.cwd() / p,
@@ -140,28 +139,17 @@ def generate_episode_thumbnail(
     size: tuple[int, int] = (800, 500),
     padding: int = 20,
 ) -> Path:
-    """Create a crisp pure-white (#FFFFFF) card thumbnail cropped from key panel art.
-
-    For standard 2-tier sloptoon pages (e.g. 900x1320), isolates the top cut's clean
-    character illustration band below the speech bubble and above the bottom boxed cut.
-    For full stitched strips or arbitrary images, crops cleanly near the top hero art
-    without clipping heads or showing awkward borders.
-    """
+    """Create a crisp pure-white (#FFFFFF) card thumbnail cropped from key panel art."""
     dest_thumb.parent.mkdir(parents=True, exist_ok=True)
     with Image.open(source_image) as im:
         rgb = im.convert("RGB")
         w, h = rgb.size
         arr = np.array(rgb)
 
-        # Normalize near-white speckles to pure white for clean ink detection.
         ink_mask = (arr < 242).any(axis=2)
         crop_box: tuple[int, int, int, int]
 
         if w >= 600 and 1000 <= h <= 1650:
-            # Standard 2-tier page: speech bubble (+ tail) on top, open character art in middle,
-            # boxed panel at bottom (~64%+ height). Erase any connected component touching the
-            # top edge of the middle slice (which is always the speech bubble / tail) so the
-            # character illustration is 100% pure with zero stray V-tail artifacts.
             y_search_top = int(h * 0.16)
             y_search_bot = int(h * 0.642)
             slice_arr = arr[y_search_top:y_search_bot, :].copy()
@@ -192,12 +180,10 @@ def generate_episode_thumbnail(
             else:
                 region = Image.fromarray(slice_arr, mode="RGB")
         elif h > w * 2.2:
-            # Full stitched vertical strip: skip header (~244px) and first speech bubble (~290px).
             start_y = min(int(h * 0.14), 560)
             band_h = min(int(w * 0.62), h - start_y)
             region = rgb.crop((0, start_y, w, min(h, start_y + max(band_h, 100))))
         else:
-            # General / square / single-panel image: trim outer pure white border cleanly.
             ys = np.where(ink_mask.any(axis=1))[0]
             xs = np.where(ink_mask.any(axis=0))[0]
             if len(ys) > 10 and len(xs) > 10:
@@ -211,7 +197,6 @@ def generate_episode_thumbnail(
                 crop_box = (0, 0, w, h)
             region = rgb.crop(crop_box)
 
-        # Clean near-white background to #FFFFFF inside the thumbnail.
         reg_arr = np.array(region)
         near_white = (reg_arr[:, :, 0] >= 248) & (reg_arr[:, :, 1] >= 248) & (reg_arr[:, :, 2] >= 248)
         reg_arr[near_white] = 255
@@ -228,7 +213,6 @@ def generate_episode_thumbnail(
 
         canvas = Image.new("RGB", (target_w, target_h), (255, 255, 255))
         paste_x = (target_w - new_w) // 2
-        # Anchor characters gently toward bottom edge for open-bottom comic look.
         paste_y = target_h - new_h - max(4, padding // 2) if (target_h - new_h) < padding * 3 else (target_h - new_h) // 2
         paste_y = max(padding // 2, min(paste_y, target_h - new_h))
         canvas.paste(resized, (paste_x, paste_y))
@@ -237,88 +221,163 @@ def generate_episode_thumbnail(
     return dest_thumb
 
 
-def extract_cast_portraits(cast_sheet_clean: Path, dest_cast_dir: Path, size: int = 360) -> dict[str, str]:
-    """Crop 9 individual square Draft C character portraits from `cast_sheet_c.jpg`."""
-    if not cast_sheet_clean.exists():
-        return {}
+def _erase_disconnected_edge_fragments(arr: np.ndarray, *, edges: tuple[int, ...]) -> np.ndarray:
+    """Erase disconnected non-white fragments touching specified vertical borders (neighbor bleed)."""
+    ink = (arr < 245).any(axis=2)
+    ch, cw = ink.shape
+    visited = np.zeros_like(ink, dtype=bool)
+    for edge_x in edges:
+        if edge_x < 0 or edge_x >= cw:
+            continue
+        for seed_y in range(ch):
+            if ink[seed_y, edge_x] and not visited[seed_y, edge_x]:
+                stack = [(seed_y, edge_x)]
+                visited[seed_y, edge_x] = True
+                comp: list[tuple[int, int]] = []
+                min_cx = max_cx = edge_x
+                while stack:
+                    cy, cx = stack.pop()
+                    comp.append((cy, cx))
+                    if cx < min_cx:
+                        min_cx = cx
+                    if cx > max_cx:
+                        max_cx = cx
+                    for ny, nx in ((cy - 1, cx), (cy + 1, cx), (cy, cx - 1), (cy, cx + 1)):
+                        if 0 <= ny < ch and 0 <= nx < cw and ink[ny, nx] and not visited[ny, nx]:
+                            visited[ny, nx] = True
+                            stack.append((ny, nx))
+                touches_center = not (max_cx < int(cw * 0.24) or min_cx > int(cw * 0.76))
+                if not touches_center:
+                    for cy, cx in comp:
+                        arr[cy, cx] = 255
+    return arr
 
+
+def _fit_square_portrait(cropped: Image.Image, size: int = 360) -> Image.Image:
+    """Clean, tight-crop via `extract_art_bbox`, and center with balanced pure-white padding."""
+    cleaned = clean_white_bg(cropped)
+    bb = extract_art_bbox(cleaned, threshold=248)
+    if bb is not None:
+        ax0, ay0, ax1, ay1 = bb
+        trimmed = cleaned.crop((ax0, ay0, ax1 + 1, ay1 + 1))
+    else:
+        trimmed = cleaned
+
+    pad = max(14, int(round(size * 0.055)))
+    inner = max(16, size - pad * 2)
+    tw, th = trimmed.size
+    scale = min(inner / max(tw, 1), inner / max(th, 1))
+    nw = max(1, int(round(tw * scale)))
+    nh = max(1, int(round(th * scale)))
+    resized = clean_white_bg(trimmed.resize((nw, nh), Image.Resampling.LANCZOS))
+
+    canvas = Image.new("RGB", (size, size), (255, 255, 255))
+    px = (size - nw) // 2
+    py = max(pad // 2, min(size - nh - 6, (size - nh) // 2 + 2))
+    canvas.paste(resized, (px, py))
+    return canvas
+
+
+def _extract_front_portrait_from_turnaround(turnaround_path: Path, size: int = 360) -> Image.Image | None:
+    """Crop the front-facing 2.5-head SD view (left 1/3) from a 3-view turnaround sheet."""
+    with Image.open(turnaround_path) as im:
+        cleaned = clean_white_bg(im)
+        w, h = cleaned.size
+        if w < 180 or h < 90:
+            return None
+
+        # Detect the pure-white vertical valley separating Front (left 1/3) from Side (middle 1/3).
+        # Search generously up to 45% width and accept even 1px pure-white valleys (e.g. wide daggers).
+        arr = np.asarray(cleaned)
+        col_ink_counts = (arr < 245).any(axis=2).sum(axis=0)
+        col_ink = col_ink_counts > 0
+        lo_x = max(1, int(w * 0.28))
+        hi_x = min(w - 1, int(w * 0.45))
+
+        best_gap_start = -1
+        best_gap_len = 0
+        cur_start = -1
+        for x in range(lo_x, hi_x):
+            if not col_ink[x]:
+                if cur_start < 0:
+                    cur_start = x
+            else:
+                if cur_start >= 0:
+                    gap_len = x - cur_start
+                    if gap_len > best_gap_len:
+                        best_gap_len = gap_len
+                        best_gap_start = cur_start
+                    cur_start = -1
+        if cur_start >= 0:
+            gap_len = hi_x - cur_start
+            if gap_len > best_gap_len:
+                best_gap_len = gap_len
+                best_gap_start = cur_start
+
+        if best_gap_len >= 1:
+            # Ensure at least 1 pure-white column stays inside the right edge of `front_crop`
+            split_x = min(w, best_gap_start + max(1, best_gap_len // 2))
+        else:
+            # Fallback to the sparsest vertical column between 30% and 44% width
+            min_lo = max(1, int(w * 0.30))
+            min_hi = min(w - 1, int(w * 0.44))
+            split_x = min_lo + int(np.argmin(col_ink_counts[min_lo:min_hi]))
+
+        front_crop = cleaned.crop((0, 0, max(20, split_x), h))
+        front_arr = np.array(front_crop)
+        front_arr = _erase_disconnected_edge_fragments(front_arr, edges=(front_arr.shape[1] - 1,))
+        return _fit_square_portrait(Image.fromarray(front_arr, mode="RGB"), size=size)
+
+
+def extract_cast_portraits(
+    cast_sheet_clean: Path | None,
+    dest_cast_dir: Path,
+    size: int = 360,
+    *,
+    turnarounds_dir: Path | None = None,
+) -> dict[str, str]:
+    """Generate 9 individual 1:1 square SD portraits from turnarounds (with `cast_sheet_c.jpg` fallback).
+
+    Priority 1: Left 1/3 front view of `assets/turnarounds/<cast_id>.jpg`, tight-cropped via
+    `extract_art_bbox` with balanced pure-white margin.
+    Priority 2: Normalized crop fallback from `cast_sheet_c.jpg` when a turnaround file is absent.
+    """
     dest_cast_dir.mkdir(parents=True, exist_ok=True)
     generated: dict[str, str] = {}
 
-    with Image.open(cast_sheet_clean) as im:
-        rgb = im.convert("RGB")
-        w, h = rgb.size
-        if w < 200 or h < 120:
-            return {}
+    sheet_rgb: Image.Image | None = None
+    if cast_sheet_clean is not None and cast_sheet_clean.exists():
+        with Image.open(cast_sheet_clean) as sheet_im:
+            if sheet_im.width >= 200 and sheet_im.height >= 120:
+                sheet_rgb = sheet_im.convert("RGB")
 
-        for member in CAST_BIBLE:
+    for member in CAST_BIBLE:
+        portrait_im: Image.Image | None = None
+
+        # Priority 1: Individual 2.5-head SD turnaround front view (left 1/3)
+        if turnarounds_dir is not None:
+            t_path = turnarounds_dir / member.turnaround_filename
+            if t_path.exists() and t_path.is_file():
+                portrait_im = _extract_front_portrait_from_turnaround(t_path, size=size)
+
+        # Priority 2: Fallback crop from master cast sheet when turnaround is unavailable
+        if portrait_im is None and sheet_rgb is not None:
             box_ratio = _CAST_PORTRAIT_BOXES.get(member.id)
-            if not box_ratio:
-                continue
-            x0 = max(0, int(round(w * box_ratio[0])))
-            y0 = max(0, int(round(h * box_ratio[1])))
-            x1 = min(w, int(round(w * box_ratio[2])))
-            y1 = min(h, int(round(h * box_ratio[3])))
-            if x1 <= x0 + 10 or y1 <= y0 + 10:
-                continue
+            if box_ratio is not None:
+                w, h = sheet_rgb.size
+                x0 = max(0, int(round(w * box_ratio[0])))
+                y0 = max(0, int(round(h * box_ratio[1])))
+                x1 = min(w, int(round(w * box_ratio[2])))
+                y1 = min(h, int(round(h * box_ratio[3])))
+                if x1 > x0 + 10 and y1 > y0 + 10:
+                    crop = sheet_rgb.crop((x0, y0, x1, y1))
+                    arr = np.array(clean_white_bg(crop))
+                    arr = _erase_disconnected_edge_fragments(arr, edges=(0, arr.shape[1] - 1))
+                    portrait_im = _fit_square_portrait(Image.fromarray(arr, mode="RGB"), size=size)
 
-            crop = rgb.crop((x0, y0, x1, y1))
-            arr = np.array(crop)
-            near_white = (arr[:, :, 0] >= 246) & (arr[:, :, 1] >= 246) & (arr[:, :, 2] >= 246)
-            arr[near_white] = 255
-
-            # Remove disconnected neighbor fragments touching the far left/right crop edges
-            # (e.g., adjacent weapon blade tips intruding into the paladin portrait margin).
-            ink = (arr < 245).any(axis=2)
-            ch, cw = ink.shape
-            visited = np.zeros_like(ink, dtype=bool)
-            for edge_x in (0, cw - 1):
-                for seed_y in range(ch):
-                    if ink[seed_y, edge_x] and not visited[seed_y, edge_x]:
-                        stack = [(seed_y, edge_x)]
-                        visited[seed_y, edge_x] = True
-                        comp: list[tuple[int, int]] = []
-                        min_cx = max_cx = edge_x
-                        while stack:
-                            cy, cx = stack.pop()
-                            comp.append((cy, cx))
-                            if cx < min_cx:
-                                min_cx = cx
-                            if cx > max_cx:
-                                max_cx = cx
-                            for ny, nx in ((cy - 1, cx), (cy + 1, cx), (cy, cx - 1), (cy, cx + 1)):
-                                if 0 <= ny < ch and 0 <= nx < cw and ink[ny, nx] and not visited[ny, nx]:
-                                    visited[ny, nx] = True
-                                    stack.append((ny, nx))
-                        # If a component touches left/right edge and never reaches the center band,
-                        # it belongs to a neighboring character -> erase to pure white.
-                        touches_center = not (max_cx < int(cw * 0.24) or min_cx > int(cw * 0.76))
-                        if not touches_center:
-                            for cy, cx in comp:
-                                arr[cy, cx] = 255
-
-            # Tight trim inside portrait cell
-            ink = (arr < 245).any(axis=2)
-            ys = np.where(ink.any(axis=1))[0]
-            xs = np.where(ink.any(axis=0))[0]
-            if len(ys) > 8 and len(xs) > 8:
-                arr = arr[int(ys[0]):int(ys[-1]) + 1, int(xs[0]):int(xs[-1]) + 1]
-            trimmed = Image.fromarray(arr, mode="RGB")
-
-            pad = 14
-            inner = size - pad * 2
-            tw, th = trimmed.size
-            scale = min(inner / max(tw, 1), inner / max(th, 1))
-            nw = max(1, int(round(tw * scale)))
-            nh = max(1, int(round(th * scale)))
-            resized = trimmed.resize((nw, nh), Image.Resampling.LANCZOS)
-
-            canvas = Image.new("RGB", (size, size), (255, 255, 255))
-            px = (size - nw) // 2
-            py = size - nh - 4
-            canvas.paste(resized, (px, max(pad // 2, py)))
+        if portrait_im is not None:
             out_path = dest_cast_dir / f"{member.id}.jpg"
-            canvas.save(out_path, format="JPEG", quality=92, optimize=True)
+            portrait_im.save(out_path, format="JPEG", quality=93, optimize=True)
             generated[member.id] = f"assets/cast/{member.id}.jpg"
 
     return generated
@@ -326,31 +385,6 @@ def extract_cast_portraits(cast_sheet_clean: Path, dest_cast_dir: Path, size: in
 
 def _normalize_base_url(archive_base_url: str | None) -> str:
     return (archive_base_url or "").strip().rstrip("/")
-
-
-def _build_dc_post_title(ep: EpisodeRecord) -> str:
-    return f"[와포슬롭툰]{ep.title.strip()}"
-
-
-def _build_dc_post_body(
-    ep: EpisodeRecord,
-    archive_base_url: str = DEFAULT_ARCHIVE_BASE_URL,
-) -> str:
-    clean_base = _normalize_base_url(archive_base_url) or DEFAULT_ARCHIVE_BASE_URL
-    canonical_ep_url = f"{clean_base}/episodes/{ep.episode_id}.html"
-    lines = [
-        f"와우 포에버 슬롭툰 EP.{ep.episode_number} — {ep.title}",
-        ep.subtitle,
-        "",
-        f"원본 포에버갤 개념글 (#{ep.source_post_no}):",
-        ep.source_url,
-        "",
-        f"전편 정주행 아카이브: {canonical_ep_url}",
-        f"전체 정주행: {clean_base}",
-        "",
-        "※ 시안 C 귀염뽀짝 9×9 미소녀 상황극 봇 (순수 팬메이드 패러디)",
-    ]
-    return "\n".join(lines)
 
 
 def _format_date_short(created_at: str) -> str:
@@ -465,7 +499,7 @@ def _render_sitemap_xml(site_episodes: list[dict[str, Any]], base_url: str) -> s
     latest_date = site_episodes[-1]["date_short"] if site_episodes else ""
 
     def _entry(loc: str, lastmod: str = "", changefreq: str = "weekly", priority: str = "0.8") -> str:
-        parts = [f"  <url>", f"    <loc>{html.escape(loc)}</loc>"]
+        parts = ["  <url>", f"    <loc>{html.escape(loc)}</loc>"]
         if lastmod and len(lastmod) == 10 and lastmod[4] == "-" and lastmod[7] == "-":
             parts.append(f"    <lastmod>{html.escape(lastmod)}</lastmod>")
         parts.append(f"    <changefreq>{changefreq}</changefreq>")
@@ -514,7 +548,7 @@ def _render_nav(active: str, root_prefix: str = "") -> str:
         </a>
         <nav class="site-nav" aria-label="주요 메뉴">
           <a class="{_cls('home')}" href="{root_prefix}index.html">에피소드</a>
-          <a class="{_cls('cast')}" href="{root_prefix}cast.html">9×9 캐스트 도감</a>
+          <a class="{_cls('cast')}" href="{root_prefix}cast.html">SD 캐스트 도감</a>
           <button type="button" class="nav-pill-random js-random-ep" title="무작위 다른 에피소드로 이동">🎲 랜덤 화 보기</button>
           <a class="nav-link nav-ext" href="{DC_GALLERY_RECOMMEND_URL}" target="_blank" rel="noopener noreferrer">포에버갤 개념글 ↗</a>
         </nav>
@@ -530,13 +564,13 @@ def _render_footer(total_episodes: int, root_prefix: str = "") -> str:
         <div class="footer-brand">
           <span class="pill-badge pill-sm"><span class="dot-sky"></span>{SITE_TAGLINE}</span>
           <p class="footer-desc">
-            포에버갤 개념글의 명장면을 시안 C 귀염뽀짝 9종족×9직업 미소녀 4~6컷 순수 상황극 웹툰으로 아카이빙합니다.
+            포에버갤 개념글의 명장면을 2~2.5등신 귀염뽀짝 SD 고정 9인 캐스트와 동행 펫(아기 곰·공허방랑자)의 순백 상황극 웹툰으로 아카이빙합니다.
             현재 총 <strong>{total_episodes}화</strong>가 아카이브에 보관되어 있습니다.
           </p>
         </div>
         <div class="footer-links">
           <a href="{root_prefix}index.html">전체 에피소드</a>
-          <a href="{root_prefix}cast.html">시안 C 캐스트 도감</a>
+          <a href="{root_prefix}cast.html">SD 캐스트 도감</a>
           <a href="{DC_GALLERY_RECOMMEND_URL}" target="_blank" rel="noopener noreferrer">디시 WOW 포에버 갤러리 ↗</a>
         </div>
       </div>
@@ -661,7 +695,7 @@ def _render_index_html(
     else:
         hero_html = """
         <section class="empty-hero">
-          <p>아직 등록된 에피소드가 없습니다. <code>sloptoon run-once</code>로 첫 화를 생성해 보세요!</p>
+          <p>아직 등록된 에피소드가 없습니다. <code>sloptoon generate --auto</code>로 첫 화를 생성해 보세요!</p>
         </section>
         """
 
@@ -706,11 +740,11 @@ def _render_index_html(
         <span class="dot-sky"></span>{SITE_TAGLINE}
       </div>
       <h1 class="masthead-title">{SITE_NAME}</h1>
-      <p class="masthead-sub">포에버갤 레전드 개념글을 시안 C 9종족×9직업 귀염뽀짝 미소녀 100% 라이브 상황극으로 연재하는 순백 웹 아카이브</p>
+      <p class="masthead-sub">포에버갤 레전드 개념글을 2~2.5등신 귀염뽀짝 SD 고정 9인 캐스트와 아기 곰·공허방랑자 파트너의 100% 라이브 상황극으로 연재하는 순백 웹 아카이브</p>
       <div class="masthead-stats">
         <span class="stat-pill">총 <strong>{total_episodes}</strong>화 아카이브</span>
-        <span class="stat-pill">시안 C 9×9 캐스트</span>
-        <span class="stat-pill">순백 무경계 4~6컷</span>
+        <span class="stat-pill">2~2.5등신 귀염뽀짝 SD</span>
+        <span class="stat-pill">고정 9인 + 펫 2종</span>
       </div>
     </section>
 
@@ -779,7 +813,6 @@ def _render_episode_reader_html(
     """Render `episode.html` (dynamic `?id=...`) or a static `episodes/<id>.html` page."""
     ep = default_episode
     total_episodes = len(site_episodes)
-    # Keep pinned episode pages lean at 30–80+ episodes by omitting other episodes' page_images
     if pinned_episode_id:
         embedded_episodes = [
             item
@@ -825,7 +858,6 @@ def _render_episode_reader_html(
         root_prefix=root_prefix,
     )
 
-    # Pre-render initial episode SSR content so no-JS crawlers, tests, and instant first paint work!
     if ep:
         idx = next((i for i, item in enumerate(site_episodes) if item["episode_id"] == ep["episode_id"]), 0)
         prev_ep = site_episodes[idx - 1] if idx > 0 else None
@@ -994,7 +1026,6 @@ def _render_episode_reader_html(
 def _render_cast_html(
     cast_payload: list[dict[str, Any]],
     site_episodes: list[dict[str, Any]],
-    has_labeled_sheet: bool,
     has_clean_sheet: bool,
     *,
     base_url: str = DEFAULT_ARCHIVE_BASE_URL,
@@ -1002,28 +1033,18 @@ def _render_cast_html(
     js_suffix: str = "",
 ) -> str:
     total_episodes = len(site_episodes)
-    page_title = f"9×9 캐스트 도감 (시안 C) — {SITE_NAME}"
-    page_desc = "와우 포에버 슬롭툰 공식 확정 시안 C 9종족×9직업 귀염뽀짝 미소녀 캐릭터 도감"
+    page_title = f"SD 9인 캐스트 도감 — {SITE_NAME}"
+    page_desc = (
+        "와우 포에버 슬롭툰 공식 2~2.5등신 귀염뽀짝 SD 고정 9인 캐스트 및 "
+        "고정 동행 펫(아기 곰·공허방랑자) 도감"
+    )
 
     ep_by_cast: dict[str, list[dict[str, Any]]] = {c["name"]: [] for c in cast_payload}
     for ep in reversed(site_episodes):
         for name in ep["cast_used"]:
             ep_by_cast.setdefault(name, []).append(ep)
 
-    sheet_buttons = ""
-    if has_labeled_sheet and has_clean_sheet:
-        sheet_buttons = """
-        <div class="reader-mode-toggle" role="group" aria-label="캐스트 시트 버전">
-          <button type="button" class="mode-btn is-active" data-sheet="assets/cast/cast_sheet_c_labeled.png">라벨 공식 시트</button>
-          <button type="button" class="mode-btn" data-sheet="assets/cast/cast_sheet_c.jpg">클린 원화 시트</button>
-        </div>
-        """
-
-    sheet_src = (
-        "assets/cast/cast_sheet_c_labeled.png"
-        if has_labeled_sheet
-        else ("assets/cast/cast_sheet_c.jpg" if has_clean_sheet else "")
-    )
+    sheet_src = "assets/cast/cast_sheet_c.jpg" if has_clean_sheet else ""
     og_image_rel = (sheet_src or (site_episodes[-1]["thumb_image"] if site_episodes else "")).split("?", 1)[0]
     social_meta = _render_social_meta(
         title=page_title,
@@ -1038,16 +1059,15 @@ def _render_cast_html(
 
     sheet_section = (
         f"""
-        <section class="cast-sheet-section" aria-label="공식 시안 C 전체 시트">
+        <section class="cast-sheet-section" aria-label="공식 2.5등신 SD 전체 캐스트 시트">
           <div class="section-head">
             <div>
-              <h2 class="section-title">공식 시안 C 전체 캐릭터 시트</h2>
+              <h2 class="section-title">공식 2.5등신 SD 전체 캐스트 시트</h2>
               <p class="section-meta">이미지를 클릭하면 원본 고해상도로 확대해서 감상할 수 있습니다.</p>
             </div>
-            {sheet_buttons}
           </div>
           <div class="cast-sheet-frame">
-            <img id="castSheetImg" src="{html.escape(sheet_src)}" alt="와우 포에버 슬롭툰 공식 시안 C 9종족 9직업 전원 미소녀 캐릭터 시트" class="cast-sheet-img">
+            <img id="castSheetImg" src="{html.escape(sheet_src)}" alt="와우 포에버 슬롭툰 공식 2.5등신 귀염뽀짝 SD 고정 9인 캐스트 시트" class="cast-sheet-img">
           </div>
         </section>
         """
@@ -1094,7 +1114,7 @@ def _render_cast_html(
                 f'aria-label="{html.escape(c["name"])} 정면·측면·후면 3면 턴어라운드 확대 보기">'
                 f'<img src="{t_src}" alt="{html.escape(c["name"])} 정면 측면 후면 3면 턴어라운드 도면" '
                 f'class="cast-turnaround-img" loading="lazy" decoding="async">'
-                f'<span class="cast-turnaround-caption">3면 턴어라운드 도면 (클릭 확대)</span>'
+                f'<span class="cast-turnaround-caption">2.5등신 SD 3면 턴어라운드 (클릭 확대)</span>'
                 f'</button>'
                 f'</div>'
             )
@@ -1171,10 +1191,10 @@ def _render_cast_html(
   <main class="container main-content">
     <section class="masthead">
       <div class="pill-badge">
-        <span class="dot-sky"></span>공식 확정 시안 C · 초귀염 팝·개그 웹툰 특화형
+        <span class="dot-sky"></span>2~2.5등신 귀염뽀짝 SD 정본 · 고정 9인 + 동행 펫 2종
       </div>
-      <h1 class="masthead-title">전원 미소녀 9×9 캐스트 도감</h1>
-      <p class="masthead-sub">오크·언데드·노움·드워프·트롤·타우렌·나이트엘프·인간·스카이본 — 포에버갤 상황극을 책임지는 9종족×9직업 고정 멤버를 소개합니다.</p>
+      <h1 class="masthead-title">귀염뽀짝 SD 9인 캐스트 도감</h1>
+      <p class="masthead-sub">오크·언데드·노움·드워프·트롤·타우렌·나이트엘프·인간·스카이본 — 포에버갤 상황극을 책임지는 2~2.5등신 SD 고정 9인과 동행 펫(아기 곰·공허방랑자)을 소개합니다.</p>
     </section>
 
     <hr class="ink-divider">
@@ -1203,143 +1223,6 @@ def _render_cast_html(
 
   <script>window.__SLOPTOON_DATA__ = {embedded_data};</script>
   <script src="assets/app.js{js_suffix}"></script>
-</body>
-</html>
-"""
-
-
-def _render_publish_html(
-    site_episodes: list[dict[str, Any]],
-    *,
-    css_suffix: str = "",
-    js_suffix: str = "",
-) -> str:
-    """Render `publish.html` — Creator DCInside manual upload queue manager."""
-    total_episodes = len(site_episodes)
-    newest_first = list(reversed(site_episodes))
-    page_title = f"업로드 큐 관리 — {SITE_NAME}"
-
-    if newest_first:
-        queue_items_parts: list[str] = []
-        for ep in newest_first:
-            ep_id = html.escape(ep["episode_id"])
-            ep_href = f"episodes/{ep_id}.html"
-            queue_items_parts.append(
-                f"""
-                <article class="publish-card" data-episode-id="{ep_id}" data-status="pending">
-                  <div class="publish-card-main">
-                    <a class="publish-thumb-link" href="{ep_href}">
-                      <img src="{html.escape(ep['thumb_image'])}" alt="EP.{ep['episode_number']} {html.escape(ep['title'])}" class="publish-thumb" loading="lazy">
-                    </a>
-                    <div class="publish-info">
-                      <div class="publish-top-row">
-                        <div class="meta-row">
-                          <span class="ep-pill ep-pill-sm">EP.{ep['episode_number']}</span>
-                          <span class="post-no">#{html.escape(ep['source_post_no'])}</span>
-                          <span class="meta-date">{html.escape(ep['date_short'])}</span>
-                          <span class="stat-pill">{ep['cut_count']}컷</span>
-                        </div>
-                        <button type="button" class="publish-status-toggle" data-ep="{ep_id}" aria-pressed="false">
-                          <span class="status-dot" aria-hidden="true"></span>
-                          <span class="status-label">대기 중</span>
-                        </button>
-                      </div>
-                      <h2 class="publish-ep-title">
-                        <a href="{ep_href}">{html.escape(ep['title'])}</a>
-                      </h2>
-                      <p class="publish-ep-sub">{html.escape(ep['subtitle'])}</p>
-                      <div class="publish-meta-links">
-                        <a href="{ep_href}">아카이브 페이지 열기 →</a>
-                        <a href="{html.escape(ep['source_url'])}" target="_blank" rel="noopener noreferrer">원본 개념글 (#{html.escape(ep['source_post_no'])}) ↗</a>
-                      </div>
-                      <div class="publish-actions">
-                        <button type="button" class="btn btn-outline btn-sm js-pub-copy-title" data-ep="{ep_id}">제목 복사</button>
-                        <button type="button" class="btn btn-outline btn-sm js-pub-copy-body" data-ep="{ep_id}">본문·주소 복사</button>
-                        <a class="btn btn-outline btn-sm" href="{html.escape(ep['full_image'])}" download="wow_sloptoon_{ep_id}_full.jpg">워터마크 통합본 JPG 저장</a>
-                        <a class="btn btn-primary btn-sm" href="{DC_GALLERY_WRITE_URL}" target="_blank" rel="noopener noreferrer">포에버갤 글쓰기 열기 ↗</a>
-                      </div>
-                    </div>
-                  </div>
-                  <details class="publish-preview-details">
-                    <summary>복사될 제목 · 본문 미리보기</summary>
-                    <div class="dc-preview-grid">
-                      <div class="dc-preview-box">
-                        <div class="dc-preview-label">글 제목</div>
-                        <pre class="dc-preview-text">{html.escape(ep['dc_title'])}</pre>
-                      </div>
-                      <div class="dc-preview-box">
-                        <div class="dc-preview-label">본문 &amp; 정주행 아카이브 주소</div>
-                        <pre class="dc-preview-text">{html.escape(ep['dc_body'])}</pre>
-                      </div>
-                    </div>
-                  </details>
-                </article>
-                """
-            )
-        queue_html = f'<div class="publish-list" id="publishList">{"".join(queue_items_parts)}</div>'
-    else:
-        queue_html = """
-        <section class="empty-hero">
-          <p>아직 생성된 에피소드가 없습니다. 새 에피소드를 빌드하면 업로드 큐에 자동 표시됩니다.</p>
-        </section>
-        """
-
-    embedded_data = _safe_json_for_script({
-        "episodes": site_episodes,
-        "rootPrefix": "",
-        "dcWriteUrl": DC_GALLERY_WRITE_URL,
-    })
-
-    return f"""<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noindex, nofollow">
-  <title>{html.escape(page_title)}</title>
-  <meta name="description" content="와우 포에버 슬롭툰 디시 WOW 포에버 마이너 갤러리 수동 업로드 큐 관리 페이지">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
-  <link rel="stylesheet" href="assets/style.css{css_suffix}">
-</head>
-<body data-page="publish">
-  {_render_nav('publish')}
-
-  <main class="container main-content">
-    <section class="masthead">
-      <div class="pill-badge">
-        <span class="dot-sky"></span>CREATOR UPLOAD QUEUE · 수동 업로드 도우미
-      </div>
-      <h1 class="masthead-title">포에버갤 업로드 큐 관리</h1>
-      <p class="masthead-sub">최신 에피소드부터 제목·본문 복사, 워터마크 통합본 JPG 저장, 공식 포에버갤 글쓰기 열기 및 등록 상태를 브라우저에서 간편하게 관리합니다.</p>
-      <p class="publish-policy-note">
-        ※ 디시인사이드 정책 준수: 로그인, 이미지 첨부, 캡차(자동등록방지) 확인 및 최종 등록은 공식 포에버갤 글쓰기 페이지에서 직접 진행해 주세요. 등록 완료 상태는 현재 브라우저(localStorage)에 안전하게 저장됩니다.
-      </p>
-    </section>
-
-    <hr class="ink-divider">
-
-    <section class="publish-controls" aria-label="업로드 상태 필터">
-      <div class="publish-filter-bar" id="publishFilterBar" role="group" aria-label="상태별 필터">
-        <button type="button" class="filter-chip is-active" data-filter="all">전체 <span class="filter-count" id="pubCountAll">{total_episodes}</span></button>
-        <button type="button" class="filter-chip" data-filter="pending">대기 중 <span class="filter-count" id="pubCountPending">{total_episodes}</span></button>
-        <button type="button" class="filter-chip" data-filter="done">완료 <span class="filter-count" id="pubCountDone">0</span></button>
-      </div>
-      <p class="section-meta" id="publishSummary">전체 {total_episodes}화 중 0화 포에버갤 등록 완료</p>
-    </section>
-
-    {queue_html}
-
-    <div class="empty-filter" id="publishEmptyFilter" hidden>
-      <p class="empty-filter-title">선택한 상태에 해당하는 에피소드가 없습니다.</p>
-      <p class="empty-filter-sub">다른 필터 탭을 선택해 전체 에피소드를 확인해 보세요.</p>
-      <button type="button" id="publishResetFilterBtn" class="btn btn-outline">전체 보기</button>
-    </div>
-  </main>
-
-  {_render_footer(total_episodes)}
-
-  <script>window.__SLOPTOON_DATA__ = {embedded_data};</script>
-  <script src="assets/app.js"></script>
 </body>
 </html>
 """
@@ -2165,9 +2048,7 @@ button, input, select { font-family: inherit; }
 }
 
 /* Recommended "다른 레전드 념글 만화" Grid */
-.recommend-section {
-  margin-bottom: 42px;
-}
+.recommend-section { margin-bottom: 42px; }
 .recommend-section[hidden] { display: none; }
 .recommend-grid {
   display: grid;
@@ -2404,12 +2285,6 @@ button, input, select { font-family: inherit; }
   color: var(--ink-muted);
 }
 .footer-links a:hover { color: var(--ink); }
-.footer-link-discreet {
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--ink-soft);
-}
-.footer-link-discreet:hover { color: var(--sky-dark); }
 .footer-legal {
   margin-top: 22px;
   padding-top: 16px;
@@ -2621,7 +2496,6 @@ _APP_JS = """/* 와우 포에버 슬롭툰 — 정적 웹 아카이브 인터랙
     var renderedOrder = "desc";
     var visibleLimit = HOME_PAGE_SIZE;
 
-    // Sync initial ?cast= query parameter if linked from cast.html
     var params = new URLSearchParams(window.location.search);
     var initCast = params.get("cast");
     if (initCast && filterBar) {
@@ -2766,7 +2640,7 @@ _APP_JS = """/* 와우 포에버 슬롭툰 — 정적 웹 아카이브 인터랙
     applyFilters();
   }
 
-  /* ---------------- EPISODE READER, SHARE, BINGE & DC HELPER ---------------- */
+  /* ---------------- EPISODE READER, SHARE & BINGE NAVIGATION ---------------- */
   function selectRecommended(episodes, currentIndex, limit) {
     var currentId = episodes[currentIndex].episode_id;
     var adjacent = {};
@@ -2942,7 +2816,6 @@ _APP_JS = """/* 와우 포에버 슬롭툰 — 정적 웹 아카이브 인터랙
     var canonicalShareUrl =
       ep.canonical_url || ((data.archiveBaseUrl || "https://slopwow.github.io").replace(/\\/+$/, "") + "/episodes/" + ep.episode_id + ".html");
 
-    // Update DOM dynamically when ?id= differs from default SSR episode
     document.title = "EP." + ep.episode_number + " " + ep.title + " — 와우 포에버 슬롭툰";
     var badgeEl = document.getElementById("epBadge");
     if (badgeEl) badgeEl.textContent = "EP." + ep.episode_number + " · #" + ep.source_post_no;
@@ -3002,19 +2875,6 @@ _APP_JS = """/* 와우 포에버 슬롭툰 — 정적 웹 아카이브 인터랙
       });
     }
 
-    var titlePreview = document.getElementById("dcTitlePreview");
-    if (titlePreview) titlePreview.textContent = ep.dc_title;
-    var bodyPreview = document.getElementById("dcBodyPreview");
-    if (bodyPreview) bodyPreview.textContent = ep.dc_body;
-
-    var dlBtn = document.getElementById("dcDownloadBtn");
-    var dlFileName = "wow_sloptoon_" + ep.episode_id + "_full.jpg";
-    if (dlBtn) {
-      dlBtn.href = fullSrc;
-      dlBtn.setAttribute("download", dlFileName);
-    }
-
-    // Wire Share URL ("링크 복사") buttons
     document.querySelectorAll(".js-share-url").forEach(function (btn) {
       btn.setAttribute("data-share-url", canonicalShareUrl);
       btn.addEventListener("click", function () {
@@ -3030,7 +2890,6 @@ _APP_JS = """/* 와우 포에버 슬롭툰 — 정적 웹 아카이브 인터랙
       });
     });
 
-    // Update sleek Prev / Next binge cards
     var pager = document.getElementById("epPager");
     if (pager) {
       pager.innerHTML = "";
@@ -3038,7 +2897,6 @@ _APP_JS = """/* 와우 포에버 슬롭툰 — 정적 웹 아카이브 인터랙
       pager.appendChild(buildBingeCardEl(nextEp, true, rootPrefix));
     }
 
-    // Update "다른 레전드 념글 만화" recommended episode grid (up to 3)
     var recSection = document.getElementById("epRecommendSection");
     var recGrid = document.getElementById("epRecommendGrid");
     if (recSection && recGrid) {
@@ -3054,7 +2912,6 @@ _APP_JS = """/* 와우 포에버 슬롭툰 — 정적 웹 아카이브 인터랙
       }
     }
 
-    // View mode switch (full vertical scroll vs page-by-page)
     var fullView = document.getElementById("readerFullView");
     document.querySelectorAll(".mode-btn[data-mode]").forEach(function (btn) {
       btn.addEventListener("click", function () {
@@ -3067,7 +2924,6 @@ _APP_JS = """/* 와우 포에버 슬롭툰 — 정적 웹 아카이브 인터랙
       });
     });
 
-    // Wire quick episode jump dropdown
     var jumpSelect = document.getElementById("epJumpSelect");
     if (jumpSelect) {
       jumpSelect.value = ep.episode_id;
@@ -3078,7 +2934,6 @@ _APP_JS = """/* 와우 포에버 슬롭툰 — 정적 웹 아카이브 인터랙
       });
     }
 
-    // Keyboard prev/next navigation
     document.addEventListener("keydown", function (ev) {
       if (ev.target && /INPUT|TEXTAREA|SELECT/.test(ev.target.tagName)) return;
       if (ev.key === "ArrowLeft" && prevEp) {
@@ -3103,22 +2958,12 @@ _APP_JS = """/* 와우 포에버 슬롭툰 — 정적 웹 아카이브 인터랙
     toggleBtn();
   }
 
-  /* ---------------- CAST PAGE (SHEET SWITCH + LIGHTBOX) ---------------- */
+  /* ---------------- CAST PAGE (LIGHTBOX) ---------------- */
   function initCastPage() {
     var sheetImg = document.getElementById("castSheetImg");
     var lightbox = document.getElementById("lightbox");
     var lightboxImg = document.getElementById("lightboxImg");
     var lightboxClose = document.getElementById("lightboxClose");
-
-    document.querySelectorAll(".mode-btn[data-sheet]").forEach(function (btn) {
-      btn.addEventListener("click", function () {
-        var src = btn.getAttribute("data-sheet");
-        if (sheetImg && src) sheetImg.src = src;
-        document.querySelectorAll(".mode-btn[data-sheet]").forEach(function (b) {
-          b.classList.toggle("is-active", b === btn);
-        });
-      });
-    });
 
     if (lightbox && lightboxImg) {
       var openLightbox = function (src, alt) {
@@ -3172,10 +3017,12 @@ def build_static_site(
 ) -> Path:
     """Build the complete static pure-white web archive into `site_dir`.
 
-    Copies cast sheets, generates individual 9×9 cast portraits, syncs episode images,
-    auto-generates missing episode thumbnails, and emits `index.html`, `episode.html`,
-    static `episodes/<id>.html`, `cast.html`, `publish.html`, `sitemap.xml`,
-    `robots.txt`, `assets/style.css`, `assets/app.js`, and `data/episodes.json`.
+    Copies the SD cast sheet & turnarounds, generates individual 1:1 portraits from each
+    character's front-facing turnaround (falling back to `cast_sheet_c.jpg`), syncs episode
+    images while automatically cleaning orphan `page_*` files/dirs, auto-generates missing
+    thumbnails, and emits `index.html`, `episode.html`, static `episodes/<id>.html`,
+    `cast.html`, `sitemap.xml`, `robots.txt`, `assets/style.css`, `assets/app.js`, and
+    `data/episodes.json`.
 
     Returns:
         Path to the generated `site_dir / "index.html"`.
@@ -3203,20 +3050,23 @@ def build_static_site(
     ):
         d.mkdir(parents=True, exist_ok=True)
 
-    # 1. Sync cast sheet assets and crop individual portraits
-    labeled_src = assets_dir / "cast_sheet_c_labeled.png"
+    # 1. Sync cast sheet & turnaround assets, and extract 2.5-head SD portraits from turnarounds
+    # Clean legacy labeled sheet if left behind in site/assets/cast/
+    (site_cast_dir / "cast_sheet_c_labeled.png").unlink(missing_ok=True)
+
     clean_src = assets_dir / "cast_sheet_c.jpg"
-    has_labeled = False
     has_clean = False
-    if labeled_src.exists():
-        _copy_if_different(labeled_src, site_cast_dir / "cast_sheet_c_labeled.png")
-        has_labeled = True
     if clean_src.exists():
         _copy_if_different(clean_src, site_cast_dir / "cast_sheet_c.jpg")
         has_clean = True
 
-    portraits = extract_cast_portraits(clean_src, site_cast_dir) if has_clean else {}
     turnarounds_src_dir = assets_dir / "turnarounds"
+    portraits = extract_cast_portraits(
+        clean_src if has_clean else None,
+        site_cast_dir,
+        turnarounds_dir=turnarounds_src_dir if turnarounds_src_dir.exists() else None,
+    )
+
     site_turnarounds_dir = site_cast_dir / "turnarounds"
     turnarounds: dict[str, str] = {}
     companion_turnarounds: dict[str, str] = {}
@@ -3234,28 +3084,31 @@ def build_static_site(
                     companion_turnarounds[member.id] = (
                         f"assets/cast/turnarounds/{member.companion_turnaround_filename}"
                     )
-    fallback_og_image = (
-        "assets/cast/cast_sheet_c_labeled.png"
-        if has_labeled
-        else ("assets/cast/cast_sheet_c.jpg" if has_clean else "")
-    )
+    fallback_og_image = "assets/cast/cast_sheet_c.jpg" if has_clean else ""
 
-    # 2. Load episodes and sync media assets into site/assets/episodes/<id>/
+    # 2. Load episodes, sync media assets into site/assets/episodes/<id>/, and clean orphan files
     records = load_episodes(episodes_json)
     site_episodes: list[dict[str, Any]] = []
     ep_counts: dict[str, int] = {}
 
+    valid_episode_ids = {r.episode_id for r in records}
+    for stale_ep_dir in site_episodes_assets_dir.iterdir():
+        if stale_ep_dir.is_dir() and stale_ep_dir.name not in valid_episode_ids:
+            shutil.rmtree(stale_ep_dir, ignore_errors=True)
+
     for record in records:
         ep_out_dir = site_episodes_assets_dir / record.episode_id
         ep_out_dir.mkdir(parents=True, exist_ok=True)
+        expected_ep_files: set[str] = set()
 
         # Resolve and copy full image
         full_src = _resolve_media_path(record.full_image_rel, episodes_json, assets_dir, site_dir)
         full_dst = ep_out_dir / "episode_full.jpg"
         if full_src is not None:
             _copy_if_different(full_src, full_dst)
+            expected_ep_files.add(full_dst.name)
 
-        # Resolve and copy page images
+        # Resolve and copy current page images
         page_web_paths: list[str] = []
         resolved_pages: list[Path] = []
         for idx, page_rel in enumerate(record.page_images_rel, start=1):
@@ -3263,9 +3116,11 @@ def build_static_site(
             if p_src is not None:
                 ext = p_src.suffix.lower() or ".png"
                 p_name = f"page_{idx}{ext}"
-                _copy_if_different(p_src, ep_out_dir / p_name)
+                p_dst = ep_out_dir / p_name
+                _copy_if_different(p_src, p_dst)
+                expected_ep_files.add(p_name)
                 page_web_paths.append(
-                    f"assets/episodes/{record.episode_id}/{p_name}{_file_cache_suffix(ep_out_dir / p_name)}"
+                    f"assets/episodes/{record.episode_id}/{p_name}{_file_cache_suffix(p_dst)}"
                 )
                 resolved_pages.append(p_src)
 
@@ -3274,15 +3129,20 @@ def build_static_site(
         thumb_dst = ep_out_dir / "thumb.jpg"
         if thumb_src is not None:
             _copy_if_different(thumb_src, thumb_dst)
+            expected_ep_files.add(thumb_dst.name)
         else:
-            # Auto-generate crisp card thumbnail from page_1 (or full image fallback)
             thumb_basis = resolved_pages[0] if resolved_pages else full_src
             if thumb_basis is not None and thumb_basis.exists():
                 generate_episode_thumbnail(thumb_basis, thumb_dst)
-                # Also persist to the declared data path if its parent exists
+                expected_ep_files.add(thumb_dst.name)
                 declared_data_thumb = episodes_json.parent.parent / record.thumb_image_rel
                 if declared_data_thumb.parent.exists() and not declared_data_thumb.exists():
                     _copy_if_different(thumb_dst, declared_data_thumb)
+
+        # Clean any orphan files (such as leftover page_4.png / page_5.png from earlier builds)
+        for existing_file in ep_out_dir.iterdir():
+            if existing_file.is_file() and existing_file.name not in expected_ep_files:
+                existing_file.unlink(missing_ok=True)
 
         # Normalize cast list and tally appearances
         cast_chips: list[dict[str, str]] = []
@@ -3404,7 +3264,6 @@ def build_static_site(
         _render_cast_html(
             cast_payload,
             site_episodes,
-            has_labeled,
             has_clean,
             base_url=clean_base,
             css_suffix=css_suffix,

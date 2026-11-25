@@ -1,4 +1,6 @@
-"""Tests for static web archive builder, seed assets, link integrity, and DC upload packager."""
+"""Tests for Route A static web archive builder, orphan cleanup, turnaround portraits,
+40-episode scaling, link integrity, and docs/CI hygiene.
+"""
 
 from __future__ import annotations
 
@@ -8,19 +10,13 @@ import xml.etree.ElementTree as ET
 from pathlib import Path
 from urllib.parse import urlsplit
 
-import pytest
 from PIL import Image
 
 from wow_sloptoon.cast import CAST_BIBLE
 from wow_sloptoon.config import DEFAULT_ARCHIVE_BASE_URL, load_settings
-from wow_sloptoon.dc_packager import (
-    DEFAULT_MAX_FILE_BYTES,
-    build_dc_write_url,
-    create_dc_upload_pack,
-)
 from wow_sloptoon.site_builder import (
-    DC_GALLERY_WRITE_URL,
     LEGAL_NOTICE,
+    SITE_TAGLINE,
     build_static_site,
     generate_episode_thumbnail,
     load_episodes,
@@ -28,6 +24,7 @@ from wow_sloptoon.site_builder import (
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 _HREF_SRC_RE = re.compile(r"""(?:href|src)=["']([^"']+)["']""")
+_FORBIDDEN_DC_WRITE_URL = "gall.dcinside.com/mgallery/board/write"
 
 
 def _assert_internal_links_resolve(html_path: Path) -> None:
@@ -68,16 +65,16 @@ def test_seed_episodes_json_valid_and_files_exist() -> None:
 
     ep1 = by_id["ep001"]
     assert ep1.source_post_no == "92059"
-    assert 4 <= ep1.cut_count <= 8
+    assert 4 <= ep1.cut_count <= 7
     assert "흑마법사" in ep1.title
 
     ep2 = by_id["ep002"]
     assert ep2.source_post_no == "96849"
-    assert 4 <= ep2.cut_count <= 8
+    assert 4 <= ep2.cut_count <= 7
     assert "기사님" in ep2.title
 
     for rec in records:
-        assert 4 <= rec.cut_count <= 8, f"{rec.episode_id} expected 4..8 cuts, got {rec.cut_count}"
+        assert 4 <= rec.cut_count <= 7, f"{rec.episode_id} expected 4..7 cuts, got {rec.cut_count}"
         assert (PROJECT_ROOT / rec.full_image_rel).exists(), f"Missing {rec.full_image_rel}"
         assert (PROJECT_ROOT / rec.thumb_image_rel).exists(), f"Missing {rec.thumb_image_rel}"
         assert 2 <= len(rec.page_images_rel) <= 4, f"{rec.episode_id} expected 2..4 pages, got {len(rec.page_images_rel)}"
@@ -97,7 +94,7 @@ def _extract_meta_map(html_text: str) -> dict[str, str]:
     return result
 
 
-def test_build_static_site_end_to_end_and_link_integrity(tmp_path: Path) -> None:
+def test_build_static_site_end_to_end_route_a_copy_and_link_integrity(tmp_path: Path) -> None:
     settings = load_settings(PROJECT_ROOT)
     records = load_episodes(settings.episodes_json)
     assert len(records) >= 2
@@ -123,14 +120,13 @@ def test_build_static_site_end_to_end_and_link_integrity(tmp_path: Path) -> None
         out_site / "assets" / "style.css",
         out_site / "assets" / "app.js",
         out_site / "data" / "episodes.json",
-        out_site / "assets" / "cast" / "cast_sheet_c_labeled.png",
         out_site / "assets" / "cast" / "cast_sheet_c.jpg",
     ]
     for path in required_files:
         assert path.exists(), f"Missing generated file: {path}"
-    assert not (out_site / "publish.html").exists(), "Creator publish.html must not be exposed publicly"
+    assert not (out_site / "publish.html").exists(), "publish.html must not be exposed publicly"
+    assert not (out_site / "assets" / "cast" / "cast_sheet_c_labeled.png").exists()
 
-    # Verify ALL HTML pages have zero broken local links/assets and ZERO creator upload links
     all_html_pages = [
         out_site / "index.html",
         out_site / "episode.html",
@@ -140,30 +136,30 @@ def test_build_static_site_end_to_end_and_link_integrity(tmp_path: Path) -> None
     for page in all_html_pages:
         _assert_internal_links_resolve(page)
 
-    # Verify shared footer legal notice, top-nav random button, and ZERO admin/write links on every HTML page
     for page in all_html_pages:
         text = page.read_text(encoding="utf-8")
         assert LEGAL_NOTICE in text, f"Legal notice missing in {page.name}"
         assert "publish.html" not in text, f"Admin publish link leaked in {page.name}"
         assert "업로드 큐 관리" not in text, f"Admin queue text leaked in {page.name}"
         assert "디시 포에버갤 업로드 도우미" not in text, f"Admin helper leaked in {page.name}"
-        assert DC_GALLERY_WRITE_URL not in text, f"DC write URL leaked in {page.name}"
+        assert _FORBIDDEN_DC_WRITE_URL not in text, f"DC write URL leaked in {page.name}"
+        assert "시안 C" not in text, f"Legacy V1 '시안 C' copy leaked in {page.name}"
+        assert "미소녀" not in text, f"Legacy V1 '미소녀' copy leaked in {page.name}"
         assert "🎲 랜덤 화 보기" in text, f"Top-nav random button missing in {page.name}"
 
-    # Verify index.html content: header, search, cast filter, all episodes, empty sponsor slot
     index_html = (out_site / "index.html").read_text(encoding="utf-8")
     assert "와우 포에버 슬롭툰" in index_html
-    assert "디시 WOW 포에버 마이너 갤러리 개념글 상황극 봇" in index_html
+    assert SITE_TAGLINE in index_html
+    assert "2~2.5등신" in index_html
     assert "흑마법사가 물을 어케 줌?" in index_html
-    assert "방금 만난 기사님의 명언" in index_html
+    assert "기사님" in index_html
     assert 'id="searchInput"' in index_html
     assert 'id="castFilterBar"' in index_html
     assert 'class="slop-sponsor-slot" data-slot="home-feed-bottom" aria-label="스폰서 영역"></aside>' in index_html
 
-    # Verify episode.html & episodes/ep001.html: reader, share button, random button, binge cards, recommended grid (no admin helper)
     ep_html = (out_site / "episode.html").read_text(encoding="utf-8")
     assert 'id="dcOneClickBtn"' not in ep_html
-    assert DC_GALLERY_WRITE_URL not in ep_html
+    assert _FORBIDDEN_DC_WRITE_URL not in ep_html
     assert "디시 포에버갤 업로드 도우미" not in ep_html
     assert 'id="shareCopyBtn"' in ep_html
     assert "링크 복사" in ep_html
@@ -176,7 +172,7 @@ def test_build_static_site_end_to_end_and_link_integrity(tmp_path: Path) -> None
     assert "다른 레전드 념글 만화" in ep1_html
     assert "nav-ep-thumb" in ep1_html
 
-    # Verify cast.html has all 9 Draft C members, valid cropped portraits, and 3-view turnarounds
+    # Verify cast.html has all 9 Route A SD members, 360x360 portraits, turnarounds & 2 pets
     cast_html = (out_site / "cast.html").read_text(encoding="utf-8")
     for member in CAST_BIBLE:
         assert member.name in cast_html
@@ -194,7 +190,6 @@ def test_build_static_site_end_to_end_and_link_integrity(tmp_path: Path) -> None
             assert f"assets/cast/turnarounds/{member.companion_turnaround_filename}" in cast_html
             assert member.companion_name in cast_html
 
-    # Verify CSS pure-white aesthetic, #0ea5e9 accent, collapsible :empty sponsor slot, and mobile overflow guards
     css_text = (out_site / "assets" / "style.css").read_text(encoding="utf-8")
     assert "--bg: #ffffff;" in css_text
     assert "--sky: #0ea5e9;" in css_text
@@ -209,14 +204,12 @@ def test_build_static_site_end_to_end_and_link_integrity(tmp_path: Path) -> None
     assert re.search(r'src="assets/app\.js\?v=[0-9a-f]{8}"', index_html)
     assert re.search(r'href="\.\./assets/style\.css\?v=[0-9a-f]{8}"', ep1_html)
 
-    # Verify zero WoW Inven mentions across ALL generated text files
     for generated in out_site.rglob("*"):
         if generated.is_file() and generated.suffix.lower() in {".html", ".css", ".js", ".xml", ".txt", ".json"}:
             body = generated.read_text(encoding="utf-8")
             assert "인벤" not in body, f"Forbidden Inven reference in {generated}"
             assert "inven" not in body.lower(), f"Forbidden inven reference in {generated}"
 
-    # Verify episode images in site/assets/episodes/ are valid non-empty images for all episodes
     for rec in records:
         ep_dir = out_site / "assets" / "episodes" / rec.episode_id
         expected_imgs = ["episode_full.jpg", "thumb.jpg"] + [
@@ -231,13 +224,45 @@ def test_build_static_site_end_to_end_and_link_integrity(tmp_path: Path) -> None
                 assert im.height >= 200
 
 
+def test_build_static_site_cleans_orphan_pages_and_stale_files(tmp_path: Path) -> None:
+    settings = load_settings(PROJECT_ROOT)
+    out_site = tmp_path / "clean_site"
+
+    # Pre-seed stale/orphan artifacts from retired V4 & DC workflows
+    orphan_page = out_site / "assets" / "episodes" / "ep001" / "page_5.png"
+    orphan_page.parent.mkdir(parents=True, exist_ok=True)
+    Image.new("RGB", (64, 64), (255, 255, 255)).save(orphan_page)
+
+    stale_ep_dir = out_site / "assets" / "episodes" / "ep999"
+    stale_ep_dir.mkdir(parents=True, exist_ok=True)
+    Image.new("RGB", (64, 64), (255, 255, 255)).save(stale_ep_dir / "page_1.png")
+
+    stale_ep_html = out_site / "episodes" / "ep999.html"
+    stale_ep_html.parent.mkdir(parents=True, exist_ok=True)
+    stale_ep_html.write_text("<html>stale</html>", encoding="utf-8")
+
+    stale_publish = out_site / "publish.html"
+    stale_publish.write_text("<html>forbidden</html>", encoding="utf-8")
+
+    stale_labeled = out_site / "assets" / "cast" / "cast_sheet_c_labeled.png"
+    stale_labeled.parent.mkdir(parents=True, exist_ok=True)
+    Image.new("RGB", (64, 64), (255, 255, 255)).save(stale_labeled)
+
+    build_static_site(settings.episodes_json, out_site, settings.assets_dir)
+
+    assert not orphan_page.exists()
+    assert not stale_ep_dir.exists()
+    assert not stale_ep_html.exists()
+    assert not stale_publish.exists()
+    assert not stale_labeled.exists()
+
+
 def test_seo_og_twitter_sitemap_robots_and_relative_fallback(tmp_path: Path) -> None:
     settings = load_settings(PROJECT_ROOT)
     records = load_episodes(settings.episodes_json)
     assert len(records) >= 2
     latest_ep = records[-1]
 
-    # 1. Default build (uses DEFAULT_ARCHIVE_BASE_URL = https://slopwow.github.io)
     default_site = tmp_path / "default_site"
     build_static_site(settings.episodes_json, default_site, settings.assets_dir)
 
@@ -256,7 +281,6 @@ def test_seo_og_twitter_sitemap_robots_and_relative_fallback(tmp_path: Path) -> 
         assert f"{DEFAULT_ARCHIVE_BASE_URL}/episodes/{rec.episode_id}.html" in locs
     assert all("publish.html" not in (loc or "") for loc in locs)
 
-    # Check complete Open Graph & Twitter Card tags on all public pages (dynamically matching latest episode)
     public_pages = [
         (default_site / "index.html", "website", f"{DEFAULT_ARCHIVE_BASE_URL}/"),
         (default_site / "cast.html", "website", f"{DEFAULT_ARCHIVE_BASE_URL}/cast.html"),
@@ -292,12 +316,10 @@ def test_seo_og_twitter_sitemap_robots_and_relative_fallback(tmp_path: Path) -> 
         assert meta["og:image"].startswith(f"{DEFAULT_ARCHIVE_BASE_URL}/assets/")
         assert meta["twitter:card"] == "summary_large_image"
 
-    # Verify canonical public URLs appear without exposing creator upload helpers
     ep1_default = (default_site / "episodes" / "ep001.html").read_text(encoding="utf-8")
     assert f'data-share-url="{DEFAULT_ARCHIVE_BASE_URL}/episodes/ep001.html"' in ep1_default
-    assert DC_GALLERY_WRITE_URL not in ep1_default
+    assert _FORBIDDEN_DC_WRITE_URL not in ep1_default
 
-    # 2. Explicit empty archive_base_url="" -> clean relative fallback for OG tags
     rel_site = tmp_path / "rel_site"
     build_static_site(settings.episodes_json, rel_site, settings.assets_dir, archive_base_url="")
     idx_meta = _extract_meta_map((rel_site / "index.html").read_text(encoding="utf-8"))
@@ -310,12 +332,10 @@ def test_seo_og_twitter_sitemap_robots_and_relative_fallback(tmp_path: Path) -> 
     assert ep1_meta["og:image"] == "../assets/episodes/ep001/thumb.jpg"
     assert cast_meta["og:url"] == "cast.html"
     assert cast_meta["og:image"].startswith("assets/cast/")
-    assert "<link rel=\"canonical\"" not in (rel_site / "index.html").read_text(encoding="utf-8")
+    assert '<link rel="canonical"' not in (rel_site / "index.html").read_text(encoding="utf-8")
 
 
-def test_publish_queue_page_and_five_episode_recommendations(tmp_path: Path) -> None:
-    # Build a synthetic 5-episode archive to verify newest-first publish queue AND
-    # up-to-3 recommended episodes cap + non-self exclusion.
+def test_five_episode_recommendations_and_clean_app_js(tmp_path: Path) -> None:
     data_dir = tmp_path / "data"
     episodes_payload = []
     for n in range(1, 6):
@@ -351,7 +371,6 @@ def test_publish_queue_page_and_five_episode_recommendations(tmp_path: Path) -> 
 
     build_static_site(episodes_json, out_site, empty_assets)
 
-    # Verify all generated HTML files pass link integrity and exclude publish.html
     assert not (out_site / "publish.html").exists()
     for html_file in [
         out_site / "index.html",
@@ -363,10 +382,9 @@ def test_publish_queue_page_and_five_episode_recommendations(tmp_path: Path) -> 
 
     app_js = (out_site / "assets" / "app.js").read_text(encoding="utf-8")
     assert "initRandomButtons" in app_js
-    assert DC_GALLERY_WRITE_URL not in app_js
+    assert _FORBIDDEN_DC_WRITE_URL not in app_js
     assert "initPublishPage" not in app_js
 
-    # Verify recommended episode grid on ep003 shows exactly 3 other episodes (excluding ep003)
     ep3_html = (out_site / "episodes" / "ep003.html").read_text(encoding="utf-8")
     rec_match = re.search(
         r'<div class="recommend-grid" id="epRecommendGrid">(.*?)</div>\s*</section>',
@@ -374,11 +392,80 @@ def test_publish_queue_page_and_five_episode_recommendations(tmp_path: Path) -> 
         re.DOTALL,
     )
     assert rec_match is not None
-    rec_block = rec_match.group(1)
-    rec_hrefs = re.findall(r'href="\.\./episodes/(ep\d{3})\.html"', rec_block)
+    rec_hrefs = re.findall(r'href="\.\./episodes/(ep\d{3})\.html"', rec_match.group(1))
     assert len(rec_hrefs) == 3
     assert "ep003" not in rec_hrefs
     assert len(set(rec_hrefs)) == 3
+
+
+def test_site_builder_scales_cleanly_to_40_episodes(tmp_path: Path) -> None:
+    data_dir = tmp_path / "data"
+    episodes_payload = []
+    for n in range(1, 41):
+        ep_id = f"ep{n:03d}"
+        ep_dir = data_dir / "episodes" / ep_id
+        ep_dir.mkdir(parents=True)
+        img = Image.new("RGB", (800, 500), (255, 255, 255))
+        img.save(ep_dir / "episode_full.jpg", format="JPEG")
+        img.save(ep_dir / "thumb.jpg", format="JPEG")
+        img.save(ep_dir / "page_1.png", format="PNG")
+        episodes_payload.append(
+            {
+                "episode_id": ep_id,
+                "episode_number": n,
+                "title": f"포에버갤 레전드 인던 사건 {n}화",
+                "subtitle": f"{n}화 상황극 한줄 요약",
+                "source_post_no": str(100000 + n),
+                "source_url": f"https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no={100000 + n}",
+                "created_at": f"2026-11-{(n % 28) + 1:02d}T12:00:00+09:00",
+                "cut_count": 5,
+                "cast_used": ["오크 전사", "스카이본 마법사"],
+                "full_image_rel": f"data/episodes/{ep_id}/episode_full.jpg",
+                "thumb_image_rel": f"data/episodes/{ep_id}/thumb.jpg",
+                "page_images_rel": [f"data/episodes/{ep_id}/page_1.png"],
+            }
+        )
+
+    episodes_json = data_dir / "episodes.json"
+    episodes_json.write_text(json.dumps(episodes_payload, ensure_ascii=False), encoding="utf-8")
+    empty_assets = tmp_path / "assets"
+    empty_assets.mkdir()
+    out_site = tmp_path / "site"
+
+    build_static_site(episodes_json, out_site, empty_assets)
+    assert not (out_site / "publish.html").exists()
+
+    index_html = (out_site / "index.html").read_text(encoding="utf-8")
+    assert 'id="loadMoreWrap"' in index_html
+    assert 'id="loadMoreBtn"' in index_html
+    assert 'id="showAllBtn"' in index_html
+    assert 'id="backToTopBtn"' in index_html
+    assert 'width="800" height="500" loading="lazy" decoding="async"' in index_html
+    assert "총 <strong>40</strong>화 아카이브" in index_html
+
+    cast_html = (out_site / "cast.html").read_text(encoding="utf-8")
+    assert "+ 외 35화 더 있음" in cast_html
+    assert "오크 · 전사 · 호드" in cast_html
+    assert "스카이본 · 마법사 · 스카이본" in cast_html
+    assert "출연 에피소드 (40화)" in cast_html
+
+    ep40_html = (out_site / "episodes" / "ep040.html").read_text(encoding="utf-8")
+    assert 'id="epJumpSelect"' in ep40_html
+    assert len(re.findall(r'<option value="ep\d{3}"', ep40_html)) == 40
+    m_data = re.search(r"window\.__SLOPTOON_DATA__\s*=\s*(\{.*?\});</script>", ep40_html)
+    assert m_data is not None
+    embedded = json.loads(m_data.group(1))
+    by_id = {e["episode_id"]: e for e in embedded["episodes"]}
+    assert "page_images" in by_id["ep040"]
+    assert "page_images" not in by_id["ep001"]
+
+    for generated in out_site.rglob("*"):
+        if generated.is_file() and generated.suffix.lower() in {".html", ".css", ".js", ".xml", ".txt", ".json"}:
+            body = generated.read_text(encoding="utf-8")
+            assert _FORBIDDEN_DC_WRITE_URL not in body
+            assert "publish.html" not in body
+            assert "인벤" not in body
+            assert "inven" not in body.lower()
 
 
 def test_auto_thumbnail_generation_and_dict_json_format(tmp_path: Path) -> None:
@@ -386,18 +473,14 @@ def test_auto_thumbnail_generation_and_dict_json_format(tmp_path: Path) -> None:
     ep_dir = data_dir / "episodes" / "ep999"
     ep_dir.mkdir(parents=True)
 
-    # Create a synthetic 900x1320 comic page with white background and middle artwork
     page_img = Image.new("RGB", (900, 1320), (255, 255, 255))
     for y in range(380, 760):
         for x in range(180, 720):
             page_img.putpixel((x, y), (120, 180, 240))
     page_path = ep_dir / "page_1.png"
     page_img.save(page_path)
+    page_img.save(ep_dir / "episode_full.jpg", format="JPEG")
 
-    full_path = ep_dir / "episode_full.jpg"
-    page_img.save(full_path, format="JPEG")
-
-    # Save episodes.json using the alternative {"episodes": [...]} format, without thumb on disk
     episodes_json = data_dir / "episodes.json"
     episodes_json.write_text(
         json.dumps(
@@ -436,7 +519,6 @@ def test_auto_thumbnail_generation_and_dict_json_format(tmp_path: Path) -> None:
     with Image.open(auto_thumb) as im:
         assert im.size == (800, 500)
 
-    # Also verify direct generate_episode_thumbnail call
     extra_thumb = tmp_path / "direct_thumb.jpg"
     generate_episode_thumbnail(page_path, extra_thumb)
     assert extra_thumb.exists()
@@ -444,47 +526,11 @@ def test_auto_thumbnail_generation_and_dict_json_format(tmp_path: Path) -> None:
         assert im.size == (800, 500)
 
 
-@pytest.mark.parametrize("episode_id,expected_post_no", [("ep001", "92059"), ("ep002", "96849")])
-def test_dc_upload_pack_for_seed_episodes(
-    tmp_path: Path, episode_id: str, expected_post_no: str
-) -> None:
-    settings = load_settings(PROJECT_ROOT)
-    records = {r.episode_id: r for r in load_episodes(settings.episodes_json)}
-    rec = records[episode_id]
-
-    full_img = PROJECT_ROOT / rec.full_image_rel
-    pack_dir = tmp_path / f"upload_pack_{episode_id}"
-    pack = create_dc_upload_pack(
-        rec,
-        full_img,
-        pack_dir,
-        archive_base_url="https://example.github.io/wow-forever-sloptoon",
-    )
-
-    assert pack.pack_dir == pack_dir
-    assert pack.write_url == build_dc_write_url("wowforever")
-    assert pack.write_url == "https://gall.dcinside.com/mgallery/board/write/?id=wowforever"
-    assert pack.title_text == f"[와포슬롭툰]{rec.title.strip()}"
-    assert "EP." not in pack.title_text
-    assert expected_post_no in pack.body_text
-    assert f"episode.html?id={episode_id}" in pack.body_text
-
-    assert (pack_dir / "post_title.txt").read_text(encoding="utf-8") == pack.title_text
-    assert (pack_dir / "post_body.txt").read_text(encoding="utf-8") == pack.body_text
-    assert (pack_dir / "upload_guide.txt").exists()
-    assert len(pack.image_paths) >= 1
-    for img_path in pack.image_paths:
-        assert img_path.exists()
-        assert img_path.stat().st_size <= DEFAULT_MAX_FILE_BYTES
-        with Image.open(img_path) as im:
-            assert im.width > 0 and im.height > 0
-
-
-def test_checked_in_site_workflow_and_readme_integrity() -> None:
+def test_checked_in_site_workflow_and_docs_route_a_hygiene() -> None:
     settings = load_settings(PROJECT_ROOT)
     records = load_episodes(settings.episodes_json)
     site_dir = PROJECT_ROOT / "site"
-    assert not (site_dir / "publish.html").exists(), "publish.html must not exist in checked-in public site/"
+    assert not (site_dir / "publish.html").exists(), "publish.html must not exist in public site/"
     for page in (
         site_dir / "index.html",
         site_dir / "episode.html",
@@ -493,7 +539,7 @@ def test_checked_in_site_workflow_and_readme_integrity() -> None:
     ):
         assert page.exists(), f"Checked-in site page missing: {page}"
         _assert_internal_links_resolve(page)
-        assert DC_GALLERY_WRITE_URL not in page.read_text(encoding="utf-8")
+        assert _FORBIDDEN_DC_WRITE_URL not in page.read_text(encoding="utf-8")
     assert (site_dir / "sitemap.xml").exists()
     assert (site_dir / "robots.txt").exists()
 
@@ -503,14 +549,43 @@ def test_checked_in_site_workflow_and_readme_integrity() -> None:
     assert 'cron: "15 */6 * * *"' in wf_text
     assert "workflow_dispatch" in wf_text
     assert "GEMINI_API_KEY" in wf_text
-    assert "sloptoon run-once" in wf_text
+    assert "SLOPTOON_IMAGE_MODEL" in wf_text
+    assert "python -m wow_sloptoon.cli autopilot" in wf_text
+    assert "python -m wow_sloptoon.cli build-site" in wf_text
+    assert "HYGIENE OK" in wf_text
     assert "deploy-pages" in wf_text
+    for retired in ("run-once", "pack-dc", "--layout v4", "sloptoon queue"):
+        assert retired not in wf_text
 
-    readme_path = PROJECT_ROOT / "README.md"
-    assert readme_path.exists()
-    readme_text = readme_path.read_text(encoding="utf-8")
+    # Public docs & PowerShell helpers must stay Route A clean with 0 retired DC/V4 guides and 0 local paths
+    for doc_name in ("README.md", "AUTOMATION.md", "run-factory.ps1"):
+        txt = (PROJECT_ROOT / doc_name).read_text(encoding="utf-8")
+        for forbidden in ("publish.html", "pack-dc", "upload_pack", "--layout v4", "run-once", "publish_queue"):
+            assert forbidden not in txt, f"Retired reference '{forbidden}' leaked into {doc_name}"
+
+    readme_text = (PROJECT_ROOT / "README.md").read_text(encoding="utf-8")
     assert "GEMINI_API_KEY" in readme_text
-    assert "sloptoon" in readme_text
-    assert "GitHub Pages" in readme_text
-    assert "Vercel" in readme_text
-    assert "디시 포에버갤" in readme_text
+    assert "diorama_style_ref.jpg" in readme_text
+    assert "2~2.5등신" in readme_text
+    assert "slopwow.github.io" in readme_text
+
+    # Zero local user absolute paths or Google API keys across all SSOT/docs/scripts
+    path_secret_pats = (
+        re.compile(r"[A-Za-z]:[\\/]Users[\\/]"),
+        re.compile(r"/Users/[A-Za-z0-9._-]+/"),
+        re.compile(r"AIza[0-9A-Za-z_-]{35}"),
+    )
+    for rel in (
+        "AGENTS.md",
+        "CLAUDE.md",
+        "GEMINI.md",
+        "README.md",
+        "AUTOMATION.md",
+        "run-factory.ps1",
+        "setup-automation.ps1",
+        "deploy-pages.ps1",
+        ".github/workflows/auto-sloptoon.yml",
+    ):
+        txt = (PROJECT_ROOT / rel).read_text(encoding="utf-8")
+        for pat in path_secret_pats:
+            assert not pat.search(txt), f"Absolute path/secret leaked in {rel}"

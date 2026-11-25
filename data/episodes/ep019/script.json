@@ -3,150 +3,100 @@
   "source_post_no": "104746",
   "source_title": "\"틀딱 씨, 우리 파티에서 나가주세요.\"",
   "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=104746&exception_mode=recommend&page=2",
-  "subtitle": "뉴비 낭만팟에 난입한 오리 40인 공대장",
-  "layout_mode": "classic_2tier",
-  "background_style": "clean_white",
-  "acts": null,
+  "subtitle": "낭만 뉴비 파티에 난입한 오리 공대장",
   "cuts": [
     {
       "cut_index": 1,
       "aspect_ratio": "4:3",
       "layout_slot": "top",
-      "act_number": null,
-      "panel_index": null,
       "characters": [
         "오크 전사",
         "타우렌 드루이드"
       ],
       "speaker": "오크 전사",
-      "dialogue": "죽음의 폐광 퀘스트\n천천히 읽으면서 가요!\n뉴비끼리 재밌겠다~",
+      "dialogue": "폐광 퀘스트 재밌다!\n천천히 읽으면서 돌자~",
       "wordless": false,
-      "visual_prompt": "Three-quarter medium-wide comic panel in agile 3-to-3.5 head-to-body Korean webtoon style on a pure solid #FFFFFF white background. On the left, 오크 전사 beams excitedly while holding an open parchment quest scroll with both hands, her one-handed sword and kite shield neatly strapped to her back. On the right, 타우렌 드루이드 peeks happily around a small wooden mining cart beside a minimal patch of dusty cavern floor.",
+      "visual_prompt": "Slightly high-angle three-quarter shot of a cute 2.5-head chibi SD comic scene on a pure #FFFFFF background. On the left, the Orc Warrior with her weapon sheathed on her back holds open a cute chibi rolled parchment quest scroll, beaming excitedly alongside the Tauren Druid on the right who leans in happily. Minimal pale stone mine floor shadow beneath their feet.",
       "tail_target": "left",
       "bubble_side": "left",
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": [
-        0.28,
-        0.34
-      ],
-      "bubble_center_xy": null,
       "item_tooltip": null
     },
     {
       "cut_index": 2,
       "aspect_ratio": "16:9",
       "layout_slot": "bottom",
-      "act_number": null,
-      "panel_index": null,
       "characters": [
-        "언데드 성기사",
+        "스카이본 마법사",
         "오크 전사"
       ],
-      "speaker": "언데드 성기사",
-      "dialogue": "글 읽을 시간 없어!\n대포로 철문 따고 바로\n밴클리프 잡으러 갑시다!",
+      "speaker": "스카이본 마법사",
+      "dialogue": "뭘 구경하고 있어?\n길 뚫었으니 막보만 잡자!",
       "wordless": false,
-      "visual_prompt": "Dynamic low-angle comic action panel in agile 3-to-3.5 head-to-body Korean webtoon style on a pure solid #FFFFFF white background. On the left foreground, 언데드 성기사 smugly leans beside a black iron pirate cannon with her golden paladin shield strapped on her back, firing a loud comic blast toward the right that shatters a heavy iron-bound dungeon gate into flying splinters. On the far right background, 오크 전사 drops her scroll in shock with tiny sweat drops.",
+      "visual_prompt": "Dynamic over-the-shoulder shot from behind the startled Orc Warrior in the right foreground looking at the Skyborne Mage in the left midground, pure #FFFFFF background. With her staff sheathed on her back, the Skyborne Mage smugly dusts her hands beside a cute 2.5-head chibi SD iron cannon puffing cartoon smoke in front of a blasted-open chibi wooden mine gate.",
       "tail_target": "left",
       "bubble_side": "left",
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": [
-        0.24,
-        0.36
-      ],
-      "bubble_center_xy": null,
       "item_tooltip": null
     },
     {
       "cut_index": 3,
       "aspect_ratio": "4:3",
       "layout_slot": "top",
-      "act_number": null,
-      "panel_index": null,
       "characters": [
-        "오크 전사",
-        "언데드 성기사"
+        "스카이본 마법사",
+        "오크 전사"
       ],
-      "speaker": "오크 전사",
-      "dialogue": "저기요, 나가주세요!\n분위기 좀 즐기려는데\n왜 혼자 다 밀고 난리예요?",
+      "speaker": "스카이본 마법사",
+      "dialogue": "글 읽는 건 시간 낭비야!\n전사 말고 법사나 성기사 해!",
       "wordless": false,
-      "visual_prompt": "Over-the-shoulder angled confrontation panel in agile 3-to-3.5 head-to-body Korean webtoon style on a pure solid #FFFFFF white background. On the left, 오크 전사 leans forward with furrowed brows and angry anime vein marks, pointing firmly toward the dungeon exit with an empty hand while her one-handed sword and shield stay sheathed on her back. On the right, 언데드 성기사 stands slightly turned away in side-back view with crossed arms and an unbothered expression.",
+      "visual_prompt": "Side-profile two-shot in cute 2.5-head chibi SD comic style on a pure #FFFFFF background. On the left, the Skyborne Mage with her staff sheathed leans forward smugly, raising one lecturing finger with half-closed eyes, while on the right the Orc Warrior clutches her quest scroll with an annoyed frown and a sweatdrop. Minimal ground shadow only.",
       "tail_target": "left",
       "bubble_side": "left",
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": [
-        0.28,
-        0.35
-      ],
-      "bubble_center_xy": null,
       "item_tooltip": null
     },
     {
       "cut_index": 4,
       "aspect_ratio": "16:9",
       "layout_slot": "bottom",
-      "act_number": null,
-      "panel_index": null,
       "characters": [
-        "오크 전사",
-        "언데드 성기사"
+        "오크 전사"
       ],
-      "speaker": "언데드 성기사",
-      "dialogue": "오리 40인 공대장인데\n전사 말고 성기사나 법사 해!\n만렙 찍어야 재밌지!",
-      "wordless": false,
-      "visual_prompt": "Dramatic low-angle side-three-quarter panel in agile 3-to-3.5 head-to-body Korean webtoon style on a pure solid #FFFFFF white background. On the right, 언데드 성기사 stands tall lecturing pompously with one hand on her hip and the other pointing a lecturing index finger upward, her golden paladin shield on her back. On the left, 오크 전사 slouches heavily with slumped shoulders and an exasperated twitching brow.",
-      "tail_target": "right",
-      "bubble_side": "right",
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": [
-        0.74,
-        0.32
-      ],
-      "bubble_center_xy": null,
+      "speaker": null,
+      "dialogue": null,
+      "wordless": true,
+      "visual_prompt": "Dramatic extreme bust-up close-up filling 80% of the frame height in cute 2.5-head chibi SD comic style on a pure #FFFFFF background. The Orc Warrior stares forward in deadpan shock and silent rage with wide eyes, tiny pupils, a twitching eyebrow, compressed mouth, and cartoon steam puffs around her head.",
+      "tail_target": "center",
+      "bubble_side": null,
       "item_tooltip": null
     },
     {
       "cut_index": 5,
       "aspect_ratio": "4:3",
       "layout_slot": "top",
-      "act_number": null,
-      "panel_index": null,
       "characters": [
         "오크 전사",
-        "타우렌 드루이드"
+        "스카이본 마법사"
       ],
-      "speaker": null,
-      "dialogue": null,
-      "wordless": true,
-      "visual_prompt": "Tight deadpan close-up reaction panel in agile 3-to-3.5 head-to-body Korean webtoon style on a pure solid #FFFFFF white background. Side by side, 오크 전사 on the left and 타우렌 드루이드 on the right stare straight ahead with completely blank, soul-drained eyes, flat mouths, heavy dark vertical gloom lines over their foreheads, and silent comic sweat drops in total speechlessness.",
-      "tail_target": "center",
-      "bubble_side": null,
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
-      "bubble_center_xy": null,
+      "speaker": "오크 전사",
+      "dialogue": "뉴비끼리 즐길 거니까\n우리 파티에서 나가주세요!",
+      "wordless": false,
+      "visual_prompt": "Low-angle confrontation shot in cute 2.5-head chibi SD comic style on a pure #FFFFFF background. On the left, the Orc Warrior with her weapon sheathed on her back points firmly toward the right edge with fierce fed-up eyes, while the Skyborne Mage on the right recoils slightly with a startled sweatdrop. Minimal ground shadow beneath them.",
+      "tail_target": "left",
+      "bubble_side": "left",
       "item_tooltip": null
     },
     {
       "cut_index": 6,
       "aspect_ratio": "16:9",
       "layout_slot": "bottom",
-      "act_number": null,
-      "panel_index": null,
       "characters": [
-        "언데드 성기사",
-        "오크 전사"
+        "스카이본 마법사"
       ],
-      "speaker": "언데드 성기사",
-      "dialogue": "아니, 왜 다들 말없이\n파탈하고 귀환 타요?!\n좋게 알려준 건데 억울해!",
+      "speaker": "스카이본 마법사",
+      "dialogue": "왜 화내? 오리 공대장 출신이\n만렙 찍으라고 도와줬는데...",
       "wordless": false,
-      "visual_prompt": "Wide side-angled parting gag panel in agile 3-to-3.5 head-to-body Korean webtoon style on a pure solid #FFFFFF white background. On the left, 언데드 성기사 throws both empty hands up in bewildered outrage with her golden paladin shield strapped on her back, left all alone in the tunnel. On the right, 오크 전사 wears a flat deadpan face while cradling a smooth glowing cyan-swirl oval Hearthstone in her palm as bright turquoise teleportation ribbons spiral upward around her fading figure.",
-      "tail_target": "left",
-      "bubble_side": "left",
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": [
-        0.25,
-        0.36
-      ],
-      "bubble_center_xy": null,
+      "visual_prompt": "Medium solo shot in cute 2.5-head chibi SD comic style on a pure #FFFFFF background. Seated alone in the center on a tiny minimal stone step with her staff sheathed on her back, the Skyborne Mage tilts her head and spreads both palms innocently with wide clueless eyes and a puzzled sweatdrop.",
+      "tail_target": "center",
+      "bubble_side": "center",
       "item_tooltip": null
     }
   ]

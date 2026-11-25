@@ -7,11 +7,10 @@
     every 6 hours to execute:
         python -m wow_sloptoon.cli autopilot --deploy
 
-    The autopilot pipeline automatically scouts new recommend posts, generates episodes when
-    GEMINI_API_KEY is configured, rebuilds & deploys https://slopwow.github.io, refreshes
-    data/publish_queue.json + upload_pack/, and displays a non-blocking notification when
-    an episode is ready. DCInside publishing always remains manual human review/CAPTCHA/submit
-    via `python -m wow_sloptoon.cli publish-next --open-folder --open-browser --copy-body`.
+    The autopilot pipeline automatically scouts new wowforever recommend posts, generates
+    Route A (2~2.5-head SD, 4~7 cuts) episodes when GEMINI_API_KEY is configured, and
+    rebuilds & deploys the clean static web archive at https://slopwow.github.io/.
+    DCInside uploading is permanently discontinued (static archive only).
 
 .EXAMPLE
     .\setup-automation.ps1
@@ -123,8 +122,7 @@ $Principal = New-ScheduledTaskPrincipal `
 
 $Description = (
     "WOW Forever Sloptoon autopilot (every ${IntervalHours}h): " +
-    "scout -> generate -> build-site -> pack-dc -> sync publish_queue -> deploy slopwow.github.io. " +
-    "DCInside upload remains strictly manual human review/CAPTCHA/submit."
+    "scout -> generate -> compose -> build-site -> deploy slopwow.github.io (static web archive only)."
 )
 
 Register-ScheduledTask `
@@ -139,7 +137,7 @@ Register-ScheduledTask `
 Write-Host "Registered '$TaskName' successfully!" -ForegroundColor Green
 Show-TaskStatus -Name $TaskName
 Write-Host ""
-Write-Host "Manual DCInside upload workflow when notified:" -ForegroundColor DarkCyan
-Write-Host "  python -m wow_sloptoon.cli queue"
-Write-Host "  python -m wow_sloptoon.cli publish-next --open-folder --open-browser --copy-body"
-Write-Host "  python -m wow_sloptoon.cli mark-published <episode_id> --dc-url <POST_URL>"
+Write-Host "Static archive helper commands:" -ForegroundColor DarkCyan
+Write-Host "  powershell -ExecutionPolicy Bypass -File .\run-factory.ps1"
+Write-Host "  python -m wow_sloptoon.cli build-site"
+Write-Host "  powershell -ExecutionPolicy Bypass -File .\deploy-pages.ps1"

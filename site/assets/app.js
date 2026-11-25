@@ -95,7 +95,6 @@
     var renderedOrder = "desc";
     var visibleLimit = HOME_PAGE_SIZE;
 
-    // Sync initial ?cast= query parameter if linked from cast.html
     var params = new URLSearchParams(window.location.search);
     var initCast = params.get("cast");
     if (initCast && filterBar) {
@@ -240,7 +239,7 @@
     applyFilters();
   }
 
-  /* ---------------- EPISODE READER, SHARE, BINGE & DC HELPER ---------------- */
+  /* ---------------- EPISODE READER, SHARE & BINGE NAVIGATION ---------------- */
   function selectRecommended(episodes, currentIndex, limit) {
     var currentId = episodes[currentIndex].episode_id;
     var adjacent = {};
@@ -416,7 +415,6 @@
     var canonicalShareUrl =
       ep.canonical_url || ((data.archiveBaseUrl || "https://slopwow.github.io").replace(/\/+$/, "") + "/episodes/" + ep.episode_id + ".html");
 
-    // Update DOM dynamically when ?id= differs from default SSR episode
     document.title = "EP." + ep.episode_number + " " + ep.title + " — 와우 포에버 슬롭툰";
     var badgeEl = document.getElementById("epBadge");
     if (badgeEl) badgeEl.textContent = "EP." + ep.episode_number + " · #" + ep.source_post_no;
@@ -476,19 +474,6 @@
       });
     }
 
-    var titlePreview = document.getElementById("dcTitlePreview");
-    if (titlePreview) titlePreview.textContent = ep.dc_title;
-    var bodyPreview = document.getElementById("dcBodyPreview");
-    if (bodyPreview) bodyPreview.textContent = ep.dc_body;
-
-    var dlBtn = document.getElementById("dcDownloadBtn");
-    var dlFileName = "wow_sloptoon_" + ep.episode_id + "_full.jpg";
-    if (dlBtn) {
-      dlBtn.href = fullSrc;
-      dlBtn.setAttribute("download", dlFileName);
-    }
-
-    // Wire Share URL ("링크 복사") buttons
     document.querySelectorAll(".js-share-url").forEach(function (btn) {
       btn.setAttribute("data-share-url", canonicalShareUrl);
       btn.addEventListener("click", function () {
@@ -504,7 +489,6 @@
       });
     });
 
-    // Update sleek Prev / Next binge cards
     var pager = document.getElementById("epPager");
     if (pager) {
       pager.innerHTML = "";
@@ -512,7 +496,6 @@
       pager.appendChild(buildBingeCardEl(nextEp, true, rootPrefix));
     }
 
-    // Update "다른 레전드 념글 만화" recommended episode grid (up to 3)
     var recSection = document.getElementById("epRecommendSection");
     var recGrid = document.getElementById("epRecommendGrid");
     if (recSection && recGrid) {
@@ -528,7 +511,6 @@
       }
     }
 
-    // View mode switch (full vertical scroll vs page-by-page)
     var fullView = document.getElementById("readerFullView");
     document.querySelectorAll(".mode-btn[data-mode]").forEach(function (btn) {
       btn.addEventListener("click", function () {
@@ -541,7 +523,6 @@
       });
     });
 
-    // Wire quick episode jump dropdown
     var jumpSelect = document.getElementById("epJumpSelect");
     if (jumpSelect) {
       jumpSelect.value = ep.episode_id;
@@ -552,7 +533,6 @@
       });
     }
 
-    // Keyboard prev/next navigation
     document.addEventListener("keydown", function (ev) {
       if (ev.target && /INPUT|TEXTAREA|SELECT/.test(ev.target.tagName)) return;
       if (ev.key === "ArrowLeft" && prevEp) {
@@ -577,22 +557,12 @@
     toggleBtn();
   }
 
-  /* ---------------- CAST PAGE (SHEET SWITCH + LIGHTBOX) ---------------- */
+  /* ---------------- CAST PAGE (LIGHTBOX) ---------------- */
   function initCastPage() {
     var sheetImg = document.getElementById("castSheetImg");
     var lightbox = document.getElementById("lightbox");
     var lightboxImg = document.getElementById("lightboxImg");
     var lightboxClose = document.getElementById("lightboxClose");
-
-    document.querySelectorAll(".mode-btn[data-sheet]").forEach(function (btn) {
-      btn.addEventListener("click", function () {
-        var src = btn.getAttribute("data-sheet");
-        if (sheetImg && src) sheetImg.src = src;
-        document.querySelectorAll(".mode-btn[data-sheet]").forEach(function (b) {
-          b.classList.toggle("is-active", b === btn);
-        });
-      });
-    });
 
     if (lightbox && lightboxImg) {
       var openLightbox = function (src, alt) {

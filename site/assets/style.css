@@ -818,9 +818,7 @@ button, input, select { font-family: inherit; }
 }
 
 /* Recommended "다른 레전드 념글 만화" Grid */
-.recommend-section {
-  margin-bottom: 42px;
-}
+.recommend-section { margin-bottom: 42px; }
 .recommend-section[hidden] { display: none; }
 .recommend-grid {
   display: grid;
@@ -1057,12 +1055,6 @@ button, input, select { font-family: inherit; }
   color: var(--ink-muted);
 }
 .footer-links a:hover { color: var(--ink); }
-.footer-link-discreet {
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--ink-soft);
-}
-.footer-link-discreet:hover { color: var(--sky-dark); }
 .footer-legal {
   margin-top: 22px;
   padding-top: 16px;

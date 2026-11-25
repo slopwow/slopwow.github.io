@@ -1,11 +1,11 @@
 """World of Warcraft: Forever (2026 Classic+) Lore, Dungeon, Class & Visual Fidelity Bible.
 
-Provides deep domain knowledge for both:
+Provides concise domain knowledge for both:
 - `writer.py`: accurate WoW Forever systems, dungeons, faction-locked outdoor zones,
   class/spec roles, WoW Forever custom item tooltips, and authentic Korean WoW phrasing.
-- `artist.py`: visual anti-hallucination guardrails (mail armor vs chains, fantasy flasks
-  vs modern juice boxes, tank shields, 1H weapon scale, Clean Hand prop limits, dot-pip
-  loot dice, hearthstones, and Skyborne visual accents).
+- `artist.py`: compact (<= 300-500 char) visual fidelity hints covering Clean Hands,
+  tank shields, ring-mesh mail armor, corked glass flasks, dot-pip loot dice, and
+  unified 2-to-2.5 head cute SD proportions across all props, mobs, and NPCs.
 """
 
 from __future__ import annotations
@@ -42,7 +42,7 @@ class ClassVisualSpec:
 
 @dataclass(frozen=True)
 class AntiHallucinationRule:
-    """Visual/narrative anti-hallucination guardrail learned from EP.1–EP.10 audits."""
+    """Visual/narrative fidelity rule learned from episode audits."""
 
     key: str
     title: str
@@ -410,10 +410,10 @@ CLASS_SPEC_VISUAL_RULES: dict[str, ClassVisualSpec] = {
         english_class="Warrior",
         role_specs="전탱/방전(Protection Tank), 무전(Arms 2H), 분전(Fury Dual-Wield)",
         equipment_rules=(
-            "전탱/방전(탱커) 역할일 때는 **반드시 한손 무기(한손검/한손도끼) + 튼튼한 방패(kite/tower shield)**를 "
-            "착용해야 합니다! 양손 도끼만 들고 전탱이라고 하면 고증 오류! 무전은 양손 도끼/대검, 분전은 쌍수 한손 무기."
+            "전탱/방전(탱커) 역할일 때는 반드시 한손 무기(한손검/한손도끼) + 튼튼한 방패를 착용. "
+            "무전은 양손 도끼/대검, 분전은 쌍수 한손 무기."
         ),
-        spell_visual_cues="Shield Block / Shield Wall metallic barrier glow, Taunt red shockwave, Charge red motion streak, Whirlwind spin.",
+        spell_visual_cues="Shield Block metallic glow, Taunt red shockwave, Charge motion streak.",
         keywords=("전사", "전탱", "방전", "무전", "분전", "방패", "오크 전사", "warrior", "tank"),
         tank_shield_required=True,
     ),
@@ -422,13 +422,10 @@ CLASS_SPEC_VISUAL_RULES: dict[str, ClassVisualSpec] = {
         english_class="Paladin",
         role_specs="보기(Protection Tank), 징기(Retribution 2H), 신기(Holy Healer)",
         equipment_rules=(
-            "보기(보호 탱커)일 때는 **반드시 한손 둔기/검 + 황금빛 성기사 방패(golden paladin shield)** 착용 필수! "
-            "징기(징벌 딜러)는 양손 황금 전투망치(2H golden warhammer), 신기(신성 힐러)는 한손 치유 둔기 + 보조장비/방패."
+            "보기(보호 탱커)는 반드시 한손 둔기/검 + 황금빛 방패 착용. "
+            "징기는 양손 황금 전투망치, 신기는 한손 치유 둔기 + 보조장비/방패."
         ),
-        spell_visual_cues=(
-            "Golden Consecration rune glow, translucent golden Divine Shield invulnerability bubble "
-            "(+ glowing cyan Hearthstone = iconic '무적귀환' bubble-hearth!), golden Holy Light beams."
-        ),
+        spell_visual_cues="Golden Consecration rune glow, translucent golden Divine Shield bubble, Holy Light beams.",
         keywords=("성기사", "기사", "보기", "징기", "신기", "무적귀환", "언데드 성기사", "paladin"),
         tank_shield_required=True,
     ),
@@ -436,36 +433,24 @@ CLASS_SPEC_VISUAL_RULES: dict[str, ClassVisualSpec] = {
         wow_class="도적",
         english_class="Rogue",
         role_specs="암살/전투/잠행 근접 딜러",
-        equipment_rules=(
-            "단검(쌍수 단검) 또는 한손 도검만 사용 (양손 대검·방패 절대 불가). "
-            "전리품·주사위를 집을 때는 기본 초록 단검을 허리띠에 수납!"
-        ),
-        spell_visual_cues="Vanish smoke puff cloud & translucent stealth shimmer, green poison droplets, Sprint speed lines.",
+        equipment_rules="단검(쌍수 단검) 또는 한손 도검만 사용. 전리품·주사위를 집을 때는 기본 단검을 허리에 수납.",
+        spell_visual_cues="Vanish smoke puff & stealth shimmer, green poison droplets, Sprint speed lines.",
         keywords=("도적", "노도", "소멸", "칼소멸", "은신", "단검", "노움 도적", "rogue", "vanish"),
     ),
     "사냥꾼": ClassVisualSpec(
         wow_class="사냥꾼",
         english_class="Hunter",
         role_specs="야수/사격/생존 원거리 딜러",
-        equipment_rules="화승총(wooden blunderbuss gun) 또는 활(bow) + 야수 펫(wolf/bear/cat). 근접 무기는 허리/등에 수납.",
-        spell_visual_cues=(
-            "Cute beast pet beside her, Feign Death (죽은 척하기 — sprawled flat with closed eyes & tongue out), "
-            "icy Freezing Trap crystal, stray arrow/bullet pulling extra mobs."
-        ),
+        equipment_rules="화승총(wooden blunderbuss gun) 또는 활 + 고정 동행 아기 곰 펫. 근접 무기는 등에 수납.",
+        spell_visual_cues="Cute baby brown bear cub beside her, flat sprawled Feign Death flop, icy Freezing Trap crystal.",
         keywords=("사냥꾼", "냥꾼", "드냥", "죽척", "죽은 척", "펫", "야수", "드워프 사냥꾼", "hunter", "feign"),
     ),
     "마법사": ClassVisualSpec(
         wow_class="마법사",
         english_class="Mage",
         role_specs="냉법/화법/비법 원거리 딜러 & 물빵·포탈 보급",
-        equipment_rules=(
-            "마법사 지팡이 또는 마법봉; 물빵 보급 장면에서만 창조된 마나 물병(glowing corked blue glass flask)과 "
-            "따뜻한 마법 빵/호빵(warm round conjured bread)을 들고, 다른 동작/전리품 장면에서는 손을 비움!"
-        ),
-        spell_visual_cues=(
-            "Polymorph fluffy white cartoon sheep, swirling glowing blue Arcane Portal, "
-            "translucent crystalline Ice Block cube, frost/arcane sparkles."
-        ),
+        equipment_rules="수정구 지팡이; 물빵 보급 장면에서만 코르크 유리 마나 물병과 둥근 빵을 들고 그 외엔 지팡이 수납.",
+        spell_visual_cues="Polymorph fluffy white cartoon sheep, swirling blue Arcane Portal, crystalline Ice Block.",
         keywords=("마법사", "법사", "냉법", "화법", "비법", "물빵", "변이", "양변", "포탈", "차원문", "스카이본", "mage", "polymorph"),
     ),
     "흑마법사": ClassVisualSpec(
@@ -473,131 +458,95 @@ CLASS_SPEC_VISUAL_RULES: dict[str, ClassVisualSpec] = {
         english_class="Warlock",
         role_specs="고흑/악흑/파흑 원거리 딜러 & 소환·생석",
         equipment_rules=(
-            "지팡이/마법봉 + 보라색 영혼의 조각(floating purple soul shards) + 빨간 임프 인형/소환수. "
-            "양손으로 물약·전리품을 건넬 때는 임프 인형을 옆구리에 끼거나 바닥에 내려둠!"
+            "작은 보라 마법서/영혼의 조각 + 고정 동행 보라 공허방랑자(Voidwalker). "
+            "(빨간 임프 인형은 소지하지 않음!)"
         ),
-        spell_visual_cues=(
-            "Grumpy red imp / purple voidwalker pet, floating purple soul-shard crystals, glowing green Healthstone gem, "
-            "purple Ritual of Summoning portal/closet, purple Fear swirl."
-        ),
-        keywords=("흑마법사", "흑마", "임프", "보이드", "생석", "생명석", "영혼의 조각", "소환", "인간 흑마법사", "warlock"),
+        spell_visual_cues="Cute floating purple Voidwalker companion, floating violet soul-shard crystals, glowing green Healthstone, purple summoning rift.",
+        keywords=("흑마법사", "흑마", "보이드", "공허방랑자", "생석", "생명석", "영혼의 조각", "소환", "인간 흑마법사", "warlock"),
     ),
     "사제": ClassVisualSpec(
         wow_class="사제",
         english_class="Priest",
         role_specs="신사/수사 힐러, 암사 딜러",
-        equipment_rules="황금 십자·성광 성직자 지팡이(golden Holy Cross & Sunburst Cleric staff) + 허리 미니 성서(mini Holy Prayer Book) & 황금 묵주(golden Rosary); 두 손으로 기도/전리품 시 지팡이를 등에 수납.",
-        spell_visual_cues=(
-            "Translucent golden Power Word: Shield protective bubble, warm golden-white healing sparkles, "
-            "translucent floating spirit-ghost / Spirit of Redemption form, purple Shadowform aura."
-        ),
+        equipment_rules="황금 십자 지팡이 + 허리 미니 성서 & 황금 묵주; 두 손 제스처/전리품 시 지팡이 수납.",
+        spell_visual_cues="Golden Power Word: Shield bubble, golden-white healing sparkles, purple Shadowform aura.",
         keywords=("사제", "신사", "수사", "암사", "힐러", "보호막", "영혼", "부활", "나이트엘프 사제", "priest"),
     ),
     "주술사": ClassVisualSpec(
         wow_class="주술사",
         english_class="Shaman",
         role_specs="복술 힐러, 정술 원딜, 고술 근딜",
-        equipment_rules="한손 둔기/도끼 + 방패(정술/복술) 또는 양손/쌍수(고술), 그리고 바닥에 세우는 조각된 나무 토템(wooden totems).",
-        spell_visual_cues=(
-            "Carved elemental wooden totems (fire/earth/water/air), crackling blue Chain Lightning arcs, "
-            "glowing golden Reincarnation ankh resurrection burst, teal healing waves."
-        ),
+        equipment_rules="한손 둔기/도끼 + 방패(정술/복술) 또는 양손/쌍수(고술), 바닥에 세우는 나무 토템.",
+        spell_visual_cues="Carved wooden elemental totems, crackling blue Chain Lightning arcs, golden Reincarnation burst.",
         keywords=("주술사", "술사", "복술", "정술", "고술", "토템", "윤회", "연번", "질풍", "트롤 주술사", "shaman", "totem"),
     ),
     "드루이드": ClassVisualSpec(
         wow_class="드루이드",
         english_class="Druid",
         role_specs="회드 힐러, 수드/야탱 탱커, 야딜 근딜, 조드 원딜",
-        equipment_rules="나뭇잎 돋은 나무 지팡이(gnarled wooden staff); 변신 개그 시 귀여운 곰(Bear)/표범(Cat)/부엉이(Moonkin) 폼 연출 가능.",
-        spell_visual_cues=(
-            "Cute chibi Bear Form / Cat Form transformation puffs, glowing cyan-teal Innervate mana stream, "
-            "swirling green nature leaves healing glow, Rebirth battle-res sparkles."
-        ),
+        equipment_rules="나뭇잎 돋은 나무 지팡이; 변신 개그 시 귀여운 SD 곰/표범/부엉이 폼 연출 가능.",
+        spell_visual_cues="Cute SD Bear/Cat Form puffs, cyan-teal Innervate mana stream, swirling green nature leaves.",
         keywords=("드루이드", "드루", "회드", "수드", "야드", "조드", "야탱", "자극", "변신", "타우렌 드루이드", "druid", "innervate"),
     ),
 }
 
 
 # ---------------------------------------------------------------------------
-# 5. Visual Anti-Hallucination Dictionary
+# 5. Concise Visual Fidelity Rules (Positive, Zero Bloat)
 # ---------------------------------------------------------------------------
 
 VISUAL_ANTI_HALLUCINATION_RULES: tuple[AntiHallucinationRule, ...] = (
     AntiHallucinationRule(
         key="mail_armor",
-        title="사슬 방어구 (Mail Armor != 쇠사슬/수갑)",
+        title="사슬 방어구 (Mail Armor = 링메일 갑옷)",
         korean_triggers=("사슬", "속박의 사슬", "허리띠", "갑옷", "쇠사슬"),
         english_triggers=("chain", "mail", "waist belt", "belt", "hauberk", "binding"),
         writer_note=(
-            "와우의 '사슬(Mail)' 장비(예: '속박의 사슬' = 사슬 허리띠)는 중세 링메일 갑옷입니다! "
-            "영문 `visual_prompt`에 절대 'prison chains'나 단독 'chain'을 쓰지 말고, "
-            "'ornate interlocking silver ring-mesh mail-armor waist belt with metallic buckle (NOT prison chains)'처럼 묘사하세요."
+            "와우 '사슬(Mail)' 장비(예: 속박의 사슬)는 중세 링메일 갑옷입니다. "
+            "영문 `visual_prompt`에 'silver interlocking ring-mesh mail-armor belt/tunic'으로 묘사하세요."
         ),
-        artist_note=(
-            "MAIL ARMOR RULE: WoW 'Mail / 사슬' gear (e.g., Chain of Binding) is interlocking metallic "
-            "ring-mesh medieval fantasy armor (a mail-armor waist belt with buckle or mail hauberk) — "
-            "STRICTLY NEVER draw literal metal prison chains, iron shackles, handcuffs, or padlocks!"
-        ),
+        artist_note="Mail gear = silver ring-mesh medieval armor belt/tunic.",
     ),
     AntiHallucinationRule(
         key="fantasy_drinks",
-        title="판타지 음료·물약 (현대 종이팩/빨대 절대 금지)",
+        title="판타지 음료·물약 (코르크 유리병·나무잔)",
         korean_triggers=("멜론 주스", "주스", "물빵", "물약", "마나 물", "음료", "마나물약", "치유물약", "물 좀"),
         english_triggers=("juice", "melon", "drink", "potion", "flask", "water", "beverage", "mug", "vial"),
         writer_note=(
-            "'상큼한 멜론 주스', 마나 물, 물약 등 모든 음료는 중세 판타지 **코르크 마개 유리 물약병(corked glass flask/vial)** "
-            "또는 **나무 선술집 머그잔(wooden tavern mug)**으로 묘사하세요. "
-            "현대 편의점 종이팩·플라스틱 빨대·페트병·캔 절대 금지!"
+            "'상큼한 멜론 주스', 마나 물, 물약 등 모든 음료는 중세 판타지 코르크 마개 유리 물약병"
+            "(corked glass flask) 또는 나무 머그잔(wooden tavern mug)으로 묘사하세요."
         ),
-        artist_note=(
-            "FANTASY DRINK & POTION RULE: Draw all drinks/juices/potions (including Melon Juice and conjured water) "
-            "ONLY as medieval fantasy corked glass potion flasks/vials, leather waterskins, or rustic wooden tavern mugs — "
-            "STRICTLY NEVER draw modern convenience-store juice cartons, Tetra Paks, plastic bottles, plastic straws, or cans!"
-        ),
+        artist_note="Drinks/potions = medieval corked glass flasks or wooden mugs.",
     ),
     AntiHallucinationRule(
         key="tank_shield",
-        title="전탱·보기 탱커 방패 필수 (양손 도끼 탱킹 금지)",
+        title="전탱·보기 탱커 방패 필수",
         korean_triggers=("전탱", "방전", "보기", "탱커", "탱킹", "방패", "보호 성기사", "방어 전사"),
         english_triggers=("tank", "tanking", "protection", "shield", "kite shield", "tower shield", "bulwark"),
         writer_note=(
-            "오크 전사(전탱/방전)나 언데드 성기사(보기)가 탱커 역할로 등장할 때는 반드시 **한손 무기 + 튼튼한 방패**를 "
-            "장비한 모습으로 묘사하세요! 양손 도끼/망치만 들고 탱커라고 주장하는 고증 오류 금지."
+            "오크 전사(전탱/방전)나 언데드 성기사(보기)가 탱커 역할이면 반드시 한손 무기 + 튼튼한 방패를 착용하세요."
         ),
-        artist_note=(
-            "TANK SHIELD RULE: Whenever Warrior (전탱/방전) or Paladin (보기) is depicted as a tank, "
-            "they MUST equip a sturdy fantasy shield (steel kite/tower shield for Warrior, golden crest shield for Paladin) "
-            "paired with a ONE-HANDED weapon — NEVER draw a tank wielding only a 2H battle axe or 2H warhammer!"
-        ),
+        artist_note="Tank Warrior/Paladin = 1H weapon + sturdy fantasy shield.",
     ),
     AntiHallucinationRule(
         key="weapon_scale_clean_hands",
-        title="한손 무기 크기 엄수 & Clean Hand Rule (무기 3개 동시 소지 금지)",
+        title="한손 무기 크기 & Clean Hand Rule",
         korean_triggers=("한손", "단검", "장트라제", "상트라제", "필살의 비수", "필비", "비수", "한손검", "입찰", "전리품", "드랍"),
         english_triggers=("one-handed", "1h", "dagger", "shortblade", "broadsword", "sword", "loot", "weapon", "blade"),
         writer_note=(
-            "한손검(`보호의 장트라제`)이나 단검(`필살의 비수`)은 반드시 한 손에 알맞은 아담한 치비 비율로 묘사하고(양손 대검화 금지!), "
-            "캐릭터가 전리품·방패·주사위·귀환석을 들 때는 기본 무기를 등/허리에 수납해 **한 캐릭터가 무기 3개 이상 동시 소지하지 않게** 하세요."
+            "한손검·단검은 2.5등신 SD 한 손에 맞는 아담한 크기로 묘사하고, 전리품·주사위를 들 땐 기본 무기를 등·허리에 수납하세요."
         ),
-        artist_note=(
-            "WEAPON SCALE & CLEAN HAND RULE: Keep 1-handed swords (e.g., Jang'thraze) and daggers (e.g., Felstriker) "
-            "strictly at compact 1-hand chibi scale — NEVER inflate a 1H sword into a giant 2H greatsword! "
-            "Max 1–2 items total across both hands; sheath/stow default cast weapons on back/belt whenever holding loot, shield, dice, or gesturing."
-        ),
+        artist_note="1H swords/daggers stay compact single-hand SD scale.",
     ),
     AntiHallucinationRule(
         key="loot_die",
-        title="입찰 주사위 (숫자·글자 금지, 점 눈금만)",
+        title="입찰 주사위 (점 눈금만)",
         korean_triggers=("주사위", "입찰", "차비", "굴림", "굴렸", "올굴림", "닌자"),
         english_triggers=("dice", "die", "roll", "need roll", "greed roll", "cube"),
         writer_note=(
-            "주사위 연출 시 영문 프롬프트에 'chunky 6-sided white-and-gold cube showing ONLY classic round dot pips, "
-            "strictly ZERO digits, ZERO numbers, ZERO letters'를 명시하세요."
+            "주사위는 'chunky 6-sided white-and-gold cube with round dot pips only (no digits)'로 묘사하세요."
         ),
-        artist_note=(
-            "LOOT DIE RULE: Draw any loot roll die as a chunky 6-sided white-and-gold medieval cube showing ONLY "
-            "simple round black dot pips — STRICTLY ZERO Arabic digits (1-100), ZERO letters, ZERO UI text!"
-        ),
+        artist_note="Loot die = 6-sided white-gold cube with round dot pips only (no digits).",
     ),
     AntiHallucinationRule(
         key="hearthstone",
@@ -605,49 +554,33 @@ VISUAL_ANTI_HALLUCINATION_RULES: tuple[AntiHallucinationRule, ...] = (
         korean_triggers=("귀환석", "귀환", "무적귀환", "여관"),
         english_triggers=("hearthstone", "teleport", "recall", "swirl"),
         writer_note=(
-            "귀환석은 푸른 소용돌이 룬이 빛나는 매끄러운 타원형 돌 + 청록빛 공간이동 리본 이펙트로 묘사하고, "
-            "반드시 캐릭터 진영에 맞는 마을/대도시 이름을 사용하세요."
+            "귀환석은 푸른 소용돌이 룬이 빛나는 매끄러운 타원형 돌로 묘사하고, 반드시 캐릭터 진영 마을만 사용하세요."
         ),
-        artist_note=(
-            "HEARTHSTONE RULE: Draw a Hearthstone as a smooth oval fantasy stone carved with a glowing cyan-blue "
-            "spiral rune surrounded by swirling cyan teleport sparkles and light ribbons."
-        ),
+        artist_note="Hearthstone = smooth oval stone with glowing cyan spiral rune.",
     ),
     AntiHallucinationRule(
         key="gold_pouch",
-        title="골드 (가죽 주머니 + 금화, 지폐 금지)",
+        title="골드 (가죽 주머니 + 금화)",
         korean_triggers=("골드", "분배금", "골팟", "수리비", "10골", "20골", "100골", "돈"),
         english_triggers=("gold", "coin", "pouch", "purse", "money"),
-        writer_note="골드는 끈으로 묶은 갈색 가죽 주머니와 반짝이는 둥근 금화로 묘사하세요(현대 지폐·카드·화폐 기호 금지).",
-        artist_note=(
-            "GOLD POUCH RULE: Draw gold ONLY as a plump brown leather coin pouch tied with string and gleaming "
-            "round golden coins — NEVER modern paper banknotes, credit cards, or currency symbols ($/₩)."
-        ),
+        writer_note="골드는 끈으로 묶은 갈색 가죽 주머니와 둥근 금화로 묘사하세요.",
+        artist_note="Gold = tied brown leather pouch with round gold coins.",
     ),
     AntiHallucinationRule(
         key="sleeping_bag",
-        title="침낭퀘 (중세 모험가 양모 침낭)",
+        title="침낭퀘 (중세 양모 침낭)",
         korean_triggers=("침낭", "침낭퀘", "야영", "휴식"),
         english_triggers=("sleeping bag", "bedroll", "camping", "camp"),
-        writer_note="침낭퀘의 침낭은 가죽 끈이 달린 따뜻한 베이지·갈색 중세 모험가 누빔 양모 침낭으로 묘사하세요.",
-        artist_note=(
-            "SLEEPING BAG RULE: Draw the Cozy Sleeping Bag as a warm quilted medieval tan-and-brown wool traveler's "
-            "bedroll with leather straps — NEVER modern neon nylon zipper camping gear or brand logos."
-        ),
+        writer_note="침낭은 가죽 끈이 달린 따뜻한 베이지·갈색 중세 누빔 양모 침낭으로 묘사하세요.",
+        artist_note="Sleeping bag = warm quilted medieval wool bedroll with leather straps.",
     ),
     AntiHallucinationRule(
         key="wow_forever_tooltips",
         title="와우 포에버 커스텀 아이템 툴팁 우선 원칙",
         korean_triggers=("툴팁", "모드레쉬", "속박의 사슬", "두목의 고리", "주문력", "치유량", "옵션", "스탯"),
         english_triggers=("tooltip", "custom", "mordresh", "stats"),
-        writer_note=(
-            "바닐라 와우헤드 스탯이 포에버 서버 개편 스탯과 다를 수 있습니다(예: 모드레쉬의 이글거리는 눈, 크롤도크 보루 드랍). "
-            "원글 본문·스샷에 나온 포에버 실스탯을 최우선으로 삼으세요."
-        ),
-        artist_note=(
-            "NO IN-IMAGE TOOLTIP TEXT: Never paint WoW tooltip UI boxes or text inside the raw illustration — "
-            "clean tooltips are composited programmatically afterward."
-        ),
+        writer_note="원글 본문·스샷에 나온 포에버 실스탯을 바닐라 DB보다 최우선으로 반영하세요.",
+        artist_note="No painted UI tooltip boxes inside raw art.",
     ),
 )
 
@@ -698,16 +631,11 @@ def detect_mentioned_faction_zones(context_text: str) -> dict[str, list[str]]:
 
 
 def build_wow_lore_guidance(context_text: str) -> str:
-    """Build dynamic WoW Forever (2026 Classic+) lore & visual guidance for `writer.py`.
-
-    Always includes core WoW Forever systems, faction rules, and anti-hallucination basics,
-    plus targeted hooks for any dungeons, outdoor zones, classes, or trap props detected
-    in `context_text`.
-    """
+    """Build dynamic WoW Forever (2026 Classic+) lore & visual guidance for `writer.py`."""
     lower = (context_text or "").lower()
     sections: list[str] = [WOW_FOREVER_CORE_SYSTEMS]
 
-    # 1. Matched dungeons (prioritize WoW Forever new 9 dungeons, then Classic)
+    # 1. Matched dungeons
     dungeons = detect_mentioned_dungeons(lower)
     if dungeons:
         d_lines = ["[감지된 와우 포에버 / 클래식 던전 컨텍스트]"]
@@ -730,19 +658,17 @@ def build_wow_lore_guidance(context_text: str) -> str:
     if zone_hits["Alliance"]:
         zone_lines.append(
             f"- 얼라이언스 전용 야외/대도시 감지 ({', '.join(zone_hits['Alliance'][:4])}): "
-            "해당 마을 귀환석·여관·퀘스트 주체는 반드시 얼라이언스/스카이본(상급 마법사) 캐스트"
-            "(노움 도적, 드워프 사냥꾼, 나이트엘프 사제, 인간 흑마법사, 스카이본 마법사)만 배정하세요!"
+            "해당 마을 귀환석·여관·퀘스트 주체는 얼라이언스/스카이본(상급 마법사) 캐스트만 배정하세요."
         )
     if zone_hits["Horde"]:
         zone_lines.append(
             f"- 호드 전용 야외/대도시 감지 ({', '.join(zone_hits['Horde'][:4])}): "
-            "해당 마을 귀환석·여관·퀘스트 주체는 반드시 호드 캐스트"
-            "(오크 전사, 언데드 성기사, 트롤 주술사, 타우렌 드루이드)만 배정하세요!"
+            "해당 마을 귀환석·여관·퀘스트 주체는 호드 캐스트만 배정하세요."
         )
     if zone_hits["Neutral"]:
         zone_lines.append(
             f"- 중립 지역 감지 ({', '.join(zone_hits['Neutral'][:4])}): "
-            "얼라이언스·호드·스카이본 모두 자연스럽게 출입 가능합니다."
+            "얼라이언스·호드·스카이본 모두 출입 가능합니다."
         )
     if zone_lines:
         sections.append("[야외 지역 진영 일치 경고]\n" + "\n".join(zone_lines))
@@ -758,21 +684,21 @@ def build_wow_lore_guidance(context_text: str) -> str:
     if class_lines:
         sections.append("[감지된 직업·특성별 장비 및 스킬 고증]\n" + "\n".join(class_lines[:6]))
 
-    # 4. Matched visual anti-hallucination warnings (always include top baseline + matched traps)
+    # 4. Matched visual fidelity warnings
     matched_rules: list[AntiHallucinationRule] = []
     for rule in VISUAL_ANTI_HALLUCINATION_RULES:
         if _contains_any(lower, rule.korean_triggers) or _contains_any(lower, rule.english_triggers):
             matched_rules.append(rule)
 
-    ah_lines = ["[시각 오역·환각 방지 수칙 (영문 visual_prompt 작성 시 필수 반영)]"]
+    ah_lines = ["[시각 고증 수칙 (영문 visual_prompt 반영)]"]
     if matched_rules:
         for rule in matched_rules:
             ah_lines.append(f"- **{rule.title}**: {rule.writer_note}")
     else:
         ah_lines.extend([
-            "- **탱커 방패 필수**: 전탱/보기 탱킹 장면은 반드시 한손 무기 + 방패 착용(양손 도끼 탱킹 금지).",
-            "- **사슬=링메일 갑옷 / 음료=판타지 유리병·나무잔**: 쇠사슬·편의점 종이팩/빨대 절대 금지.",
-            "- **Clean Hand & 1H 비율**: 전리품/주사위/귀환석을 들 땐 기본 무기를 등·허리에 수납(무기 3개 동시 소지 금지), 주사위는 점 눈금만(숫자·글자 금지).",
+            "- **탱커 방패 필수**: 전탱/보기 탱킹 장면은 한손 무기 + 방패 착용.",
+            "- **사슬=링메일 갑옷 / 음료=판타지 유리병·나무잔**: 중세 판타지 소품으로만 묘사.",
+            "- **Clean Hand & SD 비율**: 전리품/주사위/귀환석을 들 땐 기본 무기 수납, 주사위는 점 눈금만.",
         ])
     sections.append("\n".join(ah_lines))
 
@@ -780,86 +706,53 @@ def build_wow_lore_guidance(context_text: str) -> str:
 
 
 def build_cut_visual_lore_hints(visual_prompt: str, characters: list[str]) -> str:
-    """Build targeted English WoW Forever visual guardrails for `artist.py` per cut."""
-    combined_lower = (visual_prompt or "").lower() + " " + " ".join(characters).lower()
+    """Build compact (<= 300-500 char) English WoW Forever visual fidelity facts for `artist.py`."""
+    combined_lower = f"{visual_prompt or ''} {' '.join(characters)}".lower()
 
-    hints: list[str] = [
-        "WOW FOREVER VISUAL FIDELITY & ANTI-HALLUCINATION GUARDRAILS:",
-        (
-            "- CLEAN HAND & PROP LIMIT: Keep hands uncluttered (max 1–2 items total across both hands). "
-            "Whenever a character holds scene-specific loot, a shield, a loot die, a hearthstone, a potion, or gestures, "
-            "sheath/stow their default cast weapon on their back/waist or omit it completely — NEVER stack 3+ weapons at once."
-        ),
-        (
-            "- MEDIEVAL FANTASY PROPS ONLY: Every item must look authentically World of Warcraft medieval fantasy "
-            "(NEVER modern plastic packaging, paper juice boxes, straws, paper bills, smartphones, or garbled UI text)."
-        ),
+    base_parts: list[str] = [
+        "PROPS: Clean hands (stow default weapon on back/belt when hands are busy); "
+        "medieval WoW fantasy props in matching 2-to-2.5 head SD style."
     ]
 
-    # Triggered anti-hallucination rules
+    extras: list[str] = []
     added_keys: set[str] = set()
     for rule in VISUAL_ANTI_HALLUCINATION_RULES:
         if _contains_any(combined_lower, rule.korean_triggers) or _contains_any(combined_lower, rule.english_triggers):
-            hints.append(f"- {rule.artist_note}")
+            extras.append(rule.artist_note)
             added_keys.add(rule.key)
 
-    # Extra safeguard: if 'tank' or Korean tank terms appear alongside Warrior/Paladin, force shield rule
-    has_warrior_or_paladin = any(
+    has_tank_class = any(
         tok in combined_lower for tok in ("오크 전사", "언데드 성기사", "orc_warrior", "undead_paladin", "전탱", "보기")
     )
     if (
-        has_warrior_or_paladin
+        has_tank_class
         and "tank_shield" not in added_keys
         and any(tok in combined_lower for tok in ("tank", "shield", "전탱", "방전", "보기", "탱커", "protection"))
     ):
         tank_rule = next(r for r in VISUAL_ANTI_HALLUCINATION_RULES if r.key == "tank_shield")
-        hints.append(f"- {tank_rule.artist_note}")
+        extras.append(tank_rule.artist_note)
 
-    # Skyborne subtle heritage cue when Skyborne Mage appears
-    if any(tok in combined_lower for tok in ("스카이본", "skyborne")):
-        hints.append(
-            "- SKYBORNE HERITAGE ACCENT: Keep Skyborne Mage's costume faithful to her turnaround "
-            "(sky-blue high side-ponytail, pointed elf ears, tilted royal-blue wizard hat with smiling "
-            "cloud-wing badge, cloud-trimmed capelet, Polymorph Sheep waist charm, blue crystal staff; "
-            "no sailor uniform) re-proportioned into sleek 3-to-3.5 head webtoon style."
-        )
-
-    # Class spell/effect visual cues only when relevant action appears in prompt
     spell_cue_triggers: tuple[tuple[tuple[str, ...], str], ...] = (
-        (
-            ("polymorph", "sheep", "변이", "양변"),
-            "POLYMORPH EFFECT: Fluffy white cartoon sheep with cute bewildered eyes and tiny blue arcane sparkles.",
-        ),
-        (
-            ("vanish", "stealth", "소멸", "은신", "smoke"),
-            "ROGUE VANISH EFFECT: Crisp swirling white-gray cartoon smoke puff and faint translucent silhouette.",
-        ),
-        (
-            ("totem", "lightning", "토템", "번개", "reincarnation", "윤회"),
-            "SHAMAN EFFECT: Small carved rustic wooden elemental totem(s) and crisp cyan-blue crackling lightning arcs.",
-        ),
-        (
-            ("holy bubble", "golden bubble", "divine shield", "power word", "보호막", "무적"),
-            "HOLY SHIELD EFFECT: Clean semi-transparent golden glowing magical bubble aura around the character.",
-        ),
-        (
-            ("feign death", "죽은 척", "죽척"),
-            "HUNTER FEIGN DEATH: Character sprawled dramatically flat on the white floor with tightly shut eyes and comedic dizzy spirals.",
-        ),
-        (
-            ("portal", "차원문", "포탈", "summon", "소환"),
-            "PORTAL / SUMMON EFFECT: Swirling glowing blue arcane portal (Mage) or violet fel-purple summoning rift (Warlock), zero floating letters.",
-        ),
-        (
-            ("innervate", "bear form", "cat form", "자극", "곰 변신", "표범"),
-            "DRUID EFFECT: Swirling green nature leaves or bright cyan-teal Innervate mana beam (or cute chibi Bear/Cat form).",
-        ),
+        (("polymorph", "sheep", "변이", "양변"), "Polymorph = cute fluffy white cartoon sheep."),
+        (("vanish", "stealth", "소멸", "은신", "smoke"), "Vanish = crisp swirling smoke puff."),
+        (("totem", "lightning", "토템", "번개", "reincarnation", "윤회"), "Shaman = wooden totem + blue lightning sparks."),
+        (("holy bubble", "golden bubble", "divine shield", "power word", "보호막", "무적"), "Holy shield = translucent golden bubble aura."),
+        (("feign death", "죽은 척", "죽척"), "Feign Death = sprawled flat on white floor with shut eyes."),
+        (("portal", "차원문", "포탈", "summon", "소환"), "Portal = glowing arcane/violet rift (no letters)."),
+        (("innervate", "bear form", "cat form", "자극", "곰 변신", "표범"), "Druid = green leaves or cute SD Bear/Cat form."),
     )
     for triggers, note in spell_cue_triggers:
         if _contains_any(combined_lower, triggers):
-            hints.append(f"- {note}")
+            extras.append(note)
 
-    return "\n".join(hints)
+    # Cap total length strictly within compact 300-420 char budget
+    out = base_parts[0]
+    for item in extras:
+        candidate = f"{out} {item}"
+        if len(candidate) > 380:
+            break
+        out = candidate
+    return out
 
 
 def find_modern_slang_violations(text: str) -> list[tuple[str, str]]:

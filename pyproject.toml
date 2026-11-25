@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "wow-forever-sloptoon"
 version = "0.1.0"
-description = "Automated 4~6-cut gag sloptoon pipeline and static web archive for DCInside WOW Forever minor gallery."
+description = "Automated 4~7-cut 2~2.5-head SD gag sloptoon pipeline and static web archive for DCInside WOW Forever minor gallery."
 requires-python = ">=3.10"
 dependencies = [
     "google-genai>=3.2.0",

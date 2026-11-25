@@ -3,32 +3,36 @@
   "source_post_no": "98449",
   "source_title": "이거 필비 전사가 가져갓네 ㅎㄷ",
   "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=98449",
-  "subtitle": "첨상 렌드 방의 전탱 비스 대참사",
-  "layout_mode": "classic_2tier",
-  "background_style": "clean_white",
-  "acts": null,
+  "subtitle": "공속 1.70은 전사 거라고?!",
   "cuts": [
     {
       "cut_index": 1,
       "aspect_ratio": "4:3",
       "layout_slot": "top",
-      "act_number": null,
-      "panel_index": null,
       "characters": [
         "노움 도적"
       ],
       "speaker": "노움 도적",
-      "dialogue": "첨상 렌드에서 드디어\n필살의 비수 떴다!\n내 에픽 단검이다!",
+      "dialogue": "첨상에서 필비 떴다!\n내 졸업 단검이야!",
       "wordless": false,
-      "visual_prompt": "Dynamic low-angle shot in a 3-to-3.5 head-tall sleek Korean gag webtoon style on a pure solid white #FFFFFF background. On the left, 노움 도적 leaps in pure ecstasy with sparkling eyes and both fists raised, her daggers neatly sheathed at her waist so her hands are free. Beside her sits an open dark-iron dungeon boss chest emitting a bright epic purple glow on a minimal dark stone floor patch.",
+      "visual_prompt": "Low-angle three-quarter shot in cute 2.5-head chibi SD webtoon style on a pure #FFFFFF background. On the left, Gnome Rogue with both daggers sheathed at her waist leaps excitedly with starry eyes and raised empty fists over minimal stone floor tiles. Beside a tiny knocked-out cute 2.5-head chibi SD armored orc warchief boss and an open treasure chest, a small glowing purple epic dagger floats with sparkles.",
       "tail_target": "left",
-      "bubble_side": "right",
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": [
-        0.32,
-        0.42
+      "bubble_side": "left",
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 2,
+      "aspect_ratio": "16:9",
+      "layout_slot": "bottom",
+      "characters": [
+        "오크 전사"
       ],
-      "bubble_center_xy": null,
+      "speaker": "오크 전사",
+      "dialogue": "1.70에 3초 올치명?\n영격용으로 딱인데 입찰!",
+      "wordless": false,
+      "visual_prompt": "Angled medium close-up shot in cute 2.5-head chibi SD webtoon style on a pure #FFFFFF background. On the right, Orc Warrior with her sturdy shield strapped on her back and basic weapon sheathed leans in eagerly with sparkling eyes and a grin. She gazes toward the small glowing purple epic dagger floating on the left.",
+      "tail_target": "right",
+      "bubble_side": "right",
       "item_tooltip": {
         "image_path": null,
         "item_name": "필살의 비수",
@@ -47,101 +51,71 @@
           "발동 효과: 다음 3초 동안의 모든 공격은 치명타 및 극대화로 적중됩니다."
         ],
         "icon_name": "inv_weapon_shortblade_25",
-        "preferred_corner": "top_right",
+        "preferred_corner": "top_left",
         "target_width": 288
       }
-    },
-    {
-      "cut_index": 2,
-      "aspect_ratio": "16:9",
-      "layout_slot": "bottom",
-      "act_number": null,
-      "panel_index": null,
-      "characters": [
-        "오크 전사",
-        "노움 도적"
-      ],
-      "speaker": "오크 전사",
-      "dialogue": "공속 1.70에 3초 올치명?\n영격 돌리기 딱 좋네.\n도적도 도검 먹으니 입찰!",
-      "wordless": false,
-      "visual_prompt": "Over-the-shoulder side view in sleek 3-to-3.5 head-tall Korean gag webtoon style on a pure solid white #FFFFFF background. On the left, tank 오크 전사 with her sturdy metal tank shield strapped on her back and her sword sheathed at her hip grins shamelessly while tossing a chunky 6-sided white-and-gold cube showing ONLY classic round dot pips, strictly ZERO digits, ZERO numbers, ZERO letters. On the right, 노움 도적 freezes mid-celebration, turning her head in disbelief.",
-      "tail_target": "left",
-      "bubble_side": "right",
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": [
-        0.28,
-        0.38
-      ],
-      "bubble_center_xy": null,
-      "item_tooltip": null
     },
     {
       "cut_index": 3,
       "aspect_ratio": "4:3",
       "layout_slot": "top",
-      "act_number": null,
-      "panel_index": null,
       "characters": [
         "노움 도적",
         "오크 전사"
       ],
       "speaker": "노움 도적",
-      "dialogue": "잠깐만요 전사님!\n도적이 뻔히 옆에 있는데\n진짜로 주사위 굴렸어요?!",
+      "dialogue": "전사가 단검을 왜 굴려?!\n방패는 폼이야?!",
       "wordless": false,
-      "visual_prompt": "Close-up dramatic confrontation angle in sleek 3-to-3.5 head-tall Korean gag webtoon style on a pure solid white #FFFFFF background. On the left, 노움 도적 leans forward frantically with wide panicked eyes, waving both empty hands with her daggers stowed at her belt. On the right, tank 오크 전사 holds a sturdy kite shield on her left arm with her sword sheathed, crossing her free hand casually without a shred of guilt.",
-      "tail_target": "left",
+      "visual_prompt": "Dutch-tilt diagonal shot in cute 2.5-head chibi SD webtoon style on a pure #FFFFFF background. On the left, Orc Warrior with her basic weapon sheathed and shield strapped on her back happily tosses a chunky 6-sided white-and-gold cube with round dot pips only (no digits) to claim the glowing purple epic dagger. On the right, Gnome Rogue with daggers sheathed leans forward waving both empty hands in furious protest.",
+      "tail_target": "right",
       "bubble_side": "right",
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": [
-        0.3,
-        0.45
-      ],
-      "bubble_center_xy": null,
       "item_tooltip": null
     },
     {
       "cut_index": 4,
       "aspect_ratio": "16:9",
       "layout_slot": "bottom",
-      "act_number": null,
-      "panel_index": null,
       "characters": [
-        "오크 전사",
         "노움 도적"
       ],
       "speaker": null,
       "dialogue": null,
       "wordless": true,
-      "visual_prompt": "Wide silent deadpan freeze-frame shot in sleek 3-to-3.5 head-tall Korean gag webtoon style on a pure solid white #FFFFFF background. On the left, tank 오크 전사 proudly admires a single compact purple-glowing epic dagger in her right hand alongside her heavy metal tank shield on her left arm, with her previous sword stowed away cleanly. On the right, 노움 도적 collapses face-down on a minimal stone floor patch in silent shock with comical fountain tears.",
+      "visual_prompt": "Extreme close-up big bust-up filling 80% of the frame height in cute 2.5-head chibi SD webtoon style on a pure #FFFFFF background. Gnome Rogue dead-center freezes in absolute shock with pale face, blank wide eyes, waterfalls of bright light-blue watery anime tears (strictly cyan-blue water tears, zero pink or red tears) streaming down her cheeks, and a tiny chibi ghost soul floating out of her head.",
       "tail_target": "center",
       "bubble_side": null,
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
-      "bubble_center_xy": null,
       "item_tooltip": null
     },
     {
       "cut_index": 5,
+      "aspect_ratio": "4:3",
+      "layout_slot": "top",
+      "characters": [
+        "오크 전사",
+        "노움 도적"
+      ],
+      "speaker": "오크 전사",
+      "dialogue": "봐, 영격 팡팡 터지네!\n탱커한테 최고 맞지?",
+      "wordless": false,
+      "visual_prompt": "High-angle comedic shot in cute 2.5-head chibi SD webtoon style on a pure #FFFFFF background. On the right, Orc Warrior wearing her sturdy shield proudly swings the tiny glowing purple epic dagger in one hand with bright orange strike sparks. On the left, Gnome Rogue lies face-down slumped flat on minimal stone floor tiles in utter defeat.",
+      "tail_target": "right",
+      "bubble_side": "right",
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 6,
       "aspect_ratio": "16:9",
       "layout_slot": "bottom",
-      "act_number": null,
-      "panel_index": null,
       "characters": [
         "드워프 사냥꾼",
         "노움 도적"
       ],
       "speaker": "드워프 사냥꾼",
-      "dialogue": "도적님 울지 마…\n다음부턴 전탱 거르고\n보기랑 야드랑 가자.",
+      "dialogue": "울지 마, 도적아.\n다음엔 보기랑 야드 가자.",
       "wordless": false,
-      "visual_prompt": "Slightly high-angle aftermath shot in sleek 3-to-3.5 head-tall Korean gag webtoon style on a pure solid white #FFFFFF background. On the right, 드워프 사냥꾼 with her wooden blunderbuss slung cleanly on her back and her ultra-cute chubby round baby brown bear cub wearing a forest-green neckerchief sitting calmly beside her gently pats the slumped shoulder of 노움 도적 on the left. 노움 도적 sits cross-legged on a minimal ground shadow, sniffling into empty hands while staring vacantly at the floor.",
-      "tail_target": "right",
+      "visual_prompt": "Side-by-side medium shot in cute 2.5-head chibi SD webtoon style on a pure #FFFFFF background. On the left, Dwarf Hunter with her wooden blunderbuss slung on her back gently pats the shoulder of the weeping Gnome Rogue on the right with a calm deadpan smile. Beside Dwarf Hunter, her cute 2.5-head chibi SD baby brown bear cub sits and tilts its head sympathetically.",
+      "tail_target": "left",
       "bubble_side": "left",
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": [
-        0.7,
-        0.38
-      ],
-      "bubble_center_xy": null,
       "item_tooltip": null
     }
   ]

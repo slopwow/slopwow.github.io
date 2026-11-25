@@ -1,4 +1,4 @@
-"""Unit tests for models, Draft C cast bible, Gemini Interactions writer & artist, and CLI."""
+"""Unit tests for Route A models (4~7 cuts), 9-cast SD bible, and Gemini Interactions writer & artist."""
 
 from __future__ import annotations
 
@@ -12,7 +12,7 @@ import pytest
 from PIL import Image
 from pydantic import ValidationError
 
-from wow_sloptoon import artist, cli, writer
+from wow_sloptoon import artist, writer
 from wow_sloptoon.cast import (
     CAST_BIBLE,
     build_character_anchors_block,
@@ -47,7 +47,7 @@ def _sample_cuts(count: int = 5, *, include_wordless: bool = True) -> list[Comic
     cuts: list[ComicCut] = []
     for i in range(1, count + 1):
         is_wordless = include_wordless and i == 4
-        slot = "top" if (i % 2 == 1 and not (count == 5 and i == 5)) else "bottom"
+        slot = "top" if (i % 2 == 1 and not (count % 2 == 1 and i == count)) else "bottom"
         ratio = "4:3" if slot == "top" else "16:9"
         cuts.append(
             ComicCut(
@@ -58,16 +58,16 @@ def _sample_cuts(count: int = 5, *, include_wordless: bool = True) -> list[Comic
                 speaker=None if is_wordless else "나이트엘프 사제",
                 dialogue=None if is_wordless else f"테스트 대사 {i}",
                 wordless=is_wordless,
-                visual_prompt=f"Cut {i} pure solid white #FFFFFF background chibi reaction.",
+                visual_prompt=f"Cut {i} cute 2.5-head chibi SD reaction on pure #FFFFFF.",
                 tail_target="center" if is_wordless else "left",
             )
         )
     return cuts
 
 
-def test_episode_script_validates_cut_count_characters_and_wordless() -> None:
-    # 4~8 cuts are all valid when a wordless cut is present
-    for n in (4, 5, 6, 7, 8):
+def test_episode_script_validates_route_a_4_to_7_cuts_characters_and_wordless() -> None:
+    # 4~7 cuts are valid when at least one wordless cut is present
+    for n in (4, 5, 6, 7):
         script = EpisodeScript(
             episode_number=3,
             source_post_no="99001",
@@ -89,7 +89,7 @@ def test_episode_script_validates_cut_count_characters_and_wordless() -> None:
             cuts=_sample_cuts(3, include_wordless=True),
         )
 
-    # 9 cuts fails
+    # 8 cuts fails (V4 / 8+ cuts permanently retired; strict 4~7 cut window)
     with pytest.raises(ValidationError):
         EpisodeScript(
             episode_number=3,
@@ -97,7 +97,7 @@ def test_episode_script_validates_cut_count_characters_and_wordless() -> None:
             source_title="너무 김",
             source_url="https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=99001",
             subtitle="실패",
-            cuts=_sample_cuts(9, include_wordless=True),
+            cuts=_sample_cuts(8, include_wordless=True),
         )
 
     # Missing wordless cut fails
@@ -134,14 +134,14 @@ def test_wordless_cut_clears_dialogue_and_speaker() -> None:
         speaker="스카이본 마법사",
         dialogue="말하면 안됨",
         wordless=True,
-        visual_prompt="Silent shocked mage",
+        visual_prompt="Silent shocked mage big close-up in cute 2.5-head SD style",
         tail_target="center",
     )
     assert cut.speaker is None
     assert cut.dialogue is None
 
 
-def test_cast_bible_has_9_draft_c_characters_and_alias_mapping() -> None:
+def test_cast_bible_has_9_route_a_sd_characters_and_alias_mapping() -> None:
     assert len(CAST_BIBLE) == 9
     expected_names = {
         "오크 전사",
@@ -160,16 +160,20 @@ def test_cast_bible_has_9_draft_c_characters_and_alias_mapping() -> None:
     assert canonical_cast_name("보기") == "언데드 성기사"
     assert canonical_cast_name("나엘사제") == "나이트엘프 사제"
     assert canonical_cast_name("법사") == "스카이본 마법사"
-    assert resolve_cast_member("회드") is not None
-    assert resolve_cast_member("회드").name == "타우렌 드루이드"
+    druid = resolve_cast_member("회드")
+    assert druid is not None and druid.name == "타우렌 드루이드"
 
     anchors = build_character_anchors_block(["흑마", "법사"])
-    assert "인간 흑마법사" in anchors
-    assert "스카이본 마법사" in anchors
-    assert "red plush Imp doll" in anchors
-    assert "royal-blue pointed wizard hat" in anchors
-    assert "Polymorph Sheep keychain charm" in anchors
-    assert "sailor-collar" not in anchors
+    assert "human_warlock" in anchors
+    assert "warlock_voidwalker" in anchors
+    assert "skyborne_mage" in anchors
+    assert "2-to-2.5 head SD" in anchors
+    assert "tilted blue wizard hat" in anchors
+    assert "Polymorph Sheep charm" in anchors
+    assert "imp" not in anchors.lower()
+    assert "sailor" not in anchors.lower()
+    assert "3-to-3.5" not in anchors.lower()
+    assert "sleek" not in anchors.lower()
 
 
 def test_writer_uses_interactions_api_gemini_4_hydrogen_and_normalizes_cast() -> None:
@@ -177,7 +181,7 @@ def test_writer_uses_interactions_api_gemini_4_hydrogen_and_normalizes_cast() ->
     raw_script = EpisodeScript(
         episode_number=3,
         source_post_no=post.post_no,
-        source_title=post.title,
+        source_title="LLM이 임의로 바꾼 제목",
         source_url=post.url,
         subtitle="뉴비 흑마의 멜론 주스 보급 사건",
         cuts=[
@@ -189,7 +193,7 @@ def test_writer_uses_interactions_api_gemini_4_hydrogen_and_normalizes_cast() ->
                 speaker="나엘사제",
                 dialogue="저기 물 좀 주세요...",
                 wordless=False,
-                visual_prompt="Priest asks warlock for water on pure #FFFFFF white background.",
+                visual_prompt="Over-the-shoulder cute 2.5-head SD shot of Priest asking Warlock for water.",
                 tail_target="left",
             ),
             ComicCut(
@@ -198,9 +202,9 @@ def test_writer_uses_interactions_api_gemini_4_hydrogen_and_normalizes_cast() ->
                 layout_slot="bottom",
                 characters=["흑마"],
                 speaker="흑마",
-                dialogue="멜론 주스 드렸어요!",
+                dialogue="멜론 주스 20개 챙겼어!",
                 wordless=False,
-                visual_prompt="Warlock happily hands over melon juice on pure #FFFFFF white background.",
+                visual_prompt="Low-angle cute 2.5-head SD shot of Warlock offering glass flasks beside her Voidwalker.",
                 tail_target="right",
             ),
             ComicCut(
@@ -211,7 +215,7 @@ def test_writer_uses_interactions_api_gemini_4_hydrogen_and_normalizes_cast() ->
                 speaker="도적",
                 dialogue="야 흑마가 물을 왜 줘 ㅋㅋ",
                 wordless=False,
-                visual_prompt="Rogue laughs pointing next to mage on pure #FFFFFF white background.",
+                visual_prompt="Side-profile cute 2.5-head SD shot of Rogue pointing next to Mage.",
                 tail_target="left",
             ),
             ComicCut(
@@ -220,7 +224,7 @@ def test_writer_uses_interactions_api_gemini_4_hydrogen_and_normalizes_cast() ->
                 layout_slot="bottom",
                 characters=["법사"],
                 wordless=True,
-                visual_prompt="Shocked speechless mage freeze-frame on pure #FFFFFF white background.",
+                visual_prompt="Dutch-tilt big bust-up close-up of shocked speechless Mage on pure #FFFFFF.",
                 tail_target="center",
             ),
         ],
@@ -246,16 +250,18 @@ def test_writer_uses_interactions_api_gemini_4_hydrogen_and_normalizes_cast() ->
     assert "wordless=True" in call["input"]
     assert "#FFFFFF" in call["input"]
 
-    # Aliases normalized to canonical Korean names
+    # Verbatim source title enforced & aliases normalized to canonical Korean names
+    assert result.source_title == post.title
     assert result.cuts[0].characters == ["나이트엘프 사제", "인간 흑마법사"]
     assert result.cuts[0].speaker == "나이트엘프 사제"
     assert result.cuts[3].characters == ["스카이본 마법사"]
     assert result.cuts[3].wordless is True
 
 
-def test_artist_uses_interactions_api_nano_banana_and_attaches_reference_images(tmp_path: Path) -> None:
+def test_artist_uses_interactions_api_nano_banana_and_attaches_route_a_refs(tmp_path: Path) -> None:
     settings = load_settings()
     assert settings.cast_sheet_path.exists()
+    assert settings.style_ref_path.name == "diorama_style_ref.jpg"
     assert settings.style_ref_path.exists()
     assert settings.turnarounds_dir.exists()
     for member in CAST_BIBLE:
@@ -263,7 +269,6 @@ def test_artist_uses_interactions_api_nano_banana_and_attaches_reference_images(
         if member.companion_turnaround_filename:
             assert (settings.turnarounds_dir / member.companion_turnaround_filename).exists()
 
-    # Create tiny valid PNG bytes as fake Gemini image response
     buf = io.BytesIO()
     Image.new("RGB", (64, 48), (255, 255, 255)).save(buf, format="PNG")
     fake_png_b64 = base64.b64encode(buf.getvalue()).decode("ascii")
@@ -283,6 +288,7 @@ def test_artist_uses_interactions_api_nano_banana_and_attaches_reference_images(
         tmp_path / "raw_cuts",
         client=fake_client,
         settings=settings,
+        max_workers=1,
     )
 
     assert len(out_paths) == len(script.cuts)
@@ -295,7 +301,7 @@ def test_artist_uses_interactions_api_nano_banana_and_attaches_reference_images(
         "aspect_ratio": script.cuts[0].aspect_ratio,
         "image_size": "1K",
     }
-    # Style-First order: 1 text prompt + style ref (Image 1) + active character turnaround sheets + any fixed companions
+
     resolved_first = []
     seen_first: set[str] = set()
     for c in script.cuts[0].characters:
@@ -311,9 +317,12 @@ def test_artist_uses_interactions_api_nano_banana_and_attaches_reference_images(
     )
     assert len(first_call["input"]) == 2 + len(resolved_first) + expected_companion_count
     assert first_call["input"][0]["type"] == "text"
-    assert "#FFFFFF" in first_call["input"][0]["text"]
-    assert "3-to-3.5 head" in first_call["input"][0]["text"]
-    assert "Costume & Color Sheet" in first_call["input"][0]["text"]
+    prompt_text = first_call["input"][0]["text"]
+    assert "#FFFFFF" in prompt_text
+    assert "2-to-2.5 head" in prompt_text
+    assert "diorama_style_ref.jpg" in prompt_text
+    assert "3-to-3.5" not in prompt_text
+    assert "sleek" not in prompt_text.lower()
     assert base64.b64decode(first_call["input"][1]["data"]) == settings.style_ref_path.read_bytes()
     for img_item in first_call["input"][1:]:
         assert img_item["type"] == "image"
@@ -323,14 +332,13 @@ def test_artist_uses_interactions_api_nano_banana_and_attaches_reference_images(
         with Image.open(img_path) as im:
             assert im.size == (64, 48)
 
-    # Alternate supported image models validate cleanly; invalid ones raise
     for m in SUPPORTED_IMAGE_MODELS:
         assert artist.resolve_image_model(m, settings) == m
     with pytest.raises(ValueError):
         artist.resolve_image_model("invalid-legacy-model", settings)
 
 
-def test_episode_record_and_cli_dry_run(monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]) -> None:
+def test_episode_record_model_validation() -> None:
     record = EpisodeRecord(
         episode_id="ep001",
         episode_number=1,
@@ -346,16 +354,4 @@ def test_episode_record_and_cli_dry_run(monkeypatch: pytest.MonkeyPatch, capsys:
         page_images_rel=["data/episodes/ep001/page_1.png"],
     )
     assert record.episode_id == "ep001"
-
-    # Mock GalleryScout.fetch_post_detail for offline CLI dry-run smoke test
-    monkeypatch.setattr(
-        cli.GalleryScout,
-        "fetch_post_detail",
-        lambda self, post_no, base_post=None: _sample_post(),
-    )
-
-    rc = cli.main(["generate", "--post-no", "99001", "--dry-run"])
-    assert rc == 0
-    captured = capsys.readouterr()
-    assert "[DRY-RUN]" in captured.out
-    assert '"source_post_no": "99001"' in captured.out
+    assert record.cut_count == 5

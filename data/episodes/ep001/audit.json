@@ -1,8 +1,9 @@
 {
   "passed": true,
   "total_overlap_px": 0,
+  "total_tooltip_overlap_px": 0,
   "border_pure_white": true,
-  "cut_count": 6,
+  "cut_count": 5,
   "page_count": 3,
   "page_sizes": [
     [
@@ -15,12 +16,12 @@
     ],
     [
       900,
-      1320
+      486
     ]
   ],
   "full_size": [
     900,
-    4464
+    3605
   ],
   "thumb_size": [
     800,
@@ -33,15 +34,16 @@
       "wordless": false,
       "bubble_count": 1,
       "overlap_px": 0,
-      "min_clearance_px": 44.6,
-      "font_size": 19,
+      "min_clearance_px": 26.0,
+      "font_size": 25,
       "art_bbox": [
-        70,
-        273,
-        830,
-        829
+        49,
+        328,
+        857,
+        817
       ],
       "tail_target": "left",
+      "art_height_ratio": 0.5892,
       "cut_index": 1,
       "slot": "top",
       "page": 1
@@ -50,23 +52,26 @@
       "wordless": false,
       "bubble_count": 1,
       "overlap_px": 0,
-      "min_clearance_px": 88.8,
-      "font_size": 17,
+      "min_clearance_px": 12.4,
+      "font_size": 19,
       "art_bbox": [
-        374,
-        182,
-        829,
-        435
+        217,
+        156,
+        626,
+        427
       ],
-      "tail_target": "right",
+      "tail_target": "center",
+      "bubble_side_resolved": "left",
+      "layout_mode_resolved": "top_split_left",
       "has_item_tooltip": true,
       "tooltip_bbox": [
-        16,
-        293,
-        292,
-        422
+        566,
+        10,
+        830,
+        121
       ],
       "tooltip_overlap_px": 0,
+      "art_height_ratio": 0.6216,
       "cut_index": 2,
       "slot": "bottom",
       "page": 1
@@ -75,15 +80,16 @@
       "wordless": false,
       "bubble_count": 1,
       "overlap_px": 0,
-      "min_clearance_px": 13.0,
-      "font_size": 20,
+      "min_clearance_px": 25.3,
+      "font_size": 25,
       "art_bbox": [
         19,
-        294,
+        326,
         880,
-        829
+        817
       ],
       "tail_target": "left",
+      "art_height_ratio": 0.5916,
       "cut_index": 3,
       "slot": "top",
       "page": 2
@@ -95,12 +101,13 @@
       "min_clearance_px": 999.0,
       "font_size": null,
       "art_bbox": [
-        82,
-        15,
-        763,
-        421
+        70,
+        0,
+        773,
+        435
       ],
-      "art_cx": 422.5,
+      "art_cx": 421.5,
+      "art_height_ratio": 0.9977,
       "cut_index": 4,
       "slot": "bottom",
       "page": 2
@@ -109,34 +116,24 @@
       "wordless": false,
       "bubble_count": 1,
       "overlap_px": 0,
-      "min_clearance_px": 13.4,
+      "min_clearance_px": 7.1,
       "font_size": 20,
       "art_bbox": [
-        16,
-        277,
-        883,
-        829
-      ],
-      "tail_target": "left",
-      "cut_index": 5,
-      "slot": "top",
-      "page": 3
-    },
-    {
-      "wordless": false,
-      "bubble_count": 1,
-      "overlap_px": 0,
-      "min_clearance_px": 22.0,
-      "font_size": 16,
-      "art_bbox": [
-        198,
-        153,
-        644,
+        146,
+        129,
+        696,
         435
       ],
-      "tail_target": "center",
-      "cut_index": 6,
-      "slot": "bottom",
+      "tail_target": "right",
+      "bubble_center": [
+        558.9,
+        63.0
+      ],
+      "bubble_side_resolved": "right",
+      "layout_mode_resolved": "top_right",
+      "art_height_ratio": 0.7018,
+      "cut_index": 5,
+      "slot": "epilogue_box",
       "page": 3
     }
   ]
