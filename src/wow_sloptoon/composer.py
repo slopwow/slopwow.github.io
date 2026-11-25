@@ -2708,6 +2708,69 @@ def _compute_snug_ellipse_radii(
     return rx, ry
 
 
+def _resolve_box_edge_bleed_crop_and_anchor(
+    rw: int,
+    rh: int,
+    raw_bbox: tuple[int, int, int, int],
+    *,
+    border_style: str,
+    target_w: int,
+    margin_x: float,
+    preserve_full_width_default: bool = False,
+) -> tuple[tuple[int, int, int, int], float, str, bool]:
+    """Detect edge-bleeding artwork and compute `(crop_box, avail_w, anchor_mode, touches_bottom)`.
+
+    Inside `box` panels, artwork bleeding into only the left or right border flush-anchors
+    strictly against that box edge (`px = 0.0` or `px = target_w - nw`) so cropped cliffs,
+    cobblestone diorama slabs, or shoulders never float inside the frame as guillotine seams.
+    """
+    ax0, ay0, ax1, ay1 = raw_bbox
+    touches_left = ax0 <= 6
+    touches_right = ax1 >= rw - 6
+    touches_bottom = ay1 >= rh - 6
+    crop_y1 = rh if touches_bottom else min(rh, ay1 + 1)
+
+    if border_style == "box":
+        if touches_left and not touches_right:
+            return (
+                (0, ay0, min(rw, ax1 + 1), crop_y1),
+                max(24.0, float(target_w) - margin_x),
+                "left",
+                touches_bottom,
+            )
+        if touches_right and not touches_left:
+            return (
+                (ax0, ay0, rw, crop_y1),
+                max(24.0, float(target_w) - margin_x),
+                "right",
+                touches_bottom,
+            )
+        if touches_left and touches_right:
+            return (0, ay0, rw, crop_y1), float(target_w), "both", touches_bottom
+
+    if preserve_full_width_default:
+        crop_x0 = max(0, ax0 - 4) if (ax1 - ax0) > rw * 0.94 else 0
+        crop_x1 = min(rw, ax1 + 5) if (ax1 - ax0) > rw * 0.94 else rw
+    else:
+        crop_x0 = ax0
+        crop_x1 = min(rw, ax1 + 1)
+    return (
+        (crop_x0, ay0, crop_x1, crop_y1),
+        max(24.0, float(target_w) - 2.0 * margin_x),
+        "center",
+        touches_bottom,
+    )
+
+
+def _anchored_art_px(target_w: int, nw: int, anchor_mode: str) -> float:
+    """Compute horizontal paste offset `px` honoring box-edge flush anchors."""
+    if anchor_mode == "left":
+        return 0.0
+    if anchor_mode == "right":
+        return float(target_w - nw)
+    return (target_w - nw) / 2.0
+
+
 def _compose_narrow_variable_panel(
     cut: ComicCut,
     raw_im: Image.Image,
@@ -2821,9 +2884,15 @@ def _compose_narrow_variable_panel(
             audit["tooltip_overlap_px"] = 0
         return panel, audit
 
-    ax0, ay0, ax1, ay1 = raw_bbox
-    touches_bottom = ay1 >= rh - 6
-    crop_box = (ax0, ay0, min(rw, ax1 + 1), rh if touches_bottom else min(rh, ay1 + 1))
+    crop_box, base_avail_w, anchor_mode, touches_bottom = _resolve_box_edge_bleed_crop_and_anchor(
+        rw,
+        rh,
+        raw_bbox,
+        border_style=border_style,
+        target_w=W,
+        margin_x=margin_x,
+        preserve_full_width_default=False,
+    )
     cw = max(1, crop_box[2] - crop_box[0])
     ch = max(1, crop_box[3] - crop_box[1])
 
@@ -2859,10 +2928,88 @@ def _compose_narrow_variable_panel(
                 return (tx0, ty0), tmask
         return None
 
+    # 0. Edge-to-edge full-width pre-pass for narrow boxed close-ups touching BOTH left & right walls
+    # (prevents cropped twin-tails/shoulders from detaching into floating vertical guillotine seams).
+    if border_style == "box" and anchor_mode == "both" and cur_tip is None:
+        edge_scale = float(W) / cw
+        edge_nw = W
+        edge_nh = max(1, int(round(ch * edge_scale)))
+        max_push = min(52, int(edge_nh * 0.10)) if touches_bottom else 0
+        push_steps = [p for p in (0, 12, 24, 36, 46, 52) if p <= max_push]
+        if max_push > 0 and max_push not in push_steps:
+            push_steps.append(max_push)
+        for push_down in push_steps:
+            py_edge = float(H - edge_nh + push_down) if touches_bottom else float(max(cy + ry + stroke_px + 24.0, H - edge_nh - margin_bot))
+            if not touches_bottom and py_edge + edge_nh > H - 4:
+                py_edge = float(H - edge_nh - 4)
+            art_canvas_e = place_scaled_art(clean_raw, W, H, edge_scale, 0.0, py_edge, crop_box=crop_box)
+            art_mask_e = get_art_mask(art_canvas_e, threshold=255)
+            placed_bbox_e = extract_art_bbox(art_canvas_e, threshold=255)
+            art_min_y_e = float(placed_bbox_e[1]) if placed_bbox_e else float(H)
+            anchor_e = _find_top_speaker_anchor(art_mask_e, cut.tail_target, W)
+            head_x_e, local_top_y_e = anchor_e if anchor_e is not None else (cx, art_min_y_e)
+            eff_cx_e = cx
+            eff_cy_e = cy
+            if cut.bubble_side is None and anchor_e is not None:
+                eff_cx_e = float(
+                    np.clip(
+                        0.50 * head_x_e + 0.50 * cx,
+                        margin_x + rx + stroke_px + 2.0,
+                        W - margin_x - rx - stroke_px - 2.0,
+                    )
+                )
+            eff_bub_bot_e = eff_cy_e + ry + stroke_px
+            tail_x_e = float(np.clip(0.70 * head_x_e + 0.30 * eff_cx_e, eff_cx_e - rx * 0.65, eff_cx_e + rx * 0.65))
+            max_tail_y_e = min(eff_bub_bot_e + 58.0, local_top_y_e - 14.0, art_min_y_e + 58.0)
+            min_tail_y_e = eff_bub_bot_e + 20.0
+            if max_tail_y_e <= eff_bub_bot_e + 12.0:
+                continue
+            for pull_e in (1.0, 0.72, 0.48, 0.25):
+                ty_e = min(eff_bub_bot_e + max(16.0, (max_tail_y_e - eff_bub_bot_e) * pull_e), local_top_y_e - 12.0)
+                if ty_e < min_tail_y_e and pull_e == 1.0:
+                    ty_e = min(min_tail_y_e, local_top_y_e - 11.0)
+                if ty_e <= eff_bub_bot_e + 10.0:
+                    continue
+                tx_e = eff_cx_e + (tail_x_e - eff_cx_e) * (0.65 + 0.35 * pull_e)
+                raw_deg_e = float(np.rad2deg(np.arctan2((ty_e - eff_cy_e) / ry, (tx_e - eff_cx_e) / rx)))
+                base_deg_e = float(np.clip(raw_deg_e, 66.0, 114.0))
+                t_curve_e = -6.0 if tx_e <= eff_cx_e else 6.0
+                bub_layer_e, dest_e, b_metrics_e = _build_bubble_layer(
+                    panel_size=(W, H),
+                    center=(eff_cx_e, eff_cy_e),
+                    lines=lines,
+                    radii=(rx, ry),
+                    tail_tip=(tx_e, ty_e),
+                    tail_base_angle_deg=base_deg_e,
+                    tail_half_deg=6.5,
+                    tail_curve=t_curve_e,
+                    font_size=cur_fs,
+                    stroke_px=stroke_px,
+                    sub_line_indices=sub_indices,
+                )
+                bub_mask_e = _bubble_alpha_mask((W, H), bub_layer_e, dest_e)
+                if int((art_mask_e & bub_mask_e).sum()) == 0:
+                    clr_e = compute_min_clearance(art_mask_e, bub_mask_e)
+                    if clr_e >= 6.0:
+                        out_panel_e = art_canvas_e.copy()
+                        if bub_layer_e is not None:
+                            rgba_e = out_panel_e.convert("RGBA")
+                            rgba_e.alpha_composite(bub_layer_e, dest=dest_e)
+                            out_panel_e = rgba_e.convert("RGB")
+                        return out_panel_e, {
+                            "wordless": False,
+                            "bubble_count": 1,
+                            "overlap_px": 0,
+                            "min_clearance_px": clr_e,
+                            "font_size": b_metrics_e["font_size"],
+                            "art_bbox": list(placed_bbox_e) if placed_bbox_e else None,
+                            "tail_target": cut.tail_target,
+                        }
+
     # 1. Iterative solver: top bubble + short downward tail + artwork cleanly below
     bub_bot = cy + ry + stroke_px
     desired_tail_space = 48.0
-    scale_w = (W - 2.0 * margin_x) / cw
+    scale_w = base_avail_w / cw
     scale_h = max(0.05, (H - (bub_bot + desired_tail_space) - (0.0 if touches_bottom else margin_bot)) / ch)
     scale = min(scale_w, scale_h)
 
@@ -2870,7 +3017,7 @@ def _compose_narrow_variable_panel(
         bub_bot = cy + ry + stroke_px
         nw = max(1, int(round(cw * scale)))
         nh = max(1, int(round(ch * scale)))
-        px = (W - nw) / 2.0
+        px = _anchored_art_px(W, nw, anchor_mode)
         if touches_bottom:
             py = float(H - nh)
         else:
@@ -3006,12 +3153,12 @@ def _compose_narrow_variable_panel(
         ty0 = int(H - margin_bot - th)
         safe_art_top = int(np.ceil(bub_bot + 22.0))
         safe_art_bot = max(safe_art_top + 24, ty0 - 10)
-        avail_w = max(24.0, W - 2.0 * margin_x - 2.0)
+        avail_w = max(24.0, base_avail_w - (0.0 if anchor_mode in ("left", "right", "both") else 2.0))
         avail_h = max(24.0, float(safe_art_bot - safe_art_top) - 2.0)
         scale_fb = min(avail_w / cw, avail_h / ch)
         nw = max(1, int(np.floor(cw * scale_fb)))
         nh = max(1, int(np.floor(ch * scale_fb)))
-        px = (W - nw) / 2.0
+        px = _anchored_art_px(W, nw, anchor_mode)
         py = float(safe_art_top + max(0.0, (safe_art_bot - safe_art_top - nh) / 2.0))
 
         art_canvas = place_scaled_art(clean_raw, W, H, scale_fb, px, py, crop_box=crop_box)
@@ -3073,12 +3220,12 @@ def _compose_narrow_variable_panel(
 
     # No-tooltip strict vertical disjointness fallback
     safe_art_top = int(np.ceil(bub_bot + 26.0))
-    avail_w = max(24.0, W - 2.0 * margin_x - 2.0)
+    avail_w = max(24.0, base_avail_w - (0.0 if anchor_mode in ("left", "right", "both") else 2.0))
     avail_h = max(24.0, H - safe_art_top - (2.0 if touches_bottom else margin_bot + 2.0))
     scale_fb = min(avail_w / cw, avail_h / ch)
     nw = max(1, int(np.floor(cw * scale_fb)))
     nh = max(1, int(np.floor(ch * scale_fb)))
-    px = (W - nw) / 2.0
+    px = _anchored_art_px(W, nw, anchor_mode)
     py = max(float(safe_art_top), float(H - nh))
 
     art_canvas = place_scaled_art(clean_raw, W, H, scale_fb, px, py, crop_box=crop_box)
@@ -3236,18 +3383,22 @@ def _compose_wide_tall_variable_panel(
                 "tooltip_overlap_px": 0,
             }
 
-        ax0, ay0, ax1, ay1 = raw_bbox
-        touches_bottom = ay1 >= rh - 6
-        crop_x0 = max(0, ax0 - 4) if (ax1 - ax0) > rw * 0.94 else 0
-        crop_x1 = min(rw, ax1 + 5) if (ax1 - ax0) > rw * 0.94 else rw
-        crop_box = (crop_x0, ay0, crop_x1, rh if touches_bottom else min(rh, ay1 + 1))
+        crop_box, base_avail_w, anchor_mode, touches_bottom = _resolve_box_edge_bleed_crop_and_anchor(
+            rw,
+            rh,
+            raw_bbox,
+            border_style=border_style,
+            target_w=W,
+            margin_x=margin_x,
+            preserve_full_width_default=True,
+        )
         cw = max(1, crop_box[2] - crop_box[0])
         ch = max(1, crop_box[3] - crop_box[1])
 
         bub_bot = cy + ry + stroke_px
         target_art_top = max(bub_bot + 54.0, tip_bot + 16.0)
         scale = min(
-            (W - 2.0 * margin_x) / cw,
+            base_avail_w / cw,
             max(0.05, (H - target_art_top - (0.0 if touches_bottom else 12.0)) / ch),
         )
 
@@ -3255,7 +3406,7 @@ def _compose_wide_tall_variable_panel(
             bub_bot = cy + ry + stroke_px
             nw = max(1, int(round(cw * scale)))
             nh = max(1, int(round(ch * scale)))
-            px = (W - nw) / 2.0
+            px = _anchored_art_px(W, nw, anchor_mode)
             min_safe_y = max(bub_bot + 42.0, tip_bot + 12.0)
             if touches_bottom:
                 py = float(H - nh)
@@ -3343,13 +3494,14 @@ def _compose_wide_tall_variable_panel(
         )
         cx, cy, rx, ry = _bub_dims_tip(cur_fs, lines, sub_indices)
         safe_art_top = int(np.ceil(max(cy + ry + stroke_px + 20.0, tip_bot + 14.0)))
-        avail_w = max(40.0, W - 2.0 * margin_x - 2.0)
+        avail_w = max(40.0, base_avail_w - (0.0 if anchor_mode in ("left", "right", "both") else 2.0))
         avail_h = max(40.0, H - safe_art_top - 4.0)
         scale_fb = min(avail_w / cw, avail_h / ch)
         nw = max(1, int(np.floor(cw * scale_fb)))
         nh = max(1, int(np.floor(ch * scale_fb)))
+        px_fb = _anchored_art_px(W, nw, anchor_mode)
         py = max(float(safe_art_top), float(H - nh))
-        art_canvas = place_scaled_art(clean_raw, W, H, scale_fb, (W - nw) / 2.0, py, crop_box=crop_box)
+        art_canvas = place_scaled_art(clean_raw, W, H, scale_fb, px_fb, py, crop_box=crop_box)
         art_mask = get_art_mask(art_canvas, threshold=255)
         placed_bbox = extract_art_bbox(art_canvas, threshold=255)
         bub_layer, dest, b_metrics = _build_bubble_layer(
@@ -3450,17 +3602,181 @@ def _compose_wide_tall_variable_panel(
         }
 
     ax0, ay0, ax1, ay1 = raw_bbox
-    touches_bottom = ay1 >= rh - 6
-    crop_x0 = max(0, ax0 - 4) if (ax1 - ax0) > rw * 0.94 else 0
-    crop_x1 = min(rw, ax1 + 5) if (ax1 - ax0) > rw * 0.94 else rw
-    crop_box = (crop_x0, ay0, crop_x1, rh if touches_bottom else min(rh, ay1 + 1))
+    crop_box, base_avail_w, anchor_mode, touches_bottom = _resolve_box_edge_bleed_crop_and_anchor(
+        rw,
+        rh,
+        raw_bbox,
+        border_style=border_style,
+        target_w=W,
+        margin_x=margin_x,
+        preserve_full_width_default=True,
+    )
     cw = max(1, crop_box[2] - crop_box[0])
     ch = max(1, crop_box[3] - crop_box[1])
+
+    def _try_wide_tall_side_bubble(
+        side_bub: str,
+    ) -> tuple[Image.Image, dict[str, Any], float] | None:
+        """Try dramatic side-by-side framing for one-side edge-bleeding wide tall box panels:
+        flush-anchor artwork to its bleeding wall (`px = 0.0` or `px = W - nw`) at large natural
+        scale and tuck the speech bubble cleanly into the wide-open opposite upper `#FFFFFF` space
+        with a directional tail aimed at the speaker and strictly `overlap_px == 0`.
+        """
+        max_rx_s = min(214.0, W * 0.255)
+        max_ry_s = min(116.0, max(54.0, H * 0.21))
+        wrap_w_s = float(np.clip(max_rx_s * 1.44, 210.0, 316.0))
+        fs_start_s = 21 if len(dialogue) <= 36 else 20
+        fs_cands: list[int] = []
+        for fs_v in (fs_start_s, max(16, fs_start_s - 2), max(15, fs_start_s - 4)):
+            if fs_v not in fs_cands:
+                fs_cands.append(fs_v)
+
+        max_scale_s = min(base_avail_w / cw, (H - (0.0 if touches_bottom else 16.0)) / ch)
+        # Prefer full readable typography (`fs_start_s`, then `-2`, then `-4`) before dropping font size,
+        # while trying the largest natural artwork scale first within each font tier.
+        for fs_try in fs_cands:
+            lns_s, subs_s = wrap_korean_dialogue(
+                dialogue, fs_try, max_line_width_px=wrap_w_s, max_lines=4
+            )
+            rx_s, ry_s = _compute_snug_ellipse_radii(
+                dummy,
+                lns_s,
+                set(subs_s),
+                fs_try,
+                min_rx=min(122.0, max_rx_s),
+                max_rx=max_rx_s,
+                min_ry=min(48.0, max_ry_s),
+                max_ry=max_ry_s,
+                pad_x=30.0,
+                pad_y=18.0,
+            )
+            cx_s = (
+                W - margin_x - rx_s - stroke_px - 4.0
+                if side_bub == "right"
+                else margin_x + rx_s + stroke_px + 4.0
+            )
+            cy_min = margin_top + ry_s + stroke_px + 6.0
+            cy_max = max(cy_min, H - margin_top - ry_s - stroke_px - 4.0)
+            cy_cands = [
+                float(np.clip(cy_min, cy_min, cy_max)),
+                float(np.clip(min(H * 0.28, cy_min + 28.0), cy_min, cy_max)),
+                float(np.clip(min(H * 0.34, cy_min + 54.0), cy_min, cy_max)),
+            ]
+            seen_cy: list[float] = []
+            for cy_val in cy_cands:
+                if not any(abs(cy_val - prev) < 4.0 for prev in seen_cy):
+                    seen_cy.append(cy_val)
+
+            for scale_mult in (0.98, 0.94, 0.90, 0.86, 0.82, 0.78, 0.74, 0.70, 0.66, 0.62):
+                s_try = max_scale_s * scale_mult
+                nw_s = max(1, int(round(cw * s_try)))
+                nh_s = max(1, int(round(ch * s_try)))
+                px_s = _anchored_art_px(W, nw_s, anchor_mode)
+                py_s = float(H - nh_s) if touches_bottom else float(max(margin_top, (H - nh_s) / 2.0))
+                art_canvas_s = place_scaled_art(clean_raw, W, H, s_try, px_s, py_s, crop_box=crop_box)
+                art_mask_s = get_art_mask(art_canvas_s, threshold=255)
+                placed_bb_s = extract_art_bbox(art_canvas_s, threshold=255)
+                if placed_bb_s is None:
+                    continue
+
+                art_h_s = max(1, placed_bb_s[3] - placed_bb_s[1])
+                for cy_s in seen_cy:
+                    head_y = float(
+                        np.clip(
+                            placed_bb_s[1] + art_h_s * 0.28,
+                            cy_s - ry_s * 0.30,
+                            min(H - 36.0, cy_s + ry_s * 1.45),
+                        )
+                    )
+                    by0, by1 = max(0, int(head_y - 38)), min(H, int(head_y + 38))
+                    _, bxs = np.where(art_mask_s[by0:by1, :])
+                    if side_bub == "right":
+                        face_x = float(bxs.max()) if len(bxs) else float(placed_bb_s[2])
+                    else:
+                        face_x = float(bxs.min()) if len(bxs) else float(placed_bb_s[0])
+
+                    dx = face_x - cx_s
+                    dy = head_y - cy_s
+                    if (side_bub == "right" and dx >= -10.0) or (side_bub == "left" and dx <= 10.0):
+                        continue
+                    dist = float(np.hypot(dx, dy))
+                    if dist <= 1e-3:
+                        continue
+                    ux, uy = dx / dist, dy / dist
+                    t_ell = 1.0 / float(np.hypot(ux / max(1.0, rx_s), uy / max(1.0, ry_s)))
+                    gap = dist - (t_ell + stroke_px)
+                    if gap < 22.0:
+                        continue
+                    base_ang = float(np.rad2deg(np.arctan2(dy / max(1.0, ry_s), dx / max(1.0, rx_s))))
+                    t_curve = -5.5 if side_bub == "right" else 5.5
+
+                    for pull in (1.0, 0.76, 0.54, 0.36):
+                        ext = min(64.0, max(16.0, (gap - 14.0) * pull))
+                        if ext < 14.0:
+                            continue
+                        tx = cx_s + (t_ell + stroke_px + ext) * ux
+                        ty = cy_s + (t_ell + stroke_px + ext) * uy
+                        if not (8.0 <= tx <= W - 8.0 and 8.0 <= ty <= H - 8.0):
+                            continue
+
+                        bub_layer_s, dest_s, b_metrics_s = _build_bubble_layer(
+                            panel_size=(W, H),
+                            center=(cx_s, cy_s),
+                            lines=lns_s,
+                            radii=(rx_s, ry_s),
+                            tail_tip=(tx, ty),
+                            tail_base_angle_deg=base_ang,
+                            tail_half_deg=7.5,
+                            tail_curve=t_curve,
+                            font_size=fs_try,
+                            stroke_px=stroke_px,
+                            sub_line_indices=subs_s,
+                        )
+                        bub_mask_s = _bubble_alpha_mask((W, H), bub_layer_s, dest_s)
+                        if int((art_mask_s & bub_mask_s).sum()) != 0:
+                            continue
+                        clr_s = compute_min_clearance(art_mask_s, bub_mask_s)
+                        if clr_s < 7.0:
+                            continue
+                        out_panel_s = art_canvas_s.copy()
+                        if bub_layer_s is not None:
+                            rgba_s = out_panel_s.convert("RGBA")
+                            rgba_s.alpha_composite(bub_layer_s, dest=dest_s)
+                            out_panel_s = rgba_s.convert("RGB")
+                        return (
+                            out_panel_s,
+                            {
+                                "wordless": False,
+                                "bubble_count": 1,
+                                "overlap_px": 0,
+                                "min_clearance_px": clr_s,
+                                "font_size": b_metrics_s["font_size"],
+                                "art_bbox": list(placed_bb_s),
+                                "tail_target": cut.tail_target,
+                                "bubble_center": [round(cx_s, 1), round(cy_s, 1)],
+                                "bubble_side_resolved": side_bub,
+                                "tail_tip": [round(tx, 1), round(ty, 1)],
+                                "layout_variant": "side_by_side",
+                            },
+                            s_try,
+                        )
+        return None
+
+    side_candidate: tuple[Image.Image, dict[str, Any], float] | None = None
+    if border_style == "box":
+        if anchor_mode == "left" and (
+            cut.bubble_side == "right" or (cut.bubble_side is None and ax1 < rw * 0.78)
+        ):
+            side_candidate = _try_wide_tall_side_bubble("right")
+        elif anchor_mode == "right" and (
+            cut.bubble_side == "left" or (cut.bubble_side is None and ax0 > rw * 0.22)
+        ):
+            side_candidate = _try_wide_tall_side_bubble("left")
 
     bub_bot = cy + ry + stroke_px
     desired_tail_space = min(68.0, max(44.0, H * 0.09))
     scale = min(
-        (W - 2.0 * margin_x) / cw,
+        base_avail_w / cw,
         max(0.05, (H - (bub_bot + desired_tail_space) - (0.0 if touches_bottom else 14.0)) / ch),
     )
 
@@ -3468,7 +3784,7 @@ def _compose_wide_tall_variable_panel(
         bub_bot = cy + ry + stroke_px
         nw = max(1, int(round(cw * scale)))
         nh = max(1, int(round(ch * scale)))
-        px = (W - nw) / 2.0
+        px = _anchored_art_px(W, nw, anchor_mode)
         if touches_bottom:
             py = float(H - nh)
         else:
@@ -3539,6 +3855,8 @@ def _compose_wide_tall_variable_panel(
             )
             bub_mask = _bubble_alpha_mask((W, H), bub_layer, dest)
             if int((art_mask & bub_mask).sum()) == 0:
+                if side_candidate is not None and side_candidate[2] >= scale * 1.08:
+                    return side_candidate[0], side_candidate[1]
                 out_panel = art_canvas.copy()
                 if bub_layer is not None:
                     rgba = out_panel.convert("RGBA")
@@ -3562,6 +3880,9 @@ def _compose_wide_tall_variable_panel(
             )
             cx, cy, rx, ry = _bub_dims_tall(cur_fs, lines, sub_indices)
 
+    if side_candidate is not None:
+        return side_candidate[0], side_candidate[1]
+
     # Strict vertical disjointness fallback
     cur_fs = max(13, min(cur_fs, 17))
     lines, sub_indices = wrap_korean_dialogue(
@@ -3570,13 +3891,14 @@ def _compose_wide_tall_variable_panel(
     cx, cy, rx, ry = _bub_dims_tall(cur_fs, lines, sub_indices)
     bub_bot = cy + ry + stroke_px
     safe_art_top = int(np.ceil(bub_bot + 26.0))
-    avail_w = max(40.0, W - 2.0 * margin_x - 2.0)
+    avail_w = max(40.0, base_avail_w - (0.0 if anchor_mode in ("left", "right", "both") else 2.0))
     avail_h = max(40.0, H - safe_art_top - 4.0)
     scale_fb = min(avail_w / cw, avail_h / ch)
     nw = max(1, int(np.floor(cw * scale_fb)))
     nh = max(1, int(np.floor(ch * scale_fb)))
+    px_fb = _anchored_art_px(W, nw, anchor_mode)
     py = max(float(safe_art_top), float(H - nh))
-    art_canvas = place_scaled_art(clean_raw, W, H, scale_fb, (W - nw) / 2.0, py, crop_box=crop_box)
+    art_canvas = place_scaled_art(clean_raw, W, H, scale_fb, px_fb, py, crop_box=crop_box)
     art_mask = get_art_mask(art_canvas, threshold=255)
     placed_bbox = extract_art_bbox(art_canvas, threshold=255)
 

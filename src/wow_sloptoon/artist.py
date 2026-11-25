@@ -354,6 +354,8 @@ def _resolve_act_cut_full_bleed_flags(
     """Return per-cut full-bleed boolean flags for `act` under `eff_style`."""
     if eff_style == "full_bleed":
         return [True for _ in act.cuts]
+    if eff_style == "clean_white":
+        return [False for _ in act.cuts]
     return [bool(cut.full_bleed_bg) for cut in act.cuts]
 
 
@@ -363,11 +365,13 @@ def build_page_batch_prompt(
     attached_turnarounds: list[str] | None = None,
     full_bleed_bg: bool = False,
     background_style: BackgroundStyle | None = None,
+    has_diorama_ref: bool = False,
 ) -> str:
     """Construct the V4 2:3 multi-panel page-batch prompt referencing cast sheet, style ref,
-    exact layout blueprint, and every active character's 3-view turnaround sheet.
+    exact layout blueprint, every active character's 3-view turnaround sheet, and (in
+    `clean_white` mode) the crisp-inked mini diorama island stage reference.
 
-    Supports `background_style` in `{"selective_mix", "full_bleed", "clean_white"}` while
+    Supports `background_style` in `{"clean_white", "full_bleed", "selective_mix"}` while
     staying backward-compatible with `full_bleed_bg=True/False`.
     """
     eff_style = _resolve_effective_background_style(background_style, full_bleed_bg)
@@ -393,6 +397,17 @@ def build_page_batch_prompt(
             "\nATTACHED CHARACTER 3-VIEW TURNAROUND BLUEPRINTS:\n"
             + "\n".join(ref_lines)
             + "\n"
+        )
+
+    diorama_ref_note = ""
+    if eff_style == "clean_white" and has_diorama_ref:
+        diorama_ref_idx = 4 + len(attached_turnarounds or [])
+        diorama_ref_note = (
+            "\nATTACHED DIORAMA-ON-WHITE STAGE REFERENCE:\n"
+            f"- Reference Image {diorama_ref_idx}: Mini Diorama Island Stage Reference "
+            "(`assets/diorama_style_ref.jpg`) — BACKGROUND/STAGE TECHNIQUE REFERENCE ONLY — "
+            "borrow ONLY the crisp ink-outlined floating mini diorama ground island on 100% pure "
+            "#FFFFFF white background technique; NEVER copy the characters shown in this diorama reference!\n"
         )
 
     panel_blocks: list[str] = []
@@ -446,6 +461,58 @@ def build_page_batch_prompt(
             border_note = (
                 "CRISP BLACK-BORDERED FULL-BLEED BOX PANEL (fill 100% edge-to-edge inside Reference Image 3's "
                 "exact solid black rectangular frame with ZERO white gaps inside the box!)"
+            )
+        elif eff_style == "clean_white":
+            if cut.wordless:
+                headroom_rule = (
+                    "WORDLESS CLIMAX 100% PURE SOLID `#FFFFFF` CLEAN DIORAMA-STAGE PANEL (NO SPEECH BUBBLE): "
+                    "Draw a massive, hyper-expressive comedic close-up or theatrical freeze-frame (character "
+                    "fills ~72-86% of panel height) floating on a 100% PURE SOLID `#FFFFFF` WHITE BACKGROUND! "
+                    "Ground the climax on a dramatic CRISP BLACK-INK-OUTLINED FLOATING MINI DIORAMA ISLAND / "
+                    "STAGE CHUNK directly beneath or around the character (e.g., cracked stone dungeon tile "
+                    "island, mossy Hyjal cliff rock ledge, splintered wooden ship deck chunk, tumbling props, "
+                    "mobs, mounts, or crisp comic shock FX) in the exact crisp ink-outlined floating diorama "
+                    "technique of `assets/diorama_style_ref.jpg` — STRICTLY ZERO dark full-bleed rectangular "
+                    "wall backgrounds, ZERO pastel wallpaper fills, and ZERO blurry rectangular vignette cutouts! "
+                    "Keep ZERO TEXT, ZERO speech bubbles, and 100% pure solid `#FFFFFF` background, outer page "
+                    "margins, and gutters."
+                )
+            elif slot.is_narrow:
+                headroom_rule = (
+                    f"NARROW VERTICAL 100% PURE SOLID `#FFFFFF` CLEAN DIORAMA-ON-WHITE PANEL "
+                    f"({slot.width}x{slot.height}px — MANDATORY): Render against a 100% PURE SOLID `#FFFFFF` "
+                    "WHITE BACKGROUND! Place the character(s) cleanly in the LOWER 60-64% of this panel. "
+                    "When the Scene Action calls for a setting, terrain, prop, mob, or mount, ground the "
+                    "character(s) on a compact CRISP BLACK-INK-OUTLINED FLOATING MINI DIORAMA FLOOR ISLAND / "
+                    "CLIFF LEDGE / STAGE CHUNK (organic 3D hand-inked slab floating seamlessly on `#FFFFFF`, "
+                    "matching `assets/diorama_style_ref.jpg`); for fast reaction beats, draw ONLY the "
+                    "character(s) + punchy minimal manga gag FX (sweatdrops, anger veins, speed lines, tiny "
+                    "motion puffs) on pure `#FFFFFF`! STRICTLY ZERO full-box colored wall backgrounds, ZERO "
+                    "pastel wallpaper fills, and ZERO blurry rectangular partial vignette cutouts! Reserve "
+                    "the TOP 36-40% as 100% PURE EMPTY SOLID `#FFFFFF` speech-bubble headroom! "
+                    f"Primary speaker position cue: {cut.tail_target}."
+                )
+            else:
+                headroom_rule = (
+                    f"WIDE 100% PURE SOLID `#FFFFFF` CLEAN DIORAMA-ON-WHITE PANEL "
+                    f"({slot.width}x{slot.height}px — MANDATORY): Render against a 100% PURE SOLID `#FFFFFF` "
+                    "WHITE BACKGROUND! Place the character(s) dynamically across the lower two-thirds or "
+                    "speaker side. When the Scene Action calls for a setting, terrain, prop, mob, or mount, "
+                    "ground the character(s) on a CRISP BLACK-INK-OUTLINED FLOATING MINI DIORAMA FLOOR ISLAND "
+                    "/ CLIFF LEDGE / SHIP DECK CHUNK / STAGE PROP CLUSTER (organic 3D hand-inked slab with "
+                    "crisp black ink contour floating seamlessly on `#FFFFFF`, matching "
+                    "`assets/diorama_style_ref.jpg`); for fast reaction beats, draw ONLY the character(s) + "
+                    "punchy minimal manga gag FX (sweatdrops, anger veins, speed lines, tiny motion puffs) "
+                    "on pure `#FFFFFF`! STRICTLY ZERO full-box colored wall backgrounds, ZERO pastel wallpaper "
+                    "fills, and ZERO blurry rectangular partial vignette cutouts! Reserve the TOP 32% (or "
+                    "opposite 46% speaker-free side) as 100% PURE EMPTY SOLID `#FFFFFF` speech-bubble headroom! "
+                    f"Primary speaker position cue: {cut.tail_target}."
+                )
+
+            border_note = (
+                "BORDERLESS OPEN CLEAN-WHITE PANEL (100% pure solid `#FFFFFF` background fading seamlessly into page margins — do NOT draw a black box around this panel!)"
+                if slot.border_style == "open"
+                else "CRISP BLACK-BORDERED CLEAN-WHITE BOX PANEL (match Reference Image 3's exact black rectangular frame cleanly with 100% pure solid `#FFFFFF` background inside — crisp ink-outlined floating mini diorama floor island allowed where specified, ZERO full-box walls, ZERO pastel wallpaper fills, ZERO blurry vignette cutouts!)"
             )
         else:
             if cut.wordless:
@@ -572,29 +639,75 @@ def build_page_batch_prompt(
             "`box` panels; subtle light-gray rectangles mark borderless `open` panels (leave `open` panels seamlessly "
             "borderless on `#FFFFFF`, NEVER paint gray guide lines or panel numbers!)."
         )
-        bg_section = (
-            "100% PURE SOLID `#FFFFFF` CLEAN BACKGROUNDS (ZERO PARTIAL VIGNETTE CUTOUTS!):\n"
-            "- Render every panel against a 100% PURE SOLID WHITE (`#FFFFFF`) CLEAN BACKGROUND featuring "
-            "expressive Draft C characters and punchy minimal manga gag FX ONLY (sweatdrops, anger veins, "
-            "comic speed lines, shock bursts, tiny motion puffs).\n"
-            "- STRICTLY ZERO partial vignette cutouts, ZERO floating scenic rectangles inside boxes, ZERO "
-            "gray shading gradients, and ZERO painted room/sky walls.\n"
-            "- Reserve crisp 100% pure solid `#FFFFFF` empty speech-bubble headroom in every dialogue panel "
-            "(top 36-40% for narrow panels, top 32% or opposite 46% side for wide panels) AND along all outer "
-            "page margins and inter-panel gutters."
-        )
-        tech_constraints = (
-            "ABSOLUTE NEGATIVE & TECHNICAL CONSTRAINTS:\n"
-            "- PURE SOLID WHITE (`#FFFFFF`) OUTER PAGE MARGINS, INTER-PANEL GUTTERS, AND CLEAN BACKGROUNDS: "
-            "Keep outer page margins, inter-panel gutters, open-panel edges, and every panel's background "
-            "100% pure solid `#FFFFFF` (ZERO gray smudges, ZERO off-white tint, ZERO partial vignette cutouts, "
-            "ZERO floating scenic rectangles inside boxes).\n"
-            "- ZERO TEXT, ZERO KOREAN/ENGLISH LETTERS, ZERO DIGITS/NUMBERS, ZERO PANEL NUMBERS, ZERO SPEECH "
-            "BUBBLES, ZERO SOUND EFFECTS, ZERO WATERMARKS ANYWHERE ON THE PAGE.\n"
-            "- STRICT 2:3 PAGE GEOMETRY: Keep every panel strictly aligned to Reference Image 3's layout zones "
-            "with crisp pure-white `#FFFFFF` gutters separating neighboring panels.\n"
-            "- NO CLONE EXTRAS: Never draw duplicate clone copies of starring cast characters as background extras."
-        )
+        if eff_style == "clean_white":
+            diorama_tech_clause = (
+                " matching the exact crisp ink-outlined floating diorama ground island technique of the "
+                "attached Mini Diorama Island Stage Reference (`assets/diorama_style_ref.jpg` — borrow ONLY "
+                "the diorama stage technique; NEVER copy any characters from that reference!)"
+                if has_diorama_ref
+                else " (organic 3D hand-inked ground slabs, cliff ledges, floor tiles, and props floating cleanly on `#FFFFFF`)"
+            )
+            bg_section = (
+                "100% PURE SOLID `#FFFFFF` CLEAN BACKGROUNDS + CRISP-INKED FLOATING MINI DIORAMA ISLANDS "
+                "(ZERO FULL-BOX WALLS, ZERO PASTEL WALLPAPER FILLS, ZERO BLURRY VIGNETTES!):\n"
+                "- EVERY single panel MUST sit on a 100% PURE SOLID WHITE (`#FFFFFF`) CLEAN BACKGROUND — "
+                "because every panel shares the exact same `#FFFFFF` canvas, diorama scene panels and fast "
+                "reaction panels harmonize 100% seamlessly across the whole page!\n"
+                "- SCENE / ACTION / CLIMAX / ENDING PANELS (50–70% of episode, whenever the panel action "
+                "describes terrain, dungeon floors, cliff ledges, ship decks, props, mobs, or mounts): "
+                "ground the characters directly on an organic CRISP BLACK-INK-OUTLINED FLOATING MINI DIORAMA "
+                "FLOOR ISLAND / STAGE CHUNK (stone dungeon tile island, mossy Hyjal cliff rock ledge, wooden "
+                "ship deck chunk, loot/mob props) rendered with thin ink contours and 2-tier cel shading"
+                f"{diorama_tech_clause}.\n"
+                "- FAST REACTION / DIALOGUE PANELS (30–50% of episode): render ONLY the expressive Draft C "
+                "character(s) and punchy minimal manga gag FX (sweatdrops, anger veins, comic speed lines, "
+                "shock bursts, tiny motion puffs) on 100% pure solid `#FFFFFF`.\n"
+                "- STRICTLY ZERO full-box colored backgrounds, ZERO painted room/sky walls touching box edges, "
+                "ZERO pastel gradient wallpaper fills, ZERO gray shading gradients, and ZERO blurry "
+                "rectangular partial vignette cutouts inside any panel!\n"
+                "- Reserve crisp 100% pure solid `#FFFFFF` empty speech-bubble headroom in every dialogue panel "
+                "(top 36-40% for narrow panels, top 32% or opposite 46% side for wide panels) AND along all outer "
+                "page margins and inter-panel gutters."
+            )
+            tech_constraints = (
+                "ABSOLUTE NEGATIVE & TECHNICAL CONSTRAINTS:\n"
+                "- PURE SOLID WHITE (`#FFFFFF`) OUTER PAGE MARGINS, INTER-PANEL GUTTERS, AND EVERY PANEL "
+                "BACKGROUND: Keep outer page margins, inter-panel gutters, open-panel edges, and every panel's "
+                "background 100% pure solid `#FFFFFF` (ZERO gray smudges, ZERO off-white tint, ZERO full-box "
+                "colored wall/sky backgrounds, ZERO pastel wallpaper fills, ZERO partial vignette cutouts or "
+                "blurry rectangular fade-outs — ONLY crisp ink-outlined floating mini diorama islands/props "
+                "directly beneath characters when called for by the panel action!).\n"
+                "- ZERO TEXT, ZERO KOREAN/ENGLISH LETTERS, ZERO DIGITS/NUMBERS, ZERO PANEL NUMBERS, ZERO SPEECH "
+                "BUBBLES, ZERO SOUND EFFECTS, ZERO WATERMARKS ANYWHERE ON THE PAGE.\n"
+                "- STRICT 2:3 PAGE GEOMETRY: Keep every panel strictly aligned to Reference Image 3's layout zones "
+                "with crisp pure-white `#FFFFFF` gutters separating neighboring panels.\n"
+                "- NO CLONE EXTRAS: Never draw duplicate clone copies of starring cast characters as background "
+                "extras, and NEVER copy characters from `assets/diorama_style_ref.jpg`."
+            )
+        else:
+            bg_section = (
+                "100% PURE SOLID `#FFFFFF` CLEAN BACKGROUNDS (ZERO PARTIAL VIGNETTE CUTOUTS!):\n"
+                "- Render every panel against a 100% PURE SOLID WHITE (`#FFFFFF`) CLEAN BACKGROUND featuring "
+                "expressive Draft C characters and punchy minimal manga gag FX ONLY (sweatdrops, anger veins, "
+                "comic speed lines, shock bursts, tiny motion puffs).\n"
+                "- STRICTLY ZERO partial vignette cutouts, ZERO floating scenic rectangles inside boxes, ZERO "
+                "gray shading gradients, and ZERO painted room/sky walls.\n"
+                "- Reserve crisp 100% pure solid `#FFFFFF` empty speech-bubble headroom in every dialogue panel "
+                "(top 36-40% for narrow panels, top 32% or opposite 46% side for wide panels) AND along all outer "
+                "page margins and inter-panel gutters."
+            )
+            tech_constraints = (
+                "ABSOLUTE NEGATIVE & TECHNICAL CONSTRAINTS:\n"
+                "- PURE SOLID WHITE (`#FFFFFF`) OUTER PAGE MARGINS, INTER-PANEL GUTTERS, AND CLEAN BACKGROUNDS: "
+                "Keep outer page margins, inter-panel gutters, open-panel edges, and every panel's background "
+                "100% pure solid `#FFFFFF` (ZERO gray smudges, ZERO off-white tint, ZERO partial vignette cutouts, "
+                "ZERO floating scenic rectangles inside boxes).\n"
+                "- ZERO TEXT, ZERO KOREAN/ENGLISH LETTERS, ZERO DIGITS/NUMBERS, ZERO PANEL NUMBERS, ZERO SPEECH "
+                "BUBBLES, ZERO SOUND EFFECTS, ZERO WATERMARKS ANYWHERE ON THE PAGE.\n"
+                "- STRICT 2:3 PAGE GEOMETRY: Keep every panel strictly aligned to Reference Image 3's layout zones "
+                "with crisp pure-white `#FFFFFF` gutters separating neighboring panels.\n"
+                "- NO CLONE EXTRAS: Never draw duplicate clone copies of starring cast characters as background extras."
+            )
 
     return (
         f"Draw a complete, crisp 2:3 vertical Korean pop-gag anime chibi comic page (Act {act.act_number}: "
@@ -606,8 +719,9 @@ def build_page_batch_prompt(
         "chibi proportion, and 9-character ensemble reference.\n"
         "- Reference Image 2: Sloptoon Style & Webtoon Reference (`assets/sloptoon_style_ref.jpg`) — dynamic "
         "over-the-shoulder webtoon acting, expressive gag timing, and crisp cel-anime Korean webtoon finish.\n"
-        f"{blueprint_ref_line}"
-        f"{turnaround_ref_note}\n"
+        f"{blueprint_ref_line}\n"
+        f"{turnaround_ref_note}"
+        f"{diorama_ref_note}\n"
         f"{anchors}\n\n"
         f"=== PANEL-BY-PANEL PAGE DIRECTIVES ({layout.panel_count} PANELS) ===\n\n"
         f"{panels_section}\n\n"
@@ -667,11 +781,15 @@ def generate_act_page_image(
 
     act_characters = _collect_act_characters(act)
     turnaround_pairs = get_turnaround_paths(act_characters, cfg.turnarounds_dir)
+    diorama_ref_path = cfg.assets_dir / "diorama_style_ref.jpg"
+    attach_diorama_ref = (eff_style == "clean_white") and diorama_ref_path.exists()
+
     prompt = build_page_batch_prompt(
         act,
         attached_turnarounds=[f"{m.name} ({m.id})" for m, _ in turnaround_pairs],
         full_bleed_bg=(eff_style == "full_bleed"),
         background_style=eff_style,
+        has_diorama_ref=attach_diorama_ref,
     )
 
     input_items: list[dict[str, Any]] = [
@@ -683,6 +801,9 @@ def generate_act_page_image(
     for _member, turnaround_path in turnaround_pairs:
         t_b64, t_mime = _encode_image_base64(turnaround_path)
         input_items.append({"type": "image", "data": t_b64, "mime_type": t_mime})
+    if attach_diorama_ref:
+        d_b64, d_mime = _encode_image_base64(diorama_ref_path)
+        input_items.append({"type": "image", "data": d_b64, "mime_type": d_mime})
 
     interaction = client.interactions.create(
         model=target_model,

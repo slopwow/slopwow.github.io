@@ -140,13 +140,13 @@ def _generate_for_post(
         raise ValueError(f"Unsupported layout '{layout}'. Choose 'classic' or 'v4'.")
 
     if bg is None:
-        bg_choice = "selective_mix" if layout_choice == "v4" else "clean_white"
+        bg_choice = "clean_white"
     else:
         bg_choice = bg.strip().lower()
-        if bg_choice not in {"selective_mix", "full_bleed", "clean_white"}:
+        if bg_choice not in {"clean_white", "full_bleed", "selective_mix"}:
             raise ValueError(
                 f"Unsupported background style '{bg}'. "
-                "Choose 'selective_mix', 'full_bleed', or 'clean_white'."
+                "Choose 'clean_white', 'full_bleed', or 'selective_mix'."
             )
 
     if dry_run:
@@ -200,7 +200,7 @@ def _generate_for_post(
         elif bg_choice == "selective_mix":
             bg_label = "selective-mix (full-bleed + #FFFFFF)"
         else:
-            bg_label = "pure-#FFFFFF"
+            bg_label = "pure-#FFFFFF mini-diorama"
         print(
             f"[2/4] Generating {act_count} {bg_label} V4 2K act pages "
             f"({len(script.cuts)} cuts total, model={resolved_image_model})..."
@@ -929,9 +929,9 @@ def build_parser() -> argparse.ArgumentParser:
     p_gen.add_argument(
         "--bg",
         type=str,
-        choices=["selective_mix", "full_bleed", "clean_white"],
+        choices=["clean_white", "full_bleed", "selective_mix"],
         default=None,
-        help="Panel background mode ('selective_mix' default for --layout v4, 'clean_white' default for --layout classic).",
+        help="Panel background mode ('clean_white' pure-#FFFFFF mini-diorama default for --layout v4 and classic; optional 'full_bleed' or 'selective_mix').",
     )
     p_gen.add_argument("--episode-number", type=int, default=None, help="Override sequential episode number.")
     p_gen.add_argument("--pages", type=int, default=1, help="Pages to scan when using --auto.")
@@ -994,9 +994,9 @@ def build_parser() -> argparse.ArgumentParser:
     p_once.add_argument(
         "--bg",
         type=str,
-        choices=["selective_mix", "full_bleed", "clean_white"],
+        choices=["clean_white", "full_bleed", "selective_mix"],
         default=None,
-        help="Panel background mode ('selective_mix' default for --layout v4, 'clean_white' default for --layout classic).",
+        help="Panel background mode ('clean_white' pure-#FFFFFF mini-diorama default for --layout v4 and classic; optional 'full_bleed' or 'selective_mix').",
     )
     p_once.add_argument("--pages", type=int, default=1, help="Recommend list pages to scan.")
     p_once.add_argument("--pack-dc", action="store_true", help="Also generate a DCInside manual upload pack.")
@@ -1076,9 +1076,9 @@ def build_parser() -> argparse.ArgumentParser:
     p_auto.add_argument(
         "--bg",
         type=str,
-        choices=["selective_mix", "full_bleed", "clean_white"],
+        choices=["clean_white", "full_bleed", "selective_mix"],
         default=None,
-        help="Panel background mode ('selective_mix' default for --layout v4, 'clean_white' default for --layout classic).",
+        help="Panel background mode ('clean_white' pure-#FFFFFF mini-diorama default for --layout v4 and classic; optional 'full_bleed' or 'selective_mix').",
     )
     p_auto.add_argument("--pages", type=int, default=1, help="Recommend list pages to scan.")
     p_auto.add_argument("--no-notify", action="store_true", help="Suppress Windows toast notification (console output only).")

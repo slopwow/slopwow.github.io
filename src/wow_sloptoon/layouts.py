@@ -967,7 +967,7 @@ def _peel_black_box_frame(
     cmax = arr.max(axis=2)
     chroma = cmax - cmin
     # Strictly crisp neutral-black frame line (#141414), NOT mid-dark slate/stone interiors like (64,68,72)!
-    frame_px = (chroma <= 20) & (cmax <= 55)
+    frame_px = (chroma <= 24) & (cmax <= 55)
 
     def _peel_1d(line_frame: np.ndarray, limit: int) -> int:
         n = min(limit, len(line_frame))
@@ -1183,12 +1183,18 @@ def _extract_all_boxed_panels(
         if is_fb[idx]:
             cleaned = _trim_stray_white_edge_strips(peeled, max_strip_px=10)
         else:
-            trimmed = _trim_residual_edge_borders(
-                peeled,
-                edge_band_px=14,
-                deep_rule_ratio=0.0,
-                strict_dark_only=False,
-            )
+            # Crisp outer black box walls were already peeled by `_peel_black_box_frame`.
+            # Only strip genuine thin dark border residue if a wall wasn't peeled, avoiding
+            # chewing 14px off shaded diorama rocks/cloaks bleeding to the box edge.
+            if peeled.size == cropped.size:
+                trimmed = _trim_residual_edge_borders(
+                    peeled,
+                    edge_band_px=14,
+                    deep_rule_ratio=0.0,
+                    strict_dark_only=False,
+                )
+            else:
+                trimmed = peeled
             cleaned = _level_near_white_bg(trimmed)
         extracted.append(cleaned)
 
@@ -1240,7 +1246,7 @@ def extract_panels_from_page(
     all_slots_boxed = all(st == "box" for st in eff_styles)
 
     page = _normalize_page_to_canvas(raw_page_im)
-    if all_slots_boxed and (all_boxed or any(is_fb) or slot_full_bleed is not None):
+    if all_slots_boxed:
         white_gutter_panels = _extract_all_boxed_panels(page, spec, slot_full_bleed=is_fb)
         if white_gutter_panels is not None:
             return white_gutter_panels
@@ -1268,10 +1274,10 @@ def extract_panels_from_page(
 
     # Stage 1: Detect horizontal borders first (with wide ±140px window on internal dividers)
     snapped_bounds: list[dict[str, tuple[int, int] | None]] = []
+    strict_hits: list[dict[str, bool]] = []
     for idx, slot in enumerate(spec.slots):
         x0, y0, x1, y1 = slot.rect
         eff_style = eff_styles[idx]
-        slot_fb = is_fb[idx]
         nb = all_neighbors[idx]
         top_r = _internal_search_radius(slot, nb["top"], "h")
         bot_r = _internal_search_radius(slot, nb["bottom"], "h")
@@ -1279,14 +1285,19 @@ def extract_panels_from_page(
         top_clamp = (140, h - 180) if nb["top"] else (0, min(h - 1, y0 + 80))
         bot_clamp = (180, h - 140) if nb["bottom"] else (max(0, y1 - 80), h - 1)
 
-        if all_boxed or slot_fb:
-            # Full-bleed boxed panels have crisp #141414 frames that stand out cleanly from
-            # dark neutral cave/stone interiors in `strict_black_mask`; fall back to `line_mask`.
+        top_strict = False
+        bot_strict = False
+        if eff_style == "box":
+            # Boxed panels (both full-bleed and clean-white diorama) have crisp #141414 frames
+            # that stand out cleanly from dark interior cliff/rock/cave ink in `strict_black_mask`;
+            # fall back to looser `line_mask` only when `strict_black_mask` misses.
             top_run = _detect_horizontal_border(
                 strict_black_mask, strict_black_mask, y0, slot.rect, "top", "box",
                 search_radius=top_r, clamp_bounds=top_clamp,
             )
-            if top_run is None:
+            if top_run is not None:
+                top_strict = True
+            else:
                 top_run = _detect_horizontal_border(
                     line_mask, dark_mask, y0, slot.rect, "top", eff_style,
                     search_radius=top_r, clamp_bounds=top_clamp,
@@ -1296,7 +1307,9 @@ def extract_panels_from_page(
                 strict_black_mask, strict_black_mask, y1, slot.rect, "bottom", "box",
                 search_radius=bot_r, clamp_bounds=bot_clamp,
             )
-            if bot_run is None:
+            if bot_run is not None:
+                bot_strict = True
+            else:
                 bot_run = _detect_horizontal_border(
                     line_mask, dark_mask, y1, slot.rect, "bottom", eff_style,
                     search_radius=bot_r, clamp_bounds=bot_clamp,
@@ -1312,6 +1325,7 @@ def extract_panels_from_page(
             )
 
         snapped_bounds.append({"left": None, "right": None, "top": top_run, "bottom": bot_run})
+        strict_hits.append({"left": False, "right": False, "top": top_strict, "bottom": bot_strict})
 
     # Sync row-mate box horizontal borders if one sibling detected a strong divider and another missed it
     for idx, slot in enumerate(spec.slots):
@@ -1328,13 +1342,13 @@ def extract_panels_from_page(
                 other_coord = other.rect[1] if side == "top" else other.rect[3]
                 if abs(other_coord - ref_coord) <= 6 and snapped_bounds[other_idx][side] is not None:
                     b[side] = snapped_bounds[other_idx][side]
+                    strict_hits[idx][side] = strict_hits[other_idx][side]
                     break
 
     # Stage 2: Detect vertical borders using the snapped horizontal span (eff_y0..eff_y1)
     for idx, slot in enumerate(spec.slots):
         x0, y0, x1, y1 = slot.rect
         eff_style = eff_styles[idx]
-        slot_fb = is_fb[idx]
         b = snapped_bounds[idx]
         nb = all_neighbors[idx]
         eff_y0 = b["top"][0] if b["top"] is not None else y0
@@ -1348,12 +1362,14 @@ def extract_panels_from_page(
         left_clamp = (120, w - 120) if nb["left"] else (0, min(w - 1, x0 + 80))
         right_clamp = (120, w - 120) if nb["right"] else (max(0, x1 - 80), w - 1)
 
-        if all_boxed or slot_fb:
+        if eff_style == "box":
             b["left"] = _detect_vertical_border(
                 strict_black_mask, strict_black_mask, x0, eff_rect, "left", "box",
                 search_radius=left_r, clamp_bounds=left_clamp,
             )
-            if b["left"] is None:
+            if b["left"] is not None:
+                strict_hits[idx]["left"] = True
+            else:
                 b["left"] = _detect_vertical_border(
                     line_mask, dark_mask, x0, eff_rect, "left", eff_style,
                     search_radius=left_r, clamp_bounds=left_clamp,
@@ -1363,7 +1379,9 @@ def extract_panels_from_page(
                 strict_black_mask, strict_black_mask, x1, eff_rect, "right", "box",
                 search_radius=right_r, clamp_bounds=right_clamp,
             )
-            if b["right"] is None:
+            if b["right"] is not None:
+                strict_hits[idx]["right"] = True
+            else:
                 b["right"] = _detect_vertical_border(
                     line_mask, dark_mask, x1, eff_rect, "right", eff_style,
                     search_radius=right_r, clamp_bounds=right_clamp,
@@ -1393,6 +1411,7 @@ def extract_panels_from_page(
                 other_coord = other.rect[0] if side == "left" else other.rect[2]
                 if abs(other_coord - ref_coord) <= 6 and snapped_bounds[other_idx][side] is not None:
                     b[side] = snapped_bounds[other_idx][side]
+                    strict_hits[idx][side] = strict_hits[other_idx][side]
                     break
 
     # Stage 3: Crop cleanly inside snapped borders & couple adjacent open/box slots to real dividers
@@ -1403,10 +1422,13 @@ def extract_panels_from_page(
         slot_fb = is_fb[idx]
         b = snapped_bounds[idx]
         nb = all_neighbors[idx]
+        all_strict_box = eff_style == "box" and all(strict_hits[idx].values()) and all(
+            b[s] is not None for s in ("left", "right", "top", "bottom")
+        )
 
-        if slot_fb:
+        if slot_fb or all_strict_box:
             # Include the detected crisp black box frame so `_peel_black_box_frame` peels ONLY
-            # the black frame + 2px AA without over-cropping or touching dark interior art.
+            # the black frame + 2px AA without over-cropping or touching dark interior art/rocks.
             cx0 = b["left"][0] if b["left"] is not None else x0
             cx1 = (b["right"][1] + 1) if b["right"] is not None else (x1 + 1)
             cy0 = b["top"][0] if b["top"] is not None else y0
@@ -1506,6 +1528,9 @@ def extract_panels_from_page(
         if slot_fb:
             peeled = _peel_black_box_frame(cropped, max_frame_px=12)
             cleaned = _trim_stray_white_edge_strips(peeled, max_strip_px=10)
+        elif all_strict_box:
+            peeled = _peel_black_box_frame(cropped, max_frame_px=12)
+            cleaned = _level_near_white_bg(peeled)
         else:
             trimmed = _trim_residual_edge_borders(
                 cropped,

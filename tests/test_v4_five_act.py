@@ -793,6 +793,9 @@ def test_writer_v4_dry_run_and_prompt() -> None:
     assert post.title.strip() in prompt
     assert "#FFFFFF" in prompt
     assert "wordless" in prompt
+    assert '"clean_white"' in prompt
+    assert "diorama_style_ref.jpg" in prompt
+    assert "미니 디오라마" in prompt
 
 
 def test_writer_generate_v4_episode_script_mocked_interactions_and_normalization() -> None:
@@ -968,6 +971,9 @@ def test_artist_generate_v4_episode_pages_attaches_blueprint_and_all_turnarounds
 
     cast_sheet_bytes = settings.cast_sheet_path.read_bytes()
     style_ref_bytes = settings.style_ref_path.read_bytes()
+    diorama_ref_path = settings.assets_dir / "diorama_style_ref.jpg"
+    assert diorama_ref_path.exists(), "Expected canonical assets/diorama_style_ref.jpg to exist"
+    diorama_ref_bytes = diorama_ref_path.read_bytes()
 
     # Match each captured call back to its ActPage via its layout_id / act_number in prompt text
     matched_acts: set[int] = set()
@@ -1012,9 +1018,10 @@ def test_artist_generate_v4_episode_pages_attaches_blueprint_and_all_turnarounds
                     seen_ids.add(member.id)
                     unique_members.append(member)
 
-        # Verify exact attachment count: text + cast_sheet + style_ref + layout_blueprint + unique turnarounds
-        assert len(items) == 4 + len(unique_members), (
-            f"Act {act.act_number} expected {4 + len(unique_members)} input items, got {len(items)}"
+        # Verify exact attachment count:
+        # text + cast_sheet + style_ref + layout_blueprint + unique turnarounds + diorama_style_ref
+        assert len(items) == 4 + len(unique_members) + 1, (
+            f"Act {act.act_number} expected {4 + len(unique_members) + 1} input items, got {len(items)}"
         )
         assert all(item["type"] == "image" for item in items[1:])
 
@@ -1023,13 +1030,19 @@ def test_artist_generate_v4_episode_pages_attaches_blueprint_and_all_turnarounds
         # Image 2: sloptoon_style_ref.jpg
         assert base64.b64decode(items[2]["data"]) == style_ref_bytes
 
-        # Images 4+: every unique character's 3-view turnaround blueprint from assets/turnarounds/
-        attached_turnaround_blobs = {base64.b64decode(item["data"]) for item in items[4:]}
+        # Images 4..-2: every unique character's 3-view turnaround blueprint from assets/turnarounds/
+        attached_turnaround_blobs = {base64.b64decode(item["data"]) for item in items[4:-1]}
         expected_turnaround_blobs = {
             (settings.turnarounds_dir / member.turnaround_filename).read_bytes()
             for member in unique_members
         }
         assert attached_turnaround_blobs == expected_turnaround_blobs
+
+        # Last image (-1): assets/diorama_style_ref.jpg (technique reference only!)
+        assert base64.b64decode(items[-1]["data"]) == diorama_ref_bytes
+        assert "BACKGROUND/STAGE TECHNIQUE REFERENCE ONLY" in prompt_text
+        assert "NEVER copy the characters shown in this diorama reference!" in prompt_text
+        assert "MINI DIORAMA" in prompt_text.upper()
 
     assert matched_acts == {1, 2, 3, 4, 5}
 
@@ -1649,6 +1662,7 @@ def test_artist_and_writer_v4_full_bleed_prompts_and_blueprint_attachment(tmp_pa
     )
     assert len(captured_calls) == 5
 
+    diorama_ref_bytes = (settings.assets_dir / "diorama_style_ref.jpg").read_bytes()
     for call in captured_calls:
         items = call["input"]
         prompt_text = items[0]["text"]
@@ -1657,6 +1671,8 @@ def test_artist_and_writer_v4_full_bleed_prompts_and_blueprint_attachment(tmp_pa
         assert "#FFFFFF" in prompt_text
         assert "ATTACHED CHARACTER 3-VIEW TURNAROUND BLUEPRINTS" in prompt_text
         assert "ZERO TEXT" in prompt_text
+        # diorama_style_ref.jpg must NOT be attached in full_bleed mode
+        assert all(base64.b64decode(item["data"]) != diorama_ref_bytes for item in items[1:])
 
         # Image 3 must match render_layout_blueprint(act.layout_id, all_boxed=True)
         bp_bytes = base64.b64decode(items[3]["data"])
@@ -1876,15 +1892,14 @@ def test_cli_generate_bg_flag_defaults_and_overrides(
         lambda self, post_no, base_post=None: _sample_post(post_no=str(post_no)),
     )
 
-    # --layout v4 defaults to --bg selective_mix (40-60% full-bleed + 40-60% clean #FFFFFF)
+    # --layout v4 defaults to --bg clean_white (100% pure #FFFFFF + crisp-inked mini diorama islands)
     rc_v4 = cli.main(["generate", "--post-no", "99001", "--layout", "v4", "--dry-run"])
     assert rc_v4 == 0
     out_v4 = capsys.readouterr().out
     v4_obj, _ = json.JSONDecoder().raw_decode(out_v4[out_v4.find("{") :])
     v4_script = EpisodeScript.model_validate(v4_obj)
-    assert v4_script.background_style == "selective_mix"
-    fb_count = sum(1 for c in v4_script.cuts if c.full_bleed_bg)
-    assert 0.40 <= (fb_count / len(v4_script.cuts)) <= 0.60
+    assert v4_script.background_style == "clean_white"
+    assert not any(c.full_bleed_bg for c in v4_script.cuts)
 
     # --layout v4 --bg full_bleed overrides explicitly to full_bleed
     rc_fb = cli.main(["generate", "--post-no", "99001", "--layout", "v4", "--bg", "full_bleed", "--dry-run"])
@@ -1895,14 +1910,15 @@ def test_cli_generate_bg_flag_defaults_and_overrides(
     assert fb_script.background_style == "full_bleed"
     assert all(c.full_bleed_bg for c in fb_script.cuts)
 
-    # --layout v4 --bg clean_white overrides back to clean_white
-    rc_cw = cli.main(["generate", "--post-no", "99001", "--layout", "v4", "--bg", "clean_white", "--dry-run"])
-    assert rc_cw == 0
-    out_cw = capsys.readouterr().out
-    cw_obj, _ = json.JSONDecoder().raw_decode(out_cw[out_cw.find("{") :])
-    cw_script = EpisodeScript.model_validate(cw_obj)
-    assert cw_script.background_style == "clean_white"
-    assert not any(c.full_bleed_bg for c in cw_script.cuts)
+    # --layout v4 --bg selective_mix overrides explicitly to selective_mix (40-60% full-bleed + 40-60% clean #FFFFFF)
+    rc_sm = cli.main(["generate", "--post-no", "99001", "--layout", "v4", "--bg", "selective_mix", "--dry-run"])
+    assert rc_sm == 0
+    out_sm = capsys.readouterr().out
+    sm_obj, _ = json.JSONDecoder().raw_decode(out_sm[out_sm.find("{") :])
+    sm_script = EpisodeScript.model_validate(sm_obj)
+    assert sm_script.background_style == "selective_mix"
+    fb_count = sum(1 for c in sm_script.cuts if c.full_bleed_bg)
+    assert 0.40 <= (fb_count / len(sm_script.cuts)) <= 0.60
 
     # --layout classic (default) defaults to clean_white
     rc_cl = cli.main(["generate", "--post-no", "99001", "--dry-run"])
@@ -2211,10 +2227,14 @@ def test_artist_and_writer_v4_selective_mix_prompts_and_blueprints(tmp_path: Pat
         clean_act,
         attached_turnarounds=["나이트엘프 사제 (nightelf_priest)"],
         background_style="clean_white",
+        has_diorama_ref=True,
     )
     assert "ATMOSPHERIC SOFT-VIGNETTE" not in clean_prompt.upper()
     assert "SOFT-VIGNETTE" not in clean_prompt.upper()
     assert "100% PURE SOLID `#FFFFFF` CLEAN" in clean_prompt
+    assert "MINI DIORAMA" in clean_prompt.upper()
+    assert "BACKGROUND/STAGE TECHNIQUE REFERENCE ONLY" in clean_prompt
+    assert "NEVER copy the characters shown in this diorama reference!" in clean_prompt
     assert "ZERO TEXT" in clean_prompt
 
     # 4. generate_v4_episode_pages attaches exact per-act slot_boxed blueprint for selective_mix
@@ -2261,6 +2281,7 @@ def test_artist_and_writer_v4_selective_mix_prompts_and_blueprints(tmp_path: Pat
             render_layout_blueprint(act.layout_id, slot_boxed=slot_boxed)
         )
 
+    diorama_ref_bytes = (settings.assets_dir / "diorama_style_ref.jpg").read_bytes()
     matched_acts: set[int] = set()
     for call in captured_calls:
         items = call["input"]
@@ -2269,6 +2290,8 @@ def test_artist_and_writer_v4_selective_mix_prompts_and_blueprints(tmp_path: Pat
         assert "#FFFFFF" in prompt_text
         assert "ATTACHED CHARACTER 3-VIEW TURNAROUND BLUEPRINTS" in prompt_text
         assert "ZERO TEXT" in prompt_text
+        # diorama_style_ref.jpg must NOT be attached in selective_mix mode
+        assert all(base64.b64decode(item["data"]) != diorama_ref_bytes for item in items[1:])
 
         bp_bytes = base64.b64decode(items[3]["data"])
         with Image.open(io.BytesIO(bp_bytes)) as attached_bp:
@@ -2397,3 +2420,238 @@ def test_compose_v4_episode_selective_mix_end_to_end(
     else:
         # Clean-white lead panel leaves crisp white background around the centered chibi artwork
         assert interior_fill < 0.85
+
+
+# ---------------------------------------------------------------------------
+# 10. V4.4 Diorama Extraction & Box-Edge Flush-Anchor / Side-Bubble Regressions
+# ---------------------------------------------------------------------------
+
+
+def test_extract_panels_clean_white_all_boxed_preserves_dark_diorama_height() -> None:
+    """Regression test: clean_white all-boxed pages (`split_top_wide_bottom`) with dark interior
+    diorama rock lines and shaded bottom stonework MUST extract via white-gutter segmentation and
+    preserve full floating island height (ZERO -125px chop and ZERO -14px bottom rock chew)."""
+    lid = "split_top_wide_bottom"
+    spec = get_page_layout(lid)
+    page = Image.new("RGB", (V4_PAGE_W, V4_PAGE_H), (252, 252, 252))
+    d = ImageDraw.Draw(page)
+
+    berry_red = (228, 42, 62)
+    slot2_green = (48, 190, 82)
+    slot3_blue = (54, 118, 232)
+
+    # Slot 1: floating cobblestone diorama with dark interior horizontal rock line ~125px above bottom
+    x0, y0, x1, y1 = spec.slots[0].rect  # (28, 24, 438, 650)
+    # Character body in middle
+    d.ellipse([x0 + 100, y0 + 210, x1 - 100, y0 + 460], fill=(185, 130, 88), outline=(24, 24, 24), width=4)
+    # Strong dark interior horizontal rock-rim line ~125px above bottom border (y=520..526)
+    d.rectangle([x0 + 18, y1 - 130, x1 - 18, y1 - 124], fill=(42, 42, 42))
+    # Bright red berry cluster + shaded cobblestone rock sitting BELOW that dark line down to the bottom wall!
+    d.rectangle([x0 + 28, y1 - 110, x1 - 28, y1 - 6], fill=(112, 108, 100))
+    d.rectangle([x0 + 80, y1 - 96, x1 - 80, y1 - 18], fill=berry_red)
+    d.rectangle([x0, y0, x1, y1], outline=(20, 20, 20), width=4)
+
+    # Slot 2: clean centered reaction figure
+    sx0, sy0, sx1, sy1 = spec.slots[1].rect
+    d.ellipse([sx0 + 90, sy0 + 230, sx1 - 90, sy1 - 24], fill=slot2_green, outline=(24, 24, 24), width=4)
+    d.rectangle([sx0, sy0, sx1, sy1], outline=(20, 20, 20), width=4)
+
+    # Slot 3: wide left-bleeding cobblestone diorama slab
+    bx0, by0, bx1, by1 = spec.slots[2].rect
+    d.rectangle([bx0 + 4, by0 + 220, bx1 - 40, by1 - 4], fill=slot3_blue, outline=(24, 24, 24), width=4)
+    d.rectangle([bx0, by0, bx1, by1], outline=(20, 20, 20), width=4)
+
+    # Pure clean_white default call (all_boxed=False, slot_full_bleed=None)
+    panels = extract_panels_from_page(page, lid)
+    assert len(panels) == 3
+
+    p1_w, p1_h = panels[0].size
+    assert p1_w >= 394, f"Slot 1 width over-cropped: {p1_w}"
+    assert p1_h >= 605, f"Slot 1 diorama bottom was chopped (-125px/-14px regression): {p1_h} vs 626"
+
+    arr1 = np.asarray(panels[0])
+    # Berries & lower rock below the dark interior line must survive intact!
+    assert _count_color_match(arr1, berry_red, tol=30) >= 8000
+    # Top headroom leveled to strict #FFFFFF and zero black frame residue on edges
+    headroom = arr1[8:64, p1_w // 4 : (3 * p1_w) // 4, :]
+    assert float(np.mean(np.all(headroom == 255, axis=2))) > 0.98
+    for strip in (arr1[:2, :, :], arr1[-2:, :, :], arr1[:, :2, :], arr1[:, -2:, :]):
+        blk = float(np.mean((strip[:, :, 0] < 45) & (strip[:, :, 1] < 45) & (strip[:, :, 2] < 45)))
+        assert blk < 0.15
+
+    # Zero cross-slot bleed
+    assert _count_color_match(arr1, slot2_green) < 30
+    assert _count_color_match(arr1, slot3_blue) < 30
+    assert _count_color_match(np.asarray(panels[1]), slot2_green) >= 4000
+    assert _count_color_match(np.asarray(panels[2]), slot3_blue) >= 10000
+
+
+def test_extract_panels_mixed_diagonal_tempo_box_slot_immune_to_dark_interior_cliff_lines() -> None:
+    """Regression test: on mixed open+box pages (`diagonal_tempo_2cut`), box slots MUST prioritize
+    `strict_black_mask` before loose `line_mask` so dark interior mossy cliff ink lines never
+    hijack the crisp `#141414` left frame (-67px left rock clip regression)."""
+    lid = "diagonal_tempo_2cut"
+    spec = get_page_layout(lid)
+    page = Image.new("RGB", (V4_PAGE_W, V4_PAGE_H), (251, 250, 249))
+    d = ImageDraw.Draw(page)
+
+    top_color = (220, 68, 128)
+    cliff_marker = (232, 168, 34)
+
+    # Slot 1 (open top): floating character artwork, no box frame
+    tx0, ty0, tx1, ty1 = spec.slots[0].rect
+    d.ellipse([tx0 + 180, ty0 + 220, tx1 - 180, ty1 - 40], fill=top_color, outline=(24, 24, 24), width=4)
+
+    # Slot 2 (box bottom: 28, 768, 872, 1326): left-anchored mossy cliff with dark interior vertical rock contour
+    bx0, by0, bx1, by1 = spec.slots[1].rect
+    # Shaded mossy rock hugging the true left border (x=32..140)
+    d.rectangle([bx0 + 4, by0 + 160, bx0 + 440, by1 - 4], fill=(104, 110, 92))
+    # Bright amber marker sitting strictly BETWEEN true left frame (x=28..31) and interior rock line (x=88)!
+    d.rectangle([bx0 + 12, by0 + 220, bx0 + 52, by1 - 40], fill=cliff_marker)
+    # Strong dark interior vertical cliff-rock ink line 60px inside the box (passes loose line_mask!)
+    d.rectangle([bx0 + 60, by0 + 80, bx0 + 65, by1 - 12], fill=(68, 70, 66))
+    # Crisp #141414 outer black box border
+    d.rectangle([bx0, by0, bx1, by1], outline=(20, 20, 20), width=4)
+
+    panels = extract_panels_from_page(page, lid)
+    assert len(panels) == 2
+
+    p2_w, p2_h = panels[1].size
+    assert p2_w >= 822, f"Box slot left cliff was mis-snapped (-67px regression): width={p2_w} vs 844"
+    assert p2_h >= 542, f"Box slot height over-cropped: height={p2_h} vs 558"
+
+    arr2 = np.asarray(panels[1])
+    # Amber marker between x=40..80 must survive intact (proves left rock wasn't clipped!)
+    assert _count_color_match(arr2, cliff_marker, tol=30) >= 6000
+    # Right side remains pure #FFFFFF and left edge bleeds cleanly without black frame residue
+    right_void = arr2[40 : p2_h - 40, p2_w - 180 : p2_w - 16, :]
+    assert float(np.mean(np.all(right_void == 255, axis=2))) > 0.98
+    for strip in (arr2[:2, :, :], arr2[-2:, :, :], arr2[:, :2, :], arr2[:, -2:, :]):
+        blk = float(np.mean((strip[:, :, 0] < 45) & (strip[:, :, 1] < 45) & (strip[:, :, 2] < 45)))
+        assert blk < 0.15
+    assert _count_color_match(arr2, top_color) < 30
+
+
+def test_compose_v4_box_edge_bleed_flush_anchor_and_dramatic_side_bubble() -> None:
+    """Regression test: left/right edge-bleeding artwork inside `box` panels MUST flush-anchor to
+    `x=0` / `x=W-1` (0px floating vertical guillotine seam), and one-sided edge-bleeding wide tall
+    box panels with open opposite `#FFFFFF` space MUST adopt dramatic side-by-side bubble framing
+    at strictly `overlap_px == 0` while `open` panels preserve white outer margins."""
+    # (a) Narrow box (410x648) — left-bleeding art flush-anchors to x=0
+    raw_narrow_l = Image.new("RGB", (399, 640), (255, 255, 255))
+    dl = ImageDraw.Draw(raw_narrow_l)
+    dl.rectangle([0, 210, 260, 639], fill=(120, 170, 95), outline=(22, 22, 22), width=3)
+    cut_nl = _make_v4_cut(1, characters=["타우렌 드루이드"], speaker="타우렌 드루이드", dialogue="왼쪽 절벽 딱 붙었지~!", tail_target="left")
+    p_nl, a_nl = composer._compose_variable_panel(cut_nl, raw_narrow_l, target_w=410, target_h=648, border_style="box")
+    assert p_nl.size == (410, 648)
+    assert a_nl["overlap_px"] == 0
+    assert a_nl["art_bbox"] is not None and a_nl["art_bbox"][0] == 0
+
+    # (b) Narrow box (410x648) — right-bleeding art flush-anchors to x=409
+    raw_narrow_r = Image.new("RGB", (399, 640), (255, 255, 255))
+    dr = ImageDraw.Draw(raw_narrow_r)
+    dr.rectangle([140, 210, 398, 639], fill=(180, 120, 210), outline=(22, 22, 22), width=3)
+    cut_nr = _make_v4_cut(2, characters=["노움 도적"], speaker="노움 도적", dialogue="오른쪽도 칼같이 딱 붙어야지!", tail_target="right")
+    p_nr, a_nr = composer._compose_variable_panel(cut_nr, raw_narrow_r, target_w=410, target_h=648, border_style="box")
+    assert p_nr.size == (410, 648)
+    assert a_nr["overlap_px"] == 0
+    assert a_nr["art_bbox"] is not None and a_nr["art_bbox"][2] == 409
+
+    # (c) Narrow box (410x648) — both-edges close-up (Cut 3 pattern) fits edge-to-edge (0..409)
+    raw_narrow_both = Image.new("RGB", (399, 640), (255, 255, 255))
+    db = ImageDraw.Draw(raw_narrow_both)
+    db.rectangle([0, 195, 398, 639], fill=(230, 160, 190), outline=(22, 22, 22), width=3)
+    cut_nb = _make_v4_cut(
+        3,
+        characters=["노움 도적"],
+        speaker="노움 도적",
+        dialogue="으응…? 왜 절벽 길바닥에\n쭈그리고 숨어 있는 거야…?",
+        tail_target="center",
+    )
+    p_nb, a_nb = composer._compose_variable_panel(cut_nb, raw_narrow_both, target_w=410, target_h=648, border_style="box")
+    assert p_nb.size == (410, 648)
+    assert a_nb["overlap_px"] == 0
+    assert a_nb["art_bbox"] is not None
+    assert a_nb["art_bbox"][0] == 0 and a_nb["art_bbox"][2] == 409
+
+    # (d) Wide tall box (844x650) — wide left-bleeding diorama (Cut 6 pattern) anchors flush left (x=0)
+    raw_wide_l = Image.new("RGB", (835, 643), (255, 255, 255))
+    dwl = ImageDraw.Draw(raw_wide_l)
+    dwl.rectangle([0, 190, 805, 642], fill=(135, 145, 115), outline=(22, 22, 22), width=4)
+    cut_wl = ComicCut(
+        cut_index=6,
+        aspect_ratio="auto",
+        layout_slot="panel",
+        characters=["나이트엘프 사제", "타우렌 드루이드"],
+        speaker="타우렌 드루이드",
+        dialogue="으아앙 뭐야?! 내 캐릭이\n절벽 쪽으로 걸어가잖아!!",
+        wordless=False,
+        visual_prompt="Wide left-bleeding cobblestone diorama on pure #FFFFFF white.",
+        tail_target="right",
+        bubble_side="right",
+    )
+    p_wl, a_wl = composer._compose_variable_panel(cut_wl, raw_wide_l, target_w=844, target_h=650, border_style="box")
+    assert p_wl.size == (844, 650)
+    assert a_wl["overlap_px"] == 0
+    assert a_wl["art_bbox"] is not None and a_wl["art_bbox"][0] == 0
+
+    # (e) Wide tall box (844x558) — left-bleeding cliff + open right #FFFFFF (Cut 8 pattern) -> side_by_side!
+    raw_cliff_l = Image.new("RGB", (833, 551), (255, 255, 255))
+    dcl = ImageDraw.Draw(raw_cliff_l)
+    dcl.polygon([(0, 210), (420, 320), (350, 550), (0, 550)], fill=(116, 138, 86), outline=(22, 22, 22))
+    dcl.ellipse([260, 24, 520, 360], fill=(196, 140, 96), outline=(22, 22, 22), width=4)
+    cut_c8 = ComicCut(
+        cut_index=8,
+        aspect_ratio="auto",
+        layout_slot="panel",
+        characters=["타우렌 드루이드"],
+        speaker="타우렌 드루이드",
+        dialogue="으아아 핸들 꺾지 마!!\n발밑에 땅이 없단 말이야!!\n인사 안 해도 되니까 놔줘어!!",
+        wordless=False,
+        visual_prompt="Left-anchored mossy cliff with open right #FFFFFF space.",
+        tail_target="left",
+        bubble_side="right",
+    )
+    p_c8, a_c8 = composer._compose_variable_panel(cut_c8, raw_cliff_l, target_w=844, target_h=558, border_style="box")
+    assert p_c8.size == (844, 558)
+    assert a_c8["overlap_px"] == 0
+    assert a_c8.get("layout_variant") == "side_by_side"
+    assert a_c8["art_bbox"] is not None
+    assert a_c8["art_bbox"][0] == 0, f"Cut 8 pattern detached from left wall: {a_c8['art_bbox']}"
+    assert (a_c8["art_bbox"][3] - a_c8["art_bbox"][1]) >= 380, f"Cut 8 pattern shrunk too small: {a_c8['art_bbox']}"
+    assert a_c8["bubble_center"][0] > 422.0
+    assert a_c8["tail_tip"] is not None and a_c8["tail_tip"][0] < a_c8["bubble_center"][0]
+
+    # (f) Symmetric wide tall box (844x558) — right-bleeding cliff + open left #FFFFFF -> side_by_side!
+    raw_cliff_r = Image.new("RGB", (833, 551), (255, 255, 255))
+    dcr = ImageDraw.Draw(raw_cliff_r)
+    dcr.polygon([(832, 210), (412, 320), (482, 550), (832, 550)], fill=(116, 138, 86), outline=(22, 22, 22))
+    dcr.ellipse([312, 24, 572, 360], fill=(196, 140, 96), outline=(22, 22, 22), width=4)
+    cut_c8r = ComicCut(
+        cut_index=8,
+        aspect_ratio="auto",
+        layout_slot="panel",
+        characters=["타우렌 드루이드"],
+        speaker="타우렌 드루이드",
+        dialogue="오른쪽 절벽에서도\n핸들 꺾지 말라고!!",
+        wordless=False,
+        visual_prompt="Right-anchored mossy cliff with open left #FFFFFF space.",
+        tail_target="right",
+        bubble_side="left",
+    )
+    p_c8r, a_c8r = composer._compose_variable_panel(cut_c8r, raw_cliff_r, target_w=844, target_h=558, border_style="box")
+    assert p_c8r.size == (844, 558)
+    assert a_c8r["overlap_px"] == 0
+    assert a_c8r.get("layout_variant") == "side_by_side"
+    assert a_c8r["art_bbox"] is not None
+    assert a_c8r["art_bbox"][2] == 843, f"Right-bleeding cliff detached from right wall: {a_c8r['art_bbox']}"
+    assert (a_c8r["art_bbox"][3] - a_c8r["art_bbox"][1]) >= 380
+    assert a_c8r["bubble_center"][0] < 422.0
+    assert a_c8r["tail_tip"] is not None and a_c8r["tail_tip"][0] > a_c8r["bubble_center"][0]
+
+    # (g) Open panel sanity check: NEVER flush-anchor to x=0 or x=W-1 (keeps pure #FFFFFF outer borders!)
+    p_open, a_open = composer._compose_variable_panel(cut_c8, raw_cliff_l, target_w=844, target_h=720, border_style="open")
+    assert p_open.size == (844, 720)
+    assert a_open["overlap_px"] == 0
+    assert a_open["art_bbox"] is not None
+    assert a_open["art_bbox"][0] >= 10 and a_open["art_bbox"][2] <= 833

@@ -5,7 +5,7 @@
   "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=107884&exception_mode=recommend&page=1",
   "subtitle": "하이잘 절벽 길 그림자 숨기 매복 → 정신 지배 핸들 꺾기·큰절 낙사·무덤 리스폰 재매복 — 5막 13컷",
   "layout_mode": "v4_five_act",
-  "background_style": "full_bleed",
+  "background_style": "clean_white",
   "acts": [
     {
       "act_number": 1,
@@ -25,18 +25,12 @@
           "speaker": "나이트엘프 사제",
           "dialogue": "하이잘 왔으면 사제 개꿀팁\n하나 보고 가야지~!\n요 좁은 절벽 길 딱 보이지?",
           "wordless": false,
-          "visual_prompt": "100% FULL-BLEED EDGE-TO-EDGE COLORED MOUNT HYJAL CLIFF ROAD BACKGROUND (ZERO white gaps or fades inside the box!). Dramatic establishing shot on the narrow winding cobblestone cliff road of Mount Hyjal: towering ancient pine trees, sheer dizzying rocky cliff dropping into a deep sunlit-misty green forest canyon on the right-center, and bright airy pale-blue-to-soft-ivory morning mountain sky filling the UPPER 34% (keep upper-left sky completely unobstructed for speech bubble overlay!). On lower-left, the Night Elf Priest girl (fair peach-ivory skin, soft lavender-purple half-up wavy hair with small gold crescent circlet, glowing bright silver-white eyes, vibrant purple-and-white priest robe with gold trim, waist mini Bible & golden rosary, ONE golden sunburst-cross priest staff stowed on back, STRICTLY NO angel halo, NO wings!) points cheerfully down at the narrow cobblestone road edge with a sweet innocent closed-eye smile. On lower-right foreground (over-the-shoulder 3/4 back view), the tiny Gnome Rogue girl (blonde-to-pink-tip twin-tails, brass aviator goggles on forehead, STRICTLY NO X or star hairpins!, dark leather rogue tunic & capelet, twin green daggers sheathed on back/belt) peers curiously down the steep cliff.",
+          "visual_prompt": "100% PURE SOLID #FFFFFF WHITE BACKGROUND EVERYWHERE (ZERO sky box, ZERO pastel wallpaper fill, ZERO tall trees above characters' heads, TOP 38% completely empty pure #FFFFFF white headroom for speech bubble!). Styled exactly like the diorama reference: floating cleanly in the lower 62% on pure #FFFFFF white is a crisp black-ink-outlined organic FLOATING MINI DIORAMA ISLAND of a narrow Mount Hyjal cobblestone cliff road — thick beveled rocky earth-and-stone cutaway slab topped with worn mossy flagstones, tiny green alpine grass tufts, a small mossy boulder, and a dramatic sheer rocky cliff drop-off along the right edge (strictly contained inside the top open slot with ZERO spillover into the bottom panels!). Standing on the left of the floating stone road (x=30%), the Night Elf Priest girl (fair peach-ivory skin, long pointed elf ears with tiny gold hoop earrings, soft lavender-purple half-up wavy hair with braid, ahoge & small gold crescent forehead circlet, glowing bright silver-white eyes closed in a sweet mischievous innocent smile, purple shoulder capelet with gold crescent clasp over white blouse, purple pleated mini skirt, white mini Bible & dangling golden rosary on belt, ONE golden sunburst-cross priest staff stowed diagonally on her back, STRICTLY NO angel halo, NO wings!) points cheerfully down at the narrow cliff-road drop-off. On the right foreground of the diorama slab edge (x=72%), seen in over-the-shoulder 3/4 back view, the tiny Gnome Rogue girl (blonde-to-pink-violet gradient twin-tails, dark aviator goggles strap across back of head, STRICTLY NO X or star hairpins!, dark hooded capelet & leather rogue tunic, BOTH HANDS COMPLETELY EMPTY resting on her knees or at her sides — STRICTLY ZERO daggers held in her hands! ONLY her twin glowing emerald daggers sheathed crossed on her lower back, NEVER a 3rd dagger!) leans forward peering curiously over the rocky cutaway ledge.",
           "tail_target": "left",
           "bubble_side": "left",
-          "full_bleed_bg": true,
-          "speaker_anchor_xy": [
-            0.3,
-            0.44
-          ],
-          "bubble_center_xy": [
-            0.31,
-            0.15
-          ],
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
           "item_tooltip": null
         },
         {
@@ -51,18 +45,12 @@
           "speaker": "나이트엘프 사제",
           "dialogue": "일단 길바닥에 쏙 숨어서\n그숨 딸깍~! 완벽 투명!\n아무도 못 보겠지~?",
           "wordless": false,
-          "visual_prompt": "100% FULL-BLEED EDGE-TO-EDGE AIRY PASTEL TONAL REACTION BACKDROP (NO heavy cluttered forest, NO stark empty white void!). Fill the entire vertical box seamlessly edge-to-edge with a dreamy bright soft lavender-to-misty-sky-cream anime pastel gradient (`#EFE6FF` lower to `#FAF7FF` upper) decorated with delicate twinkling white stars, soft floating pastel bokeh bubbles, and faint dreamy violet mist shimmer (harmonizing naturally with Panel 1's bright mountain sky while keeping the UPPER 36% completely open soft misty-lavender pastel for speech bubble overlay!). Placed cleanly in the LOWER 60%, the Night Elf Priest girl (fair skin, lavender half-up hair, glowing silver eyes, purple priest robe, waist mini Bible & golden rosary, golden cross staff stowed on back, NO angel halo, NO wings) crouches low right in the center wrapped in a cute shimmering translucent violet-blue Night Elf Shadowmeld stealth aura ring, flashing a mischievous proud peace sign and sly wink!",
+          "visual_prompt": "100% PURE SOLID #FFFFFF WHITE BACKGROUND EVERYWHERE (ZERO pastel wallpaper fill, ZERO ground rectangle, ZERO vignette, TOP 40% completely empty pure #FFFFFF white headroom for speech bubble!). Placed cleanly in the LOWER 58% centered directly on pure #FFFFFF white, the Night Elf Priest girl (fair peach-ivory skin, pointed elf ears with gold hoop earrings, soft lavender-purple half-up wavy hair with small gold crescent forehead circlet, glowing silver-white eyes flashing a sly playful wink, purple shoulder capelet & pleated mini skirt with gold trim, waist white mini Bible & dangling golden rosary, ONE golden sunburst-cross priest staff stowed diagonally on back, STRICTLY NO angel halo, NO wings!) crouches low wrapped in a crisp hand-inked translucent shimmering violet-blue Night Elf Shadowmeld stealth aura ring with minimal cute floating twinkle sparkles, flashing a mischievous proud peace sign!",
           "tail_target": "center",
           "bubble_side": "center",
-          "full_bleed_bg": true,
-          "speaker_anchor_xy": [
-            0.62,
-            0.285
-          ],
-          "bubble_center_xy": [
-            0.5,
-            0.11
-          ],
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
           "item_tooltip": null
         },
         {
@@ -77,18 +65,12 @@
           "speaker": "노움 도적",
           "dialogue": "으응…? 57렙 사제가 퀘스트\n안 하고 왜 절벽 길바닥에\n쭈그리고 숨어 있는 거야…?",
           "wordless": false,
-          "visual_prompt": "100% FULL-BLEED EDGE-TO-EDGE AIRY PASTEL TONAL REACTION BACKDROP (NO heavy cluttered trees, NO stark empty white void!). Fill the entire vertical box seamlessly edge-to-edge with a breezy bright pale Hyjal sky-blue-to-warm-ivory anime pastel gradient (`#DCEEFF` lower to `#F7FBFF` upper) with subtle light pastel manga halftone dot texture and airy floating cloud wisps (echoing Panel 1's bright mountain sky palette while keeping the UPPER 36% completely open pale sky-blue pastel for speech bubble overlay!). In the LOWER 60%, expressive high-angle comedic reaction close-up looking slightly down at the tiny Gnome Rogue girl (fair skin, blonde-to-pink-tip twin-tails, brass aviator goggles on forehead, NO X or star hairpins!, dark leather rogue tunic, green potion vials on belt), tilting her head upward with big deadpan bewildered eyes, cute sweatdrops, and a small '?' spark!",
+          "visual_prompt": "100% PURE SOLID #FFFFFF WHITE BACKGROUND EVERYWHERE (ZERO pastel wallpaper fill, ZERO sky box, ZERO vignette, TOP 40% completely empty pure #FFFFFF white headroom for speech bubble!). Placed cleanly in the LOWER 58% directly on pure #FFFFFF white, expressive high-angle comedic reaction close-up looking slightly down at the tiny Gnome Rogue girl (fair skin, blonde-to-pink-violet gradient twin-tails, dark brass aviator goggles with glowing green lenses resting on forehead, black mask pulled under chin, STRICTLY NO X or star hairpins!, dark hooded cloak & brown-grey leather rogue tunic with three glowing green potion vials on belt), tilting her head upward with huge deadpan bewildered sapphire-blue eyes, cute crisp ink sweatdrops, and a tiny floating '?' comic spark beside her cheek (keep all marks strictly below head top!).",
           "tail_target": "center",
           "bubble_side": "center",
-          "full_bleed_bg": true,
-          "speaker_anchor_xy": [
-            0.5,
-            0.335
-          ],
-          "bubble_center_xy": [
-            0.5,
-            0.14
-          ],
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
           "item_tooltip": null
         }
       ]
@@ -110,18 +92,12 @@
           "speaker": "타우렌 드루이드",
           "dialogue": "곰 열매 잔뜩 땄다~♪\n경치 구경하면서 슬슬\n언덕이나 넘어가야징~",
           "wordless": false,
-          "visual_prompt": "100% FULL-BLEED EDGE-TO-EDGE SUNLIT MOUNT HYJAL FOREST ROAD BACKGROUND (ZERO white gaps inside the box!). Lush green pine canopy and bright sunlit pale-blue sky filling the UPPER 36% (unobstructed sky & pine tops for speech bubble overlay!), winding cobblestone cliff path with a tiny cute brown wild Hyjal bear mob sniffing flowers roadside. In the LOWER 64%, the unsuspecting Horde Tauren Druid girl (fair peach-ivory skin, cute fluffy warm-brown plush cow-monster hood with curved ivory horns & tiny golden neck bell, emerald-green leaf-trimmed druid tunic, wooden nature staff stowed on back) rides happily atop a chunky adorable chibi brown Kodo mount, hugging a woven basket overflowing with glowing red Bear Berries while humming joyfully with musical notes floating!",
+          "visual_prompt": "100% PURE SOLID #FFFFFF WHITE BACKGROUND EVERYWHERE (ZERO forest wall, ZERO sky box, ZERO pastel fill, TOP 40% completely empty pure #FFFFFF white headroom for speech bubble!). STRICT PANEL BOX CONTAINMENT: keep the ENTIRE floating diorama rock island, bottom rock edge, bear cub, and characters 100% INSIDE the top-left black panel border with clean #FFFFFF padding along the bottom and side edges — ZERO rock chunks overhanging or crossing the bottom black border line! Styled like the diorama reference: anchored cleanly inside the LOWER 56% on pure #FFFFFF white is a compact crisp black-ink-outlined FLOATING MINI DIORAMA ISLAND of mossy Mount Hyjal cobblestone path with beveled dirt-and-rock rim, tiny wildflower tufts, and a miniature adorable chibi brown wild Hyjal bear cub sniffing red berries beside the stones. Riding happily atop a chunky adorable chibi brown Kodo mount on this floating diorama island is the unsuspecting Horde Tauren Druid girl (fair peach-ivory skin, chestnut-brown bangs, fluffy warm-brown plush cow-monster hood with curved ivory horns, cow ears, pink snout & shiny golden nose ring, NO neck bell, layered emerald-green leaf shoulder capelet over brown-and-cream druid tunic with fluffy brown fur cuffs, wooden leaf-sprouting branch staff stowed diagonally on back), hugging a woven basket overflowing with glowing red Bear Berries while humming joyfully with tiny ink-drawn musical notes beside her!",
           "tail_target": "center",
           "bubble_side": "center",
-          "full_bleed_bg": true,
-          "speaker_anchor_xy": [
-            0.52,
-            0.34
-          ],
-          "bubble_center_xy": [
-            0.5,
-            0.14
-          ],
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
           "item_tooltip": null
         },
         {
@@ -136,18 +112,12 @@
           "speaker": "나이트엘프 사제",
           "dialogue": "어머, 귀여운 손님 왔다~!\n은신 뿅 풀고~\n정신 지배 짠~!!",
           "wordless": false,
-          "visual_prompt": "100% FULL-BLEED EDGE-TO-EDGE POP PASTEL COMIC-BURST TONAL BACKDROP (NO stark empty white void!). Fill the entire vertical box seamlessly edge-to-edge with vibrant yet bright airy pastel pink-and-lavender anime radial sunburst speedlines (`#F9D5EE` & `#E9D8FF` radiating softly from behind the Priest, lightening smoothly toward soft pastel blush-lavender in the UPPER 36% with ZERO faces up there for speech bubble overlay!). In the LOWER 60%, high-impact low-angle ambush pop-out: shattering out of violet Shadowmeld stealth sparkles, the Night Elf Priest girl (fair skin, lavender half-up hair, glowing silver eyes sparkling with sweet mischievous glee, purple priest robe, waist mini Bible & rosary, golden cross staff stowed on back, NO angel halo, NO wings) thrusts both palms forward unleashing swirling bright magenta-and-violet hypnotic Mind Control psychic energy rings!",
+          "visual_prompt": "100% PURE SOLID #FFFFFF WHITE BACKGROUND EVERYWHERE (ZERO pink sunburst wallpaper fill, ZERO colored backdrop, ZERO vignette, TOP 40% completely empty pure #FFFFFF white headroom for speech bubble!). Placed cleanly in the LOWER 58% directly on pure #FFFFFF white, high-impact low-angle ambush pop-out: shattering out of crisp translucent violet Shadowmeld stealth sparkles, the Night Elf Priest girl (fair peach-ivory skin, lavender-purple half-up wavy hair with small gold crescent circlet, glowing bright silver-white eyes gleaming with sweet mischievous glee, purple capelet & pleated skirt with gold trim, waist white mini Bible & golden rosary, ONE golden sunburst-cross priest staff stowed diagonally on back, STRICTLY NO angel halo, NO wings!) thrusts both palms forward unleashing crisp ink-outlined swirling magenta-and-violet hypnotic Mind Control psychic energy rings and tiny electric comic sparks directly against the pure white background!",
           "tail_target": "center",
           "bubble_side": "center",
-          "full_bleed_bg": true,
-          "speaker_anchor_xy": [
-            0.5,
-            0.33
-          ],
-          "bubble_center_xy": [
-            0.5,
-            0.14
-          ],
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
           "item_tooltip": null
         },
         {
@@ -163,18 +133,12 @@
           "speaker": "타우렌 드루이드",
           "dialogue": "으아앙 뭐야?!\n내 캐릭이 탈것에서 내려서\n절벽 쪽으로 걸어가잖아!!",
           "wordless": false,
-          "visual_prompt": "100% FULL-BLEED EDGE-TO-EDGE MOUNT HYJAL COBBLESTONE CLIFF EDGE BACKGROUND (ZERO white gaps inside the box!). Dramatic diagonal side-profile action view with sunlit pine treetops and open bright misty pale-blue sky filling the UPPER 34% (keep upper-right 34% open pale blue sky completely unobstructed for speech bubble overlay!), winding stone road beside the steep rocky drop-off on the far right. On the lower-left (x=22%), seen in dramatic 3/4 side-profile, the Night Elf Priest girl (purple priest robe, lavender hair, glowing silver eyes, staff on back, NO halo/wings) channels glowing pink-purple Mind Control psychic beams from her outstretched hands with a sweet serene smile; in the center-left background, the abandoned chibi brown Kodo mount sits bewildered with giant '?' and sweatdrops staring at its owner; on the lower-right (x=72%), the Tauren Druid girl (brown cow-monster hood with curved horns, emerald druid tunic, staff on back) is tethered by swirling magenta hypnotic rings around her head, eyes spinning in dizzy spirals as her legs stiffly march sideways straight toward the cliff precipice!",
+          "visual_prompt": "100% PURE SOLID #FFFFFF WHITE BACKGROUND EVERYWHERE (ZERO sky box, ZERO trees above heads, ZERO pastel fill, ZERO stray rock chunks near the top border! Keep the ENTIRE TOP 38% — both top-left and top-right — 100% clean spotless pure #FFFFFF white headroom!). STRICT PANEL BOX CONTAINMENT: keep the entire diorama island strictly inside the bottom wide black frame with clean white padding! Styled like the diorama reference: spanning the LOWER 60% on pure #FFFFFF white is a wide crisp black-ink-outlined FLOATING MINI DIORAMA ISLAND of Mount Hyjal cobblestone cliff road with thick beveled rocky cutaway edge dropping off sharply on the far right rim! On the lower-left of the stone slab (x=22%), seen in dramatic 3/4 side-profile, the Night Elf Priest girl (lavender half-up wavy hair, gold crescent circlet, glowing silver eyes, purple capelet & skirt, waist mini Bible & rosary, ONE golden sunburst-cross priest staff clearly stowed diagonally on her back, NO halo/wings) channels bright crisp magenta-purple Mind Control psychic ribbons from her outstretched palms with a sweet serene smile. Sitting bewildered in the center-left middle of the stone slab (x=46%) is the abandoned chibi brown Kodo mount with tiny comic '?' and sweatdrops staring at its owner. On the lower-right near the cutaway cliff rim (x=75%), the Tauren Druid girl (fluffy brown cow-monster hood with curved ivory horns & shiny golden nose ring, emerald-green layered leaf capelet, brown-cream druid tunic, wooden leaf staff stowed on back) is tethered by swirling glowing magenta hypnotic rings around her head, eyes spinning in dizzy comic spirals as her legs stiffly march sideways straight toward the sheer rock drop-off!",
           "tail_target": "right",
           "bubble_side": "right",
-          "full_bleed_bg": true,
-          "speaker_anchor_xy": [
-            0.71,
-            0.33
-          ],
-          "bubble_center_xy": [
-            0.66,
-            0.14
-          ],
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
           "item_tooltip": null
         }
       ]
@@ -197,18 +161,12 @@
           "speaker": "나이트엘프 사제",
           "dialogue": "절벽 쪽으로 핸들 휙~!\n떨어지기 전에 예의 바르게\n인사도 꾸벅 해야징~♪",
           "wordless": false,
-          "visual_prompt": "100% FULL-BLEED EDGE-TO-EDGE AIRY PASTEL COMIC-GAG TONAL BACKDROP (NO heavy cluttered landscape, NO stark empty white void!). Fill the entire large top box seamlessly edge-to-edge with a bright cheerful anime pastel gradient blending soft sky-blue and dreamy cotton-candy pink-cream (`#FFEAF5` to `#EBF6FF` to `#FDFBFF`) accented with subtle pastel manga halftone dots, airy speed arcs, and twinkling cute stars (keep the UPPER-LEFT 36% open soft pastel sky-cream completely unobstructed for speech bubble overlay!). In the LOWER 64%, hilarious dynamic slapstick comedy 2-shot: on lower-left (x=28%), the Night Elf Priest girl (lavender half-up hair, glowing silver eyes sparkling sweetly, purple priest robe, waist Bible & rosary, staff stowed on back, NO halo/wings) gleefully turns a glowing magenta magic psychic steering wheel in midair like a bus driver making a sharp turn; connected by glowing pink psychic puppet threads on lower-right (x=72%), the Tauren Druid girl (brown plush cow hood, emerald druid tunic, staff on back) twists sideways like a stiff marionette forced to bend deeply at the waist in a formal polite bow while sweating buckets and grimacing in helpless panic!",
+          "visual_prompt": "100% PURE SOLID #FFFFFF WHITE BACKGROUND EVERYWHERE (ZERO pastel gradient wallpaper, ZERO halftone box, ZERO border, TOP 38% completely empty pure #FFFFFF white headroom for speech bubble!). Floating cleanly in the LOWER 62% directly on pure #FFFFFF white is a hilarious dynamic slapstick comedy 2-shot: on the lower-left (x=28%), the Night Elf Priest girl (lavender-purple half-up wavy hair, gold crescent circlet, glowing silver eyes sparkling sweetly, purple capelet & pleated skirt, waist white mini Bible & golden rosary, ONE golden sunburst-cross staff stowed on back, NO halo/wings) gleefully grips and cranks a glowing crisp ink-outlined magenta magic psychic steering wheel in midair like a bus driver making a sharp turn, accented with minimal ink comic motion swooshes and tiny twinkling stars! Connected across the clean white space by crisp glowing pink psychic puppet strings on the lower-right (x=72%), the Tauren Druid girl (fluffy brown cow-monster hood with curved ivory horns & shiny golden nose ring, emerald-green layered leaf capelet, brown-cream druid tunic, wooden leaf staff stowed on back) twists sideways like a stiff marionette forced to bend deeply at the waist in a formal polite bow while sweating buckets and grimacing in helpless panic!",
           "tail_target": "left",
           "bubble_side": "left",
-          "full_bleed_bg": true,
-          "speaker_anchor_xy": [
-            0.28,
-            0.42
-          ],
-          "bubble_center_xy": [
-            0.3,
-            0.15
-          ],
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
           "item_tooltip": null
         },
         {
@@ -223,18 +181,12 @@
           "speaker": "타우렌 드루이드",
           "dialogue": "으아아 핸들 꺾지 마!!\n발밑에 땅이 없단 말이야!!\n인사 안 해도 되니까 놔줘어!!",
           "wordless": false,
-          "visual_prompt": "100% FULL-BLEED EDGE-TO-EDGE DIZZYING HIGH-ANGLE DUTCH-TILT CLIFF PRECIPICE BACKGROUND (ZERO white gaps inside the box!). Dramatic high-angle steep tilted cliff-edge perspective looking past jagged mossy rock edge down into a towering dizzying Mount Hyjal pine gorge far below, with wide-open pale-blue mountain sky & swirling wind streaks filling the UPPER-RIGHT 46% (unobstructed sky for speech bubble overlay!). Balanced right on the razor-thin mossy cliff edge on the lower-left (x=32%), the mind-controlled Tauren Druid girl (brown cow-monster hood with horns, emerald druid tunic, staff on back, glowing magenta Mind Control halo swirling around her head) scrambles desperately on the crumbling rock edge as loose pebbles tumble down into the abyss, eyes wide with sparkling anime tears and jaw dropped in hysterical panic!",
+          "visual_prompt": "100% PURE SOLID #FFFFFF WHITE BACKGROUND EVERYWHERE (ZERO sky box, ZERO full-bleed canyon fill, ZERO pastel gradient! Keep the ENTIRE TOP 38% AND UPPER-RIGHT 48% 100% spotless empty pure #FFFFFF white for crisp speech bubble!). STRICT PANEL BOX CONTAINMENT: keep the ENTIRE cliff outcrop, Tauren Druid, AND the glowing magenta Mind Control halo ring strictly INSIDE the bottom black box BELOW y=38% — ZERO halo rings, sparkles, or art ever touching or crossing above the top black panel border! Styled like the diorama reference: anchored strictly in the LOWER-LEFT HALF (x=10% to x=56%, y=42% to y=96%) in a dramatic high-angle dutch-tilt perspective is a crisp black-ink-outlined FLOATING JAGGED MOSSY MOUNT HYJAL CLIFF ROCK OUTCROP jutting diagonally from bottom-left toward center-left over empty pure white void, with loose ink-drawn pebbles and tiny grass tufts tumbling straight downward off the crumbling rock edge! Teetering precariously on the razor-thin mossy cliff tip on the lower-left (x=36%), the mind-controlled Tauren Druid girl (fluffy brown plush cow-monster hood with curved ivory horns & shiny golden nose ring, emerald-green layered leaf capelet, brown-cream druid tunic, wooden leaf staff stowed on back, compact crisp glowing magenta Mind Control halo swirling tightly around her horns) scrambles desperately on tiptoes as pebbles fall beneath her boots, eyes wide with sparkling anime tears and jaw dropped in hysterical panic!",
           "tail_target": "left",
           "bubble_side": "right",
-          "full_bleed_bg": true,
-          "speaker_anchor_xy": [
-            0.43,
-            0.38
-          ],
-          "bubble_center_xy": [
-            0.7,
-            0.21
-          ],
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
           "item_tooltip": null
         }
       ]
@@ -256,18 +208,12 @@
           "speaker": "나이트엘프 사제",
           "dialogue": "인사도 착하게 했네~♪\n매너 겜 인정이지? 잘 가~",
           "wordless": false,
-          "visual_prompt": "100% FULL-BLEED EDGE-TO-EDGE SERENE AIRY SKY-PASTEL TONAL BACKDROP (NO stark empty white void!). Fill the entire wide box seamlessly edge-to-edge with a luminous, tranquil sunlit pale sky-blue-to-warm-ivory gradient (`#D8F0FF` to `#FFFCEB`) with soft sunlit drifting cotton clouds and delicate floating golden bokeh sparkles — seamlessly echoing the Mount Hyjal sunlit sky of Panel 2 directly below! Place the Night Elf Priest girl (fair skin, lavender half-up hair, glowing silver eyes closed in a serene radiant innocent smile, purple priest robe, waist mini Bible & golden rosary, golden cross staff stowed on back, STRICTLY NO angel halo, NO wings!) cleanly on the RIGHT 44% of the panel in graceful 90-degree side-profile (leaving the LEFT 52% open dreamy sunlit sky-cloud pastel completely unobstructed for speech bubble overlay!), politely leaning slightly forward and daintily waving a fluttering crisp white handkerchief goodbye with cute little sparkles around her fingers!",
+          "visual_prompt": "100% PURE SOLID #FFFFFF WHITE BACKGROUND EVERYWHERE (ZERO sky gradient, ZERO clouds box, ZERO pastel fill, LEFT 54% completely empty pure #FFFFFF white space for speech bubble!). Placed cleanly on the RIGHT 42% (x=76%) directly on pure #FFFFFF white in graceful 90-degree side-profile facing left, the Night Elf Priest girl (fair peach-ivory skin, pointed elf ear with tiny gold hoop earring, soft lavender-purple half-up wavy hair with braid & gold crescent circlet, glowing silver eyes closed in a serene radiant innocent smile, purple shoulder capelet & pleated skirt with gold trim, waist white mini Bible & golden rosary, ONE golden sunburst-cross priest staff stowed diagonally on back, STRICTLY NO angel halo, NO wings!) leans politely slightly forward and daintily waves a fluttering crisp white ink-outlined handkerchief goodbye with minimal cute golden twinkle sparkles around her fingers!",
           "tail_target": "right",
           "bubble_side": "left",
-          "full_bleed_bg": true,
-          "speaker_anchor_xy": [
-            0.66,
-            0.42
-          ],
-          "bubble_center_xy": [
-            0.28,
-            0.18
-          ],
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
           "item_tooltip": null
         },
         {
@@ -282,10 +228,10 @@
           "speaker": null,
           "dialogue": null,
           "wordless": true,
-          "visual_prompt": "100% FULL-BLEED THEATRICAL WORDLESS CLIMAX FREEZE-FRAME filling the entire giant box edge-to-edge (ZERO text, ZERO speech bubbles!). Dramatic high-altitude Mount Hyjal cliff lookout panorama: across the sunlit misty pine canyon abyss in the upper-right background, a tiny silhouette of the Tauren Druid plummets far down the sheer cliff face leaving a comical dotted curved falling-trail ending in a bright cartoon sparkle twinkle; on the cobblestone cliff ledge behind in mid-background, her abandoned chibi brown Kodo mount AND two cute chibi wild Hyjal forest bear & mossy treant mob extras lean over the edge sweating awkwardly in sheer disbelief! Dominating the lower-left foreground (filling ~76% height) is the Gnome Rogue girl (blonde-to-pink-tip twin-tails, dark leather rogue tunic, green daggers/vials on belt, NO X or star hairpins!) completely petrified in horror — her brass aviator goggles resting on her forehead, heavy dark-purple vertical doom shadow across her brow, jaw unhinged wide open, blank white shocked eyes, shivering violently with cascading cold sweatdrops!",
+          "visual_prompt": "100% PURE SOLID #FFFFFF WHITE BACKGROUND EVERYWHERE (ZERO full-bleed colored sky or dark canyon box! Keep pure #FFFFFF white canvas surrounding the diorama island, ZERO text, ZERO speech bubbles!). THEATRICAL WORDLESS CLIMAX DIORAMA FREEZE-FRAME styled exactly like the diorama reference: spanning the lower half on pure #FFFFFF white is a bold crisp black-ink-outlined FLOATING MINI DIORAMA CLIFF-LOOKOUT PROMONTORY made of cracked mossy Mount Hyjal flagstones and thick beveled rocky cliff cutaway edge overhanging empty white abyss on the far right! Dominating the lower-left foreground on the stone island (x=32%, ~76% artwork height) is the Gnome Rogue girl (blonde-to-pink-violet gradient twin-tails, dark brass aviator goggles with green lenses resting on forehead, black chin mask, STRICTLY NO X or star hairpins!, dark hooded cloak & leather rogue tunic with glowing green potion vials on belt) completely petrified in silent horror — crisp vertical comic purple-indigo dread lines over her brow, jaw unhinged wide open, blank white shocked eyes, shivering violently with cascading cold sweatdrops! Clustered along the right cliff rim of the stone diorama island (x=66%) peering over the edge in stunned disbelief are the abandoned chibi brown Kodo mount AND two miniature cute chibi Hyjal mob extras (a tiny fluffy brown wild bear and a tiny mossy sapling treant), all sweating awkwardly! Out past the right rock edge against pure #FFFFFF white, a tiny silhouette of the Tauren Druid plummets down along a crisp black-ink curved dotted falling-trail ending in a bright cartoon sparkle twinkle!",
           "tail_target": "center",
           "bubble_side": null,
-          "full_bleed_bg": true,
+          "full_bleed_bg": false,
           "speaker_anchor_xy": null,
           "bubble_center_xy": null,
           "item_tooltip": null
@@ -309,18 +255,12 @@
           "speaker": "노움 도적",
           "dialogue": "흐에엑… 진짜 악마를 봤어…\n여기 무덤도 엄청 먼데\n그걸 절벽으로 꺾다니?!",
           "wordless": false,
-          "visual_prompt": "100% FULL-BLEED EDGE-TO-EDGE COOL PASTEL SHOCK TONAL BACKDROP (NO stark empty white void!). Fill the entire wide slim box seamlessly edge-to-edge with a chilly airy pale ice-blue-to-soft-lavender anime shock gradient (`#DCE6FF` to `#F2EEFF`) with subtle pale-blue vertical manga dread lines and faint misty vignette accents along the bottom (leaving the RIGHT 52% open pale icy-lavender pastel completely unobstructed for speech bubble overlay!). On the LEFT 44%, the Gnome Rogue girl (blonde-to-pink-tip twin-tails, brass aviator goggles on forehead, NO X or star hairpins!, dark leather rogue tunic, twin green daggers on belt) hugs herself shivering violently with wide traumatized eyes and nervous sweatdrops!",
+          "visual_prompt": "100% PURE SOLID #FFFFFF WHITE BACKGROUND EVERYWHERE (ZERO icy-blue gradient wallpaper, ZERO pastel box, ZERO vignette, RIGHT 54% completely empty pure #FFFFFF white space for speech bubble!). STRICT PANEL BOX CONTAINMENT: draw the Gnome Rogue as a compact 3/4 knee-up figure comfortably INSIDE Panel 1's black rectangle — her body stops cleanly at or strictly ABOVE Panel 1's bottom black frame line with ZERO boots or art ever crossing down into Panel 2! Placed cleanly on the LEFT 42% (x=24%) directly on pure #FFFFFF white, the Gnome Rogue girl (fair skin, blonde-to-pink-violet gradient twin-tails, dark brass aviator goggles with glowing green lenses resting on forehead, black chin mask, STRICTLY NO X or star hairpins!, dark hooded cloak & brown-grey leather rogue tunic with glowing green potion vials on belt) hugs her own shoulders shivering violently against minimal crisp ink-drawn comic tremble squiggles and pale-blue nervous sweatdrops, big sapphire eyes wide and traumatized!",
           "tail_target": "left",
           "bubble_side": "right",
-          "full_bleed_bg": true,
-          "speaker_anchor_xy": [
-            0.34,
-            0.4
-          ],
-          "bubble_center_xy": [
-            0.73,
-            0.24
-          ],
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
           "item_tooltip": null
         },
         {
@@ -335,18 +275,12 @@
           "speaker": "노움 도적",
           "dialogue": "근데 솔직히 도적은 그냥\n혼란 딸깍 한 방이면\n알아서 떨어지는데~ 흥!",
           "wordless": false,
-          "visual_prompt": "100% FULL-BLEED EDGE-TO-EDGE WARM CREAM-PEACH PASTEL TONAL BACKDROP (NO stark empty white void!). Fill the entire wide slim box seamlessly edge-to-edge with a warm breezy sunlit cream-to-soft-apricot-gold anime pastel gradient (`#FFF4D6` to `#FFFCF0`) accented with subtle light halftone dots and warm floating dust motes — bridging smoothly into Panel 3's golden-hour sunset palette directly below (leaving the LEFT 52% open warm cream pastel completely unobstructed for speech bubble overlay!). On the RIGHT 44%, the Gnome Rogue girl (blonde-to-pink-tip twin-tails, brass aviator goggles on forehead, NO X or star hairpins!, leather rogue tunic) squints with half-lidded unimpressed deadpan eyes and smugly flicks one tiny shiny spinning golden Distract coin up into the air off her thumb!",
+          "visual_prompt": "100% PURE SOLID #FFFFFF WHITE BACKGROUND EVERYWHERE (ZERO warm cream-peach gradient wallpaper, ZERO halftone box, ZERO vignette, LEFT 54% completely empty pure #FFFFFF white space for speech bubble! STRICTLY ZERO stray boots at top-left and ZERO ghosts/rocks/tombstones at bottom!). STRICT PANEL BOX CONTAINMENT: draw ONLY the Gnome Rogue as a compact waist-up/thigh-up figure cleanly INSIDE Panel 2's black rectangle (ZERO elements touching or crossing top or bottom black border lines!). Placed cleanly on the RIGHT 42% (x=76%) directly on pure #FFFFFF white, the Gnome Rogue girl (fair skin, blonde-to-pink-violet gradient twin-tails, dark brass aviator goggles with glowing green lenses resting on forehead, black chin mask, STRICTLY NO X or star hairpins!, dark hooded cloak & leather rogue tunic) squints sideways with half-lidded unimpressed smug deadpan eyes and casually flicks one tiny shiny spinning golden Distract coin up off her thumb with a crisp minimal ink motion arc and tiny sparkle glint!",
           "tail_target": "right",
           "bubble_side": "left",
-          "full_bleed_bg": true,
-          "speaker_anchor_xy": [
-            0.66,
-            0.42
-          ],
-          "bubble_center_xy": [
-            0.25,
-            0.26
-          ],
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
           "item_tooltip": null
         },
         {
@@ -362,18 +296,12 @@
           "speaker": "나이트엘프 사제",
           "dialogue": "쉿! 무덤 멀어서 방금 분 또 뛰어와~\n사제는 직접 꺾는 손맛이라구!",
           "wordless": false,
-          "visual_prompt": "100% FULL-BLEED EDGE-TO-EDGE MOUNT HYJAL CLIFF ROAD ENCORE FINALE BACKGROUND (ZERO white gaps inside the box!). Wide atmospheric late-afternoon golden-hour over-the-shoulder back-view Mount Hyjal cobblestone cliff road & deep pine canyon extending to all four borders (keep the UPPER-LEFT 46% open warm golden-blue mountain sky completely unobstructed for speech bubble overlay!). On the lower-right foreground (x=78%), the Night Elf Priest girl (lavender half-up hair, glowing silver eyes with a gleefully mischievous smug grin, purple priest robe, golden cross staff on back, NO halo/wings) has ALREADY crouched back down into shimmering translucent violet Shadowmeld stealth right on the road holding one finger to her lips ('shhh!'). On the lower-left foreground (x=20%), seen from back-view 3/4 shoulder angle, the Gnome Rogue girl (blonde-to-pink-tip twin-tails, goggles strap, NO X/star pins) slaps her palm over her face in utter exhausted despair! In the distant winding valley road between them (center-right mid-background x=56%), the tiny crying chibi Kodo mount sits by the cliff edge while a tiny glowing translucent cyan GHOST SPIRIT of the Tauren Druid trudges furiously back up the endlessly long steep mountain road from the graveyard!",
+          "visual_prompt": "100% PURE SOLID #FFFFFF WHITE BACKGROUND EVERYWHERE (ZERO sunset sky box, ZERO full-bleed canyon wall, ZERO pastel fill, TOP 38% and UPPER-CENTER VALLEY completely empty pure #FFFFFF white headroom for speech bubble!). STRICT PANEL BOX CONTAINMENT: keep the ENTIRE S-curve diorama road, crying brown Kodo beast mount, AND glowing translucent cyan Tauren Druid ghost 100% INSIDE the LOWER 62% of Panel 3's black box — STRICTLY BELOW the top 38% white headroom with ZERO ghosts, tombstones, or road tips ever crossing upward into Panel 2! ZERO text or letters ('RIP' etc.) anywhere! Styled like the diorama reference: stretching horizontally across the LOWER 62% on pure #FFFFFF white is a wide crisp black-ink-outlined FLOATING MINI DIORAMA S-CURVE COBBLESTONE MOUNT HYJAL CLIFF ROAD ISLAND (beveled mossy rock-and-earth cutaway slab). On the lower-right foreground of the stone road (x=78%), the Night Elf Priest girl (lavender-purple half-up wavy hair, gold crescent circlet, glowing silver eyes gleaming with mischievously smug glee, purple capelet & skirt, waist white mini Bible & rosary, ONE golden sunburst-cross priest staff stowed diagonally on her back — NOT held in hand!, NO halo/wings) has ALREADY crouched back down into a crisp translucent shimmering violet Shadowmeld stealth ring holding one index finger playfully to her lips ('shhh!'). On the lower-left foreground (x=20%), seen in 3/4 back view over her shoulder on the road, the Gnome Rogue girl (blonde-to-pink-violet twin-tails, goggle strap across back of head, NO X/star pins!, dark cloak & twin crossed glowing green daggers sheathed on back) slaps her palm over her face in utter exhausted despair! Along the lower-center curved stone road between them (x=48%, strictly inside the lower half of Panel 3!), a tiny crying four-legged chibi brown KODO BEAST MOUNT (armored rhino-like WoW brown kodo beast with snout horn & saddle crying tears — NOT a second Tauren girl!) sits sadly by the cliff rim right next to a tiny glowing translucent pale-cyan GHOST SPIRIT of the Tauren Druid girl (wearing her horned cow hood, puffing angrily with a comic steam puff) trudging furiously back up the winding stone road from the graveyard!",
           "tail_target": "right",
           "bubble_side": "center",
-          "full_bleed_bg": true,
-          "speaker_anchor_xy": [
-            0.66,
-            0.52
-          ],
-          "bubble_center_xy": [
-            0.33,
-            0.12
-          ],
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
           "item_tooltip": null
         }
       ]
@@ -393,18 +321,12 @@
       "speaker": "나이트엘프 사제",
       "dialogue": "하이잘 왔으면 사제 개꿀팁\n하나 보고 가야지~!\n요 좁은 절벽 길 딱 보이지?",
       "wordless": false,
-      "visual_prompt": "100% FULL-BLEED EDGE-TO-EDGE COLORED MOUNT HYJAL CLIFF ROAD BACKGROUND (ZERO white gaps or fades inside the box!). Dramatic establishing shot on the narrow winding cobblestone cliff road of Mount Hyjal: towering ancient pine trees, sheer dizzying rocky cliff dropping into a deep sunlit-misty green forest canyon on the right-center, and bright airy pale-blue-to-soft-ivory morning mountain sky filling the UPPER 34% (keep upper-left sky completely unobstructed for speech bubble overlay!). On lower-left, the Night Elf Priest girl (fair peach-ivory skin, soft lavender-purple half-up wavy hair with small gold crescent circlet, glowing bright silver-white eyes, vibrant purple-and-white priest robe with gold trim, waist mini Bible & golden rosary, ONE golden sunburst-cross priest staff stowed on back, STRICTLY NO angel halo, NO wings!) points cheerfully down at the narrow cobblestone road edge with a sweet innocent closed-eye smile. On lower-right foreground (over-the-shoulder 3/4 back view), the tiny Gnome Rogue girl (blonde-to-pink-tip twin-tails, brass aviator goggles on forehead, STRICTLY NO X or star hairpins!, dark leather rogue tunic & capelet, twin green daggers sheathed on back/belt) peers curiously down the steep cliff.",
+      "visual_prompt": "100% PURE SOLID #FFFFFF WHITE BACKGROUND EVERYWHERE (ZERO sky box, ZERO pastel wallpaper fill, ZERO tall trees above characters' heads, TOP 38% completely empty pure #FFFFFF white headroom for speech bubble!). Styled exactly like the diorama reference: floating cleanly in the lower 62% on pure #FFFFFF white is a crisp black-ink-outlined organic FLOATING MINI DIORAMA ISLAND of a narrow Mount Hyjal cobblestone cliff road — thick beveled rocky earth-and-stone cutaway slab topped with worn mossy flagstones, tiny green alpine grass tufts, a small mossy boulder, and a dramatic sheer rocky cliff drop-off along the right edge (strictly contained inside the top open slot with ZERO spillover into the bottom panels!). Standing on the left of the floating stone road (x=30%), the Night Elf Priest girl (fair peach-ivory skin, long pointed elf ears with tiny gold hoop earrings, soft lavender-purple half-up wavy hair with braid, ahoge & small gold crescent forehead circlet, glowing bright silver-white eyes closed in a sweet mischievous innocent smile, purple shoulder capelet with gold crescent clasp over white blouse, purple pleated mini skirt, white mini Bible & dangling golden rosary on belt, ONE golden sunburst-cross priest staff stowed diagonally on her back, STRICTLY NO angel halo, NO wings!) points cheerfully down at the narrow cliff-road drop-off. On the right foreground of the diorama slab edge (x=72%), seen in over-the-shoulder 3/4 back view, the tiny Gnome Rogue girl (blonde-to-pink-violet gradient twin-tails, dark aviator goggles strap across back of head, STRICTLY NO X or star hairpins!, dark hooded capelet & leather rogue tunic, BOTH HANDS COMPLETELY EMPTY resting on her knees or at her sides — STRICTLY ZERO daggers held in her hands! ONLY her twin glowing emerald daggers sheathed crossed on her lower back, NEVER a 3rd dagger!) leans forward peering curiously over the rocky cutaway ledge.",
       "tail_target": "left",
       "bubble_side": "left",
-      "full_bleed_bg": true,
-      "speaker_anchor_xy": [
-        0.3,
-        0.44
-      ],
-      "bubble_center_xy": [
-        0.31,
-        0.15
-      ],
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
       "item_tooltip": null
     },
     {
@@ -419,18 +341,12 @@
       "speaker": "나이트엘프 사제",
       "dialogue": "일단 길바닥에 쏙 숨어서\n그숨 딸깍~! 완벽 투명!\n아무도 못 보겠지~?",
       "wordless": false,
-      "visual_prompt": "100% FULL-BLEED EDGE-TO-EDGE AIRY PASTEL TONAL REACTION BACKDROP (NO heavy cluttered forest, NO stark empty white void!). Fill the entire vertical box seamlessly edge-to-edge with a dreamy bright soft lavender-to-misty-sky-cream anime pastel gradient (`#EFE6FF` lower to `#FAF7FF` upper) decorated with delicate twinkling white stars, soft floating pastel bokeh bubbles, and faint dreamy violet mist shimmer (harmonizing naturally with Panel 1's bright mountain sky while keeping the UPPER 36% completely open soft misty-lavender pastel for speech bubble overlay!). Placed cleanly in the LOWER 60%, the Night Elf Priest girl (fair skin, lavender half-up hair, glowing silver eyes, purple priest robe, waist mini Bible & golden rosary, golden cross staff stowed on back, NO angel halo, NO wings) crouches low right in the center wrapped in a cute shimmering translucent violet-blue Night Elf Shadowmeld stealth aura ring, flashing a mischievous proud peace sign and sly wink!",
+      "visual_prompt": "100% PURE SOLID #FFFFFF WHITE BACKGROUND EVERYWHERE (ZERO pastel wallpaper fill, ZERO ground rectangle, ZERO vignette, TOP 40% completely empty pure #FFFFFF white headroom for speech bubble!). Placed cleanly in the LOWER 58% centered directly on pure #FFFFFF white, the Night Elf Priest girl (fair peach-ivory skin, pointed elf ears with gold hoop earrings, soft lavender-purple half-up wavy hair with small gold crescent forehead circlet, glowing silver-white eyes flashing a sly playful wink, purple shoulder capelet & pleated mini skirt with gold trim, waist white mini Bible & dangling golden rosary, ONE golden sunburst-cross priest staff stowed diagonally on back, STRICTLY NO angel halo, NO wings!) crouches low wrapped in a crisp hand-inked translucent shimmering violet-blue Night Elf Shadowmeld stealth aura ring with minimal cute floating twinkle sparkles, flashing a mischievous proud peace sign!",
       "tail_target": "center",
       "bubble_side": "center",
-      "full_bleed_bg": true,
-      "speaker_anchor_xy": [
-        0.62,
-        0.285
-      ],
-      "bubble_center_xy": [
-        0.5,
-        0.11
-      ],
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
       "item_tooltip": null
     },
     {
@@ -445,18 +361,12 @@
       "speaker": "노움 도적",
       "dialogue": "으응…? 57렙 사제가 퀘스트\n안 하고 왜 절벽 길바닥에\n쭈그리고 숨어 있는 거야…?",
       "wordless": false,
-      "visual_prompt": "100% FULL-BLEED EDGE-TO-EDGE AIRY PASTEL TONAL REACTION BACKDROP (NO heavy cluttered trees, NO stark empty white void!). Fill the entire vertical box seamlessly edge-to-edge with a breezy bright pale Hyjal sky-blue-to-warm-ivory anime pastel gradient (`#DCEEFF` lower to `#F7FBFF` upper) with subtle light pastel manga halftone dot texture and airy floating cloud wisps (echoing Panel 1's bright mountain sky palette while keeping the UPPER 36% completely open pale sky-blue pastel for speech bubble overlay!). In the LOWER 60%, expressive high-angle comedic reaction close-up looking slightly down at the tiny Gnome Rogue girl (fair skin, blonde-to-pink-tip twin-tails, brass aviator goggles on forehead, NO X or star hairpins!, dark leather rogue tunic, green potion vials on belt), tilting her head upward with big deadpan bewildered eyes, cute sweatdrops, and a small '?' spark!",
+      "visual_prompt": "100% PURE SOLID #FFFFFF WHITE BACKGROUND EVERYWHERE (ZERO pastel wallpaper fill, ZERO sky box, ZERO vignette, TOP 40% completely empty pure #FFFFFF white headroom for speech bubble!). Placed cleanly in the LOWER 58% directly on pure #FFFFFF white, expressive high-angle comedic reaction close-up looking slightly down at the tiny Gnome Rogue girl (fair skin, blonde-to-pink-violet gradient twin-tails, dark brass aviator goggles with glowing green lenses resting on forehead, black mask pulled under chin, STRICTLY NO X or star hairpins!, dark hooded cloak & brown-grey leather rogue tunic with three glowing green potion vials on belt), tilting her head upward with huge deadpan bewildered sapphire-blue eyes, cute crisp ink sweatdrops, and a tiny floating '?' comic spark beside her cheek (keep all marks strictly below head top!).",
       "tail_target": "center",
       "bubble_side": "center",
-      "full_bleed_bg": true,
-      "speaker_anchor_xy": [
-        0.5,
-        0.335
-      ],
-      "bubble_center_xy": [
-        0.5,
-        0.14
-      ],
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
       "item_tooltip": null
     },
     {
@@ -471,18 +381,12 @@
       "speaker": "타우렌 드루이드",
       "dialogue": "곰 열매 잔뜩 땄다~♪\n경치 구경하면서 슬슬\n언덕이나 넘어가야징~",
       "wordless": false,
-      "visual_prompt": "100% FULL-BLEED EDGE-TO-EDGE SUNLIT MOUNT HYJAL FOREST ROAD BACKGROUND (ZERO white gaps inside the box!). Lush green pine canopy and bright sunlit pale-blue sky filling the UPPER 36% (unobstructed sky & pine tops for speech bubble overlay!), winding cobblestone cliff path with a tiny cute brown wild Hyjal bear mob sniffing flowers roadside. In the LOWER 64%, the unsuspecting Horde Tauren Druid girl (fair peach-ivory skin, cute fluffy warm-brown plush cow-monster hood with curved ivory horns & tiny golden neck bell, emerald-green leaf-trimmed druid tunic, wooden nature staff stowed on back) rides happily atop a chunky adorable chibi brown Kodo mount, hugging a woven basket overflowing with glowing red Bear Berries while humming joyfully with musical notes floating!",
+      "visual_prompt": "100% PURE SOLID #FFFFFF WHITE BACKGROUND EVERYWHERE (ZERO forest wall, ZERO sky box, ZERO pastel fill, TOP 40% completely empty pure #FFFFFF white headroom for speech bubble!). STRICT PANEL BOX CONTAINMENT: keep the ENTIRE floating diorama rock island, bottom rock edge, bear cub, and characters 100% INSIDE the top-left black panel border with clean #FFFFFF padding along the bottom and side edges — ZERO rock chunks overhanging or crossing the bottom black border line! Styled like the diorama reference: anchored cleanly inside the LOWER 56% on pure #FFFFFF white is a compact crisp black-ink-outlined FLOATING MINI DIORAMA ISLAND of mossy Mount Hyjal cobblestone path with beveled dirt-and-rock rim, tiny wildflower tufts, and a miniature adorable chibi brown wild Hyjal bear cub sniffing red berries beside the stones. Riding happily atop a chunky adorable chibi brown Kodo mount on this floating diorama island is the unsuspecting Horde Tauren Druid girl (fair peach-ivory skin, chestnut-brown bangs, fluffy warm-brown plush cow-monster hood with curved ivory horns, cow ears, pink snout & shiny golden nose ring, NO neck bell, layered emerald-green leaf shoulder capelet over brown-and-cream druid tunic with fluffy brown fur cuffs, wooden leaf-sprouting branch staff stowed diagonally on back), hugging a woven basket overflowing with glowing red Bear Berries while humming joyfully with tiny ink-drawn musical notes beside her!",
       "tail_target": "center",
       "bubble_side": "center",
-      "full_bleed_bg": true,
-      "speaker_anchor_xy": [
-        0.52,
-        0.34
-      ],
-      "bubble_center_xy": [
-        0.5,
-        0.14
-      ],
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
       "item_tooltip": null
     },
     {
@@ -497,18 +401,12 @@
       "speaker": "나이트엘프 사제",
       "dialogue": "어머, 귀여운 손님 왔다~!\n은신 뿅 풀고~\n정신 지배 짠~!!",
       "wordless": false,
-      "visual_prompt": "100% FULL-BLEED EDGE-TO-EDGE POP PASTEL COMIC-BURST TONAL BACKDROP (NO stark empty white void!). Fill the entire vertical box seamlessly edge-to-edge with vibrant yet bright airy pastel pink-and-lavender anime radial sunburst speedlines (`#F9D5EE` & `#E9D8FF` radiating softly from behind the Priest, lightening smoothly toward soft pastel blush-lavender in the UPPER 36% with ZERO faces up there for speech bubble overlay!). In the LOWER 60%, high-impact low-angle ambush pop-out: shattering out of violet Shadowmeld stealth sparkles, the Night Elf Priest girl (fair skin, lavender half-up hair, glowing silver eyes sparkling with sweet mischievous glee, purple priest robe, waist mini Bible & rosary, golden cross staff stowed on back, NO angel halo, NO wings) thrusts both palms forward unleashing swirling bright magenta-and-violet hypnotic Mind Control psychic energy rings!",
+      "visual_prompt": "100% PURE SOLID #FFFFFF WHITE BACKGROUND EVERYWHERE (ZERO pink sunburst wallpaper fill, ZERO colored backdrop, ZERO vignette, TOP 40% completely empty pure #FFFFFF white headroom for speech bubble!). Placed cleanly in the LOWER 58% directly on pure #FFFFFF white, high-impact low-angle ambush pop-out: shattering out of crisp translucent violet Shadowmeld stealth sparkles, the Night Elf Priest girl (fair peach-ivory skin, lavender-purple half-up wavy hair with small gold crescent circlet, glowing bright silver-white eyes gleaming with sweet mischievous glee, purple capelet & pleated skirt with gold trim, waist white mini Bible & golden rosary, ONE golden sunburst-cross priest staff stowed diagonally on back, STRICTLY NO angel halo, NO wings!) thrusts both palms forward unleashing crisp ink-outlined swirling magenta-and-violet hypnotic Mind Control psychic energy rings and tiny electric comic sparks directly against the pure white background!",
       "tail_target": "center",
       "bubble_side": "center",
-      "full_bleed_bg": true,
-      "speaker_anchor_xy": [
-        0.5,
-        0.33
-      ],
-      "bubble_center_xy": [
-        0.5,
-        0.14
-      ],
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
       "item_tooltip": null
     },
     {
@@ -524,18 +422,12 @@
       "speaker": "타우렌 드루이드",
       "dialogue": "으아앙 뭐야?!\n내 캐릭이 탈것에서 내려서\n절벽 쪽으로 걸어가잖아!!",
       "wordless": false,
-      "visual_prompt": "100% FULL-BLEED EDGE-TO-EDGE MOUNT HYJAL COBBLESTONE CLIFF EDGE BACKGROUND (ZERO white gaps inside the box!). Dramatic diagonal side-profile action view with sunlit pine treetops and open bright misty pale-blue sky filling the UPPER 34% (keep upper-right 34% open pale blue sky completely unobstructed for speech bubble overlay!), winding stone road beside the steep rocky drop-off on the far right. On the lower-left (x=22%), seen in dramatic 3/4 side-profile, the Night Elf Priest girl (purple priest robe, lavender hair, glowing silver eyes, staff on back, NO halo/wings) channels glowing pink-purple Mind Control psychic beams from her outstretched hands with a sweet serene smile; in the center-left background, the abandoned chibi brown Kodo mount sits bewildered with giant '?' and sweatdrops staring at its owner; on the lower-right (x=72%), the Tauren Druid girl (brown cow-monster hood with curved horns, emerald druid tunic, staff on back) is tethered by swirling magenta hypnotic rings around her head, eyes spinning in dizzy spirals as her legs stiffly march sideways straight toward the cliff precipice!",
+      "visual_prompt": "100% PURE SOLID #FFFFFF WHITE BACKGROUND EVERYWHERE (ZERO sky box, ZERO trees above heads, ZERO pastel fill, ZERO stray rock chunks near the top border! Keep the ENTIRE TOP 38% — both top-left and top-right — 100% clean spotless pure #FFFFFF white headroom!). STRICT PANEL BOX CONTAINMENT: keep the entire diorama island strictly inside the bottom wide black frame with clean white padding! Styled like the diorama reference: spanning the LOWER 60% on pure #FFFFFF white is a wide crisp black-ink-outlined FLOATING MINI DIORAMA ISLAND of Mount Hyjal cobblestone cliff road with thick beveled rocky cutaway edge dropping off sharply on the far right rim! On the lower-left of the stone slab (x=22%), seen in dramatic 3/4 side-profile, the Night Elf Priest girl (lavender half-up wavy hair, gold crescent circlet, glowing silver eyes, purple capelet & skirt, waist mini Bible & rosary, ONE golden sunburst-cross priest staff clearly stowed diagonally on her back, NO halo/wings) channels bright crisp magenta-purple Mind Control psychic ribbons from her outstretched palms with a sweet serene smile. Sitting bewildered in the center-left middle of the stone slab (x=46%) is the abandoned chibi brown Kodo mount with tiny comic '?' and sweatdrops staring at its owner. On the lower-right near the cutaway cliff rim (x=75%), the Tauren Druid girl (fluffy brown cow-monster hood with curved ivory horns & shiny golden nose ring, emerald-green layered leaf capelet, brown-cream druid tunic, wooden leaf staff stowed on back) is tethered by swirling glowing magenta hypnotic rings around her head, eyes spinning in dizzy comic spirals as her legs stiffly march sideways straight toward the sheer rock drop-off!",
       "tail_target": "right",
       "bubble_side": "right",
-      "full_bleed_bg": true,
-      "speaker_anchor_xy": [
-        0.71,
-        0.33
-      ],
-      "bubble_center_xy": [
-        0.66,
-        0.14
-      ],
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
       "item_tooltip": null
     },
     {
@@ -551,18 +443,12 @@
       "speaker": "나이트엘프 사제",
       "dialogue": "절벽 쪽으로 핸들 휙~!\n떨어지기 전에 예의 바르게\n인사도 꾸벅 해야징~♪",
       "wordless": false,
-      "visual_prompt": "100% FULL-BLEED EDGE-TO-EDGE AIRY PASTEL COMIC-GAG TONAL BACKDROP (NO heavy cluttered landscape, NO stark empty white void!). Fill the entire large top box seamlessly edge-to-edge with a bright cheerful anime pastel gradient blending soft sky-blue and dreamy cotton-candy pink-cream (`#FFEAF5` to `#EBF6FF` to `#FDFBFF`) accented with subtle pastel manga halftone dots, airy speed arcs, and twinkling cute stars (keep the UPPER-LEFT 36% open soft pastel sky-cream completely unobstructed for speech bubble overlay!). In the LOWER 64%, hilarious dynamic slapstick comedy 2-shot: on lower-left (x=28%), the Night Elf Priest girl (lavender half-up hair, glowing silver eyes sparkling sweetly, purple priest robe, waist Bible & rosary, staff stowed on back, NO halo/wings) gleefully turns a glowing magenta magic psychic steering wheel in midair like a bus driver making a sharp turn; connected by glowing pink psychic puppet threads on lower-right (x=72%), the Tauren Druid girl (brown plush cow hood, emerald druid tunic, staff on back) twists sideways like a stiff marionette forced to bend deeply at the waist in a formal polite bow while sweating buckets and grimacing in helpless panic!",
+      "visual_prompt": "100% PURE SOLID #FFFFFF WHITE BACKGROUND EVERYWHERE (ZERO pastel gradient wallpaper, ZERO halftone box, ZERO border, TOP 38% completely empty pure #FFFFFF white headroom for speech bubble!). Floating cleanly in the LOWER 62% directly on pure #FFFFFF white is a hilarious dynamic slapstick comedy 2-shot: on the lower-left (x=28%), the Night Elf Priest girl (lavender-purple half-up wavy hair, gold crescent circlet, glowing silver eyes sparkling sweetly, purple capelet & pleated skirt, waist white mini Bible & golden rosary, ONE golden sunburst-cross staff stowed on back, NO halo/wings) gleefully grips and cranks a glowing crisp ink-outlined magenta magic psychic steering wheel in midair like a bus driver making a sharp turn, accented with minimal ink comic motion swooshes and tiny twinkling stars! Connected across the clean white space by crisp glowing pink psychic puppet strings on the lower-right (x=72%), the Tauren Druid girl (fluffy brown cow-monster hood with curved ivory horns & shiny golden nose ring, emerald-green layered leaf capelet, brown-cream druid tunic, wooden leaf staff stowed on back) twists sideways like a stiff marionette forced to bend deeply at the waist in a formal polite bow while sweating buckets and grimacing in helpless panic!",
       "tail_target": "left",
       "bubble_side": "left",
-      "full_bleed_bg": true,
-      "speaker_anchor_xy": [
-        0.28,
-        0.42
-      ],
-      "bubble_center_xy": [
-        0.3,
-        0.15
-      ],
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
       "item_tooltip": null
     },
     {
@@ -577,18 +463,12 @@
       "speaker": "타우렌 드루이드",
       "dialogue": "으아아 핸들 꺾지 마!!\n발밑에 땅이 없단 말이야!!\n인사 안 해도 되니까 놔줘어!!",
       "wordless": false,
-      "visual_prompt": "100% FULL-BLEED EDGE-TO-EDGE DIZZYING HIGH-ANGLE DUTCH-TILT CLIFF PRECIPICE BACKGROUND (ZERO white gaps inside the box!). Dramatic high-angle steep tilted cliff-edge perspective looking past jagged mossy rock edge down into a towering dizzying Mount Hyjal pine gorge far below, with wide-open pale-blue mountain sky & swirling wind streaks filling the UPPER-RIGHT 46% (unobstructed sky for speech bubble overlay!). Balanced right on the razor-thin mossy cliff edge on the lower-left (x=32%), the mind-controlled Tauren Druid girl (brown cow-monster hood with horns, emerald druid tunic, staff on back, glowing magenta Mind Control halo swirling around her head) scrambles desperately on the crumbling rock edge as loose pebbles tumble down into the abyss, eyes wide with sparkling anime tears and jaw dropped in hysterical panic!",
+      "visual_prompt": "100% PURE SOLID #FFFFFF WHITE BACKGROUND EVERYWHERE (ZERO sky box, ZERO full-bleed canyon fill, ZERO pastel gradient! Keep the ENTIRE TOP 38% AND UPPER-RIGHT 48% 100% spotless empty pure #FFFFFF white for crisp speech bubble!). STRICT PANEL BOX CONTAINMENT: keep the ENTIRE cliff outcrop, Tauren Druid, AND the glowing magenta Mind Control halo ring strictly INSIDE the bottom black box BELOW y=38% — ZERO halo rings, sparkles, or art ever touching or crossing above the top black panel border! Styled like the diorama reference: anchored strictly in the LOWER-LEFT HALF (x=10% to x=56%, y=42% to y=96%) in a dramatic high-angle dutch-tilt perspective is a crisp black-ink-outlined FLOATING JAGGED MOSSY MOUNT HYJAL CLIFF ROCK OUTCROP jutting diagonally from bottom-left toward center-left over empty pure white void, with loose ink-drawn pebbles and tiny grass tufts tumbling straight downward off the crumbling rock edge! Teetering precariously on the razor-thin mossy cliff tip on the lower-left (x=36%), the mind-controlled Tauren Druid girl (fluffy brown plush cow-monster hood with curved ivory horns & shiny golden nose ring, emerald-green layered leaf capelet, brown-cream druid tunic, wooden leaf staff stowed on back, compact crisp glowing magenta Mind Control halo swirling tightly around her horns) scrambles desperately on tiptoes as pebbles fall beneath her boots, eyes wide with sparkling anime tears and jaw dropped in hysterical panic!",
       "tail_target": "left",
       "bubble_side": "right",
-      "full_bleed_bg": true,
-      "speaker_anchor_xy": [
-        0.43,
-        0.38
-      ],
-      "bubble_center_xy": [
-        0.7,
-        0.21
-      ],
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
       "item_tooltip": null
     },
     {
@@ -603,18 +483,12 @@
       "speaker": "나이트엘프 사제",
       "dialogue": "인사도 착하게 했네~♪\n매너 겜 인정이지? 잘 가~",
       "wordless": false,
-      "visual_prompt": "100% FULL-BLEED EDGE-TO-EDGE SERENE AIRY SKY-PASTEL TONAL BACKDROP (NO stark empty white void!). Fill the entire wide box seamlessly edge-to-edge with a luminous, tranquil sunlit pale sky-blue-to-warm-ivory gradient (`#D8F0FF` to `#FFFCEB`) with soft sunlit drifting cotton clouds and delicate floating golden bokeh sparkles — seamlessly echoing the Mount Hyjal sunlit sky of Panel 2 directly below! Place the Night Elf Priest girl (fair skin, lavender half-up hair, glowing silver eyes closed in a serene radiant innocent smile, purple priest robe, waist mini Bible & golden rosary, golden cross staff stowed on back, STRICTLY NO angel halo, NO wings!) cleanly on the RIGHT 44% of the panel in graceful 90-degree side-profile (leaving the LEFT 52% open dreamy sunlit sky-cloud pastel completely unobstructed for speech bubble overlay!), politely leaning slightly forward and daintily waving a fluttering crisp white handkerchief goodbye with cute little sparkles around her fingers!",
+      "visual_prompt": "100% PURE SOLID #FFFFFF WHITE BACKGROUND EVERYWHERE (ZERO sky gradient, ZERO clouds box, ZERO pastel fill, LEFT 54% completely empty pure #FFFFFF white space for speech bubble!). Placed cleanly on the RIGHT 42% (x=76%) directly on pure #FFFFFF white in graceful 90-degree side-profile facing left, the Night Elf Priest girl (fair peach-ivory skin, pointed elf ear with tiny gold hoop earring, soft lavender-purple half-up wavy hair with braid & gold crescent circlet, glowing silver eyes closed in a serene radiant innocent smile, purple shoulder capelet & pleated skirt with gold trim, waist white mini Bible & golden rosary, ONE golden sunburst-cross priest staff stowed diagonally on back, STRICTLY NO angel halo, NO wings!) leans politely slightly forward and daintily waves a fluttering crisp white ink-outlined handkerchief goodbye with minimal cute golden twinkle sparkles around her fingers!",
       "tail_target": "right",
       "bubble_side": "left",
-      "full_bleed_bg": true,
-      "speaker_anchor_xy": [
-        0.66,
-        0.42
-      ],
-      "bubble_center_xy": [
-        0.28,
-        0.18
-      ],
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
       "item_tooltip": null
     },
     {
@@ -629,10 +503,10 @@
       "speaker": null,
       "dialogue": null,
       "wordless": true,
-      "visual_prompt": "100% FULL-BLEED THEATRICAL WORDLESS CLIMAX FREEZE-FRAME filling the entire giant box edge-to-edge (ZERO text, ZERO speech bubbles!). Dramatic high-altitude Mount Hyjal cliff lookout panorama: across the sunlit misty pine canyon abyss in the upper-right background, a tiny silhouette of the Tauren Druid plummets far down the sheer cliff face leaving a comical dotted curved falling-trail ending in a bright cartoon sparkle twinkle; on the cobblestone cliff ledge behind in mid-background, her abandoned chibi brown Kodo mount AND two cute chibi wild Hyjal forest bear & mossy treant mob extras lean over the edge sweating awkwardly in sheer disbelief! Dominating the lower-left foreground (filling ~76% height) is the Gnome Rogue girl (blonde-to-pink-tip twin-tails, dark leather rogue tunic, green daggers/vials on belt, NO X or star hairpins!) completely petrified in horror — her brass aviator goggles resting on her forehead, heavy dark-purple vertical doom shadow across her brow, jaw unhinged wide open, blank white shocked eyes, shivering violently with cascading cold sweatdrops!",
+      "visual_prompt": "100% PURE SOLID #FFFFFF WHITE BACKGROUND EVERYWHERE (ZERO full-bleed colored sky or dark canyon box! Keep pure #FFFFFF white canvas surrounding the diorama island, ZERO text, ZERO speech bubbles!). THEATRICAL WORDLESS CLIMAX DIORAMA FREEZE-FRAME styled exactly like the diorama reference: spanning the lower half on pure #FFFFFF white is a bold crisp black-ink-outlined FLOATING MINI DIORAMA CLIFF-LOOKOUT PROMONTORY made of cracked mossy Mount Hyjal flagstones and thick beveled rocky cliff cutaway edge overhanging empty white abyss on the far right! Dominating the lower-left foreground on the stone island (x=32%, ~76% artwork height) is the Gnome Rogue girl (blonde-to-pink-violet gradient twin-tails, dark brass aviator goggles with green lenses resting on forehead, black chin mask, STRICTLY NO X or star hairpins!, dark hooded cloak & leather rogue tunic with glowing green potion vials on belt) completely petrified in silent horror — crisp vertical comic purple-indigo dread lines over her brow, jaw unhinged wide open, blank white shocked eyes, shivering violently with cascading cold sweatdrops! Clustered along the right cliff rim of the stone diorama island (x=66%) peering over the edge in stunned disbelief are the abandoned chibi brown Kodo mount AND two miniature cute chibi Hyjal mob extras (a tiny fluffy brown wild bear and a tiny mossy sapling treant), all sweating awkwardly! Out past the right rock edge against pure #FFFFFF white, a tiny silhouette of the Tauren Druid plummets down along a crisp black-ink curved dotted falling-trail ending in a bright cartoon sparkle twinkle!",
       "tail_target": "center",
       "bubble_side": null,
-      "full_bleed_bg": true,
+      "full_bleed_bg": false,
       "speaker_anchor_xy": null,
       "bubble_center_xy": null,
       "item_tooltip": null
@@ -649,18 +523,12 @@
       "speaker": "노움 도적",
       "dialogue": "흐에엑… 진짜 악마를 봤어…\n여기 무덤도 엄청 먼데\n그걸 절벽으로 꺾다니?!",
       "wordless": false,
-      "visual_prompt": "100% FULL-BLEED EDGE-TO-EDGE COOL PASTEL SHOCK TONAL BACKDROP (NO stark empty white void!). Fill the entire wide slim box seamlessly edge-to-edge with a chilly airy pale ice-blue-to-soft-lavender anime shock gradient (`#DCE6FF` to `#F2EEFF`) with subtle pale-blue vertical manga dread lines and faint misty vignette accents along the bottom (leaving the RIGHT 52% open pale icy-lavender pastel completely unobstructed for speech bubble overlay!). On the LEFT 44%, the Gnome Rogue girl (blonde-to-pink-tip twin-tails, brass aviator goggles on forehead, NO X or star hairpins!, dark leather rogue tunic, twin green daggers on belt) hugs herself shivering violently with wide traumatized eyes and nervous sweatdrops!",
+      "visual_prompt": "100% PURE SOLID #FFFFFF WHITE BACKGROUND EVERYWHERE (ZERO icy-blue gradient wallpaper, ZERO pastel box, ZERO vignette, RIGHT 54% completely empty pure #FFFFFF white space for speech bubble!). STRICT PANEL BOX CONTAINMENT: draw the Gnome Rogue as a compact 3/4 knee-up figure comfortably INSIDE Panel 1's black rectangle — her body stops cleanly at or strictly ABOVE Panel 1's bottom black frame line with ZERO boots or art ever crossing down into Panel 2! Placed cleanly on the LEFT 42% (x=24%) directly on pure #FFFFFF white, the Gnome Rogue girl (fair skin, blonde-to-pink-violet gradient twin-tails, dark brass aviator goggles with glowing green lenses resting on forehead, black chin mask, STRICTLY NO X or star hairpins!, dark hooded cloak & brown-grey leather rogue tunic with glowing green potion vials on belt) hugs her own shoulders shivering violently against minimal crisp ink-drawn comic tremble squiggles and pale-blue nervous sweatdrops, big sapphire eyes wide and traumatized!",
       "tail_target": "left",
       "bubble_side": "right",
-      "full_bleed_bg": true,
-      "speaker_anchor_xy": [
-        0.34,
-        0.4
-      ],
-      "bubble_center_xy": [
-        0.73,
-        0.24
-      ],
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
       "item_tooltip": null
     },
     {
@@ -675,18 +543,12 @@
       "speaker": "노움 도적",
       "dialogue": "근데 솔직히 도적은 그냥\n혼란 딸깍 한 방이면\n알아서 떨어지는데~ 흥!",
       "wordless": false,
-      "visual_prompt": "100% FULL-BLEED EDGE-TO-EDGE WARM CREAM-PEACH PASTEL TONAL BACKDROP (NO stark empty white void!). Fill the entire wide slim box seamlessly edge-to-edge with a warm breezy sunlit cream-to-soft-apricot-gold anime pastel gradient (`#FFF4D6` to `#FFFCF0`) accented with subtle light halftone dots and warm floating dust motes — bridging smoothly into Panel 3's golden-hour sunset palette directly below (leaving the LEFT 52% open warm cream pastel completely unobstructed for speech bubble overlay!). On the RIGHT 44%, the Gnome Rogue girl (blonde-to-pink-tip twin-tails, brass aviator goggles on forehead, NO X or star hairpins!, leather rogue tunic) squints with half-lidded unimpressed deadpan eyes and smugly flicks one tiny shiny spinning golden Distract coin up into the air off her thumb!",
+      "visual_prompt": "100% PURE SOLID #FFFFFF WHITE BACKGROUND EVERYWHERE (ZERO warm cream-peach gradient wallpaper, ZERO halftone box, ZERO vignette, LEFT 54% completely empty pure #FFFFFF white space for speech bubble! STRICTLY ZERO stray boots at top-left and ZERO ghosts/rocks/tombstones at bottom!). STRICT PANEL BOX CONTAINMENT: draw ONLY the Gnome Rogue as a compact waist-up/thigh-up figure cleanly INSIDE Panel 2's black rectangle (ZERO elements touching or crossing top or bottom black border lines!). Placed cleanly on the RIGHT 42% (x=76%) directly on pure #FFFFFF white, the Gnome Rogue girl (fair skin, blonde-to-pink-violet gradient twin-tails, dark brass aviator goggles with glowing green lenses resting on forehead, black chin mask, STRICTLY NO X or star hairpins!, dark hooded cloak & leather rogue tunic) squints sideways with half-lidded unimpressed smug deadpan eyes and casually flicks one tiny shiny spinning golden Distract coin up off her thumb with a crisp minimal ink motion arc and tiny sparkle glint!",
       "tail_target": "right",
       "bubble_side": "left",
-      "full_bleed_bg": true,
-      "speaker_anchor_xy": [
-        0.66,
-        0.42
-      ],
-      "bubble_center_xy": [
-        0.25,
-        0.26
-      ],
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
       "item_tooltip": null
     },
     {
@@ -702,18 +564,12 @@
       "speaker": "나이트엘프 사제",
       "dialogue": "쉿! 무덤 멀어서 방금 분 또 뛰어와~\n사제는 직접 꺾는 손맛이라구!",
       "wordless": false,
-      "visual_prompt": "100% FULL-BLEED EDGE-TO-EDGE MOUNT HYJAL CLIFF ROAD ENCORE FINALE BACKGROUND (ZERO white gaps inside the box!). Wide atmospheric late-afternoon golden-hour over-the-shoulder back-view Mount Hyjal cobblestone cliff road & deep pine canyon extending to all four borders (keep the UPPER-LEFT 46% open warm golden-blue mountain sky completely unobstructed for speech bubble overlay!). On the lower-right foreground (x=78%), the Night Elf Priest girl (lavender half-up hair, glowing silver eyes with a gleefully mischievous smug grin, purple priest robe, golden cross staff on back, NO halo/wings) has ALREADY crouched back down into shimmering translucent violet Shadowmeld stealth right on the road holding one finger to her lips ('shhh!'). On the lower-left foreground (x=20%), seen from back-view 3/4 shoulder angle, the Gnome Rogue girl (blonde-to-pink-tip twin-tails, goggles strap, NO X/star pins) slaps her palm over her face in utter exhausted despair! In the distant winding valley road between them (center-right mid-background x=56%), the tiny crying chibi Kodo mount sits by the cliff edge while a tiny glowing translucent cyan GHOST SPIRIT of the Tauren Druid trudges furiously back up the endlessly long steep mountain road from the graveyard!",
+      "visual_prompt": "100% PURE SOLID #FFFFFF WHITE BACKGROUND EVERYWHERE (ZERO sunset sky box, ZERO full-bleed canyon wall, ZERO pastel fill, TOP 38% and UPPER-CENTER VALLEY completely empty pure #FFFFFF white headroom for speech bubble!). STRICT PANEL BOX CONTAINMENT: keep the ENTIRE S-curve diorama road, crying brown Kodo beast mount, AND glowing translucent cyan Tauren Druid ghost 100% INSIDE the LOWER 62% of Panel 3's black box — STRICTLY BELOW the top 38% white headroom with ZERO ghosts, tombstones, or road tips ever crossing upward into Panel 2! ZERO text or letters ('RIP' etc.) anywhere! Styled like the diorama reference: stretching horizontally across the LOWER 62% on pure #FFFFFF white is a wide crisp black-ink-outlined FLOATING MINI DIORAMA S-CURVE COBBLESTONE MOUNT HYJAL CLIFF ROAD ISLAND (beveled mossy rock-and-earth cutaway slab). On the lower-right foreground of the stone road (x=78%), the Night Elf Priest girl (lavender-purple half-up wavy hair, gold crescent circlet, glowing silver eyes gleaming with mischievously smug glee, purple capelet & skirt, waist white mini Bible & rosary, ONE golden sunburst-cross priest staff stowed diagonally on her back — NOT held in hand!, NO halo/wings) has ALREADY crouched back down into a crisp translucent shimmering violet Shadowmeld stealth ring holding one index finger playfully to her lips ('shhh!'). On the lower-left foreground (x=20%), seen in 3/4 back view over her shoulder on the road, the Gnome Rogue girl (blonde-to-pink-violet twin-tails, goggle strap across back of head, NO X/star pins!, dark cloak & twin crossed glowing green daggers sheathed on back) slaps her palm over her face in utter exhausted despair! Along the lower-center curved stone road between them (x=48%, strictly inside the lower half of Panel 3!), a tiny crying four-legged chibi brown KODO BEAST MOUNT (armored rhino-like WoW brown kodo beast with snout horn & saddle crying tears — NOT a second Tauren girl!) sits sadly by the cliff rim right next to a tiny glowing translucent pale-cyan GHOST SPIRIT of the Tauren Druid girl (wearing her horned cow hood, puffing angrily with a comic steam puff) trudging furiously back up the winding stone road from the graveyard!",
       "tail_target": "right",
       "bubble_side": "center",
-      "full_bleed_bg": true,
-      "speaker_anchor_xy": [
-        0.66,
-        0.52
-      ],
-      "bubble_center_xy": [
-        0.33,
-        0.12
-      ],
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
       "item_tooltip": null
     }
   ]
