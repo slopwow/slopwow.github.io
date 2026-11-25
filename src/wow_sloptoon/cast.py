@@ -198,7 +198,7 @@ CAST_BIBLE: tuple[CastMember, ...] = (
         companion_name="아기 곰",
         companion_anchor=(
             "Ultra-cute round chubby baby brown bear cub (~0.4x height, fluffy brown fur, cream muzzle, "
-            "':3' smile, rosy blush, pink paw pads, pom-pom tail, forest-green neckerchief) beside Dwarf Hunter."
+            "cute cat-like smile, rosy blush, pink paw pads, pom-pom tail, forest-green neckerchief) beside Dwarf Hunter."
         ),
     ),
     CastMember(
