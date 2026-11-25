@@ -889,8 +889,15 @@ def _compose_wordless_panel(
     *,
     tooltip_rgba: Image.Image | None = None,
     preferred_corner: str = "auto",
+    border_style: str = "box",
 ) -> tuple[Image.Image, dict[str, Any]]:
-    """Render a 100% silent centered freeze-frame cut with ZERO speech bubbles."""
+    """Render a 100% silent freeze-frame cut with ZERO speech bubbles.
+
+    When `border_style == "box"` and artwork anchors to left/right/bottom frame edges
+    (e.g., full-width grounded scenery with a pure `#FFFFFF` white upper sky), renders
+    strictly flush against those touching edges (`side_pad = 0`, `px = 0.0`, full
+    `target_w` width, bottom-flush `py = target_h - nh`) with ZERO awkward side gaps.
+    """
     clean_raw = clean_white_bg(raw_im)
     rw, rh = clean_raw.size
     bbox = extract_art_bbox(clean_raw, threshold=255)
@@ -914,27 +921,41 @@ def _compose_wordless_panel(
         return blank, audit
 
     ax0, ay0, ax1, ay1 = bbox
-    touches_bottom = ay1 >= rh - 6
-    crop_y1 = rh if touches_bottom else min(rh, ay1 + 1)
-    crop_box = (ax0, ay0, min(rw, ax1 + 1), crop_y1)
+    touches_top = ay0 <= 6
+    crop_box, avail_w_f, anchor_mode, touches_bottom = _resolve_box_edge_bleed_crop_and_anchor(
+        rw,
+        rh,
+        bbox,
+        border_style=border_style,
+        target_w=target_w,
+        margin_x=float(side_pad),
+        preserve_full_width_default=False,
+    )
     cw = max(1, crop_box[2] - crop_box[0])
     ch = max(1, crop_box[3] - crop_box[1])
 
-    avail_w = max(1, target_w - 2 * side_pad)
-    avail_h = max(1, target_h - top_pad - (0 if touches_bottom else bottom_pad_if_floating))
-    scale = min(avail_w / cw, avail_h / ch)
+    avail_w = max(1.0, avail_w_f)
+    if border_style == "box" and anchor_mode == "both":
+        scale_w = float(target_w) / cw
+        eff_top_pad = 0 if (touches_top or int(round(ch * scale_w)) > target_h - top_pad) else top_pad
+        avail_h = max(1.0, float(target_h - eff_top_pad - (0 if touches_bottom else bottom_pad_if_floating)))
+        scale = min(scale_w, avail_h / ch)
+    else:
+        eff_top_pad = 0 if (border_style == "box" and touches_top) else top_pad
+        avail_h = max(1.0, float(target_h - eff_top_pad - (0 if touches_bottom else bottom_pad_if_floating)))
+        scale = min(avail_w / cw, avail_h / ch)
 
     nw = max(1, int(round(cw * scale)))
     nh = max(1, int(round(ch * scale)))
-    px = (target_w - nw) / 2.0
-    py = float(target_h - nh) if touches_bottom else float(top_pad + (avail_h - nh) / 2.0)
+    px = _anchored_art_px(target_w, nw, anchor_mode)
+    py = float(target_h - nh) if touches_bottom else float(eff_top_pad + (avail_h - nh) / 2.0)
 
     panel = place_scaled_art(clean_raw, target_w, target_h, scale, px, py, crop_box=crop_box)
     final_bbox = extract_art_bbox(panel, threshold=255)
     art_cx = (final_bbox[0] + final_bbox[2]) / 2.0 if final_bbox else target_w / 2.0
 
-    # Fine-tune exact horizontal dead-centering of non-white artwork pixels
-    if final_bbox is not None and abs(art_cx - target_w / 2.0) > 1.0:
+    # Fine-tune exact horizontal dead-centering of floating centered artwork only
+    if anchor_mode == "center" and final_bbox is not None and abs(art_cx - target_w / 2.0) > 1.0:
         dx = round(target_w / 2.0 - art_cx)
         if final_bbox[0] + dx >= 4 and final_bbox[2] + dx <= target_w - 5:
             panel = place_scaled_art(
@@ -1301,6 +1322,7 @@ def _compose_top_open_panel(
             bottom_pad_if_floating=24,
             tooltip_rgba=tooltip_rgba,
             preferred_corner=pref_corner,
+            border_style="open",
         )
     if tooltip_rgba is not None:
         return _compose_top_open_panel_with_tooltip(cut, raw_im, dialogue, tooltip_rgba)
@@ -1846,6 +1868,7 @@ def _compose_bottom_box_panel(
             bottom_pad_if_floating=14,
             tooltip_rgba=tooltip_rgba,
             preferred_corner=pref_corner,
+            border_style="box",
         )
     if tooltip_rgba is not None:
         return _compose_bottom_box_panel_with_tooltip(cut, raw_im, dialogue, tooltip_rgba)
@@ -2720,34 +2743,42 @@ def _resolve_box_edge_bleed_crop_and_anchor(
 ) -> tuple[tuple[int, int, int, int], float, str, bool]:
     """Detect edge-bleeding artwork and compute `(crop_box, avail_w, anchor_mode, touches_bottom)`.
 
-    Inside `box` panels, artwork bleeding into only the left or right border flush-anchors
-    strictly against that box edge (`px = 0.0` or `px = target_w - nw`) so cropped cliffs,
-    cobblestone diorama slabs, or shoulders never float inside the frame as guillotine seams.
+    Inside `box` panels, artwork bleeding into left, right, or BOTH edges (such as natural
+    full-width grounded road/cliff/floor scenery under a pure `#FFFFFF` white sky) trims any
+    tiny peeled border white sliver (`<= 6px`) and flush-anchors strictly against the touching
+    frame edge(s) (`px = 0.0`, `px = target_w - nw`, or full `target_w` edge-to-edge width)
+    with ZERO horizontal side gaps.
     """
     ax0, ay0, ax1, ay1 = raw_bbox
     touches_left = ax0 <= 6
     touches_right = ax1 >= rw - 6
     touches_bottom = ay1 >= rh - 6
-    crop_y1 = rh if touches_bottom else min(rh, ay1 + 1)
 
     if border_style == "box":
+        crop_y1 = min(rh, ay1 + 1)
         if touches_left and not touches_right:
             return (
-                (0, ay0, min(rw, ax1 + 1), crop_y1),
+                (ax0, ay0, min(rw, ax1 + 1), crop_y1),
                 max(24.0, float(target_w) - margin_x),
                 "left",
                 touches_bottom,
             )
         if touches_right and not touches_left:
             return (
-                (ax0, ay0, rw, crop_y1),
+                (ax0, ay0, min(rw, ax1 + 1), crop_y1),
                 max(24.0, float(target_w) - margin_x),
                 "right",
                 touches_bottom,
             )
         if touches_left and touches_right:
-            return (0, ay0, rw, crop_y1), float(target_w), "both", touches_bottom
+            return (
+                (ax0, ay0, min(rw, ax1 + 1), crop_y1),
+                float(target_w),
+                "both",
+                touches_bottom,
+            )
 
+    crop_y1 = rh if touches_bottom else min(rh, ay1 + 1)
     if preserve_full_width_default:
         crop_x0 = max(0, ax0 - 4) if (ax1 - ax0) > rw * 0.94 else 0
         crop_x1 = min(rw, ax1 + 5) if (ax1 - ax0) > rw * 0.94 else rw
@@ -2928,83 +2959,131 @@ def _compose_narrow_variable_panel(
                 return (tx0, ty0), tmask
         return None
 
-    # 0. Edge-to-edge full-width pre-pass for narrow boxed close-ups touching BOTH left & right walls
-    # (prevents cropped twin-tails/shoulders from detaching into floating vertical guillotine seams).
-    if border_style == "box" and anchor_mode == "both" and cur_tip is None:
+    # 0. Edge-to-edge full-width pre-pass for narrow boxed panels touching BOTH left & right walls
+    # (natural full-width ground/road anchored to box edges under a pure `#FFFFFF` white upper sky).
+    if border_style == "box" and anchor_mode == "both":
         edge_scale = float(W) / cw
-        edge_nw = W
         edge_nh = max(1, int(round(ch * edge_scale)))
-        max_push = min(52, int(edge_nh * 0.10)) if touches_bottom else 0
-        push_steps = [p for p in (0, 12, 24, 36, 46, 52) if p <= max_push]
-        if max_push > 0 and max_push not in push_steps:
-            push_steps.append(max_push)
-        for push_down in push_steps:
-            py_edge = float(H - edge_nh + push_down) if touches_bottom else float(max(cy + ry + stroke_px + 24.0, H - edge_nh - margin_bot))
-            if not touches_bottom and py_edge + edge_nh > H - 4:
-                py_edge = float(H - edge_nh - 4)
-            art_canvas_e = place_scaled_art(clean_raw, W, H, edge_scale, 0.0, py_edge, crop_box=crop_box)
-            art_mask_e = get_art_mask(art_canvas_e, threshold=255)
-            placed_bbox_e = extract_art_bbox(art_canvas_e, threshold=255)
-            art_min_y_e = float(placed_bbox_e[1]) if placed_bbox_e else float(H)
-            anchor_e = _find_top_speaker_anchor(art_mask_e, cut.tail_target, W)
-            head_x_e, local_top_y_e = anchor_e if anchor_e is not None else (cx, art_min_y_e)
-            eff_cx_e = cx
-            eff_cy_e = cy
-            if cut.bubble_side is None and anchor_e is not None:
-                eff_cx_e = float(
-                    np.clip(
-                        0.50 * head_x_e + 0.50 * cx,
-                        margin_x + rx + stroke_px + 2.0,
-                        W - margin_x - rx - stroke_px - 2.0,
+        max_push = min(64, int(edge_nh * 0.12)) if touches_bottom else 0
+        if edge_nh <= H + max_push:
+            push_steps = [p for p in (0, 12, 24, 36, 48, 60) if p <= max_push]
+            if max_push > 0 and max_push not in push_steps:
+                push_steps.append(max_push)
+            fs_cands_e: list[int] = []
+            for fs_v in (cur_fs, max(15, cur_fs - 2), max(13, cur_fs - 4)):
+                if fs_v not in fs_cands_e:
+                    fs_cands_e.append(fs_v)
+            for fs_e in fs_cands_e:
+                lns_e, subs_e, cx_e, cy_e, rx_e, ry_e = _layout_narrow_bubble(fs_e)
+                lo_cx_e = margin_x + rx_e + stroke_px + 2.0
+                hi_cx_e = W - margin_x - rx_e - stroke_px - 2.0
+                for push_down in push_steps:
+                    py_edge = (
+                        float(H - edge_nh + push_down)
+                        if touches_bottom
+                        else float(max(cy_e + ry_e + stroke_px + 20.0, H - edge_nh - margin_bot))
                     )
-                )
-            eff_bub_bot_e = eff_cy_e + ry + stroke_px
-            tail_x_e = float(np.clip(0.70 * head_x_e + 0.30 * eff_cx_e, eff_cx_e - rx * 0.65, eff_cx_e + rx * 0.65))
-            max_tail_y_e = min(eff_bub_bot_e + 58.0, local_top_y_e - 14.0, art_min_y_e + 58.0)
-            min_tail_y_e = eff_bub_bot_e + 20.0
-            if max_tail_y_e <= eff_bub_bot_e + 12.0:
-                continue
-            for pull_e in (1.0, 0.72, 0.48, 0.25):
-                ty_e = min(eff_bub_bot_e + max(16.0, (max_tail_y_e - eff_bub_bot_e) * pull_e), local_top_y_e - 12.0)
-                if ty_e < min_tail_y_e and pull_e == 1.0:
-                    ty_e = min(min_tail_y_e, local_top_y_e - 11.0)
-                if ty_e <= eff_bub_bot_e + 10.0:
-                    continue
-                tx_e = eff_cx_e + (tail_x_e - eff_cx_e) * (0.65 + 0.35 * pull_e)
-                raw_deg_e = float(np.rad2deg(np.arctan2((ty_e - eff_cy_e) / ry, (tx_e - eff_cx_e) / rx)))
-                base_deg_e = float(np.clip(raw_deg_e, 66.0, 114.0))
-                t_curve_e = -6.0 if tx_e <= eff_cx_e else 6.0
-                bub_layer_e, dest_e, b_metrics_e = _build_bubble_layer(
-                    panel_size=(W, H),
-                    center=(eff_cx_e, eff_cy_e),
-                    lines=lines,
-                    radii=(rx, ry),
-                    tail_tip=(tx_e, ty_e),
-                    tail_base_angle_deg=base_deg_e,
-                    tail_half_deg=6.5,
-                    tail_curve=t_curve_e,
-                    font_size=cur_fs,
-                    stroke_px=stroke_px,
-                    sub_line_indices=sub_indices,
-                )
-                bub_mask_e = _bubble_alpha_mask((W, H), bub_layer_e, dest_e)
-                if int((art_mask_e & bub_mask_e).sum()) == 0:
-                    clr_e = compute_min_clearance(art_mask_e, bub_mask_e)
-                    if clr_e >= 6.0:
-                        out_panel_e = art_canvas_e.copy()
-                        if bub_layer_e is not None:
-                            rgba_e = out_panel_e.convert("RGBA")
-                            rgba_e.alpha_composite(bub_layer_e, dest=dest_e)
-                            out_panel_e = rgba_e.convert("RGB")
-                        return out_panel_e, {
-                            "wordless": False,
-                            "bubble_count": 1,
-                            "overlap_px": 0,
-                            "min_clearance_px": clr_e,
-                            "font_size": b_metrics_e["font_size"],
-                            "art_bbox": list(placed_bbox_e) if placed_bbox_e else None,
-                            "tail_target": cut.tail_target,
-                        }
+                    if not touches_bottom and py_edge + edge_nh > H - 4:
+                        py_edge = float(H - edge_nh - 4)
+                    art_canvas_e = place_scaled_art(clean_raw, W, H, edge_scale, 0.0, py_edge, crop_box=crop_box)
+                    art_mask_e = get_art_mask(art_canvas_e, threshold=255)
+                    placed_bbox_e = extract_art_bbox(art_canvas_e, threshold=255)
+                    art_min_y_e = float(placed_bbox_e[1]) if placed_bbox_e else float(H)
+                    anchor_e = _find_top_speaker_anchor(art_mask_e, cut.tail_target, W)
+                    head_x_e, local_top_y_e = anchor_e if anchor_e is not None else (cx_e, art_min_y_e)
+                    if cut.bubble_side is not None:
+                        cx_cands_e = [cx_e]
+                    else:
+                        bias_cx = float(np.clip(0.50 * head_x_e + 0.50 * cx_e, lo_cx_e, hi_cx_e))
+                        cx_cands_e = []
+                        for c_val in (bias_cx, W / 2.0, lo_cx_e, hi_cx_e):
+                            c_clamped = float(np.clip(c_val, lo_cx_e, hi_cx_e))
+                            if not any(abs(c_clamped - prev) < 6.0 for prev in cx_cands_e):
+                                cx_cands_e.append(c_clamped)
+                    eff_cy_e = cy_e
+                    eff_bub_bot_e = eff_cy_e + ry_e + stroke_px
+                    for eff_cx_e in cx_cands_e:
+                        tail_x_e = float(
+                            np.clip(0.70 * head_x_e + 0.30 * eff_cx_e, eff_cx_e - rx_e * 0.65, eff_cx_e + rx_e * 0.65)
+                        )
+                        max_tail_y_e = min(eff_bub_bot_e + 58.0, local_top_y_e - 14.0)
+                        min_tail_y_e = eff_bub_bot_e + 20.0
+                        if max_tail_y_e <= eff_bub_bot_e + 12.0:
+                            continue
+                        for pull_e in (1.0, 0.72, 0.48, 0.25):
+                            ty_e = min(
+                                eff_bub_bot_e + max(16.0, (max_tail_y_e - eff_bub_bot_e) * pull_e),
+                                local_top_y_e - 12.0,
+                            )
+                            if ty_e < min_tail_y_e and pull_e == 1.0:
+                                ty_e = min(min_tail_y_e, local_top_y_e - 11.0)
+                            if ty_e <= eff_bub_bot_e + 10.0:
+                                continue
+                            tx_e = eff_cx_e + (tail_x_e - eff_cx_e) * (0.65 + 0.35 * pull_e)
+                            raw_deg_e = float(np.rad2deg(np.arctan2((ty_e - eff_cy_e) / ry_e, (tx_e - eff_cx_e) / rx_e)))
+                            base_deg_e = float(np.clip(raw_deg_e, 66.0, 114.0))
+                            t_curve_e = -6.0 if tx_e <= eff_cx_e else 6.0
+                            bub_layer_e, dest_e, b_metrics_e = _build_bubble_layer(
+                                panel_size=(W, H),
+                                center=(eff_cx_e, eff_cy_e),
+                                lines=lns_e,
+                                radii=(rx_e, ry_e),
+                                tail_tip=(tx_e, ty_e),
+                                tail_base_angle_deg=base_deg_e,
+                                tail_half_deg=6.5,
+                                tail_curve=t_curve_e,
+                                font_size=fs_e,
+                                stroke_px=stroke_px,
+                                sub_line_indices=subs_e,
+                            )
+                            bub_mask_e = _bubble_alpha_mask((W, H), bub_layer_e, dest_e)
+                            if int((art_mask_e & bub_mask_e).sum()) != 0:
+                                continue
+                            clr_e = compute_min_clearance(art_mask_e, bub_mask_e)
+                            if clr_e < 6.0:
+                                continue
+                            if cur_tip is None:
+                                out_panel_e = art_canvas_e.copy()
+                                if bub_layer_e is not None:
+                                    rgba_e = out_panel_e.convert("RGBA")
+                                    rgba_e.alpha_composite(bub_layer_e, dest=dest_e)
+                                    out_panel_e = rgba_e.convert("RGB")
+                                return out_panel_e, {
+                                    "wordless": False,
+                                    "bubble_count": 1,
+                                    "overlap_px": 0,
+                                    "min_clearance_px": clr_e,
+                                    "font_size": b_metrics_e["font_size"],
+                                    "art_bbox": list(placed_bbox_e) if placed_bbox_e else None,
+                                    "tail_target": cut.tail_target,
+                                }
+                            tip_found_e = _try_narrow_tooltip_corners(art_mask_e, bub_mask_e, eff_bub_bot_e, cur_tip)
+                            if tip_found_e is not None:
+                                tip_dest_e, tip_mask_e = tip_found_e
+                                tw_e, th_e = cur_tip.size
+                                out_panel_e = art_canvas_e.copy()
+                                if bub_layer_e is not None:
+                                    rgba_e = out_panel_e.convert("RGBA")
+                                    rgba_e.alpha_composite(bub_layer_e, dest=dest_e)
+                                    out_panel_e = rgba_e.convert("RGB")
+                                out_panel_e = _composite_rgba_card(out_panel_e, cur_tip, tip_dest_e)
+                                return out_panel_e, {
+                                    "wordless": False,
+                                    "bubble_count": 1,
+                                    "overlap_px": 0,
+                                    "min_clearance_px": compute_min_clearance(art_mask_e, bub_mask_e | tip_mask_e),
+                                    "font_size": b_metrics_e["font_size"],
+                                    "art_bbox": list(placed_bbox_e) if placed_bbox_e else None,
+                                    "tail_target": cut.tail_target,
+                                    "has_item_tooltip": True,
+                                    "tooltip_bbox": [
+                                        tip_dest_e[0],
+                                        tip_dest_e[1],
+                                        tip_dest_e[0] + tw_e,
+                                        tip_dest_e[1] + th_e,
+                                    ],
+                                    "tooltip_overlap_px": 0,
+                                }
 
     # 1. Iterative solver: top bubble + short downward tail + artwork cleanly below
     bub_bot = cy + ry + stroke_px
@@ -3395,6 +3474,89 @@ def _compose_wide_tall_variable_panel(
         cw = max(1, crop_box[2] - crop_box[0])
         ch = max(1, crop_box[3] - crop_box[1])
 
+        # Edge-to-edge full-width pre-pass for grounded wide-tall box panels with tooltip
+        if border_style == "box" and anchor_mode == "both":
+            edge_scale_t = float(W) / cw
+            edge_nh_t = max(1, int(round(ch * edge_scale_t)))
+            max_push_t = min(52, int(edge_nh_t * 0.10)) if touches_bottom else 0
+            if edge_nh_t <= H + max_push_t:
+                push_steps_t = [p for p in (0, 12, 24, 36, 48) if p <= max_push_t]
+                if max_push_t > 0 and max_push_t not in push_steps_t:
+                    push_steps_t.append(max_push_t)
+                fs_cands_t: list[int] = []
+                for fs_v in (cur_fs, max(16, cur_fs - 2), max(14, cur_fs - 4)):
+                    if fs_v not in fs_cands_t:
+                        fs_cands_t.append(fs_v)
+                for fs_t in fs_cands_t:
+                    lns_t, subs_t = wrap_korean_dialogue(
+                        dialogue, fs_t, max_line_width_px=wrap_w + (14.0 if fs_t < cur_fs else 0.0), max_lines=4
+                    )
+                    cx_t, cy_t, rx_t, ry_t = _bub_dims_tip(fs_t, lns_t, subs_t)
+                    bub_bot_t = cy_t + ry_t + stroke_px
+                    for push_down in push_steps_t:
+                        py_t = (
+                            float(H - edge_nh_t + push_down)
+                            if touches_bottom
+                            else float(max(bub_bot_t + 18.0, tip_bot + 10.0, H - edge_nh_t - 10.0))
+                        )
+                        if not touches_bottom and py_t + edge_nh_t > H - 4:
+                            py_t = float(H - edge_nh_t - 4)
+                        art_canvas_t = place_scaled_art(clean_raw, W, H, edge_scale_t, 0.0, py_t, crop_box=crop_box)
+                        art_mask_t = get_art_mask(art_canvas_t, threshold=255)
+                        if int((art_mask_t & tip_mask).sum()) != 0:
+                            continue
+                        placed_bb_t = extract_art_bbox(art_canvas_t, threshold=255)
+                        art_min_y_t = float(placed_bb_t[1]) if placed_bb_t else float(H)
+                        anchor_t = _find_top_speaker_anchor(art_mask_t, cut.tail_target, W)
+                        head_x_t, local_top_y_t = anchor_t if anchor_t is not None else (cx_t, art_min_y_t)
+                        tail_x_t = float(np.clip(0.55 * head_x_t + 0.45 * cx_t, cx_t - rx_t * 0.68, cx_t + rx_t * 0.68))
+                        max_tail_y_t = min(bub_bot_t + 86.0, local_top_y_t - 14.0)
+                        for pull_t in (1.0, 0.72, 0.48, 0.25):
+                            if max_tail_y_t <= bub_bot_t + 12.0:
+                                continue
+                            ty_t = min(bub_bot_t + max(16.0, (max_tail_y_t - bub_bot_t) * pull_t), local_top_y_t - 12.0)
+                            if ty_t <= bub_bot_t + 10.0:
+                                continue
+                            tx_t = cx_t + (tail_x_t - cx_t) * (0.65 + 0.35 * pull_t)
+                            raw_deg_t = float(np.rad2deg(np.arctan2((ty_t - cy_t) / ry_t, (tx_t - cx_t) / rx_t)))
+                            base_deg_t = float(np.clip(raw_deg_t, 66.0, 114.0))
+                            t_curve_t = -7.0 if tx_t <= cx_t else 7.0
+                            bub_layer_t, dest_t, b_metrics_t = _build_bubble_layer(
+                                panel_size=(W, H),
+                                center=(cx_t, cy_t),
+                                lines=lns_t,
+                                radii=(rx_t, ry_t),
+                                tail_tip=(tx_t, ty_t),
+                                tail_base_angle_deg=base_deg_t,
+                                tail_half_deg=6.2,
+                                tail_curve=t_curve_t,
+                                font_size=fs_t,
+                                stroke_px=stroke_px,
+                                sub_line_indices=subs_t,
+                            )
+                            bub_mask_t = _bubble_alpha_mask((W, H), bub_layer_t, dest_t)
+                            if int((art_mask_t & bub_mask_t).sum()) == 0 and int((bub_mask_t & tip_mask).sum()) == 0:
+                                clr_t = compute_min_clearance(art_mask_t, bub_mask_t | tip_mask)
+                                if clr_t >= 6.0:
+                                    out_panel_t = art_canvas_t.copy()
+                                    if bub_layer_t is not None:
+                                        rgba_t = out_panel_t.convert("RGBA")
+                                        rgba_t.alpha_composite(bub_layer_t, dest=dest_t)
+                                        out_panel_t = rgba_t.convert("RGB")
+                                    out_panel_t = _composite_rgba_card(out_panel_t, cur_tip, tip_dest)
+                                    return out_panel_t, {
+                                        "wordless": False,
+                                        "bubble_count": 1,
+                                        "overlap_px": 0,
+                                        "min_clearance_px": clr_t,
+                                        "font_size": b_metrics_t["font_size"],
+                                        "art_bbox": list(placed_bb_t) if placed_bb_t else None,
+                                        "tail_target": cut.tail_target,
+                                        "has_item_tooltip": True,
+                                        "tooltip_bbox": [tx0, ty0, tx0 + tw, ty0 + th],
+                                        "tooltip_overlap_px": 0,
+                                    }
+
         bub_bot = cy + ry + stroke_px
         target_art_top = max(bub_bot + 54.0, tip_bot + 16.0)
         scale = min(
@@ -3773,6 +3935,216 @@ def _compose_wide_tall_variable_panel(
         ):
             side_candidate = _try_wide_tall_side_bubble("left")
 
+    # Edge-to-edge full-width pre-pass for grounded wide-tall box panels touching BOTH left & right
+    # edges (natural full-width ground/road anchored edge-to-edge under pure `#FFFFFF` white upper sky).
+    if border_style == "box" and anchor_mode == "both":
+        edge_scale_w = float(W) / cw
+        edge_nh_w = max(1, int(round(ch * edge_scale_w)))
+        max_push_w = min(56, int(edge_nh_w * 0.10)) if touches_bottom else 0
+        if edge_nh_w <= H + max_push_w:
+            push_steps_w = [p for p in (0, 12, 24, 36, 48, 56) if p <= max_push_w]
+            if max_push_w > 0 and max_push_w not in push_steps_w:
+                push_steps_w.append(max_push_w)
+            fs_cands_w: list[int] = []
+            for fs_v in (cur_fs, max(18, cur_fs - 2), max(16, cur_fs - 4), max(14, cur_fs - 6)):
+                if fs_v not in fs_cands_w:
+                    fs_cands_w.append(fs_v)
+            for fs_w in fs_cands_w:
+                lns_w, subs_w = wrap_korean_dialogue(
+                    dialogue,
+                    fs_w,
+                    max_line_width_px=wrap_w + (18.0 if fs_w < cur_fs else 0.0),
+                    max_lines=4,
+                )
+                cx_w, cy_w, rx_w, ry_w = _bub_dims_tall(fs_w, lns_w, subs_w)
+                lo_cx_w = margin_x + rx_w + stroke_px + 4.0
+                hi_cx_w = W - margin_x - rx_w - stroke_px - 4.0
+                for push_down in push_steps_w:
+                    py_w = (
+                        float(H - edge_nh_w + push_down)
+                        if touches_bottom
+                        else float(max(cy_w + ry_w + stroke_px + 20.0, H - edge_nh_w - 10.0))
+                    )
+                    if not touches_bottom and py_w + edge_nh_w > H - 4:
+                        py_w = float(H - edge_nh_w - 4)
+                    art_canvas_w = place_scaled_art(clean_raw, W, H, edge_scale_w, 0.0, py_w, crop_box=crop_box)
+                    art_mask_w = get_art_mask(art_canvas_w, threshold=255)
+                    placed_bb_w = extract_art_bbox(art_canvas_w, threshold=255)
+                    art_min_y_w = float(placed_bb_w[1]) if placed_bb_w else float(H)
+                    anchor_w = _find_top_speaker_anchor(art_mask_w, cut.tail_target, W)
+                    head_x_w, local_top_y_w = anchor_w if anchor_w is not None else (cx_w, art_min_y_w)
+
+                    # Candidate 1: Top white-sky bubble (speaker-biased, center, left-sky, right-sky)
+                    if cut.bubble_side is not None:
+                        cx_cands_w = [cx_w]
+                    else:
+                        bias_cx_w = float(np.clip(0.55 * head_x_w + 0.45 * cx_w, lo_cx_w, hi_cx_w))
+                        cx_cands_w = []
+                        for c_val in (bias_cx_w, W / 2.0, lo_cx_w, hi_cx_w):
+                            c_clamped = float(np.clip(c_val, lo_cx_w, hi_cx_w))
+                            if not any(abs(c_clamped - prev) < 10.0 for prev in cx_cands_w):
+                                cx_cands_w.append(c_clamped)
+
+                    for eff_cx_w in cx_cands_w:
+                        eff_cy_w = cy_w
+                        cur_gap_w = local_top_y_w - (eff_cy_w + ry_w + stroke_px)
+                        if cur_gap_w > 88.0:
+                            shift_y_w = min(cur_gap_w - 68.0, max(0.0, art_min_y_w - (eff_cy_w + ry_w + stroke_px) - 46.0))
+                            if shift_y_w > 0.0:
+                                eff_cy_w = cy_w + shift_y_w
+                        dx_w = head_x_w - eff_cx_w
+                        dy_w = max(24.0, local_top_y_w - eff_cy_w)
+                        dist_w = float(np.hypot(dx_w, dy_w))
+                        if dist_w <= 1e-3:
+                            continue
+                        ux_w, uy_w = dx_w / dist_w, dy_w / dist_w
+                        t_ell_w = 1.0 / float(np.hypot(ux_w / max(1.0, rx_w), uy_w / max(1.0, ry_w)))
+                        gap_w = dist_w - (t_ell_w + stroke_px)
+                        if gap_w < 18.0:
+                            continue
+                        base_deg_w = float(np.rad2deg(np.arctan2(dy_w / max(1.0, ry_w), dx_w / max(1.0, rx_w))))
+                        t_curve_w = -7.0 if dx_w <= 0 else 7.0
+                        for pull_w in (1.0, 0.75, 0.52, 0.32):
+                            ext_w = min(68.0, max(16.0, (gap_w - 12.0) * pull_w))
+                            if ext_w < 14.0:
+                                continue
+                            tx_w = eff_cx_w + (t_ell_w + stroke_px + ext_w) * ux_w
+                            ty_w = eff_cy_w + (t_ell_w + stroke_px + ext_w) * uy_w
+                            if not (8.0 <= tx_w <= W - 8.0 and 8.0 <= ty_w <= H - 8.0):
+                                continue
+                            bub_layer_w, dest_w, b_metrics_w = _build_bubble_layer(
+                                panel_size=(W, H),
+                                center=(eff_cx_w, eff_cy_w),
+                                lines=lns_w,
+                                radii=(rx_w, ry_w),
+                                tail_tip=(tx_w, ty_w),
+                                tail_base_angle_deg=base_deg_w,
+                                tail_half_deg=6.2,
+                                tail_curve=t_curve_w,
+                                font_size=fs_w,
+                                stroke_px=stroke_px,
+                                sub_line_indices=subs_w,
+                            )
+                            bub_mask_w = _bubble_alpha_mask((W, H), bub_layer_w, dest_w)
+                            if int((art_mask_w & bub_mask_w).sum()) != 0:
+                                continue
+                            clr_w = compute_min_clearance(art_mask_w, bub_mask_w)
+                            if clr_w >= 6.0:
+                                out_panel_w = art_canvas_w.copy()
+                                if bub_layer_w is not None:
+                                    rgba_w = out_panel_w.convert("RGBA")
+                                    rgba_w.alpha_composite(bub_layer_w, dest=dest_w)
+                                    out_panel_w = rgba_w.convert("RGB")
+                                return out_panel_w, {
+                                    "wordless": False,
+                                    "bubble_count": 1,
+                                    "overlap_px": 0,
+                                    "min_clearance_px": clr_w,
+                                    "font_size": b_metrics_w["font_size"],
+                                    "art_bbox": list(placed_bb_w) if placed_bb_w else None,
+                                    "tail_target": cut.tail_target,
+                                }
+
+                    # Candidate 2: Compact upper-corner sky pocket bubble when a tall character/tree
+                    # occupies one side of the sky above full-width ground
+                    max_rx_sc = min(224.0, W * 0.27)
+                    max_ry_sc = min(116.0, max(52.0, H * 0.21))
+                    wrap_w_sc = float(np.clip(max_rx_sc * 1.44, 210.0, 324.0))
+                    lns_sc, subs_sc = wrap_korean_dialogue(dialogue, fs_w, max_line_width_px=wrap_w_sc, max_lines=4)
+                    rx_sc, ry_sc = _compute_snug_ellipse_radii(
+                        dummy,
+                        lns_sc,
+                        set(subs_sc),
+                        fs_w,
+                        min_rx=min(122.0, max_rx_sc),
+                        max_rx=max_rx_sc,
+                        min_ry=min(48.0, max_ry_sc),
+                        max_ry=max_ry_sc,
+                        pad_x=30.0,
+                        pad_y=18.0,
+                    )
+                    if cut.bubble_side in ("left", "right"):
+                        corner_sides = [cut.bubble_side]
+                    elif head_x_w < W * 0.5:
+                        corner_sides = ["right", "left"]
+                    else:
+                        corner_sides = ["left", "right"]
+
+                    cy_min_sc = margin_top + ry_sc + stroke_px + 4.0
+                    cy_max_sc = max(cy_min_sc, H - margin_top - ry_sc - stroke_px - 4.0)
+                    cy_sc_cands = [
+                        float(np.clip(cy_min_sc, cy_min_sc, cy_max_sc)),
+                        float(np.clip(min(H * 0.26, cy_min_sc + 26.0), cy_min_sc, cy_max_sc)),
+                    ]
+                    for side_sc in corner_sides:
+                        cx_sc = (
+                            W - margin_x - rx_sc - stroke_px - 4.0
+                            if side_sc == "right"
+                            else margin_x + rx_sc + stroke_px + 4.0
+                        )
+                        for cy_sc in cy_sc_cands:
+                            target_y_sc = float(
+                                np.clip(local_top_y_w + 18.0, cy_sc - ry_sc * 0.20, min(H - 36.0, cy_sc + ry_sc * 1.55))
+                            )
+                            dx_sc = head_x_w - cx_sc
+                            dy_sc = target_y_sc - cy_sc
+                            dist_sc = float(np.hypot(dx_sc, dy_sc))
+                            if dist_sc <= 1e-3:
+                                continue
+                            ux_sc, uy_sc = dx_sc / dist_sc, dy_sc / dist_sc
+                            t_ell_sc = 1.0 / float(np.hypot(ux_sc / max(1.0, rx_sc), uy_sc / max(1.0, ry_sc)))
+                            gap_sc = dist_sc - (t_ell_sc + stroke_px)
+                            if gap_sc < 20.0:
+                                continue
+                            base_ang_sc = float(
+                                np.rad2deg(np.arctan2(dy_sc / max(1.0, ry_sc), dx_sc / max(1.0, rx_sc)))
+                            )
+                            t_curve_sc = -5.5 if dx_sc <= 0 else 5.5
+                            for pull_sc in (1.0, 0.74, 0.50, 0.34):
+                                ext_sc = min(64.0, max(16.0, (gap_sc - 14.0) * pull_sc))
+                                if ext_sc < 14.0:
+                                    continue
+                                tx_sc = cx_sc + (t_ell_sc + stroke_px + ext_sc) * ux_sc
+                                ty_sc = cy_sc + (t_ell_sc + stroke_px + ext_sc) * uy_sc
+                                if not (8.0 <= tx_sc <= W - 8.0 and 8.0 <= ty_sc <= H - 8.0):
+                                    continue
+                                bub_layer_sc, dest_sc, b_metrics_sc = _build_bubble_layer(
+                                    panel_size=(W, H),
+                                    center=(cx_sc, cy_sc),
+                                    lines=lns_sc,
+                                    radii=(rx_sc, ry_sc),
+                                    tail_tip=(tx_sc, ty_sc),
+                                    tail_base_angle_deg=base_ang_sc,
+                                    tail_half_deg=7.2,
+                                    tail_curve=t_curve_sc,
+                                    font_size=fs_w,
+                                    stroke_px=stroke_px,
+                                    sub_line_indices=subs_sc,
+                                )
+                                bub_mask_sc = _bubble_alpha_mask((W, H), bub_layer_sc, dest_sc)
+                                if int((art_mask_w & bub_mask_sc).sum()) != 0:
+                                    continue
+                                clr_sc = compute_min_clearance(art_mask_w, bub_mask_sc)
+                                if clr_sc >= 6.0:
+                                    out_panel_sc = art_canvas_w.copy()
+                                    if bub_layer_sc is not None:
+                                        rgba_sc = out_panel_sc.convert("RGBA")
+                                        rgba_sc.alpha_composite(bub_layer_sc, dest=dest_sc)
+                                        out_panel_sc = rgba_sc.convert("RGB")
+                                    return out_panel_sc, {
+                                        "wordless": False,
+                                        "bubble_count": 1,
+                                        "overlap_px": 0,
+                                        "min_clearance_px": clr_sc,
+                                        "font_size": b_metrics_sc["font_size"],
+                                        "art_bbox": list(placed_bb_w) if placed_bb_w else None,
+                                        "tail_target": cut.tail_target,
+                                        "bubble_center": [round(cx_sc, 1), round(cy_sc, 1)],
+                                        "bubble_side_resolved": side_sc,
+                                        "tail_tip": [round(tx_sc, 1), round(ty_sc, 1)],
+                                        "layout_variant": "grounded_white_sky",
+                                    }
+
     bub_bot = cy + ry + stroke_px
     desired_tail_space = min(68.0, max(44.0, H * 0.09))
     scale = min(
@@ -4123,12 +4495,145 @@ def _compose_wide_slim_variable_panel(
             }
 
         ax0, ay0, ax1, ay1 = raw_bbox
-        touches_bottom = ay1 >= rh - 6
-        crop_box = (ax0, ay0, min(rw, ax1 + 1), rh if touches_bottom else min(rh, ay1 + 1))
+        crop_box, base_avail_w_tip, anchor_mode_tip, touches_bottom = _resolve_box_edge_bleed_crop_and_anchor(
+            rw,
+            rh,
+            raw_bbox,
+            border_style=border_style,
+            target_w=W,
+            margin_x=box_margin,
+            preserve_full_width_default=False,
+        )
         cw = max(1, crop_box[2] - crop_box[0])
         ch = max(1, crop_box[3] - crop_box[1])
 
         cur_fs = 19 if len(dialogue) <= 32 else 17
+
+        # Edge-to-edge full-width pre-pass for grounded slim wide box panels with tooltip
+        if border_style == "box" and anchor_mode_tip == "both":
+            edge_scale_st = float(W) / cw
+            edge_nh_st = max(1, int(round(ch * edge_scale_st)))
+            max_push_st = min(44, int(edge_nh_st * 0.10)) if touches_bottom else 0
+            if edge_nh_st <= H + max_push_st:
+                push_steps_st = [p for p in (0, 10, 20, 32, 44) if p <= max_push_st]
+                if max_push_st > 0 and max_push_st not in push_steps_st:
+                    push_steps_st.append(max_push_st)
+                fs_cands_st: list[int] = []
+                for fs_v in (cur_fs, max(15, cur_fs - 2), max(13, cur_fs - 4)):
+                    if fs_v not in fs_cands_st:
+                        fs_cands_st.append(fs_v)
+                for fs_st in fs_cands_st:
+                    max_lw_st = 264.0 if fs_st >= 17 else 248.0
+                    lns_st, subs_st = wrap_korean_dialogue(
+                        dialogue, fs_st, max_line_width_px=max_lw_st, max_lines=4
+                    )
+                    rx_st, ry_st = _compute_snug_ellipse_radii(
+                        dummy,
+                        lns_st,
+                        set(subs_st),
+                        fs_st,
+                        min_rx=min(118.0, max_rx),
+                        max_rx=max_rx,
+                        min_ry=min(46.0, max_ry),
+                        max_ry=max_ry,
+                        pad_x=28.0,
+                        pad_y=18.0,
+                    )
+                    cy_st = box_margin + ry_st + stroke_px + 2.0
+                    bub_bot_st = cy_st + ry_st + stroke_px
+                    avail_tip_h_st = max(72, int(H - box_margin - bub_bot_st - 10.0))
+                    avail_tip_w_st = min(268, int(W * 0.32))
+                    cur_tip_st = _fit_tooltip_card(tooltip_rgba, max_w=avail_tip_w_st, max_h=avail_tip_h_st)
+                    tw_st, th_st = cur_tip_st.size
+                    if ui_side == "left":
+                        cx_st = box_margin + rx_st + stroke_px + 2.0
+                        tip_cands_st = [
+                            (int(W - box_margin - 2 - tw_st), int(box_margin)),
+                            (int(box_margin + 2), int(H - box_margin - th_st)),
+                        ]
+                    else:
+                        cx_st = W - box_margin - rx_st - stroke_px - 2.0
+                        tip_cands_st = [
+                            (int(box_margin + 2), int(box_margin)),
+                            (int(W - box_margin - 2 - tw_st), int(H - box_margin - th_st)),
+                        ]
+                    for push_down in push_steps_st:
+                        py_st = (
+                            float(H - edge_nh_st + push_down)
+                            if touches_bottom
+                            else float(max(box_margin, H - edge_nh_st - 4.0))
+                        )
+                        art_canvas_st = place_scaled_art(clean_raw, W, H, edge_scale_st, 0.0, py_st, crop_box=crop_box)
+                        art_mask_st = get_art_mask(art_canvas_st, threshold=255)
+                        placed_bb_st = extract_art_bbox(art_canvas_st, threshold=255)
+                        if placed_bb_st is None:
+                            continue
+                        sp_st = _find_slim_speaker_anchor(art_mask_st, cut.tail_target)
+                        head_x_st = sp_st[0] if sp_st is not None else W * 0.5
+                        head_y_st = sp_st[1] if sp_st is not None else float(placed_bb_st[1])
+                        dx_st = head_x_st - cx_st
+                        dy_st = max(12.0, head_y_st + 14.0 - cy_st)
+                        dist_st = float(np.hypot(dx_st, dy_st))
+                        if dist_st <= 1e-3:
+                            continue
+                        ux_st, uy_st = dx_st / dist_st, dy_st / dist_st
+                        t_ell_st = 1.0 / float(np.hypot(ux_st / max(1.0, rx_st), uy_st / max(1.0, ry_st)))
+                        gap_st = dist_st - (t_ell_st + stroke_px)
+                        if gap_st < 18.0:
+                            continue
+                        base_ang_st = float(np.rad2deg(np.arctan2(dy_st / max(1.0, ry_st), dx_st / max(1.0, rx_st))))
+                        t_curve_st = -4.5 if dx_st <= 0 else 4.5
+                        for pull_st in (1.0, 0.72, 0.45):
+                            ext_st = min(56.0, max(14.0, (gap_st - 12.0) * pull_st))
+                            tx_st = cx_st + (t_ell_st + stroke_px + ext_st) * ux_st
+                            ty_st = cy_st + (t_ell_st + stroke_px + ext_st) * uy_st
+                            if not (8.0 <= tx_st <= W - 8.0 and 8.0 <= ty_st <= H - 8.0):
+                                continue
+                            bub_layer_st, dest_st, b_metrics_st = _build_bubble_layer(
+                                panel_size=(W, H),
+                                center=(cx_st, cy_st),
+                                lines=lns_st,
+                                radii=(rx_st, ry_st),
+                                tail_tip=(tx_st, ty_st),
+                                tail_base_angle_deg=base_ang_st,
+                                tail_half_deg=8.0,
+                                tail_curve=t_curve_st,
+                                font_size=fs_st,
+                                stroke_px=stroke_px,
+                                sub_line_indices=subs_st,
+                            )
+                            bub_mask_st = _bubble_alpha_mask((W, H), bub_layer_st, dest_st)
+                            if int((art_mask_st & bub_mask_st).sum()) != 0:
+                                continue
+                            for tdest_st in tip_cands_st:
+                                tmask_st = _tooltip_alpha_mask((W, H), cur_tip_st, tdest_st)
+                                if int(((art_mask_st | bub_mask_st) & tmask_st).sum()) == 0:
+                                    clr_st = compute_min_clearance(art_mask_st, bub_mask_st | tmask_st)
+                                    if clr_st >= 6.0:
+                                        out_panel_st = art_canvas_st.copy()
+                                        if bub_layer_st is not None:
+                                            rgba_st = out_panel_st.convert("RGBA")
+                                            rgba_st.alpha_composite(bub_layer_st, dest=dest_st)
+                                            out_panel_st = rgba_st.convert("RGB")
+                                        out_panel_st = _composite_rgba_card(out_panel_st, cur_tip_st, tdest_st)
+                                        return out_panel_st, {
+                                            "wordless": False,
+                                            "bubble_count": 1,
+                                            "overlap_px": 0,
+                                            "min_clearance_px": clr_st,
+                                            "font_size": b_metrics_st["font_size"],
+                                            "art_bbox": list(placed_bb_st),
+                                            "tail_target": cut.tail_target,
+                                            "has_item_tooltip": True,
+                                            "tooltip_bbox": [
+                                                tdest_st[0],
+                                                tdest_st[1],
+                                                tdest_st[0] + tw_st,
+                                                tdest_st[1] + th_st,
+                                            ],
+                                            "tooltip_overlap_px": 0,
+                                        }
+
         for attempt in range(16):
             max_line_w = 264.0 if cur_fs >= 17 else 248.0
             lines, sub_indices = wrap_korean_dialogue(
@@ -4374,8 +4879,15 @@ def _compose_wide_slim_variable_panel(
         }
 
     ax0, ay0, ax1, ay1 = raw_bbox
-    touches_bottom = ay1 >= rh - 6
-    crop_box = (ax0, ay0, min(rw, ax1 + 1), rh if touches_bottom else min(rh, ay1 + 1))
+    crop_box, base_avail_w, anchor_mode, touches_bottom = _resolve_box_edge_bleed_crop_and_anchor(
+        rw,
+        rh,
+        raw_bbox,
+        border_style=border_style,
+        target_w=W,
+        margin_x=box_margin,
+        preserve_full_width_default=False,
+    )
     cw = max(1, crop_box[2] - crop_box[0])
     ch = max(1, crop_box[3] - crop_box[1])
 
@@ -4420,14 +4932,17 @@ def _compose_wide_slim_variable_panel(
         # Natural full-scale pre-pass: if artwork with an L-shaped floor vignette already leaves
         # pure #FFFFFF room in the upper-left / upper-right bubble corner near full panel height,
         # place the bubble directly with minimal shrink instead of squashing into a tiny half-box!
-        full_avail_w = W - 2.0 * box_margin
+        full_avail_w = base_avail_w
         full_avail_h = H - (4.0 if touches_bottom else 16.0)
         base_full_scale = min(full_avail_w / cw, full_avail_h / ch)
         for pre_s_mult in (1.0, 0.92, 0.84, 0.76):
             full_scale = base_full_scale * pre_s_mult
             f_nw = max(1, int(round(cw * full_scale)))
             f_nh = max(1, int(round(ch * full_scale)))
-            f_px = float(W - box_margin - f_nw) if side_dir == "right" else float(box_margin)
+            if border_style == "box" and anchor_mode in ("left", "right", "both"):
+                f_px = _anchored_art_px(W, f_nw, anchor_mode)
+            else:
+                f_px = float(W - box_margin - f_nw) if side_dir == "right" else float(box_margin)
             f_py = float(H - f_nh) if touches_bottom else float((H - f_nh) / 2.0)
             full_canvas = place_scaled_art(clean_raw, W, H, full_scale, f_px, f_py, crop_box=crop_box)
             full_mask = get_art_mask(full_canvas, threshold=255)
@@ -4697,7 +5212,7 @@ def _compose_wide_slim_variable_panel(
         if split_valley is None or cut.tail_target not in ("left", "right"):
             return None, None
         v_lo_f, v_hi_f = split_valley
-        avail_w_full = W - 2.0 * box_margin
+        avail_w_full = base_avail_w
         avail_h_full = H - (10.0 if touches_bottom else 20.0)
         base_scale = min(avail_w_full / cw, avail_h_full / ch)
 
@@ -4705,7 +5220,7 @@ def _compose_wide_slim_variable_panel(
             scale = base_scale * scale_mult
             nw = max(1, int(round(cw * scale)))
             nh = max(1, int(round(ch * scale)))
-            px = (W - nw) / 2.0
+            px = _anchored_art_px(W, nw, anchor_mode)
             py = float(H - nh) if touches_bottom else float((H - nh) / 2.0)
 
             valley_x0 = px + v_lo_f * nw
@@ -4867,11 +5382,11 @@ def _compose_wide_slim_variable_panel(
             tail_space = 26.0 + attempt * 4.0
             art_top = bub_bot + tail_space
             avail_h = max(72.0, H - art_top - (0.0 if touches_bottom else 8.0))
-            avail_w = W - 2.0 * box_margin
+            avail_w = base_avail_w
             scale = min(avail_w / cw, avail_h / ch) * max(0.55, 0.96 ** attempt)
             nw = max(1, int(round(cw * scale)))
             nh = max(1, int(round(ch * scale)))
-            px = (W - nw) / 2.0
+            px = _anchored_art_px(W, nw, anchor_mode)
             py = float(H - nh) if touches_bottom else float(max(art_top, H - nh - 8.0))
 
             art_canvas = place_scaled_art(clean_raw, W, H, scale, px, py, crop_box=crop_box)
@@ -4989,13 +5504,14 @@ def _compose_wide_slim_variable_panel(
         cy = box_margin + ry + stroke_px + 2.0
         bub_bot = cy + ry + stroke_px
         safe_top = int(np.ceil(bub_bot + 16.0))
-        avail_w = max(40.0, W - 2.0 * box_margin - 2.0)
+        avail_w = max(40.0, base_avail_w - (0.0 if anchor_mode in ("left", "right", "both") else 2.0))
         avail_h = max(36.0, H - safe_top - 4.0)
         scale_fb = min(avail_w / cw, avail_h / ch)
         nw = max(1, int(np.floor(cw * scale_fb)))
         nh = max(1, int(np.floor(ch * scale_fb)))
+        px_fb = _anchored_art_px(W, nw, anchor_mode)
         py = max(float(safe_top), float(H - nh))
-        art_canvas = place_scaled_art(clean_raw, W, H, scale_fb, (W - nw) / 2.0, py, crop_box=crop_box)
+        art_canvas = place_scaled_art(clean_raw, W, H, scale_fb, px_fb, py, crop_box=crop_box)
         art_mask = get_art_mask(art_canvas, threshold=255)
         placed_bbox = extract_art_bbox(art_canvas, threshold=255)
         bub_layer, dest, b_metrics = _build_bubble_layer(
@@ -5026,6 +5542,231 @@ def _compose_wide_slim_variable_panel(
             "bubble_side_resolved": "center",
             "tail_tip": None,
         }
+
+    def _try_slim_full_width_grounded() -> tuple[Image.Image | None, dict[str, Any] | None]:
+        """Edge-to-edge full-width pre-pass for grounded slim wide box panels (`anchor_mode == "both"`).
+
+        Locks artwork strictly flush left-to-right (`px = 0.0`, `nw = W`) and bottom-flush
+        (`py = H - nh` when `touches_bottom`) with ZERO horizontal side gaps while placing the
+        speech bubble in the pure `#FFFFFF` upper sky / open corner at strictly `overlap_px == 0`.
+        """
+        edge_scale = float(W) / cw
+        edge_nh = max(1, int(round(ch * edge_scale)))
+        max_push = min(44, int(edge_nh * 0.10)) if touches_bottom else 0
+        if edge_nh > H + max_push:
+            return None, None
+
+        push_steps = [p for p in (0, 10, 20, 32, 44) if p <= max_push]
+        if max_push > 0 and max_push not in push_steps:
+            push_steps.append(max_push)
+
+        fs_base = 22 if len(dialogue) <= 34 else 20
+        fs_cands: list[int] = []
+        for fs_v in (fs_base, max(18, fs_base - 2), 16, 14):
+            if fs_v not in fs_cands:
+                fs_cands.append(fs_v)
+
+        max_rx_side = min(214.0, W * 0.255)
+        max_ry_side = min(104.0, max(46.0, H * 0.26))
+        max_rx_top = min(344.0, W * 0.41)
+        max_ry_top = min(76.0, max(42.0, H * 0.19))
+
+        for fs_try in fs_cands:
+            # Prepare side-corner bubble geometry & top-sky bubble geometry
+            wrap_side = 292.0 if fs_try >= 20 else 274.0
+            lns_side, subs_side = wrap_korean_dialogue(
+                dialogue, fs_try, max_line_width_px=wrap_side, max_lines=4
+            )
+            rx_side, ry_side = _compute_snug_ellipse_radii(
+                dummy,
+                lns_side,
+                set(subs_side),
+                fs_try,
+                min_rx=min(118.0, max_rx_side),
+                max_rx=max_rx_side,
+                min_ry=min(44.0, max_ry_side),
+                max_ry=max_ry_side,
+                pad_x=28.0,
+                pad_y=16.0,
+            )
+
+            lns_top, subs_top = wrap_korean_dialogue(
+                dialogue, fs_try, max_line_width_px=min(520.0, W * 0.62), max_lines=4
+            )
+            rx_top, ry_top = _compute_snug_ellipse_radii(
+                dummy,
+                lns_top,
+                set(subs_top),
+                fs_try,
+                min_rx=min(136.0, max_rx_top),
+                max_rx=max_rx_top,
+                min_ry=min(42.0, max_ry_top),
+                max_ry=max_ry_top,
+                pad_x=32.0,
+                pad_y=16.0,
+            )
+
+            for push_down in push_steps:
+                py_edge = (
+                    float(H - edge_nh + push_down)
+                    if touches_bottom
+                    else float(max(box_margin, H - edge_nh - 4.0))
+                )
+                art_canvas = place_scaled_art(clean_raw, W, H, edge_scale, 0.0, py_edge, crop_box=crop_box)
+                art_mask = get_art_mask(art_canvas, threshold=255)
+                placed_bb = extract_art_bbox(art_canvas, threshold=255)
+                if placed_bb is None:
+                    continue
+
+                if is_two_char and cut.tail_target in ("left", "right"):
+                    sp_anc = _find_slim_speaker_anchor(art_mask, cut.tail_target)
+                    head_x = sp_anc[0] if sp_anc is not None else (W * 0.28 if cut.tail_target == "left" else W * 0.72)
+                    head_y = sp_anc[1] if sp_anc is not None else float(placed_bb[1])
+                    art_mid_x = sp_anc[4] if sp_anc is not None else W * 0.5
+                else:
+                    top_anc = _find_top_speaker_anchor(art_mask, cut.tail_target, W)
+                    head_x = top_anc[0] if top_anc is not None else W * 0.5
+                    head_y = top_anc[1] if top_anc is not None else float(placed_bb[1])
+                    art_mid_x = W * 0.5
+
+                # Build ordered candidate placements: (cx, cy, rx, ry, lines, subs, resolved_side)
+                placements: list[tuple[float, float, float, float, list[str], list[int], str]] = []
+
+                cy_top = box_margin + ry_top + stroke_px + 2.0
+                lo_top = box_margin + rx_top + stroke_px + 4.0
+                hi_top = W - box_margin - rx_top - stroke_px - 4.0
+                if cut.tail_target == "right":
+                    top_cx_bias = float(np.clip(W * 0.58, lo_top, hi_top))
+                elif cut.tail_target == "left":
+                    top_cx_bias = float(np.clip(W * 0.42, lo_top, hi_top))
+                else:
+                    top_cx_bias = W / 2.0
+                top_candidates: list[tuple[float, float, float, float, list[str], list[int], str]] = []
+                for cand_cx in (top_cx_bias, W / 2.0):
+                    if not any(abs(cand_cx - prev[0]) < 8.0 for prev in top_candidates):
+                        res_side = (
+                            "center"
+                            if abs(cand_cx - W / 2.0) <= W * 0.06
+                            else ("right" if cand_cx > W / 2.0 else "left")
+                        )
+                        top_candidates.append((cand_cx, cy_top, rx_top, ry_top, lns_top, subs_top, res_side))
+
+                cy_side_min = box_margin + ry_side + stroke_px + 4.0
+                cy_side_max = max(cy_side_min, H - box_margin - ry_side - stroke_px - 4.0)
+                cy_side_list: list[float] = []
+                for cy_r in (cy_side_min, H * 0.28, H * 0.35):
+                    cy_c = float(np.clip(cy_r, cy_side_min, cy_side_max))
+                    if not any(abs(cy_c - prev) < 6.0 for prev in cy_side_list):
+                        cy_side_list.append(cy_c)
+
+                def _side_cands(bub_side: str) -> list[tuple[float, float, float, float, list[str], list[int], str]]:
+                    cx_s = (
+                        box_margin + rx_side + stroke_px + 4.0
+                        if bub_side == "left"
+                        else W - box_margin - rx_side - stroke_px - 4.0
+                    )
+                    return [(cx_s, cy_s, rx_side, ry_side, lns_side, subs_side, bub_side) for cy_s in cy_side_list]
+
+                if mode == "side_right":
+                    placements.extend(_side_cands("left"))
+                    placements.extend(top_candidates)
+                    if cut.bubble_side is None and not is_two_char:
+                        placements.extend(_side_cands("right"))
+                elif mode == "side_left":
+                    placements.extend(_side_cands("right"))
+                    placements.extend(top_candidates)
+                    if cut.bubble_side is None and not is_two_char:
+                        placements.extend(_side_cands("left"))
+                else:
+                    placements.extend(top_candidates)
+                    if cut.bubble_side is None:
+                        preferred_side = "left" if cut.tail_target == "left" else "right"
+                        other_side = "right" if preferred_side == "left" else "left"
+                        placements.extend(_side_cands(preferred_side))
+                        if not is_two_char:
+                            placements.extend(_side_cands(other_side))
+
+                for cx_p, cy_p, rx_p, ry_p, lns_p, subs_p, res_side in placements:
+                    target_y_p = float(
+                        np.clip(
+                            head_y + 18.0,
+                            cy_p - ry_p * 0.25,
+                            min(H - 28.0, cy_p + ry_p * 1.65),
+                        )
+                    )
+                    target_x_p = head_x
+                    if is_two_char and cut.tail_target == "right":
+                        target_x_p = max(target_x_p, art_mid_x + 12.0)
+                    elif is_two_char and cut.tail_target == "left":
+                        target_x_p = min(target_x_p, art_mid_x - 12.0)
+
+                    dx_p = target_x_p - cx_p
+                    dy_p = target_y_p - cy_p
+                    dist_p = float(np.hypot(dx_p, dy_p))
+                    if dist_p <= 1e-3:
+                        continue
+                    ux_p, uy_p = dx_p / dist_p, dy_p / dist_p
+                    t_ell_p = 1.0 / float(np.hypot(ux_p / max(1.0, rx_p), uy_p / max(1.0, ry_p)))
+                    gap_p = dist_p - (t_ell_p + stroke_px)
+                    if gap_p < 18.0:
+                        continue
+                    base_ang_p = float(np.rad2deg(np.arctan2(dy_p / max(1.0, ry_p), dx_p / max(1.0, rx_p))))
+                    t_curve_p = -5.0 if dx_p <= 0 else 5.0
+                    for pull_p in (1.0, 0.74, 0.50, 0.34):
+                        ext_p = min(60.0, max(14.0, (gap_p - 12.0) * pull_p))
+                        if ext_p < 14.0:
+                            continue
+                        tx_p = cx_p + (t_ell_p + stroke_px + ext_p) * ux_p
+                        ty_p = cy_p + (t_ell_p + stroke_px + ext_p) * uy_p
+                        if not (8.0 <= tx_p <= W - 8.0 and 8.0 <= ty_p <= H - 8.0):
+                            continue
+                        if is_two_char and cut.tail_target == "right" and tx_p <= art_mid_x and cx_p < art_mid_x:
+                            continue
+                        if is_two_char and cut.tail_target == "left" and tx_p >= art_mid_x and cx_p > art_mid_x:
+                            continue
+                        bub_layer_p, dest_p, b_metrics_p = _build_bubble_layer(
+                            panel_size=(W, H),
+                            center=(cx_p, cy_p),
+                            lines=lns_p,
+                            radii=(rx_p, ry_p),
+                            tail_tip=(tx_p, ty_p),
+                            tail_base_angle_deg=base_ang_p,
+                            tail_half_deg=7.5,
+                            tail_curve=t_curve_p,
+                            font_size=fs_try,
+                            stroke_px=stroke_px,
+                            sub_line_indices=subs_p,
+                        )
+                        bub_mask_p = _bubble_alpha_mask((W, H), bub_layer_p, dest_p)
+                        if int((art_mask & bub_mask_p).sum()) != 0:
+                            continue
+                        clr_p = compute_min_clearance(art_mask, bub_mask_p)
+                        if clr_p >= 6.0:
+                            out_p = art_canvas.copy()
+                            if bub_layer_p is not None:
+                                rgba_p = out_p.convert("RGBA")
+                                rgba_p.alpha_composite(bub_layer_p, dest=dest_p)
+                                out_p = rgba_p.convert("RGB")
+                            return out_p, {
+                                "wordless": False,
+                                "bubble_count": 1,
+                                "overlap_px": 0,
+                                "min_clearance_px": clr_p,
+                                "font_size": b_metrics_p["font_size"],
+                                "art_bbox": list(placed_bb),
+                                "tail_target": cut.tail_target,
+                                "bubble_center": [round(cx_p, 1), round(cy_p, 1)],
+                                "bubble_side_resolved": res_side,
+                                "tail_tip": [round(tx_p, 1), round(ty_p, 1)],
+                                "layout_variant": "grounded_white_sky",
+                            }
+
+        return None, None
+
+    if border_style == "box" and anchor_mode == "both":
+        panel_fw, audit_fw = _try_slim_full_width_grounded()
+        if panel_fw is not None and audit_fw is not None:
+            return panel_fw, audit_fw
 
     if mode == "two_char_upper":
         fs_start = 20 if len(dialogue) <= 34 else 18
@@ -5092,6 +5833,7 @@ def _compose_variable_panel(
             bottom_pad_if_floating=bottom_pad,
             tooltip_rgba=tooltip_rgba,
             preferred_corner=pref_corner,
+            border_style=border_style,
         )
         # If narrow full-bleed wordless + tooltip collided horizontally, stack vertically with 0px overlap
         if tooltip_rgba is not None and (
@@ -5747,7 +6489,7 @@ def compose_v4_episode(
         script,
         thumb_candidates,
         size=THUMB_SIZE,
-        full_bleed=(is_full_bleed_ep or (is_mixed_ep and lead_cut_full_bleed)),
+        full_bleed=(is_full_bleed_ep or lead_cut_full_bleed),
     )
     thumb_path = out_dir / "thumb.jpg"
     thumb_im.save(thumb_path, format="JPEG", quality=93, subsampling=0)

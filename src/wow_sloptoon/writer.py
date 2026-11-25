@@ -117,10 +117,10 @@ V4_WRITER_SYSTEM_RULES = """당신은 디시인사이드 '와우 포에버 마�
 1. **5막(5 Acts) · 10~14컷 장편 서사 리듬 (`layout_mode="v4_five_act"`)**:
    - 반드시 `layout_mode`를 `"v4_five_act"`로 설정하고, `acts` 배열에 정확히 **5개의 막(`act_number`: 1, 2, 3, 4, 5)**을 순서대로 작성하세요.
    - 각 막의 역할:
-     * **1막 (발단·현장 진입)**: 원글의 실제 인게임 상황·던전/필드 현장·스샷 디테일과 전투/현장 분위기를 생생히 제시.
+     * **1막 (발단·현장 진입)**: 첫 컷(또는 장소 전환 컷)에 **Tier 1 `full_bleed_bg=True` 100% 풀배경 지역·던전 설정 샷**으로 원글의 실제 와우 존/던전 분위기와 랜드마크를 한눈에 각인시키고, 이어지는 클로즈업·리액션은 Tier 2/3로 깔끔히 전개.
      * **2막 (전개·조짐)**: 꼰대짓·억까·입찰/어그로 사고·갈등의 불씨를 노골적이고 자극적으로 점화.
      * **3막 (위기·확산)**: 사건 본격화, 몬스터 전투 난장판·슬랩스틱 몸개그·격앙된 대립과 갈등 폭발.
-     * **4막 (절정·무언 충격 정지)**: `impact_freeze_2cut` 레이아웃 강력 권장! 하단 초대형 패널에 **100% 순백(`#FFFFFF`) 위 잉크 칼선 미니 디오라마 바닥 섬/무대 소품 + 엑스트라/보스 카메오**를 활용한 **시그니처 무언 충격 정지 클로즈업(`wordless=True`)**을 배치해 극대화된 개그 임팩트를 연출하세요.
+     * **4막 (절정·무언 충격 정지)**: `impact_freeze_2cut` 레이아웃 강력 권장! 하단 초대형 패널에 **Tier 2 자연스러운 하단 땅·배경 + 100% 순백(`#FFFFFF`) 하늘 + 엑스트라/보스 카메오**를 활용한 **시그니처 무언 충격 정지 클로즈업(`wordless=True`)**을 배치해 극대화된 개그 임팩트를 연출하세요.
      * **5막 (여파·막장 반전 펀치라인)**: 맑눈광 꽃밭 반전·흑화·현타·귀환석 도주 등 찰진 엔딩 펀치라인.
    - 5개 막의 모든 컷을 합산한 총 컷 수는 반드시 **10~14컷(권장 12~13컷)**이어야 합니다.
 2. **6종 가변 페이지 레이아웃(`layout_id`) 조합 및 다양성 규칙**:
@@ -143,21 +143,21 @@ V4_WRITER_SYSTEM_RULES = """당신은 디시인사이드 '와우 포에버 마�
    - 각 컷의 `characters`에는 시안 C 9명 중 **1~2명**만 기입하고, 한 화 전체 주연 고정 캐스트는 **2~4명(최대 5인 파티 이내)**으로 집중하세요.
    - **인접 컷 인물 연속성 절대 엄수**: 직전 컷에서 캐릭터 A가 B에게 따졌다면 바로 다음 컷에서 B가 역공할 때 반드시 같은 대상 A가 맞받아쳐야 합니다(갑자기 다른 캐릭터 C로 대상이 바뀌는 콘티 연속성 오류 금지). 또한 배경 엑스트라에 주연 캐릭터와 똑같이 생긴 복제 인물을 넣지 마세요.
    - **몬스터 전투 씬 & 엑스트라·보스·NPC 필수 투입**: 한 화 5막(10~14컷) 중 **최소 2~3컷 이상에 던전 몬스터 때려잡는 전투 액션, 몹 떼거리, 보스 카메오(해적 선원·고블린·오우거·던전 네임드 등), 엑스트라 유저/경비병/NPC 군중**을 `visual_prompt`에 적극 배치해 살아있는 와우 인게임 현장감을 살리세요! (귀여운 만화풍·비고어 쪼렙 시체/해골 더미, 펫, 탈것도 적극 활용)
-5. **시그니처 무언 충격 정지 컷 (`wordless=True`) 최소 1컷 필수 — 100% 순백(`#FFFFFF`) 위 미니 디오라마 극장판 연출**:
+5. **시그니처 무언 충격 정지 컷 (`wordless=True`) 최소 1컷 필수 — 자연스러운 하단 땅·배경 + 100% 순백(`#FFFFFF`) 하늘 극장판 연출**:
    - 최소 1컷(권장: 4막 `impact_freeze_2cut`의 2번 초대형 패널)은 반드시 `wordless=True`, `speaker=null`, `dialogue=null`로 설정하세요.
-   - `wordless=True` 절정 컷은 기본 `clean_white` 모드에서 어두운 전면 사각 벽 박스 대신 **100% 순백(`#FFFFFF`) 캔버스 위에 극적인 검은 잉크 칼선 미니 디오라마 바닥 섬/무대 조각(부서진 석조 던전 타일 섬, 이끼 낀 절벽 턱, 부서진 갑판 조각, 흩날리는 소품·지켜보는 몹/탈것/보스 카메오, 강렬한 만화 충격 이펙트)**을 배치해 압도적인 개그 임팩트를 연출하세요! (`background_style="full_bleed"` 명시 시에만 전면 풀-블리드 배경 사용)
+   - `wordless=True` 절정 컷은 기본 `clean_white` 모드에서 어두운 전면 사각 벽 박스나 허공에 뜬 미니어처 섬 대신 **하단·좌우 프레임 끝까지 자연스럽게 이어지는 실제 스케일의 땅·절벽·던전 바닥·갑판·소품·지켜보는 몹/탈것/보스 카메오 + 상단 하늘은 100% 순백(`#FFFFFF`) + 강렬한 만화 충격 이펙트**를 배치해 압도적인 개그 임팩트를 연출하세요! (`background_style="full_bleed"` 명시 시에만 전면 풀-블리드 배경 사용)
 6. **1말풍선 1화자 · 귀염뽀짝 미소녀 겜창 말투 · 좁은 패널 압축 대사 · 와우 인게임 어휘 · 100% 익명화**:
    - **귀염뽀짝 미소녀 + 와우·디시 겜창 센스 말투 의무화 (아재 설명충·양아치 욕설 둘 다 금지!)**: 딱딱한 아재/AI 설명충 말투(`~하세요~`, `시전 들어갑니다!!`, `완료!`)도, 거친 양아치·앰생 욕설(`새끼`, `미친년`, `시발`, `호구` 등)도 절대 쓰지 마세요! 2.5~2.8등신 초귀염 미소녀 그림체와 찰떡인 **귀염뽀짝·발랄·맑눈광 미소녀 구어체(`~해야지~`, `~잖아!`, `으아앙`, `흐에엑`, `쉿!`, 해맑은 갭모에)에 찰진 와우·디시 겜창 어휘(`개꿀팁`, `그숨 딸깍`, `정배`, `혼란 딸깍`, `매너 겜` 등)만 톡톡 얹어** 귀엽고 위트 있게 쓰세요! (닉네임·길드명·정치·현실 혐오는 영구 금지!)
    - **괄호 다중 화자 편법 절대 금지**: `(도적: ...)`, `[전사: ...]` 금지! 한 컷 `dialogue`에는 `speaker` 단 1명의 대사만 적으세요.
    - **세로 분할 좁은 컷(410px)**에서는 대사를 1~3줄(줄당 10~12자 내외, `\\n` 줄바꿈)로 짧고 임팩트 있게 압축하세요. 와이드 컷은 1~3줄(줄당 14자 내외).
    - **현실 현대어 금지**: "119", "112", "구급차", "경찰", "카톡", "편의점", "택시", "배민" 대신 "무덤 이동", "영혼의 치유사", "경비병", "귓말/파티창", "여관 주인", "와이번/그리핀" 등 100% 와우 인게임 어휘만 사용하세요.
    - **100% 익명성 준수**: 실제 닉네임·아이디·`<길드명>`(패러디 포함)을 대사·막 제목·부제·이미지 프롬프트·툴팁 어디에도 절대 적지 말고 오직 직업·역할 호칭(`도적`, `징기`, `보기`, `전탱`, `흑마`, `사제`, `파장님`)만 사용하세요.
-7. **V4 영구 정본 배경 리듬(`background_style="clean_white"` 기본: 100% 순백 `#FFFFFF` + 잉크 칼선 미니 디오라마 바닥 섬 조화) · 시네마틱 연출 · 표정 다양화 · Clean Hand · 와우 포에버 고증**:
-   - **기본 정본 `clean_white` 절대 원칙 (`assets/diorama_style_ref.jpg` 기법) — "모든 컷은 100% 순백 `#FFFFFF` 배경, 장면 컷엔 깔끔한 잉크 칼선 미니 디오라마 바닥 섬!" (전면 벽 배경 박스 · 파스텔 벽지 도배 · 흐릿한 사각형 반쪽 비네트 컷아웃 모두 영구 금지!)**:
-     * 모든 컷에 `full_bleed_bg=False`를 지정하고, **모든 컷이 동일한 100% 순백 `#FFFFFF` 캔버스를 공유**해 장면 컷과 리액션 컷이 위화감 없이 100% 자연스럽게 이어지게 설계하세요!
-     * **장면·전투·군중·클라이맥스·엔딩 컷 (전체 10~14컷 중 50~70%)**: 캐릭터·몹·탈것·소품 바로 아래에 **깔끔한 검은 잉크 칼선으로 마감된 3D 플로팅 미니 디오라마 바닥 섬/무대 조각**(`crisp black-ink-outlined floating mini diorama floor island`: 금 간 던전 석조 타일 섬, 이끼 낀 하이잘 절벽 바위 턱, 나무 선박 갑판 조각, 모닥불/보물상자/몹/탈것 무대)이 순백 `#FFFFFF` 위에 깔끔하게 떠 있도록 `visual_prompt`를 작성하세요!
-     * **빠른 티키타카·당황·정색 리액션 컷 (전체 10~14컷 중 30~50%)**: **100% 순백 `#FFFFFF` 배경**에 캐릭터 연기 + 최소한의 만화 개그 이펙트(땀방울·분노 마크·스피드선·충격선·영혼 탈출)만 배치해 눈의 호흡을 살리세요!
-     * 모든 대사 컷은 캐릭터를 하단/화자 측에 배치해 말풍선 영역(세로 좁은 컷 상단 36~40% / 와이드 상단 32% 또는 반대쪽 46%)을 **완전 빈 100% 순백 `#FFFFFF` 여백**으로 확보하세요!
+7. **V4 영구 정본 3-Tier 알잘딱 배경 연출(`background_style="clean_white"` 기본) · 시네마틱 연출 · 표정 다양화 · Clean Hand · 와우 포에버 고증**:
+   - **기본 정본 `clean_white` — 3-Tier 알잘딱 배경 연출 기준 (미니어처 부유 섬 금지 · 반쪽 사각형 비네트 금지!)**:
+     * **① Tier 1 — 지역·장소 설정 컷 (`full_bleed_bg=True`, 에피소드당 1~2컷: 1막 첫 컷 또는 장소 전환 시)**: 와우 포에버 지역·던전(하이잘 산, 죽음의 폐광, 붉은십자군 수도원 등)의 랜드마크·지형·하늘을 검은 박스 프레임 안에 **100% 풀-블리드 풀배경**으로 생생하게 채워 장소감을 즉시 전달하세요(단, 상단 말풍선 하늘/천장 영역은 인물이 없는 트인 공간으로 비움).
+     * **② Tier 2 — 지형·현장·전투·클라이맥스·엔딩 컷 (`full_bleed_bg=False`, 전체의 약 35~55%)**: 캐릭터·몹·탈것·소품이 딛고 선 **땅·돌길·절벽·던전 바닥·선박 갑판·하단 소품**을 실제 카메라 원근감으로 **패널 하단과 좌우 프레임 끝까지 자연스럽게 꽉 채우되**, **지평선 위 상단 하늘은 100% 순백(`#FFFFFF`)**으로 비워 말풍선·리액션 컷과 위화감 없이 조화시키세요! (**허공에 뜬 미니어처 장난감 섬·깎인 돌 팬케이크·흐릿한 반쪽 사각형 비네트 컷아웃 절대 금지!**)
+     * **③ Tier 3 — 사람만 등장하는 클로즈업·티키타카 리액션 컷 (`full_bleed_bg=False`, 전체의 약 30~50%)**: **100% 순백(`#FFFFFF`) 배경**에 과장된 캐릭터 연기 + 최소한의 만화 이펙트(땀방울·분노 마크·스피드선·충격선·영혼 탈출)만 깔끔하게 배치해 불필요한 배경 소음을 없애고 개그 호흡을 살리세요!
+     * Tier 2·3 대사 컷은 캐릭터를 하단/화자 측에 배치해 말풍선 영역(세로 좁은 컷 상단 36~40% / 와이드 상단 34% 또는 반대쪽 46%)을 **완전 빈 100% 순백(`#FFFFFF`) 하늘 여백**으로 확보하세요!
    - **선택 옵션 모드 (명시 지정 시에만 하위 호환 적용)**:
      * `background_style="selective_mix"` 명시 시: 전체 10~14컷 중 **40~60%** 핵심 현장·전투·클라이맥스 컷에 `full_bleed_bg=True`(100% 전면 풀-블리드 박스), 나머지 **40~60%** 리액션 컷에 `full_bleed_bg=False`(100% 순백 `#FFFFFF`, 반쪽 비네트 금지)를 배합합니다.
      * `background_style="full_bleed"` 명시 시: 모든 컷에 `full_bleed_bg=True`를 지정해 박스 끝까지 풀-블리드 배경을 채우되 말풍선 영역은 인물이 없는 트인 배경으로 비웁니다.
@@ -215,10 +215,10 @@ def build_v4_writer_prompt(
         )
     else:
         bg_directive = (
-            "이번 화의 `background_style`은 `\"clean_white\"`입니다. 모든 컷에 `full_bleed_bg=false`를 설정하고 "
-            "모든 컷의 배경을 100% 순백 `#FFFFFF`으로 통일하세요! 전체 10~14컷 중 50~70% 현장·전투·클라이맥스·엔딩 컷은 "
-            "캐릭터·몹·탈것 바로 아래에 깔끔한 검은 잉크 칼선 플로팅 미니 디오라마 바닥 섬/절벽 턱/무대 조각(`assets/diorama_style_ref.jpg` 기법)을 얹고, "
-            "나머지 30~50% 빠른 리액션 컷은 순백 `#FFFFFF` + 최소 만화 이펙트만 배치하세요(전면 벽 배경·파스텔 도배·흐릿한 반쪽 비네트 컷아웃 절대 금지!)."
+            "이번 화의 `background_style`은 `\"clean_white\"` (3-Tier 알잘딱 배경 연출 정본)입니다. "
+            "① 지역·장소 설정 컷(1막 첫 컷 등 에피소드당 1~2컷)만 `full_bleed_bg=true`(100% 풀-블리드 WoW 지역·던전 풀배경, 상단 말풍선 하늘은 트이게 비움)로 설정하고, "
+            "② 지형·현장·전투·클라이맥스·엔딩 컷(약 35~55%)은 `full_bleed_bg=false`로 하단·좌우 프레임 끝까지 자연스러운 땅·돌길·절벽·던전 바닥 + 100% 순백 `#FFFFFF` 상단 하늘을 배치하며, "
+            "③ 사람만 등장하는 클로즈업·리액션 컷(약 30~50%)은 `full_bleed_bg=false` 100% 순백 `#FFFFFF` + 최소 만화 이펙트만 배치하세요(미니어처 부유 섬 금지 · 흐릿한 반쪽 사각형 비네트 컷아웃 절대 금지!)."
         )
 
     return (
@@ -963,14 +963,17 @@ def build_dry_run_v4_script(
                     speaker="나이트엘프 사제",
                     dialogue=f"저기요...\n'{dialogue_hook[:16]}'\n진짜 이 파티 괜찮아요?",
                     wordless=False,
+                    full_bleed_bg=True,
                     visual_prompt=(
-                        "Dynamic over-the-shoulder diagonal shot in crisp 2.5-head chibi style: "
-                        "foreground back shoulder of Orc Warrior chibi girl in vibrant green orc plush hood "
-                        "and red warrior cape with steel shield and 1H sword ready; background fair-skinned "
-                        "Night Elf Priest chibi girl with lavender half-up ponytail, golden Elune crescent "
-                        "forehead tiara, luminous glowing silver eyes, purple-and-gold Priestess vestments, "
-                        "waist mini Holy Prayer Book and golden Rosary (Holy Cross staff strapped across back) "
-                        "clasping her hands nervously. Pure solid white #FFFFFF background, no text, no speech bubbles."
+                        "Tier 1 establishing full-bleed dungeon entrance shot in crisp 2.5-head chibi style: "
+                        "100% edge-to-edge gothic stone Scarlet Monastery archway, flickering wall sconces, "
+                        "bannered courtyard, and uncluttered upper dusk sky for the speech bubble; "
+                        "over-the-shoulder foreground back shoulder of Orc Warrior chibi girl in vibrant green "
+                        "orc plush hood and red warrior cape with steel shield and 1H sword ready; background "
+                        "fair-skinned Night Elf Priest chibi girl with lavender half-up ponytail, golden Elune "
+                        "crescent forehead tiara, luminous glowing silver eyes, purple-and-gold Priestess "
+                        "vestments, waist mini Holy Prayer Book and golden Rosary (Holy Cross staff strapped "
+                        "across back) clasping her hands nervously. No text, no speech bubbles."
                     ),
                     tail_target="left",
                 ),

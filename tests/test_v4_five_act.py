@@ -773,6 +773,10 @@ def test_writer_v4_dry_run_and_prompt() -> None:
     assert 10 <= len(dry.cuts) <= 14
     assert dry.source_title == post.title.strip()
     assert any(c.wordless for c in dry.cuts)
+    # Default 3-Tier clean_white dry-run: Act 1 Cut 1 is Tier 1 establishing full-bleed, Cuts 2+ are Tier 2/3
+    assert dry.background_style == "clean_white"
+    assert dry.cuts[0].full_bleed_bg is True
+    assert not any(c.full_bleed_bg for c in dry.cuts[1:])
 
     # 5 distinct layouts in dry-run (no consecutive duplicates)
     layout_seq = [a.layout_id for a in dry.acts]
@@ -794,8 +798,11 @@ def test_writer_v4_dry_run_and_prompt() -> None:
     assert "#FFFFFF" in prompt
     assert "wordless" in prompt
     assert '"clean_white"' in prompt
-    assert "diorama_style_ref.jpg" in prompt
-    assert "미니 디오라마" in prompt
+    assert "diorama_style_ref.jpg" not in prompt
+    assert "3-Tier" in prompt
+    assert "Tier 1" in prompt and "Tier 2" in prompt and "Tier 3" in prompt
+    assert "미니어처 부유 섬 금지" in prompt
+    assert "순백 `#FFFFFF`" in prompt or "순백(`#FFFFFF`)" in prompt
 
 
 def test_writer_generate_v4_episode_script_mocked_interactions_and_normalization() -> None:
@@ -972,8 +979,7 @@ def test_artist_generate_v4_episode_pages_attaches_blueprint_and_all_turnarounds
     cast_sheet_bytes = settings.cast_sheet_path.read_bytes()
     style_ref_bytes = settings.style_ref_path.read_bytes()
     diorama_ref_path = settings.assets_dir / "diorama_style_ref.jpg"
-    assert diorama_ref_path.exists(), "Expected canonical assets/diorama_style_ref.jpg to exist"
-    diorama_ref_bytes = diorama_ref_path.read_bytes()
+    diorama_ref_bytes = diorama_ref_path.read_bytes() if diorama_ref_path.exists() else None
 
     # Match each captured call back to its ActPage via its layout_id / act_number in prompt text
     matched_acts: set[int] = set()
@@ -1019,9 +1025,9 @@ def test_artist_generate_v4_episode_pages_attaches_blueprint_and_all_turnarounds
                     unique_members.append(member)
 
         # Verify exact attachment count:
-        # text + cast_sheet + style_ref + layout_blueprint + unique turnarounds + diorama_style_ref
-        assert len(items) == 4 + len(unique_members) + 1, (
-            f"Act {act.act_number} expected {4 + len(unique_members) + 1} input items, got {len(items)}"
+        # text + cast_sheet + style_ref + layout_blueprint + unique turnarounds (NO diorama_style_ref.jpg!)
+        assert len(items) == 4 + len(unique_members), (
+            f"Act {act.act_number} expected {4 + len(unique_members)} input items, got {len(items)}"
         )
         assert all(item["type"] == "image" for item in items[1:])
 
@@ -1030,19 +1036,21 @@ def test_artist_generate_v4_episode_pages_attaches_blueprint_and_all_turnarounds
         # Image 2: sloptoon_style_ref.jpg
         assert base64.b64decode(items[2]["data"]) == style_ref_bytes
 
-        # Images 4..-2: every unique character's 3-view turnaround blueprint from assets/turnarounds/
-        attached_turnaround_blobs = {base64.b64decode(item["data"]) for item in items[4:-1]}
+        # Images 4..end: every unique character's 3-view turnaround blueprint from assets/turnarounds/
+        attached_turnaround_blobs = {base64.b64decode(item["data"]) for item in items[4:]}
         expected_turnaround_blobs = {
             (settings.turnarounds_dir / member.turnaround_filename).read_bytes()
             for member in unique_members
         }
         assert attached_turnaround_blobs == expected_turnaround_blobs
 
-        # Last image (-1): assets/diorama_style_ref.jpg (technique reference only!)
-        assert base64.b64decode(items[-1]["data"]) == diorama_ref_bytes
-        assert "BACKGROUND/STAGE TECHNIQUE REFERENCE ONLY" in prompt_text
-        assert "NEVER copy the characters shown in this diorama reference!" in prompt_text
-        assert "MINI DIORAMA" in prompt_text.upper()
+        # diorama_style_ref.jpg must NEVER be auto-attached in clean_white mode!
+        if diorama_ref_bytes is not None:
+            assert all(base64.b64decode(item["data"]) != diorama_ref_bytes for item in items[1:])
+        assert "diorama_style_ref.jpg" not in prompt_text
+        assert "NATURAL GROUNDED SCENERY" in prompt_text.upper()
+        assert "WHITE SKY" in prompt_text.upper()
+        assert "ZERO FLOATING MINIATURE TOY ISLANDS" in prompt_text.upper()
 
     assert matched_acts == {1, 2, 3, 4, 5}
 
@@ -1892,14 +1900,15 @@ def test_cli_generate_bg_flag_defaults_and_overrides(
         lambda self, post_no, base_post=None: _sample_post(post_no=str(post_no)),
     )
 
-    # --layout v4 defaults to --bg clean_white (100% pure #FFFFFF + crisp-inked mini diorama islands)
+    # --layout v4 defaults to --bg clean_white (3-Tier smart backgrounds: Cut 1 Tier 1 full-bleed, Cuts 2+ Tier 2/3)
     rc_v4 = cli.main(["generate", "--post-no", "99001", "--layout", "v4", "--dry-run"])
     assert rc_v4 == 0
     out_v4 = capsys.readouterr().out
     v4_obj, _ = json.JSONDecoder().raw_decode(out_v4[out_v4.find("{") :])
     v4_script = EpisodeScript.model_validate(v4_obj)
     assert v4_script.background_style == "clean_white"
-    assert not any(c.full_bleed_bg for c in v4_script.cuts)
+    assert v4_script.cuts[0].full_bleed_bg is True
+    assert not any(c.full_bleed_bg for c in v4_script.cuts[1:])
 
     # --layout v4 --bg full_bleed overrides explicitly to full_bleed
     rc_fb = cli.main(["generate", "--post-no", "99001", "--layout", "v4", "--bg", "full_bleed", "--dry-run"])
@@ -2227,14 +2236,13 @@ def test_artist_and_writer_v4_selective_mix_prompts_and_blueprints(tmp_path: Pat
         clean_act,
         attached_turnarounds=["나이트엘프 사제 (nightelf_priest)"],
         background_style="clean_white",
-        has_diorama_ref=True,
     )
     assert "ATMOSPHERIC SOFT-VIGNETTE" not in clean_prompt.upper()
     assert "SOFT-VIGNETTE" not in clean_prompt.upper()
-    assert "100% PURE SOLID `#FFFFFF` CLEAN" in clean_prompt
-    assert "MINI DIORAMA" in clean_prompt.upper()
-    assert "BACKGROUND/STAGE TECHNIQUE REFERENCE ONLY" in clean_prompt
-    assert "NEVER copy the characters shown in this diorama reference!" in clean_prompt
+    assert "diorama_style_ref.jpg" not in clean_prompt
+    assert "NATURAL GROUNDED SCENERY" in clean_prompt.upper()
+    assert "100% PURE SOLID `#FFFFFF` WHITE SKY" in clean_prompt
+    assert "ZERO FLOATING MINIATURE TOY ISLANDS" in clean_prompt.upper()
     assert "ZERO TEXT" in clean_prompt
 
     # 4. generate_v4_episode_pages attaches exact per-act slot_boxed blueprint for selective_mix
@@ -2655,3 +2663,359 @@ def test_compose_v4_box_edge_bleed_flush_anchor_and_dramatic_side_bubble() -> No
     assert a_open["overlap_px"] == 0
     assert a_open["art_bbox"] is not None
     assert a_open["art_bbox"][0] >= 10 and a_open["art_bbox"][2] <= 833
+
+
+def test_compose_v4_grounded_full_width_white_sky_flush_edge_to_edge() -> None:
+    """Regression test: full-width grounded `clean_white` box panels (`touches_left and
+    touches_right and touches_bottom` with a pure `#FFFFFF` white upper sky) across wordless
+    climax, narrow, wide_tall, and wide_slim panels MUST render flush `x=0..W-1, y1=H-1`
+    with ZERO horizontal 16px side gaps and strictly `overlap_px == 0`."""
+
+    def _make_grounded_raw(
+        w: int,
+        h: int,
+        *,
+        sky_frac: float = 0.40,
+        ground_frac: float = 0.72,
+        char_x_range: tuple[float, float] = (0.30, 0.56),
+        second_char_x_range: tuple[float, float] | None = None,
+        edge_aa_inset: int = 0,
+    ) -> Image.Image:
+        im = Image.new("RGB", (w, h), (255, 255, 255))
+        d = ImageDraw.Draw(im)
+        x0 = edge_aa_inset
+        x1 = w - 1 - edge_aa_inset
+        y1 = h - 1 - edge_aa_inset
+        gy = int(h * ground_frac)
+        # Full-width natural Mount Hyjal grassy road anchored edge-to-edge on bottom
+        d.rectangle([x0, gy, x1, y1], fill=(116, 152, 88))
+        d.rectangle([x0, gy + 14, x1, y1], fill=(142, 134, 118))
+        # Character(s) standing naturally on the ground beneath the pure #FFFFFF white sky
+        d.ellipse(
+            [int(w * char_x_range[0]), int(h * sky_frac), int(w * char_x_range[1]), gy + 12],
+            fill=(176, 112, 214),
+            outline=(22, 22, 22),
+            width=3,
+        )
+        if second_char_x_range is not None:
+            d.ellipse(
+                [int(w * second_char_x_range[0]), int(h * sky_frac), int(w * second_char_x_range[1]), gy + 12],
+                fill=(188, 136, 92),
+                outline=(22, 22, 22),
+                width=3,
+            )
+        return im
+
+    # (a) Wordless giant climax box (844x802), including 2px peeled frame AA sliver!
+    raw_wl = _make_grounded_raw(844, 802, sky_frac=0.18, ground_frac=0.68, edge_aa_inset=2)
+    cut_wl = _make_v4_cut(
+        10,
+        characters=["타우렌 드루이드"],
+        speaker=None,
+        dialogue=None,
+        wordless=True,
+        visual_prompt="Full-width grounded Hyjal cliff edge under pure #FFFFFF white sky.",
+    )
+    p_wl, a_wl = composer._compose_variable_panel(cut_wl, raw_wl, target_w=844, target_h=802, border_style="box")
+    assert p_wl.size == (844, 802)
+    assert a_wl["overlap_px"] == 0
+    assert a_wl["art_bbox"] is not None
+    assert a_wl["art_bbox"][0] == 0 and a_wl["art_bbox"][2] == 843 and a_wl["art_bbox"][3] == 801
+
+    # (b) Narrow vertical box (410x638) with full-width grounded road + white sky
+    raw_nr = _make_grounded_raw(410, 638, sky_frac=0.40, ground_frac=0.72, edge_aa_inset=1)
+    cut_nr = _make_v4_cut(
+        4,
+        characters=["나이트엘프 사제"],
+        speaker="나이트엘프 사제",
+        dialogue="헤헤 여기서 그숨 딸깍하고\n기다리면 개꿀팁이잖아~!",
+        tail_target="center",
+    )
+    p_nr, a_nr = composer._compose_variable_panel(cut_nr, raw_nr, target_w=410, target_h=638, border_style="box")
+    assert p_nr.size == (410, 638)
+    assert a_nr["overlap_px"] == 0
+    assert a_nr["art_bbox"] is not None
+    assert a_nr["art_bbox"][0] == 0 and a_nr["art_bbox"][2] == 409 and a_nr["art_bbox"][3] == 637
+
+    # (c) Wide tall box (844x650) — full-width ground + tall character on left leaving upper-right white sky!
+    raw_wt = _make_grounded_raw(
+        844,
+        650,
+        sky_frac=0.22,
+        ground_frac=0.70,
+        char_x_range=(0.06, 0.42),
+        edge_aa_inset=2,
+    )
+    cut_wt = _make_v4_cut(
+        6,
+        characters=["타우렌 드루이드", "나이트엘프 사제"],
+        speaker="타우렌 드루이드",
+        dialogue="으아앙 뭐야?! 내 코도가\n절벽 끝으로 걸어가잖아!!",
+        tail_target="left",
+    )
+    p_wt, a_wt = composer._compose_variable_panel(cut_wt, raw_wt, target_w=844, target_h=650, border_style="box")
+    assert p_wt.size == (844, 650)
+    assert a_wt["overlap_px"] == 0
+    assert a_wt["art_bbox"] is not None
+    assert a_wt["art_bbox"][0] == 0 and a_wt["art_bbox"][2] == 843 and a_wt["art_bbox"][3] == 649
+
+    # (d) Wide slim box (844x440) — 1-char grounded scene with opposite upper white sky
+    raw_ws1 = _make_grounded_raw(
+        844,
+        440,
+        sky_frac=0.38,
+        ground_frac=0.72,
+        char_x_range=(0.56, 0.86),
+        edge_aa_inset=1,
+    )
+    cut_ws1 = _make_v4_cut(
+        8,
+        characters=["노움 도적"],
+        speaker="노움 도적",
+        dialogue="흐에엑 저기 절벽에서\n누가 떨어지고 있잖아?!",
+        tail_target="right",
+    )
+    p_ws1, a_ws1 = composer._compose_variable_panel(cut_ws1, raw_ws1, target_w=844, target_h=440, border_style="box")
+    assert p_ws1.size == (844, 440)
+    assert a_ws1["overlap_px"] == 0
+    assert a_ws1["art_bbox"] is not None
+    assert a_ws1["art_bbox"][0] == 0 and a_ws1["art_bbox"][2] == 843 and a_ws1["art_bbox"][3] == 439
+
+    # (e) Wide slim box (844x472) — 2-char grounded epilogue scene + pure #FFFFFF upper sky
+    raw_ws2 = _make_grounded_raw(
+        844,
+        472,
+        sky_frac=0.44,
+        ground_frac=0.74,
+        char_x_range=(0.12, 0.36),
+        second_char_x_range=(0.64, 0.88),
+        edge_aa_inset=2,
+    )
+    cut_ws2 = _make_v4_cut(
+        13,
+        characters=["노움 도적", "나이트엘프 사제"],
+        speaker="나이트엘프 사제",
+        dialogue="쉿! 매너 겜 한 건데\n다들 왜 무덤 달리기 중이야~",
+        tail_target="right",
+    )
+    p_ws2, a_ws2 = composer._compose_variable_panel(cut_ws2, raw_ws2, target_w=844, target_h=472, border_style="box")
+    assert p_ws2.size == (844, 472)
+    assert a_ws2["overlap_px"] == 0
+    assert a_ws2["art_bbox"] is not None
+    assert a_ws2["art_bbox"][0] == 0 and a_ws2["art_bbox"][2] == 843 and a_ws2["art_bbox"][3] == 471
+
+    # (f) Wide tall box (844x650) with item tooltip — stays flush edge-to-edge with 0px tooltip overlap!
+    raw_wt_tip = _make_grounded_raw(
+        844,
+        650,
+        sky_frac=0.46,
+        ground_frac=0.74,
+        char_x_range=(0.28, 0.56),
+    )
+    cut_wt_tip = _make_v4_cut(
+        1,
+        characters=["나이트엘프 사제"],
+        speaker="나이트엘프 사제",
+        dialogue="우와 이거 진짜 꿀템이네!",
+        tail_target="left",
+        item_tooltip=ItemTooltipSpec(wowhead_item_id=7722),
+    )
+    p_wtt, a_wtt = composer._compose_variable_panel(cut_wt_tip, raw_wt_tip, target_w=844, target_h=650, border_style="box")
+    assert p_wtt.size == (844, 650)
+    assert a_wtt["overlap_px"] == 0
+    assert a_wtt.get("tooltip_overlap_px", 0) == 0
+    assert a_wtt["art_bbox"] is not None
+    assert a_wtt["art_bbox"][0] == 0 and a_wtt["art_bbox"][2] == 843 and a_wtt["art_bbox"][3] == 649
+
+
+def test_clean_white_3tier_establishing_full_bleed_prompt_blueprint_and_compose(
+    tmp_path: Path,
+) -> None:
+    """End-to-end regression test for 3-Tier Smart Backgrounds inside default `clean_white` mode:
+    Act 1 Cut 1 (`full_bleed_bg=True` on `open_top_split_bottom`) renders as a Tier 1 boxed
+    full-bleed establishing shot (with boxed blueprint, full-bleed extraction, full-bleed
+    `thumb.jpg`, and crisp `#141414` border), while Cuts 2–3 stay Tier 3 pure `#FFFFFF` and
+    Acts 2–5 mix Tier 2 grounded full-width + Tier 3 pure `#FFFFFF` with `total_overlap_px == 0`."""
+    settings = load_settings(PROJECT_ROOT)
+    layout_plan = [
+        "open_top_split_bottom",  # Act 1: Cut 1 full-bleed (Tier 1), Cuts 2-3 pure #FFFFFF (Tier 3)
+        "split_top_wide_bottom",  # Act 2: Tier 2 + Tier 3
+        "diagonal_tempo_2cut",    # Act 3: Tier 3 open + Tier 2 box
+        "impact_freeze_2cut",     # Act 4: Tier 3 buildup + Tier 2 wordless climax
+        "wide_reaction_wide",     # Act 5: Tier 3 + Tier 3 + Tier 2 grounded ending
+    ]
+    base_script = _build_custom_v4_script(layout_plan, include_wordless=True, with_tooltips=False)
+    acts_3tier = list(base_script.acts or [])
+    acts_3tier[0] = acts_3tier[0].model_copy(
+        update={
+            "cuts": [
+                acts_3tier[0].cuts[0].model_copy(
+                    update={
+                        "full_bleed_bg": True,
+                        "visual_prompt": (
+                            "Tier 1 Mount Hyjal establishing full-bleed shot with ancient pines, "
+                            "Nordrassil silhouette, clear upper blue sky, and cliff road."
+                        ),
+                    }
+                ),
+                acts_3tier[0].cuts[1].model_copy(update={"full_bleed_bg": False}),
+                acts_3tier[0].cuts[2].model_copy(update={"full_bleed_bg": False}),
+            ]
+        }
+    )
+    script = base_script.model_copy(
+        update={
+            "background_style": "clean_white",
+            "acts": acts_3tier,
+            "cuts": [c for a in acts_3tier for c in a.cuts],
+        }
+    )
+
+    # 1. Per-cut flag resolution & 3-tier prompt directives
+    act1 = script.acts[0]
+    assert artist._resolve_act_cut_full_bleed_flags(act1, "clean_white") == [True, False, False]
+    p1_prompt = artist.build_page_batch_prompt(
+        act1,
+        attached_turnarounds=["나이트엘프 사제 (nightelf_priest)", "오크 전사 (orc_warrior)"],
+        background_style="clean_white",
+    )
+    assert "3-TIER SMART BACKGROUND" in p1_prompt.upper()
+    assert "TIER 1" in p1_prompt.upper()
+    assert "TIER 2" in p1_prompt.upper()
+    assert "TIER 3" in p1_prompt.upper()
+    assert "FULL-BLEED BOX" in p1_prompt.upper()
+    assert "NATURAL GROUNDED SCENERY" in p1_prompt.upper()
+    assert "WHITE SKY" in p1_prompt.upper()
+    assert "ZERO FLOATING MINIATURE TOY ISLANDS" in p1_prompt.upper()
+    assert "ZERO TEXT" in p1_prompt.upper()
+
+    # 2. generate_v4_episode_pages attaches slot_boxed=[True, True, True] blueprint for Act 1
+    #    (boxing normally-open Cut 1!) and standard blueprints for Acts 2-5, with 0 diorama ref.
+    buf = io.BytesIO()
+    Image.new("RGB", (90, 135), (255, 255, 255)).save(buf, format="PNG")
+    fake_png_b64 = base64.b64encode(buf.getvalue()).decode("ascii")
+    lock = threading.Lock()
+    captured_calls: list[dict[str, Any]] = []
+
+    class FakeInteractions:
+        def create(self, **kwargs: Any) -> Any:
+            with lock:
+                captured_calls.append(kwargs)
+            return SimpleNamespace(output_image=SimpleNamespace(data=fake_png_b64))
+
+    artist.generate_v4_episode_pages(
+        script,
+        tmp_path / "tier3_raw",
+        client=SimpleNamespace(interactions=FakeInteractions()),
+        settings=settings,
+    )
+    assert len(captured_calls) == 5
+    diorama_path = settings.assets_dir / "diorama_style_ref.jpg"
+    diorama_bytes = diorama_path.read_bytes() if diorama_path.exists() else None
+
+    expected_bp_act1 = np.asarray(
+        render_layout_blueprint("open_top_split_bottom", slot_boxed=[True, True, True])
+    )
+    act1_matched = False
+    for call in captured_calls:
+        items = call["input"]
+        prompt_text = items[0]["text"]
+        if diorama_bytes is not None:
+            assert all(base64.b64decode(it["data"]) != diorama_bytes for it in items[1:])
+        bp_bytes = base64.b64decode(items[3]["data"])
+        with Image.open(io.BytesIO(bp_bytes)) as attached_bp:
+            attached_arr = np.asarray(attached_bp.convert("RGB"))
+        if "(Act 1:" in prompt_text:
+            assert np.array_equal(attached_arr, expected_bp_act1), (
+                "Act 1 with Cut 1 full_bleed_bg=True in clean_white must box slot 1 in blueprint!"
+            )
+            act1_matched = True
+    assert act1_matched
+
+    # 3. Synthesize realistic 3-tier raw pages (Act 1 Cut 1 full-bleed sky+forest, Cuts 2-3 pure #FFFFFF;
+    #    Acts 2-5 clean_white) and run full extraction + compose_v4_episode E2E!
+    raw_dir = tmp_path / "synth_raw"
+    raw_dir.mkdir(parents=True)
+    raw_paths: dict[int, Path] = {}
+
+    for act in script.acts or []:
+        spec = get_page_layout(act.layout_id)
+        page_im = Image.new("RGB", (V4_PAGE_W, V4_PAGE_H), (255, 255, 255))
+        draw = ImageDraw.Draw(page_im)
+        for idx, (slot, cut) in enumerate(zip(spec.slots, act.cuts)):
+            x0, y0, x1, y1 = slot.rect
+            pw, ph = slot.width, slot.height
+            col = _SLOT_COLORS[idx % len(_SLOT_COLORS)]
+            if cut.full_bleed_bg:
+                # Tier 1 establishing full-bleed scenery (clear blue upper sky + lush green terrain + characters)
+                draw.rectangle([x0 + 4, y0 + 4, x1 - 4, y0 + int(ph * 0.45)], fill=(116, 186, 238))
+                draw.rectangle([x0 + 4, y0 + int(ph * 0.45), x1 - 4, y1 - 4], fill=(82, 148, 86))
+                draw.ellipse(
+                    [x0 + int(pw * 0.16), y0 + int(ph * 0.42), x0 + int(pw * 0.44), y1 - 12],
+                    fill=(174, 114, 214),
+                    outline=(20, 20, 20),
+                    width=3,
+                )
+                draw.rectangle([x0, y0, x1, y1], outline=(18, 18, 18), width=5)
+            else:
+                # Tier 2 (bottom box grounded full-width + pure #FFFFFF sky) / Tier 3 (pure #FFFFFF character)
+                if slot.border_style == "box" and idx == len(spec.slots) - 1:
+                    draw.rectangle([x0 + 4, y0 + int(ph * 0.72), x1 - 4, y1 - 4], fill=(122, 154, 92))
+                draw.ellipse(
+                    [x0 + int(pw * 0.28), y0 + int(ph * 0.42), x0 + int(pw * 0.72), y0 + int(ph * 0.88)],
+                    fill=col,
+                    outline=(20, 20, 20),
+                    width=3,
+                )
+                if slot.border_style == "box":
+                    draw.rectangle([x0, y0, x1, y1], outline=(18, 18, 18), width=5)
+        out_p = raw_dir / f"raw_page_{act.act_number:02d}.png"
+        page_im.save(out_p, format="PNG")
+        raw_paths[act.act_number] = out_p
+
+    # Verify direct extraction for Act 1 (`slot_full_bleed=[True, False, False]`)
+    with Image.open(raw_paths[1]) as act1_raw_im:
+        act1_panels = extract_panels_from_page(
+            act1_raw_im,
+            "open_top_split_bottom",
+            all_boxed=False,
+            slot_full_bleed=[True, False, False],
+        )
+    assert len(act1_panels) == 3
+    p1_arr = np.asarray(act1_panels[0])
+    assert float(np.mean(np.any(p1_arr < 245, axis=2))) > 0.92, "Tier 1 Cut 1 lost full-bleed scenery!"
+    for p_clean in act1_panels[1:]:
+        arr_c = np.asarray(p_clean)
+        headroom = arr_c[8:48, arr_c.shape[1] // 4 : (3 * arr_c.shape[1]) // 4, :]
+        assert float(np.mean(np.all(headroom == 255, axis=2))) > 0.98
+
+    # Run full compose_v4_episode
+    out_dir = tmp_path / "composed_3tier"
+    res = compose_v4_episode(script, raw_paths, out_dir)
+    audit = res.audit_report
+    assert audit["passed"] is True
+    assert audit["background_style"] == "clean_white"
+    assert audit["total_overlap_px"] == 0
+    assert audit["total_tooltip_overlap_px"] == 0
+    assert audit["border_pure_white"] is True
+
+    # Cut 1 is full-bleed boxed; Cuts 2-13 are clean_white (Tier 2/3)
+    cut1_audit = audit["cuts"][0]
+    assert cut1_audit["full_bleed_bg"] is True
+    assert cut1_audit["border_style"] == "box"
+    assert cut1_audit["overlap_px"] == 0
+    assert cut1_audit["edge_fill_ratio"] > 0.95
+    assert cut1_audit["tail_tip"] is not None
+    for c_aud in audit["cuts"][1:]:
+        assert c_aud["full_bleed_bg"] is False
+        assert c_aud["overlap_px"] == 0
+
+    # Pure white outer margins on all 5 pages + lush full-bleed thumb.jpg!
+    for p_path in res.page_paths:
+        _assert_pure_white_outer_border(p_path, margin=4)
+    _assert_pure_white_outer_border(res.thumb_path, margin=2)
+    with Image.open(res.thumb_path) as tim:
+        assert tim.size == THUMB_SIZE
+        t_arr = np.asarray(tim.convert("RGB"))
+    interior_fill = float(np.mean(np.any(t_arr[24:-24, 24:-24, :] < 245, axis=2)))
+    assert interior_fill > 0.90, f"Expected lush full-bleed thumb.jpg for Tier 1 Cut 1, got fill={interior_fill:.2f}"
