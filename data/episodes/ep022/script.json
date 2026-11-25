@@ -1,0 +1,114 @@
+{
+  "episode_number": 22,
+  "source_post_no": "70711",
+  "source_title": "오늘 수도원에서본 레전드 사건..JPG",
+  "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=70711&exception_mode=recommend&page=5",
+  "subtitle": "공략집이 캐스터템이랬는데?",
+  "cuts": [
+    {
+      "cut_index": 1,
+      "aspect_ratio": "4:3",
+      "layout_slot": "top",
+      "characters": [
+        "나이트엘프 사제"
+      ],
+      "speaker": "나이트엘프 사제",
+      "dialogue": "수도원 막넴 끝!\n드디어 힐러 모자 떴다!",
+      "wordless": false,
+      "visual_prompt": "High-angle three-quarter shot in cute 2.5-head chibi SD comic style on a pure #FFFFFF background with minimal cathedral floor tile shadow. On the left, Night Elf Priest (she/her, no halo, no wings, single golden cross staff tucked cleanly on her back, mini holy book at waist) clasps her hands happily toward a glowing white-and-gold priest chapeau floating as loot in the center, while a defeated cute 2.5-head chibi SD Scarlet boss silhouette lies faintly behind.",
+      "tail_target": "left",
+      "bubble_side": "left",
+      "item_tooltip": {
+        "image_path": null,
+        "item_name": "화이트메인의 모자",
+        "wowhead_item_id": 7720,
+        "quality": "rare",
+        "slot_left": "",
+        "slot_right": "",
+        "lines": [],
+        "equip_effects": [],
+        "icon_name": null,
+        "preferred_corner": "top_right",
+        "target_width": 284
+      }
+    },
+    {
+      "cut_index": 2,
+      "aspect_ratio": "16:9",
+      "layout_slot": "bottom",
+      "characters": [
+        "나이트엘프 사제",
+        "스카이본 마법사"
+      ],
+      "speaker": "스카이본 마법사",
+      "dialogue": "어, 캐스터 추천템이네\n입찰 굴려서 먹음~",
+      "wordless": false,
+      "visual_prompt": "Over-the-shoulder shot from behind Night Elf Priest (she/her, no halo, no wings, single golden cross staff on back) on the left looking toward Skyborne Mage (she/her) on the right, in cute 2.5-head chibi SD comic style on a pure #FFFFFF background with minimal floor shadow. Skyborne Mage wears her signature tilted blue wizard hat with strictly ONE single blue crystal-orb staff stowed cleanly diagonally on her back (zero extra sticks), holding a chunky 6-sided white-and-gold die with round dot pips only (no digits) in one hand while smugly holding up the looted white-and-gold priest chapeau in the other hand.",
+      "tail_target": "right",
+      "bubble_side": "right",
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 3,
+      "aspect_ratio": "4:3",
+      "layout_slot": "top",
+      "characters": [
+        "나이트엘프 사제",
+        "스카이본 마법사"
+      ],
+      "speaker": "나이트엘프 사제",
+      "dialogue": "법사님 낀 모자가\n주문력 더 높은데요?",
+      "wordless": false,
+      "visual_prompt": "Side-profile medium shot in cute 2.5-head chibi SD comic style on a pure #FFFFFF background with minimal floor shadow. On the left, Night Elf Priest (she/her, no halo, no wings, staff stowed on back) leans forward with an awkward sweatdrop pointing directly at the sparkling high-level blue wizard hat Skyborne Mage is already wearing on her head; on the right, Skyborne Mage (she/her, staff stowed on back) lifts her chin smugly while hugging the looted white-and-gold priest chapeau under one arm.",
+      "tail_target": "left",
+      "bubble_side": "left",
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 4,
+      "aspect_ratio": "16:9",
+      "layout_slot": "bottom",
+      "characters": [
+        "스카이본 마법사"
+      ],
+      "speaker": "스카이본 마법사",
+      "dialogue": "유명 인던 공략집에 있거든?\n님이 공략집보다 겜 잘 앎?",
+      "wordless": false,
+      "visual_prompt": "Dramatic low-angle shot centered slightly right in cute 2.5-head chibi SD comic style on a pure #FFFFFF background with minimal shadow under her boots. Skyborne Mage (she/her, wearing her signature blue wizard hat, crystal-orb staff stowed cleanly on her back) thrusts a thick glowing blue-and-gold blank-covered strategy tome forward with one hand while clutching the white-and-gold priest chapeau under her other arm, flashing a triumphant star-eyed grin (zero text or letters on the book).",
+      "tail_target": "center",
+      "bubble_side": "left",
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 5,
+      "aspect_ratio": "4:3",
+      "layout_slot": "top",
+      "characters": [
+        "나이트엘프 사제"
+      ],
+      "speaker": null,
+      "dialogue": null,
+      "wordless": true,
+      "visual_prompt": "Extreme big bust-up close-up freeze-frame filling 80 percent of the panel height in cute 2.5-head chibi SD comic style on a pure #FFFFFF background. Night Elf Priest (she/her, no halo, no wings) stares blankly forward with wide lavender eyes, tiny pinprick pupils, dark purple comedy gloom lines descending over her forehead, and a stiff frozen polite smile in silent disbelief.",
+      "tail_target": "center",
+      "bubble_side": null,
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 6,
+      "aspect_ratio": "16:9",
+      "layout_slot": "bottom",
+      "characters": [
+        "나이트엘프 사제",
+        "스카이본 마법사"
+      ],
+      "speaker": "나이트엘프 사제",
+      "dialogue": "네, 그럼 다음 힐도\n공략집한테 받으세요",
+      "wordless": false,
+      "visual_prompt": "Slightly high-angle wide shot in cute 2.5-head chibi SD comic style on a pure #FFFFFF background with minimal stone shadow under their feet. On the left, Night Elf Priest (she/her, no halo, no wings, single golden cross staff stowed on her back) holds up a smooth oval glowing blue swirl-engraved Hearthstone surrounded by teleport sparkles as she turns to leave with a cool deadpan smile; on the right, Skyborne Mage (she/her, staff stowed on back) freezes in panic hugging the thick blank-covered strategy book.",
+      "tail_target": "left",
+      "bubble_side": "left",
+      "item_tooltip": null
+    }
+  ]
+}

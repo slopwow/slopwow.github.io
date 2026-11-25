@@ -825,5 +825,398 @@
       "assets/episodes/ep020/page_3.png?v=affe2d9d"
     ],
     "canonical_url": "https://slopwow.github.io/episodes/ep020.html"
+  },
+  {
+    "episode_id": "ep021",
+    "episode_number": 21,
+    "title": "길 잃은 뉴비한테 와우 알려줬다",
+    "subtitle": "가덤골 친절한 길 안내",
+    "source_post_no": "67419",
+    "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=67419&exception_mode=recommend&page=5",
+    "created_at": "2026-11-25T18:21:49+09:00",
+    "date_short": "2026-11-25",
+    "cut_count": 5,
+    "cast_used": [
+      "노움 도적",
+      "타우렌 드루이드"
+    ],
+    "cast_chips": [
+      {
+        "id": "gnome_rogue",
+        "name": "노움 도적",
+        "color": "#FFC107"
+      },
+      {
+        "id": "tauren_druid",
+        "name": "타우렌 드루이드",
+        "color": "#8D6E63"
+      }
+    ],
+    "full_image": "assets/episodes/ep021/episode_full.jpg?v=5d63ff84",
+    "thumb_image": "assets/episodes/ep021/thumb.jpg?v=cfce790f",
+    "page_images": [
+      "assets/episodes/ep021/page_1.png?v=9aab523b",
+      "assets/episodes/ep021/page_2.png?v=571b4f31",
+      "assets/episodes/ep021/page_3.png?v=5487768f"
+    ],
+    "canonical_url": "https://slopwow.github.io/episodes/ep021.html"
+  },
+  {
+    "episode_id": "ep022",
+    "episode_number": 22,
+    "title": "오늘 수도원에서본 레전드 사건..JPG",
+    "subtitle": "공략집이 캐스터템이랬는데?",
+    "source_post_no": "70711",
+    "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=70711&exception_mode=recommend&page=5",
+    "created_at": "2026-11-25T18:21:53+09:00",
+    "date_short": "2026-11-25",
+    "cut_count": 6,
+    "cast_used": [
+      "나이트엘프 사제",
+      "스카이본 마법사"
+    ],
+    "cast_chips": [
+      {
+        "id": "nightelf_priest",
+        "name": "나이트엘프 사제",
+        "color": "#7E57C2"
+      },
+      {
+        "id": "skyborne_mage",
+        "name": "스카이본 마법사",
+        "color": "#29B6F6"
+      }
+    ],
+    "full_image": "assets/episodes/ep022/episode_full.jpg?v=c168ecf5",
+    "thumb_image": "assets/episodes/ep022/thumb.jpg?v=e2a04fd7",
+    "page_images": [
+      "assets/episodes/ep022/page_1.png?v=29ba9fee",
+      "assets/episodes/ep022/page_2.png?v=9e7e3038",
+      "assets/episodes/ep022/page_3.png?v=282e84dc"
+    ],
+    "canonical_url": "https://slopwow.github.io/episodes/ep022.html"
+  },
+  {
+    "episode_id": "ep023",
+    "episode_number": 23,
+    "title": "진짜 개또라이 많네",
+    "subtitle": "탱 움직이면 힐 멈추는 투컴 수도원",
+    "source_post_no": "72196",
+    "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=72196&exception_mode=recommend&page=5",
+    "created_at": "2026-11-25T18:21:57+09:00",
+    "date_short": "2026-11-25",
+    "cut_count": 6,
+    "cast_used": [
+      "언데드 성기사",
+      "노움 도적",
+      "트롤 주술사"
+    ],
+    "cast_chips": [
+      {
+        "id": "undead_paladin",
+        "name": "언데드 성기사",
+        "color": "#9E9E9E"
+      },
+      {
+        "id": "gnome_rogue",
+        "name": "노움 도적",
+        "color": "#FFC107"
+      },
+      {
+        "id": "troll_shaman",
+        "name": "트롤 주술사",
+        "color": "#00ACC1"
+      }
+    ],
+    "full_image": "assets/episodes/ep023/episode_full.jpg?v=ce4c0891",
+    "thumb_image": "assets/episodes/ep023/thumb.jpg?v=b0e37a43",
+    "page_images": [
+      "assets/episodes/ep023/page_1.png?v=14c93d0d",
+      "assets/episodes/ep023/page_2.png?v=fadb0e1d",
+      "assets/episodes/ep023/page_3.png?v=8585d0a4"
+    ],
+    "canonical_url": "https://slopwow.github.io/episodes/ep023.html"
+  },
+  {
+    "episode_id": "ep024",
+    "episode_number": 24,
+    "title": "기사혐오는 당해야 생긴다",
+    "subtitle": "구릉 첫넴에서 터진 보기특 입찰",
+    "source_post_no": "75174",
+    "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=75174&exception_mode=recommend&page=5",
+    "created_at": "2026-11-25T18:22:00+09:00",
+    "date_short": "2026-11-25",
+    "cut_count": 6,
+    "cast_used": [
+      "트롤 주술사",
+      "언데드 성기사",
+      "나이트엘프 사제"
+    ],
+    "cast_chips": [
+      {
+        "id": "troll_shaman",
+        "name": "트롤 주술사",
+        "color": "#00ACC1"
+      },
+      {
+        "id": "undead_paladin",
+        "name": "언데드 성기사",
+        "color": "#9E9E9E"
+      },
+      {
+        "id": "nightelf_priest",
+        "name": "나이트엘프 사제",
+        "color": "#7E57C2"
+      }
+    ],
+    "full_image": "assets/episodes/ep024/episode_full.jpg?v=45c22529",
+    "thumb_image": "assets/episodes/ep024/thumb.jpg?v=e6959464",
+    "page_images": [
+      "assets/episodes/ep024/page_1.png?v=701c64e5",
+      "assets/episodes/ep024/page_2.png?v=5610769c",
+      "assets/episodes/ep024/page_3.png?v=ccc95437"
+    ],
+    "canonical_url": "https://slopwow.github.io/episodes/ep024.html"
+  },
+  {
+    "episode_id": "ep025",
+    "episode_number": 25,
+    "title": "오늘자 새로생긴 룰 잡템은 탱차비라함",
+    "subtitle": "녹템까지 탱 차비라는 대환장 파티",
+    "source_post_no": "91005",
+    "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=91005&exception_mode=recommend&page=3",
+    "created_at": "2026-11-25T18:22:04+09:00",
+    "date_short": "2026-11-25",
+    "cut_count": 6,
+    "cast_used": [
+      "타우렌 드루이드",
+      "오크 전사",
+      "노움 도적"
+    ],
+    "cast_chips": [
+      {
+        "id": "tauren_druid",
+        "name": "타우렌 드루이드",
+        "color": "#8D6E63"
+      },
+      {
+        "id": "orc_warrior",
+        "name": "오크 전사",
+        "color": "#4CAF50"
+      },
+      {
+        "id": "gnome_rogue",
+        "name": "노움 도적",
+        "color": "#FFC107"
+      }
+    ],
+    "full_image": "assets/episodes/ep025/episode_full.jpg?v=d5d54f1d",
+    "thumb_image": "assets/episodes/ep025/thumb.jpg?v=aa41fe1f",
+    "page_images": [
+      "assets/episodes/ep025/page_1.png?v=8fb439b3",
+      "assets/episodes/ep025/page_2.png?v=353a6981",
+      "assets/episodes/ep025/page_3.png?v=72a45443"
+    ],
+    "canonical_url": "https://slopwow.github.io/episodes/ep025.html"
+  },
+  {
+    "episode_id": "ep026",
+    "episode_number": 26,
+    "title": "법사들 1초만에 화나게 하는법",
+    "subtitle": "공짜 물빵 1초 법사 뇌출혈 공식",
+    "source_post_no": "108570",
+    "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=108570&exception_mode=recommend&page=1",
+    "created_at": "2026-11-25T18:22:44+09:00",
+    "date_short": "2026-11-25",
+    "cut_count": 5,
+    "cast_used": [
+      "노움 도적",
+      "스카이본 마법사"
+    ],
+    "cast_chips": [
+      {
+        "id": "gnome_rogue",
+        "name": "노움 도적",
+        "color": "#FFC107"
+      },
+      {
+        "id": "skyborne_mage",
+        "name": "스카이본 마법사",
+        "color": "#29B6F6"
+      }
+    ],
+    "full_image": "assets/episodes/ep026/episode_full.jpg?v=0c93afb0",
+    "thumb_image": "assets/episodes/ep026/thumb.jpg?v=712bc4b5",
+    "page_images": [
+      "assets/episodes/ep026/page_1.png?v=e3f8b46a",
+      "assets/episodes/ep026/page_2.png?v=10eb2e65",
+      "assets/episodes/ep026/page_3.png?v=0b394d61"
+    ],
+    "canonical_url": "https://slopwow.github.io/episodes/ep026.html"
+  },
+  {
+    "episode_id": "ep027",
+    "episode_number": 27,
+    "title": "다짜고짜 '마나약' 달라는 냥꾼은 어떻게 해야함?",
+    "subtitle": "아이언포지 마나약 대소동",
+    "source_post_no": "92646",
+    "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=92646&exception_mode=recommend&page=3",
+    "created_at": "2026-11-25T18:22:47+09:00",
+    "date_short": "2026-11-25",
+    "cut_count": 6,
+    "cast_used": [
+      "드워프 사냥꾼",
+      "스카이본 마법사",
+      "노움 도적"
+    ],
+    "cast_chips": [
+      {
+        "id": "dwarf_hunter",
+        "name": "드워프 사냥꾼",
+        "color": "#2E7D32"
+      },
+      {
+        "id": "skyborne_mage",
+        "name": "스카이본 마법사",
+        "color": "#29B6F6"
+      },
+      {
+        "id": "gnome_rogue",
+        "name": "노움 도적",
+        "color": "#FFC107"
+      }
+    ],
+    "full_image": "assets/episodes/ep027/episode_full.jpg?v=448b0374",
+    "thumb_image": "assets/episodes/ep027/thumb.jpg?v=e1e389fa",
+    "page_images": [
+      "assets/episodes/ep027/page_1.png?v=270b3953",
+      "assets/episodes/ep027/page_2.png?v=39dfff73",
+      "assets/episodes/ep027/page_3.png?v=3268e853"
+    ],
+    "canonical_url": "https://slopwow.github.io/episodes/ep027.html"
+  },
+  {
+    "episode_id": "ep028",
+    "episode_number": 28,
+    "title": "내인생 가장황당한이유로 길드추방당햇다",
+    "subtitle": "이틀 미접이라더니 1분 만에 길드 추방",
+    "source_post_no": "64277",
+    "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=64277&exception_mode=recommend&page=6",
+    "created_at": "2026-11-25T18:22:52+09:00",
+    "date_short": "2026-11-25",
+    "cut_count": 7,
+    "cast_used": [
+      "나이트엘프 사제",
+      "인간 흑마법사",
+      "노움 도적"
+    ],
+    "cast_chips": [
+      {
+        "id": "nightelf_priest",
+        "name": "나이트엘프 사제",
+        "color": "#7E57C2"
+      },
+      {
+        "id": "human_warlock",
+        "name": "인간 흑마법사",
+        "color": "#6A1B9A"
+      },
+      {
+        "id": "gnome_rogue",
+        "name": "노움 도적",
+        "color": "#FFC107"
+      }
+    ],
+    "full_image": "assets/episodes/ep028/episode_full.jpg?v=4069d117",
+    "thumb_image": "assets/episodes/ep028/thumb.jpg?v=fd4992f9",
+    "page_images": [
+      "assets/episodes/ep028/page_1.png?v=75ba7649",
+      "assets/episodes/ep028/page_2.png?v=ba0f7072",
+      "assets/episodes/ep028/page_3.png?v=9305475a",
+      "assets/episodes/ep028/page_4.png?v=39ff4ccf"
+    ],
+    "canonical_url": "https://slopwow.github.io/episodes/ep028.html"
+  },
+  {
+    "episode_id": "ep029",
+    "episode_number": 29,
+    "title": "도시괴담 성기사 첨봄 ㅋㅋㅋㅋ",
+    "subtitle": "줄파락 신기의 도검 낭만 선언",
+    "source_post_no": "73199",
+    "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=73199&exception_mode=recommend&page=5",
+    "created_at": "2026-11-25T18:22:56+09:00",
+    "date_short": "2026-11-25",
+    "cut_count": 6,
+    "cast_used": [
+      "오크 전사",
+      "트롤 주술사",
+      "언데드 성기사"
+    ],
+    "cast_chips": [
+      {
+        "id": "orc_warrior",
+        "name": "오크 전사",
+        "color": "#4CAF50"
+      },
+      {
+        "id": "troll_shaman",
+        "name": "트롤 주술사",
+        "color": "#00ACC1"
+      },
+      {
+        "id": "undead_paladin",
+        "name": "언데드 성기사",
+        "color": "#9E9E9E"
+      }
+    ],
+    "full_image": "assets/episodes/ep029/episode_full.jpg?v=b8e760bc",
+    "thumb_image": "assets/episodes/ep029/thumb.jpg?v=ac9d4799",
+    "page_images": [
+      "assets/episodes/ep029/page_1.png?v=97da6a85",
+      "assets/episodes/ep029/page_2.png?v=4b881eaa",
+      "assets/episodes/ep029/page_3.png?v=6980aa37"
+    ],
+    "canonical_url": "https://slopwow.github.io/episodes/ep029.html"
+  },
+  {
+    "episode_id": "ep030",
+    "episode_number": 30,
+    "title": "회개) 옆에 있던 얼라 하나를 다짜고짜 죽였습니다",
+    "subtitle": "회개는 하는데 용서는 안 함",
+    "source_post_no": "120602",
+    "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=120602",
+    "created_at": "2026-11-25T18:22:59+09:00",
+    "date_short": "2026-11-25",
+    "cut_count": 6,
+    "cast_used": [
+      "언데드 성기사",
+      "노움 도적",
+      "오크 전사"
+    ],
+    "cast_chips": [
+      {
+        "id": "undead_paladin",
+        "name": "언데드 성기사",
+        "color": "#9E9E9E"
+      },
+      {
+        "id": "gnome_rogue",
+        "name": "노움 도적",
+        "color": "#FFC107"
+      },
+      {
+        "id": "orc_warrior",
+        "name": "오크 전사",
+        "color": "#4CAF50"
+      }
+    ],
+    "full_image": "assets/episodes/ep030/episode_full.jpg?v=2eb56df7",
+    "thumb_image": "assets/episodes/ep030/thumb.jpg?v=8103d89f",
+    "page_images": [
+      "assets/episodes/ep030/page_1.png?v=c9cde911",
+      "assets/episodes/ep030/page_2.png?v=56e584f6",
+      "assets/episodes/ep030/page_3.png?v=00f0a661"
+    ],
+    "canonical_url": "https://slopwow.github.io/episodes/ep030.html"
   }
 ]

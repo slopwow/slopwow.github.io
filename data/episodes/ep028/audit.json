@@ -1,0 +1,197 @@
+{
+  "passed": true,
+  "total_overlap_px": 0,
+  "total_tooltip_overlap_px": 0,
+  "border_pure_white": true,
+  "cut_count": 7,
+  "page_count": 4,
+  "page_sizes": [
+    [
+      900,
+      1320
+    ],
+    [
+      900,
+      1320
+    ],
+    [
+      900,
+      1320
+    ],
+    [
+      900,
+      486
+    ]
+  ],
+  "full_size": [
+    900,
+    4965
+  ],
+  "thumb_size": [
+    800,
+    600
+  ],
+  "watermarked": true,
+  "watermark_url": "slopwow.github.io",
+  "cuts": [
+    {
+      "wordless": false,
+      "bubble_count": 1,
+      "overlap_px": 0,
+      "min_clearance_px": 13.9,
+      "font_size": 25,
+      "art_bbox": [
+        47,
+        294,
+        859,
+        817
+      ],
+      "tail_target": "left",
+      "bubble_center": [
+        282.5,
+        162.6
+      ],
+      "bubble_side_resolved": "left",
+      "art_height_ratio": 0.6301,
+      "cut_index": 1,
+      "slot": "top",
+      "page": 1
+    },
+    {
+      "wordless": false,
+      "bubble_count": 1,
+      "overlap_px": 0,
+      "min_clearance_px": 7.8,
+      "font_size": 20,
+      "art_bbox": [
+        174,
+        144,
+        668,
+        435
+      ],
+      "tail_target": "right",
+      "bubble_center": [
+        546.0,
+        63.8
+      ],
+      "bubble_side_resolved": "right",
+      "layout_mode_resolved": "top_right",
+      "art_height_ratio": 0.6674,
+      "cut_index": 2,
+      "slot": "bottom",
+      "page": 1
+    },
+    {
+      "wordless": false,
+      "bubble_count": 1,
+      "overlap_px": 0,
+      "min_clearance_px": 10.0,
+      "font_size": 25,
+      "art_bbox": [
+        51,
+        323,
+        865,
+        817
+      ],
+      "tail_target": "left",
+      "bubble_center": [
+        276.5,
+        183.5
+      ],
+      "bubble_side_resolved": "left",
+      "art_height_ratio": 0.5952,
+      "cut_index": 3,
+      "slot": "top",
+      "page": 2
+    },
+    {
+      "wordless": false,
+      "bubble_count": 1,
+      "overlap_px": 0,
+      "min_clearance_px": 16.5,
+      "font_size": 20,
+      "art_bbox": [
+        152,
+        123,
+        691,
+        429
+      ],
+      "tail_target": "right",
+      "bubble_center": [
+        533.8,
+        65.3
+      ],
+      "bubble_side_resolved": "right",
+      "layout_mode_resolved": "top_right",
+      "art_height_ratio": 0.7018,
+      "cut_index": 4,
+      "slot": "bottom",
+      "page": 2
+    },
+    {
+      "wordless": false,
+      "bubble_count": 1,
+      "overlap_px": 0,
+      "min_clearance_px": 8.9,
+      "font_size": 25,
+      "art_bbox": [
+        26,
+        283,
+        880,
+        817
+      ],
+      "tail_target": "left",
+      "bubble_center": [
+        263.2,
+        145.8
+      ],
+      "bubble_side_resolved": "left",
+      "art_height_ratio": 0.6434,
+      "cut_index": 5,
+      "slot": "top",
+      "page": 3
+    },
+    {
+      "wordless": true,
+      "bubble_count": 0,
+      "overlap_px": 0,
+      "min_clearance_px": 999.0,
+      "font_size": null,
+      "art_bbox": [
+        39,
+        0,
+        804,
+        435
+      ],
+      "art_cx": 421.5,
+      "art_height_ratio": 0.9977,
+      "cut_index": 6,
+      "slot": "bottom",
+      "page": 3
+    },
+    {
+      "wordless": false,
+      "bubble_count": 1,
+      "overlap_px": 0,
+      "min_clearance_px": 7.1,
+      "font_size": 20,
+      "art_bbox": [
+        288,
+        153,
+        560,
+        427
+      ],
+      "tail_target": "center",
+      "bubble_center": [
+        412.6,
+        63.8
+      ],
+      "bubble_side_resolved": "center",
+      "layout_mode_resolved": "top_center",
+      "art_height_ratio": 0.6284,
+      "cut_index": 7,
+      "slot": "epilogue_box",
+      "page": 4
+    }
+  ]
+}
