@@ -3,430 +3,31 @@
   "source_post_no": "98449",
   "source_title": "이거 필비 전사가 가져갓네 ㅎㄷ",
   "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=98449",
-  "subtitle": "검은바위 첨탑 상층 대족장 렌드 '필살의 비수' 전사 입찰 대참사",
-  "layout_mode": "v4_five_act",
+  "subtitle": "첨상 렌드 방의 전탱 비스 대참사",
+  "layout_mode": "classic_2tier",
   "background_style": "clean_white",
-  "acts": [
-    {
-      "act_number": 1,
-      "act_title": "1막: 검은바위 첨탑 상층 렌드 처치와 에픽 '필살의 비수' 강림",
-      "layout_id": "open_top_split_bottom",
-      "cuts": [
-        {
-          "cut_index": 1,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 1,
-          "panel_index": 1,
-          "characters": [
-            "노움 도적",
-            "오크 전사"
-          ],
-          "speaker": "노움 도적",
-          "dialogue": "에헤헷~ 렌드 컷!\n잠깐… 저 보라색 빛 뭐야?!",
-          "wordless": false,
-          "visual_prompt": "TIER 1 FULL-BLEED UPPER BLACKROCK SPIRE REND ARENA ESTABLISHING SHOT inside solid black box frame (edge-to-edge full scenery, outer page margins pure #FFFFFF). Sweeping wide cinematic anime camera inside Upper Blackrock Spire's dark volcanic stone colosseum: rugged basalt fortress walls, flickering orange fire braziers, dark iron portcullis arches, open warm amber-lit vaulted stone ceiling filling the ENTIRE upper-left headroom (x=4%..58%, y=0%..35% completely uncluttered open ceiling — keep all heads below y=35%!). In center-back, defeated cartoon warlord Rend Blackhand and his small black drake lie dizzy with spiral eyes beside a dazzling EPIC PURPLE light beam erupting from the loot pile! DYNAMIC ACTING: lower-left foreground (x=28%), petite Gnome Rogue leaping excitedly pointing back at the epic purple beam with sparkling wide sapphire eyes (fair skin, golden-pink-blue twin pigtails, green aviator goggles on forehead, STRICTLY 0 X/star hairpins, dual green daggers crossed at lower back waist, Clean Hand). Lower-right foreground (x=74%), Orc Warrior wiping her brow triumphantly with a bold fang grin, holding a one-handed steel sword and sturdy steel kite shield after tanking the boss (fair peach-ivory skin — NEVER green skin, green plush orc hood with cream horns). STRICTLY ZERO text/letters in art; keep strictly inside Panel 1.",
-          "tail_target": "left",
-          "bubble_side": "left",
-          "full_bleed_bg": true,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        },
-        {
-          "cut_index": 2,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 1,
-          "panel_index": 2,
-          "characters": [
-            "노움 도적"
-          ],
-          "speaker": "노움 도적",
-          "dialogue": "대박!! 필살의 비수 떴어!!",
-          "wordless": false,
-          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom for 1-line bubble; keep strictly inside Panel 2 borders!). HIGH-ANGLE ECSTATIC STARRY CLOSE-UP: petite Gnome Rogue bouncing happily on tiptoes clasping both fingerless-gloved hands beneath her chin, giant blinding golden star-shaped sparkles exploding inside her huge sapphire eyes, radiant open-mouth squeal of pure gremlin bliss with glowing violet-gold sparkles orbiting her cheeks! Guardrail: fair skin, golden-blonde to pink/blue twin pigtails, green-lens goggles on forehead, STRICTLY 0 X/star hairpins, daggers stowed out of sight at lower back waist (Clean Hand). ZERO text/letters in art.",
-          "tail_target": "center",
-          "bubble_side": "center",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        },
-        {
-          "cut_index": 3,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 1,
-          "panel_index": 3,
-          "characters": [
-            "오크 전사"
-          ],
-          "speaker": "오크 전사",
-          "dialogue": "어? 공속 1.70 올치명…?!",
-          "wordless": false,
-          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom for 1-line bubble; keep strictly inside Panel 3 borders!). LOW-ANGLE SUDDEN LOOT-GREED LOCK-ON: Orc Warrior stopping dead in her tracks leaning slightly forward with blazing fiery crimson-gold starry sparkle eyes, mischievous curled fang smirk, rubbing her armored gauntlets together eagerly as epic purple glint reflects off her hood! Guardrail: fair peach-ivory skin (NEVER green skin!), vibrant green plush orc monster hood with horns, weapons/shield stowed cleanly on back (Clean Hand). ZERO text/letters in art.",
-          "tail_target": "center",
-          "bubble_side": "center",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        }
-      ]
-    },
-    {
-      "act_number": 2,
-      "act_title": "2막: '필살의 비수' 전사 기습 입찰과 주사위 대참사",
-      "layout_id": "diagonal_tempo_2cut",
-      "cuts": [
-        {
-          "cut_index": 4,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 2,
-          "panel_index": 1,
-          "characters": [
-            "오크 전사",
-            "노움 도적"
-          ],
-          "speaker": "오크 전사",
-          "dialogue": "분노 수급 1티어 비스잖아!\n나도 바로 입찰 딸깍~!",
-          "wordless": false,
-          "visual_prompt": "TIER 2 NATURAL FULL-WIDTH VOLCANIC BLACKROCK ARENA FLOOR + 100% PURE #FFFFFF UPPER SKY across top 38% AND ENTIRE TOP-RIGHT CORNER (x=56%..100%, y=0%..70% MUST BE 100% EMPTY PURE #FFFFFF WHITE for WoW epic item tooltip overlay!). Dark basalt colosseum flagstones flush edge-to-edge along bottom & left borders (0 floating miniature islands!). FISHEYE FORCED-PERSPECTIVE LOOT CLASH: lower-left (x=25%, below y=38%), Orc Warrior lunging explosively forward toward the camera with wild starry puppy-warrior grin, slamming her hand down to fling a chunky white 6-sided loot die showing ONLY round black dot pips (STRICTLY ZERO digits or letters!) toward a hovering COMPACT SERRATED ONE-HANDED STEEL DAGGER (Felstriker — sleek short 1H dagger scale with sawtooth edge glowing epic purple, NEVER an oversized greatsword!; fair skin, green orc hood, her sword & shield stowed on back, Clean Hand). Center-low (x=48%, compact strictly below y=56% leaving top-right 100% empty!), petite Gnome Rogue skidding to a violent halt with jaw dropping open and wide panicked shock eyes (0 X/star hairpins, daggers at lower back waist). ZERO text/letters inside art; keep strictly inside Panel 1.",
-          "tail_target": "left",
-          "bubble_side": "left",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": {
-            "image_path": null,
-            "item_name": "필살의 비수",
-            "wowhead_item_id": 12590,
-            "quality": "epic",
-            "slot_left": "한손 장비",
-            "slot_right": "단검",
-            "lines": [
-              "획득 시 귀속",
-              "고유 장착 아이템",
-              "공격력 54 - 101\t속도 1.70",
-              "(초당 공격력 45.6)",
-              "최소 요구 레벨 58"
-            ],
-            "equip_effects": [
-              "발동 효과: 다음 3초 동안의 모든 공격은 치명타 및 극대화로 적중됩니다."
-            ],
-            "icon_name": "inv_weapon_shortblade_25",
-            "preferred_corner": "top_right",
-            "target_width": 280
-          }
-        },
-        {
-          "cut_index": 5,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 2,
-          "panel_index": 2,
-          "characters": [
-            "노움 도적",
-            "오크 전사"
-          ],
-          "speaker": "노움 도적",
-          "dialogue": "잠깐 전사야?! 그거 단검이야!\n도적 옆에 있는데 진짜 먹었어?!",
-          "wordless": false,
-          "visual_prompt": "TIER 2 NATURAL FULL-WIDTH BLACKROCK ARENA FLOOR + 100% PURE #FFFFFF UPPER SKY across top 38% (y=0%..38% completely empty pure #FFFFFF headroom!). Dark volcanic arena flagstones flush edge-to-edge along bottom & sides (0 floating islands!). WILD 30-DEGREE DUTCH TILT LOOT ROBBERY! Lower-left (x=27%), petite Gnome Rogue clutching both sides of her head leaning back in utter pinpoint-pupil disbelief with pale-blue comic shock stripes across her brow (fair skin, green goggles on forehead, 0 X/star pins, daggers stowed at lower back waist, Clean Hand). Lower-right (x=73%), Orc Warrior triumphantly hoisting the COMPACT serrated purple-glowing one-handed dagger (Felstriker — sleek compact 1H dagger scale!) high in one hand while balancing a gleaming chunky 6-sided white die showing 6 round black dot pips ONLY (0 digits!) on her other palm, beaming with shameless ecstatic puppy-fang pride (fair skin, green orc hood, sword & shield stowed on back, Clean Hand). ZERO text/letters in art; keep strictly inside Panel 2.",
-          "tail_target": "left",
-          "bubble_side": "left",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        }
-      ]
-    },
-    {
-      "act_number": 3,
-      "act_title": "3막: 전사의 당당한 영격 논리와 파티원들의 팝콘 난장판",
-      "layout_id": "four_beat_gag",
-      "cuts": [
-        {
-          "cut_index": 6,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 3,
-          "panel_index": 1,
-          "characters": [
-            "오크 전사"
-          ],
-          "speaker": "오크 전사",
-          "dialogue": "공속 빨라야 영격 돌리지!\n전사도 단검 비스거든~!",
-          "wordless": false,
-          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom; keep strictly inside Panel 1!). CONFIDENT LOW-ANGLE BOAST: Orc Warrior puffing out her armored chest proudly with one hand on her hip and the other playfully twirling the compact serrated purple-glowing 1H dagger (Felstriker — short 1H dagger scale!), flashing a shameless dazzling fang wink and sparkles (fair skin, green orc plush hood, back weapons stowed, Clean Hand). ZERO text/letters in art.",
-          "tail_target": "center",
-          "bubble_side": "center",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        },
-        {
-          "cut_index": 7,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 3,
-          "panel_index": 2,
-          "characters": [
-            "노움 도적"
-          ],
-          "speaker": "노움 도적",
-          "dialogue": "도적 에픽 단검을 날먹해?!",
-          "wordless": false,
-          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom; keep strictly inside Panel 2!). EXTREME CLOSE-UP FURIOUS GREMLIN OUTBURST: petite Gnome Rogue lunging angrily toward the camera with puffed steaming red cheeks, blazing furious sapphire eyes, one crisp red anime anger vein on her brow, pointing an accusing trembling finger straight out of frame with comic rage puffs! Guardrail: fair skin, green aviator goggles, 0 X/star pins, daggers stowed out of sight at waist (Clean Hand). ZERO text/letters in art.",
-          "tail_target": "center",
-          "bubble_side": "center",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        },
-        {
-          "cut_index": 8,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 3,
-          "panel_index": 3,
-          "characters": [
-            "트롤 주술사"
-          ],
-          "speaker": "트롤 주술사",
-          "dialogue": "이야~ 도적도 도검 굴리니까\n쌤쌤 아니냐구~ 그치~?",
-          "wordless": false,
-          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom; keep strictly inside Panel 3!). HIGH-ANGLE HYPE-STREAMER GOSSIP: Troll Shaman leaning cheekily sideways cupping one hand mischievously beside her wide cackling grin, glittering emerald popcorn-gossip eyes sparkling with chaotic glee! Guardrail: fair peach-ivory skin (NEVER blue skin!), sky-blue plush troll hood with red mohawk & gold hoop ear piercing, wooden staff stowed on back (Clean Hand). ZERO text/letters in art.",
-          "tail_target": "center",
-          "bubble_side": "center",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        },
-        {
-          "cut_index": 9,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 3,
-          "panel_index": 4,
-          "characters": [
-            "드워프 사냥꾼"
-          ],
-          "speaker": "드워프 사냥꾼",
-          "dialogue": "옴뇸뇸~ 원래 다 내 무기~",
-          "wordless": false,
-          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom; keep strictly inside Panel 4!). COZY SIDE-PROFILE POPCORN DEADPAN: Dwarf Hunter turned 3/4 sideways with chubby chipmunk-stuffed cheeks blissfully munching fluffy popcorn from a rustic carved wooden tavern bowl (NOT a modern paper box!), serene enlightened half-lidded Buddha smile and cozy sparkle! Guardrail: fair skin, forest-green fur-trimmed hood, thick orange braided chin-pigtails, blunderbuss rifle slung across back (Clean Hand). ZERO text/letters in art.",
-          "tail_target": "center",
-          "bubble_side": "center",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        }
-      ]
-    },
-    {
-      "act_number": 4,
-      "act_title": "4막: 전사의 해맑은 퇴장과 도적 피눈물 무언 절규",
-      "layout_id": "impact_freeze_2cut",
-      "cuts": [
-        {
-          "cut_index": 10,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 4,
-          "panel_index": 1,
-          "characters": [
-            "오크 전사"
-          ],
-          "speaker": "오크 전사",
-          "dialogue": "헤헷~ 미터기 1등 간다~!",
-          "wordless": false,
-          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (ENTIRE LEFT 54% x=0%..54% MUST BE 100% EMPTY PURE #FFFFFF WHITE for left 1-line bubble! Keep character strictly inside right 42% and inside Panel 1!). BOUNCY BACK-VIEW VICTORY SKIP: positioned on right 42% (x=76%), Orc Warrior skipping merrily away to the right looking back over her red cape with radiant squeezed-shut `≧▽≦` puppy-laugh eyes, tossing a carefree peace sign while the compact serrated epic purple-glowing 1H dagger (`필살의 비수`) gleams proudly clipped at her leather belt! Guardrail: fair skin, green orc plush hood, back sword/shield stowed (Clean Hand). ZERO text/letters in art.",
-          "tail_target": "right",
-          "bubble_side": "left",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        },
-        {
-          "cut_index": 11,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 4,
-          "panel_index": 2,
-          "characters": [
-            "노움 도적"
-          ],
-          "speaker": null,
-          "dialogue": null,
-          "wordless": true,
-          "visual_prompt": "TIER 2 WORDLESS CLIMAX FREEZE-FRAME ON FULL-WIDTH BLACKROCK SPIRE ARENA FLOOR + 100% PURE #FFFFFF UPPER SKY (ZERO text, ZERO speech bubbles, ZERO SFX letters!). Dark volcanic stone arena flagstones and cracked iron floor grates anchored flush edge-to-edge along entire bottom & side borders, upper 46% pure #FFFFFF sky. SHOWSTOPPER COMIC DESPAIR ('도적 피눈물 ㅜ' — cute cartoon slapstick, ZERO gore!): Center-left foreground (x=38%, bold tall dramatic framing), petite Gnome Rogue collapsed flat onto both knees clutching the stone floor in utter soul-crushed Munch-scream devastation — drained pale white face, giant blank shock eyes gushing absurd twin cartoon waterfall fountains of bright crimson-pink manga dramatic tears, mouth dropped impossibly wide as a hilarious translucent chibi mini-soul drifts straight upward out of her mouth! Lower-right mid-ground (x=78%), the defeated arena warlord Rend and his tiny black dragon drake peek awkwardly around a stone pillar sweating buckets with identically jaw-dropped pity stares! Guardrail: fair skin, golden-pink-blue twin pigtails, green aviator goggles on forehead, STRICTLY 0 X/star pins, dual green daggers crossed at lower back waist. Keep strictly inside Panel 2.",
-          "tail_target": "center",
-          "bubble_side": null,
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        }
-      ]
-    },
-    {
-      "act_number": 5,
-      "act_title": "5막: 냥꾼의 따뜻한 위로와 도적의 전탱 영구 손절 다짐",
-      "layout_id": "split_top_wide_bottom",
-      "cuts": [
-        {
-          "cut_index": 12,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 5,
-          "panel_index": 1,
-          "characters": [
-            "드워프 사냥꾼"
-          ],
-          "speaker": "드워프 사냥꾼",
-          "dialogue": "아이고~ 도적아 울지 마…\n원래 상층은 전사 텃밭이야~",
-          "wordless": false,
-          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom; keep strictly inside Panel 1!). COZY WARM SIDE-ANGLE PAT: Dwarf Hunter leaning gently forward offering a steaming rustic wooden tavern mug of warm dwarven cocoa (NOT a paper carton/straw!) with a warm sympathetic cozy smile and sleepy compassionate amber eyes! Guardrail: fair skin, forest-green fur hood, orange braided pigtails, blunderbuss rifle slung across back (Clean Hand). ZERO text/letters in art.",
-          "tail_target": "center",
-          "bubble_side": "center",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        },
-        {
-          "cut_index": 13,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 5,
-          "panel_index": 2,
-          "characters": [
-            "노움 도적"
-          ],
-          "speaker": "노움 도적",
-          "dialogue": "으에엑… 내 에픽 단검…",
-          "wordless": false,
-          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom; keep strictly inside Panel 2!). CRUSHED FACE-DOWN POUT CLOSE-UP: petite Gnome Rogue slumped limply onto her crossed arms staring forward with shimmering watery huge sapphire eyes, crooked green goggles slipping down one side, trembling sniffle lip and faint deflated gloom cloud overhead! Guardrail: fair skin, golden-pink-blue twin pigtails, 0 X/star pins, daggers out of sight (Clean Hand). ZERO text/letters in art.",
-          "tail_target": "center",
-          "bubble_side": "center",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        },
-        {
-          "cut_index": 14,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 5,
-          "panel_index": 3,
-          "characters": [
-            "노움 도적",
-            "드워프 사냥꾼"
-          ],
-          "speaker": "노움 도적",
-          "dialogue": "다음부턴 전탱 빼고 간다!\n보기랑 야드만 구할 거야!!",
-          "wordless": false,
-          "visual_prompt": "TIER 2 FULL-WIDTH EDGE-TO-EDGE VOLCANIC STONE FLOOR + 100% PURE SOLID #FFFFFF WHITE UPPER SKY ACROSS ENTIRE TOP 44% (STRICTLY ZERO dark stone back wall or dark rectangle behind their heads — ONLY grounded volcanic stone floor slabs anchored flush edge-to-edge along the bottom y=68%..100% from left border to right border, transitioning cleanly into 100% PURE BLANK #FFFFFF WHITE SKY across the entire upper half y=0%..52%!). DETERMINED MARCH-OUT FINALE: lower-left (x=28%), petite Gnome Rogue marching fiercely right toward the exit with blazing fiery determined sapphire eyes, puffed cheeks, shaking one clenched fist upward in a solemn gremlin vow (fair skin, green aviator goggles, 0 X/star pins, dual green daggers crossed cleanly at lower back waist, Clean Hand). Lower-center-right (x=62%), Dwarf Hunter leisurely strolling right beside her tossing popcorn from her carved wooden bowl with a cheeky knowing wink (blunderbuss slung on back). Far right (x=88%, grounded on floor slabs against pure #FFFFFF white), a bright swirling turquoise-blue Dungeon Exit Portal beckoning them out (ZERO background green male orcs!). ZERO text/letters inside art; keep strictly inside Panel 3.",
-          "tail_target": "left",
-          "bubble_side": "left",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        }
-      ]
-    }
-  ],
+  "acts": null,
   "cuts": [
     {
       "cut_index": 1,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 1,
-      "panel_index": 1,
-      "characters": [
-        "노움 도적",
-        "오크 전사"
-      ],
-      "speaker": "노움 도적",
-      "dialogue": "에헤헷~ 렌드 컷!\n잠깐… 저 보라색 빛 뭐야?!",
-      "wordless": false,
-      "visual_prompt": "TIER 1 FULL-BLEED UPPER BLACKROCK SPIRE REND ARENA ESTABLISHING SHOT inside solid black box frame (edge-to-edge full scenery, outer page margins pure #FFFFFF). Sweeping wide cinematic anime camera inside Upper Blackrock Spire's dark volcanic stone colosseum: rugged basalt fortress walls, flickering orange fire braziers, dark iron portcullis arches, open warm amber-lit vaulted stone ceiling filling the ENTIRE upper-left headroom (x=4%..58%, y=0%..35% completely uncluttered open ceiling — keep all heads below y=35%!). In center-back, defeated cartoon warlord Rend Blackhand and his small black drake lie dizzy with spiral eyes beside a dazzling EPIC PURPLE light beam erupting from the loot pile! DYNAMIC ACTING: lower-left foreground (x=28%), petite Gnome Rogue leaping excitedly pointing back at the epic purple beam with sparkling wide sapphire eyes (fair skin, golden-pink-blue twin pigtails, green aviator goggles on forehead, STRICTLY 0 X/star hairpins, dual green daggers crossed at lower back waist, Clean Hand). Lower-right foreground (x=74%), Orc Warrior wiping her brow triumphantly with a bold fang grin, holding a one-handed steel sword and sturdy steel kite shield after tanking the boss (fair peach-ivory skin — NEVER green skin, green plush orc hood with cream horns). STRICTLY ZERO text/letters in art; keep strictly inside Panel 1.",
-      "tail_target": "left",
-      "bubble_side": "left",
-      "full_bleed_bg": true,
-      "speaker_anchor_xy": null,
-      "bubble_center_xy": null,
-      "item_tooltip": null
-    },
-    {
-      "cut_index": 2,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 1,
-      "panel_index": 2,
+      "aspect_ratio": "4:3",
+      "layout_slot": "top",
+      "act_number": null,
+      "panel_index": null,
       "characters": [
         "노움 도적"
       ],
       "speaker": "노움 도적",
-      "dialogue": "대박!! 필살의 비수 떴어!!",
+      "dialogue": "첨상 렌드에서 드디어\n필살의 비수 떴다!\n내 에픽 단검이다!",
       "wordless": false,
-      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom for 1-line bubble; keep strictly inside Panel 2 borders!). HIGH-ANGLE ECSTATIC STARRY CLOSE-UP: petite Gnome Rogue bouncing happily on tiptoes clasping both fingerless-gloved hands beneath her chin, giant blinding golden star-shaped sparkles exploding inside her huge sapphire eyes, radiant open-mouth squeal of pure gremlin bliss with glowing violet-gold sparkles orbiting her cheeks! Guardrail: fair skin, golden-blonde to pink/blue twin pigtails, green-lens goggles on forehead, STRICTLY 0 X/star hairpins, daggers stowed out of sight at lower back waist (Clean Hand). ZERO text/letters in art.",
-      "tail_target": "center",
-      "bubble_side": "center",
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
-      "bubble_center_xy": null,
-      "item_tooltip": null
-    },
-    {
-      "cut_index": 3,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 1,
-      "panel_index": 3,
-      "characters": [
-        "오크 전사"
-      ],
-      "speaker": "오크 전사",
-      "dialogue": "어? 공속 1.70 올치명…?!",
-      "wordless": false,
-      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom for 1-line bubble; keep strictly inside Panel 3 borders!). LOW-ANGLE SUDDEN LOOT-GREED LOCK-ON: Orc Warrior stopping dead in her tracks leaning slightly forward with blazing fiery crimson-gold starry sparkle eyes, mischievous curled fang smirk, rubbing her armored gauntlets together eagerly as epic purple glint reflects off her hood! Guardrail: fair peach-ivory skin (NEVER green skin!), vibrant green plush orc monster hood with horns, weapons/shield stowed cleanly on back (Clean Hand). ZERO text/letters in art.",
-      "tail_target": "center",
-      "bubble_side": "center",
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
-      "bubble_center_xy": null,
-      "item_tooltip": null
-    },
-    {
-      "cut_index": 4,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 2,
-      "panel_index": 1,
-      "characters": [
-        "오크 전사",
-        "노움 도적"
-      ],
-      "speaker": "오크 전사",
-      "dialogue": "분노 수급 1티어 비스잖아!\n나도 바로 입찰 딸깍~!",
-      "wordless": false,
-      "visual_prompt": "TIER 2 NATURAL FULL-WIDTH VOLCANIC BLACKROCK ARENA FLOOR + 100% PURE #FFFFFF UPPER SKY across top 38% AND ENTIRE TOP-RIGHT CORNER (x=56%..100%, y=0%..70% MUST BE 100% EMPTY PURE #FFFFFF WHITE for WoW epic item tooltip overlay!). Dark basalt colosseum flagstones flush edge-to-edge along bottom & left borders (0 floating miniature islands!). FISHEYE FORCED-PERSPECTIVE LOOT CLASH: lower-left (x=25%, below y=38%), Orc Warrior lunging explosively forward toward the camera with wild starry puppy-warrior grin, slamming her hand down to fling a chunky white 6-sided loot die showing ONLY round black dot pips (STRICTLY ZERO digits or letters!) toward a hovering COMPACT SERRATED ONE-HANDED STEEL DAGGER (Felstriker — sleek short 1H dagger scale with sawtooth edge glowing epic purple, NEVER an oversized greatsword!; fair skin, green orc hood, her sword & shield stowed on back, Clean Hand). Center-low (x=48%, compact strictly below y=56% leaving top-right 100% empty!), petite Gnome Rogue skidding to a violent halt with jaw dropping open and wide panicked shock eyes (0 X/star hairpins, daggers at lower back waist). ZERO text/letters inside art; keep strictly inside Panel 1.",
+      "visual_prompt": "Dynamic low-angle shot in a 3-to-3.5 head-tall sleek Korean gag webtoon style on a pure solid white #FFFFFF background. On the left, 노움 도적 leaps in pure ecstasy with sparkling eyes and both fists raised, her daggers neatly sheathed at her waist so her hands are free. Beside her sits an open dark-iron dungeon boss chest emitting a bright epic purple glow on a minimal dark stone floor patch.",
       "tail_target": "left",
-      "bubble_side": "left",
+      "bubble_side": "right",
       "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
+      "speaker_anchor_xy": [
+        0.32,
+        0.42
+      ],
       "bubble_center_xy": null,
       "item_tooltip": {
         "image_path": null,
@@ -447,143 +48,71 @@
         ],
         "icon_name": "inv_weapon_shortblade_25",
         "preferred_corner": "top_right",
-        "target_width": 280
+        "target_width": 288
       }
     },
     {
-      "cut_index": 5,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 2,
-      "panel_index": 2,
+      "cut_index": 2,
+      "aspect_ratio": "16:9",
+      "layout_slot": "bottom",
+      "act_number": null,
+      "panel_index": null,
+      "characters": [
+        "오크 전사",
+        "노움 도적"
+      ],
+      "speaker": "오크 전사",
+      "dialogue": "공속 1.70에 3초 올치명?\n영격 돌리기 딱 좋네.\n도적도 도검 먹으니 입찰!",
+      "wordless": false,
+      "visual_prompt": "Over-the-shoulder side view in sleek 3-to-3.5 head-tall Korean gag webtoon style on a pure solid white #FFFFFF background. On the left, tank 오크 전사 with her sturdy metal tank shield strapped on her back and her sword sheathed at her hip grins shamelessly while tossing a chunky 6-sided white-and-gold cube showing ONLY classic round dot pips, strictly ZERO digits, ZERO numbers, ZERO letters. On the right, 노움 도적 freezes mid-celebration, turning her head in disbelief.",
+      "tail_target": "left",
+      "bubble_side": "right",
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": [
+        0.28,
+        0.38
+      ],
+      "bubble_center_xy": null,
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 3,
+      "aspect_ratio": "4:3",
+      "layout_slot": "top",
+      "act_number": null,
+      "panel_index": null,
       "characters": [
         "노움 도적",
         "오크 전사"
       ],
       "speaker": "노움 도적",
-      "dialogue": "잠깐 전사야?! 그거 단검이야!\n도적 옆에 있는데 진짜 먹었어?!",
+      "dialogue": "잠깐만요 전사님!\n도적이 뻔히 옆에 있는데\n진짜로 주사위 굴렸어요?!",
       "wordless": false,
-      "visual_prompt": "TIER 2 NATURAL FULL-WIDTH BLACKROCK ARENA FLOOR + 100% PURE #FFFFFF UPPER SKY across top 38% (y=0%..38% completely empty pure #FFFFFF headroom!). Dark volcanic arena flagstones flush edge-to-edge along bottom & sides (0 floating islands!). WILD 30-DEGREE DUTCH TILT LOOT ROBBERY! Lower-left (x=27%), petite Gnome Rogue clutching both sides of her head leaning back in utter pinpoint-pupil disbelief with pale-blue comic shock stripes across her brow (fair skin, green goggles on forehead, 0 X/star pins, daggers stowed at lower back waist, Clean Hand). Lower-right (x=73%), Orc Warrior triumphantly hoisting the COMPACT serrated purple-glowing one-handed dagger (Felstriker — sleek compact 1H dagger scale!) high in one hand while balancing a gleaming chunky 6-sided white die showing 6 round black dot pips ONLY (0 digits!) on her other palm, beaming with shameless ecstatic puppy-fang pride (fair skin, green orc hood, sword & shield stowed on back, Clean Hand). ZERO text/letters in art; keep strictly inside Panel 2.",
+      "visual_prompt": "Close-up dramatic confrontation angle in sleek 3-to-3.5 head-tall Korean gag webtoon style on a pure solid white #FFFFFF background. On the left, 노움 도적 leans forward frantically with wide panicked eyes, waving both empty hands with her daggers stowed at her belt. On the right, tank 오크 전사 holds a sturdy kite shield on her left arm with her sword sheathed, crossing her free hand casually without a shred of guilt.",
       "tail_target": "left",
-      "bubble_side": "left",
+      "bubble_side": "right",
       "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
-      "bubble_center_xy": null,
-      "item_tooltip": null
-    },
-    {
-      "cut_index": 6,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 3,
-      "panel_index": 1,
-      "characters": [
-        "오크 전사"
+      "speaker_anchor_xy": [
+        0.3,
+        0.45
       ],
-      "speaker": "오크 전사",
-      "dialogue": "공속 빨라야 영격 돌리지!\n전사도 단검 비스거든~!",
-      "wordless": false,
-      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom; keep strictly inside Panel 1!). CONFIDENT LOW-ANGLE BOAST: Orc Warrior puffing out her armored chest proudly with one hand on her hip and the other playfully twirling the compact serrated purple-glowing 1H dagger (Felstriker — short 1H dagger scale!), flashing a shameless dazzling fang wink and sparkles (fair skin, green orc plush hood, back weapons stowed, Clean Hand). ZERO text/letters in art.",
-      "tail_target": "center",
-      "bubble_side": "center",
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
       "bubble_center_xy": null,
       "item_tooltip": null
     },
     {
-      "cut_index": 7,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 3,
-      "panel_index": 2,
+      "cut_index": 4,
+      "aspect_ratio": "16:9",
+      "layout_slot": "bottom",
+      "act_number": null,
+      "panel_index": null,
       "characters": [
-        "노움 도적"
-      ],
-      "speaker": "노움 도적",
-      "dialogue": "도적 에픽 단검을 날먹해?!",
-      "wordless": false,
-      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom; keep strictly inside Panel 2!). EXTREME CLOSE-UP FURIOUS GREMLIN OUTBURST: petite Gnome Rogue lunging angrily toward the camera with puffed steaming red cheeks, blazing furious sapphire eyes, one crisp red anime anger vein on her brow, pointing an accusing trembling finger straight out of frame with comic rage puffs! Guardrail: fair skin, green aviator goggles, 0 X/star pins, daggers stowed out of sight at waist (Clean Hand). ZERO text/letters in art.",
-      "tail_target": "center",
-      "bubble_side": "center",
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
-      "bubble_center_xy": null,
-      "item_tooltip": null
-    },
-    {
-      "cut_index": 8,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 3,
-      "panel_index": 3,
-      "characters": [
-        "트롤 주술사"
-      ],
-      "speaker": "트롤 주술사",
-      "dialogue": "이야~ 도적도 도검 굴리니까\n쌤쌤 아니냐구~ 그치~?",
-      "wordless": false,
-      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom; keep strictly inside Panel 3!). HIGH-ANGLE HYPE-STREAMER GOSSIP: Troll Shaman leaning cheekily sideways cupping one hand mischievously beside her wide cackling grin, glittering emerald popcorn-gossip eyes sparkling with chaotic glee! Guardrail: fair peach-ivory skin (NEVER blue skin!), sky-blue plush troll hood with red mohawk & gold hoop ear piercing, wooden staff stowed on back (Clean Hand). ZERO text/letters in art.",
-      "tail_target": "center",
-      "bubble_side": "center",
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
-      "bubble_center_xy": null,
-      "item_tooltip": null
-    },
-    {
-      "cut_index": 9,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 3,
-      "panel_index": 4,
-      "characters": [
-        "드워프 사냥꾼"
-      ],
-      "speaker": "드워프 사냥꾼",
-      "dialogue": "옴뇸뇸~ 원래 다 내 무기~",
-      "wordless": false,
-      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom; keep strictly inside Panel 4!). COZY SIDE-PROFILE POPCORN DEADPAN: Dwarf Hunter turned 3/4 sideways with chubby chipmunk-stuffed cheeks blissfully munching fluffy popcorn from a rustic carved wooden tavern bowl (NOT a modern paper box!), serene enlightened half-lidded Buddha smile and cozy sparkle! Guardrail: fair skin, forest-green fur-trimmed hood, thick orange braided chin-pigtails, blunderbuss rifle slung across back (Clean Hand). ZERO text/letters in art.",
-      "tail_target": "center",
-      "bubble_side": "center",
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
-      "bubble_center_xy": null,
-      "item_tooltip": null
-    },
-    {
-      "cut_index": 10,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 4,
-      "panel_index": 1,
-      "characters": [
-        "오크 전사"
-      ],
-      "speaker": "오크 전사",
-      "dialogue": "헤헷~ 미터기 1등 간다~!",
-      "wordless": false,
-      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (ENTIRE LEFT 54% x=0%..54% MUST BE 100% EMPTY PURE #FFFFFF WHITE for left 1-line bubble! Keep character strictly inside right 42% and inside Panel 1!). BOUNCY BACK-VIEW VICTORY SKIP: positioned on right 42% (x=76%), Orc Warrior skipping merrily away to the right looking back over her red cape with radiant squeezed-shut `≧▽≦` puppy-laugh eyes, tossing a carefree peace sign while the compact serrated epic purple-glowing 1H dagger (`필살의 비수`) gleams proudly clipped at her leather belt! Guardrail: fair skin, green orc plush hood, back sword/shield stowed (Clean Hand). ZERO text/letters in art.",
-      "tail_target": "right",
-      "bubble_side": "left",
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
-      "bubble_center_xy": null,
-      "item_tooltip": null
-    },
-    {
-      "cut_index": 11,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 4,
-      "panel_index": 2,
-      "characters": [
+        "오크 전사",
         "노움 도적"
       ],
       "speaker": null,
       "dialogue": null,
       "wordless": true,
-      "visual_prompt": "TIER 2 WORDLESS CLIMAX FREEZE-FRAME ON FULL-WIDTH BLACKROCK SPIRE ARENA FLOOR + 100% PURE #FFFFFF UPPER SKY (ZERO text, ZERO speech bubbles, ZERO SFX letters!). Dark volcanic stone arena flagstones and cracked iron floor grates anchored flush edge-to-edge along entire bottom & side borders, upper 46% pure #FFFFFF sky. SHOWSTOPPER COMIC DESPAIR ('도적 피눈물 ㅜ' — cute cartoon slapstick, ZERO gore!): Center-left foreground (x=38%, bold tall dramatic framing), petite Gnome Rogue collapsed flat onto both knees clutching the stone floor in utter soul-crushed Munch-scream devastation — drained pale white face, giant blank shock eyes gushing absurd twin cartoon waterfall fountains of bright crimson-pink manga dramatic tears, mouth dropped impossibly wide as a hilarious translucent chibi mini-soul drifts straight upward out of her mouth! Lower-right mid-ground (x=78%), the defeated arena warlord Rend and his tiny black dragon drake peek awkwardly around a stone pillar sweating buckets with identically jaw-dropped pity stares! Guardrail: fair skin, golden-pink-blue twin pigtails, green aviator goggles on forehead, STRICTLY 0 X/star pins, dual green daggers crossed at lower back waist. Keep strictly inside Panel 2.",
+      "visual_prompt": "Wide silent deadpan freeze-frame shot in sleek 3-to-3.5 head-tall Korean gag webtoon style on a pure solid white #FFFFFF background. On the left, tank 오크 전사 proudly admires a single compact purple-glowing epic dagger in her right hand alongside her heavy metal tank shield on her left arm, with her previous sword stowed away cleanly. On the right, 노움 도적 collapses face-down on a minimal stone floor patch in silent shock with comical fountain tears.",
       "tail_target": "center",
       "bubble_side": null,
       "full_bleed_bg": false,
@@ -592,63 +121,26 @@
       "item_tooltip": null
     },
     {
-      "cut_index": 12,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 5,
-      "panel_index": 1,
+      "cut_index": 5,
+      "aspect_ratio": "16:9",
+      "layout_slot": "bottom",
+      "act_number": null,
+      "panel_index": null,
       "characters": [
-        "드워프 사냥꾼"
-      ],
-      "speaker": "드워프 사냥꾼",
-      "dialogue": "아이고~ 도적아 울지 마…\n원래 상층은 전사 텃밭이야~",
-      "wordless": false,
-      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom; keep strictly inside Panel 1!). COZY WARM SIDE-ANGLE PAT: Dwarf Hunter leaning gently forward offering a steaming rustic wooden tavern mug of warm dwarven cocoa (NOT a paper carton/straw!) with a warm sympathetic cozy smile and sleepy compassionate amber eyes! Guardrail: fair skin, forest-green fur hood, orange braided pigtails, blunderbuss rifle slung across back (Clean Hand). ZERO text/letters in art.",
-      "tail_target": "center",
-      "bubble_side": "center",
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
-      "bubble_center_xy": null,
-      "item_tooltip": null
-    },
-    {
-      "cut_index": 13,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 5,
-      "panel_index": 2,
-      "characters": [
+        "드워프 사냥꾼",
         "노움 도적"
       ],
-      "speaker": "노움 도적",
-      "dialogue": "으에엑… 내 에픽 단검…",
+      "speaker": "드워프 사냥꾼",
+      "dialogue": "도적님 울지 마…\n다음부턴 전탱 거르고\n보기랑 야드랑 가자.",
       "wordless": false,
-      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom; keep strictly inside Panel 2!). CRUSHED FACE-DOWN POUT CLOSE-UP: petite Gnome Rogue slumped limply onto her crossed arms staring forward with shimmering watery huge sapphire eyes, crooked green goggles slipping down one side, trembling sniffle lip and faint deflated gloom cloud overhead! Guardrail: fair skin, golden-pink-blue twin pigtails, 0 X/star pins, daggers out of sight (Clean Hand). ZERO text/letters in art.",
-      "tail_target": "center",
-      "bubble_side": "center",
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
-      "bubble_center_xy": null,
-      "item_tooltip": null
-    },
-    {
-      "cut_index": 14,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 5,
-      "panel_index": 3,
-      "characters": [
-        "노움 도적",
-        "드워프 사냥꾼"
-      ],
-      "speaker": "노움 도적",
-      "dialogue": "다음부턴 전탱 빼고 간다!\n보기랑 야드만 구할 거야!!",
-      "wordless": false,
-      "visual_prompt": "TIER 2 FULL-WIDTH EDGE-TO-EDGE VOLCANIC STONE FLOOR + 100% PURE SOLID #FFFFFF WHITE UPPER SKY ACROSS ENTIRE TOP 44% (STRICTLY ZERO dark stone back wall or dark rectangle behind their heads — ONLY grounded volcanic stone floor slabs anchored flush edge-to-edge along the bottom y=68%..100% from left border to right border, transitioning cleanly into 100% PURE BLANK #FFFFFF WHITE SKY across the entire upper half y=0%..52%!). DETERMINED MARCH-OUT FINALE: lower-left (x=28%), petite Gnome Rogue marching fiercely right toward the exit with blazing fiery determined sapphire eyes, puffed cheeks, shaking one clenched fist upward in a solemn gremlin vow (fair skin, green aviator goggles, 0 X/star pins, dual green daggers crossed cleanly at lower back waist, Clean Hand). Lower-center-right (x=62%), Dwarf Hunter leisurely strolling right beside her tossing popcorn from her carved wooden bowl with a cheeky knowing wink (blunderbuss slung on back). Far right (x=88%, grounded on floor slabs against pure #FFFFFF white), a bright swirling turquoise-blue Dungeon Exit Portal beckoning them out (ZERO background green male orcs!). ZERO text/letters inside art; keep strictly inside Panel 3.",
-      "tail_target": "left",
+      "visual_prompt": "Slightly high-angle aftermath shot in sleek 3-to-3.5 head-tall Korean gag webtoon style on a pure solid white #FFFFFF background. On the right, 드워프 사냥꾼 with her wooden blunderbuss slung cleanly on her back and a tiny fluffy bear pet sitting calmly beside her gently pats the slumped shoulder of 노움 도적 on the left. 노움 도적 sits cross-legged on a minimal ground shadow, sniffling into empty hands while staring vacantly at the floor.",
+      "tail_target": "right",
       "bubble_side": "left",
       "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
+      "speaker_anchor_xy": [
+        0.7,
+        0.38
+      ],
       "bubble_center_xy": null,
       "item_tooltip": null
     }

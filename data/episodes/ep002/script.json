@@ -3,374 +3,48 @@
   "source_post_no": "96849",
   "source_title": "방금 만난 기사님의 명언",
   "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=96849&exception_mode=recommend&page=1",
-  "subtitle": "알카즈 감옥 민첩 반지 입찰과 기사님의 전설의 치명타 명언",
-  "layout_mode": "v4_five_act",
+  "subtitle": "치명타를 위해 민첩을 굴리겠다는 기사님",
+  "layout_mode": "classic_2tier",
   "background_style": "clean_white",
-  "acts": [
-    {
-      "act_number": 1,
-      "act_title": "1막: 알카즈 감옥 보스 컷과 총기류 숙련 업 민첩 반지 드랍",
-      "layout_id": "diagonal_tempo_2cut",
-      "cuts": [
-        {
-          "cut_index": 1,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 1,
-          "panel_index": 1,
-          "characters": [
-            "드워프 사냥꾼",
-            "오크 전사"
-          ],
-          "speaker": "드워프 사냥꾼",
-          "dialogue": "어휴~ 총기류 숙련 올리다\n드디어 민첩 반지 떴네~!",
-          "wordless": false,
-          "visual_prompt": "TIER 1 FULL-BLEED ALCAZ PRISON DUNGEON ESTABLISHING SHOT inside solid black box frame (edge-to-edge rich coastal fortress dungeon scenery, outer page margins & gutter below pure #FFFFFF). Sweeping wide dynamic low-angle shot inside the stone dungeon corridor of Alcaz Prison: heavy iron-barred prison cells, mossy sea-stone arches, glowing wall torches, and a defeated cartoon Naga warden boss sprawled with spiral eyes beside an open wooden loot chest radiating a gleaming emerald-gold agility ring! Keep the ENTIRE upper-left vaulted stone ceiling (x=4%..58%, y=0%..34%) uncluttered shadowy masonry for the left speech bubble! DYNAMIC ACTING: lower-left (x=28%), Dwarf Hunter (fair peach-ivory skin, forest-green fur-trimmed hood, ginger braid-beard) lowering her smoking chunky wooden-and-steel Dwarf blunderbuss rifle amid celebratory golden skill-up sparkles with wide starry-eyed loot joy! Lower-right (x=72%), Orc Warrior tank (fair peach-ivory skin, green orc plush hood) cheering with a boisterous fang grin raising her sturdy steel kite shield and compact one-handed steel sword (NEVER a 2H weapon!). Keep all limbs strictly inside Panel 1 borders, ZERO text.",
-          "tail_target": "left",
-          "bubble_side": "left",
-          "full_bleed_bg": true,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        },
-        {
-          "cut_index": 2,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 1,
-          "panel_index": 2,
-          "characters": [
-            "드워프 사냥꾼"
-          ],
-          "speaker": "드워프 사냥꾼",
-          "dialogue": "옴뇸뇸~ 이건 완전 내 거지~",
-          "wordless": false,
-          "visual_prompt": "TIER 2 NATURAL ALCAZ PRISON STONE FLOOR + 100% PURE #FFFFFF UPPER SKY (ENTIRE LEFT 54% x=0%..54% and TOP 36% completely empty pure #FFFFFF headroom for left 1-line bubble; rugged stone prison floor anchored flush along bottom, left & right borders!). COZY GLUTTON SIDE-PROFILE LOUNGING on RIGHT 44% (x=74%, y=38%..98%): Dwarf Hunter sitting relaxed cross-legged with blunderbuss slung diagonally across her back (Clean Hand), cheeks stuffed chipmunk-full happily munching popcorn from a rustic wooden bowl while winking smugly toward the gleaming emerald-gold ring resting on a stone beside her! Guardrail: fair peach-ivory skin, forest-green fur-trimmed hood, orange-ginger braid-beard, ZERO text.",
-          "tail_target": "right",
-          "bubble_side": "left",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        }
-      ]
-    },
-    {
-      "act_number": 2,
-      "act_title": "2막: 언데드 성기사의 민첩 반지 입찰과 전설의 명언 발사",
-      "layout_id": "four_beat_gag",
-      "cuts": [
-        {
-          "cut_index": 3,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 2,
-          "panel_index": 1,
-          "characters": [
-            "언데드 성기사"
-          ],
-          "speaker": "언데드 성기사",
-          "dialogue": "…어, 반지 입찰.",
-          "wordless": false,
-          "visual_prompt": "TIER 3 PURE #FFFFFF REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom for 1-line bubble; keep all limbs strictly inside Panel 1 borders). DEADPAN HIGH-ANGLE CASUAL TOSS: Undead Paladin girl (fair peach-ivory skin — NEVER zombie skin! — round pure-white skull cap, silver-white bob hair, sleepy golden eyes, white-and-gold paladin cape with golden warhammer strapped diagonally on back for Clean Hand) wearing an ultra-sleepy heavy half-lidded blank expression as she lazily flicks ONE chunky 6-sided white-and-gold loot die into the air showing ONLY classic round black dot pips (strictly ZERO digits, ZERO numbers, ZERO letters!).",
-          "tail_target": "center",
-          "bubble_side": "center",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        },
-        {
-          "cut_index": 4,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 2,
-          "panel_index": 2,
-          "characters": [
-            "드워프 사냥꾼"
-          ],
-          "speaker": "드워프 사냥꾼",
-          "dialogue": "푸흡?! 잠깐만, 기사님!\n민첩 반지를 왜 굴려?!",
-          "wordless": false,
-          "visual_prompt": "TIER 3 PURE #FFFFFF REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom; strictly inside Panel 2 borders). EXPLOSIVE 30-DEGREE DUTCH TILT SPIT-TAKE GAG: Dwarf Hunter choking mid-bite with huge popping shock eyes and wide horrified mouth, exploding a hilarious comic spray of puffy popcorn kernels straight outward while her wooden popcorn bowl flips upside-down mid-air (blunderbuss slung on back, Clean Hand)! Guardrail: fair peach-ivory skin, forest-green fur hood, orange-ginger braid-beard, ZERO text.",
-          "tail_target": "center",
-          "bubble_side": "center",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        },
-        {
-          "cut_index": 5,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 2,
-          "panel_index": 3,
-          "characters": [
-            "언데드 성기사"
-          ],
-          "speaker": "언데드 성기사",
-          "dialogue": "…논란은 많은데,\n기사도 민첩 필요해.",
-          "wordless": false,
-          "visual_prompt": "TIER 3 PURE #FFFFFF REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom; strictly inside Panel 3 borders). SOLEMN LOW-ANGLE PHILOSOPHER CLOSE-UP looking upward at Undead Paladin: utterly deadpan half-lidded sleepy golden eyes shining with absurdly serious conviction, raising ONE white-gauntleted index finger matter-of-factly like reciting ancient scripture while faint comedic heavenly sparkles twinkle behind her pure-white skull cap (golden warhammer strapped on back, Clean Hand)! Guardrail: fair peach-ivory skin, silver-white bob hair, ZERO text.",
-          "tail_target": "center",
-          "bubble_side": "center",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        },
-        {
-          "cut_index": 6,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 2,
-          "panel_index": 4,
-          "characters": [
-            "드워프 사냥꾼"
-          ],
-          "speaker": "드워프 사냥꾼",
-          "dialogue": "기사가 민첩이 왜 필요해?!",
-          "wordless": false,
-          "visual_prompt": "TIER 3 PURE #FFFFFF REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom for 1-line bubble; strictly inside Panel 4 borders). EXTREME FISHEYE FORCED-PERSPECTIVE LUNGE right into the camera lens: Dwarf Hunter leaning furiously forward clutching both sides of her fur-trimmed green hood in steaming red-faced disbelief, veins throbbing, sharp comic rage lines radiating cleanly into pure #FFFFFF white (blunderbuss stowed on back, Clean Hand)! Guardrail: fair peach-ivory skin, ginger braid-beard, ZERO text.",
-          "tail_target": "center",
-          "bubble_side": "center",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        }
-      ]
-    },
-    {
-      "act_number": 3,
-      "act_title": "3막: 치명타 철학 직격타와 파티원 전원 광기 올입 개전",
-      "layout_id": "split_top_wide_bottom",
-      "cuts": [
-        {
-          "cut_index": 7,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 3,
-          "panel_index": 1,
-          "characters": [
-            "언데드 성기사"
-          ],
-          "speaker": "언데드 성기사",
-          "dialogue": "…치명타 올려야 하거든.\n생각 좀 해봐.",
-          "wordless": false,
-          "visual_prompt": "TIER 3 PURE #FFFFFF REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom; strictly inside Panel 1 borders). NONCHALANT 90-DEGREE SIDE-PROFILE SHRUG: Undead Paladin half-turned away casually sliding the gleaming emerald-gold agility ring onto her white gauntlet finger with deadpan half-lidded bored golden eyes and a tiny sleepy puff sigh (golden warhammer strapped on back, Clean Hand)! Guardrail: fair peach-ivory skin, white skull cap, silver-white bob hair, ZERO text.",
-          "tail_target": "center",
-          "bubble_side": "center",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        },
-        {
-          "cut_index": 8,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 3,
-          "panel_index": 2,
-          "characters": [
-            "스카이본 마법사"
-          ],
-          "speaker": "스카이본 마법사",
-          "dialogue": "흥~ 그럼 이 천재 법사도\n회피율 올리게 민첩 굴릴게~☆",
-          "wordless": false,
-          "visual_prompt": "TIER 3 PURE #FFFFFF REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom; strictly inside Panel 2 borders). RAZOR-SARCASTIC EXTREME BUST CLOSE-UP: Skyborne Mage tilting her chin slyly with star-pupils switched coldly OFF into a dry half-lidded deadpan smirk, casually balancing a chunky 6-sided white-and-gold loot die showing ONLY round black dot pips (ZERO digits/letters!) on her fingertip! Guardrail: fair peach-ivory skin, sky-blue high side-ponytail, perky elf ears, tilted royal-blue wizard hat with tiny smiling white cloud-wing badge, cloud-scalloped blue capelet, mini white Polymorph Sheep waist charm, blue crystal staff strapped diagonally on back (Clean Hand), ZERO sailor uniform, ZERO text.",
-          "tail_target": "center",
-          "bubble_side": "center",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        },
-        {
-          "cut_index": 9,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 3,
-          "panel_index": 3,
-          "characters": [
-            "오크 전사",
-            "언데드 성기사"
-          ],
-          "speaker": "오크 전사",
-          "dialogue": "헤헷! 무기 숙련 빨리 올리게\n지능 천템은 내 거지롱~!",
-          "wordless": false,
-          "visual_prompt": "TIER 2 NATURAL ALCAZ PRISON FLAGSTONE FLOOR + 100% PURE #FFFFFF UPPER SKY across TOP 36% (y=0%..36% completely empty pure #FFFFFF headroom for left bubble; stone floor tiles MUST span 100% full width flush edge-to-edge touching BOTH left, right & bottom black borders with ZERO white side gaps!). WILD 30-DEGREE DUTCH TILT SLAPSTICK: lower-left (x=30%), Orc Warrior tank (fair peach-ivory skin, green orc plush hood, Clean Hand: STRICTLY ZERO battle axe on her back — ONLY her compact one-handed steel sword and sturdy steel kite shield!) leaping joyfully atop an open wooden dungeon chest with a boisterous fang belly-laugh as a glowing royal-blue wizard cloth robe drapes off the chest lid beside her! Lower-right (x=76%), Undead Paladin standing completely calm giving a sleepy deadpan slow nod with tiny sparkles (warhammer stowed on back). ZERO text.",
-          "tail_target": "left",
-          "bubble_side": "right",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        }
-      ]
-    },
-    {
-      "act_number": 4,
-      "act_title": "4막: 올입찰 광기 선포와 사냥꾼의 알카즈 멘탈 붕괴 무언 충격",
-      "layout_id": "impact_freeze_2cut",
-      "cuts": [
-        {
-          "cut_index": 10,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 4,
-          "panel_index": 1,
-          "characters": [
-            "스카이본 마법사",
-            "오크 전사"
-          ],
-          "speaker": "스카이본 마법사",
-          "dialogue": "자, 다음 넴드도 올입~☆",
-          "wordless": false,
-          "visual_prompt": "TIER 3 PURE #FFFFFF REACTION BACKGROUND (ENTIRE LEFT 54% x=0%..54% completely empty pure #FFFFFF headroom for left 1-line bubble; keep BOTH characters compact cleanly inside the RIGHT 44% x=54%..98% strictly inside Panel 1 borders — ZERO spillover down into Panel 2!). CHAOTIC HIGH-FIVE DICE SHOWER on RIGHT 44%: Skyborne Mage (sky-blue high side-pony, cloud-wing blue hat, sheep charm, crystal staff on back, 0 sailor uniform) and Orc Warrior tank (green orc hood, compact 1H sword + sturdy steel kite shield) cackling gleefully side-by-side tossing three chunky 6-sided white-and-gold loot dice showing ONLY round black dot pips (strictly ZERO digits/text!) into the air amid mischief sparkles!",
-          "tail_target": "right",
-          "bubble_side": "left",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": [
-            0.57,
-            0.54
-          ],
-          "bubble_center_xy": [
-            0.29,
-            0.38
-          ],
-          "item_tooltip": null
-        },
-        {
-          "cut_index": 11,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 4,
-          "panel_index": 2,
-          "characters": [
-            "드워프 사냥꾼"
-          ],
-          "speaker": null,
-          "dialogue": null,
-          "wordless": true,
-          "visual_prompt": "TIER 2 WORDLESS CLIMAX FREEZE-FRAME ON FULL-WIDTH ALCAZ PRISON CORRIDOR FLOOR + 100% PURE #FFFFFF UPPER SKY (ZERO text, ZERO speech bubbles, ZERO SFX letters!). Rugged Alcaz Prison stone flagstones & low iron cell-bar bases anchored flush edge-to-edge to bottom, left & right borders. SHOWSTOPPER MUNCH-SCREAM DESPAIR: dominating lower-left-center (x=34%, bold tall framing), Dwarf Hunter frozen solid in icy BLUE-DRAINED CRUMPLED-PAPER HORROR — deep indigo vertical dread shadows flooding her face, jaw unhinged dropped to her chest, giant popping blank white shock eyes, both hands clutching her cheeks as her wooden blunderbuss clatters to the stone floor and her tipped wooden popcorn bucket spills popcorn everywhere! Right beside her on lower-right (x=72%), her adorable fluffy brown bear pet drops its jaw and clutches its furry cheeks in the EXACT SAME blue-drained shock pose! Peeking through the lower prison bars in the far background, two cartoon Naga inmates sweat giant anime drops staring in confusion!",
-          "tail_target": "center",
-          "bubble_side": null,
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        }
-      ]
-    },
-    {
-      "act_number": 5,
-      "act_title": "5막: 해탈한 냥꾼의 힘·지능 올입 선언과 알카즈 감옥 아수라장",
-      "layout_id": "open_top_split_bottom",
-      "cuts": [
-        {
-          "cut_index": 12,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 5,
-          "panel_index": 1,
-          "characters": [
-            "드워프 사냥꾼",
-            "언데드 성기사"
-          ],
-          "speaker": "드워프 사냥꾼",
-          "dialogue": "아 몰라! 나도 마나 채우게\n지능·힘 다 굴린다!!",
-          "wordless": false,
-          "visual_prompt": "TIER 2 NATURAL ALCAZ PRISON STONE FLOOR + 100% PURE #FFFFFF UPPER SKY across TOP 36% (y=0%..36% completely empty pure #FFFFFF headroom for left bubble; borderless open top panel — keep stone floor anchored cleanly along lower edge without black box!). OVER-THE-SHOULDER WILD SNAP-OUT: lower-left (x=30%), Dwarf Hunter erupting into glorious unhinged loot-goblin rage — fiery blazing amber eyes, sharp feral grin, hoisting an oversized chunky 6-sided white-and-gold loot die showing ONLY round black dot pips (ZERO digits/letters!) high above her head with comic flame streaks (blunderbuss slung on back, Clean Hand)! Lower-right (x=74%), Undead Paladin turned 3/4 glancing back completely calm with sleepy half-lidded eyes (warhammer on back). ZERO text.",
-          "tail_target": "left",
-          "bubble_side": "left",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        },
-        {
-          "cut_index": 13,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 5,
-          "panel_index": 2,
-          "characters": [
-            "언데드 성기사"
-          ],
-          "speaker": "언데드 성기사",
-          "dialogue": "…응, 잘했어. 토닥토닥.",
-          "wordless": false,
-          "visual_prompt": "TIER 3 PURE #FFFFFF REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom for 1-line bubble; strictly inside Panel 2 borders). GENTLE SLEEPY TSUNDERE CLOSE-UP: Undead Paladin leaning slightly forward with half-lidded calm golden eyes, a tiny soft blush on her cheeks, and one white gauntlet offering an absurdly wholesome sleepy thumbs-up + gentle patting gesture surrounded by cozy little fluffy sparkles (golden warhammer strapped on back, Clean Hand)! Guardrail: fair peach-ivory skin, pure-white skull cap, silver-white bob hair, ZERO text.",
-          "tail_target": "center",
-          "bubble_side": "center",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        },
-        {
-          "cut_index": 14,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 5,
-          "panel_index": 3,
-          "characters": [
-            "드워프 사냥꾼",
-            "오크 전사"
-          ],
-          "speaker": "오크 전사",
-          "dialogue": "알카즈 올입 가자아~!",
-          "wordless": false,
-          "visual_prompt": "TIER 2 NATURAL ALCAZ PRISON STONE FLOOR + 100% PURE #FFFFFF UPPER SKY across TOP 38% (y=0%..38% completely empty pure #FFFFFF headroom for 1-line bubble; stone floor & treasure chest anchored flush along bottom, left & right borders!). DIZZYING BIRD'S-EYE TOP-DOWN CHAOS: Dwarf Hunter (blunderbuss on back) and Orc Warrior tank (holding compact 1H sword + sturdy steel kite shield) both diving gleefully onto an overflowing open Alcaz Prison treasure chest throwing chunky white-and-gold dot-pip loot dice (ONLY black dot pips, ZERO digits/letters!) everywhere in explosive cartoon sparkles & dust puffs! ZERO text.",
-          "tail_target": "center",
-          "bubble_side": "center",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        }
-      ]
-    }
-  ],
+  "acts": null,
   "cuts": [
     {
       "cut_index": 1,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 1,
-      "panel_index": 1,
+      "aspect_ratio": "4:3",
+      "layout_slot": "top",
+      "act_number": null,
+      "panel_index": null,
       "characters": [
         "드워프 사냥꾼",
-        "오크 전사"
+        "언데드 성기사"
       ],
       "speaker": "드워프 사냥꾼",
-      "dialogue": "어휴~ 총기류 숙련 올리다\n드디어 민첩 반지 떴네~!",
+      "dialogue": "알카즈 감옥 막보 컷!\n드디어 내 민첩 반지\n먹을 차례다~",
       "wordless": false,
-      "visual_prompt": "TIER 1 FULL-BLEED ALCAZ PRISON DUNGEON ESTABLISHING SHOT inside solid black box frame (edge-to-edge rich coastal fortress dungeon scenery, outer page margins & gutter below pure #FFFFFF). Sweeping wide dynamic low-angle shot inside the stone dungeon corridor of Alcaz Prison: heavy iron-barred prison cells, mossy sea-stone arches, glowing wall torches, and a defeated cartoon Naga warden boss sprawled with spiral eyes beside an open wooden loot chest radiating a gleaming emerald-gold agility ring! Keep the ENTIRE upper-left vaulted stone ceiling (x=4%..58%, y=0%..34%) uncluttered shadowy masonry for the left speech bubble! DYNAMIC ACTING: lower-left (x=28%), Dwarf Hunter (fair peach-ivory skin, forest-green fur-trimmed hood, ginger braid-beard) lowering her smoking chunky wooden-and-steel Dwarf blunderbuss rifle amid celebratory golden skill-up sparkles with wide starry-eyed loot joy! Lower-right (x=72%), Orc Warrior tank (fair peach-ivory skin, green orc plush hood) cheering with a boisterous fang grin raising her sturdy steel kite shield and compact one-handed steel sword (NEVER a 2H weapon!). Keep all limbs strictly inside Panel 1 borders, ZERO text.",
+      "visual_prompt": "High-angle three-quarter shot in a clean 3-to-3.5-head Korean gag webtoon style on pure solid white #FFFFFF background. On the left, the cheerful Dwarf Hunter leans forward excitedly with sparkling eyes and open hands reaching toward a glowing blue-rarity silver ring floating in the center, her blunderbuss slung cleanly on her back. On the right behind her, the sleepy-eyed Undead Paladin quietly reaches for a chunky 6-sided white-and-gold cube showing ONLY classic round dot pips, strictly ZERO digits, ZERO numbers, ZERO letters, her one-handed mace and golden paladin shield stowed on her back. Minimal stone floor lines sit only directly beneath their boots.",
       "tail_target": "left",
-      "bubble_side": "left",
-      "full_bleed_bg": true,
+      "bubble_side": null,
+      "full_bleed_bg": false,
       "speaker_anchor_xy": null,
       "bubble_center_xy": null,
       "item_tooltip": null
     },
     {
       "cut_index": 2,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 1,
-      "panel_index": 2,
+      "aspect_ratio": "16:9",
+      "layout_slot": "bottom",
+      "act_number": null,
+      "panel_index": null,
       "characters": [
-        "드워프 사냥꾼"
+        "드워프 사냥꾼",
+        "언데드 성기사"
       ],
       "speaker": "드워프 사냥꾼",
-      "dialogue": "옴뇸뇸~ 이건 완전 내 거지~",
+      "dialogue": "잠깐만요, 기사님?!\n민첩 반지에 입찰을\n왜 누르시는 거예요?!",
       "wordless": false,
-      "visual_prompt": "TIER 2 NATURAL ALCAZ PRISON STONE FLOOR + 100% PURE #FFFFFF UPPER SKY (ENTIRE LEFT 54% x=0%..54% and TOP 36% completely empty pure #FFFFFF headroom for left 1-line bubble; rugged stone prison floor anchored flush along bottom, left & right borders!). COZY GLUTTON SIDE-PROFILE LOUNGING on RIGHT 44% (x=74%, y=38%..98%): Dwarf Hunter sitting relaxed cross-legged with blunderbuss slung diagonally across her back (Clean Hand), cheeks stuffed chipmunk-full happily munching popcorn from a rustic wooden bowl while winking smugly toward the gleaming emerald-gold ring resting on a stone beside her! Guardrail: fair peach-ivory skin, forest-green fur-trimmed hood, orange-ginger braid-beard, ZERO text.",
-      "tail_target": "right",
-      "bubble_side": "left",
+      "visual_prompt": "Dynamic wide two-shot in a clean 3-to-3.5-head Korean gag webtoon style on pure solid white #FFFFFF background. On the left, the Dwarf Hunter whips around in shock, leaning forward with wide eyes and pointing frantically at the right character, her blunderbuss strapped to her back. On the right, the Undead Paladin stands utterly unbothered with half-lidded eyes, holding up a chunky 6-sided white-and-gold cube showing ONLY classic round dot pips, strictly ZERO digits, ZERO numbers, ZERO letters, her one-handed mace and golden paladin shield stowed cleanly on her back.",
+      "tail_target": "left",
+      "bubble_side": null,
       "full_bleed_bg": false,
       "speaker_anchor_xy": null,
       "bubble_center_xy": null,
@@ -378,185 +52,17 @@
     },
     {
       "cut_index": 3,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 2,
-      "panel_index": 1,
+      "aspect_ratio": "4:3",
+      "layout_slot": "top",
+      "act_number": null,
+      "panel_index": null,
       "characters": [
         "언데드 성기사"
       ],
       "speaker": "언데드 성기사",
-      "dialogue": "…어, 반지 입찰.",
+      "dialogue": "논란이 많은 건 알지만…\n기사도 치명타 올리려면\n민첩이 필요해요.",
       "wordless": false,
-      "visual_prompt": "TIER 3 PURE #FFFFFF REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom for 1-line bubble; keep all limbs strictly inside Panel 1 borders). DEADPAN HIGH-ANGLE CASUAL TOSS: Undead Paladin girl (fair peach-ivory skin — NEVER zombie skin! — round pure-white skull cap, silver-white bob hair, sleepy golden eyes, white-and-gold paladin cape with golden warhammer strapped diagonally on back for Clean Hand) wearing an ultra-sleepy heavy half-lidded blank expression as she lazily flicks ONE chunky 6-sided white-and-gold loot die into the air showing ONLY classic round black dot pips (strictly ZERO digits, ZERO numbers, ZERO letters!).",
-      "tail_target": "center",
-      "bubble_side": "center",
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
-      "bubble_center_xy": null,
-      "item_tooltip": null
-    },
-    {
-      "cut_index": 4,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 2,
-      "panel_index": 2,
-      "characters": [
-        "드워프 사냥꾼"
-      ],
-      "speaker": "드워프 사냥꾼",
-      "dialogue": "푸흡?! 잠깐만, 기사님!\n민첩 반지를 왜 굴려?!",
-      "wordless": false,
-      "visual_prompt": "TIER 3 PURE #FFFFFF REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom; strictly inside Panel 2 borders). EXPLOSIVE 30-DEGREE DUTCH TILT SPIT-TAKE GAG: Dwarf Hunter choking mid-bite with huge popping shock eyes and wide horrified mouth, exploding a hilarious comic spray of puffy popcorn kernels straight outward while her wooden popcorn bowl flips upside-down mid-air (blunderbuss slung on back, Clean Hand)! Guardrail: fair peach-ivory skin, forest-green fur hood, orange-ginger braid-beard, ZERO text.",
-      "tail_target": "center",
-      "bubble_side": "center",
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
-      "bubble_center_xy": null,
-      "item_tooltip": null
-    },
-    {
-      "cut_index": 5,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 2,
-      "panel_index": 3,
-      "characters": [
-        "언데드 성기사"
-      ],
-      "speaker": "언데드 성기사",
-      "dialogue": "…논란은 많은데,\n기사도 민첩 필요해.",
-      "wordless": false,
-      "visual_prompt": "TIER 3 PURE #FFFFFF REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom; strictly inside Panel 3 borders). SOLEMN LOW-ANGLE PHILOSOPHER CLOSE-UP looking upward at Undead Paladin: utterly deadpan half-lidded sleepy golden eyes shining with absurdly serious conviction, raising ONE white-gauntleted index finger matter-of-factly like reciting ancient scripture while faint comedic heavenly sparkles twinkle behind her pure-white skull cap (golden warhammer strapped on back, Clean Hand)! Guardrail: fair peach-ivory skin, silver-white bob hair, ZERO text.",
-      "tail_target": "center",
-      "bubble_side": "center",
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
-      "bubble_center_xy": null,
-      "item_tooltip": null
-    },
-    {
-      "cut_index": 6,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 2,
-      "panel_index": 4,
-      "characters": [
-        "드워프 사냥꾼"
-      ],
-      "speaker": "드워프 사냥꾼",
-      "dialogue": "기사가 민첩이 왜 필요해?!",
-      "wordless": false,
-      "visual_prompt": "TIER 3 PURE #FFFFFF REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom for 1-line bubble; strictly inside Panel 4 borders). EXTREME FISHEYE FORCED-PERSPECTIVE LUNGE right into the camera lens: Dwarf Hunter leaning furiously forward clutching both sides of her fur-trimmed green hood in steaming red-faced disbelief, veins throbbing, sharp comic rage lines radiating cleanly into pure #FFFFFF white (blunderbuss stowed on back, Clean Hand)! Guardrail: fair peach-ivory skin, ginger braid-beard, ZERO text.",
-      "tail_target": "center",
-      "bubble_side": "center",
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
-      "bubble_center_xy": null,
-      "item_tooltip": null
-    },
-    {
-      "cut_index": 7,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 3,
-      "panel_index": 1,
-      "characters": [
-        "언데드 성기사"
-      ],
-      "speaker": "언데드 성기사",
-      "dialogue": "…치명타 올려야 하거든.\n생각 좀 해봐.",
-      "wordless": false,
-      "visual_prompt": "TIER 3 PURE #FFFFFF REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom; strictly inside Panel 1 borders). NONCHALANT 90-DEGREE SIDE-PROFILE SHRUG: Undead Paladin half-turned away casually sliding the gleaming emerald-gold agility ring onto her white gauntlet finger with deadpan half-lidded bored golden eyes and a tiny sleepy puff sigh (golden warhammer strapped on back, Clean Hand)! Guardrail: fair peach-ivory skin, white skull cap, silver-white bob hair, ZERO text.",
-      "tail_target": "center",
-      "bubble_side": "center",
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
-      "bubble_center_xy": null,
-      "item_tooltip": null
-    },
-    {
-      "cut_index": 8,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 3,
-      "panel_index": 2,
-      "characters": [
-        "스카이본 마법사"
-      ],
-      "speaker": "스카이본 마법사",
-      "dialogue": "흥~ 그럼 이 천재 법사도\n회피율 올리게 민첩 굴릴게~☆",
-      "wordless": false,
-      "visual_prompt": "TIER 3 PURE #FFFFFF REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom; strictly inside Panel 2 borders). RAZOR-SARCASTIC EXTREME BUST CLOSE-UP: Skyborne Mage tilting her chin slyly with star-pupils switched coldly OFF into a dry half-lidded deadpan smirk, casually balancing a chunky 6-sided white-and-gold loot die showing ONLY round black dot pips (ZERO digits/letters!) on her fingertip! Guardrail: fair peach-ivory skin, sky-blue high side-ponytail, perky elf ears, tilted royal-blue wizard hat with tiny smiling white cloud-wing badge, cloud-scalloped blue capelet, mini white Polymorph Sheep waist charm, blue crystal staff strapped diagonally on back (Clean Hand), ZERO sailor uniform, ZERO text.",
-      "tail_target": "center",
-      "bubble_side": "center",
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
-      "bubble_center_xy": null,
-      "item_tooltip": null
-    },
-    {
-      "cut_index": 9,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 3,
-      "panel_index": 3,
-      "characters": [
-        "오크 전사",
-        "언데드 성기사"
-      ],
-      "speaker": "오크 전사",
-      "dialogue": "헤헷! 무기 숙련 빨리 올리게\n지능 천템은 내 거지롱~!",
-      "wordless": false,
-      "visual_prompt": "TIER 2 NATURAL ALCAZ PRISON FLAGSTONE FLOOR + 100% PURE #FFFFFF UPPER SKY across TOP 36% (y=0%..36% completely empty pure #FFFFFF headroom for left bubble; stone floor tiles MUST span 100% full width flush edge-to-edge touching BOTH left, right & bottom black borders with ZERO white side gaps!). WILD 30-DEGREE DUTCH TILT SLAPSTICK: lower-left (x=30%), Orc Warrior tank (fair peach-ivory skin, green orc plush hood, Clean Hand: STRICTLY ZERO battle axe on her back — ONLY her compact one-handed steel sword and sturdy steel kite shield!) leaping joyfully atop an open wooden dungeon chest with a boisterous fang belly-laugh as a glowing royal-blue wizard cloth robe drapes off the chest lid beside her! Lower-right (x=76%), Undead Paladin standing completely calm giving a sleepy deadpan slow nod with tiny sparkles (warhammer stowed on back). ZERO text.",
-      "tail_target": "left",
-      "bubble_side": "right",
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
-      "bubble_center_xy": null,
-      "item_tooltip": null
-    },
-    {
-      "cut_index": 10,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 4,
-      "panel_index": 1,
-      "characters": [
-        "스카이본 마법사",
-        "오크 전사"
-      ],
-      "speaker": "스카이본 마법사",
-      "dialogue": "자, 다음 넴드도 올입~☆",
-      "wordless": false,
-      "visual_prompt": "TIER 3 PURE #FFFFFF REACTION BACKGROUND (ENTIRE LEFT 54% x=0%..54% completely empty pure #FFFFFF headroom for left 1-line bubble; keep BOTH characters compact cleanly inside the RIGHT 44% x=54%..98% strictly inside Panel 1 borders — ZERO spillover down into Panel 2!). CHAOTIC HIGH-FIVE DICE SHOWER on RIGHT 44%: Skyborne Mage (sky-blue high side-pony, cloud-wing blue hat, sheep charm, crystal staff on back, 0 sailor uniform) and Orc Warrior tank (green orc hood, compact 1H sword + sturdy steel kite shield) cackling gleefully side-by-side tossing three chunky 6-sided white-and-gold loot dice showing ONLY round black dot pips (strictly ZERO digits/text!) into the air amid mischief sparkles!",
-      "tail_target": "right",
-      "bubble_side": "left",
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": [
-        0.57,
-        0.54
-      ],
-      "bubble_center_xy": [
-        0.29,
-        0.38
-      ],
-      "item_tooltip": null
-    },
-    {
-      "cut_index": 11,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 4,
-      "panel_index": 2,
-      "characters": [
-        "드워프 사냥꾼"
-      ],
-      "speaker": null,
-      "dialogue": null,
-      "wordless": true,
-      "visual_prompt": "TIER 2 WORDLESS CLIMAX FREEZE-FRAME ON FULL-WIDTH ALCAZ PRISON CORRIDOR FLOOR + 100% PURE #FFFFFF UPPER SKY (ZERO text, ZERO speech bubbles, ZERO SFX letters!). Rugged Alcaz Prison stone flagstones & low iron cell-bar bases anchored flush edge-to-edge to bottom, left & right borders. SHOWSTOPPER MUNCH-SCREAM DESPAIR: dominating lower-left-center (x=34%, bold tall framing), Dwarf Hunter frozen solid in icy BLUE-DRAINED CRUMPLED-PAPER HORROR — deep indigo vertical dread shadows flooding her face, jaw unhinged dropped to her chest, giant popping blank white shock eyes, both hands clutching her cheeks as her wooden blunderbuss clatters to the stone floor and her tipped wooden popcorn bucket spills popcorn everywhere! Right beside her on lower-right (x=72%), her adorable fluffy brown bear pet drops its jaw and clutches its furry cheeks in the EXACT SAME blue-drained shock pose! Peeking through the lower prison bars in the far background, two cartoon Naga inmates sweat giant anime drops staring in confusion!",
+      "visual_prompt": "Dramatic low-angle close-up in a clean 3-to-3.5-head Korean gag webtoon style on pure solid white #FFFFFF background. Centered, the Undead Paladin raises one index finger solemnly like a tired philosopher delivering sacred wisdom, her half-lidded eyes deadpan and serious, with the rim of her golden paladin shield peeking behind her shoulder and both hands free of weapons.",
       "tail_target": "center",
       "bubble_side": null,
       "full_bleed_bg": false,
@@ -565,62 +71,63 @@
       "item_tooltip": null
     },
     {
-      "cut_index": 12,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 5,
-      "panel_index": 1,
+      "cut_index": 4,
+      "aspect_ratio": "16:9",
+      "layout_slot": "bottom",
+      "act_number": null,
+      "panel_index": null,
       "characters": [
         "드워프 사냥꾼",
-        "언데드 성기사"
+        "스카이본 마법사"
       ],
-      "speaker": "드워프 사냥꾼",
-      "dialogue": "아 몰라! 나도 마나 채우게\n지능·힘 다 굴린다!!",
-      "wordless": false,
-      "visual_prompt": "TIER 2 NATURAL ALCAZ PRISON STONE FLOOR + 100% PURE #FFFFFF UPPER SKY across TOP 36% (y=0%..36% completely empty pure #FFFFFF headroom for left bubble; borderless open top panel — keep stone floor anchored cleanly along lower edge without black box!). OVER-THE-SHOULDER WILD SNAP-OUT: lower-left (x=30%), Dwarf Hunter erupting into glorious unhinged loot-goblin rage — fiery blazing amber eyes, sharp feral grin, hoisting an oversized chunky 6-sided white-and-gold loot die showing ONLY round black dot pips (ZERO digits/letters!) high above her head with comic flame streaks (blunderbuss slung on back, Clean Hand)! Lower-right (x=74%), Undead Paladin turned 3/4 glancing back completely calm with sleepy half-lidded eyes (warhammer on back). ZERO text.",
-      "tail_target": "left",
-      "bubble_side": "left",
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
-      "bubble_center_xy": null,
-      "item_tooltip": null
-    },
-    {
-      "cut_index": 13,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 5,
-      "panel_index": 2,
-      "characters": [
-        "언데드 성기사"
-      ],
-      "speaker": "언데드 성기사",
-      "dialogue": "…응, 잘했어. 토닥토닥.",
-      "wordless": false,
-      "visual_prompt": "TIER 3 PURE #FFFFFF REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom for 1-line bubble; strictly inside Panel 2 borders). GENTLE SLEEPY TSUNDERE CLOSE-UP: Undead Paladin leaning slightly forward with half-lidded calm golden eyes, a tiny soft blush on her cheeks, and one white gauntlet offering an absurdly wholesome sleepy thumbs-up + gentle patting gesture surrounded by cozy little fluffy sparkles (golden warhammer strapped on back, Clean Hand)! Guardrail: fair peach-ivory skin, pure-white skull cap, silver-white bob hair, ZERO text.",
+      "speaker": null,
+      "dialogue": null,
+      "wordless": true,
+      "visual_prompt": "Wide deadpan freeze-frame reaction shot in a clean 3-to-3.5-head Korean gag webtoon style on pure solid white #FFFFFF background. Side by side, the Dwarf Hunter on the left and the Skyborn Mage on the right stand completely petrified like statues with tiny blank dot eyes, slack jaws, and stiff postures, blunderbuss and mage staff cleanly strapped to their backs. Tiny silent sweat drops and faint vertical shock lines hover above their heads.",
       "tail_target": "center",
-      "bubble_side": "center",
+      "bubble_side": null,
       "full_bleed_bg": false,
       "speaker_anchor_xy": null,
       "bubble_center_xy": null,
       "item_tooltip": null
     },
     {
-      "cut_index": 14,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 5,
-      "panel_index": 3,
+      "cut_index": 5,
+      "aspect_ratio": "4:3",
+      "layout_slot": "top",
+      "act_number": null,
+      "panel_index": null,
       "characters": [
-        "드워프 사냥꾼",
+        "스카이본 마법사",
         "오크 전사"
       ],
-      "speaker": "오크 전사",
-      "dialogue": "알카즈 올입 가자아~!",
+      "speaker": "스카이본 마법사",
+      "dialogue": "아~ 그럼 법사도 회피율\n올려야 하니까 다음엔\n민첩 템 입찰할게요.",
       "wordless": false,
-      "visual_prompt": "TIER 2 NATURAL ALCAZ PRISON STONE FLOOR + 100% PURE #FFFFFF UPPER SKY across TOP 38% (y=0%..38% completely empty pure #FFFFFF headroom for 1-line bubble; stone floor & treasure chest anchored flush along bottom, left & right borders!). DIZZYING BIRD'S-EYE TOP-DOWN CHAOS: Dwarf Hunter (blunderbuss on back) and Orc Warrior tank (holding compact 1H sword + sturdy steel kite shield) both diving gleefully onto an overflowing open Alcaz Prison treasure chest throwing chunky white-and-gold dot-pip loot dice (ONLY black dot pips, ZERO digits/letters!) everywhere in explosive cartoon sparkles & dust puffs! ZERO text.",
-      "tail_target": "center",
-      "bubble_side": "center",
+      "visual_prompt": "Side-profile over-the-shoulder shot in a clean 3-to-3.5-head Korean gag webtoon style on pure solid white #FFFFFF background. On the left, the Skyborn Mage flashes a chillingly polite, forced smile with narrowed starry eyes and an irked tick mark on her temple, holding up a chunky 6-sided white-and-gold cube showing ONLY classic round dot pips, strictly ZERO digits, ZERO numbers, ZERO letters, her staff stowed on her back. On the right, the Orc Warrior listens with wide, overly earnest eyes and nods excitedly in agreement, her axe stowed on her back.",
+      "tail_target": "left",
+      "bubble_side": null,
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 6,
+      "aspect_ratio": "16:9",
+      "layout_slot": "bottom",
+      "act_number": null,
+      "panel_index": null,
+      "characters": [
+        "오크 전사",
+        "드워프 사냥꾼"
+      ],
+      "speaker": "드워프 사냥꾼",
+      "dialogue": "에라 몰라! 전사는 지능 천템,\n냥꾼은 힘 템 다 굴려!\n알카즈 감옥 올입 가자!!",
+      "wordless": false,
+      "visual_prompt": "Wide energetic finale shot in a clean 3-to-3.5-head Korean gag webtoon style on pure solid white #FFFFFF background. On the left, the Orc Warrior pumps both fists excitedly in wild agreement with shining eyes, weapons stowed on her back. On the right, the Dwarf Hunter throws her arms up in exasperated chaos, tossing a couple of chunky 6-sided white-and-gold cubes showing ONLY classic round dot pips, strictly ZERO digits, ZERO numbers, ZERO letters into the air, her blunderbuss stowed on her back.",
+      "tail_target": "right",
+      "bubble_side": null,
       "full_bleed_bg": false,
       "speaker_anchor_xy": null,
       "bubble_center_xy": null,

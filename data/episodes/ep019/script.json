@@ -3,549 +3,121 @@
   "source_post_no": "104746",
   "source_title": "\"틀딱 씨, 우리 파티에서 나가주세요.\"",
   "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=104746&exception_mode=recommend&page=2",
-  "subtitle": "죽음의 폐광 뉴비 낭만팟 vs 광기 40인 공대장 틀딱의 몹 독주·대포 오폭·파탈 엔딩",
-  "layout_mode": "v4_five_act",
+  "subtitle": "뉴비 낭만팟에 난입한 오리 40인 공대장",
+  "layout_mode": "classic_2tier",
   "background_style": "clean_white",
-  "acts": [
-    {
-      "act_number": 1,
-      "act_title": "1막: 죽음의 폐광 낭만 입성과 퀘스트 두루마리 강탈",
-      "layout_id": "diagonal_tempo_2cut",
-      "cuts": [
-        {
-          "cut_index": 1,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 1,
-          "panel_index": 1,
-          "characters": [
-            "오크 전사",
-            "스카이본 마법사"
-          ],
-          "speaker": "오크 전사",
-          "dialogue": "와~ 죽음의 폐광이다!\n퀘스트 천천히 보면서 가자~!",
-          "wordless": false,
-          "visual_prompt": "TIER 1 FULL-BLEED DEADMINES ENTRANCE ESTABLISHING SHOT inside solid black box frame (edge-to-edge full scenery, outer page margins & gutter below pure #FFFFFF). Sweeping warm cinematic underground mine cavern entrance: heavy timber support beams, glowing wall torches, iron minecart tracks receding down a tunnel with two tiny distant silhouette red-bandana Defias miner mobs pushing a minecart far ahead; open dimly-lit vaulted stone cavern ceiling spanning the ENTIRE upper-left headroom (x=4%..58%, y=0%..35% completely uncluttered for left bubble — keep characters strictly below y=35%!). DYNAMIC ACTING: on lower-left (x=28%), excited newbie Orc Warrior clutching an unrolled blank parchment quest scroll (ZERO text!) with starry sparkling crimson eyes and wide thrilled puppy-warrior fang grin (fair skin, green plush orc hood, silver battle axe strapped diagonally on back). On lower-right (x=72%), over-the-shoulder 3/4 view of newbie buddy Skyborne Mage leaning in curiously with twinkling sky-blue star eyes (fair skin, sky-blue high side-ponytail, tilted blue cloud-wing wizard hat, Polymorph Sheep waist charm, blue crystal staff on back, 0 sailor uniform). Keep all art strictly inside Panel 1 borders, ZERO text.",
-          "tail_target": "left",
-          "bubble_side": "left",
-          "full_bleed_bg": true,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        },
-        {
-          "cut_index": 2,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 1,
-          "panel_index": 2,
-          "characters": [
-            "언데드 성기사",
-            "오크 전사"
-          ],
-          "speaker": "언데드 성기사",
-          "dialogue": "…자동수락 켜. 글 읽지 마.",
-          "wordless": false,
-          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND EVERYWHERE (top 38% y=0%..38% completely empty pure #FFFFFF headroom for right 1-line bubble!). CRITICAL NO-CLIP RULE: STRICTLY ZERO speedlines, ZERO motion lines, ZERO background hatching anywhere in Panel 2 — keep BOTH characters cleanly floating inside y=36%..94% and x=8%..92% on 100% blank pure #FFFFFF white with generous white margins on all sides (ZERO flat clipped edges!). WILD 30-DEGREE DUTCH-TILT SNATCH ACTION: on lower-right (x=70%), impatient veteran Undead Paladin swoops in ruthlessly snatching and crumpling the exact blank parchment quest scroll from Cut 1 inside her white-gloved fist, glaring down with sharp half-lidded blazing golden eyes and dark impatient forehead shadow (fair skin, white cartoon skull cap, silky silver-white bob hair, white-and-gold cape, golden warhammer strapped diagonally on back); on lower-left (x=28%), shocked newbie Orc Warrior jolts backward staring at her now-empty hands with giant bewildered pinpoint eyes as a few tiny self-contained torn white parchment scraps flutter between them (green orc hood, axe on back). ZERO text.",
-          "tail_target": "right",
-          "bubble_side": "right",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        }
-      ]
-    },
-    {
-      "act_number": 2,
-      "act_title": "2막: 몹 학살 독주, 화약통 질주와 대포 그을음 대참사",
-      "layout_id": "four_beat_gag",
-      "cuts": [
-        {
-          "cut_index": 3,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 2,
-          "panel_index": 1,
-          "characters": [
-            "언데드 성기사"
-          ],
-          "speaker": "언데드 성기사",
-          "dialogue": "느려터졌네… 다 비켜.",
-          "wordless": false,
-          "visual_prompt": "TIER 2 NATURAL FULL-WIDTH DEADMINES STONE FLOOR & MINECART TRACKS + 100% PURE #FFFFFF UPPER SKY across top 38% (y=0%..38% completely empty for centered 1-line bubble; strictly inside Panel 1!). Cracked mine stone tiles & iron rail tracks anchored flush edge-to-edge along bottom & side borders (0 floating islands!). LOW-ANGLE SOLO-SMASH SPEEDRUN ACTION: veteran Undead Paladin leaping fiercely forward swinging her gleaming golden warhammer in a bright golden shockwave arc, blasting TWO cute chibi red-bandana Defias miner mobs flying hilariously backward with dizzy spinning spiral eyes and comic stars! (Fair skin, white skull cap, silver-white bob, fluttering white-and-gold cape.) ZERO text.",
-          "tail_target": "center",
-          "bubble_side": "center",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        },
-        {
-          "cut_index": 4,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 2,
-          "panel_index": 2,
-          "characters": [
-            "언데드 성기사",
-            "오크 전사"
-          ],
-          "speaker": "언데드 성기사",
-          "dialogue": "기믹 설명할 시간 없어!\n대포로 날리면 끝이야.",
-          "wordless": false,
-          "visual_prompt": "TIER 2 NATURAL FULL-WIDTH GOBLIN FOUNDRY FLOOR + 100% PURE #FFFFFF UPPER SKY across top 38% (y=0%..38% completely empty for bubble; strictly inside Panel 2!). Wooden foundry floor planks & stacked crates anchored flush along bottom & side borders (0 floating islands!). SIDE-PROFILE SPEEDRUN DASH: in foreground right, manic Undead Paladin sprints past hoisting TWO sizzling lit wooden black-powder kegs overhead with intense crazed golden eyes (warhammer stowed on back); in mid-left behind her, newbie Orc Warrior jogs up panting frantically waving one hand trying to catch up alongside a tiny panicked fleeing green goblin miner mob! (Fair skin, green orc hood, axe on back.) ZERO text.",
-          "tail_target": "center",
-          "bubble_side": "center",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        },
-        {
-          "cut_index": 5,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 2,
-          "panel_index": 3,
-          "characters": [
-            "오크 전사"
-          ],
-          "speaker": "오크 전사",
-          "dialogue": "으아아악?! 눈앞에서\n대포를 쏘면 어떡해!!",
-          "wordless": false,
-          "visual_prompt": "TIER 2 NATURAL FULL-WIDTH BLASTED STONE FLOOR & IRON CANNON + 100% PURE #FFFFFF UPPER SKY across top 38% (y=0%..38% completely empty for bubble; strictly inside Panel 3!). Stone chamber floor & smoking black iron pirate cannon barrel on far left anchored flush along bottom & left borders with fiery comic smoke clouds! SLAPSTICK SOOT BLAST GAG: blasted backward on the right, newbie Orc Warrior is hilariously coated in black cartoon cannon soot with a puffy smoking frizzy soot-cloud silhouette, giant dizzy spiral shock eyes, coughing little puffs of gray smoke as splinters and a tiny red-bandana Defias pirate mob tumble past! (Green orc hood, axe on back.) ZERO text.",
-          "tail_target": "center",
-          "bubble_side": "center",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        },
-        {
-          "cut_index": 6,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 2,
-          "panel_index": 4,
-          "characters": [
-            "언데드 성기사"
-          ],
-          "speaker": "언데드 성기사",
-          "dialogue": "자, 해결. 밴클리프 가자.",
-          "wordless": false,
-          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND EVERYWHERE (top 38% y=0%..38% completely empty pure #FFFFFF headroom for centered 1-line bubble; strictly inside Panel 4!). SMUG SPOTLESS CLOSE-UP: completely clean, sparkling Undead Paladin FIRMLY WEARING HER ICONIC ROUND PURE-WHITE CARTOON SKULL CAP WITH TWO BLACK EYE SOCKETS on top of her head (DO NOT omit her skull cap!), brushing dust off her pure white gauntlets with a supremely smug half-lidded bored expression and crisp tiny diamond sparkles around her shoulders! Guardrail: fair skin, round white cartoon skull cap on head, silky silver-white bob hair underneath, white-and-gold cape, golden warhammer stowed diagonally on back, ZERO text.",
-          "tail_target": "center",
-          "bubble_side": "center",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        }
-      ]
-    },
-    {
-      "act_number": 3,
-      "act_title": "3막: 틀딱 씨 나가주세요 정면 통보와 꼰대 직업 염불",
-      "layout_id": "wide_reaction_wide",
-      "cuts": [
-        {
-          "cut_index": 7,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 3,
-          "panel_index": 1,
-          "characters": [
-            "오크 전사"
-          ],
-          "speaker": "오크 전사",
-          "dialogue": "틀딱 씨, 우리 파티에서\n나가주세요! 재미 다 막잖아요!",
-          "wordless": false,
-          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND! CRITICAL NO-FLAME & NO-CLIP RULE: ENTIRE RIGHT 54% (x=46%..100%) MUST BE 100% BLANK PURE #FFFFFF WHITE! STRICTLY ZERO flame aura and ZERO background speedlines behind Orc Warrior — draw her cleanly on 100% pure blank #FFFFFF white inside x=6%..44% and y=16%..98% with generous pure white air above her green orc hood and ponytail (ZERO flat top clipping!). The EXACT SAME newbie Orc Warrior from Cut 5 (still sporting a cute smudgy black cannon-soot streak on her cheek!) erupts in righteous fury with blazing crimson eyes, a big red anime anger vein throbbing on her hood, and compact round white cartoon steam puffs shooting from both sides of her hood as she jabs a trembling accusing finger straight right! Guardrail: fair skin, green plush orc hood, battle axe stowed diagonally on back, ZERO text.",
-          "tail_target": "left",
-          "bubble_side": "right",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        },
-        {
-          "cut_index": 8,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 3,
-          "panel_index": 2,
-          "characters": [
-            "언데드 성기사"
-          ],
-          "speaker": "언데드 성기사",
-          "dialogue": "뭘 모르네… 오리 19클한\n내 말 들어야 더 재밌어.",
-          "wordless": false,
-          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND! CRITICAL HALF-PANEL & TOP-MARGIN RULE: ENTIRE LEFT 54% (x=0%..54%) MUST BE 100% BLANK PURE #FFFFFF WHITE! Frame Undead Paladin waist-up inside y=12%..98% on RIGHT 42% (x=56%..96%) so the ENTIRE rounded white top dome of her cartoon skull cap sits COMPLETELY UNCLIPPED with clear pure white air above her skull cap inside Panel 2 (ZERO top clipping!). Veteran Undead Paladin leans darkly forward looming menacingly with a compact violet-and-gold villain gloom aura strictly hugging her silhouette inside x=55%..100%, jabbing a condescending lecturing finger with razor-sharp sinister glowing golden eyes and dark forehead shadow! Guardrail: fair skin, FULL UNCLIPPED round white cartoon skull cap on head, silky silver-white bob, white-and-gold cape, golden warhammer stowed on back, ZERO text.",
-          "tail_target": "right",
-          "bubble_side": "left",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        },
-        {
-          "cut_index": 9,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 3,
-          "panel_index": 3,
-          "characters": [
-            "언데드 성기사"
-          ],
-          "speaker": "언데드 성기사",
-          "dialogue": "전사 어렵잖아, 성기사 해!\n법사 광딜·물빵이 진짜 사긴데!",
-          "wordless": false,
-          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND! CRITICAL ZOOM-OUT & NO-CLIP RULE: ENTIRE LEFT 54% (x=0%..54%) MUST BE 100% BLANK PURE #FFFFFF WHITE! Draw Undead Paladin as a SMALLER FULL-BODY / KNEE-UP CHIBI FIGURE zoomed comfortably back on RIGHT 40% (x=58%..94%, head-to-knees spanning ONLY y=22%..96%) so there is MASSIVE 22% PURE WHITE EMPTY SPACE ABOVE HER ENTIRE ROUND WHITE CARTOON SKULL CAP (STRICTLY ZERO clipping of the skull cap top — NEVER zoom close to her face!). Energetic side-angle boomer sermon pose: Undead Paladin standing proudly on the right wagging one white-gloved lecturing finger enthusiastically to the left with manic sparkling golden eyes and a few tiny golden sparkles strictly beside her waist inside x=56%..98%! Guardrail: fair skin, FULL SMALL UNCLIPPED round white cartoon skull cap on head, silky silver-white bob, white-and-gold cape, golden warhammer stowed on back, ZERO text.",
-          "tail_target": "right",
-          "bubble_side": "left",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        }
-      ]
-    },
-    {
-      "act_number": 4,
-      "act_title": "4막: 40인 공대장 염불 폭주와 밴클리프까지 어이없는 무언 정지",
-      "layout_id": "impact_freeze_2cut",
-      "cuts": [
-        {
-          "cut_index": 10,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 4,
-          "panel_index": 1,
-          "characters": [
-            "언데드 성기사"
-          ],
-          "speaker": "언데드 성기사",
-          "dialogue": "내가 오리 40인 공대장인데—!!",
-          "wordless": false,
-          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND! CRITICAL HALF-PANEL RULE: ENTIRE LEFT 54% (x=0%..54%) MUST BE 100% BLANK PURE #FFFFFF WHITE — STRICTLY ZERO FLAMES, ZERO BANNERS, ZERO PIXELS ANYWHERE LEFT OF x=54%! Positioned BIG & TALL cleanly on RIGHT 42% (x=58%..96%, strictly inside Panel 1!): EXTREME DRAMATIC LOW-ANGLE SERMON CLIMAX — Undead Paladin throwing both arms skyward in megalomaniac raid-leader rapture, blazing golden eyes wide open, cape fluttering dramatically amid compact golden comic flames strictly hugging ONLY her silhouette inside x=56%..100%! Guardrail: fair skin, full round white cartoon skull cap on head, silky silver-white bob, golden warhammer stowed on back, ZERO text.",
-          "tail_target": "right",
-          "bubble_side": "left",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        },
-        {
-          "cut_index": 11,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 4,
-          "panel_index": 2,
-          "characters": [
-            "오크 전사",
-            "스카이본 마법사"
-          ],
-          "speaker": null,
-          "dialogue": null,
-          "wordless": true,
-          "visual_prompt": "TIER 2 MASSIVE WORDLESS CLIMAX FREEZE-FRAME ON FULL-WIDTH DEADMINES PIRATE SHIP DECK + 100% PURE #FFFFFF UPPER SKY (ZERO text, ZERO speech bubbles!). Weathered wooden pirate galleon deck planks, coiled ropes, wooden railing, and lower red-sail mast base anchored flush edge-to-edge across the ENTIRE bottom, left & right inner borders (0 floating islands!); upper 40% crisp pure #FFFFFF white sky with jagged dark comic shock lines feathering organically into white! SHOWSTOPPER COMEDY: dominating lower foreground (bold tall 74% framing) are the EXACT TWO newbies whose classes were just trashed: on lower-left (x=30%), soot-smudged Orc Warrior frozen solid in blue-indigo vertical doom lines, hollow blank white shock eyes, jaw dropped wide, cascading cold sweatdrops (fair skin, green orc hood, battle axe on back); on lower-right (x=70%), Skyborne Mage clamping both hands tightly over her pointed elf ears with giant spinning spiral eyes, star-pupils extinguished, tilted cloud-wing wizard hat trembling, and a cute translucent mini-soul flying straight out of her mouth (fair skin, sky-blue high side-ponytail, Polymorph Sheep waist charm, blue crystal staff on back, 0 sailor uniform)! Peering awkwardly over the mid-background upper ship railing right behind them, dungeon boss Edwin VanCleef (red-bandana masked pirate captain with crossed cutlasses) AND THREE cute chibi red-bandana Defias pirate mob extras ALL lean forward cringing with giant awkward sweatdrops and baffled deadpan expressions!",
-          "tail_target": "center",
-          "bubble_side": null,
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        }
-      ]
-    },
-    {
-      "act_number": 5,
-      "act_title": "5막: 뉴비 대폭발 귀환석 파탈과 틀딱 홀로 징징 엔딩",
-      "layout_id": "split_top_wide_bottom",
-      "cuts": [
-        {
-          "cut_index": 12,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 5,
-          "panel_index": 1,
-          "characters": [
-            "오크 전사"
-          ],
-          "speaker": "오크 전사",
-          "dialogue": "아 진짜! 꼽 주러 왔어요?!",
-          "wordless": false,
-          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND EVERYWHERE (top 38% y=0%..38% completely empty pure #FFFFFF headroom for centered 1-line bubble; strictly inside Panel 1 borders!). EXTREME FACE CLOSE-UP VOLCANIC SNAP: pushed-too-far newbie Orc Warrior roaring at maximum fury with blazing crimson eyes, huge throbbing red anime anger vein on forehead, sharp shouting fangs, explosive twin jets of white steam blasting out of both green orc hood ears, and crisp fiery red rage aura feathering cleanly into pure #FFFFFF white! Guardrail: fair skin, green orc hood, battle axe behind back, ZERO text.",
-          "tail_target": "center",
-          "bubble_side": "center",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        },
-        {
-          "cut_index": 13,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 5,
-          "panel_index": 2,
-          "characters": [
-            "스카이본 마법사"
-          ],
-          "speaker": "스카이본 마법사",
-          "dialogue": "말 안 통해! 귀환석 타자!!",
-          "wordless": false,
-          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND EVERYWHERE (top 38% y=0%..38% completely empty pure #FFFFFF headroom for centered 1-line bubble; strictly inside Panel 2 borders!). URGENT ESCAPE ACTION: Skyborne Mage frantically hoisting a brightly glowing cyan-swirl Hearthstone in both hands with streaming comic tears, puffed desperate cheeks, and swirling cyan teleport sparks radiating cleanly into pure #FFFFFF white! Guardrail: fair skin, sky-blue high side-ponytail, tilted blue cloud-wing wizard hat, Polymorph Sheep waist charm, blue crystal staff stowed on back, 0 sailor uniform, ZERO text.",
-          "tail_target": "center",
-          "bubble_side": "center",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        },
-        {
-          "cut_index": 14,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 5,
-          "panel_index": 3,
-          "characters": [
-            "언데드 성기사",
-            "오크 전사"
-          ],
-          "speaker": "언데드 성기사",
-          "dialogue": "아니 왜 다 나가?! 억울해!!\n와우는 만렙부터란 말야!!",
-          "wordless": false,
-          "visual_prompt": "TIER 2 NATURAL FULL-WIDTH DEADMINES PIRATE SHIP DECK FINALE + 100% PURE #FFFFFF UPPER SKY across top 38% (y=0%..38% completely empty pure #FFFFFF headroom for right bubble; strictly inside Panel 3!). Wooden pirate ship deck planks, stacked barrels, and wooden ship railing anchored flush edge-to-edge along bottom, left & right inner borders (0 floating islands!). In distant mid-background center, TWO tiny cute chibi red-bandana Defias pirate mob extras awkwardly tiptoe backward away from the screaming party with big nervous sweatdrops! On lower-left (x=24%), seen in brisk back-view stepping straight into a bright swirling cyan Hearthstone teleport vortex (with a glowing cyan vanishing silhouette of a blue wizard hat disappearing right beside her — the whole newbie party really ditched her!), is the Orc Warrior (back of green orc hood with black high ponytail, red cape, silver battle axe diagonally on back). On lower-right (x=74%), abandoned completely alone on deck, veteran Undead Paladin stomps both armored boots throwing an intensely bitter, self-pitying whining tantrum — flushed crimson cheeks, frustrated angry anime tears welling in her golden eyes, reaching one trembling white-gloved hand desperately after the vanishing newbies yelling indignantly (white skull cap, silver-white bob, golden warhammer on back — STRICTLY NO smiling, NO flowers!). ZERO text.",
-          "tail_target": "right",
-          "bubble_side": "right",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        }
-      ]
-    }
-  ],
+  "acts": null,
   "cuts": [
     {
       "cut_index": 1,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 1,
-      "panel_index": 1,
+      "aspect_ratio": "4:3",
+      "layout_slot": "top",
+      "act_number": null,
+      "panel_index": null,
       "characters": [
         "오크 전사",
-        "스카이본 마법사"
+        "타우렌 드루이드"
       ],
       "speaker": "오크 전사",
-      "dialogue": "와~ 죽음의 폐광이다!\n퀘스트 천천히 보면서 가자~!",
+      "dialogue": "죽음의 폐광 퀘스트\n천천히 읽으면서 가요!\n뉴비끼리 재밌겠다~",
       "wordless": false,
-      "visual_prompt": "TIER 1 FULL-BLEED DEADMINES ENTRANCE ESTABLISHING SHOT inside solid black box frame (edge-to-edge full scenery, outer page margins & gutter below pure #FFFFFF). Sweeping warm cinematic underground mine cavern entrance: heavy timber support beams, glowing wall torches, iron minecart tracks receding down a tunnel with two tiny distant silhouette red-bandana Defias miner mobs pushing a minecart far ahead; open dimly-lit vaulted stone cavern ceiling spanning the ENTIRE upper-left headroom (x=4%..58%, y=0%..35% completely uncluttered for left bubble — keep characters strictly below y=35%!). DYNAMIC ACTING: on lower-left (x=28%), excited newbie Orc Warrior clutching an unrolled blank parchment quest scroll (ZERO text!) with starry sparkling crimson eyes and wide thrilled puppy-warrior fang grin (fair skin, green plush orc hood, silver battle axe strapped diagonally on back). On lower-right (x=72%), over-the-shoulder 3/4 view of newbie buddy Skyborne Mage leaning in curiously with twinkling sky-blue star eyes (fair skin, sky-blue high side-ponytail, tilted blue cloud-wing wizard hat, Polymorph Sheep waist charm, blue crystal staff on back, 0 sailor uniform). Keep all art strictly inside Panel 1 borders, ZERO text.",
+      "visual_prompt": "Three-quarter medium-wide comic panel in agile 3-to-3.5 head-to-body Korean webtoon style on a pure solid #FFFFFF white background. On the left, 오크 전사 beams excitedly while holding an open parchment quest scroll with both hands, her one-handed sword and kite shield neatly strapped to her back. On the right, 타우렌 드루이드 peeks happily around a small wooden mining cart beside a minimal patch of dusty cavern floor.",
       "tail_target": "left",
       "bubble_side": "left",
-      "full_bleed_bg": true,
-      "speaker_anchor_xy": null,
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": [
+        0.28,
+        0.34
+      ],
       "bubble_center_xy": null,
       "item_tooltip": null
     },
     {
       "cut_index": 2,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 1,
-      "panel_index": 2,
+      "aspect_ratio": "16:9",
+      "layout_slot": "bottom",
+      "act_number": null,
+      "panel_index": null,
       "characters": [
         "언데드 성기사",
         "오크 전사"
       ],
       "speaker": "언데드 성기사",
-      "dialogue": "…자동수락 켜. 글 읽지 마.",
+      "dialogue": "글 읽을 시간 없어!\n대포로 철문 따고 바로\n밴클리프 잡으러 갑시다!",
       "wordless": false,
-      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND EVERYWHERE (top 38% y=0%..38% completely empty pure #FFFFFF headroom for right 1-line bubble!). CRITICAL NO-CLIP RULE: STRICTLY ZERO speedlines, ZERO motion lines, ZERO background hatching anywhere in Panel 2 — keep BOTH characters cleanly floating inside y=36%..94% and x=8%..92% on 100% blank pure #FFFFFF white with generous white margins on all sides (ZERO flat clipped edges!). WILD 30-DEGREE DUTCH-TILT SNATCH ACTION: on lower-right (x=70%), impatient veteran Undead Paladin swoops in ruthlessly snatching and crumpling the exact blank parchment quest scroll from Cut 1 inside her white-gloved fist, glaring down with sharp half-lidded blazing golden eyes and dark impatient forehead shadow (fair skin, white cartoon skull cap, silky silver-white bob hair, white-and-gold cape, golden warhammer strapped diagonally on back); on lower-left (x=28%), shocked newbie Orc Warrior jolts backward staring at her now-empty hands with giant bewildered pinpoint eyes as a few tiny self-contained torn white parchment scraps flutter between them (green orc hood, axe on back). ZERO text.",
-      "tail_target": "right",
-      "bubble_side": "right",
+      "visual_prompt": "Dynamic low-angle comic action panel in agile 3-to-3.5 head-to-body Korean webtoon style on a pure solid #FFFFFF white background. On the left foreground, 언데드 성기사 smugly leans beside a black iron pirate cannon with her golden paladin shield strapped on her back, firing a loud comic blast toward the right that shatters a heavy iron-bound dungeon gate into flying splinters. On the far right background, 오크 전사 drops her scroll in shock with tiny sweat drops.",
+      "tail_target": "left",
+      "bubble_side": "left",
       "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
+      "speaker_anchor_xy": [
+        0.24,
+        0.36
+      ],
       "bubble_center_xy": null,
       "item_tooltip": null
     },
     {
       "cut_index": 3,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 2,
-      "panel_index": 1,
+      "aspect_ratio": "4:3",
+      "layout_slot": "top",
+      "act_number": null,
+      "panel_index": null,
       "characters": [
+        "오크 전사",
         "언데드 성기사"
       ],
-      "speaker": "언데드 성기사",
-      "dialogue": "느려터졌네… 다 비켜.",
+      "speaker": "오크 전사",
+      "dialogue": "저기요, 나가주세요!\n분위기 좀 즐기려는데\n왜 혼자 다 밀고 난리예요?",
       "wordless": false,
-      "visual_prompt": "TIER 2 NATURAL FULL-WIDTH DEADMINES STONE FLOOR & MINECART TRACKS + 100% PURE #FFFFFF UPPER SKY across top 38% (y=0%..38% completely empty for centered 1-line bubble; strictly inside Panel 1!). Cracked mine stone tiles & iron rail tracks anchored flush edge-to-edge along bottom & side borders (0 floating islands!). LOW-ANGLE SOLO-SMASH SPEEDRUN ACTION: veteran Undead Paladin leaping fiercely forward swinging her gleaming golden warhammer in a bright golden shockwave arc, blasting TWO cute chibi red-bandana Defias miner mobs flying hilariously backward with dizzy spinning spiral eyes and comic stars! (Fair skin, white skull cap, silver-white bob, fluttering white-and-gold cape.) ZERO text.",
-      "tail_target": "center",
-      "bubble_side": "center",
+      "visual_prompt": "Over-the-shoulder angled confrontation panel in agile 3-to-3.5 head-to-body Korean webtoon style on a pure solid #FFFFFF white background. On the left, 오크 전사 leans forward with furrowed brows and angry anime vein marks, pointing firmly toward the dungeon exit with an empty hand while her one-handed sword and shield stay sheathed on her back. On the right, 언데드 성기사 stands slightly turned away in side-back view with crossed arms and an unbothered expression.",
+      "tail_target": "left",
+      "bubble_side": "left",
       "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
+      "speaker_anchor_xy": [
+        0.28,
+        0.35
+      ],
       "bubble_center_xy": null,
       "item_tooltip": null
     },
     {
       "cut_index": 4,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 2,
-      "panel_index": 2,
+      "aspect_ratio": "16:9",
+      "layout_slot": "bottom",
+      "act_number": null,
+      "panel_index": null,
       "characters": [
-        "언데드 성기사",
-        "오크 전사"
+        "오크 전사",
+        "언데드 성기사"
       ],
       "speaker": "언데드 성기사",
-      "dialogue": "기믹 설명할 시간 없어!\n대포로 날리면 끝이야.",
+      "dialogue": "오리 40인 공대장인데\n전사 말고 성기사나 법사 해!\n만렙 찍어야 재밌지!",
       "wordless": false,
-      "visual_prompt": "TIER 2 NATURAL FULL-WIDTH GOBLIN FOUNDRY FLOOR + 100% PURE #FFFFFF UPPER SKY across top 38% (y=0%..38% completely empty for bubble; strictly inside Panel 2!). Wooden foundry floor planks & stacked crates anchored flush along bottom & side borders (0 floating islands!). SIDE-PROFILE SPEEDRUN DASH: in foreground right, manic Undead Paladin sprints past hoisting TWO sizzling lit wooden black-powder kegs overhead with intense crazed golden eyes (warhammer stowed on back); in mid-left behind her, newbie Orc Warrior jogs up panting frantically waving one hand trying to catch up alongside a tiny panicked fleeing green goblin miner mob! (Fair skin, green orc hood, axe on back.) ZERO text.",
-      "tail_target": "center",
-      "bubble_side": "center",
+      "visual_prompt": "Dramatic low-angle side-three-quarter panel in agile 3-to-3.5 head-to-body Korean webtoon style on a pure solid #FFFFFF white background. On the right, 언데드 성기사 stands tall lecturing pompously with one hand on her hip and the other pointing a lecturing index finger upward, her golden paladin shield on her back. On the left, 오크 전사 slouches heavily with slumped shoulders and an exasperated twitching brow.",
+      "tail_target": "right",
+      "bubble_side": "right",
       "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
+      "speaker_anchor_xy": [
+        0.74,
+        0.32
+      ],
       "bubble_center_xy": null,
       "item_tooltip": null
     },
     {
       "cut_index": 5,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 2,
-      "panel_index": 3,
-      "characters": [
-        "오크 전사"
-      ],
-      "speaker": "오크 전사",
-      "dialogue": "으아아악?! 눈앞에서\n대포를 쏘면 어떡해!!",
-      "wordless": false,
-      "visual_prompt": "TIER 2 NATURAL FULL-WIDTH BLASTED STONE FLOOR & IRON CANNON + 100% PURE #FFFFFF UPPER SKY across top 38% (y=0%..38% completely empty for bubble; strictly inside Panel 3!). Stone chamber floor & smoking black iron pirate cannon barrel on far left anchored flush along bottom & left borders with fiery comic smoke clouds! SLAPSTICK SOOT BLAST GAG: blasted backward on the right, newbie Orc Warrior is hilariously coated in black cartoon cannon soot with a puffy smoking frizzy soot-cloud silhouette, giant dizzy spiral shock eyes, coughing little puffs of gray smoke as splinters and a tiny red-bandana Defias pirate mob tumble past! (Green orc hood, axe on back.) ZERO text.",
-      "tail_target": "center",
-      "bubble_side": "center",
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
-      "bubble_center_xy": null,
-      "item_tooltip": null
-    },
-    {
-      "cut_index": 6,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 2,
-      "panel_index": 4,
-      "characters": [
-        "언데드 성기사"
-      ],
-      "speaker": "언데드 성기사",
-      "dialogue": "자, 해결. 밴클리프 가자.",
-      "wordless": false,
-      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND EVERYWHERE (top 38% y=0%..38% completely empty pure #FFFFFF headroom for centered 1-line bubble; strictly inside Panel 4!). SMUG SPOTLESS CLOSE-UP: completely clean, sparkling Undead Paladin FIRMLY WEARING HER ICONIC ROUND PURE-WHITE CARTOON SKULL CAP WITH TWO BLACK EYE SOCKETS on top of her head (DO NOT omit her skull cap!), brushing dust off her pure white gauntlets with a supremely smug half-lidded bored expression and crisp tiny diamond sparkles around her shoulders! Guardrail: fair skin, round white cartoon skull cap on head, silky silver-white bob hair underneath, white-and-gold cape, golden warhammer stowed diagonally on back, ZERO text.",
-      "tail_target": "center",
-      "bubble_side": "center",
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
-      "bubble_center_xy": null,
-      "item_tooltip": null
-    },
-    {
-      "cut_index": 7,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 3,
-      "panel_index": 1,
-      "characters": [
-        "오크 전사"
-      ],
-      "speaker": "오크 전사",
-      "dialogue": "틀딱 씨, 우리 파티에서\n나가주세요! 재미 다 막잖아요!",
-      "wordless": false,
-      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND! CRITICAL NO-FLAME & NO-CLIP RULE: ENTIRE RIGHT 54% (x=46%..100%) MUST BE 100% BLANK PURE #FFFFFF WHITE! STRICTLY ZERO flame aura and ZERO background speedlines behind Orc Warrior — draw her cleanly on 100% pure blank #FFFFFF white inside x=6%..44% and y=16%..98% with generous pure white air above her green orc hood and ponytail (ZERO flat top clipping!). The EXACT SAME newbie Orc Warrior from Cut 5 (still sporting a cute smudgy black cannon-soot streak on her cheek!) erupts in righteous fury with blazing crimson eyes, a big red anime anger vein throbbing on her hood, and compact round white cartoon steam puffs shooting from both sides of her hood as she jabs a trembling accusing finger straight right! Guardrail: fair skin, green plush orc hood, battle axe stowed diagonally on back, ZERO text.",
-      "tail_target": "left",
-      "bubble_side": "right",
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
-      "bubble_center_xy": null,
-      "item_tooltip": null
-    },
-    {
-      "cut_index": 8,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 3,
-      "panel_index": 2,
-      "characters": [
-        "언데드 성기사"
-      ],
-      "speaker": "언데드 성기사",
-      "dialogue": "뭘 모르네… 오리 19클한\n내 말 들어야 더 재밌어.",
-      "wordless": false,
-      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND! CRITICAL HALF-PANEL & TOP-MARGIN RULE: ENTIRE LEFT 54% (x=0%..54%) MUST BE 100% BLANK PURE #FFFFFF WHITE! Frame Undead Paladin waist-up inside y=12%..98% on RIGHT 42% (x=56%..96%) so the ENTIRE rounded white top dome of her cartoon skull cap sits COMPLETELY UNCLIPPED with clear pure white air above her skull cap inside Panel 2 (ZERO top clipping!). Veteran Undead Paladin leans darkly forward looming menacingly with a compact violet-and-gold villain gloom aura strictly hugging her silhouette inside x=55%..100%, jabbing a condescending lecturing finger with razor-sharp sinister glowing golden eyes and dark forehead shadow! Guardrail: fair skin, FULL UNCLIPPED round white cartoon skull cap on head, silky silver-white bob, white-and-gold cape, golden warhammer stowed on back, ZERO text.",
-      "tail_target": "right",
-      "bubble_side": "left",
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
-      "bubble_center_xy": null,
-      "item_tooltip": null
-    },
-    {
-      "cut_index": 9,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 3,
-      "panel_index": 3,
-      "characters": [
-        "언데드 성기사"
-      ],
-      "speaker": "언데드 성기사",
-      "dialogue": "전사 어렵잖아, 성기사 해!\n법사 광딜·물빵이 진짜 사긴데!",
-      "wordless": false,
-      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND! CRITICAL ZOOM-OUT & NO-CLIP RULE: ENTIRE LEFT 54% (x=0%..54%) MUST BE 100% BLANK PURE #FFFFFF WHITE! Draw Undead Paladin as a SMALLER FULL-BODY / KNEE-UP CHIBI FIGURE zoomed comfortably back on RIGHT 40% (x=58%..94%, head-to-knees spanning ONLY y=22%..96%) so there is MASSIVE 22% PURE WHITE EMPTY SPACE ABOVE HER ENTIRE ROUND WHITE CARTOON SKULL CAP (STRICTLY ZERO clipping of the skull cap top — NEVER zoom close to her face!). Energetic side-angle boomer sermon pose: Undead Paladin standing proudly on the right wagging one white-gloved lecturing finger enthusiastically to the left with manic sparkling golden eyes and a few tiny golden sparkles strictly beside her waist inside x=56%..98%! Guardrail: fair skin, FULL SMALL UNCLIPPED round white cartoon skull cap on head, silky silver-white bob, white-and-gold cape, golden warhammer stowed on back, ZERO text.",
-      "tail_target": "right",
-      "bubble_side": "left",
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
-      "bubble_center_xy": null,
-      "item_tooltip": null
-    },
-    {
-      "cut_index": 10,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 4,
-      "panel_index": 1,
-      "characters": [
-        "언데드 성기사"
-      ],
-      "speaker": "언데드 성기사",
-      "dialogue": "내가 오리 40인 공대장인데—!!",
-      "wordless": false,
-      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND! CRITICAL HALF-PANEL RULE: ENTIRE LEFT 54% (x=0%..54%) MUST BE 100% BLANK PURE #FFFFFF WHITE — STRICTLY ZERO FLAMES, ZERO BANNERS, ZERO PIXELS ANYWHERE LEFT OF x=54%! Positioned BIG & TALL cleanly on RIGHT 42% (x=58%..96%, strictly inside Panel 1!): EXTREME DRAMATIC LOW-ANGLE SERMON CLIMAX — Undead Paladin throwing both arms skyward in megalomaniac raid-leader rapture, blazing golden eyes wide open, cape fluttering dramatically amid compact golden comic flames strictly hugging ONLY her silhouette inside x=56%..100%! Guardrail: fair skin, full round white cartoon skull cap on head, silky silver-white bob, golden warhammer stowed on back, ZERO text.",
-      "tail_target": "right",
-      "bubble_side": "left",
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
-      "bubble_center_xy": null,
-      "item_tooltip": null
-    },
-    {
-      "cut_index": 11,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 4,
-      "panel_index": 2,
+      "aspect_ratio": "4:3",
+      "layout_slot": "top",
+      "act_number": null,
+      "panel_index": null,
       "characters": [
         "오크 전사",
-        "스카이본 마법사"
+        "타우렌 드루이드"
       ],
       "speaker": null,
       "dialogue": null,
       "wordless": true,
-      "visual_prompt": "TIER 2 MASSIVE WORDLESS CLIMAX FREEZE-FRAME ON FULL-WIDTH DEADMINES PIRATE SHIP DECK + 100% PURE #FFFFFF UPPER SKY (ZERO text, ZERO speech bubbles!). Weathered wooden pirate galleon deck planks, coiled ropes, wooden railing, and lower red-sail mast base anchored flush edge-to-edge across the ENTIRE bottom, left & right inner borders (0 floating islands!); upper 40% crisp pure #FFFFFF white sky with jagged dark comic shock lines feathering organically into white! SHOWSTOPPER COMEDY: dominating lower foreground (bold tall 74% framing) are the EXACT TWO newbies whose classes were just trashed: on lower-left (x=30%), soot-smudged Orc Warrior frozen solid in blue-indigo vertical doom lines, hollow blank white shock eyes, jaw dropped wide, cascading cold sweatdrops (fair skin, green orc hood, battle axe on back); on lower-right (x=70%), Skyborne Mage clamping both hands tightly over her pointed elf ears with giant spinning spiral eyes, star-pupils extinguished, tilted cloud-wing wizard hat trembling, and a cute translucent mini-soul flying straight out of her mouth (fair skin, sky-blue high side-ponytail, Polymorph Sheep waist charm, blue crystal staff on back, 0 sailor uniform)! Peering awkwardly over the mid-background upper ship railing right behind them, dungeon boss Edwin VanCleef (red-bandana masked pirate captain with crossed cutlasses) AND THREE cute chibi red-bandana Defias pirate mob extras ALL lean forward cringing with giant awkward sweatdrops and baffled deadpan expressions!",
+      "visual_prompt": "Tight deadpan close-up reaction panel in agile 3-to-3.5 head-to-body Korean webtoon style on a pure solid #FFFFFF white background. Side by side, 오크 전사 on the left and 타우렌 드루이드 on the right stare straight ahead with completely blank, soul-drained eyes, flat mouths, heavy dark vertical gloom lines over their foreheads, and silent comic sweat drops in total speechlessness.",
       "tail_target": "center",
       "bubble_side": null,
       "full_bleed_bg": false,
@@ -554,63 +126,26 @@
       "item_tooltip": null
     },
     {
-      "cut_index": 12,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 5,
-      "panel_index": 1,
-      "characters": [
-        "오크 전사"
-      ],
-      "speaker": "오크 전사",
-      "dialogue": "아 진짜! 꼽 주러 왔어요?!",
-      "wordless": false,
-      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND EVERYWHERE (top 38% y=0%..38% completely empty pure #FFFFFF headroom for centered 1-line bubble; strictly inside Panel 1 borders!). EXTREME FACE CLOSE-UP VOLCANIC SNAP: pushed-too-far newbie Orc Warrior roaring at maximum fury with blazing crimson eyes, huge throbbing red anime anger vein on forehead, sharp shouting fangs, explosive twin jets of white steam blasting out of both green orc hood ears, and crisp fiery red rage aura feathering cleanly into pure #FFFFFF white! Guardrail: fair skin, green orc hood, battle axe behind back, ZERO text.",
-      "tail_target": "center",
-      "bubble_side": "center",
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
-      "bubble_center_xy": null,
-      "item_tooltip": null
-    },
-    {
-      "cut_index": 13,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 5,
-      "panel_index": 2,
-      "characters": [
-        "스카이본 마법사"
-      ],
-      "speaker": "스카이본 마법사",
-      "dialogue": "말 안 통해! 귀환석 타자!!",
-      "wordless": false,
-      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND EVERYWHERE (top 38% y=0%..38% completely empty pure #FFFFFF headroom for centered 1-line bubble; strictly inside Panel 2 borders!). URGENT ESCAPE ACTION: Skyborne Mage frantically hoisting a brightly glowing cyan-swirl Hearthstone in both hands with streaming comic tears, puffed desperate cheeks, and swirling cyan teleport sparks radiating cleanly into pure #FFFFFF white! Guardrail: fair skin, sky-blue high side-ponytail, tilted blue cloud-wing wizard hat, Polymorph Sheep waist charm, blue crystal staff stowed on back, 0 sailor uniform, ZERO text.",
-      "tail_target": "center",
-      "bubble_side": "center",
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
-      "bubble_center_xy": null,
-      "item_tooltip": null
-    },
-    {
-      "cut_index": 14,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 5,
-      "panel_index": 3,
+      "cut_index": 6,
+      "aspect_ratio": "16:9",
+      "layout_slot": "bottom",
+      "act_number": null,
+      "panel_index": null,
       "characters": [
         "언데드 성기사",
         "오크 전사"
       ],
       "speaker": "언데드 성기사",
-      "dialogue": "아니 왜 다 나가?! 억울해!!\n와우는 만렙부터란 말야!!",
+      "dialogue": "아니, 왜 다들 말없이\n파탈하고 귀환 타요?!\n좋게 알려준 건데 억울해!",
       "wordless": false,
-      "visual_prompt": "TIER 2 NATURAL FULL-WIDTH DEADMINES PIRATE SHIP DECK FINALE + 100% PURE #FFFFFF UPPER SKY across top 38% (y=0%..38% completely empty pure #FFFFFF headroom for right bubble; strictly inside Panel 3!). Wooden pirate ship deck planks, stacked barrels, and wooden ship railing anchored flush edge-to-edge along bottom, left & right inner borders (0 floating islands!). In distant mid-background center, TWO tiny cute chibi red-bandana Defias pirate mob extras awkwardly tiptoe backward away from the screaming party with big nervous sweatdrops! On lower-left (x=24%), seen in brisk back-view stepping straight into a bright swirling cyan Hearthstone teleport vortex (with a glowing cyan vanishing silhouette of a blue wizard hat disappearing right beside her — the whole newbie party really ditched her!), is the Orc Warrior (back of green orc hood with black high ponytail, red cape, silver battle axe diagonally on back). On lower-right (x=74%), abandoned completely alone on deck, veteran Undead Paladin stomps both armored boots throwing an intensely bitter, self-pitying whining tantrum — flushed crimson cheeks, frustrated angry anime tears welling in her golden eyes, reaching one trembling white-gloved hand desperately after the vanishing newbies yelling indignantly (white skull cap, silver-white bob, golden warhammer on back — STRICTLY NO smiling, NO flowers!). ZERO text.",
-      "tail_target": "right",
-      "bubble_side": "right",
+      "visual_prompt": "Wide side-angled parting gag panel in agile 3-to-3.5 head-to-body Korean webtoon style on a pure solid #FFFFFF white background. On the left, 언데드 성기사 throws both empty hands up in bewildered outrage with her golden paladin shield strapped on her back, left all alone in the tunnel. On the right, 오크 전사 wears a flat deadpan face while cradling a smooth glowing cyan-swirl oval Hearthstone in her palm as bright turquoise teleportation ribbons spiral upward around her fading figure.",
+      "tail_target": "left",
+      "bubble_side": "left",
       "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
+      "speaker_anchor_xy": [
+        0.25,
+        0.36
+      ],
       "bubble_center_xy": null,
       "item_tooltip": null
     }

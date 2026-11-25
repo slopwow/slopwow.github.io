@@ -3,449 +3,110 @@
   "source_post_no": "109482",
   "source_title": "마라우돈 흑석반지 흑마가 입찰함 ㅋㅋ",
   "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=109482&exception_mode=recommend&page=1",
-  "subtitle": "새벽 6시 마라우돈 '흑석 반지' 흑마 입찰과 반지 칸 비워둔 고술 검거",
-  "layout_mode": "v4_five_act",
+  "subtitle": "흑석 반지 흑마 입찰과 빈 반지 칸의 진실",
+  "layout_mode": "classic_2tier",
   "background_style": "clean_white",
-  "acts": [
-    {
-      "act_number": 1,
-      "act_title": "1막: 새벽 6시 마라우돈 공주 컷과 꿈의 '흑석 반지' 드랍",
-      "layout_id": "diagonal_tempo_2cut",
-      "cuts": [
-        {
-          "cut_index": 1,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 1,
-          "panel_index": 1,
-          "characters": [
-            "드워프 사냥꾼",
-            "트롤 주술사"
-          ],
-          "speaker": "드워프 사냥꾼",
-          "dialogue": "으아암… 새벽 6시 공주 컷!\n다들 졸려 죽겠네~",
-          "wordless": false,
-          "visual_prompt": "TIER 1 FULL-BLEED MARAUDON EARTHSONG FALLS CAVERN ESTABLISHING SHOT inside solid black box frame (edge-to-edge full scenery, outer page margins pure #FFFFFF). Sweeping wide cinematic anime camera inside WoW's Maraudon underground waterfall grotto: cascading sparkling turquoise waterfall, giant glowing teal-and-violet crystal clusters, mossy stone cavern floor, soft golden 6 AM dawn sunbeams slanting down through a high cavern opening filling the ENTIRE upper-left headroom (x=4%..58%, y=0%..35% completely uncluttered glowing cavern mist — keep all heads below y=35%!). In center-back, a giant chubby cartoon stone-elemental princess boss lies knocked out with dizzy spiral eyes beside a glowing blue rare loot chest! DYNAMIC ACTING: lower-left foreground (x=28%), Dwarf Hunter letting out a big cozy sleepy yawn rubbing one drowsy eye while clutching a warm carved wooden tavern mug (fair skin, forest-green fur hood, orange braided chin-pigtails, blunderbuss rifle slung on back, Clean Hand). Lower-right foreground (x=74%), Troll Shaman stretching tiredly with heavy comical dark sleepless under-eye bags and droopy mouth (fair peach-ivory skin — NEVER blue skin, sky-blue plush troll hood with VIVID BRIGHT CRIMSON-RED SPIKY MOHAWK CREST matching assets/turnarounds/troll_shaman.jpg — NEVER blue mohawk!, wooden staff stowed on back, Clean Hand). STRICTLY ZERO text/letters in art; keep strictly inside Panel 1.",
-          "tail_target": "left",
-          "bubble_side": "left",
-          "full_bleed_bg": true,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        },
-        {
-          "cut_index": 2,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 1,
-          "panel_index": 2,
-          "characters": [
-            "드워프 사냥꾼",
-            "트롤 주술사"
-          ],
-          "speaker": "드워프 사냥꾼",
-          "dialogue": "오오~ 흑석 반지 떴다!\n냥꾼이랑 고술 둘만 굴리자~",
-          "wordless": false,
-          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE BACKGROUND EVERYWHERE (STRICTLY ZERO stone floor slab, ZERO cave wall, ZERO crystal ground rectangle under their boots — ONLY the open wooden treasure chest, hovering jet-black obsidian ring, and two kneeling chibi girls directly on 100% PURE BLANK #FFFFFF WHITE with subtle contact shadow ONLY! Top 38% y=0%..38% and top-right x=58%..100% y=0%..44% 100% pure blank #FFFFFF white!). LOW-ANGLE LOOT AWAKENING: lower-left (x=28%), Dwarf Hunter snapping wide awake with dazzling starry golden-amber eyes pointing eagerly at a gleaming jet-black obsidian band (`흑석 반지`) glowing blue over a compact open wooden loot chest (x=50%; blunderbuss slung on back, Clean Hand); lower-right (x=74%), Troll Shaman (fair peach-ivory skin, sky-blue troll hood with bright RED spiky mohawk!) crouching eagerly with bright glittering emerald eyes eyeing the melee ring (wooden staff stowed on back, Clean Hand). ZERO text/letters in art; keep strictly inside Panel 2.",
-          "tail_target": "left",
-          "bubble_side": "left",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": {
-            "image_path": null,
-            "item_name": "흑석 반지",
-            "wowhead_item_id": 17713,
-            "quality": "rare",
-            "slot_left": "손가락",
-            "slot_right": "",
-            "lines": [
-              "획득 시 귀속",
-              "고유 장착 아이템",
-              "체력 +6",
-              "최소 요구 레벨 49"
-            ],
-            "equip_effects": [
-              "착용 효과: 전투력이 20만큼 증가합니다.",
-              "착용 효과: 무기의 적중률이 1%만큼 증가합니다."
-            ],
-            "icon_name": "inv_jewelry_ring_18",
-            "preferred_corner": "top_right",
-            "target_width": 265
-          }
-        }
-      ]
-    },
-    {
-      "act_number": 2,
-      "act_title": "2막: 흑마의 기습 흑석 입찰과 지인팟의 수상한 침묵",
-      "layout_id": "four_beat_gag",
-      "cuts": [
-        {
-          "cut_index": 3,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 2,
-          "panel_index": 1,
-          "characters": [
-            "인간 흑마법사"
-          ],
-          "speaker": "인간 흑마법사",
-          "dialogue": "후훗… 어둠의 입찰 딸깍~",
-          "wordless": false,
-          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom; keep strictly inside Panel 1!). SNEAKY LOW-ANGLE LOOT ROLL: Human Warlock lunging mischievously from a sneaky diagonal crouch with a guilty chuunibyou fang smirk peeking over her dark-purple gothic hood, slyly flicking a chunky white 6-sided loot die showing ONLY round black dot pips (STRICTLY ZERO digits/letters!) while her grumpy red plush Imp doll peeks from under her arm slapping a tiny paw over its eyes! Guardrail: fair skin, jet-black twin pigtails with purple highlights. ZERO text/letters in art.",
-          "tail_target": "center",
-          "bubble_side": "center",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        },
-        {
-          "cut_index": 4,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 2,
-          "panel_index": 2,
-          "characters": [
-            "드워프 사냥꾼"
-          ],
-          "speaker": "드워프 사냥꾼",
-          "dialogue": "어… 잠깐, 흑마님?\n전투력 반지를 왜 굴려…?",
-          "wordless": false,
-          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom; keep strictly inside Panel 2!). EXTREME CLOSE-UP BEWILDERED FREEZE: Dwarf Hunter frozen mid-chew with chubby stuffed cheeks, wide popped blank bewildered amber eyes, one confused raised eyebrow, and a crisp floating `?` plus single huge sweatdrop beside her hood as the sparkling jet-black ring zips right past her nose! Guardrail: fair skin, forest-green fur hood, orange braided chin-pigtails, blunderbuss slung on back (Clean Hand). ZERO text/letters in art.",
-          "tail_target": "center",
-          "bubble_side": "center",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        },
-        {
-          "cut_index": 5,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 2,
-          "panel_index": 3,
-          "characters": [
-            "인간 흑마법사"
-          ],
-          "speaker": "인간 흑마법사",
-          "dialogue": "…수고하셨습니당…",
-          "wordless": false,
-          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom; keep strictly inside Panel 3!). 90-DEGREE SIDE-PROFILE GUILTY WHISTLE: Human Warlock pivoting rigidly sideways pretending to casually inspect her fingerless gloves, whistling innocently with a tiny floating musical note while giant oversized comic sweatdrops pour nervously down her pale cheek and her grumpy red plush Imp doll ALSO stares strictly at the opposite wall! Guardrail: fair skin, deep dark-purple gothic hood & twin pigtails. ZERO text/letters in art.",
-          "tail_target": "center",
-          "bubble_side": "center",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        },
-        {
-          "cut_index": 6,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 2,
-          "panel_index": 4,
-          "characters": [
-            "트롤 주술사"
-          ],
-          "speaker": "트롤 주술사",
-          "dialogue": "…음, 다들 피곤하네…",
-          "wordless": false,
-          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom; keep strictly inside Panel 4!). STIFF AWKWARD SILENCE: Troll Shaman standing rigid as a wooden totem pole staring hard upward away from eye contact with an overly forced stiff smile, darting emerald eyes and frantic nervous sweatdrops sliding off her hood! Guardrail: fair peach-ivory skin (NEVER blue skin!), sky-blue plush troll hood with red mohawk, wooden staff stowed on back (Clean Hand). ZERO text/letters in art.",
-          "tail_target": "center",
-          "bubble_side": "center",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        }
-      ]
-    },
-    {
-      "act_number": 3,
-      "act_title": "3막: 기즐록 가는 길 — 같은 길드 확인과 고술 '빈 반지 칸' 현장 검거",
-      "layout_id": "wide_reaction_wide",
-      "cuts": [
-        {
-          "cut_index": 7,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 3,
-          "panel_index": 1,
-          "characters": [
-            "드워프 사냥꾼"
-          ],
-          "speaker": "드워프 사냥꾼",
-          "dialogue": "수상한데… 살펴보니\n흑마랑 고술, 같은 길드네?",
-          "wordless": false,
-          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (ENTIRE RIGHT 54% x=46%..100% MUST BE 100% EMPTY PURE #FFFFFF WHITE for right bubble! Keep figure strictly inside left 42% and inside Panel 1 — ZERO spillover into Panel 2!). DETECTIVE SPYGLASS SQUINT: positioned on left 42% (x=24%), Dwarf Hunter narrowing her eyes into razor-sharp detective slits, raising a chunky brass fantasy magnifying lens up to one eye with a dramatic gleam of sudden realization! Guardrail: fair skin with bare clean cheeks/chin, forest-green fur hood, ONLY TWO thick orange side braids wrapping gently under chin matching assets/turnarounds/dwarf_hunter.jpg (STRICTLY ZERO mustache, ZERO fuzzy beard, ZERO 3rd middle chin braid!), blunderbuss slung across back (Clean Hand). ZERO text/letters in art.",
-          "tail_target": "left",
-          "bubble_side": "right",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        },
-        {
-          "cut_index": 8,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 3,
-          "panel_index": 2,
-          "characters": [
-            "드워프 사냥꾼",
-            "트롤 주술사"
-          ],
-          "speaker": "드워프 사냥꾼",
-          "dialogue": "어라? 반지 칸 비었잖아?!",
-          "wordless": false,
-          "visual_prompt": "TIER 2 FULL-WIDTH EDGE-TO-EDGE MARAUDON MOSSY CAVERN FLOOR + 100% PURE SOLID #FFFFFF WHITE UPPER SKY ACROSS ENTIRE TOP 48% (STRICTLY ZERO dark teal back cave wall or flat horizontal wall band! ONLY low mossy green cavern floor & glowing turquoise mushrooms anchored flush edge-to-edge from far LEFT border x=0% to far RIGHT border x=100% along y=72%..100%, transitioning directly into 100% PURE BLANK #FFFFFF WHITE SKY across ENTIRE upper half y=0%..48%! STRICT HEIGHT CEILING: BOTH characters stay compact strictly below y=48%..100%, ZERO spillover!). OVER-THE-SHOULDER BUSTED INSPECTION: lower-left (x=22%, compact y=50%..98%), Dwarf Hunter peeking intently around a glowing teal mushroom boulder with sharp narrowed detective eyes pointing toward the Shaman (blunderbuss on back, Clean Hand); lower-right (x=72%, compact y=50%..98%), Troll Shaman (fair skin, sky-blue hood with bright RED mohawk!) walking furtively ahead sneaking one shiny ring OFF her bare hand — right beside her hand hovers a crisp glowing translucent UI-style EMPTY RING SLOT SQUARE OUTLINE (simple square frame containing a dotted empty ring silhouette, ZERO text or letters!) highlighting the glaringly empty ring slot! ZERO text/letters in art.",
-          "tail_target": "left",
-          "bubble_side": null,
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        },
-        {
-          "cut_index": 9,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 3,
-          "panel_index": 3,
-          "characters": [
-            "트롤 주술사"
-          ],
-          "speaker": "트롤 주술사",
-          "dialogue": "으악?! 들켰나, 다시 껴야지!",
-          "wordless": false,
-          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (ENTIRE LEFT 54% x=0%..54% MUST BE 100% EMPTY PURE #FFFFFF WHITE for left 1-line bubble! Keep figure strictly inside right 42% and inside Panel 3 — ZERO spillover into Panel 2!). ANATOMY GUARDRAIL: EXACTLY TWO ARMS AND TWO HANDS ONLY (NO duplicate motion-blur hands!). HIGH-ANGLE CAUGHT-RED-HANDED PANIC: positioned on right 42% (x=76%), Troll Shaman jolting violently with huge pinpoint shocked emerald pupils and flying comic sweat-drops, holding BOTH hands neatly together in front of her chest frantically slipping her shiny gold ring BACK onto her left ring finger with panicked flustered expression! Guardrail: fair peach-ivory skin (NEVER blue skin!), sky-blue troll plush hood with bright RED spiky mohawk, wooden staff stowed on back (Clean Hand). ZERO text/letters in art.",
-          "tail_target": "right",
-          "bubble_side": "left",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        }
-      ]
-    },
-    {
-      "act_number": 4,
-      "act_title": "4막: 냥꾼의 해탈 사이다 팩폭과 지인팟 현행범 무언 얼음",
-      "layout_id": "impact_freeze_2cut",
-      "cuts": [
-        {
-          "cut_index": 10,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 4,
-          "panel_index": 1,
-          "characters": [
-            "드워프 사냥꾼"
-          ],
-          "speaker": "드워프 사냥꾼",
-          "dialogue": "흑석 굴리는 흑마는 첨 봐요~\n지인 대리 입찰? 돈이 궁했나?",
-          "wordless": false,
-          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (ENTIRE RIGHT 54% x=46%..100% MUST BE 100% EMPTY PURE #FFFFFF WHITE for right bubble! Keep figure strictly inside left 42% and inside Panel 1!). SERENE SAVAGE COZY-SMILE CLOSE-UP: positioned on left 42% (x=24%), Dwarf Hunter leaning pleasantly forward sipping leisurely from her warm carved wooden tavern mug with a dazzlingly calm, sweet, razor-sharp closed-eye Buddha smile (`^‿^`) and sparkling gentle aura while dropping nuclear truth! Guardrail: fair skin, forest-green fur hood, orange braided chin-pigtails, blunderbuss slung across back (Clean Hand). ZERO text/letters in art.",
-          "tail_target": "left",
-          "bubble_side": "right",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        },
-        {
-          "cut_index": 11,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 4,
-          "panel_index": 2,
-          "characters": [
-            "인간 흑마법사",
-            "트롤 주술사"
-          ],
-          "speaker": null,
-          "dialogue": null,
-          "wordless": true,
-          "visual_prompt": "TIER 2 WORDLESS CLIMAX FREEZE-FRAME ON FULL-WIDTH MARAUDON CRYSTAL BRIDGE + 100% PURE #FFFFFF UPPER SKY (ZERO text, ZERO speech bubbles, ZERO SFX letters!). Mossy Maraudon stone cavern bridge with glowing turquoise crystal clusters anchored flush edge-to-edge along entire bottom & side borders, upper 46% pure #FFFFFF sky! SHOWSTOPPER DUAL BUSTED-CULPRITS COMEDY: Foreground left-center (x=32%, bold tall framing), Human Warlock caught completely red-handed clutching the sparkling jet-black obsidian `흑석 반지` tight against her dark-purple robe — face flushed beet-red crimson from forehead to chin, giant popping blank white shock eyes, jaw dropped wide open, violent jagged shiver lines around her silhouette, while her grumpy red plush Imp doll slaps both tiny paws over its own face in pure cringe! Foreground right-center (x=70%, bold tall framing), Troll Shaman frozen stiff mid-crouch awkwardly jamming her old spare ring onto her finger — pale blue-indigo Munch-scream dread lines flooding her brow, giant dizzy spinning spiral eyes, twin comical waterfall sweat-geysers shooting sideways! Far low center-back (x=51%, tiny), the goblin dungeon boss Tinkerer Gizlock peeks around a mossy crystal boulder lifting his goggles in stunned silence! Guardrail: fair peach-ivory skin on BOTH girls (NEVER blue skin on Troll!). Keep strictly inside Panel 2.",
-          "tail_target": "center",
-          "bubble_side": null,
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        }
-      ]
-    },
-    {
-      "act_number": 5,
-      "act_title": "5막: 들키자마자 칼파탈 도주와 해 뜬 새벽 6시 퇴근 엔딩",
-      "layout_id": "open_top_split_bottom",
-      "cuts": [
-        {
-          "cut_index": 12,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 5,
-          "panel_index": 1,
-          "characters": [
-            "인간 흑마법사",
-            "트롤 주술사"
-          ],
-          "speaker": "인간 흑마법사",
-          "dialogue": "으, 으엣?! 어후…!\n저 먼저 자러 가보겠습니당!!",
-          "wordless": false,
-          "visual_prompt": "TIER 2 FULL-WIDTH MARAUDON STONE CAVERN FLOOR + 100% PURE #FFFFFF UPPER SKY across top 38% (y=0%..38% completely empty pure #FFFFFF headroom for left bubble!). Mossy Maraudon cave flagstones flush edge-to-edge along bottom & sides. WILD 30-DEGREE DUTCH TILT INSTA-LEAVE FLEE! Lower-left (x=27%), Human Warlock spinning frantically left in a cartoonish billowing dust-cloud sprint clutching her glowing blue Hearthstone pebble & plush red Imp doll with crimson-blushing flustered panic face (fair skin, dark-purple hood); lower-right (x=73%), Troll Shaman diving simultaneously headfirst into a glowing blue Hearthstone teleport vortex on the right kicking up dust puffs with desperate sweating grin (fair skin, sky-blue troll hood, staff on back)! ZERO text/letters in art; keep strictly inside Panel 1.",
-          "tail_target": "left",
-          "bubble_side": "left",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        },
-        {
-          "cut_index": 13,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 5,
-          "panel_index": 2,
-          "characters": [
-            "드워프 사냥꾼"
-          ],
-          "speaker": "드워프 사냥꾼",
-          "dialogue": "어휴… 칼파탈 속도 보소~",
-          "wordless": false,
-          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom; keep strictly inside Panel 2!). DEADPAN 6 AM EXHAUSTION CLOSE-UP: Dwarf Hunter blinking slowly with heavy half-lidded sleepless eyes and faint tired under-eye lines, calmly holding her rustic wooden mug as empty wispy breeze swirls drift where her party vanished! Guardrail: fair skin, forest-green fur hood, orange braided chin-pigtails, blunderbuss slung across back (Clean Hand). ZERO text/letters in art.",
-          "tail_target": "center",
-          "bubble_side": "center",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        },
-        {
-          "cut_index": 14,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 5,
-          "panel_index": 3,
-          "characters": [
-            "드워프 사냥꾼"
-          ],
-          "speaker": "드워프 사냥꾼",
-          "dialogue": "다들 해 떴네…\n그냥 얼른 자러 가야겠다~",
-          "wordless": false,
-          "visual_prompt": "TIER 2 MARAUDON CAVE EXIT ROCKS + GOLDEN 6 AM SUNRISE GLOW LOW + 100% PURE #FFFFFF UPPER SKY across top 38% (y=0%..38% completely empty pure #FFFFFF headroom; keep strictly inside Panel 3!). Mossy Desolace cave-exit flagstones anchored flush along bottom & sides with warm low golden morning sunbeams peeking at the horizon edge. COZY BACK-VIEW WALK-OFF FINALE: Dwarf Hunter trudging sleepily outward in a tired 3/4 back-view slump with her blunderbuss slung across her shoulder, letting out a huge cozy sleepy yawn and lazily waving one hand goodbye over her fur-trimmed forest-green hood! ZERO text/letters in art.",
-          "tail_target": "center",
-          "bubble_side": "center",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        }
-      ]
-    }
-  ],
+  "acts": null,
   "cuts": [
     {
       "cut_index": 1,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 1,
-      "panel_index": 1,
+      "aspect_ratio": "4:3",
+      "layout_slot": "top",
+      "act_number": null,
+      "panel_index": null,
       "characters": [
-        "드워프 사냥꾼",
-        "트롤 주술사"
+        "드워프 사냥꾼"
       ],
       "speaker": "드워프 사냥꾼",
-      "dialogue": "으아암… 새벽 6시 공주 컷!\n다들 졸려 죽겠네~",
+      "dialogue": "마라우돈에서 드디어 떴다!\n흑석 반지는 물리 템이니\n나랑 고술님 둘만 입찰이네!",
       "wordless": false,
-      "visual_prompt": "TIER 1 FULL-BLEED MARAUDON EARTHSONG FALLS CAVERN ESTABLISHING SHOT inside solid black box frame (edge-to-edge full scenery, outer page margins pure #FFFFFF). Sweeping wide cinematic anime camera inside WoW's Maraudon underground waterfall grotto: cascading sparkling turquoise waterfall, giant glowing teal-and-violet crystal clusters, mossy stone cavern floor, soft golden 6 AM dawn sunbeams slanting down through a high cavern opening filling the ENTIRE upper-left headroom (x=4%..58%, y=0%..35% completely uncluttered glowing cavern mist — keep all heads below y=35%!). In center-back, a giant chubby cartoon stone-elemental princess boss lies knocked out with dizzy spiral eyes beside a glowing blue rare loot chest! DYNAMIC ACTING: lower-left foreground (x=28%), Dwarf Hunter letting out a big cozy sleepy yawn rubbing one drowsy eye while clutching a warm carved wooden tavern mug (fair skin, forest-green fur hood, orange braided chin-pigtails, blunderbuss rifle slung on back, Clean Hand). Lower-right foreground (x=74%), Troll Shaman stretching tiredly with heavy comical dark sleepless under-eye bags and droopy mouth (fair peach-ivory skin — NEVER blue skin, sky-blue plush troll hood with VIVID BRIGHT CRIMSON-RED SPIKY MOHAWK CREST matching assets/turnarounds/troll_shaman.jpg — NEVER blue mohawk!, wooden staff stowed on back, Clean Hand). STRICTLY ZERO text/letters in art; keep strictly inside Panel 1.",
+      "visual_prompt": "Medium three-quarter shot of a cute 3.5-head-ratio Korean gag webtoon dwarf hunter girl on the left, beaming with excitement as she points toward a glowing dark-stone ring resting on a small stone chest in the lower foreground. Her wooden blunderbuss gun is neatly strapped across her back while her cute miniature wolf pet sits happily beside her boots. Minimal cave pebble touch under her feet on a 100% pure solid white #FFFFFF background.",
       "tail_target": "left",
-      "bubble_side": "left",
-      "full_bleed_bg": true,
-      "speaker_anchor_xy": null,
-      "bubble_center_xy": null,
-      "item_tooltip": null
-    },
-    {
-      "cut_index": 2,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 1,
-      "panel_index": 2,
-      "characters": [
-        "드워프 사냥꾼",
-        "트롤 주술사"
-      ],
-      "speaker": "드워프 사냥꾼",
-      "dialogue": "오오~ 흑석 반지 떴다!\n냥꾼이랑 고술 둘만 굴리자~",
-      "wordless": false,
-      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE BACKGROUND EVERYWHERE (STRICTLY ZERO stone floor slab, ZERO cave wall, ZERO crystal ground rectangle under their boots — ONLY the open wooden treasure chest, hovering jet-black obsidian ring, and two kneeling chibi girls directly on 100% PURE BLANK #FFFFFF WHITE with subtle contact shadow ONLY! Top 38% y=0%..38% and top-right x=58%..100% y=0%..44% 100% pure blank #FFFFFF white!). LOW-ANGLE LOOT AWAKENING: lower-left (x=28%), Dwarf Hunter snapping wide awake with dazzling starry golden-amber eyes pointing eagerly at a gleaming jet-black obsidian band (`흑석 반지`) glowing blue over a compact open wooden loot chest (x=50%; blunderbuss slung on back, Clean Hand); lower-right (x=74%), Troll Shaman (fair peach-ivory skin, sky-blue troll hood with bright RED spiky mohawk!) crouching eagerly with bright glittering emerald eyes eyeing the melee ring (wooden staff stowed on back, Clean Hand). ZERO text/letters in art; keep strictly inside Panel 2.",
-      "tail_target": "left",
-      "bubble_side": "left",
+      "bubble_side": "right",
       "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
+      "speaker_anchor_xy": [
+        0.34,
+        0.36
+      ],
       "bubble_center_xy": null,
       "item_tooltip": {
         "image_path": null,
         "item_name": "흑석 반지",
         "wowhead_item_id": 17713,
         "quality": "rare",
-        "slot_left": "손가락",
+        "slot_left": "",
         "slot_right": "",
-        "lines": [
-          "획득 시 귀속",
-          "고유 장착 아이템",
-          "체력 +6",
-          "최소 요구 레벨 49"
-        ],
-        "equip_effects": [
-          "착용 효과: 전투력이 20만큼 증가합니다.",
-          "착용 효과: 무기의 적중률이 1%만큼 증가합니다."
-        ],
-        "icon_name": "inv_jewelry_ring_18",
+        "lines": [],
+        "equip_effects": [],
+        "icon_name": null,
         "preferred_corner": "top_right",
-        "target_width": 265
+        "target_width": 288
       }
     },
     {
-      "cut_index": 3,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 2,
-      "panel_index": 1,
+      "cut_index": 2,
+      "aspect_ratio": "16:9",
+      "layout_slot": "bottom",
+      "act_number": null,
+      "panel_index": null,
       "characters": [
-        "인간 흑마법사"
+        "인간 흑마법사",
+        "드워프 사냥꾼"
       ],
-      "speaker": "인간 흑마법사",
-      "dialogue": "후훗… 어둠의 입찰 딸깍~",
+      "speaker": "드워프 사냥꾼",
+      "dialogue": "어... 잠깐만요.\n캐스터인 흑마님이\n왜 흑석 반지를 굴려요?",
       "wordless": false,
-      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom; keep strictly inside Panel 1!). SNEAKY LOW-ANGLE LOOT ROLL: Human Warlock lunging mischievously from a sneaky diagonal crouch with a guilty chuunibyou fang smirk peeking over her dark-purple gothic hood, slyly flicking a chunky white 6-sided loot die showing ONLY round black dot pips (STRICTLY ZERO digits/letters!) while her grumpy red plush Imp doll peeks from under her arm slapping a tiny paw over its eyes! Guardrail: fair skin, jet-black twin pigtails with purple highlights. ZERO text/letters in art.",
-      "tail_target": "center",
+      "visual_prompt": "Dynamic low-angle two-shot in a 3.5-head-ratio Korean gag webtoon style on a 100% pure solid white #FFFFFF background. On the left, the human warlock girl calmly tosses a chunky 6-sided white-and-gold cube die showing ONLY classic round dot pips (strictly ZERO digits, ZERO numbers, ZERO letters) while clutching her grumpy little red imp doll under her other arm with her staff strapped on her back, snagging the dark stone ring. On the right, the dwarf hunter girl freezes with wide puzzled eyes, gun kept strapped on her back.",
+      "tail_target": "right",
       "bubble_side": "center",
       "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
+      "speaker_anchor_xy": [
+        0.74,
+        0.36
+      ],
+      "bubble_center_xy": null,
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 3,
+      "aspect_ratio": "4:3",
+      "layout_slot": "top",
+      "act_number": null,
+      "panel_index": null,
+      "characters": [
+        "드워프 사냥꾼",
+        "트롤 주술사"
+      ],
+      "speaker": "드워프 사냥꾼",
+      "dialogue": "둘 다 대답도 없고 같은 길드네?\n기즐록 가면서 혹시나 해\n고술님 장비창을 봤더니...",
+      "wordless": false,
+      "visual_prompt": "Over-the-shoulder perspective from behind the dwarf hunter girl in the left foreground squinting suspiciously as she peeks forward in a 3.5-head-ratio Korean gag webtoon style. Further right ahead, the troll shaman girl walks briskly away in complete silence with her wooden totems and weapons kept strapped, nervously glancing sideways over her shoulder. Minimal ground shadow beneath their boots on a 100% pure solid white #FFFFFF background.",
+      "tail_target": "left",
+      "bubble_side": "right",
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": [
+        0.3,
+        0.38
+      ],
       "bubble_center_xy": null,
       "item_tooltip": null
     },
     {
       "cut_index": 4,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 2,
-      "panel_index": 2,
+      "aspect_ratio": "16:9",
+      "layout_slot": "bottom",
+      "act_number": null,
+      "panel_index": null,
       "characters": [
-        "드워프 사냥꾼"
+        "드워프 사냥꾼",
+        "트롤 주술사"
       ],
-      "speaker": "드워프 사냥꾼",
-      "dialogue": "어… 잠깐, 흑마님?\n전투력 반지를 왜 굴려…?",
-      "wordless": false,
-      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom; keep strictly inside Panel 2!). EXTREME CLOSE-UP BEWILDERED FREEZE: Dwarf Hunter frozen mid-chew with chubby stuffed cheeks, wide popped blank bewildered amber eyes, one confused raised eyebrow, and a crisp floating `?` plus single huge sweatdrop beside her hood as the sparkling jet-black ring zips right past her nose! Guardrail: fair skin, forest-green fur hood, orange braided chin-pigtails, blunderbuss slung on back (Clean Hand). ZERO text/letters in art.",
+      "speaker": null,
+      "dialogue": null,
+      "wordless": true,
+      "visual_prompt": "Dramatic silent freeze-frame reaction cut in a 3.5-head-ratio Korean gag webtoon style on a 100% pure solid white #FFFFFF background. On the right, a close-up side view of the troll shaman girl sweating bullets in sheer panic, holding up one noticeably bare ringless hand while her other hand furtively hides a spare ring behind her back, weapons sheathed. On the left, the dwarf hunter girl stares deadpan with wide blank eyes and a slack jaw in utter disbelief.",
       "tail_target": "center",
-      "bubble_side": "center",
+      "bubble_side": null,
       "full_bleed_bg": false,
       "speaker_anchor_xy": null,
       "bubble_center_xy": null,
@@ -453,204 +114,49 @@
     },
     {
       "cut_index": 5,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 2,
-      "panel_index": 3,
-      "characters": [
-        "인간 흑마법사"
-      ],
-      "speaker": "인간 흑마법사",
-      "dialogue": "…수고하셨습니당…",
-      "wordless": false,
-      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom; keep strictly inside Panel 3!). 90-DEGREE SIDE-PROFILE GUILTY WHISTLE: Human Warlock pivoting rigidly sideways pretending to casually inspect her fingerless gloves, whistling innocently with a tiny floating musical note while giant oversized comic sweatdrops pour nervously down her pale cheek and her grumpy red plush Imp doll ALSO stares strictly at the opposite wall! Guardrail: fair skin, deep dark-purple gothic hood & twin pigtails. ZERO text/letters in art.",
-      "tail_target": "center",
-      "bubble_side": "center",
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
-      "bubble_center_xy": null,
-      "item_tooltip": null
-    },
-    {
-      "cut_index": 6,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 2,
-      "panel_index": 4,
-      "characters": [
-        "트롤 주술사"
-      ],
-      "speaker": "트롤 주술사",
-      "dialogue": "…음, 다들 피곤하네…",
-      "wordless": false,
-      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom; keep strictly inside Panel 4!). STIFF AWKWARD SILENCE: Troll Shaman standing rigid as a wooden totem pole staring hard upward away from eye contact with an overly forced stiff smile, darting emerald eyes and frantic nervous sweatdrops sliding off her hood! Guardrail: fair peach-ivory skin (NEVER blue skin!), sky-blue plush troll hood with red mohawk, wooden staff stowed on back (Clean Hand). ZERO text/letters in art.",
-      "tail_target": "center",
-      "bubble_side": "center",
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
-      "bubble_center_xy": null,
-      "item_tooltip": null
-    },
-    {
-      "cut_index": 7,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 3,
-      "panel_index": 1,
-      "characters": [
-        "드워프 사냥꾼"
-      ],
-      "speaker": "드워프 사냥꾼",
-      "dialogue": "수상한데… 살펴보니\n흑마랑 고술, 같은 길드네?",
-      "wordless": false,
-      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (ENTIRE RIGHT 54% x=46%..100% MUST BE 100% EMPTY PURE #FFFFFF WHITE for right bubble! Keep figure strictly inside left 42% and inside Panel 1 — ZERO spillover into Panel 2!). DETECTIVE SPYGLASS SQUINT: positioned on left 42% (x=24%), Dwarf Hunter narrowing her eyes into razor-sharp detective slits, raising a chunky brass fantasy magnifying lens up to one eye with a dramatic gleam of sudden realization! Guardrail: fair skin with bare clean cheeks/chin, forest-green fur hood, ONLY TWO thick orange side braids wrapping gently under chin matching assets/turnarounds/dwarf_hunter.jpg (STRICTLY ZERO mustache, ZERO fuzzy beard, ZERO 3rd middle chin braid!), blunderbuss slung across back (Clean Hand). ZERO text/letters in art.",
-      "tail_target": "left",
-      "bubble_side": "right",
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
-      "bubble_center_xy": null,
-      "item_tooltip": null
-    },
-    {
-      "cut_index": 8,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 3,
-      "panel_index": 2,
+      "aspect_ratio": "4:3",
+      "layout_slot": "top",
+      "act_number": null,
+      "panel_index": null,
       "characters": [
         "드워프 사냥꾼",
         "트롤 주술사"
       ],
       "speaker": "드워프 사냥꾼",
-      "dialogue": "어라? 반지 칸 비었잖아?!",
+      "dialogue": "대놓고 반지 한 칸 비워두고\n흑마님 대리 입찰 시켰네!\n들키니까 슬쩍 다시 끼네?",
       "wordless": false,
-      "visual_prompt": "TIER 2 FULL-WIDTH EDGE-TO-EDGE MARAUDON MOSSY CAVERN FLOOR + 100% PURE SOLID #FFFFFF WHITE UPPER SKY ACROSS ENTIRE TOP 48% (STRICTLY ZERO dark teal back cave wall or flat horizontal wall band! ONLY low mossy green cavern floor & glowing turquoise mushrooms anchored flush edge-to-edge from far LEFT border x=0% to far RIGHT border x=100% along y=72%..100%, transitioning directly into 100% PURE BLANK #FFFFFF WHITE SKY across ENTIRE upper half y=0%..48%! STRICT HEIGHT CEILING: BOTH characters stay compact strictly below y=48%..100%, ZERO spillover!). OVER-THE-SHOULDER BUSTED INSPECTION: lower-left (x=22%, compact y=50%..98%), Dwarf Hunter peeking intently around a glowing teal mushroom boulder with sharp narrowed detective eyes pointing toward the Shaman (blunderbuss on back, Clean Hand); lower-right (x=72%, compact y=50%..98%), Troll Shaman (fair skin, sky-blue hood with bright RED mohawk!) walking furtively ahead sneaking one shiny ring OFF her bare hand — right beside her hand hovers a crisp glowing translucent UI-style EMPTY RING SLOT SQUARE OUTLINE (simple square frame containing a dotted empty ring silhouette, ZERO text or letters!) highlighting the glaringly empty ring slot! ZERO text/letters in art.",
+      "visual_prompt": "High-angle comical confrontation shot in a 3.5-head-ratio Korean gag webtoon style on a 100% pure solid white #FFFFFF background. On the left, the exasperated dwarf hunter girl leans forward pointing an accusing finger directly at the shaman's hand, blunderbuss holstered on her back. On the right, the troll shaman girl flinches and hastily slips her original ring back onto her bare finger while avoiding eye contact and pretending innocence.",
       "tail_target": "left",
-      "bubble_side": null,
+      "bubble_side": "center",
       "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
-      "bubble_center_xy": null,
-      "item_tooltip": null
-    },
-    {
-      "cut_index": 9,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 3,
-      "panel_index": 3,
-      "characters": [
-        "트롤 주술사"
+      "speaker_anchor_xy": [
+        0.28,
+        0.36
       ],
-      "speaker": "트롤 주술사",
-      "dialogue": "으악?! 들켰나, 다시 껴야지!",
-      "wordless": false,
-      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (ENTIRE LEFT 54% x=0%..54% MUST BE 100% EMPTY PURE #FFFFFF WHITE for left 1-line bubble! Keep figure strictly inside right 42% and inside Panel 3 — ZERO spillover into Panel 2!). ANATOMY GUARDRAIL: EXACTLY TWO ARMS AND TWO HANDS ONLY (NO duplicate motion-blur hands!). HIGH-ANGLE CAUGHT-RED-HANDED PANIC: positioned on right 42% (x=76%), Troll Shaman jolting violently with huge pinpoint shocked emerald pupils and flying comic sweat-drops, holding BOTH hands neatly together in front of her chest frantically slipping her shiny gold ring BACK onto her left ring finger with panicked flustered expression! Guardrail: fair peach-ivory skin (NEVER blue skin!), sky-blue troll plush hood with bright RED spiky mohawk, wooden staff stowed on back (Clean Hand). ZERO text/letters in art.",
-      "tail_target": "right",
-      "bubble_side": "left",
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
       "bubble_center_xy": null,
       "item_tooltip": null
     },
     {
-      "cut_index": 10,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 4,
-      "panel_index": 1,
+      "cut_index": 6,
+      "aspect_ratio": "16:9",
+      "layout_slot": "bottom",
+      "act_number": null,
+      "panel_index": null,
       "characters": [
-        "드워프 사냥꾼"
+        "드워프 사냥꾼",
+        "인간 흑마법사"
       ],
       "speaker": "드워프 사냥꾼",
-      "dialogue": "흑석 굴리는 흑마는 첨 봐요~\n지인 대리 입찰? 돈이 궁했나?",
+      "dialogue": "입찰 내역도 못 남겨두고\n벙찐 사이에 다 나가버렸네...\n다들 이런 길드 듀오 조심해요.",
       "wordless": false,
-      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (ENTIRE RIGHT 54% x=46%..100% MUST BE 100% EMPTY PURE #FFFFFF WHITE for right bubble! Keep figure strictly inside left 42% and inside Panel 1!). SERENE SAVAGE COZY-SMILE CLOSE-UP: positioned on left 42% (x=24%), Dwarf Hunter leaning pleasantly forward sipping leisurely from her warm carved wooden tavern mug with a dazzlingly calm, sweet, razor-sharp closed-eye Buddha smile (`^‿^`) and sparkling gentle aura while dropping nuclear truth! Guardrail: fair skin, forest-green fur hood, orange braided chin-pigtails, blunderbuss slung across back (Clean Hand). ZERO text/letters in art.",
+      "visual_prompt": "Wide punchline shot in a 3.5-head-ratio Korean gag webtoon style on a 100% pure solid white #FFFFFF background. On the left, the dwarf hunter girl sits slumped dejectedly on the ground beside her sympathetic little wolf pet and an empty loot stone, gun resting on her back. Far on the right, the human warlock girl is seen from behind casually glowing with a blue hearthstone teleport swirl as she bails out of the party without a word.",
       "tail_target": "left",
       "bubble_side": "right",
       "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
-      "bubble_center_xy": null,
-      "item_tooltip": null
-    },
-    {
-      "cut_index": 11,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 4,
-      "panel_index": 2,
-      "characters": [
-        "인간 흑마법사",
-        "트롤 주술사"
+      "speaker_anchor_xy": [
+        0.3,
+        0.45
       ],
-      "speaker": null,
-      "dialogue": null,
-      "wordless": true,
-      "visual_prompt": "TIER 2 WORDLESS CLIMAX FREEZE-FRAME ON FULL-WIDTH MARAUDON CRYSTAL BRIDGE + 100% PURE #FFFFFF UPPER SKY (ZERO text, ZERO speech bubbles, ZERO SFX letters!). Mossy Maraudon stone cavern bridge with glowing turquoise crystal clusters anchored flush edge-to-edge along entire bottom & side borders, upper 46% pure #FFFFFF sky! SHOWSTOPPER DUAL BUSTED-CULPRITS COMEDY: Foreground left-center (x=32%, bold tall framing), Human Warlock caught completely red-handed clutching the sparkling jet-black obsidian `흑석 반지` tight against her dark-purple robe — face flushed beet-red crimson from forehead to chin, giant popping blank white shock eyes, jaw dropped wide open, violent jagged shiver lines around her silhouette, while her grumpy red plush Imp doll slaps both tiny paws over its own face in pure cringe! Foreground right-center (x=70%, bold tall framing), Troll Shaman frozen stiff mid-crouch awkwardly jamming her old spare ring onto her finger — pale blue-indigo Munch-scream dread lines flooding her brow, giant dizzy spinning spiral eyes, twin comical waterfall sweat-geysers shooting sideways! Far low center-back (x=51%, tiny), the goblin dungeon boss Tinkerer Gizlock peeks around a mossy crystal boulder lifting his goggles in stunned silence! Guardrail: fair peach-ivory skin on BOTH girls (NEVER blue skin on Troll!). Keep strictly inside Panel 2.",
-      "tail_target": "center",
-      "bubble_side": null,
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
-      "bubble_center_xy": null,
-      "item_tooltip": null
-    },
-    {
-      "cut_index": 12,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 5,
-      "panel_index": 1,
-      "characters": [
-        "인간 흑마법사",
-        "트롤 주술사"
-      ],
-      "speaker": "인간 흑마법사",
-      "dialogue": "으, 으엣?! 어후…!\n저 먼저 자러 가보겠습니당!!",
-      "wordless": false,
-      "visual_prompt": "TIER 2 FULL-WIDTH MARAUDON STONE CAVERN FLOOR + 100% PURE #FFFFFF UPPER SKY across top 38% (y=0%..38% completely empty pure #FFFFFF headroom for left bubble!). Mossy Maraudon cave flagstones flush edge-to-edge along bottom & sides. WILD 30-DEGREE DUTCH TILT INSTA-LEAVE FLEE! Lower-left (x=27%), Human Warlock spinning frantically left in a cartoonish billowing dust-cloud sprint clutching her glowing blue Hearthstone pebble & plush red Imp doll with crimson-blushing flustered panic face (fair skin, dark-purple hood); lower-right (x=73%), Troll Shaman diving simultaneously headfirst into a glowing blue Hearthstone teleport vortex on the right kicking up dust puffs with desperate sweating grin (fair skin, sky-blue troll hood, staff on back)! ZERO text/letters in art; keep strictly inside Panel 1.",
-      "tail_target": "left",
-      "bubble_side": "left",
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
-      "bubble_center_xy": null,
-      "item_tooltip": null
-    },
-    {
-      "cut_index": 13,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 5,
-      "panel_index": 2,
-      "characters": [
-        "드워프 사냥꾼"
-      ],
-      "speaker": "드워프 사냥꾼",
-      "dialogue": "어휴… 칼파탈 속도 보소~",
-      "wordless": false,
-      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom; keep strictly inside Panel 2!). DEADPAN 6 AM EXHAUSTION CLOSE-UP: Dwarf Hunter blinking slowly with heavy half-lidded sleepless eyes and faint tired under-eye lines, calmly holding her rustic wooden mug as empty wispy breeze swirls drift where her party vanished! Guardrail: fair skin, forest-green fur hood, orange braided chin-pigtails, blunderbuss slung across back (Clean Hand). ZERO text/letters in art.",
-      "tail_target": "center",
-      "bubble_side": "center",
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
-      "bubble_center_xy": null,
-      "item_tooltip": null
-    },
-    {
-      "cut_index": 14,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 5,
-      "panel_index": 3,
-      "characters": [
-        "드워프 사냥꾼"
-      ],
-      "speaker": "드워프 사냥꾼",
-      "dialogue": "다들 해 떴네…\n그냥 얼른 자러 가야겠다~",
-      "wordless": false,
-      "visual_prompt": "TIER 2 MARAUDON CAVE EXIT ROCKS + GOLDEN 6 AM SUNRISE GLOW LOW + 100% PURE #FFFFFF UPPER SKY across top 38% (y=0%..38% completely empty pure #FFFFFF headroom; keep strictly inside Panel 3!). Mossy Desolace cave-exit flagstones anchored flush along bottom & sides with warm low golden morning sunbeams peeking at the horizon edge. COZY BACK-VIEW WALK-OFF FINALE: Dwarf Hunter trudging sleepily outward in a tired 3/4 back-view slump with her blunderbuss slung across her shoulder, letting out a huge cozy sleepy yawn and lazily waving one hand goodbye over her fur-trimmed forest-green hood! ZERO text/letters in art.",
-      "tail_target": "center",
-      "bubble_side": "center",
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
       "bubble_center_xy": null,
       "item_tooltip": null
     }

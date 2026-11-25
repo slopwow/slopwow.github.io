@@ -1,44 +1,26 @@
 {
   "passed": true,
-  "layout_mode": "v4_five_act",
-  "background_style": "clean_white",
   "total_overlap_px": 0,
-  "total_tooltip_overlap_px": 0,
   "border_pure_white": true,
-  "cut_count": 14,
-  "page_count": 5,
-  "page_layouts": [
-    "diagonal_tempo_2cut",
-    "four_beat_gag",
-    "wide_reaction_wide",
-    "impact_freeze_2cut",
-    "split_top_wide_bottom"
-  ],
+  "cut_count": 6,
+  "page_count": 3,
   "page_sizes": [
     [
       900,
-      1350
+      1320
     ],
     [
       900,
-      1350
+      1320
     ],
     [
       900,
-      1350
-    ],
-    [
-      900,
-      1350
-    ],
-    [
-      900,
-      1350
+      1320
     ]
   ],
   "full_size": [
     900,
-    7318
+    4464
   ],
   "thumb_size": [
     800,
@@ -49,323 +31,81 @@
   "cuts": [
     {
       "wordless": false,
-      "full_bleed_bg": true,
       "bubble_count": 1,
       "overlap_px": 0,
-      "min_clearance_px": 999.0,
-      "font_size": 22,
+      "min_clearance_px": 13.0,
+      "font_size": 19,
       "art_bbox": [
-        0,
-        0,
-        843,
-        719
+        70,
+        291,
+        856,
+        829
+      ],
+      "tail_target": "left",
+      "cut_index": 1,
+      "slot": "top",
+      "page": 1
+    },
+    {
+      "wordless": false,
+      "bubble_count": 1,
+      "overlap_px": 0,
+      "min_clearance_px": 31.1,
+      "font_size": 15,
+      "art_bbox": [
+        363,
+        172,
+        829,
+        435
       ],
       "tail_target": "left",
       "bubble_center": [
-        253.2,
-        76.9
+        166.8,
+        148.0
       ],
       "bubble_side_resolved": "left",
-      "speaker_anchor": [
-        227.9,
-        403.2
-      ],
-      "tail_tip": [
-        245.4,
-        177.7
-      ],
-      "edge_fill_ratio": 0.9972,
-      "cut_index": 1,
-      "act_number": 1,
-      "panel_index": 1,
-      "layout_id": "diagonal_tempo_2cut",
-      "border_style": "box",
-      "slot_rect": [
-        28,
-        20,
-        872,
-        740
-      ],
-      "page": 1
-    },
-    {
-      "wordless": false,
-      "bubble_count": 1,
-      "overlap_px": 0,
-      "min_clearance_px": 8.1,
-      "font_size": 22,
-      "art_bbox": [
-        123,
-        169,
-        720,
-        557
-      ],
-      "tail_target": "right",
-      "full_bleed_bg": false,
       "cut_index": 2,
-      "act_number": 1,
-      "panel_index": 2,
-      "layout_id": "diagonal_tempo_2cut",
-      "border_style": "box",
-      "slot_rect": [
-        28,
-        768,
-        872,
-        1326
-      ],
+      "slot": "bottom",
       "page": 1
     },
     {
       "wordless": false,
       "bubble_count": 1,
       "overlap_px": 0,
-      "min_clearance_px": 11.3,
-      "font_size": 21,
+      "min_clearance_px": 38.6,
+      "font_size": 19,
       "art_bbox": [
-        0,
-        181,
-        409,
-        637
+        46,
+        298,
+        813,
+        829
       ],
-      "tail_target": "center",
-      "full_bleed_bg": false,
+      "tail_target": "left",
       "cut_index": 3,
-      "act_number": 2,
-      "panel_index": 1,
-      "layout_id": "four_beat_gag",
-      "border_style": "box",
-      "slot_rect": [
-        28,
-        24,
-        438,
-        662
-      ],
+      "slot": "top",
       "page": 2
     },
     {
       "wordless": false,
       "bubble_count": 1,
       "overlap_px": 0,
-      "min_clearance_px": 21.2,
-      "font_size": 19,
-      "art_bbox": [
-        0,
-        201,
-        409,
-        637
-      ],
-      "tail_target": "center",
-      "full_bleed_bg": false,
-      "cut_index": 4,
-      "act_number": 2,
-      "panel_index": 2,
-      "layout_id": "four_beat_gag",
-      "border_style": "box",
-      "slot_rect": [
-        462,
-        24,
-        872,
-        662
-      ],
-      "page": 2
-    },
-    {
-      "wordless": false,
-      "bubble_count": 1,
-      "overlap_px": 0,
-      "min_clearance_px": 17.8,
-      "font_size": 19,
-      "art_bbox": [
-        0,
-        192,
-        409,
-        637
-      ],
-      "tail_target": "center",
-      "full_bleed_bg": false,
-      "cut_index": 5,
-      "act_number": 2,
-      "panel_index": 3,
-      "layout_id": "four_beat_gag",
-      "border_style": "box",
-      "slot_rect": [
-        28,
-        688,
-        438,
-        1326
-      ],
-      "page": 2
-    },
-    {
-      "wordless": false,
-      "bubble_count": 1,
-      "overlap_px": 0,
-      "min_clearance_px": 8.5,
-      "font_size": 21,
-      "art_bbox": [
-        68,
-        157,
-        409,
-        637
-      ],
-      "tail_target": "center",
-      "full_bleed_bg": false,
-      "cut_index": 6,
-      "act_number": 2,
-      "panel_index": 4,
-      "layout_id": "four_beat_gag",
-      "border_style": "box",
-      "slot_rect": [
-        462,
-        688,
-        872,
-        1326
-      ],
-      "page": 2
-    },
-    {
-      "wordless": false,
-      "bubble_count": 1,
-      "overlap_px": 0,
-      "min_clearance_px": 13.6,
-      "font_size": 22,
+      "min_clearance_px": 27.7,
+      "font_size": 16,
       "art_bbox": [
         14,
-        109,
-        365,
-        439
+        160,
+        447,
+        435
       ],
-      "tail_target": "left",
+      "tail_target": "right",
       "bubble_center": [
-        614.5,
-        123.2
+        660.9,
+        148.0
       ],
       "bubble_side_resolved": "right",
-      "tail_tip": [
-        365.0,
-        155.7
-      ],
-      "full_bleed_bg": false,
-      "cut_index": 7,
-      "act_number": 3,
-      "panel_index": 1,
-      "layout_id": "wide_reaction_wide",
-      "border_style": "box",
-      "slot_rect": [
-        28,
-        24,
-        872,
-        464
-      ],
-      "page": 3
-    },
-    {
-      "wordless": false,
-      "bubble_count": 1,
-      "overlap_px": 0,
-      "min_clearance_px": 14.3,
-      "font_size": 22,
-      "art_bbox": [
-        421,
-        4,
-        843,
-        409
-      ],
-      "tail_target": "right",
-      "bubble_center": [
-        212.7,
-        114.8
-      ],
-      "bubble_side_resolved": "left",
-      "tail_tip": [
-        467.9,
-        117.4
-      ],
-      "full_bleed_bg": false,
-      "cut_index": 8,
-      "act_number": 3,
-      "panel_index": 2,
-      "layout_id": "wide_reaction_wide",
-      "border_style": "box",
-      "slot_rect": [
-        28,
-        488,
-        872,
-        898
-      ],
-      "page": 3
-    },
-    {
-      "wordless": false,
-      "bubble_count": 1,
-      "overlap_px": 0,
-      "min_clearance_px": 54.6,
-      "font_size": 22,
-      "art_bbox": [
-        553,
-        8,
-        831,
-        395
-      ],
-      "tail_target": "right",
-      "bubble_center": [
-        227.5,
-        113.1
-      ],
-      "bubble_side_resolved": "left",
-      "tail_tip": [
-        497.5,
-        116.4
-      ],
-      "full_bleed_bg": false,
-      "cut_index": 9,
-      "act_number": 3,
-      "panel_index": 3,
-      "layout_id": "wide_reaction_wide",
-      "border_style": "box",
-      "slot_rect": [
-        28,
-        922,
-        872,
-        1326
-      ],
-      "page": 3
-    },
-    {
-      "wordless": false,
-      "bubble_count": 1,
-      "overlap_px": 0,
-      "min_clearance_px": 19.2,
-      "font_size": 20,
-      "art_bbox": [
-        360,
-        4,
-        843,
-        471
-      ],
-      "tail_target": "right",
-      "bubble_center": [
-        210.4,
-        103.8
-      ],
-      "bubble_side_resolved": "left",
-      "tail_tip": [
-        415.0,
-        124.5
-      ],
-      "full_bleed_bg": false,
-      "cut_index": 10,
-      "act_number": 4,
-      "panel_index": 1,
-      "layout_id": "impact_freeze_2cut",
-      "border_style": "box",
-      "slot_rect": [
-        28,
-        24,
-        872,
-        496
-      ],
-      "page": 4
+      "cut_index": 4,
+      "slot": "bottom",
+      "page": 2
     },
     {
       "wordless": true,
@@ -374,117 +114,37 @@
       "min_clearance_px": 999.0,
       "font_size": null,
       "art_bbox": [
-        2,
-        0,
-        840,
-        801
-      ],
-      "art_cx": 421.0,
-      "tail_target": "center",
-      "full_bleed_bg": false,
-      "cut_index": 11,
-      "act_number": 4,
-      "panel_index": 2,
-      "layout_id": "impact_freeze_2cut",
-      "border_style": "box",
-      "slot_rect": [
         28,
-        524,
-        872,
-        1326
+        215,
+        871,
+        829
       ],
-      "page": 4
+      "art_cx": 449.5,
+      "cut_index": 5,
+      "slot": "top",
+      "page": 3
     },
     {
       "wordless": false,
       "bubble_count": 1,
       "overlap_px": 0,
-      "min_clearance_px": 7.1,
-      "font_size": 21,
+      "min_clearance_px": 57.6,
+      "font_size": 15,
       "art_bbox": [
-        0,
-        139,
-        409,
-        625
+        369,
+        191,
+        829,
+        435
       ],
-      "tail_target": "center",
-      "full_bleed_bg": false,
-      "cut_index": 12,
-      "act_number": 5,
-      "panel_index": 1,
-      "layout_id": "split_top_wide_bottom",
-      "border_style": "box",
-      "slot_rect": [
-        28,
-        24,
-        438,
-        650
-      ],
-      "page": 5
-    },
-    {
-      "wordless": false,
-      "bubble_count": 1,
-      "overlap_px": 0,
-      "min_clearance_px": 27.0,
-      "font_size": 21,
-      "art_bbox": [
-        0,
-        136,
-        409,
-        625
-      ],
-      "tail_target": "center",
-      "full_bleed_bg": false,
-      "cut_index": 13,
-      "act_number": 5,
-      "panel_index": 2,
-      "layout_id": "split_top_wide_bottom",
-      "border_style": "box",
-      "slot_rect": [
-        462,
-        24,
-        872,
-        650
-      ],
-      "page": 5
-    },
-    {
-      "wordless": false,
-      "bubble_count": 1,
-      "overlap_px": 0,
-      "min_clearance_px": 7.8,
-      "font_size": 24,
-      "art_bbox": [
-        0,
-        158,
-        843,
-        649
-      ],
-      "tail_target": "right",
+      "tail_target": "left",
       "bubble_center": [
-        608.5,
-        85.0
+        169.7,
+        148.0
       ],
-      "bubble_side_resolved": "right",
-      "tail_tip": [
-        590.2,
-        167.3
-      ],
-      "layout_variant": "grounded_white_sky",
-      "full_bleed_bg": false,
-      "cut_index": 14,
-      "act_number": 5,
-      "panel_index": 3,
-      "layout_id": "split_top_wide_bottom",
-      "border_style": "box",
-      "slot_rect": [
-        28,
-        676,
-        872,
-        1326
-      ],
-      "page": 5
+      "bubble_side_resolved": "left",
+      "cut_index": 6,
+      "slot": "bottom",
+      "page": 3
     }
   ]
 }

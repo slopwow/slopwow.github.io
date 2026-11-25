@@ -3,375 +3,28 @@
   "source_post_no": "105798",
   "source_title": "장트라제 처먹고 파탈한 도둑놈ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ",
   "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=105798",
-  "subtitle": "줄파락 술트라제 완성 직전 노움 도적 먹튀 칼파탈 대참사 — 5막 13컷",
-  "layout_mode": "v4_five_act",
+  "subtitle": "줄파락 술트라제 완성 직전 칼파탈 닌자 참사",
+  "layout_mode": "classic_2tier",
   "background_style": "clean_white",
-  "acts": [
-    {
-      "act_number": 1,
-      "act_title": "1막: 줄파락 보호의 장트라제 드랍과 도적의 흑심",
-      "layout_id": "open_top_split_bottom",
-      "cuts": [
-        {
-          "cut_index": 1,
-          "aspect_ratio": "auto",
-          "layout_slot": "top",
-          "act_number": 1,
-          "panel_index": 1,
-          "characters": [
-            "언데드 성기사",
-            "노움 도적"
-          ],
-          "speaker": "언데드 성기사",
-          "dialogue": "…헐, 장트라제 떴다!!\n술트라제 완성이야…!!",
-          "wordless": false,
-          "visual_prompt": "TIER 1 FULL-BLEED ZUL'FARRAK DESERT TROLL PYRAMID ESTABLISHING SHOT inside solid black box frame (edge-to-edge full scenery, outer page margins & gutter below pure #FFFFFF). Sweeping wide cinematic anime view of sun-baked Zul'Farrak sandstone pyramid ruins in Tanaris: warm clear desert-blue sky with wisps of sunlit clouds filling the ENTIRE upper 36% (y=0%..36% completely uncluttered open sky across BOTH top-left for speech bubble and top-right for item tooltip — keep all heads, swords, and pyramids strictly below y=36%!), weathered troll stone pillars and desert sandstone steps below, and a tiny comical defeated Zul'Farrak troll boss silhouette sprawled face-down with dizzy spiral eyes in lower-center beside a COMPACT ONE-HANDED cobalt-blue-and-gold sword hovering in radiant blue rare-loot sparkles (STRICTLY compact modest 1-hand chibi sword scale — NEVER a giant 2H greatsword!). DYNAMIC ACTING: on lower-left foreground (x=28%), fair-skinned Undead Paladin breaks out of her usual sleepy cool composure leaping jubilantly off the sandstone throwing both empty hands skyward with gigantic starry sparkling golden eyes and flushed thrilled cheeks (guardrail: fair skin, round white skull cap, silver-white bob hair, white-and-gold cape, golden warhammer stowed cleanly across back — Clean Hand Rule!). On lower-right foreground (x=74%), over-the-shoulder sneaky crouch of petite fair-skinned Gnome Rogue eyeing the Paladin's excitement sideways with gleaming scheming blue eyes and a razor-sharp wicked smirk (guardrail: 0 X/star hairpins, green goggles on forehead, dual green daggers neatly sheathed at lower back waist). Strictly zero text.",
-          "tail_target": "left",
-          "bubble_side": "left",
-          "full_bleed_bg": true,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": {
-            "image_path": null,
-            "item_name": "보호의 장트라제",
-            "wowhead_item_id": 11086,
-            "quality": "rare",
-            "slot_left": "주장비",
-            "slot_right": "검",
-            "lines": [
-              "획득 시 귀속",
-              "고유 아이템",
-              "공격력 44 - 83\t속도 1.90",
-              "(초당 공격력 33.42)",
-              "요구 레벨 45"
-            ],
-            "equip_effects": [
-              "사용 효과: 장트라제와 상트라제를 결합하여 강력한 검 술트라제를 만듭니다.",
-              "발동 효과: 사용자를 보호막으로 감싸 55 에서 85의 물리 피해를 흡수합니다. 20초 동안 지속됩니다."
-            ],
-            "icon_name": "inv_sword_43",
-            "preferred_corner": "top_right",
-            "target_width": 288
-          }
-        },
-        {
-          "cut_index": 2,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 1,
-          "panel_index": 2,
-          "characters": [
-            "노움 도적"
-          ],
-          "speaker": "노움 도적",
-          "dialogue": "오~ 되게 신났네? ㅋ",
-          "wordless": false,
-          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND EVERYWHERE (top 38% y=0%..38% completely empty pure #FFFFFF headroom for 1-line bubble; keep die & head strictly below y=38% and inside Panel 2's borders!). EXTREME SCHEMING GREMLIN CLOSE-UP of petite fair-skinned Gnome Rogue pushing one finger slightly under her green aviator goggles with a devilish `:3` fang smirk, flicking a chunky 6-sided white-and-gold medieval loot die showing ONLY simple round black dot pips (strictly ZERO digits, ZERO numbers, ZERO letters!) upward off her thumb with sparkling mischief glints! Guardrail: fair skin, blonde-pink-blue pigtails, 0 X/star hairpins, dual green daggers neatly sheathed out of sight at lower back waist, 0 text.",
-          "tail_target": "center",
-          "bubble_side": "center",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        },
-        {
-          "cut_index": 3,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 1,
-          "panel_index": 3,
-          "characters": [
-            "스카이본 마법사"
-          ],
-          "speaker": "스카이본 마법사",
-          "dialogue": "잠깐, 도적이 굴렸어?!",
-          "wordless": false,
-          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND EVERYWHERE (top 38% y=0%..38% completely empty pure #FFFFFF headroom for 1-line bubble; keep tilted wizard hat strictly below y=38% and inside Panel 3's borders!). 25-DEGREE DUTCH-TILT ALARMED DOUBLE-TAKE of fair-skinned Skyborne Mage snapping backward with her signature star-pupils abruptly switched OFF into wide shocked white rings, jaw dropped, pointing urgently sideways with flying cold sweatdrops! Guardrail: fair skin, sky-blue high side-ponytail, tilted blue hat with smiling cloud-wing badge, cloud capelet, mini Polymorph Sheep waist charm, blue crystal staff stowed on back, 0 sailor uniform, 0 bread/water, 0 text.",
-          "tail_target": "center",
-          "bubble_side": "center",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        }
-      ]
-    },
-    {
-      "act_number": 2,
-      "act_title": "2막: 20골 눈물의 애원과 도적의 뻔뻔한 칼파탈",
-      "layout_id": "wide_reaction_wide",
-      "cuts": [
-        {
-          "cut_index": 4,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 2,
-          "panel_index": 1,
-          "characters": [
-            "노움 도적"
-          ],
-          "speaker": "노움 도적",
-          "dialogue": "에헤헷~ 주사위 100!\n내 거지롱~ 메롱!",
-          "wordless": false,
-          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (ENTIRE LEFT 54% x=0%..54% 100% EMPTY PURE #FFFFFF HEADROOM for left bubble; strictly contain mid-air figure cleanly INSIDE Panel 1's black borders — ZERO spillover down into Panel 2!). DYNAMIC 90-DEGREE SIDE-PROFILE MID-AIR HEIST LEAP: positioned cleanly on right 42% (x=76%) vaulting gleefully rightward with sharp comic speed lines, petite fair-skinned Gnome Rogue triumphantly snatches the COMPACT ONE-HANDED cobalt-blue-and-gold sword (STRICTLY compact modest 1-hand chibi sword scale — NEVER a giant 2H greatsword; her own green daggers neatly sheathed at lower back belt — Clean Hand Rule!) in one gloved hand while pulling a shameless bratty eyelid-down tongue-out blep (`:P`)! Guardrail: fair skin, blonde-pink-blue pigtails, green goggles on forehead, 0 X/star hairpins, 0 text.",
-          "tail_target": "right",
-          "bubble_side": "left",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        },
-        {
-          "cut_index": 5,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 2,
-          "panel_index": 2,
-          "characters": [
-            "언데드 성기사"
-          ],
-          "speaker": "언데드 성기사",
-          "dialogue": "…20골 줄게. 팔아…",
-          "wordless": false,
-          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (ENTIRE RIGHT 54% x=46%..100% 100% EMPTY PURE #FFFFFF HEADROOM for right 1-line bubble; strictly contain kneeling figure cleanly INSIDE Panel 2's black borders — ZERO spillover into Panels 1 or 3!). LOW-ANGLE DESPERATE BEGGING PLEA: positioned cleanly on left 42% (x=25%) facing right, fair-skinned Undead Paladin drops desperately to her knees lunging forward with gigantic trembling tearful golden puppy-eyes (warhammer stowed on back — Clean Hand Rule!), thrusting out a plump brown leather coin pouch overflowing with gleaming round golden coins (strictly ZERO paper banknotes or currency symbols!) in both trembling gloved hands! Guardrail: fair skin, white skull cap, silver-white bob hair, white-and-gold cape, 0 text.",
-          "tail_target": "left",
-          "bubble_side": "right",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        },
-        {
-          "cut_index": 6,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 2,
-          "panel_index": 3,
-          "characters": [
-            "노움 도적"
-          ],
-          "speaker": "노움 도적",
-          "dialogue": "에이~ 나도 이거 보고 왔어!\n수고~ 칼파탈 바이!",
-          "wordless": false,
-          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (ENTIRE LEFT 54% x=0%..54% 100% EMPTY PURE #FFFFFF HEADROOM for left bubble; strictly contain getaway pose cleanly INSIDE Panel 3's black borders — ZERO spillover up into Panel 2!). BACK-VIEW SHAMELESS VANISH GETAWAY: positioned cleanly on right 42% (x=76%) striding jauntily away partially seen from behind as billowing gray Vanish smoke puffs and swirling cyan party-leave teleport sparkles erupt around her boots, petite fair-skinned Gnome Rogue casually rests the COMPACT ONE-HANDED cobalt-blue-and-gold sword (modest 1H scale! Own green daggers sheathed neatly at waist belt!) over one shoulder while glancing back with a shameless closed-eye smirk and breezy V-sign! Guardrail: fair skin, 0 X/star hairpins, 0 text.",
-          "tail_target": "right",
-          "bubble_side": "left",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        }
-      ]
-    },
-    {
-      "act_number": 3,
-      "act_title": "3막: 눈앞에서 산산조각 난 술트라제의 꿈 — 무언 충격",
-      "layout_id": "impact_freeze_2cut",
-      "cuts": [
-        {
-          "cut_index": 7,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 3,
-          "panel_index": 1,
-          "characters": [
-            "스카이본 마법사"
-          ],
-          "speaker": "스카이본 마법사",
-          "dialogue": "…진짜 파탈했어?!",
-          "wordless": false,
-          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (ENTIRE RIGHT 54% x=46%..100% 100% EMPTY PURE #FFFFFF HEADROOM for right 1-line bubble; strictly contain figure cleanly INSIDE Panel 1's black borders!). SIDE-ANGLE STUNNED DISBELIEF: positioned cleanly on left 42% (x=25%) facing right, fair-skinned Skyborne Mage frozen mid-point toward fading wispy Vanish smoke curls on the floor, jaw unhinged dropped wide open, star-pupils extinguished into blank hollow white shock eyes, cold sweatdrops popping off her blue wizard hat! Guardrail: fair skin, sky-blue high side-ponytail, tilted blue cloud-wing hat, mini Polymorph Sheep waist charm, blue crystal staff on back, 0 sailor uniform, 0 text.",
-          "tail_target": "left",
-          "bubble_side": "right",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        },
-        {
-          "cut_index": 8,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 3,
-          "panel_index": 2,
-          "characters": [
-            "언데드 성기사"
-          ],
-          "speaker": null,
-          "dialogue": null,
-          "wordless": true,
-          "visual_prompt": "TIER 2 GIANT WORDLESS CLIMAX FREEZE-FRAME ON FULL-WIDTH ZUL'FARRAK DESERT SANDSTONE FLOOR + 100% PURE #FFFFFF UPPER SKY (ZERO text, ZERO speech bubbles, ZERO Japanese katakana or SFX letters!). Sun-baked cracked sandstone temple tiles anchored flush edge-to-edge along bottom, left & right borders, with the rejected brown leather gold coin pouch lying spilled on the stones beside her knees. SHOWSTOPPER FISHEYE DUTCH-TILT SOUL-SHATTER FREEZE: centered large foreground framing of fair-skinned Undead Paladin frozen completely hollow — heavy dark slate-indigo gloom shadow crashing down over her skull cap and brow, golden-yellow eyes shrunk into trembling blank white pinpoint shock rings staring dead into the void, jaw parted as a comical translucent wisp mini-soul drifts lazily straight out of her mouth, while just behind her hood a glowing ghostly translucent purple vision of an epic two-handed broadsword cracks apart and shatters dramatically into drifting purple stardust against pure #FFFFFF upper space! Guardrail: fair skin, white skull cap, silver-white bob hair, white-and-gold cape, warhammer stowed on back.",
-          "tail_target": "center",
-          "bubble_side": null,
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        }
-      ]
-    },
-    {
-      "act_number": 4,
-      "act_title": "4막: 차가운 진실 추리와 흑마의 전율",
-      "layout_id": "diagonal_tempo_2cut",
-      "cuts": [
-        {
-          "cut_index": 9,
-          "aspect_ratio": "auto",
-          "layout_slot": "top",
-          "act_number": 4,
-          "panel_index": 1,
-          "characters": [
-            "스카이본 마법사",
-            "언데드 성기사"
-          ],
-          "speaker": "스카이본 마법사",
-          "dialogue": "도적이 저걸 왜 먹어?!\n신난 거 보고 일부러 굴렸네!",
-          "wordless": false,
-          "visual_prompt": "TIER 2 NATURAL FULL-WIDTH ZUL'FARRAK SANDSTONE COURTYARD + MASSIVE 100% EMPTY PURE #FFFFFF SKY across top 42% (y=0%..42% completely empty pure #FFFFFF headroom across BOTH top-left for speech bubble and top-right for epic item tooltip; warm sandstone flagstones anchored flush edge-to-edge against bottom, left & right borders, 0 floating islands!). HIGH-ANGLE AFTERMATH VERDICT: on lower-right (x=72%), fair-skinned Undead Paladin WEARING HER SIGNATURE ROUND PURE-WHITE CARTOON SKULL CAP WITH DARK EYE SOCKETS FIRMLY ON HER HEAD (NEVER bare-headed — always keep her round white cartoon skull cap on!), chin-length silver-white bob hair, white-and-gold cape, sprawled completely flat face-down like a crushed deflated plushie beside her dropped brown leather gold coin pouch with hollow dizzy spiral eyes and vertical dark gloom lines (golden warhammer stowed on back). On lower-left (x=28%), fair-skinned Skyborne Mage standing with arms crossed tight, puffed crimson exasperated cheeks, glaring coldly downward with fierce annoyed sapphire eyes and tiny anger steam puffs (guardrail: sky-blue high side-ponytail, tilted blue cloud-wing hat, mini Polymorph Sheep waist charm, blue crystal staff on back, 0 sailor uniform). Strictly zero text.",
-          "tail_target": "left",
-          "bubble_side": "left",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": {
-            "image_path": null,
-            "item_name": "질풍의 술트라제",
-            "wowhead_item_id": 9372,
-            "quality": "epic",
-            "slot_left": "양손 장비",
-            "slot_right": "검",
-            "lines": [
-              "획득 시 귀속",
-              "고유 아이템",
-              "공격력 108 - 163\t속도 2.60",
-              "(초당 공격력 52.12)",
-              "요구 레벨 50"
-            ],
-            "equip_effects": [
-              "발동 효과: 술트라제의 분노로 적을 강타하여 대상의 힘을 15만큼 감소시키고 90 에서 210의 암흑 피해를 주며 15초에 걸쳐 추가로 125의 피해를 입힙니다."
-            ],
-            "icon_name": "inv_sword_40",
-            "preferred_corner": "top_right",
-            "target_width": 288
-          }
-        },
-        {
-          "cut_index": 10,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 4,
-          "panel_index": 2,
-          "characters": [
-            "인간 흑마법사",
-            "스카이본 마법사"
-          ],
-          "speaker": "인간 흑마법사",
-          "dialogue": "후훗… 아니, 저건\n악마보다 더 독하잖아…!",
-          "wordless": false,
-          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (top 36% y=0%..36% completely empty pure #FFFFFF headroom for left bubble; keep all characters strictly inside Panel 2's borders!). LOW-ANGLE SHIVERING HORROR DUO: on lower-left (x=30%), fair-skinned Human Warlock hunches backward shivering violently in icy pale-blue horror lines with chattering teeth and wide trembling violet eyes, clutching her plump grumpy red plush Imp doll tightly up to her chin — and even the plush red Imp doll shivers in sheer panic covering its mouth with tiny paws and popping white shock eyes! On lower-right (x=72%), fair-skinned Skyborne Mage nods grimly with crossed arms, cold sweatdrop, and deadpan shadowed eyes (guardrail: tilted blue cloud-wing hat, sheep waist charm, crystal staff on back, 0 sailor uniform). Strictly zero text.",
-          "tail_target": "left",
-          "bubble_side": "left",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        }
-      ]
-    },
-    {
-      "act_number": 5,
-      "act_title": "5막: 포에버 인던 생존 철칙 — 득템 무표정의 법칙",
-      "layout_id": "split_top_wide_bottom",
-      "cuts": [
-        {
-          "cut_index": 11,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 5,
-          "panel_index": 1,
-          "characters": [
-            "인간 흑마법사"
-          ],
-          "speaker": "인간 흑마법사",
-          "dialogue": "인던에서 템 뜰 땐\n절대 좋아하지 마!!",
-          "wordless": false,
-          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND EVERYWHERE (top 38% y=0%..38% completely empty pure #FFFFFF headroom for bubble; keep hood & pointing hand strictly inside Panel 1's borders!). DRAMATIC FORCED-PERSPECTIVE LECTURE CLOSE-UP: fair-skinned Human Warlock leaning fiercely toward the camera lens jabbing one dramatic warning finger straight forward with blazing serious violet detective eyes and flaring purple soul-shard glints while her red plush Imp doll perches on her shoulder nodding sternly with crossed tiny arms! Guardrail: fair skin, deep dark-purple hood, black-and-purple twin pigtails, 0 text.",
-          "tail_target": "center",
-          "bubble_side": "center",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        },
-        {
-          "cut_index": 12,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 5,
-          "panel_index": 2,
-          "characters": [
-            "스카이본 마법사"
-          ],
-          "speaker": "스카이본 마법사",
-          "dialogue": "…무표정이 정배야.",
-          "wordless": false,
-          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND EVERYWHERE (top 38% y=0%..38% completely empty pure #FFFFFF headroom for 1-line bubble; keep tilted wizard hat strictly below y=38% and inside Panel 2's borders!). HILARIOUS STONE-STATUE POKER-FACE GAG: fair-skinned Skyborne Mage standing ramrod-stiff like a wooden statue practicing ultimate zero-emotion poker face — signature star-pupils completely switched OFF into flat deadpan `._.` stone-blank dots, flat straight mouth, hands rigidly glued to her sides with a single tiny absurd sweatdrop! Guardrail: fair skin, sky-blue high side-ponytail, tilted blue cloud-wing hat, mini Polymorph Sheep waist charm, blue crystal staff on back, 0 sailor uniform, 0 text.",
-          "tail_target": "center",
-          "bubble_side": "center",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        },
-        {
-          "cut_index": 13,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 5,
-          "panel_index": 3,
-          "characters": [
-            "언데드 성기사",
-            "인간 흑마법사"
-          ],
-          "speaker": "언데드 성기사",
-          "dialogue": "…다음엔 울면서 굴릴게…",
-          "wordless": false,
-          "visual_prompt": "TIER 2 NATURAL FULL-WIDTH ZUL'FARRAK SANDSTONE STEPS + 100% PURE #FFFFFF SKY across top 36% (y=0%..36% completely empty pure #FFFFFF headroom for left 1-line bubble; warm desert sandstone steps & ruined pillar base anchored flush edge-to-edge against bottom, left & right inner black borders, 0 floating islands!). SIDE-ANGLE MELANCHOLY COMEDY FINALE: on lower-left (x=30%), fair-skinned Undead Paladin sits huddled against a warm sandstone step dragging her crisp white-and-gold cape gloomily up over her skull cap with heavy depressed dark lines, hollow exhausted golden eyes, and a tiny translucent mini-soul still floating lazily above her head (warhammer leaning beside her). On lower-right (x=70%), fair-skinned Human Warlock kneels warmly beside her gently patting her shoulder with a sympathetic wry smile while her red plush Imp doll gently hands over a tiny handkerchief! Guardrail: fair skin on both girls, strictly zero text.",
-          "tail_target": "left",
-          "bubble_side": "left",
-          "full_bleed_bg": true,
-          "speaker_anchor_xy": [
-            0.39,
-            0.24
-          ],
-          "bubble_center_xy": [
-            0.46,
-            0.09
-          ],
-          "item_tooltip": null
-        }
-      ]
-    }
-  ],
+  "acts": null,
   "cuts": [
     {
       "cut_index": 1,
-      "aspect_ratio": "auto",
+      "aspect_ratio": "4:3",
       "layout_slot": "top",
-      "act_number": 1,
-      "panel_index": 1,
+      "act_number": null,
+      "panel_index": null,
       "characters": [
         "언데드 성기사",
-        "노움 도적"
+        "스카이본 마법사"
       ],
       "speaker": "언데드 성기사",
-      "dialogue": "…헐, 장트라제 떴다!!\n술트라제 완성이야…!!",
+      "dialogue": "줄파락에서 상트라제만 있었는데\n드디어 장트라제까지 떴다!\n이제 합치면 에픽 술트라제라고!",
       "wordless": false,
-      "visual_prompt": "TIER 1 FULL-BLEED ZUL'FARRAK DESERT TROLL PYRAMID ESTABLISHING SHOT inside solid black box frame (edge-to-edge full scenery, outer page margins & gutter below pure #FFFFFF). Sweeping wide cinematic anime view of sun-baked Zul'Farrak sandstone pyramid ruins in Tanaris: warm clear desert-blue sky with wisps of sunlit clouds filling the ENTIRE upper 36% (y=0%..36% completely uncluttered open sky across BOTH top-left for speech bubble and top-right for item tooltip — keep all heads, swords, and pyramids strictly below y=36%!), weathered troll stone pillars and desert sandstone steps below, and a tiny comical defeated Zul'Farrak troll boss silhouette sprawled face-down with dizzy spiral eyes in lower-center beside a COMPACT ONE-HANDED cobalt-blue-and-gold sword hovering in radiant blue rare-loot sparkles (STRICTLY compact modest 1-hand chibi sword scale — NEVER a giant 2H greatsword!). DYNAMIC ACTING: on lower-left foreground (x=28%), fair-skinned Undead Paladin breaks out of her usual sleepy cool composure leaping jubilantly off the sandstone throwing both empty hands skyward with gigantic starry sparkling golden eyes and flushed thrilled cheeks (guardrail: fair skin, round white skull cap, silver-white bob hair, white-and-gold cape, golden warhammer stowed cleanly across back — Clean Hand Rule!). On lower-right foreground (x=74%), over-the-shoulder sneaky crouch of petite fair-skinned Gnome Rogue eyeing the Paladin's excitement sideways with gleaming scheming blue eyes and a razor-sharp wicked smirk (guardrail: 0 X/star hairpins, green goggles on forehead, dual green daggers neatly sheathed at lower back waist). Strictly zero text.",
+      "visual_prompt": "Slightly low-angle 3/4 view in agile Korean gag webtoon style on a pure solid white #FFFFFF background with minimal sandy Zul'Farrak stone floor touch. On the left, 언데드 성기사 (weapons and shield neatly sheathed on her back) leans forward with sparkling excited eyes and raised fists, cheering at a glowing compact one-handed sword (Jang'thraze) resting atop a small carved troll stone pedestal in the center. On the right, 스카이본 마법사 (staff sheathed on her back) claps lightly with a calm, mildly amused smile.",
       "tail_target": "left",
       "bubble_side": "left",
-      "full_bleed_bg": true,
+      "full_bleed_bg": false,
       "speaker_anchor_xy": null,
       "bubble_center_xy": null,
       "item_tooltip": {
@@ -379,39 +32,31 @@
         "item_name": "보호의 장트라제",
         "wowhead_item_id": 11086,
         "quality": "rare",
-        "slot_left": "주장비",
-        "slot_right": "검",
-        "lines": [
-          "획득 시 귀속",
-          "고유 아이템",
-          "공격력 44 - 83\t속도 1.90",
-          "(초당 공격력 33.42)",
-          "요구 레벨 45"
-        ],
-        "equip_effects": [
-          "사용 효과: 장트라제와 상트라제를 결합하여 강력한 검 술트라제를 만듭니다.",
-          "발동 효과: 사용자를 보호막으로 감싸 55 에서 85의 물리 피해를 흡수합니다. 20초 동안 지속됩니다."
-        ],
-        "icon_name": "inv_sword_43",
+        "slot_left": "",
+        "slot_right": "",
+        "lines": [],
+        "equip_effects": [],
+        "icon_name": null,
         "preferred_corner": "top_right",
         "target_width": 288
       }
     },
     {
       "cut_index": 2,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 1,
-      "panel_index": 2,
+      "aspect_ratio": "16:9",
+      "layout_slot": "bottom",
+      "act_number": null,
+      "panel_index": null,
       "characters": [
+        "언데드 성기사",
         "노움 도적"
       ],
-      "speaker": "노움 도적",
-      "dialogue": "오~ 되게 신났네? ㅋ",
+      "speaker": "언데드 성기사",
+      "dialogue": "어... 도적님? 잠깐만요!\n그거 합치면 양손검인데\n왜 장트라제에 입찰을?!",
       "wordless": false,
-      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND EVERYWHERE (top 38% y=0%..38% completely empty pure #FFFFFF headroom for 1-line bubble; keep die & head strictly below y=38% and inside Panel 2's borders!). EXTREME SCHEMING GREMLIN CLOSE-UP of petite fair-skinned Gnome Rogue pushing one finger slightly under her green aviator goggles with a devilish `:3` fang smirk, flicking a chunky 6-sided white-and-gold medieval loot die showing ONLY simple round black dot pips (strictly ZERO digits, ZERO numbers, ZERO letters!) upward off her thumb with sparkling mischief glints! Guardrail: fair skin, blonde-pink-blue pigtails, 0 X/star hairpins, dual green daggers neatly sheathed out of sight at lower back waist, 0 text.",
-      "tail_target": "center",
-      "bubble_side": "center",
+      "visual_prompt": "Dynamic wide shot in agile Korean gag webtoon style on a pure solid white #FFFFFF background. On the right, tiny 노움 도적 (her green daggers securely sheathed at her waist) leaps gleefully, tossing a chunky 6-sided white-and-gold cube die showing ONLY classic round dot pips (strictly ZERO digits, ZERO numbers, ZERO letters) with one hand while snatching the compact one-handed sword Jang'thraze with the other. On the left, 언데드 성기사 (weapons and shield sheathed on her back) freezes mid-step, reaching out in wide-eyed disbelief.",
+      "tail_target": "left",
+      "bubble_side": "left",
       "full_bleed_bg": false,
       "speaker_anchor_xy": null,
       "bubble_center_xy": null,
@@ -419,19 +64,20 @@
     },
     {
       "cut_index": 3,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 1,
-      "panel_index": 3,
+      "aspect_ratio": "4:3",
+      "layout_slot": "top",
+      "act_number": null,
+      "panel_index": null,
       "characters": [
-        "스카이본 마법사"
+        "언데드 성기사",
+        "노움 도적"
       ],
-      "speaker": "스카이본 마법사",
-      "dialogue": "잠깐, 도적이 굴렸어?!",
+      "speaker": "노움 도적",
+      "dialogue": "20골이요? 에이, 저도 이거\n보고 온 거라 양보 못 해요!\n그럼 수고요~ 칼파탈!",
       "wordless": false,
-      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND EVERYWHERE (top 38% y=0%..38% completely empty pure #FFFFFF headroom for 1-line bubble; keep tilted wizard hat strictly below y=38% and inside Panel 3's borders!). 25-DEGREE DUTCH-TILT ALARMED DOUBLE-TAKE of fair-skinned Skyborne Mage snapping backward with her signature star-pupils abruptly switched OFF into wide shocked white rings, jaw dropped, pointing urgently sideways with flying cold sweatdrops! Guardrail: fair skin, sky-blue high side-ponytail, tilted blue hat with smiling cloud-wing badge, cloud capelet, mini Polymorph Sheep waist charm, blue crystal staff stowed on back, 0 sailor uniform, 0 bread/water, 0 text.",
-      "tail_target": "center",
-      "bubble_side": "center",
+      "visual_prompt": "Over-the-shoulder angle from behind 언데드 성기사 on the left toward 노움 도적 on the right, pure solid white #FFFFFF background. 언데드 성기사 (weapons and shield sheathed on her back) desperately holds out a small tied brown leather pouch overflowing with shiny round gold coins in both hands. Across from her, 노움 도적 (daggers sheathed at waist) smugly hugs the compact one-handed sword Jang'thraze under one arm, flashing a cheeky peace sign as a swirling Vanish smoke puff cloud erupts around her feet.",
+      "tail_target": "right",
+      "bubble_side": "right",
       "full_bleed_bg": false,
       "speaker_anchor_xy": null,
       "bubble_center_xy": null,
@@ -439,97 +85,18 @@
     },
     {
       "cut_index": 4,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 2,
-      "panel_index": 1,
+      "aspect_ratio": "16:9",
+      "layout_slot": "bottom",
+      "act_number": null,
+      "panel_index": null,
       "characters": [
-        "노움 도적"
-      ],
-      "speaker": "노움 도적",
-      "dialogue": "에헤헷~ 주사위 100!\n내 거지롱~ 메롱!",
-      "wordless": false,
-      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (ENTIRE LEFT 54% x=0%..54% 100% EMPTY PURE #FFFFFF HEADROOM for left bubble; strictly contain mid-air figure cleanly INSIDE Panel 1's black borders — ZERO spillover down into Panel 2!). DYNAMIC 90-DEGREE SIDE-PROFILE MID-AIR HEIST LEAP: positioned cleanly on right 42% (x=76%) vaulting gleefully rightward with sharp comic speed lines, petite fair-skinned Gnome Rogue triumphantly snatches the COMPACT ONE-HANDED cobalt-blue-and-gold sword (STRICTLY compact modest 1-hand chibi sword scale — NEVER a giant 2H greatsword; her own green daggers neatly sheathed at lower back belt — Clean Hand Rule!) in one gloved hand while pulling a shameless bratty eyelid-down tongue-out blep (`:P`)! Guardrail: fair skin, blonde-pink-blue pigtails, green goggles on forehead, 0 X/star hairpins, 0 text.",
-      "tail_target": "right",
-      "bubble_side": "left",
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
-      "bubble_center_xy": null,
-      "item_tooltip": null
-    },
-    {
-      "cut_index": 5,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 2,
-      "panel_index": 2,
-      "characters": [
-        "언데드 성기사"
-      ],
-      "speaker": "언데드 성기사",
-      "dialogue": "…20골 줄게. 팔아…",
-      "wordless": false,
-      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (ENTIRE RIGHT 54% x=46%..100% 100% EMPTY PURE #FFFFFF HEADROOM for right 1-line bubble; strictly contain kneeling figure cleanly INSIDE Panel 2's black borders — ZERO spillover into Panels 1 or 3!). LOW-ANGLE DESPERATE BEGGING PLEA: positioned cleanly on left 42% (x=25%) facing right, fair-skinned Undead Paladin drops desperately to her knees lunging forward with gigantic trembling tearful golden puppy-eyes (warhammer stowed on back — Clean Hand Rule!), thrusting out a plump brown leather coin pouch overflowing with gleaming round golden coins (strictly ZERO paper banknotes or currency symbols!) in both trembling gloved hands! Guardrail: fair skin, white skull cap, silver-white bob hair, white-and-gold cape, 0 text.",
-      "tail_target": "left",
-      "bubble_side": "right",
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
-      "bubble_center_xy": null,
-      "item_tooltip": null
-    },
-    {
-      "cut_index": 6,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 2,
-      "panel_index": 3,
-      "characters": [
-        "노움 도적"
-      ],
-      "speaker": "노움 도적",
-      "dialogue": "에이~ 나도 이거 보고 왔어!\n수고~ 칼파탈 바이!",
-      "wordless": false,
-      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (ENTIRE LEFT 54% x=0%..54% 100% EMPTY PURE #FFFFFF HEADROOM for left bubble; strictly contain getaway pose cleanly INSIDE Panel 3's black borders — ZERO spillover up into Panel 2!). BACK-VIEW SHAMELESS VANISH GETAWAY: positioned cleanly on right 42% (x=76%) striding jauntily away partially seen from behind as billowing gray Vanish smoke puffs and swirling cyan party-leave teleport sparkles erupt around her boots, petite fair-skinned Gnome Rogue casually rests the COMPACT ONE-HANDED cobalt-blue-and-gold sword (modest 1H scale! Own green daggers sheathed neatly at waist belt!) over one shoulder while glancing back with a shameless closed-eye smirk and breezy V-sign! Guardrail: fair skin, 0 X/star hairpins, 0 text.",
-      "tail_target": "right",
-      "bubble_side": "left",
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
-      "bubble_center_xy": null,
-      "item_tooltip": null
-    },
-    {
-      "cut_index": 7,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 3,
-      "panel_index": 1,
-      "characters": [
+        "언데드 성기사",
         "스카이본 마법사"
-      ],
-      "speaker": "스카이본 마법사",
-      "dialogue": "…진짜 파탈했어?!",
-      "wordless": false,
-      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (ENTIRE RIGHT 54% x=46%..100% 100% EMPTY PURE #FFFFFF HEADROOM for right 1-line bubble; strictly contain figure cleanly INSIDE Panel 1's black borders!). SIDE-ANGLE STUNNED DISBELIEF: positioned cleanly on left 42% (x=25%) facing right, fair-skinned Skyborne Mage frozen mid-point toward fading wispy Vanish smoke curls on the floor, jaw unhinged dropped wide open, star-pupils extinguished into blank hollow white shock eyes, cold sweatdrops popping off her blue wizard hat! Guardrail: fair skin, sky-blue high side-ponytail, tilted blue cloud-wing hat, mini Polymorph Sheep waist charm, blue crystal staff on back, 0 sailor uniform, 0 text.",
-      "tail_target": "left",
-      "bubble_side": "right",
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
-      "bubble_center_xy": null,
-      "item_tooltip": null
-    },
-    {
-      "cut_index": 8,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 3,
-      "panel_index": 2,
-      "characters": [
-        "언데드 성기사"
       ],
       "speaker": null,
       "dialogue": null,
       "wordless": true,
-      "visual_prompt": "TIER 2 GIANT WORDLESS CLIMAX FREEZE-FRAME ON FULL-WIDTH ZUL'FARRAK DESERT SANDSTONE FLOOR + 100% PURE #FFFFFF UPPER SKY (ZERO text, ZERO speech bubbles, ZERO Japanese katakana or SFX letters!). Sun-baked cracked sandstone temple tiles anchored flush edge-to-edge along bottom, left & right borders, with the rejected brown leather gold coin pouch lying spilled on the stones beside her knees. SHOWSTOPPER FISHEYE DUTCH-TILT SOUL-SHATTER FREEZE: centered large foreground framing of fair-skinned Undead Paladin frozen completely hollow — heavy dark slate-indigo gloom shadow crashing down over her skull cap and brow, golden-yellow eyes shrunk into trembling blank white pinpoint shock rings staring dead into the void, jaw parted as a comical translucent wisp mini-soul drifts lazily straight out of her mouth, while just behind her hood a glowing ghostly translucent purple vision of an epic two-handed broadsword cracks apart and shatters dramatically into drifting purple stardust against pure #FFFFFF upper space! Guardrail: fair skin, white skull cap, silver-white bob hair, white-and-gold cape, warhammer stowed on back.",
+      "visual_prompt": "Close two-shot freeze-frame reaction cut on a pure solid white #FFFFFF background with subtle vertical comic gloom lines. On the left, 언데드 성기사 (weapons sheathed on back) stands completely rigid with hollow blank white eyes and a tiny comical ghost soul drifting out of her open mouth, still clutching the rejected leather gold pouch. On the right, 스카이본 마법사 stares silently with wide deadpan eyes at the lingering puff of empty Vanish smoke where the rogue stood.",
       "tail_target": "center",
       "bubble_side": null,
       "full_bleed_bg": false,
@@ -538,19 +105,19 @@
       "item_tooltip": null
     },
     {
-      "cut_index": 9,
-      "aspect_ratio": "auto",
+      "cut_index": 5,
+      "aspect_ratio": "4:3",
       "layout_slot": "top",
-      "act_number": 4,
-      "panel_index": 1,
+      "act_number": null,
+      "panel_index": null,
       "characters": [
         "스카이본 마법사",
         "언데드 성기사"
       ],
       "speaker": "스카이본 마법사",
-      "dialogue": "도적이 저걸 왜 먹어?!\n신난 거 보고 일부러 굴렸네!",
+      "dialogue": "도적이 저걸 왜 먹겠어.\n기사님이 너무 신나하니까\n일부러 입찰 굴린 거지.",
       "wordless": false,
-      "visual_prompt": "TIER 2 NATURAL FULL-WIDTH ZUL'FARRAK SANDSTONE COURTYARD + MASSIVE 100% EMPTY PURE #FFFFFF SKY across top 42% (y=0%..42% completely empty pure #FFFFFF headroom across BOTH top-left for speech bubble and top-right for epic item tooltip; warm sandstone flagstones anchored flush edge-to-edge against bottom, left & right borders, 0 floating islands!). HIGH-ANGLE AFTERMATH VERDICT: on lower-right (x=72%), fair-skinned Undead Paladin WEARING HER SIGNATURE ROUND PURE-WHITE CARTOON SKULL CAP WITH DARK EYE SOCKETS FIRMLY ON HER HEAD (NEVER bare-headed — always keep her round white cartoon skull cap on!), chin-length silver-white bob hair, white-and-gold cape, sprawled completely flat face-down like a crushed deflated plushie beside her dropped brown leather gold coin pouch with hollow dizzy spiral eyes and vertical dark gloom lines (golden warhammer stowed on back). On lower-left (x=28%), fair-skinned Skyborne Mage standing with arms crossed tight, puffed crimson exasperated cheeks, glaring coldly downward with fierce annoyed sapphire eyes and tiny anger steam puffs (guardrail: sky-blue high side-ponytail, tilted blue cloud-wing hat, mini Polymorph Sheep waist charm, blue crystal staff on back, 0 sailor uniform). Strictly zero text.",
+      "visual_prompt": "High-angle shot looking down slightly on a pure solid white #FFFFFF background with minimal dungeon floor shadow. On the left, 스카이본 마법사 (staff sheathed on back) stands with arms crossed and a cold deadpan side-eye. On the right, 언데드 성기사 (weapons sheathed on back) sits slumped cross-legged on the floor with her shoulders drooping in utter defeat.",
       "tail_target": "left",
       "bubble_side": "left",
       "full_bleed_bg": false,
@@ -561,109 +128,34 @@
         "item_name": "질풍의 술트라제",
         "wowhead_item_id": 9372,
         "quality": "epic",
-        "slot_left": "양손 장비",
-        "slot_right": "검",
-        "lines": [
-          "획득 시 귀속",
-          "고유 아이템",
-          "공격력 108 - 163\t속도 2.60",
-          "(초당 공격력 52.12)",
-          "요구 레벨 50"
-        ],
-        "equip_effects": [
-          "발동 효과: 술트라제의 분노로 적을 강타하여 대상의 힘을 15만큼 감소시키고 90 에서 210의 암흑 피해를 주며 15초에 걸쳐 추가로 125의 피해를 입힙니다."
-        ],
-        "icon_name": "inv_sword_40",
+        "slot_left": "",
+        "slot_right": "",
+        "lines": [],
+        "equip_effects": [],
+        "icon_name": null,
         "preferred_corner": "top_right",
         "target_width": 288
       }
     },
     {
-      "cut_index": 10,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 4,
-      "panel_index": 2,
+      "cut_index": 6,
+      "aspect_ratio": "16:9",
+      "layout_slot": "bottom",
+      "act_number": null,
+      "panel_index": null,
       "characters": [
         "인간 흑마법사",
-        "스카이본 마법사"
+        "언데드 성기사"
       ],
       "speaker": "인간 흑마법사",
-      "dialogue": "후훗… 아니, 저건\n악마보다 더 독하잖아…!",
+      "dialogue": "내 임프보다 더한 악마네...\n다들 기억해. 인던에서 템 뜨면\n절대 좋아하지 마라!",
       "wordless": false,
-      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (top 36% y=0%..36% completely empty pure #FFFFFF headroom for left bubble; keep all characters strictly inside Panel 2's borders!). LOW-ANGLE SHIVERING HORROR DUO: on lower-left (x=30%), fair-skinned Human Warlock hunches backward shivering violently in icy pale-blue horror lines with chattering teeth and wide trembling violet eyes, clutching her plump grumpy red plush Imp doll tightly up to her chin — and even the plush red Imp doll shivers in sheer panic covering its mouth with tiny paws and popping white shock eyes! On lower-right (x=72%), fair-skinned Skyborne Mage nods grimly with crossed arms, cold sweatdrop, and deadpan shadowed eyes (guardrail: tilted blue cloud-wing hat, sheep waist charm, crystal staff on back, 0 sailor uniform). Strictly zero text.",
+      "visual_prompt": "Side-view comedy finale shot on a pure solid white #FFFFFF background. On the left, 인간 흑마법사 (staff on back, tucking her grumpy little red imp plush doll snugly under her left arm) points a stern cautionary index finger straight toward the viewer with a dead-serious expression. On the right, 언데드 성기사 lies completely face-down on the floor in silent despair beside her unspent leather coin pouch.",
       "tail_target": "left",
       "bubble_side": "left",
       "full_bleed_bg": false,
       "speaker_anchor_xy": null,
       "bubble_center_xy": null,
-      "item_tooltip": null
-    },
-    {
-      "cut_index": 11,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 5,
-      "panel_index": 1,
-      "characters": [
-        "인간 흑마법사"
-      ],
-      "speaker": "인간 흑마법사",
-      "dialogue": "인던에서 템 뜰 땐\n절대 좋아하지 마!!",
-      "wordless": false,
-      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND EVERYWHERE (top 38% y=0%..38% completely empty pure #FFFFFF headroom for bubble; keep hood & pointing hand strictly inside Panel 1's borders!). DRAMATIC FORCED-PERSPECTIVE LECTURE CLOSE-UP: fair-skinned Human Warlock leaning fiercely toward the camera lens jabbing one dramatic warning finger straight forward with blazing serious violet detective eyes and flaring purple soul-shard glints while her red plush Imp doll perches on her shoulder nodding sternly with crossed tiny arms! Guardrail: fair skin, deep dark-purple hood, black-and-purple twin pigtails, 0 text.",
-      "tail_target": "center",
-      "bubble_side": "center",
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
-      "bubble_center_xy": null,
-      "item_tooltip": null
-    },
-    {
-      "cut_index": 12,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 5,
-      "panel_index": 2,
-      "characters": [
-        "스카이본 마법사"
-      ],
-      "speaker": "스카이본 마법사",
-      "dialogue": "…무표정이 정배야.",
-      "wordless": false,
-      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND EVERYWHERE (top 38% y=0%..38% completely empty pure #FFFFFF headroom for 1-line bubble; keep tilted wizard hat strictly below y=38% and inside Panel 2's borders!). HILARIOUS STONE-STATUE POKER-FACE GAG: fair-skinned Skyborne Mage standing ramrod-stiff like a wooden statue practicing ultimate zero-emotion poker face — signature star-pupils completely switched OFF into flat deadpan `._.` stone-blank dots, flat straight mouth, hands rigidly glued to her sides with a single tiny absurd sweatdrop! Guardrail: fair skin, sky-blue high side-ponytail, tilted blue cloud-wing hat, mini Polymorph Sheep waist charm, blue crystal staff on back, 0 sailor uniform, 0 text.",
-      "tail_target": "center",
-      "bubble_side": "center",
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
-      "bubble_center_xy": null,
-      "item_tooltip": null
-    },
-    {
-      "cut_index": 13,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 5,
-      "panel_index": 3,
-      "characters": [
-        "언데드 성기사",
-        "인간 흑마법사"
-      ],
-      "speaker": "언데드 성기사",
-      "dialogue": "…다음엔 울면서 굴릴게…",
-      "wordless": false,
-      "visual_prompt": "TIER 2 NATURAL FULL-WIDTH ZUL'FARRAK SANDSTONE STEPS + 100% PURE #FFFFFF SKY across top 36% (y=0%..36% completely empty pure #FFFFFF headroom for left 1-line bubble; warm desert sandstone steps & ruined pillar base anchored flush edge-to-edge against bottom, left & right inner black borders, 0 floating islands!). SIDE-ANGLE MELANCHOLY COMEDY FINALE: on lower-left (x=30%), fair-skinned Undead Paladin sits huddled against a warm sandstone step dragging her crisp white-and-gold cape gloomily up over her skull cap with heavy depressed dark lines, hollow exhausted golden eyes, and a tiny translucent mini-soul still floating lazily above her head (warhammer leaning beside her). On lower-right (x=70%), fair-skinned Human Warlock kneels warmly beside her gently patting her shoulder with a sympathetic wry smile while her red plush Imp doll gently hands over a tiny handkerchief! Guardrail: fair skin on both girls, strictly zero text.",
-      "tail_target": "left",
-      "bubble_side": "left",
-      "full_bleed_bg": true,
-      "speaker_anchor_xy": [
-        0.39,
-        0.24
-      ],
-      "bubble_center_xy": [
-        0.46,
-        0.09
-      ],
       "item_tooltip": null
     }
   ]

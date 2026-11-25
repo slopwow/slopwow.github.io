@@ -3,349 +3,48 @@
   "source_post_no": "109555",
   "source_title": "새벽 나락팟 개염병났네",
   "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=109555&exception_mode=recommend&page=1",
-  "subtitle": "새벽 검은바위 나락 풀퀘팟, 호위퀘 중탈과 파장 도적의 전설적 'yes' 선차단 대참사 — 5막 13컷",
-  "layout_mode": "v4_five_act",
+  "subtitle": "말 한마디 없던 파장의 대답",
+  "layout_mode": "classic_2tier",
   "background_style": "clean_white",
-  "acts": [
-    {
-      "act_number": 1,
-      "act_title": "1막: 새벽 검은바위 나락 풀퀘팟 출격! 말 없는 파장 도적",
-      "layout_id": "diagonal_tempo_2cut",
-      "cuts": [
-        {
-          "cut_index": 1,
-          "aspect_ratio": "auto",
-          "layout_slot": "top",
-          "act_number": 1,
-          "panel_index": 1,
-          "characters": [
-            "스카이본 마법사",
-            "노움 도적"
-          ],
-          "speaker": "스카이본 마법사",
-          "dialogue": "흥~ 새벽 나락 풀퀘팟!\n윈저 호위퀘까지 싹 밀자구~☆",
-          "wordless": false,
-          "visual_prompt": "TIER 1 FULL-BLEED BLACKROCK DEPTHS DUNGEON ESTABLISHING SHOT filling 100% edge-to-edge inside Panel 1's black box (STRICTLY ZERO inner white side bars or secondary frames inside Panel 1! BOTH CHARACTERS MUST BE DRAWN FULL-BODY FROM HEAD TO BOOTS STANDING COMPLETELY INSIDE PANEL 1 ON THE STONE FLOOR WELL ABOVE PANEL 1'S BOTTOM BLACK BORDER — ZERO LEGS, ZERO SKIRTS, ZERO BOOTS CONTINUING BELOW PANEL 1 INTO PANEL 2!). Sweeping wide cinematic fantasy dungeon interior of WoW Blackrock Depths: towering dark-iron forged stone arches, warm glowing molten orange lava trenches far below rugged stone bridges, hanging iron braziers, patrolling chunky Dark Iron Dwarf dungeon mobs in the far background, and smoky dark volcanic stone cavern ceiling filling the ENTIRE upper-left headroom (x=4%..58%, y=0%..35% completely uncluttered open dark ceiling — keep characters below y=35%!). DYNAMIC ACTING (full-body chibi standing cleanly on the foreground basalt floor inside Panel 1!): on lower-left foreground (x=28%, standing full-body from y=36% to y=94%), Skyborne Mage girl (bright fair peach-ivory skin, bouncy sky-blue high side-ponytail, pointed elf ears, tilted royal-blue wizard hat with smiling cloud-wing badge, cloud-trimmed capelet over crisp white-and-blue flared mage tunic, dark shorts, mini fluffy white Polymorph Sheep charm at waist, blue crystal staff stowed diagonally on back — Clean Hand! Strictly 0 sailor uniform!) puffing out her chest proudly clutching a huge overflowing bundle of golden quest scrolls with dazzling sparkling star-pupil eyes and confident genius grin! On lower-right foreground (x=72%, standing full-body from y=42% to y=94%), petite Gnome Rogue girl (fair skin, blonde-pink-blue pigtails, green aviator goggles on forehead, 0 X/star pins, dual green daggers hidden out of sight at lower back waist — ZERO dagger hilts peeking behind shoulders!) standing completely rigid like an AFK wooden mannequin staring blankly forward with deadpan half-lidded `-_-` eyes! ZERO text or letters!",
-          "tail_target": "left",
-          "bubble_side": "left",
-          "full_bleed_bg": true,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        },
-        {
-          "cut_index": 2,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 1,
-          "panel_index": 2,
-          "characters": [
-            "타우렌 드루이드",
-            "노움 도적"
-          ],
-          "speaker": "노움 도적",
-          "dialogue": "yes",
-          "wordless": false,
-          "visual_prompt": "TIER 2 NATURAL FULL-WIDTH BLACKROCK STONE FLOOR + MASSIVE 100% PURE #FFFFFF SKY ACROSS THE ENTIRE TOP 44%! ABSOLUTE HEIGHT CEILING: BOTH characters (including Tauren Druid's horns/staff and Gnome Rogue's pigtails!) MUST stay COMPACT strictly BELOW y=44% (y=44%..100%) — the ENTIRE upper 44% (y=0%..44%, left border to right border!) MUST be 100% blank empty pure #FFFFFF sky with ZERO stray feet/lines from Panel 1! Dark volcanic basalt dungeon flagstones anchored flush edge-to-edge along entire bottom, left & right inner black borders (ZERO floating islands!). COMEDIC OVER-THE-SHOULDER EXCHANGE: Lower-left (x=28%, compact y=46%..98%), Tauren Druid girl (fair peach-ivory skin, warm-brown plush cow hood with curved ivory horns and ONE golden nose ring ONLY on the plush cow hood snout — STRICTLY ZERO nose ring on the human girl's own bare nose! Chestnut-brown straight bangs, glossy warm-brown jewel eyes — NEVER blonde braids or green eyes! Leafy green shoulder mantle, wooden leaf staff stowed neatly on back — Clean Hand!) leaning over eagerly with bright innocent hopeful eyes holding up a tiny glowing blank quest parchment asking for confirmation. Lower-right (x=72%, compact y=46%..98%), petite Gnome Rogue girl (0 X/star pins, green goggles on forehead, black chin mask neatly below chin, ONLY crossed green daggers neatly at lower back waist — STRICTLY ZERO blue crystal mage staff on Gnome Rogue's back!) facing 3/4 front-left in deadpan stone-faced silence, mechanically raising one single stiff robotic thumbs-up with blank tiny dot eyes! STRICTLY ZERO drawn mini speech bubbles, ZERO dots/emoticon bubbles, ZERO text anywhere inside artwork!",
-          "tail_target": "right",
-          "bubble_side": "right",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        }
-      ]
-    },
-    {
-      "act_number": 2,
-      "act_title": "2막: 1시간째 안드로메다 진행과 호위퀘 거부 칼중탈!",
-      "layout_id": "wide_reaction_wide",
-      "cuts": [
-        {
-          "cut_index": 3,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 2,
-          "panel_index": 1,
-          "characters": [
-            "스카이본 마법사"
-          ],
-          "speaker": "스카이본 마법사",
-          "dialogue": "잠깐, 1시간째 길 헤매잖아!\n파장님, 윈저 쪽 맞아?!",
-          "wordless": false,
-          "visual_prompt": "TIER 2 NATURAL GROUNDED BASALT DUNGEON FLOOR ON RIGHT + 100% PURE #FFFFFF EMPTY LEFT 50% (keep ENTIRE left 50% x=0%..50% pure blank #FFFFFF headroom for left bubble! Keep ALL art strictly inside Panel 1's black rectangle — ZERO spillover into Panel 2!). Chaotic action combat on dark dungeon stone floor flush to bottom-right edge (x=48%..100%): at right-center (x=66%), Skyborne Mage girl (fair skin, sky-blue high side-ponytail, tilted cloud-wing wizard hat, cloud capelet, mini Polymorph Sheep charm at waist, 0 sailor uniform) spinning around wildly in exasperated 30-degree Dutch-tilt panic firing frantic icy blue frostbolts from her crystal staff at two lunging grumpy Dark Iron Dwarf mobs & a glowing fiery lava elemental on the far right (x=90%), dark exhausted dawn eyebags, flying sweatdrops, wide shouting mouth! ZERO text!",
-          "tail_target": "right",
-          "bubble_side": "left",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        },
-        {
-          "cut_index": 4,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 2,
-          "panel_index": 2,
-          "characters": [
-            "드워프 사냥꾼"
-          ],
-          "speaker": "드워프 사냥꾼",
-          "dialogue": "어휴~ 호위퀘는 사절이지~\n난 탱이랑 먼저 쨀게!",
-          "wordless": false,
-          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (ENTIRE right 54% x=46%..100% completely empty pure #FFFFFF headroom for right bubble; strictly contain full pose cleanly INSIDE Panel 2's black rectangle — ZERO spillover into Panels 1 or 3!). BREEZY SIDE-PROFILE BAIL-OUT GAG: positioned cleanly on left 42% (x=24%), Dwarf Hunter girl (fair skin, forest-green white-fur-trimmed ranger hood, vivid ginger braided pigtails under chin, blunderbuss rifle slung diagonally across back — Clean Hand!) strolling casually away while cheek-stuffed munching crunchy snacks with one hand and holding up a bright swirling cyan glowing Hearthstone in the other, swirling blue teleport magic rings spiraling up around her boots as she flashes a carefree lazy half-lidded wink! ZERO text!",
-          "tail_target": "left",
-          "bubble_side": "right",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        },
-        {
-          "cut_index": 5,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 2,
-          "panel_index": 3,
-          "characters": [
-            "타우렌 드루이드"
-          ],
-          "speaker": "타우렌 드루이드",
-          "dialogue": "으아앙?! 1시간 돌았는데\n물퀘도 주간퀘도 다 망했어!!",
-          "wordless": false,
-          "visual_prompt": "TIER 2 NATURAL GROUNDED BASALT FLOOR ON RIGHT + 100% PURE #FFFFFF EMPTY LEFT 50% (ENTIRE left 50% x=0%..50% completely blank pure #FFFFFF headroom for left bubble; strictly contain inside Panel 3 borders — ZERO spillover!). LOW-ANGLE MELTDOWN SLAPSTICK: on right half (x=72%), collapsed dramatically to her knees on dark volcanic flagstones (flush bottom-right) with crumpled blank quest scrolls scattered around her boots and fading cyan Hearthstone exit sparkles on the far right edge, Tauren Druid girl (fair skin, brown cow hood with curved ivory horns, leaf shoulder mantle, staff dropped flat beside her) bawling in maximum cartoonish despair — jaw dropped huge, spinning dizzy spiral eyes, twin geyser waterfall tears shooting sideways as she clutches her cheeks! ZERO text!",
-          "tail_target": "right",
-          "bubble_side": "left",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        }
-      ]
-    },
-    {
-      "act_number": 3,
-      "act_title": "3막: 파티 터뜨려 놓고 파티 찾기 재등록?! 새벽 추격전",
-      "layout_id": "open_top_split_bottom",
-      "cuts": [
-        {
-          "cut_index": 6,
-          "aspect_ratio": "auto",
-          "layout_slot": "top",
-          "act_number": 3,
-          "panel_index": 1,
-          "characters": [
-            "스카이본 마법사",
-            "노움 도적"
-          ],
-          "speaker": "스카이본 마법사",
-          "dialogue": "지금 파티 터뜨려 놓고\n파티 찾기에 또 올렸어?!",
-          "wordless": false,
-          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF BORDERLESS OPEN WHITE BACKGROUND EVERYWHERE — STRICTLY ZERO GRASS, ZERO GROUND STRIP, ZERO HORIZON, ZERO TURF, ZERO BUSHES, ZERO FLOOR UNDERNEATH THEIR BOOTS OR THE WOODEN SIGNPOST! ONLY the two floating chibi characters and the standalone wooden notice post directly on 100% PURE BLANK #FFFFFF WHITE (at most faint soft oval ground drop-shadows directly under their boot soles, ZERO continuous ground strip or rectangular backdrop edge!). Top 38% completely empty pure #FFFFFF headroom! WILD 30-DEGREE DUTCH-TILT CONFRONTATION! Lower-left (x=28%, below y=38%): Skyborne Mage girl (fair skin, sky-blue high side-ponytail, tilted cloud-wing wizard hat trembling, mini Polymorph Sheep waist charm, crystal staff stowed on back — 0 sailor uniform!) storming forward leaning sharply at the waist with star-pupils switched OFF into blazing furious rage eyes, puffing white steam jets, pointing an accusing finger straight across pure white! Lower-right (x=74%, below y=38%): petite Gnome Rogue girl (0 X/star pins, green goggles on forehead, crossed green daggers neatly at lower back waist — ZERO dagger hilts behind shoulders!) caught red-handed casually pinning a fresh blank parchment flyer onto a standalone wooden notice signpost resting directly on pure #FFFFFF white (0 grass/dirt around post base!), glancing back sideways with an utterly shameless sneaky `:3` whistle! STRICTLY ZERO text or letters anywhere!",
-          "tail_target": "left",
-          "bubble_side": "left",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        },
-        {
-          "cut_index": 7,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 3,
-          "panel_index": 2,
-          "characters": [
-            "스카이본 마법사"
-          ],
-          "speaker": "스카이본 마법사",
-          "dialogue": "도적님, 양심 터졌어요?!",
-          "wordless": false,
-          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND EVERYWHERE (STRICTLY ZERO colored speedline box, ZERO rectangular wallpaper fill — pure clean blank #FFFFFF white all the way around her silhouette, top 38% y=0%..38% completely empty pure #FFFFFF headroom for 1-line bubble!). SHOWSTOPPER FISHEYE FORCED-PERSPECTIVE LUNGING CLOSE-UP! Skyborne Mage girl (fair skin, sky-blue side-ponytail bristling wildly, tilted cloud-wing wizard hat, cloud capelet, sheep waist charm, staff on back — 0 sailor uniform!) lunging explosively forward straight at the camera lens with both hands clawing angrily in the extreme foreground, tiny crisp floating crimson anger-vein mark & wispy steam puffs directly on pure #FFFFFF white, wide furious shouting mouth and razor-sharp outraged eyes! ZERO text, ZERO rectangular speedline backdrop!",
-          "tail_target": "center",
-          "bubble_side": "center",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        },
-        {
-          "cut_index": 8,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 3,
-          "panel_index": 3,
-          "characters": [
-            "노움 도적"
-          ],
-          "speaker": "노움 도적",
-          "dialogue": "yes",
-          "wordless": false,
-          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom for 1-line bubble; keep strictly inside Panel 3 borders!). HILARIOUS HIGH-ANGLE DEADPAN COMEDY CLOSE-UP! Petite Gnome Rogue girl (fair skin, blonde-pink-blue pigtails, green aviator goggles on forehead, black stealth mask pulled cleanly down around her neck BELOW her chin, 0 X/star pins, daggers completely hidden out of sight — ZERO dagger hilts peeking behind shoulders!) sitting completely cross-legged in placid zen stillness on pure #FFFFFF white, cradling a chunky wooden fantasy-carved toy two-handle game-pad controller in her lap and lazily tapping ONE single round wooden button with her thumb, staring blankly ahead with unblinking tiny round dot eyes and a tiny flat straight horizontal poker-face mouth (`._.` — strictly ZERO numbers or '3' shapes on her face)! ZERO text or letters!",
-          "tail_target": "center",
-          "bubble_side": "center",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        }
-      ]
-    },
-    {
-      "act_number": 4,
-      "act_title": "4막: 전설의 한 단어 'yes'에 멘탈 붕괴 — 무언 충격 정지!",
-      "layout_id": "impact_freeze_2cut",
-      "cuts": [
-        {
-          "cut_index": 9,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 4,
-          "panel_index": 1,
-          "characters": [
-            "스카이본 마법사"
-          ],
-          "speaker": "스카이본 마법사",
-          "dialogue": "…아니 뭔 예스야?!",
-          "wordless": false,
-          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (ENTIRE right 54% x=46%..100% completely empty pure #FFFFFF headroom for right 1-line bubble; keep inside Panel 1 borders!). CRISP 90-DEGREE SIDE-PROFILE BRAIN-FREEZE: positioned cleanly on left 42% (x=24%), Skyborne Mage girl (fair skin, sky-blue high side-ponytail, cloud-wing wizard hat tilted crookedly forward from shock, staff on back — 0 sailor uniform!) completely short-circuited — star-pupils abruptly switched OFF into tiny hollow white pinpoint shock eyes, eyelid twitching with jagged nervous shock squiggles, heavy blue disbelief shadow across her brow, and mouth hanging crookedly ajar! ZERO text!",
-          "tail_target": "left",
-          "bubble_side": "right",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        },
-        {
-          "cut_index": 10,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 4,
-          "panel_index": 2,
-          "characters": [
-            "스카이본 마법사",
-            "타우렌 드루이드"
-          ],
-          "speaker": null,
-          "dialogue": null,
-          "wordless": true,
-          "visual_prompt": "TIER 2 WORDLESS CLIMAX FREEZE-FRAME ON FULL-WIDTH BLACKROCK MOUNTAIN VOLCANIC STONE LEDGE + 100% PURE #FFFFFF UPPER SKY (ZERO text, ZERO speech bubbles, ZERO katakana/letters!). Rugged charred volcanic stone ledge anchored flush edge-to-edge along entire bottom & side borders with tiny glowing orange ember sparks drifting near the rocky bottom edge. SHOWSTOPPER DUAL-COLLAPSE CLIMAX! Dominating foreground center-left (x=34%, bold tall framing): Skyborne Mage girl (fair skin, sky-blue high side-ponytail, mini Polymorph Sheep waist charm, blue crystal staff on back — 0 sailor uniform!) IN MAXIMUM MUNCH-SCREAM BRAIN-MELTDOWN HORROR — her royal-blue cloud-wing wizard hat literally popped 3 inches straight off her head in cartoon shock, face drained icy blue-indigo with heavy vertical dread lines, giant blank white shattered-star shock eyes, jaw unhinged dropped all the way down to her chest, both hands clutching her cheeks in trembling vibration lines as a hilarious tiny translucent wisp mini-soul floats right out of her open mouth! Lower-right midground (x=70%): Tauren Druid girl (brown cow hood, leafy mantle) completely faceplanted flat like a pancake on the basalt stones with dizzy spinning spiral halos over her head and a cute translucent mini-cow-hood ghost drifting upward! Far-right rocky edge (x=90%): a small bewildered Dark Iron Dwarf dungeon guard peeking around a boulder sweating giant comic sweatdrops in secondhand shock!",
-          "tail_target": "center",
-          "bubble_side": null,
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        }
-      ]
-    },
-    {
-      "act_number": 5,
-      "act_title": "5막: 분노의 영어 추궁과 파장 도적의 빛의 속도 선차단!",
-      "layout_id": "split_top_wide_bottom",
-      "cuts": [
-        {
-          "cut_index": 11,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 5,
-          "panel_index": 1,
-          "characters": [
-            "스카이본 마법사"
-          ],
-          "speaker": "스카이본 마법사",
-          "dialogue": "ENGLISH??\nYOU BROKE PARTY!!",
-          "wordless": false,
-          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom for 2-line bubble; keep inside Panel 1 borders!). EXPLOSIVE LOW-ANGLE VOLCANIC RAGE: Skyborne Mage girl (fair skin, sky-blue high side-ponytail flying upward, tilted cloud-wing wizard hat, cloud capelet, sheep waist charm, staff on back — 0 sailor uniform!) leaning forward like an incandescent prosecutor jabbing one trembling pointing finger sharply rightward, cheeks puffed fiery crimson, steam blasts erupting from her collar, fiery red rage aura radiating softly behind her shoulders and feathering cleanly into pure #FFFFFF white! ZERO text inside art!",
-          "tail_target": "center",
-          "bubble_side": "center",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        },
-        {
-          "cut_index": 12,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 5,
-          "panel_index": 2,
-          "characters": [
-            "노움 도적"
-          ],
-          "speaker": "노움 도적",
-          "dialogue": "에헤헷~ 칼차단 딸깍!",
-          "wordless": false,
-          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom for 1-line bubble; keep inside Panel 2 borders!). CHEEKY GREMLIN VANISH-BLOCK GAG: petite Gnome Rogue girl (fair skin, blonde-pink-blue pigtails, green aviator goggles pushed slightly up on forehead, 0 X/star pins, daggers stowed at lower back waist — Clean Hand!) suddenly breaking character into her signature ultra-bratty tongue-out `:P` fang-smirk wink as she playfully boops a glossy floating red circular X-icon seal in mid-air (ONLY a clean graphic red X circle — ZERO letters or words!) while swirling translucent emerald-grey Rogue Vanish smoke puffs begin wrapping around her boots! ZERO text!",
-          "tail_target": "center",
-          "bubble_side": "center",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        },
-        {
-          "cut_index": 13,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 5,
-          "panel_index": 3,
-          "characters": [
-            "스카이본 마법사",
-            "타우렌 드루이드"
-          ],
-          "speaker": "스카이본 마법사",
-          "dialogue": "새벽부터 차단까지 당했네…\n나도 이제 할 말 없으면 yes 한다…",
-          "wordless": false,
-          "visual_prompt": "TIER 2 NATURAL FULL-WIDTH DAWN BLACKROCK STONE TERRACE + 100% PURE #FFFFFF SKY across top 38% (y=0%..38% completely empty pure #FFFFFF headroom for left bubble; weathered mountain stone terrace floor anchored flush edge-to-edge along entire bottom, left & right borders — ZERO floating islands!). HILARIOUS BACK-TO-REALITY EXHAUSTED FINALE: Lower-left (x=30%), Skyborne Mage girl (fair skin, sky-blue side-pony drooped limp, cloud-wing wizard hat slumped low, sheep waist charm, blue crystal staff leaning diagonally against her shoulder — 0 sailor uniform!) sitting hunched cross-legged on the cold stone floor with hollow dead-tired morning dark circles under dimmed blue eyes, tiny ghostly gray gloom wisps drifting off her shoulders in total dawn existential defeat. Lower-right (x=72%), Tauren Druid girl (brown cow hood, leaf mantle, staff resting on ground) sitting slumped beside her with tear-puffed sniffling rosy cheeks patting the Mage's shoulder softly while holding out a cozy medieval wooden mug of warm tea — and way off on the far-right background edge (x=92%), just one tiny fading puff of Rogue Vanish smoke! ZERO text!",
-          "tail_target": "left",
-          "bubble_side": "left",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        }
-      ]
-    }
-  ],
+  "acts": null,
   "cuts": [
     {
       "cut_index": 1,
-      "aspect_ratio": "auto",
+      "aspect_ratio": "4:3",
       "layout_slot": "top",
-      "act_number": 1,
-      "panel_index": 1,
+      "act_number": null,
+      "panel_index": null,
       "characters": [
         "스카이본 마법사",
         "노움 도적"
       ],
       "speaker": "스카이본 마법사",
-      "dialogue": "흥~ 새벽 나락 풀퀘팟!\n윈저 호위퀘까지 싹 밀자구~☆",
+      "dialogue": "새벽 나락 풀퀘팟 맞죠?\n물퀘랑 윈저 호위퀘까지\n전부 다 깨고 가는 거!",
       "wordless": false,
-      "visual_prompt": "TIER 1 FULL-BLEED BLACKROCK DEPTHS DUNGEON ESTABLISHING SHOT filling 100% edge-to-edge inside Panel 1's black box (STRICTLY ZERO inner white side bars or secondary frames inside Panel 1! BOTH CHARACTERS MUST BE DRAWN FULL-BODY FROM HEAD TO BOOTS STANDING COMPLETELY INSIDE PANEL 1 ON THE STONE FLOOR WELL ABOVE PANEL 1'S BOTTOM BLACK BORDER — ZERO LEGS, ZERO SKIRTS, ZERO BOOTS CONTINUING BELOW PANEL 1 INTO PANEL 2!). Sweeping wide cinematic fantasy dungeon interior of WoW Blackrock Depths: towering dark-iron forged stone arches, warm glowing molten orange lava trenches far below rugged stone bridges, hanging iron braziers, patrolling chunky Dark Iron Dwarf dungeon mobs in the far background, and smoky dark volcanic stone cavern ceiling filling the ENTIRE upper-left headroom (x=4%..58%, y=0%..35% completely uncluttered open dark ceiling — keep characters below y=35%!). DYNAMIC ACTING (full-body chibi standing cleanly on the foreground basalt floor inside Panel 1!): on lower-left foreground (x=28%, standing full-body from y=36% to y=94%), Skyborne Mage girl (bright fair peach-ivory skin, bouncy sky-blue high side-ponytail, pointed elf ears, tilted royal-blue wizard hat with smiling cloud-wing badge, cloud-trimmed capelet over crisp white-and-blue flared mage tunic, dark shorts, mini fluffy white Polymorph Sheep charm at waist, blue crystal staff stowed diagonally on back — Clean Hand! Strictly 0 sailor uniform!) puffing out her chest proudly clutching a huge overflowing bundle of golden quest scrolls with dazzling sparkling star-pupil eyes and confident genius grin! On lower-right foreground (x=72%, standing full-body from y=42% to y=94%), petite Gnome Rogue girl (fair skin, blonde-pink-blue pigtails, green aviator goggles on forehead, 0 X/star pins, dual green daggers hidden out of sight at lower back waist — ZERO dagger hilts peeking behind shoulders!) standing completely rigid like an AFK wooden mannequin staring blankly forward with deadpan half-lidded `-_-` eyes! ZERO text or letters!",
+      "visual_prompt": "3-to-3.5 head-tall sleek Korean gag webtoon style on a 100% pure solid white #FFFFFF background. Medium three-quarter angle with the Skyborn mage on the left and the Gnome rogue on the right standing on a minimal dark dwarven stone floor shadow. The mage gestures cheerfully with one open hand while holding her mage staff in the other, wearing an eager confident smile. The rogue stands stiffly with daggers sheathed at her waist, staring ahead with an unreadable blank deadpan expression.",
       "tail_target": "left",
       "bubble_side": "left",
-      "full_bleed_bg": true,
+      "full_bleed_bg": false,
       "speaker_anchor_xy": null,
       "bubble_center_xy": null,
       "item_tooltip": null
     },
     {
       "cut_index": 2,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 1,
-      "panel_index": 2,
+      "aspect_ratio": "16:9",
+      "layout_slot": "bottom",
+      "act_number": null,
+      "panel_index": null,
       "characters": [
-        "타우렌 드루이드",
-        "노움 도적"
+        "드워프 사냥꾼",
+        "타우렌 드루이드"
       ],
-      "speaker": "노움 도적",
-      "dialogue": "yes",
+      "speaker": "드워프 사냥꾼",
+      "dialogue": "한 시간 돌았는데 호위퀘까지?\n파장도 채팅 한 줄 안 치네.\n난 못 해, 먼저 빠진다~",
       "wordless": false,
-      "visual_prompt": "TIER 2 NATURAL FULL-WIDTH BLACKROCK STONE FLOOR + MASSIVE 100% PURE #FFFFFF SKY ACROSS THE ENTIRE TOP 44%! ABSOLUTE HEIGHT CEILING: BOTH characters (including Tauren Druid's horns/staff and Gnome Rogue's pigtails!) MUST stay COMPACT strictly BELOW y=44% (y=44%..100%) — the ENTIRE upper 44% (y=0%..44%, left border to right border!) MUST be 100% blank empty pure #FFFFFF sky with ZERO stray feet/lines from Panel 1! Dark volcanic basalt dungeon flagstones anchored flush edge-to-edge along entire bottom, left & right inner black borders (ZERO floating islands!). COMEDIC OVER-THE-SHOULDER EXCHANGE: Lower-left (x=28%, compact y=46%..98%), Tauren Druid girl (fair peach-ivory skin, warm-brown plush cow hood with curved ivory horns and ONE golden nose ring ONLY on the plush cow hood snout — STRICTLY ZERO nose ring on the human girl's own bare nose! Chestnut-brown straight bangs, glossy warm-brown jewel eyes — NEVER blonde braids or green eyes! Leafy green shoulder mantle, wooden leaf staff stowed neatly on back — Clean Hand!) leaning over eagerly with bright innocent hopeful eyes holding up a tiny glowing blank quest parchment asking for confirmation. Lower-right (x=72%, compact y=46%..98%), petite Gnome Rogue girl (0 X/star pins, green goggles on forehead, black chin mask neatly below chin, ONLY crossed green daggers neatly at lower back waist — STRICTLY ZERO blue crystal mage staff on Gnome Rogue's back!) facing 3/4 front-left in deadpan stone-faced silence, mechanically raising one single stiff robotic thumbs-up with blank tiny dot eyes! STRICTLY ZERO drawn mini speech bubbles, ZERO dots/emoticon bubbles, ZERO text anywhere inside artwork!",
-      "tail_target": "right",
-      "bubble_side": "right",
+      "visual_prompt": "3-to-3.5 head-tall sleek Korean gag webtoon style on a 100% pure solid white #FFFFFF background. Wide horizontal shot showing the Dwarf hunter on the left turning away to leave with her blunderbuss gun strapped securely on her back, casually holding up a glowing cyan Hearthstone in one hand with a carefree grin. On the right, the Tauren druid clutches her gnarled wooden staff and reaches out in sheer panic with wide watery eyes and sweat drops, standing on minimal dark stone ground shadow.",
+      "tail_target": "left",
+      "bubble_side": "left",
       "full_bleed_bg": false,
       "speaker_anchor_xy": null,
       "bubble_center_xy": null,
@@ -353,18 +52,19 @@
     },
     {
       "cut_index": 3,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 2,
-      "panel_index": 1,
+      "aspect_ratio": "4:3",
+      "layout_slot": "top",
+      "act_number": null,
+      "panel_index": null,
       "characters": [
-        "스카이본 마법사"
+        "스카이본 마법사",
+        "노움 도적"
       ],
       "speaker": "스카이본 마법사",
-      "dialogue": "잠깐, 1시간째 길 헤매잖아!\n파장님, 윈저 쪽 맞아?!",
+      "dialogue": "파장님! 냥꾼도 가고\n퀘는 하나도 못 깼어요!\n다시 구해요, 접어요?",
       "wordless": false,
-      "visual_prompt": "TIER 2 NATURAL GROUNDED BASALT DUNGEON FLOOR ON RIGHT + 100% PURE #FFFFFF EMPTY LEFT 50% (keep ENTIRE left 50% x=0%..50% pure blank #FFFFFF headroom for left bubble! Keep ALL art strictly inside Panel 1's black rectangle — ZERO spillover into Panel 2!). Chaotic action combat on dark dungeon stone floor flush to bottom-right edge (x=48%..100%): at right-center (x=66%), Skyborne Mage girl (fair skin, sky-blue high side-ponytail, tilted cloud-wing wizard hat, cloud capelet, mini Polymorph Sheep charm at waist, 0 sailor uniform) spinning around wildly in exasperated 30-degree Dutch-tilt panic firing frantic icy blue frostbolts from her crystal staff at two lunging grumpy Dark Iron Dwarf mobs & a glowing fiery lava elemental on the far right (x=90%), dark exhausted dawn eyebags, flying sweatdrops, wide shouting mouth! ZERO text!",
-      "tail_target": "right",
+      "visual_prompt": "3-to-3.5 head-tall sleek Korean gag webtoon style on a 100% pure solid white #FFFFFF background. Over-the-shoulder angle from behind the Skyborn mage on the left foreground looking toward the Gnome rogue on the right midground. The mage leans forward urgently with her staff slung on her back and both empty hands raised in exasperation. The rogue remains completely motionless with daggers sheathed at her waist and a blank glassy stare.",
+      "tail_target": "left",
       "bubble_side": "left",
       "full_bleed_bg": false,
       "speaker_anchor_xy": null,
@@ -373,18 +73,18 @@
     },
     {
       "cut_index": 4,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 2,
-      "panel_index": 2,
+      "aspect_ratio": "16:9",
+      "layout_slot": "bottom",
+      "act_number": null,
+      "panel_index": null,
       "characters": [
-        "드워프 사냥꾼"
+        "노움 도적"
       ],
-      "speaker": "드워프 사냥꾼",
-      "dialogue": "어휴~ 호위퀘는 사절이지~\n난 탱이랑 먼저 쨀게!",
+      "speaker": "노움 도적",
+      "dialogue": "yes",
       "wordless": false,
-      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (ENTIRE right 54% x=46%..100% completely empty pure #FFFFFF headroom for right bubble; strictly contain full pose cleanly INSIDE Panel 2's black rectangle — ZERO spillover into Panels 1 or 3!). BREEZY SIDE-PROFILE BAIL-OUT GAG: positioned cleanly on left 42% (x=24%), Dwarf Hunter girl (fair skin, forest-green white-fur-trimmed ranger hood, vivid ginger braided pigtails under chin, blunderbuss rifle slung diagonally across back — Clean Hand!) strolling casually away while cheek-stuffed munching crunchy snacks with one hand and holding up a bright swirling cyan glowing Hearthstone in the other, swirling blue teleport magic rings spiraling up around her boots as she flashes a carefree lazy half-lidded wink! ZERO text!",
-      "tail_target": "left",
+      "visual_prompt": "3-to-3.5 head-tall sleek Korean gag webtoon style on a 100% pure solid white #FFFFFF background. Slight low-angle dramatic zoom-in on the Gnome rogue centered in the frame with a minimal floor shadow beneath her boots. Her daggers stay sheathed at her waist as she deadpans calmly with tiny blank eyes and raises one hand holding a small grey smoke pellet, beginning to pop a puffy cloud of Vanish stealth smoke around her feet.",
+      "tail_target": "center",
       "bubble_side": "right",
       "full_bleed_bg": false,
       "speaker_anchor_xy": null,
@@ -393,111 +93,10 @@
     },
     {
       "cut_index": 5,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 2,
-      "panel_index": 3,
-      "characters": [
-        "타우렌 드루이드"
-      ],
-      "speaker": "타우렌 드루이드",
-      "dialogue": "으아앙?! 1시간 돌았는데\n물퀘도 주간퀘도 다 망했어!!",
-      "wordless": false,
-      "visual_prompt": "TIER 2 NATURAL GROUNDED BASALT FLOOR ON RIGHT + 100% PURE #FFFFFF EMPTY LEFT 50% (ENTIRE left 50% x=0%..50% completely blank pure #FFFFFF headroom for left bubble; strictly contain inside Panel 3 borders — ZERO spillover!). LOW-ANGLE MELTDOWN SLAPSTICK: on right half (x=72%), collapsed dramatically to her knees on dark volcanic flagstones (flush bottom-right) with crumpled blank quest scrolls scattered around her boots and fading cyan Hearthstone exit sparkles on the far right edge, Tauren Druid girl (fair skin, brown cow hood with curved ivory horns, leaf shoulder mantle, staff dropped flat beside her) bawling in maximum cartoonish despair — jaw dropped huge, spinning dizzy spiral eyes, twin geyser waterfall tears shooting sideways as she clutches her cheeks! ZERO text!",
-      "tail_target": "right",
-      "bubble_side": "left",
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
-      "bubble_center_xy": null,
-      "item_tooltip": null
-    },
-    {
-      "cut_index": 6,
-      "aspect_ratio": "auto",
+      "aspect_ratio": "4:3",
       "layout_slot": "top",
-      "act_number": 3,
-      "panel_index": 1,
-      "characters": [
-        "스카이본 마법사",
-        "노움 도적"
-      ],
-      "speaker": "스카이본 마법사",
-      "dialogue": "지금 파티 터뜨려 놓고\n파티 찾기에 또 올렸어?!",
-      "wordless": false,
-      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF BORDERLESS OPEN WHITE BACKGROUND EVERYWHERE — STRICTLY ZERO GRASS, ZERO GROUND STRIP, ZERO HORIZON, ZERO TURF, ZERO BUSHES, ZERO FLOOR UNDERNEATH THEIR BOOTS OR THE WOODEN SIGNPOST! ONLY the two floating chibi characters and the standalone wooden notice post directly on 100% PURE BLANK #FFFFFF WHITE (at most faint soft oval ground drop-shadows directly under their boot soles, ZERO continuous ground strip or rectangular backdrop edge!). Top 38% completely empty pure #FFFFFF headroom! WILD 30-DEGREE DUTCH-TILT CONFRONTATION! Lower-left (x=28%, below y=38%): Skyborne Mage girl (fair skin, sky-blue high side-ponytail, tilted cloud-wing wizard hat trembling, mini Polymorph Sheep waist charm, crystal staff stowed on back — 0 sailor uniform!) storming forward leaning sharply at the waist with star-pupils switched OFF into blazing furious rage eyes, puffing white steam jets, pointing an accusing finger straight across pure white! Lower-right (x=74%, below y=38%): petite Gnome Rogue girl (0 X/star pins, green goggles on forehead, crossed green daggers neatly at lower back waist — ZERO dagger hilts behind shoulders!) caught red-handed casually pinning a fresh blank parchment flyer onto a standalone wooden notice signpost resting directly on pure #FFFFFF white (0 grass/dirt around post base!), glancing back sideways with an utterly shameless sneaky `:3` whistle! STRICTLY ZERO text or letters anywhere!",
-      "tail_target": "left",
-      "bubble_side": "left",
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
-      "bubble_center_xy": null,
-      "item_tooltip": null
-    },
-    {
-      "cut_index": 7,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 3,
-      "panel_index": 2,
-      "characters": [
-        "스카이본 마법사"
-      ],
-      "speaker": "스카이본 마법사",
-      "dialogue": "도적님, 양심 터졌어요?!",
-      "wordless": false,
-      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND EVERYWHERE (STRICTLY ZERO colored speedline box, ZERO rectangular wallpaper fill — pure clean blank #FFFFFF white all the way around her silhouette, top 38% y=0%..38% completely empty pure #FFFFFF headroom for 1-line bubble!). SHOWSTOPPER FISHEYE FORCED-PERSPECTIVE LUNGING CLOSE-UP! Skyborne Mage girl (fair skin, sky-blue side-ponytail bristling wildly, tilted cloud-wing wizard hat, cloud capelet, sheep waist charm, staff on back — 0 sailor uniform!) lunging explosively forward straight at the camera lens with both hands clawing angrily in the extreme foreground, tiny crisp floating crimson anger-vein mark & wispy steam puffs directly on pure #FFFFFF white, wide furious shouting mouth and razor-sharp outraged eyes! ZERO text, ZERO rectangular speedline backdrop!",
-      "tail_target": "center",
-      "bubble_side": "center",
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
-      "bubble_center_xy": null,
-      "item_tooltip": null
-    },
-    {
-      "cut_index": 8,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 3,
-      "panel_index": 3,
-      "characters": [
-        "노움 도적"
-      ],
-      "speaker": "노움 도적",
-      "dialogue": "yes",
-      "wordless": false,
-      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom for 1-line bubble; keep strictly inside Panel 3 borders!). HILARIOUS HIGH-ANGLE DEADPAN COMEDY CLOSE-UP! Petite Gnome Rogue girl (fair skin, blonde-pink-blue pigtails, green aviator goggles on forehead, black stealth mask pulled cleanly down around her neck BELOW her chin, 0 X/star pins, daggers completely hidden out of sight — ZERO dagger hilts peeking behind shoulders!) sitting completely cross-legged in placid zen stillness on pure #FFFFFF white, cradling a chunky wooden fantasy-carved toy two-handle game-pad controller in her lap and lazily tapping ONE single round wooden button with her thumb, staring blankly ahead with unblinking tiny round dot eyes and a tiny flat straight horizontal poker-face mouth (`._.` — strictly ZERO numbers or '3' shapes on her face)! ZERO text or letters!",
-      "tail_target": "center",
-      "bubble_side": "center",
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
-      "bubble_center_xy": null,
-      "item_tooltip": null
-    },
-    {
-      "cut_index": 9,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 4,
-      "panel_index": 1,
-      "characters": [
-        "스카이본 마법사"
-      ],
-      "speaker": "스카이본 마법사",
-      "dialogue": "…아니 뭔 예스야?!",
-      "wordless": false,
-      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (ENTIRE right 54% x=46%..100% completely empty pure #FFFFFF headroom for right 1-line bubble; keep inside Panel 1 borders!). CRISP 90-DEGREE SIDE-PROFILE BRAIN-FREEZE: positioned cleanly on left 42% (x=24%), Skyborne Mage girl (fair skin, sky-blue high side-ponytail, cloud-wing wizard hat tilted crookedly forward from shock, staff on back — 0 sailor uniform!) completely short-circuited — star-pupils abruptly switched OFF into tiny hollow white pinpoint shock eyes, eyelid twitching with jagged nervous shock squiggles, heavy blue disbelief shadow across her brow, and mouth hanging crookedly ajar! ZERO text!",
-      "tail_target": "left",
-      "bubble_side": "right",
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
-      "bubble_center_xy": null,
-      "item_tooltip": null
-    },
-    {
-      "cut_index": 10,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 4,
-      "panel_index": 2,
+      "act_number": null,
+      "panel_index": null,
       "characters": [
         "스카이본 마법사",
         "타우렌 드루이드"
@@ -505,7 +104,7 @@
       "speaker": null,
       "dialogue": null,
       "wordless": true,
-      "visual_prompt": "TIER 2 WORDLESS CLIMAX FREEZE-FRAME ON FULL-WIDTH BLACKROCK MOUNTAIN VOLCANIC STONE LEDGE + 100% PURE #FFFFFF UPPER SKY (ZERO text, ZERO speech bubbles, ZERO katakana/letters!). Rugged charred volcanic stone ledge anchored flush edge-to-edge along entire bottom & side borders with tiny glowing orange ember sparks drifting near the rocky bottom edge. SHOWSTOPPER DUAL-COLLAPSE CLIMAX! Dominating foreground center-left (x=34%, bold tall framing): Skyborne Mage girl (fair skin, sky-blue high side-ponytail, mini Polymorph Sheep waist charm, blue crystal staff on back — 0 sailor uniform!) IN MAXIMUM MUNCH-SCREAM BRAIN-MELTDOWN HORROR — her royal-blue cloud-wing wizard hat literally popped 3 inches straight off her head in cartoon shock, face drained icy blue-indigo with heavy vertical dread lines, giant blank white shattered-star shock eyes, jaw unhinged dropped all the way down to her chest, both hands clutching her cheeks in trembling vibration lines as a hilarious tiny translucent wisp mini-soul floats right out of her open mouth! Lower-right midground (x=70%): Tauren Druid girl (brown cow hood, leafy mantle) completely faceplanted flat like a pancake on the basalt stones with dizzy spinning spiral halos over her head and a cute translucent mini-cow-hood ghost drifting upward! Far-right rocky edge (x=90%): a small bewildered Dark Iron Dwarf dungeon guard peeking around a boulder sweating giant comic sweatdrops in secondhand shock!",
+      "visual_prompt": "3-to-3.5 head-tall sleek Korean gag webtoon style on a 100% pure solid white #FFFFFF background. Silent freeze-frame waist-up reaction shot of the Skyborn mage on the left and the Tauren druid on the right with their weapons strapped on their backs and empty arms dropped stiffly at their sides. Both girls stare straight ahead in absolute deadpan disbelief with pinpoint dot eyes and gaping mouths as a faint leftover puff of grey stealth smoke drifts across the foreground.",
       "tail_target": "center",
       "bubble_side": null,
       "full_bleed_bg": false,
@@ -514,59 +113,19 @@
       "item_tooltip": null
     },
     {
-      "cut_index": 11,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 5,
-      "panel_index": 1,
-      "characters": [
-        "스카이본 마법사"
-      ],
-      "speaker": "스카이본 마법사",
-      "dialogue": "ENGLISH??\nYOU BROKE PARTY!!",
-      "wordless": false,
-      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom for 2-line bubble; keep inside Panel 1 borders!). EXPLOSIVE LOW-ANGLE VOLCANIC RAGE: Skyborne Mage girl (fair skin, sky-blue high side-ponytail flying upward, tilted cloud-wing wizard hat, cloud capelet, sheep waist charm, staff on back — 0 sailor uniform!) leaning forward like an incandescent prosecutor jabbing one trembling pointing finger sharply rightward, cheeks puffed fiery crimson, steam blasts erupting from her collar, fiery red rage aura radiating softly behind her shoulders and feathering cleanly into pure #FFFFFF white! ZERO text inside art!",
-      "tail_target": "center",
-      "bubble_side": "center",
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
-      "bubble_center_xy": null,
-      "item_tooltip": null
-    },
-    {
-      "cut_index": 12,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 5,
-      "panel_index": 2,
-      "characters": [
-        "노움 도적"
-      ],
-      "speaker": "노움 도적",
-      "dialogue": "에헤헷~ 칼차단 딸깍!",
-      "wordless": false,
-      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom for 1-line bubble; keep inside Panel 2 borders!). CHEEKY GREMLIN VANISH-BLOCK GAG: petite Gnome Rogue girl (fair skin, blonde-pink-blue pigtails, green aviator goggles pushed slightly up on forehead, 0 X/star pins, daggers stowed at lower back waist — Clean Hand!) suddenly breaking character into her signature ultra-bratty tongue-out `:P` fang-smirk wink as she playfully boops a glossy floating red circular X-icon seal in mid-air (ONLY a clean graphic red X circle — ZERO letters or words!) while swirling translucent emerald-grey Rogue Vanish smoke puffs begin wrapping around her boots! ZERO text!",
-      "tail_target": "center",
-      "bubble_side": "center",
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
-      "bubble_center_xy": null,
-      "item_tooltip": null
-    },
-    {
-      "cut_index": 13,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 5,
-      "panel_index": 3,
+      "cut_index": 6,
+      "aspect_ratio": "16:9",
+      "layout_slot": "bottom",
+      "act_number": null,
+      "panel_index": null,
       "characters": [
         "스카이본 마법사",
         "타우렌 드루이드"
       ],
       "speaker": "스카이본 마법사",
-      "dialogue": "새벽부터 차단까지 당했네…\n나도 이제 할 말 없으면 yes 한다…",
+      "dialogue": "한국인이잖아, 뭔 예스야!!\n퀘 다 날리고 파티 터졌네!\n저 도적 당장 선차단 박아!",
       "wordless": false,
-      "visual_prompt": "TIER 2 NATURAL FULL-WIDTH DAWN BLACKROCK STONE TERRACE + 100% PURE #FFFFFF SKY across top 38% (y=0%..38% completely empty pure #FFFFFF headroom for left bubble; weathered mountain stone terrace floor anchored flush edge-to-edge along entire bottom, left & right borders — ZERO floating islands!). HILARIOUS BACK-TO-REALITY EXHAUSTED FINALE: Lower-left (x=30%), Skyborne Mage girl (fair skin, sky-blue side-pony drooped limp, cloud-wing wizard hat slumped low, sheep waist charm, blue crystal staff leaning diagonally against her shoulder — 0 sailor uniform!) sitting hunched cross-legged on the cold stone floor with hollow dead-tired morning dark circles under dimmed blue eyes, tiny ghostly gray gloom wisps drifting off her shoulders in total dawn existential defeat. Lower-right (x=72%), Tauren Druid girl (brown cow hood, leaf mantle, staff resting on ground) sitting slumped beside her with tear-puffed sniffling rosy cheeks patting the Mage's shoulder softly while holding out a cozy medieval wooden mug of warm tea — and way off on the far-right background edge (x=92%), just one tiny fading puff of Rogue Vanish smoke! ZERO text!",
+      "visual_prompt": "3-to-3.5 head-tall sleek Korean gag webtoon style on a 100% pure solid white #FFFFFF background. Dynamic slightly tilted high-angle wide shot on a minimal dark stone floor shadow. On the left, the Skyborn mage with her staff strapped on her back points furiously at the empty spot where the rogue vanished, shouting in pure outrage with wild eyes. On the right, the Tauren druid sits slumped in defeat with her wooden staff lying beside her, burying her face in her hands and crying comically.",
       "tail_target": "left",
       "bubble_side": "left",
       "full_bleed_bg": false,

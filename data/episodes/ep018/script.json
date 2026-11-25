@@ -3,346 +3,45 @@
   "source_post_no": "110883",
   "source_title": "여기 걸쳐지는구나",
   "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=110883&exception_mode=recommend&page=1",
-  "subtitle": "배 놓친 노움의 웃기려고 한 다이빙 — 외벽 난간에 기적의 걸침 도착",
-  "layout_mode": "v4_five_act",
+  "subtitle": "배 놓친 도적의 기적의 외벽 탑승기",
+  "layout_mode": "classic_2tier",
   "background_style": "clean_white",
-  "acts": [
-    {
-      "act_number": 1,
-      "act_title": "1막: 메네실 항구 선착장, 방금 떠난 배",
-      "layout_id": "open_top_split_bottom",
-      "cuts": [
-        {
-          "cut_index": 1,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 1,
-          "panel_index": 1,
-          "characters": [
-            "노움 도적",
-            "드워프 사냥꾼"
-          ],
-          "speaker": "노움 도적",
-          "dialogue": "어어 배 떠난다!!\n잠깐만 기다려어!!",
-          "wordless": false,
-          "visual_prompt": "TIER 1 FULL-BLEED MENETHIL HARBOR ESTABLISHING SHOT inside solid black box frame (edge-to-edge full scenery, outer page margins & gutter below pure #FFFFFF). Sweeping wide sunlit anime coastal camera showing the weathered wooden Menethil Harbor pier on the left, sparkling turquoise ocean water, white harbor seagulls, distant stone lighthouse, and a classic brown-timber Alliance sailing galleon with billowing cream sails ALREADY pulling away to the right leaving foamy white wake! Bright clear blue sky with soft clouds filling the ENTIRE upper-left headroom (x=4%..58%, y=0%..35% completely uncluttered open sky — keep all characters & sails strictly below y=35%!). DYNAMIC ACTING: on lower-left wooden pier (x=28%), petite Gnome Rogue sprinting wildly at full leaning-forward cartoon tilt with flailing arms, panicked wide blue eyes, and frantic sweatdrops (fair skin, blonde-pink-blue pigtails, green goggles, 0 X/star pins, crossed green daggers neatly at lower back waist). On lower-right departing ship deck railing (x=76%), Dwarf Hunter calmly leaning on the railing munching from a small paper popcorn bag waving lazily back (fair skin, orange braided pigtails, green fur-trimmed hood, blunderbuss slung on back). Keep all art strictly inside Panel 1 borders, ZERO text.",
-          "tail_target": "left",
-          "bubble_side": "left",
-          "full_bleed_bg": true,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        },
-        {
-          "cut_index": 2,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 1,
-          "panel_index": 2,
-          "characters": [
-            "노움 도적"
-          ],
-          "speaker": "노움 도적",
-          "dialogue": "에라~ 웃기라고\n그냥 뛰어보자!",
-          "wordless": false,
-          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND EVERYWHERE (top 38% y=0%..38% completely empty pure #FFFFFF headroom for centered bubble; strictly inside Panel 2 borders!). BOLD LOW-ANGLE CLOSE-UP on petite Gnome Rogue crouched coiled low like a mischievous spring ready to launch, flashing a reckless chaotic fang grin, glittering manic blue eyes, one bright cartoon sparkle-flash beside her temple, and playful curled fists! Guardrail: fair skin, blonde-pink-blue pigtails, green aviator goggles on forehead, 0 X/star pins, crossed green daggers neatly at lower back waist, ZERO text.",
-          "tail_target": "center",
-          "bubble_side": "center",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        },
-        {
-          "cut_index": 3,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 1,
-          "panel_index": 3,
-          "characters": [
-            "드워프 사냥꾼"
-          ],
-          "speaker": "드워프 사냥꾼",
-          "dialogue": "옴뇸뇸… 진짜 뛰네?",
-          "wordless": false,
-          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND EVERYWHERE (top 38% y=0%..38% completely empty pure #FFFFFF headroom for centered 1-line bubble; strictly inside Panel 3 borders!). SLIGHTLY TILTED COMEDIC BUST CLOSE-UP on Dwarf Hunter with adorable chipmunk-stuffed cheeks munching popcorn, holding one fluffy kernel up mid-air with half-lidded amused amber eyes and one raised skeptical eyebrow! Guardrail: fair skin, forest-green white-fur-trimmed ranger hood, vivid orange braided pigtails, blunderbuss slung behind back, ZERO text.",
-          "tail_target": "center",
-          "bubble_side": "center",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        }
-      ]
-    },
-    {
-      "act_number": 2,
-      "act_title": "2막: 선착장 다이빙과 기적의 외벽 난간 걸침",
-      "layout_id": "diagonal_tempo_2cut",
-      "cuts": [
-        {
-          "cut_index": 4,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 2,
-          "panel_index": 1,
-          "characters": [
-            "노움 도적"
-          ],
-          "speaker": "노움 도적",
-          "dialogue": "야호~ 바다 수영 각!!",
-          "wordless": false,
-          "visual_prompt": "TIER 2 NATURAL EDGE-TO-EDGE PIER, OCEAN WAVES & SHIP HULL + MASSIVE 100% EMPTY PURE #FFFFFF SKY ACROSS THE ENTIRE TOP 38% (y=0%..38%)! ABSOLUTE HEIGHT CEILING: ZERO speedlines, ZERO ship mast ropes, ZERO pigtails, ZERO hull planks above y=38%! The ENTIRE top 38% (y=0%..38% from left edge x=0% to right edge x=100%) MUST be 100% BLANK EMPTY PURE #FFFFFF WHITE SKY! Wooden pier end anchored flush to far bottom-left (x=0%..24%, y=64%..100%), choppy turquoise ocean waves stretching 100% flush across the entire bottom edge (x=0%..100%, y=78%..100%), and the curved wooden outer hull wall of the departing Alliance galleon anchored flush to lower-right (x=66%..100%, y=40%..96% — keep top rail strictly below y=40%!). WILD 30-DEGREE DUTCH-TILT MID-AIR LEAP inside y=40%..80%: soaring wildly across the open gap in dramatic squash-and-stretch starfish dive toward the ship's side, petite Gnome Rogue grins recklessly with arms flung wide, pigtails flying straight back, short compact motion whoosh lines strictly around her body below y=40%! Guardrail: fair skin, green aviator goggles, 0 X/star pins, crossed green daggers neatly at lower back waist, ZERO text.",
-          "tail_target": "left",
-          "bubble_side": "left",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        },
-        {
-          "cut_index": 5,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 2,
-          "panel_index": 2,
-          "characters": [
-            "노움 도적",
-            "드워프 사냥꾼"
-          ],
-          "speaker": "노움 도적",
-          "dialogue": "…어? 여기 걸쳐지는구나?!",
-          "wordless": false,
-          "visual_prompt": "TIER 2 NATURAL FULL-WIDTH EDGE-TO-EDGE SHIP SIDE HULL & OCEAN SPRAY + MASSIVE 100% EMPTY PURE #FFFFFF UPPER SKY ACROSS THE ENTIRE TOP 42% (y=0%..42%)! ABSOLUTE HEIGHT CEILING: DO NOT draw full-bleed wooden deck up to the top edge! Keep the ship's horizontal upper wooden railing, Dwarf Hunter's hood, and Gnome Rogue's pigtails STRICTLY BELOW y=42%..100% so the ENTIRE top 42% (y=0%..42%, x=0%..100%) is 100% BLANK PURE #FFFFFF WHITE SKY! Below y=44%, weathered dark-timber outer hull wall of the sailing galleon and churning turquoise ocean foam stretch 100% flush edge-to-edge touching the extreme left border (x=0%), extreme right border (x=100%), and bottom border (y=100%)! HILARIOUS MIRACLE LANDING inside y=42%..100%: on lower-left (x=28%), petite Gnome Rogue stands upright with BOTH tiny leather boot tips miraculously perched on a razor-thin protruding outer wooden trim ledge on the OUTSIDE of the ship's hull above foaming sea waves — arms windmilling out for balance, huge wide stunned blinking blue eyes and surprised `:O` mouth with tiny sparkle gleams beneath her boots (0 X/star pins, green goggles, crossed daggers at lower back)! Leaning WAY over the horizontal wooden upper deck railing on lower-right (x=72%, strictly below y=42%), Dwarf Hunter drops popcorn kernels in wide-eyed shock (blunderbuss on back). ZERO text.",
-          "tail_target": "left",
-          "bubble_side": "left",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        }
-      ]
-    },
-    {
-      "act_number": 3,
-      "act_title": "3막: 목격자의 경악과 대륙 로딩 화면의 공포",
-      "layout_id": "split_top_wide_bottom",
-      "cuts": [
-        {
-          "cut_index": 6,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 3,
-          "panel_index": 1,
-          "characters": [
-            "드워프 사냥꾼"
-          ],
-          "speaker": "드워프 사냥꾼",
-          "dialogue": "미친… 저기 걸쳐지네?!",
-          "wordless": false,
-          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND EVERYWHERE (top 38% y=0%..38% completely empty pure #FFFFFF headroom for centered 1-line bubble; strictly inside Panel 1 borders!). EXTREME FACE CLOSE-UP pushing straight onto Dwarf Hunter's utter disbelief: warm amber eyes popped giant like saucers, jaw dropped wide open sending two unchewed popcorn kernels flying out, huge comic sweatdrops shooting off her temples! Guardrail: fair skin, forest-green white-fur-trimmed ranger hood, vivid orange braided pigtails, blunderbuss on back, ZERO text.",
-          "tail_target": "center",
-          "bubble_side": "center",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        },
-        {
-          "cut_index": 7,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 3,
-          "panel_index": 2,
-          "characters": [
-            "노움 도적"
-          ],
-          "speaker": "노움 도적",
-          "dialogue": "에헤헷~ 기분 째지네!",
-          "wordless": false,
-          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND EVERYWHERE (top 38% y=0%..38% completely empty pure #FFFFFF headroom for centered 1-line bubble!). STRICT BORDER CONTAINMENT: keep petite Gnome Rogue's ENTIRE body and BOTH leather boots cleanly INSIDE Panel 2 with at least 20px of white padding ABOVE Panel 2's bottom black frame line — STRICTLY ZERO boot toes crossing over the black line downward into Panel 3! LOW-ANGLE SMUG BRATTY SHOW-OFF: petite Gnome Rogue balancing effortlessly on ONE leather boot tiptoe like an arrogant acrobat, one hand on her hip and one finger nudging her green aviator goggles up with a shameless bratty fang smirk and cheeky tongue-out blep (`:P`) surrounded by bright comic sparkle stars! Guardrail: fair skin, blonde-pink-blue pigtails, 0 X/star pins, crossed green daggers neatly at lower back waist, ZERO text.",
-          "tail_target": "center",
-          "bubble_side": "center",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        },
-        {
-          "cut_index": 8,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 3,
-          "panel_index": 3,
-          "characters": [
-            "드워프 사냥꾼",
-            "노움 도적"
-          ],
-          "speaker": "드워프 사냥꾼",
-          "dialogue": "어휴~ 대륙 로딩되면\n바다로 뚝 떨어질걸?",
-          "wordless": false,
-          "visual_prompt": "TIER 2 NATURAL FULL-WIDTH SHIP OUTER DECK RAILING & SEA SPRAY + 100% PURE #FFFFFF UPPER SKY across top 38% (y=0%..38% completely empty for right bubble; strictly inside Panel 3!). Timber ship side hull, deck railing, and crashing turquoise open-ocean spray anchored flush edge-to-edge along bottom, left & right borders (0 floating islands!). OVER-THE-SHOULDER SIDE-PROFILE WARNING: on lower-left (x=28%), petite Gnome Rogue perched on the outer hull lip freezes stiff as cold ocean spray splashes right beneath her boots, snapping one wide terrified sweating eye sideways (0 X/star pins, daggers neatly at lower back); on lower-right (x=72%), Dwarf Hunter leans casually over the wooden railing pointing mischievously toward the sea horizon with a sly half-lidded smirk and knowing eyebrows (blunderbuss on back). ZERO text.",
-          "tail_target": "right",
-          "bubble_side": "right",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        }
-      ]
-    },
-    {
-      "act_number": 4,
-      "act_title": "4막: 칼림도어 대륙 로딩 통과와 기적의 무언 정지",
-      "layout_id": "impact_freeze_2cut",
-      "cuts": [
-        {
-          "cut_index": 9,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 4,
-          "panel_index": 1,
-          "characters": [
-            "노움 도적"
-          ],
-          "speaker": "노움 도적",
-          "dialogue": "으악! 로딩 화면 떴다!!\n버텨라 내 발가락!!",
-          "wordless": false,
-          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (ENTIRE RIGHT 54% x=46%..100% completely empty pure #FFFFFF headroom for right bubble!). CRITICAL CONTAINMENT RULE: keep the ENTIRE petite Gnome Rogue AND her compact swirling cyan-gold continent-loading warp ribbons cleanly INSIDE x=6%..44% and y=14%..92% with generous pure #FFFFFF white breathing room on top, left, and right — STRICTLY ZERO flat cut-off swirl arcs touching the top or side panel borders! FISHEYE FORCED-PERSPECTIVE DESPERATE CLING: positioned on left 40% (x=25%), petite Gnome Rogue flattened comically gripping a compact curved timber plank rim with white knuckles, eyes squeezed violently shut (`><`), gritted teeth, flying sweatdrops, wrapped in a neat self-contained vortex of cyan-gold warp ribbons feathering smoothly to delicate tapered tips inside pure #FFFFFF white! Guardrail: fair skin, green aviator goggles, 0 X/star pins, crossed green daggers neatly at lower back, ZERO text.",
-          "tail_target": "left",
-          "bubble_side": "right",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        },
-        {
-          "cut_index": 10,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 4,
-          "panel_index": 2,
-          "characters": [
-            "드워프 사냥꾼",
-            "노움 도적"
-          ],
-          "speaker": null,
-          "dialogue": null,
-          "wordless": true,
-          "visual_prompt": "TIER 2 MASSIVE WORDLESS CLIMAX FREEZE-FRAME AT THERAMORE HARBOR DOCK + 100% PURE #FFFFFF UPPER SKY (ZERO text, ZERO speech bubbles!). Sunlit stone-and-timber Theramore harbor pier, shimmering turquoise Kalimdor bay water, and the Alliance galleon docked snugly beside the pier anchored flush edge-to-edge across the ENTIRE bottom, left & right inner borders (0 floating islands!); upper 40% pure crisp #FFFFFF white sky with dazzling golden comic miracle sunburst rays feathering organically into white behind the ship side! SHOWSTOPPER COMEDY: on lower-right perched proudly on the ship's outer wooden prow/railing ledge (x=72%), petite Gnome Rogue stands completely dry, spotless, and gloriously triumphant with hands on hips, glowing starry eyes, and sparkling golden aura (fair skin, green goggles, 0 X/star pins, crossed green daggers stowed HIGH & CLEANLY tucked behind her waist belt — STRICTLY ZERO stray dagger blade poking beneath her boots!). Dominating lower-left foreground on the pier (x=28%, bold tall framing), Dwarf Hunter freezes in BLUE-DRAINED CRUMPLED-PAPER MUNCH-SCREAM HORROR — deep indigo vertical dread lines flooding her face, bare fair anime chin/lips (ZERO mustache!), ONLY two thick orange side braids wrapping gently under her chin, jaw dropped all the way to her chest, giant popping blank white shock eyes, her paper popcorn bag flipped upside-down raining popcorn kernels everywhere (blunderbuss on back)! Around the dock behind them, TWO cute chibi blue-tabard Theramore dock guards, a tiny green Murloc peeking up from the bay water, and TWO plump white harbor seagulls on pier posts ALL gawk in unison with identically popped jaw-dropped shock eyes and sweatdrops!",
-          "tail_target": "center",
-          "bubble_side": null,
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        }
-      ]
-    },
-    {
-      "act_number": 5,
-      "act_title": "5막: 무사 도착, 전설의 족고수 등극 엔딩",
-      "layout_id": "wide_reaction_wide",
-      "cuts": [
-        {
-          "cut_index": 11,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 5,
-          "panel_index": 1,
-          "characters": [
-            "노움 도적"
-          ],
-          "speaker": "노움 도적",
-          "dialogue": "무사히 도착함~ 메롱!\n다음 배 안 기다림!",
-          "wordless": false,
-          "visual_prompt": "TIER 2 NATURAL GROUNDED PIER PLANKS + 100% PURE #FFFFFF SKY across ENTIRE RIGHT 54% (x=46%..100%) and upper headroom for right bubble! Strictly inside Panel 1's black rectangle (ZERO spillover down into Panel 2!). Sunlit wooden Theramore dock planks anchored flush to lower-left border (x=0%..52%, y=76%..100%). DYNAMIC VICTORY HOP on left 42% (x=24%): petite Gnome Rogue touching down lightly onto the pier in a springy one-knee-up victory pose, flashing a super cheeky wink, playful tongue-out blep (`:P`), and twin sparkle stars! Guardrail: fair skin, green goggles, 0 X/star pins, crossed green daggers neatly at lower back waist, ZERO text.",
-          "tail_target": "left",
-          "bubble_side": "right",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        },
-        {
-          "cut_index": 12,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 5,
-          "panel_index": 2,
-          "characters": [
-            "드워프 사냥꾼"
-          ],
-          "speaker": "드워프 사냥꾼",
-          "dialogue": "어휴… 진짜 족고수네…",
-          "wordless": false,
-          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (ENTIRE LEFT 54% x=0%..54% completely empty pure #FFFFFF headroom for left 1-line bubble; strictly compact waist-up cleanly INSIDE Panel 2 borders — ZERO spillover into Panels 1 or 3!). Positioned cleanly on right 42% (x=76%): cute fair-skinned anime girl Dwarf Hunter giving a deeply humbled, solemn two-finger salute with glistening awestruck anime tear-glints and a warm admiring smile, respectfully offering forward a fresh paper bag of popcorn like a champion's trophy! CRITICAL FACE IDENTITY LOCK (match assets/turnarounds/dwarf_hunter.jpg strictly!): 100% BARE SMOOTH FAIR ANIME CHEEKS, BARE UPPER LIP, AND BARE CHIN — STRICTLY ZERO mustache, ZERO fuzzy facial hair, ZERO 3rd middle braid! She has ONLY TWO neat thick orange side hair braids framing her cheeks and crossing smoothly below her chin, forest-green fur-trimmed hood, blunderbuss slung on back, ZERO text.",
-          "tail_target": "right",
-          "bubble_side": "left",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        },
-        {
-          "cut_index": 13,
-          "aspect_ratio": "auto",
-          "layout_slot": "panel",
-          "act_number": 5,
-          "panel_index": 3,
-          "characters": [
-            "노움 도적",
-            "드워프 사냥꾼"
-          ],
-          "speaker": "노움 도적",
-          "dialogue": "헤헷~ 이게 바로\n족고수 무빙이지!",
-          "wordless": false,
-          "visual_prompt": "TIER 2 DISTANT LOW-HORIZON THERAMORE PIER FINALE + MASSIVE 100% EMPTY PURE #FFFFFF SKY ACROSS THE ENTIRE TOP 50% OF PANEL 3! ABSOLUTE HEIGHT CEILING: EVERY CHARACTER (including Gnome Rogue's pigtails and Dwarf Hunter's hood!) MUST stay COMPACT strictly BELOW y=50%..100% so the ENTIRE UPPER HALF (y=0%..50%) stays 100% blank pure #FFFFFF white sky for a large crisp bubble! Zero spillover into Panel 2, ZERO text! Across bottom edge (y=74%..100%), sunlit wooden Theramore dock planks and low stone harbor wall extend flush edge-to-edge against bottom, left & right borders. Lower-left (x=22%, compact y=52%..98%): cute fair-skinned anime girl Dwarf Hunter happily munching popcorn giving a fond approving wave (CRITICAL FACE IDENTITY LOCK: 100% BARE SMOOTH ANIME FACE & UPPER LIP — STRICTLY ZERO mustache, ZERO beard, ONLY TWO neat orange side hair braids draping below her chin!) alongside a tiny cheering green Murloc clapping in the water and a plump white seagull perched on a wooden post (blunderbuss on back). Lower-right (x=78%, compact y=50%..98%): seen in cool 3/4 back-view swaggering briskly down the pier toward Theramore Isle, petite Gnome Rogue glances cheekily back over her shoulder flashing a confident fang smirk and a cool thumbs-up as golden sparkle stars twinkle behind her boots! Guardrail: fair skin, blonde-pink-blue pigtails, green goggles, 0 X/star pins, crossed green daggers neatly at lower back waist.",
-          "tail_target": "right",
-          "bubble_side": "left",
-          "full_bleed_bg": false,
-          "speaker_anchor_xy": null,
-          "bubble_center_xy": null,
-          "item_tooltip": null
-        }
-      ]
-    }
-  ],
+  "acts": null,
   "cuts": [
     {
       "cut_index": 1,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 1,
-      "panel_index": 1,
+      "aspect_ratio": "4:3",
+      "layout_slot": "top",
+      "act_number": null,
+      "panel_index": null,
       "characters": [
         "노움 도적",
         "드워프 사냥꾼"
       ],
       "speaker": "노움 도적",
-      "dialogue": "어어 배 떠난다!!\n잠깐만 기다려어!!",
+      "dialogue": "잠깐, 칼림도어행 배\n벌써 출발했잖아?!",
       "wordless": false,
-      "visual_prompt": "TIER 1 FULL-BLEED MENETHIL HARBOR ESTABLISHING SHOT inside solid black box frame (edge-to-edge full scenery, outer page margins & gutter below pure #FFFFFF). Sweeping wide sunlit anime coastal camera showing the weathered wooden Menethil Harbor pier on the left, sparkling turquoise ocean water, white harbor seagulls, distant stone lighthouse, and a classic brown-timber Alliance sailing galleon with billowing cream sails ALREADY pulling away to the right leaving foamy white wake! Bright clear blue sky with soft clouds filling the ENTIRE upper-left headroom (x=4%..58%, y=0%..35% completely uncluttered open sky — keep all characters & sails strictly below y=35%!). DYNAMIC ACTING: on lower-left wooden pier (x=28%), petite Gnome Rogue sprinting wildly at full leaning-forward cartoon tilt with flailing arms, panicked wide blue eyes, and frantic sweatdrops (fair skin, blonde-pink-blue pigtails, green goggles, 0 X/star pins, crossed green daggers neatly at lower back waist). On lower-right departing ship deck railing (x=76%), Dwarf Hunter calmly leaning on the railing munching from a small paper popcorn bag waving lazily back (fair skin, orange braided pigtails, green fur-trimmed hood, blunderbuss slung on back). Keep all art strictly inside Panel 1 borders, ZERO text.",
+      "visual_prompt": "Sleek 3.5-head-tall Korean gag webtoon style on a 100% pure solid white #FFFFFF background. High-angle three-quarter view looking back from the stern of a departing wooden ship: on the left, the tiny Gnome Rogue with her daggers sheathed at her waist sprints desperately along a minimal wooden harbor pier edge with panicked wide eyes; on the right, the Dwarf Hunter with her blunderbuss slung on her back leans lazily on a minimal wooden ship railing beside a small wolf pet, watching calmly.",
       "tail_target": "left",
       "bubble_side": "left",
-      "full_bleed_bg": true,
+      "full_bleed_bg": false,
       "speaker_anchor_xy": null,
       "bubble_center_xy": null,
       "item_tooltip": null
     },
     {
       "cut_index": 2,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 1,
-      "panel_index": 2,
+      "aspect_ratio": "16:9",
+      "layout_slot": "bottom",
+      "act_number": null,
+      "panel_index": null,
       "characters": [
         "노움 도적"
       ],
       "speaker": "노움 도적",
-      "dialogue": "에라~ 웃기라고\n그냥 뛰어보자!",
+      "dialogue": "놓친 김에 웃기려고\n일단 뛰어보긴 하는데—!",
       "wordless": false,
-      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND EVERYWHERE (top 38% y=0%..38% completely empty pure #FFFFFF headroom for centered bubble; strictly inside Panel 2 borders!). BOLD LOW-ANGLE CLOSE-UP on petite Gnome Rogue crouched coiled low like a mischievous spring ready to launch, flashing a reckless chaotic fang grin, glittering manic blue eyes, one bright cartoon sparkle-flash beside her temple, and playful curled fists! Guardrail: fair skin, blonde-pink-blue pigtails, green aviator goggles on forehead, 0 X/star pins, crossed green daggers neatly at lower back waist, ZERO text.",
+      "visual_prompt": "Sleek 3.5-head-tall Korean gag webtoon style on a 100% pure solid white #FFFFFF background. Dynamic side-angle action shot: in the center, the Gnome Rogue with both daggers sheathed at her belt launches herself horizontally off a minimal wooden dock post in an exaggerated comedy dive, arms flailing wildly with Sprint speed lines and tiny blue water splash droplets trailing beneath her.",
       "tail_target": "center",
       "bubble_side": "center",
       "full_bleed_bg": false,
@@ -352,19 +51,19 @@
     },
     {
       "cut_index": 3,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 1,
-      "panel_index": 3,
+      "aspect_ratio": "4:3",
+      "layout_slot": "top",
+      "act_number": null,
+      "panel_index": null,
       "characters": [
-        "드워프 사냥꾼"
+        "노움 도적"
       ],
-      "speaker": "드워프 사냥꾼",
-      "dialogue": "옴뇸뇸… 진짜 뛰네?",
+      "speaker": "노움 도적",
+      "dialogue": "어... 잠깐만.\n여기 걸쳐지는구나?!",
       "wordless": false,
-      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND EVERYWHERE (top 38% y=0%..38% completely empty pure #FFFFFF headroom for centered 1-line bubble; strictly inside Panel 3 borders!). SLIGHTLY TILTED COMEDIC BUST CLOSE-UP on Dwarf Hunter with adorable chipmunk-stuffed cheeks munching popcorn, holding one fluffy kernel up mid-air with half-lidded amused amber eyes and one raised skeptical eyebrow! Guardrail: fair skin, forest-green white-fur-trimmed ranger hood, vivid orange braided pigtails, blunderbuss slung behind back, ZERO text.",
-      "tail_target": "center",
-      "bubble_side": "center",
+      "visual_prompt": "Sleek 3.5-head-tall Korean gag webtoon style on a 100% pure solid white #FFFFFF background. Low-angle close-up focused on a narrow wooden molding beam jutting out from a ship's outer hull on the right. The Gnome Rogue, daggers sheathed at her waist, has miraculously landed both boots squarely on the paper-thin ledge, wobbling slightly while peering down in stunned disbelief.",
+      "tail_target": "right",
+      "bubble_side": "right",
       "full_bleed_bg": false,
       "speaker_anchor_xy": null,
       "bubble_center_xy": null,
@@ -372,19 +71,20 @@
     },
     {
       "cut_index": 4,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 2,
-      "panel_index": 1,
+      "aspect_ratio": "16:9",
+      "layout_slot": "bottom",
+      "act_number": null,
+      "panel_index": null,
       "characters": [
+        "드워프 사냥꾼",
         "노움 도적"
       ],
-      "speaker": "노움 도적",
-      "dialogue": "야호~ 바다 수영 각!!",
-      "wordless": false,
-      "visual_prompt": "TIER 2 NATURAL EDGE-TO-EDGE PIER, OCEAN WAVES & SHIP HULL + MASSIVE 100% EMPTY PURE #FFFFFF SKY ACROSS THE ENTIRE TOP 38% (y=0%..38%)! ABSOLUTE HEIGHT CEILING: ZERO speedlines, ZERO ship mast ropes, ZERO pigtails, ZERO hull planks above y=38%! The ENTIRE top 38% (y=0%..38% from left edge x=0% to right edge x=100%) MUST be 100% BLANK EMPTY PURE #FFFFFF WHITE SKY! Wooden pier end anchored flush to far bottom-left (x=0%..24%, y=64%..100%), choppy turquoise ocean waves stretching 100% flush across the entire bottom edge (x=0%..100%, y=78%..100%), and the curved wooden outer hull wall of the departing Alliance galleon anchored flush to lower-right (x=66%..100%, y=40%..96% — keep top rail strictly below y=40%!). WILD 30-DEGREE DUTCH-TILT MID-AIR LEAP inside y=40%..80%: soaring wildly across the open gap in dramatic squash-and-stretch starfish dive toward the ship's side, petite Gnome Rogue grins recklessly with arms flung wide, pigtails flying straight back, short compact motion whoosh lines strictly around her body below y=40%! Guardrail: fair skin, green aviator goggles, 0 X/star pins, crossed green daggers neatly at lower back waist, ZERO text.",
-      "tail_target": "left",
-      "bubble_side": "left",
+      "speaker": null,
+      "dialogue": null,
+      "wordless": true,
+      "visual_prompt": "Sleek 3.5-head-tall Korean gag webtoon style on a 100% pure solid white #FFFFFF background. Dramatic high-angle shot looking down along the vertical outer ship wall: at the top left, the Dwarf Hunter and her tiny wolf pet lean far over a minimal wooden deck railing with bulging shocked eyes and dropped jaws; far below on the right, the tiny Gnome Rogue stands completely stiff and deadpan, clinging with empty hands to the ridiculously thin wooden trim on the outside hull.",
+      "tail_target": "center",
+      "bubble_side": null,
       "full_bleed_bg": false,
       "speaker_anchor_xy": null,
       "bubble_center_xy": null,
@@ -392,18 +92,18 @@
     },
     {
       "cut_index": 5,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 2,
-      "panel_index": 2,
+      "aspect_ratio": "4:3",
+      "layout_slot": "top",
+      "act_number": null,
+      "panel_index": null,
       "characters": [
-        "노움 도적",
-        "드워프 사냥꾼"
+        "드워프 사냥꾼",
+        "노움 도적"
       ],
-      "speaker": "노움 도적",
-      "dialogue": "…어? 여기 걸쳐지는구나?!",
+      "speaker": "드워프 사냥꾼",
+      "dialogue": "대단하긴 한데, 대륙\n넘어갈 때 로딩 뜨면 빠질걸?",
       "wordless": false,
-      "visual_prompt": "TIER 2 NATURAL FULL-WIDTH EDGE-TO-EDGE SHIP SIDE HULL & OCEAN SPRAY + MASSIVE 100% EMPTY PURE #FFFFFF UPPER SKY ACROSS THE ENTIRE TOP 42% (y=0%..42%)! ABSOLUTE HEIGHT CEILING: DO NOT draw full-bleed wooden deck up to the top edge! Keep the ship's horizontal upper wooden railing, Dwarf Hunter's hood, and Gnome Rogue's pigtails STRICTLY BELOW y=42%..100% so the ENTIRE top 42% (y=0%..42%, x=0%..100%) is 100% BLANK PURE #FFFFFF WHITE SKY! Below y=44%, weathered dark-timber outer hull wall of the sailing galleon and churning turquoise ocean foam stretch 100% flush edge-to-edge touching the extreme left border (x=0%), extreme right border (x=100%), and bottom border (y=100%)! HILARIOUS MIRACLE LANDING inside y=42%..100%: on lower-left (x=28%), petite Gnome Rogue stands upright with BOTH tiny leather boot tips miraculously perched on a razor-thin protruding outer wooden trim ledge on the OUTSIDE of the ship's hull above foaming sea waves — arms windmilling out for balance, huge wide stunned blinking blue eyes and surprised `:O` mouth with tiny sparkle gleams beneath her boots (0 X/star pins, green goggles, crossed daggers at lower back)! Leaning WAY over the horizontal wooden upper deck railing on lower-right (x=72%, strictly below y=42%), Dwarf Hunter drops popcorn kernels in wide-eyed shock (blunderbuss on back). ZERO text.",
+      "visual_prompt": "Sleek 3.5-head-tall Korean gag webtoon style on a 100% pure solid white #FFFFFF background. Over-the-shoulder medium view from behind the Dwarf Hunter on the left: with her gun slung on her back, she points casually toward the open white horizon with a dry, amused smirk while resting one arm on the minimal railing; below on the right, the Gnome Rogue sweats nervously on the narrow hull ledge.",
       "tail_target": "left",
       "bubble_side": "left",
       "full_bleed_bg": false,
@@ -413,162 +113,20 @@
     },
     {
       "cut_index": 6,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 3,
-      "panel_index": 1,
-      "characters": [
-        "드워프 사냥꾼"
-      ],
-      "speaker": "드워프 사냥꾼",
-      "dialogue": "미친… 저기 걸쳐지네?!",
-      "wordless": false,
-      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND EVERYWHERE (top 38% y=0%..38% completely empty pure #FFFFFF headroom for centered 1-line bubble; strictly inside Panel 1 borders!). EXTREME FACE CLOSE-UP pushing straight onto Dwarf Hunter's utter disbelief: warm amber eyes popped giant like saucers, jaw dropped wide open sending two unchewed popcorn kernels flying out, huge comic sweatdrops shooting off her temples! Guardrail: fair skin, forest-green white-fur-trimmed ranger hood, vivid orange braided pigtails, blunderbuss on back, ZERO text.",
-      "tail_target": "center",
-      "bubble_side": "center",
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
-      "bubble_center_xy": null,
-      "item_tooltip": null
-    },
-    {
-      "cut_index": 7,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 3,
-      "panel_index": 2,
-      "characters": [
-        "노움 도적"
-      ],
-      "speaker": "노움 도적",
-      "dialogue": "에헤헷~ 기분 째지네!",
-      "wordless": false,
-      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND EVERYWHERE (top 38% y=0%..38% completely empty pure #FFFFFF headroom for centered 1-line bubble!). STRICT BORDER CONTAINMENT: keep petite Gnome Rogue's ENTIRE body and BOTH leather boots cleanly INSIDE Panel 2 with at least 20px of white padding ABOVE Panel 2's bottom black frame line — STRICTLY ZERO boot toes crossing over the black line downward into Panel 3! LOW-ANGLE SMUG BRATTY SHOW-OFF: petite Gnome Rogue balancing effortlessly on ONE leather boot tiptoe like an arrogant acrobat, one hand on her hip and one finger nudging her green aviator goggles up with a shameless bratty fang smirk and cheeky tongue-out blep (`:P`) surrounded by bright comic sparkle stars! Guardrail: fair skin, blonde-pink-blue pigtails, 0 X/star pins, crossed green daggers neatly at lower back waist, ZERO text.",
-      "tail_target": "center",
-      "bubble_side": "center",
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
-      "bubble_center_xy": null,
-      "item_tooltip": null
-    },
-    {
-      "cut_index": 8,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 3,
-      "panel_index": 3,
+      "aspect_ratio": "16:9",
+      "layout_slot": "bottom",
+      "act_number": null,
+      "panel_index": null,
       "characters": [
         "드워프 사냥꾼",
         "노움 도적"
       ],
-      "speaker": "드워프 사냥꾼",
-      "dialogue": "어휴~ 대륙 로딩되면\n바다로 뚝 떨어질걸?",
+      "speaker": "노움 도적",
+      "dialogue": "로딩도 버텼다!\n다음 배 안 기다려도 되네!",
       "wordless": false,
-      "visual_prompt": "TIER 2 NATURAL FULL-WIDTH SHIP OUTER DECK RAILING & SEA SPRAY + 100% PURE #FFFFFF UPPER SKY across top 38% (y=0%..38% completely empty for right bubble; strictly inside Panel 3!). Timber ship side hull, deck railing, and crashing turquoise open-ocean spray anchored flush edge-to-edge along bottom, left & right borders (0 floating islands!). OVER-THE-SHOULDER SIDE-PROFILE WARNING: on lower-left (x=28%), petite Gnome Rogue perched on the outer hull lip freezes stiff as cold ocean spray splashes right beneath her boots, snapping one wide terrified sweating eye sideways (0 X/star pins, daggers neatly at lower back); on lower-right (x=72%), Dwarf Hunter leans casually over the wooden railing pointing mischievously toward the sea horizon with a sly half-lidded smirk and knowing eyebrows (blunderbuss on back). ZERO text.",
+      "visual_prompt": "Sleek 3.5-head-tall Korean gag webtoon style on a 100% pure solid white #FFFFFF background. Low-angle triumphant view beside a minimal arrival wooden pier: on the right, still perched snugly on the ship's outer wooden hull ledge with daggers sheathed, the Gnome Rogue crosses her arms with a smug victorious grin; up on the left deck railing, the Dwarf Hunter stares down in speechless disbelief.",
       "tail_target": "right",
       "bubble_side": "right",
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
-      "bubble_center_xy": null,
-      "item_tooltip": null
-    },
-    {
-      "cut_index": 9,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 4,
-      "panel_index": 1,
-      "characters": [
-        "노움 도적"
-      ],
-      "speaker": "노움 도적",
-      "dialogue": "으악! 로딩 화면 떴다!!\n버텨라 내 발가락!!",
-      "wordless": false,
-      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (ENTIRE RIGHT 54% x=46%..100% completely empty pure #FFFFFF headroom for right bubble!). CRITICAL CONTAINMENT RULE: keep the ENTIRE petite Gnome Rogue AND her compact swirling cyan-gold continent-loading warp ribbons cleanly INSIDE x=6%..44% and y=14%..92% with generous pure #FFFFFF white breathing room on top, left, and right — STRICTLY ZERO flat cut-off swirl arcs touching the top or side panel borders! FISHEYE FORCED-PERSPECTIVE DESPERATE CLING: positioned on left 40% (x=25%), petite Gnome Rogue flattened comically gripping a compact curved timber plank rim with white knuckles, eyes squeezed violently shut (`><`), gritted teeth, flying sweatdrops, wrapped in a neat self-contained vortex of cyan-gold warp ribbons feathering smoothly to delicate tapered tips inside pure #FFFFFF white! Guardrail: fair skin, green aviator goggles, 0 X/star pins, crossed green daggers neatly at lower back, ZERO text.",
-      "tail_target": "left",
-      "bubble_side": "right",
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
-      "bubble_center_xy": null,
-      "item_tooltip": null
-    },
-    {
-      "cut_index": 10,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 4,
-      "panel_index": 2,
-      "characters": [
-        "드워프 사냥꾼",
-        "노움 도적"
-      ],
-      "speaker": null,
-      "dialogue": null,
-      "wordless": true,
-      "visual_prompt": "TIER 2 MASSIVE WORDLESS CLIMAX FREEZE-FRAME AT THERAMORE HARBOR DOCK + 100% PURE #FFFFFF UPPER SKY (ZERO text, ZERO speech bubbles!). Sunlit stone-and-timber Theramore harbor pier, shimmering turquoise Kalimdor bay water, and the Alliance galleon docked snugly beside the pier anchored flush edge-to-edge across the ENTIRE bottom, left & right inner borders (0 floating islands!); upper 40% pure crisp #FFFFFF white sky with dazzling golden comic miracle sunburst rays feathering organically into white behind the ship side! SHOWSTOPPER COMEDY: on lower-right perched proudly on the ship's outer wooden prow/railing ledge (x=72%), petite Gnome Rogue stands completely dry, spotless, and gloriously triumphant with hands on hips, glowing starry eyes, and sparkling golden aura (fair skin, green goggles, 0 X/star pins, crossed green daggers stowed HIGH & CLEANLY tucked behind her waist belt — STRICTLY ZERO stray dagger blade poking beneath her boots!). Dominating lower-left foreground on the pier (x=28%, bold tall framing), Dwarf Hunter freezes in BLUE-DRAINED CRUMPLED-PAPER MUNCH-SCREAM HORROR — deep indigo vertical dread lines flooding her face, bare fair anime chin/lips (ZERO mustache!), ONLY two thick orange side braids wrapping gently under her chin, jaw dropped all the way to her chest, giant popping blank white shock eyes, her paper popcorn bag flipped upside-down raining popcorn kernels everywhere (blunderbuss on back)! Around the dock behind them, TWO cute chibi blue-tabard Theramore dock guards, a tiny green Murloc peeking up from the bay water, and TWO plump white harbor seagulls on pier posts ALL gawk in unison with identically popped jaw-dropped shock eyes and sweatdrops!",
-      "tail_target": "center",
-      "bubble_side": null,
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
-      "bubble_center_xy": null,
-      "item_tooltip": null
-    },
-    {
-      "cut_index": 11,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 5,
-      "panel_index": 1,
-      "characters": [
-        "노움 도적"
-      ],
-      "speaker": "노움 도적",
-      "dialogue": "무사히 도착함~ 메롱!\n다음 배 안 기다림!",
-      "wordless": false,
-      "visual_prompt": "TIER 2 NATURAL GROUNDED PIER PLANKS + 100% PURE #FFFFFF SKY across ENTIRE RIGHT 54% (x=46%..100%) and upper headroom for right bubble! Strictly inside Panel 1's black rectangle (ZERO spillover down into Panel 2!). Sunlit wooden Theramore dock planks anchored flush to lower-left border (x=0%..52%, y=76%..100%). DYNAMIC VICTORY HOP on left 42% (x=24%): petite Gnome Rogue touching down lightly onto the pier in a springy one-knee-up victory pose, flashing a super cheeky wink, playful tongue-out blep (`:P`), and twin sparkle stars! Guardrail: fair skin, green goggles, 0 X/star pins, crossed green daggers neatly at lower back waist, ZERO text.",
-      "tail_target": "left",
-      "bubble_side": "right",
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
-      "bubble_center_xy": null,
-      "item_tooltip": null
-    },
-    {
-      "cut_index": 12,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 5,
-      "panel_index": 2,
-      "characters": [
-        "드워프 사냥꾼"
-      ],
-      "speaker": "드워프 사냥꾼",
-      "dialogue": "어휴… 진짜 족고수네…",
-      "wordless": false,
-      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (ENTIRE LEFT 54% x=0%..54% completely empty pure #FFFFFF headroom for left 1-line bubble; strictly compact waist-up cleanly INSIDE Panel 2 borders — ZERO spillover into Panels 1 or 3!). Positioned cleanly on right 42% (x=76%): cute fair-skinned anime girl Dwarf Hunter giving a deeply humbled, solemn two-finger salute with glistening awestruck anime tear-glints and a warm admiring smile, respectfully offering forward a fresh paper bag of popcorn like a champion's trophy! CRITICAL FACE IDENTITY LOCK (match assets/turnarounds/dwarf_hunter.jpg strictly!): 100% BARE SMOOTH FAIR ANIME CHEEKS, BARE UPPER LIP, AND BARE CHIN — STRICTLY ZERO mustache, ZERO fuzzy facial hair, ZERO 3rd middle braid! She has ONLY TWO neat thick orange side hair braids framing her cheeks and crossing smoothly below her chin, forest-green fur-trimmed hood, blunderbuss slung on back, ZERO text.",
-      "tail_target": "right",
-      "bubble_side": "left",
-      "full_bleed_bg": false,
-      "speaker_anchor_xy": null,
-      "bubble_center_xy": null,
-      "item_tooltip": null
-    },
-    {
-      "cut_index": 13,
-      "aspect_ratio": "auto",
-      "layout_slot": "panel",
-      "act_number": 5,
-      "panel_index": 3,
-      "characters": [
-        "노움 도적",
-        "드워프 사냥꾼"
-      ],
-      "speaker": "노움 도적",
-      "dialogue": "헤헷~ 이게 바로\n족고수 무빙이지!",
-      "wordless": false,
-      "visual_prompt": "TIER 2 DISTANT LOW-HORIZON THERAMORE PIER FINALE + MASSIVE 100% EMPTY PURE #FFFFFF SKY ACROSS THE ENTIRE TOP 50% OF PANEL 3! ABSOLUTE HEIGHT CEILING: EVERY CHARACTER (including Gnome Rogue's pigtails and Dwarf Hunter's hood!) MUST stay COMPACT strictly BELOW y=50%..100% so the ENTIRE UPPER HALF (y=0%..50%) stays 100% blank pure #FFFFFF white sky for a large crisp bubble! Zero spillover into Panel 2, ZERO text! Across bottom edge (y=74%..100%), sunlit wooden Theramore dock planks and low stone harbor wall extend flush edge-to-edge against bottom, left & right borders. Lower-left (x=22%, compact y=52%..98%): cute fair-skinned anime girl Dwarf Hunter happily munching popcorn giving a fond approving wave (CRITICAL FACE IDENTITY LOCK: 100% BARE SMOOTH ANIME FACE & UPPER LIP — STRICTLY ZERO mustache, ZERO beard, ONLY TWO neat orange side hair braids draping below her chin!) alongside a tiny cheering green Murloc clapping in the water and a plump white seagull perched on a wooden post (blunderbuss on back). Lower-right (x=78%, compact y=50%..98%): seen in cool 3/4 back-view swaggering briskly down the pier toward Theramore Isle, petite Gnome Rogue glances cheekily back over her shoulder flashing a confident fang smirk and a cool thumbs-up as golden sparkle stars twinkle behind her boots! Guardrail: fair skin, blonde-pink-blue pigtails, green goggles, 0 X/star pins, crossed green daggers neatly at lower back waist.",
-      "tail_target": "right",
-      "bubble_side": "left",
       "full_bleed_bg": false,
       "speaker_anchor_xy": null,
       "bubble_center_xy": null,

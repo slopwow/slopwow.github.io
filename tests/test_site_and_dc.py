@@ -68,19 +68,19 @@ def test_seed_episodes_json_valid_and_files_exist() -> None:
 
     ep1 = by_id["ep001"]
     assert ep1.source_post_no == "92059"
-    assert 10 <= ep1.cut_count <= 14
+    assert 4 <= ep1.cut_count <= 8
     assert "흑마법사" in ep1.title
 
     ep2 = by_id["ep002"]
     assert ep2.source_post_no == "96849"
-    assert 10 <= ep2.cut_count <= 14
+    assert 4 <= ep2.cut_count <= 8
     assert "기사님" in ep2.title
 
     for rec in records:
-        assert 10 <= rec.cut_count <= 14, f"{rec.episode_id} expected V4 10..14 cuts, got {rec.cut_count}"
+        assert 4 <= rec.cut_count <= 8, f"{rec.episode_id} expected 4..8 cuts, got {rec.cut_count}"
         assert (PROJECT_ROOT / rec.full_image_rel).exists(), f"Missing {rec.full_image_rel}"
         assert (PROJECT_ROOT / rec.thumb_image_rel).exists(), f"Missing {rec.thumb_image_rel}"
-        assert len(rec.page_images_rel) == 5, f"{rec.episode_id} expected 5 V4 pages, got {len(rec.page_images_rel)}"
+        assert 2 <= len(rec.page_images_rel) <= 4, f"{rec.episode_id} expected 2..4 pages, got {len(rec.page_images_rel)}"
         for page_rel in rec.page_images_rel:
             assert (PROJECT_ROOT / page_rel).exists(), f"Missing {page_rel}"
 
