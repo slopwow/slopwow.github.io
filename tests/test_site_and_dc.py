@@ -546,7 +546,8 @@ def test_checked_in_site_workflow_and_docs_route_a_hygiene() -> None:
     workflow_path = PROJECT_ROOT / ".github" / "workflows" / "auto-sloptoon.yml"
     assert workflow_path.exists()
     wf_text = workflow_path.read_text(encoding="utf-8")
-    assert 'cron: "15 */6 * * *"' in wf_text
+    assert "cron:" not in wf_text, "Paid API auto-schedule cron must stay disabled"
+    assert "SLOPTOON_ALLOW_PAID_API" in wf_text
     assert "workflow_dispatch" in wf_text
     assert "GEMINI_API_KEY" in wf_text
     assert "SLOPTOON_IMAGE_MODEL" in wf_text

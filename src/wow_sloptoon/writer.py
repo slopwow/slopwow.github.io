@@ -24,7 +24,12 @@ from wow_sloptoon.cast import (
     format_cast_bible_for_writer,
     resolve_cast_member,
 )
-from wow_sloptoon.config import DEFAULT_TEXT_MODEL, Settings, load_settings
+from wow_sloptoon.config import (
+    DEFAULT_TEXT_MODEL,
+    Settings,
+    load_settings,
+    require_paid_api_opt_in,
+)
 from wow_sloptoon.models import ComicCut, EpisodeScript, GalleryPost
 from wow_sloptoon.wow_lore import (
     ALLIANCE_ZONES,
@@ -587,6 +592,7 @@ def generate_episode_script(
     target_model = model or cfg.text_model or DEFAULT_TEXT_MODEL
 
     if client is None:
+        require_paid_api_opt_in("writer.generate_episode_script")
         if not cfg.gemini_api_key:
             raise RuntimeError(
                 "GEMINI_API_KEY is not set. Configure GEMINI_API_KEY in .env or environment, "

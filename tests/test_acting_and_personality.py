@@ -456,3 +456,25 @@ def test_generate_episode_script_auto_retries_when_audit_fails() -> None:
             client=SimpleNamespace(interactions=AlwaysBadInteractions()),
             max_retries=1,
         )
+
+
+def test_paid_api_hard_lock_blocks_unapproved_calls(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    monkeypatch.delenv("SLOPTOON_ALLOW_PAID_API", raising=False)
+    settings = load_settings(PROJECT_ROOT)
+    cut = ComicCut(
+        cut_index=1,
+        layout_slot="top",
+        aspect_ratio="4:3",
+        characters=["오크 전사"],
+        speaker="오크 전사",
+        dialogue="하드 락 테스트",
+        tail_target="left",
+        wordless=False,
+        visual_prompt="Side-profile cute 2.5-head chibi SD shot of Orc Warrior.",
+    )
+    with pytest.raises(RuntimeError, match="SLOPTOON_ALLOW_PAID_API=1"):
+        artist.generate_cut_image(cut, tmp_path / "blocked.png", settings=settings)
+    with pytest.raises(RuntimeError, match="SLOPTOON_ALLOW_PAID_API=1"):
+        writer.generate_episode_script(_sample_post(), episode_number=99, settings=settings)

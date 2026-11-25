@@ -17,6 +17,23 @@ SUPPORTED_IMAGE_MODELS: tuple[str, ...] = (
 )
 DEFAULT_GALLERY_ID = "wowforever"
 DEFAULT_ARCHIVE_BASE_URL = "https://slopwow.github.io"
+PAID_API_OPT_IN_ENV = "SLOPTOON_ALLOW_PAID_API"
+
+
+def require_paid_api_opt_in(caller: str) -> None:
+    """Hard-lock paid Gemini API calls unless explicitly opted in via `SLOPTOON_ALLOW_PAID_API=1`.
+
+    Prevents accidental credit/billing spend when `GEMINI_API_KEY` happens to be present
+    in the user environment. Default illustration workflow uses built-in `image-generator`
+    (zero API billing) + local `cli compose` / `build-site`.
+    """
+    flag = os.getenv(PAID_API_OPT_IN_ENV, "").strip().lower()
+    if flag not in {"1", "true", "yes"}:
+        raise RuntimeError(
+            f"Paid Gemini API call blocked in {caller}: set {PAID_API_OPT_IN_ENV}=1 "
+            "ONLY after explicit user approval. Default workflow uses built-in "
+            "image-generator + local `cli compose` (zero API billing)."
+        )
 
 
 def resolve_project_root(start: Path | None = None) -> Path:

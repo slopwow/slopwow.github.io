@@ -31,6 +31,7 @@ from wow_sloptoon.config import (
     SUPPORTED_IMAGE_MODELS,
     Settings,
     load_settings,
+    require_paid_api_opt_in,
 )
 from wow_sloptoon.models import ComicCut, EpisodeScript
 from wow_sloptoon.wow_lore import build_cut_visual_lore_hints
@@ -172,6 +173,7 @@ def generate_cut_image(
     target_model = resolve_image_model(model, cfg)
 
     if client is None:
+        require_paid_api_opt_in("artist.generate_cut_image")
         if not cfg.gemini_api_key:
             raise RuntimeError(
                 "GEMINI_API_KEY is not set. Configure GEMINI_API_KEY in .env or environment."
@@ -242,6 +244,7 @@ def generate_episode_cuts(
     target_model = resolve_image_model(model, cfg)
 
     if client is None:
+        require_paid_api_opt_in("artist.generate_cut_image")
         if not cfg.gemini_api_key:
             raise RuntimeError(
                 "GEMINI_API_KEY is not set. Configure GEMINI_API_KEY in .env or environment."

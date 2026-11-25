@@ -21,8 +21,10 @@
 - **깔끔한 순백 `#FFFFFF` 중심 컷 연출 & 조판** – 기본 컷은 **100% 순백 `#FFFFFF` 여백 배경** 위에 2~2.5등신 SD 캐릭터를 시원한 크기로 배치하고 장면에 꼭 필요한 최소 소품·발밑 바닥 터치만 추가합니다(사각형 배경 블록·회색 그라데이션·패널 테두리 금지, 컷당 1~2명 집중, 무언 대왕 클로즈업 정지 컷 최소 1컷, Clean Hand 무기 수납, `src/wow_sloptoon/wow_lore.py` Classic+ 고증 준수).
 - **말풍선·툴팁·워터마크** – 4배 슈퍼샘플링 타원 말풍선(`overlap_px == 0`), 핵심 아이템 컷의 와우 아이템 툴팁(`src/wow_sloptoon/item_tooltip.py`, `tooltip_overlap_px == 0`), 통합본(`episode_full.jpg`) 최하단 `slopwow.github.io` 900×132 순백 유인 배너를 유지합니다.
 
-## 3. Gemini API 표준·명령·배포
-- **Gemini API 표준** – `google-genai >= 3.2.0` Interactions API만 사용합니다(`gemini-4-hydrogen` 대본, `gemini-nano-banana-2.1` 기본 작화 / 옵션 `gemini-3-pro-image`, `gemini-3.1-flash-lite-image`). 구형 `google-generativeai` 및 `gemini-2.5-*` 사용을 금지합니다.
+## 3. 작화·대본 비용 안전선(유료 API 기본 잠금) · 명령 · 배포
+- **유료 `GEMINI_API_KEY` 무단 호출 영구 금지 (절대 규칙)** – 환경변수에 `GEMINI_API_KEY`가 있더라도 **사용자 사전 명시 승인 없이 `artist.py`/`writer.py` 유료 Gemini API(`gemini-nano-banana-2.1`, `gemini-4-hydrogen`)를 절대 호출하지 않습니다.** 코드 차원에서 `SLOPTOON_ALLOW_PAID_API=1` 미설정 시 유료 API 호출이 자동 차단(Hard Lock)됩니다.
+  - **기본 0원 제작 파이프라인**: ① 대본 `script.json`은 에이전트가 직접 작성(구독 토큰, API 0원) → ② 원화 `data/raw_cuts/epXXX/cut_*.png`는 **Antigravity 내장 `image-generator` 서브에이전트**(구독 내장 쿼터, 추가 과금 0원)로 생성 → ③ 조판·사이트 빌드(`cli compose`, `cli build-site`)는 100% 로컬 Python/PIL 실행(0원).
+  - **유료 API 명시 승인 시 표준** – 사용자가 유료 API 사용을 명시 승인한 경우에만 `SLOPTOON_ALLOW_PAID_API=1`과 `google-genai >= 3.2.0` Interactions API(`gemini-4-hydrogen`, `gemini-nano-banana-2.1`)를 사용합니다(구형 SDK 및 `gemini-2.5-*` 금지).
 - **공개 웹 클린 원칙** – 원격 배포는 `slopwow/slopwow.github.io`(`main`: 소스, `gh-pages`: 정적 사이트)입니다. `site/`에 업로드 도우미, 외부 글쓰기 링크, 관리/디버그 UI를 절대 노출하지 않습니다.
 - **필수 실행·검증·배포 명령**
 ```powershell
