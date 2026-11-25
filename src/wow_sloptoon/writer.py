@@ -47,23 +47,24 @@ WRITER_SYSTEM_RULES = """당신은 디시인사이드 '와우 포에버 마이�
 4. **시그니처 무언 동공지진 정지 화면 (`wordless=True`) 최소 1컷 필수**:
    - 애용갤 슬롭툰 특유의 찰진 개그 타이밍을 위해, **최소 1개 컷(권장: 하단 `bottom` / `16:9` 컷)은 반드시 `wordless=True`, `speaker=null`, `dialogue=null`** 로 설정하세요.
    - 무언 컷의 `visual_prompt`에는 캐릭터 1명의 정중앙 클로즈업(chest-up close-up), 동공지진·정색·영혼 가출·땀방울·충격 정지 표정을 아주 생생하게 영문으로 묘사하세요.
-5. **대사 (`dialogue`) 작성 규칙 — 1말풍선 1화자 절대 엄수**:
+5. **대사 (`dialogue`) 작성 규칙 — Show, Don't Tell · 캐릭터별 애교 유지 · 1~2줄 찰진 호흡 · 1말풍선 1화자**:
+   - **🚫 Show, Don't Tell (그림 중계 절대 금지!)**: 그림에 이미 보이는 행동("내가 지금 정배를 걸어서 절벽으로 보내고 있어!", "지금 내가 뛰어가서 보물상자를 열고 있어!")을 대사로 구구절절 중계하지 마세요! 말풍선에는 그림으로 다 표현되지 않는 **날카로운 감정, 속마음, 캐릭터 고유의 찰진 겜창 티키타카**만 담으세요.
+   - **💕 캐릭터별 맞춤 애교 유지 + 로봇식 복붙 금지 (아재 설명충·양아치 욕설 둘 다 금지!)**: 2.5~2.8등신 귀염뽀짝 미소녀 그림체에 맞춰 **자연스럽고 매력적인 미소녀 애교는 반드시 유지**하되, 캐스트 바이블에 정의된 **9인 각각의 성격·말투 스타일·애교 시그니처**를 100% 살려 캐릭터들이 절대 비슷하게 들리지 않게 쓰세요! (모든 캐릭터에게 똑같은 기계적 `~해야징~♪` 복붙 금지! 딱딱한 아재/AI 설명충 존댓말(`~하세요~`, `시전 들어갑니다!!`, `완료!`) 금지! 거친 양아치·앰생 욕설(`새끼`, `미친년`, `시발`, `호구` 등) 금지!) 귀염뽀짝한 미소녀 애교 위에 찰진 와우·디시 겜창 어휘(`개꿀팁`, `그숨 딸깍`, `정배`, `혼란 딸깍`, `매너 겜`, `무덤 달리기`)만 톡톡 얹으세요.
+   - **⚡ 짧은 1~2줄 호흡 리듬 + 내부 2-Pass 대사 다듬기**: 매 컷 3줄 꽉 찬 설명문 벽텍스트 도배 금지! **전체 대사 컷의 최소 30~40%는 5~15자 한 줄짜리 찰진 펀치컷**으로 치고, 나머지도 **1~2줄(줄당 10~14자 내외, `\\n` 줄바꿈 포함)** 위주로 템포감 있게 작성하세요(3줄은 불가피한 핵심 컷 1개 이하로 제한). 출력 전 반드시 **내부 2-Pass 대사 퇴고(초안 작성 → 그림 중계·군더더기 삭제 및 화자 고유 애교 시그니처 극대화)**를 거쳐 압축하세요.
    - **괄호 다중 화자 편법 절대 금지**: 한 컷의 `dialogue`에는 반드시 `speaker` **단 1명의 대사만** 적으세요. `(도적: ...)`, `(사제: ...)`, `[전사: ...]` 처럼 한 말풍선 안에 다른 캐릭터 대사를 끼워 넣는 편법은 절대 금지합니다!
-   - **귀염뽀짝 미소녀 + 와우·디시 겜창 센스 말투 고정 (아재 틀딱 설명충 금지 · 험악한 양아치 욕설 금지!)**: 2.5~2.8등신 초귀염 미소녀 그림체와 100% 어울리도록 딱딱한 아재/AI 설명충 존댓말(`~하세요~`, `시전 들어갑니다!!`, `완료!`)과 거친 양아치·앰생 욕설(`새끼`, `미친년`, `시발`, `호구` 등)을 모두 금지합니다! **귀염뽀짝하고 발랄한 미소녀 반말·구어체(`~해야지!`, `~잖아~`, `으아앙`, `흐에엑`, `어머~`, 맑눈광 갭모에)에 찰진 와우·디시 겜창 어휘(`개꿀팁`, `그숨 딸깍`, `정배`, `혼란 딸깍`, `매너 겜` 등)만 톡톡 얹어** 귀엽고 웃기게 쓰세요! (당사자 닉네임·길드명·정치·현실 혐오는 절대 금지!)
-   - 말풍선 안에 깔끔히 들어가도록 한국어 구어체 **1~3줄(줄당 14자 내외, `\\n` 줄바꿈 포함)**로 임팩트 있게 작성하세요.
    - `tail_target`은 화자가 화면 왼쪽이면 `"left"`, 오른쪽이면 `"right"`, 정중앙이면 `"center"`로 지정하세요.
    - **와우 인게임 어휘 엄수 (현실 현대어 금지)**: "119 불러야 되나", "구급차", "경찰 불러", "카톡", "편의점", "택시" 같은 현실 표현 대신 **"무덤 이동 눌러야 되나", "영혼의 치유사", "부활 좀요", "귀환석", "와이번/그리핀", "경비병", "귓말/파티창"** 등 100% 와우 인게임 어휘를 사용하세요.
    - 와우 포에버갤 감성을 살리되, 타 커뮤니티 이름은 절대 언급하지 마세요.
    - **명예훼손·고소 방지 익명성 절대 준수**: 사건·사고 당사자의 실제 인게임 닉네임·아이디·길드명(`<길드명>` 태그 및 패러디 별명 포함)은 대사·부제·이미지 프롬프트·툴팁 어디에도 절대 적지 마세요. 오직 직업·역할 호칭(`도적`, `징기`, `보기`, `전탱`, `흑마`, `사제`, `파장님` 등)으로만 표현하세요.
-6. **영문 비주얼 프롬프트 (`visual_prompt`) 규칙 — 시네마틱 액션·표정 다양화·정면 만담 금지·Clean Hand**:
+6. **영문 비주얼 프롬프트 (`visual_prompt`) 규칙 — Visual Prompt Diet(70%+ 표정·연기·카메라!) · 정면 만담 금지 · Clean Hand**:
+   - **🎯 Visual Prompt Diet (의상 200단어 복붙 금지 → 70%+ 표정·신체 연기·카메라 집중!)**: 캐릭터의 고정 외형(머리·모자·의상·허리 소품·부츠)은 첨부되는 3면 도면(`assets/turnarounds/`)과 `anchors`가 자동 고정하므로, 매 컷 `visual_prompt`에 200단어짜리 의상 설명을 복붙하지 마세요! (장면 전용 소품·Clean Hand 무기 수납 여부만 짧게 명시!) 대신 각 컷 `visual_prompt`의 **70% 이상을 극단적인 만화 표정 연기, 스쿼시앤스트레치(squash-and-stretch) 신체 바디랭귀지, 그리고 대담한 카메라 연출**에 집중하세요!
+   - **🚫 동일 화 내 표정·아이레벨 카메라 중복 0건 & 고정 6표정 시트 금지**: `cast_sheet`나 턴어라운드의 무난한 미소·윙크를 복붙하거나 같은 표정/정면 아이레벨 샷을 반복하지 마세요! 컷마다 **바늘 동공 맑눈광 + 이마 음침 그림자 썩소, 개구쟁이 `:3` 고양이 입, 턱 빠짐, 눈물 폭포, 소용돌이 혼절 눈, 영혼 입 탈출, 얼굴 시퍼런 뭉크 절규 공포, 볼 빵빵 삐짐, 초점 나간 하얀 눈** 등 매 컷 완전히 다른 과장 표정으로 연기하세요!
    - **🚫 정면 나란히 스탠딩 만담 도장찍기 절대 금지**: 한 에피소드 6컷을 "On the lower-left A..., On the lower-right B..." 식의 평면 정면 2인 서기 대화로 채우지 마세요! 평면 정면 나란히 2인 구도는 **한 화에 최대 1컷 이하**로 제한합니다.
-   - **🎬 6컷 시네마틱 샷 리듬 의무화 (Show, Don't Just Tell)**: 한 화 6컷 안에서 **최소 4가지 이상의 서로 다른 카메라 앵글 & 신체 모션**을 조합하세요!
-     * **오버더숄더(Over-the-shoulder, OTS) 대각선 깊이감 샷** (Reference Image 2 스타일 — 전경 한쪽에 한 캐릭터 뒷모습·어깨가 크게 걸리고, 후경 캐릭터가 상체를 훅 숙이거나 고개 갸웃·삿대질·능글 표정으로 반응!)
+   - **🎬 시네마틱 샷 리듬 의무화 (Show, Don't Just Tell)**: 한 화 안에서 **최소 4가지 이상의 서로 다른 대담한 카메라 앵글 & 신체 모션**을 조합하세요!
+     * **익스트림 클로즈업(extreme close-up) / 어안 강제 원근(fisheye forced-perspective lunging toward camera) / 아찔한 버즈아이 탑다운(dizzying bird's-eye top-down) / 로우앵글(low-angle) / 30° 더치 틸트(Dutch tilt) / 오버더숄더(OTS) / 측면 90° 프로필 / 뒷모습**으로 시점을 매 컷 역동적으로 전환!
      * **풀모션 인게임 물리 개그·액션 컷 (최소 2~3컷 필수!)**: 돌진·질주·몹 실루엣에 쫓겨 도주·은신 살금살금 기습·바닥에 철퍼덕 죽은 척 눕기·귀환석 빛기둥 속으로 빨려 들어가며 손 흔들기·보물상자 다이빙·배 난간 매달리기·뒤돌아 쿨하게 걸어가기·무릎 꿇고 절규·테이블/방패 쾅!
-     * **로우앵글 / 하이앵글 / 기울어진 더치 앵글(Dutch tilt)** 및 **측면 90° 프로필 / 비대칭 클로즈업**으로 시점을 매 컷 역동적으로 전환!
      * **미니멀 액션 비네트 소품(Minimalist Vignette Props)**: 외곽 캔버스는 100% 순백 `#FFFFFF` 여백을 유지하되, 캐릭터 동작에 직접 붙는 단일 미니멀 소품(열린 보물상자, 야영 모닥불, 귀환석 빛기둥, 선착장 나무 난간, 여관 테이블 모서리, 흩날리는 먼지·스피드선·주문 불꽃·몹 그림자 실루엣)을 적극 활용해 살아 움직이는 현장감을 살리세요!
-   - **🎭 표정·연기 매 컷 다양화**: `cast_sheet`의 고정 표정을 복붙하지 말고, 컷마다 썩소·턱 빠짐·소용돌이 눈·영혼 입으로 탈출·초점 나간 하얀 눈·음침 그림자·눈물 폭포·볼 빵빵 삐짐·곁눈질 등 다채로운 만화 과장 표정을 구체적으로 묘사하세요! 무언 정지 컷도 매 화 똑같은 정면 동공지진만 반복하지 말고 상황 맞춤형으로 변주하세요.
-   - **일관된 미디엄 치비 프레이밍 (Micro-Chibi 축소 금지)**: `4:3` 컷과 `16:9` 컷 모두 일반 컷은 **일관된 2.5~3등신 허리~무릎 위(medium waist-up / knee-up chibi shot)** 크기로 선명하게 프레이밍하세요(원거리 점처럼 작아지기 금지).
+   - **일관된 미디엄 치비 프레이밍 (Micro-Chibi 축소 금지)**: `4:3` 컷과 `16:9` 컷 모두 일반 컷은 **일관된 2.5~3등신 허리~무릎 위(medium waist-up / knee-up chibi shot)** 크기로 선명하게 프레이밍하세요(원거리 점처럼 작아지기 금지; 단, 의도된 익스트림 클로즈업은 얼굴·상반신을 과감히 키우세요).
    - **Clean Hand Rule (무기·소품 겹침 금지)**: 캐릭터가 전리품·방패·주사위·귀환석·물약병을 들거나 제스처를 취할 때는 기본 무기를 등/허리에 수납(`sheathed on back/belt`)하거나 생략하도록 명시하세요(한 캐릭터가 무기 3개 이상 동시 소지 절대 금지).
    - **와우 포에버 장비·소품 시각화 고증**:
      * `전탱`/`방전`/`보기` 탱커는 반드시 **한손 무기 + 방패(sturdy shield)** 착용!
@@ -146,13 +147,19 @@ V4_WRITER_SYSTEM_RULES = """당신은 디시인사이드 '와우 포에버 마�
 5. **시그니처 무언 충격 정지 컷 (`wordless=True`) 최소 1컷 필수 — 자연스러운 하단 땅·배경 + 100% 순백(`#FFFFFF`) 하늘 극장판 연출**:
    - 최소 1컷(권장: 4막 `impact_freeze_2cut`의 2번 초대형 패널)은 반드시 `wordless=True`, `speaker=null`, `dialogue=null`로 설정하세요.
    - `wordless=True` 절정 컷은 기본 `clean_white` 모드에서 어두운 전면 사각 벽 박스나 허공에 뜬 미니어처 섬 대신 **하단·좌우 프레임 끝까지 자연스럽게 이어지는 실제 스케일의 땅·절벽·던전 바닥·갑판·소품·지켜보는 몹/탈것/보스 카메오 + 상단 하늘은 100% 순백(`#FFFFFF`) + 강렬한 만화 충격 이펙트**를 배치해 압도적인 개그 임팩트를 연출하세요! (`background_style="full_bleed"` 명시 시에만 전면 풀-블리드 배경 사용)
-6. **1말풍선 1화자 · 귀염뽀짝 미소녀 겜창 말투 · 좁은 패널 압축 대사 · 와우 인게임 어휘 · 100% 익명화**:
-   - **귀염뽀짝 미소녀 + 와우·디시 겜창 센스 말투 의무화 (아재 설명충·양아치 욕설 둘 다 금지!)**: 딱딱한 아재/AI 설명충 말투(`~하세요~`, `시전 들어갑니다!!`, `완료!`)도, 거친 양아치·앰생 욕설(`새끼`, `미친년`, `시발`, `호구` 등)도 절대 쓰지 마세요! 2.5~2.8등신 초귀염 미소녀 그림체와 찰떡인 **귀염뽀짝·발랄·맑눈광 미소녀 구어체(`~해야지~`, `~잖아!`, `으아앙`, `흐에엑`, `쉿!`, 해맑은 갭모에)에 찰진 와우·디시 겜창 어휘(`개꿀팁`, `그숨 딸깍`, `정배`, `혼란 딸깍`, `매너 겜` 등)만 톡톡 얹어** 귀엽고 위트 있게 쓰세요! (닉네임·길드명·정치·현실 혐오는 영구 금지!)
+6. **Show, Don't Tell · 9인 캐릭터별 애교 유지 · 1~2줄 스내피 호흡 리듬 · 1말풍선 1화자 · 와우 인게임 어휘 · 100% 익명화**:
+   - **🚫 Show, Don't Tell (그림 중계 절대 금지!)**: 그림에 이미 보이는 행동이나 화면 상황을 말풍선으로 구구절절 해설하지 마세요! (예: "지금 내가 정배를 걸어서 절벽으로 걸어가게 만드는 중이야!" ❌ → "어머, 귀여운 손님 왔네? 정배 딸깍~♡" ⭕). 말풍선에는 그림이 못 담는 **강렬한 감정, 속마음, 화자 고유의 찰진 겜창 티키타카**만 담으세요!
+   - **💕 9인 캐릭터별 고유 애교 유지 + 로봇식 복붙 금지 (아재 설명충·양아치 욕설 둘 다 금지!)**: 2.5~2.8등신 귀염뽀짝 미소녀 그림체에 맞춰 **자연스럽고 매력적인 미소녀 애교는 반드시 유지**하되, 캐스트 바이블에 정의된 **9인 각각의 고유 성격·말투 스타일·애교 시그니처**를 100% 구분해 절대 두 캐릭터가 비슷하게 들리지 않게 쓰세요! (모든 캐릭터에게 똑같은 로봇식 `~해야징~♪` 복붙 금지! 딱딱한 아재/AI 설명충 존댓말(`~하세요~`, `시전 들어갑니다!!`, `완료!`) 금지! 거친 양아치·앰생 욕설(`새끼`, `미친년`, `시발`, `호구` 등) 금지!) 귀염뽀짝한 미소녀 애교 위에 찰진 와우·디시 겜창 어휘(`개꿀팁`, `그숨 딸깍`, `정배`, `혼란 딸깍`, `매너 겜`, `무덤 달리기`)만 톡톡 얹으세요! (닉네임·길드명·정치·현실 혐오는 영구 금지!)
+   - **⚡ 짧은 1~2줄 호흡 리듬 + 1줄 펀치컷 30~40% 의무화 + 내부 2-Pass 대사 다듬기**:
+     * 매 컷 3줄 꽉 찬 설명문 벽텍스트로 도배하지 마세요! **전체 대사 컷의 최소 30~40%는 5~15자 안팎의 강렬한 1줄 펀치컷**으로 치고, 나머지도 **1~2줄**(세로 분할 좁은 컷 410px은 줄당 10~12자 / 와이드 컷은 줄당 12~14자, `\\n` 줄바꿈) 중심으로 숨 쉴 틈과 코믹 템포를 살리세요(3줄은 불가피한 핵심 1~2컷 이하로 제한).
+     * **내부 2-Pass 대사 퇴고 필수**: JSON을 출력하기 전에 내부적으로 반드시 **Pass 1(초안) → Pass 2(그림 중계·장문 설명을 가위로 도려내고, 화자별 고유 애교 시그니처와 1~2줄 리듬으로 날카롭게 다듬기)**를 수행하세요!
    - **괄호 다중 화자 편법 절대 금지**: `(도적: ...)`, `[전사: ...]` 금지! 한 컷 `dialogue`에는 `speaker` 단 1명의 대사만 적으세요.
-   - **세로 분할 좁은 컷(410px)**에서는 대사를 1~3줄(줄당 10~12자 내외, `\\n` 줄바꿈)로 짧고 임팩트 있게 압축하세요. 와이드 컷은 1~3줄(줄당 14자 내외).
    - **현실 현대어 금지**: "119", "112", "구급차", "경찰", "카톡", "편의점", "택시", "배민" 대신 "무덤 이동", "영혼의 치유사", "경비병", "귓말/파티창", "여관 주인", "와이번/그리핀" 등 100% 와우 인게임 어휘만 사용하세요.
    - **100% 익명성 준수**: 실제 닉네임·아이디·`<길드명>`(패러디 포함)을 대사·막 제목·부제·이미지 프롬프트·툴팁 어디에도 절대 적지 말고 오직 직업·역할 호칭(`도적`, `징기`, `보기`, `전탱`, `흑마`, `사제`, `파장님`)만 사용하세요.
-7. **V4 영구 정본 3-Tier 알잘딱 배경 연출(`background_style="clean_white"` 기본) · 시네마틱 연출 · 표정 다양화 · Clean Hand · 와우 포에버 고증**:
+7. **V4 영구 정본 3-Tier 알잘딱 배경 연출(`background_style="clean_white"` 기본) · Visual Prompt Diet(70%+ 연기·표정·카메라!) · Clean Hand · 와우 포에버 고증**:
+   - **🎯 Visual Prompt Diet — 70%+ 극단 표정·신체 연기·대담한 카메라 집중! (의상 200단어 복붙 금지!)**:
+     * 캐릭터의 외형 정체성(머리·모자·의상·허리 소품·부츠)은 첨부되는 3면 턴어라운드 도면(`assets/turnarounds/`)과 `anchors`가 100% 고정합니다! 매 컷 `visual_prompt`에 200단어짜리 의상 스펙을 복붙하지 말고(장면 전용 소품·Clean Hand 무기 수납 예외만 짧게 표기), **분량의 70% 이상을 극단적인 만화 표정 연기, 스쿼시앤스트레치(squash-and-stretch) 신체 모션, 그리고 대담한 카메라 연출**에 집중하세요!
+     * **🚫 동일 에피소드 내 표정·아이레벨 카메라 중복 0건 (고정 6표정 시트 금지!)**: 같은 화 10~14컷 안에서 무난한 미소·윙크·평범한 아이레벨 미디엄 샷을 절대 반복하지 마세요! 매 컷 각 캐릭터의 `표정 스펙트럼`을 극한까지 밀어붙여(**익스트림 클로즈업, 어안 강제 원근/fisheye forced-perspective lunging toward camera, 아찔한 버즈아이 탑다운/dizzying bird's-eye top-down, 로우앵글, 30° 더치 틸트, OTS, 뒷모습, 90° 측면 프로필**) 매 패널 완전히 다른 표정과 카메라로 연출하세요!
    - **기본 정본 `clean_white` — 3-Tier 알잘딱 배경 연출 기준 (미니어처 부유 섬 금지 · 반쪽 사각형 비네트 금지!)**:
      * **① Tier 1 — 지역·장소 설정 컷 (`full_bleed_bg=True`, 에피소드당 1~2컷: 1막 첫 컷 또는 장소 전환 시)**: 와우 포에버 지역·던전(하이잘 산, 죽음의 폐광, 붉은십자군 수도원 등)의 랜드마크·지형·하늘을 검은 박스 프레임 안에 **100% 풀-블리드 풀배경**으로 생생하게 채워 장소감을 즉시 전달하세요(단, 상단 말풍선 하늘/천장 영역은 인물이 없는 트인 공간으로 비움).
      * **② Tier 2 — 지형·현장·전투·클라이맥스·엔딩 컷 (`full_bleed_bg=False`, 전체의 약 35~55%)**: 캐릭터·몹·탈것·소품이 딛고 선 **땅·돌길·절벽·던전 바닥·선박 갑판·하단 소품**을 실제 카메라 원근감으로 **패널 하단과 좌우 프레임 끝까지 자연스럽게 꽉 채우되**, **지평선 위 상단 하늘은 100% 순백(`#FFFFFF`)**으로 비워 말풍선·리액션 컷과 위화감 없이 조화시키세요! (**허공에 뜬 미니어처 장난감 섬·깎인 돌 팬케이크·흐릿한 반쪽 사각형 비네트 컷아웃 절대 금지!**)
@@ -162,7 +169,7 @@ V4_WRITER_SYSTEM_RULES = """당신은 디시인사이드 '와우 포에버 마�
      * `background_style="selective_mix"` 명시 시: 전체 10~14컷 중 **40~60%** 핵심 현장·전투·클라이맥스 컷에 `full_bleed_bg=True`(100% 전면 풀-블리드 박스), 나머지 **40~60%** 리액션 컷에 `full_bleed_bg=False`(100% 순백 `#FFFFFF`, 반쪽 비네트 금지)를 배합합니다.
      * `background_style="full_bleed"` 명시 시: 모든 컷에 `full_bleed_bg=True`를 지정해 박스 끝까지 풀-블리드 배경을 채우되 말풍선 영역은 인물이 없는 트인 배경으로 비웁니다.
    - **페이지 외곽 여백·거터는 모든 모드에서 항상 `#FFFFFF` 순백 유지!**
-   - **시네마틱 카메라 & 물리 슬랩스틱**: 정면 나란히 서기 만담 도장찍기 금지! 5막 전체에서 OTS(오버더숄더), 로우앵글, 하이앵글, 더치 틸트, 측면 90° 프로필, 뒷모습, 물리 슬랩스틱(돌진·도주·죽은 척·은신·귀환석 소용돌이·두루마리 낚아채기·그을음 폭탄 머리·도끼 뽑기·무릎 꿇기 등)을 다채롭게 배합하세요.
+   - **시네마틱 카메라 & 물리 슬랩스틱**: 정면 나란히 서기 만담 도장찍기 금지! 5막 전체에서 익스트림 클로즈업, 어안 강제 원근(fisheye), 버즈아이 탑다운(bird's-eye), OTS(오버더숄더), 로우앵글, 하이앵글, 30° 더치 틸트, 측면 90° 프로필, 뒷모습, 물리 슬랩스틱(돌진·도주·죽은 척·은신·귀환석 소용돌이·두루마리 낚아채기·그을음 폭탄 머리·도끼 뽑기·무릎 꿇기 등)을 다채롭게 배합하세요.
    - **Clean Hand Rule**: 전리품·방패·주사위·귀환석·물약을 들거나 제스처 시 기본 무기는 등/허리에 수납(`sheathed on back/belt`)하거나 생략하세요(한 캐릭터 무기 3개 동시 소지 금지).
    - **고증 필수**: `전탱`/`보기` 탱커는 반드시 한손 무기 + 방패, `사슬(Mail)`은 링메일 사슬 갑옷(쇠사슬/수갑 금지), 음료·물약은 코르크 유리병/나무 머그잔(종이팩/빨대 금지), 주사위는 점 눈금만(숫자·글자 금지).
    - **시안 C 최신 3면 도면 디테일 고정**: 노움 도적은 머리핀 0개(X·별핀 금지), 나이트엘프 사제는 평범한 뽀얀 피부·연보라 반묶음·은빛 발광눈·보라 사제복·허리 미니 성서 & 황금 묵주·황금 십자/성광 지팡이(천사링·날개 0개), 스카이본 마법사는 뽀얀 피부·하늘색 하이 사이드포니·웃는 구름/날개 뱃지 파란 마법사 모자·구름 망토·허리 미니 변이 양 키링·파란 수정구 지팡이(세일러복 금지).
@@ -235,6 +242,11 @@ def build_v4_writer_prompt(
         f"- 본문:\n{post.body or '(본문 텍스트 없음 — 제목의 펀치라인을 5막 던전 상황극으로 풀어내세요)'}\n\n"
         f"- 주요 댓글 (메타 해설 금지! 웃긴 포인트만 캐릭터 대사·상황극 소재로 흡수):\n{comments_block}\n\n"
         f"[배경 리듬 지정] {bg_directive}\n\n"
+        f"[연기·대사 2-Pass 지시] ① Show, Don't Tell (그림 중계 절대 금지) + 각 화자의 고유 애교 시그니처 유지 + "
+        f"1~2줄 찰진 호흡(대사 컷 30~40% 이상은 5~15자 1줄 펀치컷, 3줄 벽텍스트 도배 금지, 출력 전 2-Pass 퇴고). "
+        f"② Visual Prompt Diet: 의상 200단어 복붙 대신 70% 이상을 극단 만화 표정·스쿼시앤스트레치 연기·대담한 카메라"
+        f"(익스트림 클로즈업, 어안 강제 원근/fisheye, 버즈아이 탑다운, 로우앵글, 30° 더치 틸트, OTS)에 집중하고 "
+        f"동일 화 내 표정·아이레벨 카메라 중복을 0건으로 유지하세요.\n\n"
         f"위 JSON 스키마(`EpisodeScript`)에 정확히 맞춰 출력하세요. "
         f"`layout_mode`는 \"v4_five_act\", `background_style`은 \"{background_style}\", "
         f"`episode_number`는 {episode_number}, "
@@ -279,9 +291,10 @@ _CAMERA_ANGLE_TAGS: tuple[tuple[str, str], ...] = (
     ("over_the_shoulder", r"\b(?:over[- ]the[- ]shoulder|foreground\s+shoulder|back\s+of\s+(?:her|the)\s+head|foreground\s+back)\b"),
     ("low_angle", r"\b(?:low[- ]angle|worm'?s[- ]eye|looking\s+up\s+at|looming\s+above)\b"),
     ("high_angle", r"\b(?:high[- ]angle|bird'?s[- ]eye|top[- ]down|looking\s+down\s+at)\b"),
-    ("dutch_tilt", r"\b(?:dutch\s*(?:tilt|angle)|tilted\s+(?:camera|angle|frame)|diagonal\s+(?:angle|camera|composition))\b"),
+    ("dutch_tilt", r"\b(?:dutch[- ]?(?:tilt|angle)|tilted\s+(?:camera|angle|frame)|diagonal\s+(?:angle|camera|composition))\b"),
+    ("fisheye_extreme_cu", r"\b(?:fisheye|forced[- ]perspective|extreme\s+(?:face\s+)?close[- ]up|ultra[- ]close[- ]up)\b"),
     ("side_profile", r"\b(?:side[- ]profile|profile\s+view|90[- ]degree|side\s+view|chasing\s+across)\b"),
-    ("back_view", r"\b(?:back\s+view|seen\s+from\s+behind|walking\s+away|turning\s+her\s+back|looking\s+back\s+over\s+her\s+shoulder)\b"),
+    ("back_view", r"\b(?:back[- ]view|seen\s+from\s+behind|walking\s+away|turning\s+her\s+back|looking\s+back\s+over\s+her\s+shoulder)\b"),
     ("action_motion", r"\b(?:dashing|sprinting|running\s+away|leaping|diving|lunging|crouching|sneaking|tiptoeing|sprawled|collapsed|faceplant|kneeling|clinging|hanging|tossing|slamming|swinging|flinging|charging|sliding|tumbling|falling|flying\s+back|ghost\s+floating|vortex)\b"),
 )
 
@@ -612,6 +625,29 @@ def audit_script_quality(
             "vary OTS/low-angle/high-angle/profile/back-view/slapstick action poses instead of static talking heads."
         )
 
+    # 8. Soft non-breaking dialogue pacing check (warns if V4 script is overloaded with dense 3-line walls)
+    dialogue_cuts = [c for c in cuts if not c.wordless and (c.dialogue or "").strip()]
+    bloated_3line_cuts: list[int] = []
+    short_1line_cuts: list[int] = []
+    for cut in dialogue_cuts:
+        dlg = (cut.dialogue or "").strip()
+        non_empty_lines = [ln.strip() for ln in dlg.splitlines() if ln.strip()]
+        char_len = len(dlg.replace("\n", "").strip())
+        if len(non_empty_lines) >= 3 and char_len > 32:
+            bloated_3line_cuts.append(cut.cut_index)
+        elif len(non_empty_lines) == 1 and char_len <= 18:
+            short_1line_cuts.append(cut.cut_index)
+
+    if is_v4 and len(dialogue_cuts) >= 4:
+        bloated_ratio = len(bloated_3line_cuts) / len(dialogue_cuts)
+        if bloated_ratio > 0.70:
+            warnings.append(
+                f"Dialogue pacing bloat in V4 script: {len(bloated_3line_cuts)}/{len(dialogue_cuts)} "
+                f"dialogue cuts ({bloated_ratio:.0%}) are dense 3-line walls (>32 chars, cuts "
+                f"{bloated_3line_cuts}). Prefer Show-Don't-Tell 1–2 line rhythm with >=30% punchy "
+                "1-line cuts (5–15 chars)."
+            )
+
     checks: dict[str, bool] = {
         "cut_count_ok": cut_count_ok,
         "wordless_cut_ok": wordless_cut_ok,
@@ -643,6 +679,11 @@ def audit_script_quality(
             "dynamic_cuts": dynamic_cuts,
             "camera_tags": sorted(detected_camera_tags),
             "flat_two_shot_cuts": flat_two_shot_cuts,
+        },
+        "dialogue_pacing": {
+            "dialogue_cut_count": len(dialogue_cuts),
+            "bloated_3line_cuts": bloated_3line_cuts,
+            "short_1line_cuts": short_1line_cuts,
         },
         "checks": checks,
     }
@@ -908,10 +949,10 @@ def build_dry_run_script(post: GalleryPost, episode_number: int) -> EpisodeScrip
             dialogue=None,
             wordless=True,
             visual_prompt=(
-                "Centered dramatic deadpan chest-up close-up freeze-frame of Skyborne Mage chibi "
-                "girl with pointed elf ears, golden-blonde-to-sky-blue hair, and sailor uniform, "
-                "tiny trembling shocked pupils, frozen speechless in comedic disbelief. Pure solid "
-                "white #FFFFFF background, no text, no speech bubbles."
+                "Centered extreme close-up freeze-frame of Skyborne Mage with star-pupils "
+                "extinguished into blank white shock eyes, jaw dropped wide open, and comical "
+                "mini-soul floating out of her mouth in speechless disbelief. Pure solid white "
+                "#FFFFFF background, no text, no speech bubbles."
             ),
             tail_target="center",
         ),
@@ -937,14 +978,15 @@ def build_dry_run_v4_script(
 
     Uses the 5 distinct layouts (`open_top_split_bottom`, `diagonal_tempo_2cut`,
     `split_top_wide_bottom`, `impact_freeze_2cut`, `wide_reaction_wide` -> 3+2+3+2+3 = 13 cuts),
-    updated 3-view turnaround descriptions, Clean Hand rules, and cinematic angle diversity.
+    per-character cute aegyo pacing (mix of snappy 1-line punch cuts & 2-line beats),
+    acting-first camera-varied visual prompts, and Clean Hand rules.
     """
     verbatim_title = post.title.strip()
     dialogue_hook = verbatim_title or f"개념글 #{post.post_no}"
     snippet = (
-        (post.body.strip().splitlines()[0][:24] + "...")
+        (post.body.strip().splitlines()[0][:14] + "…")
         if post.body.strip()
-        else dialogue_hook[:24]
+        else dialogue_hook[:14]
     )
 
     acts = [
@@ -961,19 +1003,17 @@ def build_dry_run_v4_script(
                     panel_index=1,
                     characters=["나이트엘프 사제", "오크 전사"],
                     speaker="나이트엘프 사제",
-                    dialogue=f"저기요...\n'{dialogue_hook[:16]}'\n진짜 이 파티 괜찮아요?",
+                    dialogue=f"어머, '{dialogue_hook[:14]}'?\n이 파티, 재밌겠네~♡",
                     wordless=False,
                     full_bleed_bg=True,
                     visual_prompt=(
-                        "Tier 1 establishing full-bleed dungeon entrance shot in crisp 2.5-head chibi style: "
-                        "100% edge-to-edge gothic stone Scarlet Monastery archway, flickering wall sconces, "
-                        "bannered courtyard, and uncluttered upper dusk sky for the speech bubble; "
-                        "over-the-shoulder foreground back shoulder of Orc Warrior chibi girl in vibrant green "
-                        "orc plush hood and red warrior cape with steel shield and 1H sword ready; background "
-                        "fair-skinned Night Elf Priest chibi girl with lavender half-up ponytail, golden Elune "
-                        "crescent forehead tiara, luminous glowing silver eyes, purple-and-gold Priestess "
-                        "vestments, waist mini Holy Prayer Book and golden Rosary (Holy Cross staff strapped "
-                        "across back) clasping her hands nervously. No text, no speech bubbles."
+                        "Tier 1 establishing full-bleed dungeon entrance shot: 100% edge-to-edge "
+                        "gothic Scarlet Monastery stone archway, fluttering crimson banners, and "
+                        "uncluttered upper dusk sky for speech bubble; over-the-shoulder foreground "
+                        "back shoulder of Orc Warrior tank with sturdy steel kite shield and 1H sword "
+                        "ready; background Night Elf Priest leaning forward gracefully with a sly "
+                        "closed-eye smile and sparkling mischief, Holy Cross staff strapped on back. "
+                        "No text, no speech bubbles."
                     ),
                     tail_target="left",
                 ),
@@ -985,13 +1025,14 @@ def build_dry_run_v4_script(
                     panel_index=2,
                     characters=["오크 전사"],
                     speaker="오크 전사",
-                    dialogue="걱정 마!\n전탱 방패 단단하니까\n믿고 따라와!",
+                    dialogue="나만 믿으라구~!",
                     wordless=False,
                     visual_prompt=(
-                        "Low-angle heroic comedic shot looking up at fair-skinned Orc Warrior chibi girl "
-                        "in vibrant green orc plush hood puffing her chest out proudly while holding a "
-                        "sturdy steel kite shield and compact 1H sword for tanking. Pure solid white #FFFFFF "
-                        "background, generous top pure-white headroom, no text, no speech bubbles."
+                        "Dramatic low-angle heroic brag looking up at Orc Warrior puffing her chest "
+                        "out with boisterous open-mouth fang belly-laugh and starry-eyed sparkle "
+                        "bursts, raising her sturdy steel kite shield and compact 1H sword for "
+                        "tanking. Pure solid white #FFFFFF background, generous top pure-white "
+                        "headroom, no text, no speech bubbles."
                     ),
                     tail_target="center",
                 ),
@@ -1003,13 +1044,14 @@ def build_dry_run_v4_script(
                     panel_index=3,
                     characters=["노움 도적"],
                     speaker="노움 도적",
-                    dialogue="헤헤, 탱님만\n믿고 빡딜\n준비 완료요!",
+                    dialogue="에헤헷, 나 먼저 째야지~",
                     wordless=False,
                     visual_prompt=(
-                        "Side-profile crouching pose of petite Gnome Rogue chibi girl with blonde-pink-blue "
-                        "twin pigtails (zero hairpins), forehead green steampunk goggles, and sly fang grin "
-                        "peeking mischievously from behind a wooden dungeon crate with daggers sheathed at belt. "
-                        "Pure solid white #FFFFFF background, generous top pure-white headroom, no text, no speech bubbles."
+                        "Side-profile sneaky crouch peeking from behind a wooden dungeon crate: "
+                        "Gnome Rogue nudging her green goggles up with a teasing fang smirk and "
+                        "cheeky tongue-out blep (:P), daggers sheathed neatly at lower back belt. "
+                        "Pure solid white #FFFFFF background, generous top pure-white headroom, "
+                        "no text, no speech bubbles."
                     ),
                     tail_target="center",
                 ),
@@ -1028,14 +1070,15 @@ def build_dry_run_v4_script(
                     panel_index=1,
                     characters=["오크 전사", "노움 도적"],
                     speaker="노움 도적",
-                    dialogue=f"어어 잠깐!\n{snippet}\n저 칼소멸 먼저 쓸게요!",
+                    dialogue=f"으악! {snippet}\n칼소멸 탈게~ 메롱!",
                     wordless=False,
                     visual_prompt=(
-                        "High-angle chaotic action shot: Orc Warrior chibi girl tanking with sturdy steel "
-                        "kite shield and 1H sword bracing against comedic cartoon dungeon mob silhouettes "
-                        "while Gnome Rogue chibi girl (zero hairpins, green goggles) sprints away sideways "
-                        "in a swirling cartoon Vanish smoke puff. Pure solid white #FFFFFF background, "
-                        "no text, no speech bubbles."
+                        "30-degree Dutch-tilt slapstick dungeon chaos on natural full-width stone "
+                        "floor tiles: Orc Warrior tank (sturdy steel kite shield and 1H sword) "
+                        "skidding backward in jaw-dropped panic against rushing cartoon mob "
+                        "silhouettes while Gnome Rogue rockets sideways in a swirling Vanish smoke "
+                        "puff pulling a cheeky eyelid-down blep (:P). Pure solid white #FFFFFF "
+                        "background, no text, no speech bubbles."
                     ),
                     tail_target="right",
                 ),
@@ -1047,15 +1090,15 @@ def build_dry_run_v4_script(
                     panel_index=2,
                     characters=["스카이본 마법사", "나이트엘프 사제"],
                     speaker="스카이본 마법사",
-                    dialogue="잠깐만요, 보스 잡히기도 전에\n주사위 창부터 열리는데요?!",
+                    dialogue="잠깐, 방금 지능 지팡이에\n입찰 눌렀어…?",
                     wordless=False,
                     visual_prompt=(
-                        "Dutch-tilt dynamic reaction shot: Left, fair-skinned Skyborne Mage chibi girl with "
-                        "sky-blue high side-ponytail, pointed elf ears, oversized tilted royal-blue wizard hat "
-                        "with tiny smiling cloud-wing feather badge, cloud-trimmed blue capelet, waist Polymorph "
-                        "Sheep keychain charm, and sky-blue crystal staff strapped on back pointing wide-eyed; "
-                        "Right, fair-skinned Night Elf Priest in purple vestments clutching her brow in disbelief. "
-                        "Pure solid white #FFFFFF background, no text, no speech bubbles."
+                        "Fisheye forced-perspective reaction shot: Left, Skyborne Mage lunging "
+                        "dramatically toward camera pointing one accusing finger with star-pupils "
+                        "switched abruptly OFF into a cold deadpan glare (crystal staff on back); "
+                        "Right, Night Elf Priest behind her covering a polite giggle behind her "
+                        "hand with eerie glowing silver side-eye. Pure solid white #FFFFFF "
+                        "background, no text, no speech bubbles."
                     ),
                     tail_target="left",
                 ),
@@ -1074,14 +1117,15 @@ def build_dry_run_v4_script(
                     panel_index=1,
                     characters=["나이트엘프 사제"],
                     speaker="나이트엘프 사제",
-                    dialogue="힐러 마나 0%인데\n지금 입찰부터\n누르시는 거예요?!",
+                    dialogue="어머, 힐 없어요~♡",
                     wordless=False,
                     visual_prompt=(
-                        "Dramatic tilted close-up of fair-skinned Night Elf Priest chibi girl with lavender "
-                        "half-up hair, golden Elune crescent forehead tiara, glowing silver eyes, purple Priestess "
-                        "capelet, waist mini Holy Prayer Book and golden Rosary (Holy Cross staff stowed on back) "
-                        "gesturing frantically with exasperated healer glare. Pure solid white #FFFFFF background, "
-                        "generous top pure-white headroom, no text, no speech bubbles."
+                        "Extreme face close-up of Night Elf Priest: dark purple gloom shadow "
+                        "draping heavily over her forehead, glowing silver eyes shrunk to chilling "
+                        "pinpoint psychotic pupils with a wide sweetly-evil grin and faint dark "
+                        "villain sparkles (Holy Cross staff stowed on back). Pure solid white "
+                        "#FFFFFF background, generous top pure-white headroom, no text, no speech "
+                        "bubbles."
                     ),
                     tail_target="center",
                 ),
@@ -1093,12 +1137,13 @@ def build_dry_run_v4_script(
                     panel_index=2,
                     characters=["오크 전사"],
                     speaker="오크 전사",
-                    dialogue="이중특성으로\n언젠가 쓸 수도\n있지 않을까?!",
+                    dialogue="으앙 힐러님 살려줘어~!",
                     wordless=False,
                     visual_prompt=(
-                        "Cheeky low-angle waist-up shot of fair-skinned Orc Warrior chibi girl in green orc "
-                        "hood giving an overly innocent grin while cradling her sturdy steel kite shield and "
-                        "1H sword with cartoon sweat drops. Pure solid white #FFFFFF background, generous top "
+                        "Low-angle squash-and-stretch panic breakdown: Orc Warrior dropping to her "
+                        "knees clinging forward with HP-1% twin waterfall tears, snot bubble, and "
+                        "huge jaw-dropped wail while hugging her sturdy steel kite shield and 1H "
+                        "sword desperately. Pure solid white #FFFFFF background, generous top "
                         "pure-white headroom, no text, no speech bubbles."
                     ),
                     tail_target="center",
@@ -1111,13 +1156,14 @@ def build_dry_run_v4_script(
                     panel_index=3,
                     characters=["노움 도적", "스카이본 마법사"],
                     speaker="노움 도적",
-                    dialogue="어차피 주사위는 공정하잖아요!\n먼저 굴리는 사람이 임자지!",
+                    dialogue="흥~ 주사위는 공정하지!\n먼저 굴리는 사람이 임자~",
                     wordless=False,
                     visual_prompt=(
-                        "Over-the-shoulder reveal shot past Skyborne Mage's cloud-trimmed blue capelet toward "
-                        "Gnome Rogue chibi girl (zero hairpins, daggers sheathed at belt) leaning over an open "
-                        "wooden dungeon loot chest tossing a chunky 6-sided white-and-gold loot die showing ONLY "
-                        "round black dot pips (strictly zero digits, zero letters). Pure solid white #FFFFFF "
+                        "Over-the-shoulder reveal shot past Skyborne Mage's stiff trembling "
+                        "shoulder toward Gnome Rogue leaping onto an open wooden loot chest, "
+                        "cackling wildly with a smug gremlin grin while tossing a chunky 6-sided "
+                        "white-and-gold loot die showing ONLY round black dot pips (strictly zero "
+                        "digits, zero letters; daggers sheathed at belt). Pure solid white #FFFFFF "
                         "background, no text, no speech bubbles."
                     ),
                     tail_target="left",
@@ -1137,13 +1183,14 @@ def build_dry_run_v4_script(
                     panel_index=1,
                     characters=["노움 도적", "오크 전사"],
                     speaker="노움 도적",
-                    dialogue="와 대박! 올입찰 100 떴다!\n수고하셨습니다, 귀환석 탈게요!",
+                    dialogue="올입찰 100 떴다!\n귀환석 먼저 탈게~ 메롱!",
                     wordless=False,
                     visual_prompt=(
-                        "Dynamic Dutch-tilt slapstick leap: Gnome Rogue chibi girl (zero hairpins, green goggles, "
-                        "daggers sheathed) leaping gleefully holding a glowing cyan spiral-rune Hearthstone while "
-                        "Orc Warrior tank (steel shield and 1H sword) lunges sideways in total panic with flying "
-                        "dust puffs. Pure solid white #FFFFFF background, no text, no speech bubbles."
+                        "Dynamic Dutch-tilt mid-air slapstick leap: Gnome Rogue soaring gleefully "
+                        "brandishing a glowing cyan spiral-rune Hearthstone (daggers sheathed) "
+                        "while Orc Warrior tank (sturdy steel kite shield and 1H sword) dives "
+                        "horizontal face-first in flying dust puffs trying to grab her boot. "
+                        "Pure solid white #FFFFFF background, no text, no speech bubbles."
                     ),
                     tail_target="right",
                 ),
@@ -1158,12 +1205,11 @@ def build_dry_run_v4_script(
                     dialogue=None,
                     wordless=True,
                     visual_prompt=(
-                        "Massive centered dramatic chest-up close-up freeze-frame of fair-skinned Skyborne Mage "
-                        "chibi girl with sky-blue high side-ponytail, perky pointed elf ears, oversized tilted "
-                        "royal-blue wizard hat with tiny smiling cloud-wing feather badge, cloud-trimmed blue "
-                        "capelet, and waist Polymorph Sheep keychain charm; tiny trembling shocked pinpoint "
-                        "pupils, jaw dropped wide open, comedic cartoon ghost soul floating out of her mouth "
-                        "in pure disbelief. Pure solid white #FFFFFF background, no text, no speech bubbles."
+                        "Massive centered extreme close-up comedic freeze-frame of Skyborne Mage: "
+                        "star-pupils completely extinguished into hollow blank white shock eyes, "
+                        "jaw dropped wide to her chest, comical translucent mini-soul drifting "
+                        "lazily out of her mouth amid jagged manga shock lines (crystal staff on "
+                        "back). Pure solid white #FFFFFF background, no text, no speech bubbles."
                     ),
                     tail_target="center",
                 ),
@@ -1182,14 +1228,14 @@ def build_dry_run_v4_script(
                     panel_index=1,
                     characters=["나이트엘프 사제"],
                     speaker="나이트엘프 사제",
-                    dialogue="마나 물약도 다 마셨는데...\n영혼의 치유사 면담 각이네요.",
+                    dialogue="영혼의 치유사 면담 각~♡",
                     wordless=False,
                     visual_prompt=(
-                        "High-angle comedic despair shot looking down at fair-skinned Night Elf Priest chibi "
-                        "girl in purple vestments (golden Elune crescent tiara, waist mini Holy Prayer Book & "
-                        "golden Rosary, Holy Cross staff resting beside her) kneeling slumped on the white floor "
-                        "beside an empty fantasy corked glass mana flask. Pure solid white #FFFFFF background, "
-                        "no text, no speech bubbles."
+                        "Dizzying bird's-eye top-down shot looking straight down at Night Elf "
+                        "Priest kneeling dramatically beside an empty fantasy corked glass mana "
+                        "flask, wearing a serene angelic closed-eye smile contrasted with a funny "
+                        "faint dark-violet chibi villain aura (Holy Cross staff resting beside "
+                        "her). Pure solid white #FFFFFF background, no text, no speech bubbles."
                     ),
                     tail_target="left",
                 ),
@@ -1201,13 +1247,14 @@ def build_dry_run_v4_script(
                     panel_index=2,
                     characters=["노움 도적"],
                     speaker="노움 도적",
-                    dialogue="다음 파티도 화이팅!\n저는 먼저 여관으로 갑니다!",
+                    dialogue="에헤헷, 여관 갈게~ 바이!",
                     wordless=False,
                     visual_prompt=(
-                        "Back-view action shot of petite Gnome Rogue chibi girl (zero hairpins, daggers sheathed "
-                        "at belt) seen from behind sprinting into a bright swirling cyan Hearthstone teleport "
-                        "vortex while looking back over her shoulder waving cheekily. Pure solid white #FFFFFF "
-                        "background, no text, no speech bubbles."
+                        "Back-view sprint action shot of Gnome Rogue diving into a bright swirling "
+                        "cyan Hearthstone teleport vortex while glancing back over her shoulder "
+                        "flashing a shameless cheeky wink and peace sign (daggers sheathed at "
+                        "lower back belt). Pure solid white #FFFFFF background, no text, no speech "
+                        "bubbles."
                     ),
                     tail_target="right",
                 ),
@@ -1219,14 +1266,15 @@ def build_dry_run_v4_script(
                     panel_index=3,
                     characters=["오크 전사", "스카이본 마법사"],
                     speaker="오크 전사",
-                    dialogue="다음엔 파티찾기 포에버에서\n주사위 룰부터 정하고 가자...",
+                    dialogue="다음엔 파티찾기 포에버에서\n주사위 룰부터 정하자…",
                     wordless=False,
                     visual_prompt=(
-                        "Side-profile exhausted aftermath shot: Orc Warrior chibi girl (green orc hood, resting "
-                        "her sturdy steel shield and 1H sword) and Skyborne Mage chibi girl (sky-blue high "
-                        "side-ponytail, tilted royal-blue wizard hat with cloud-wing badge, waist Polymorph Sheep "
-                        "keychain charm, crystal staff on back) slumping side-by-side staring blankly into space "
-                        "with cartoon sweat drops. Pure solid white #FFFFFF background, no text, no speech bubbles."
+                        "Side-profile exhausted aftermath on full-width dungeon stone floor: "
+                        "Orc Warrior slumped deflated against her sturdy steel kite shield and 1H "
+                        "sword with limp sweatdrops beside Skyborne Mage puffed up crimson-faced "
+                        "steaming with comic anger puffs erupting from her wizard hat (crystal "
+                        "staff on back). Pure solid white #FFFFFF background, no text, no speech "
+                        "bubbles."
                     ),
                     tail_target="left",
                 ),

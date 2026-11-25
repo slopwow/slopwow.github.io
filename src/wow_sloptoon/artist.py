@@ -1,8 +1,10 @@
 """Comic cut illustrator powered by Google GenAI Interactions API (`gemini-nano-banana-2.1`).
 
-Generates pure `#FFFFFF` borderless Draft C cute pop-gag chibi cuts using the official
-Draft C cast sheet, the sloptoon layout/linework reference image, Clean Hand anchors,
-consistent medium chibi framing, and WoW Forever visual anti-hallucination guardrails.
+Generates Draft C cute pop-gag chibi cuts and V4 5-act 2K multi-panel pages using the official
+Draft C cast sheet, the sloptoon style reference, exact layout blueprints, and per-character
+3-view turnaround blueprints (ZERO fixed expression sheets) with strict Identity-vs-Acting
+decoupling, unleashed expressive acting, bold cinematic cameras, 3-Tier Smart Backgrounds,
+and WoW Forever visual anti-hallucination guardrails.
 """
 
 from __future__ import annotations
@@ -68,71 +70,81 @@ def build_cut_image_prompt(
     turnaround_ref_note = ""
     if attached_turnarounds:
         ref_lines = [
-            f"- Reference Image {idx}: 3-View Front/Side/Back Turnaround Blueprint for {label} "
-            "(lock 100% onto this character's exact front/side/back silhouette, headgear, hair, "
-            "outfit, waist charms, boots, thin variable-width ink linework, and 2-tier cel shading!)"
+            f"- Reference Image {idx}: 3-View Front/Side/Back Turnaround Blueprint for {label} — "
+            "IDENTITY & COSTUME LOCK ONLY (match ONLY hair, headgear, outfit, waist charms, boots, "
+            "eye color, Clean Hand weapon stowing, thin variable-width ink linework, and 2-tier cel "
+            "shading; STRICTLY IGNORE the sheet's calm neutral standing pose and generic polite smile/wink!)"
             for idx, label in enumerate(attached_turnarounds, start=3)
         ]
         turnaround_ref_note = "\nATTACHED CHARACTER 3-VIEW TURNAROUND BLUEPRINTS:\n" + "\n".join(ref_lines) + "\n"
 
     if cut.wordless:
         framing_note = (
-            "COMPOSITION & SCALE: Expressive solo comedic close-up or dramatic gag freeze-frame "
-            "(silent panel; character fills ~72-86% of canvas height). Break stiff symmetry — use "
-            "dynamic tilt, leaning-in shock, jaw-drop, soul-leaving-body, or crumpled despair matching "
-            "the exact beat. No room needed for speech bubbles."
+            "COMPOSITION & CAMERA: Expressive solo comedic close-up or dramatic gag freeze-frame "
+            "(silent panel; character fills ~72-88% of canvas height). Actively honor extreme cameras "
+            "requested in Scene Action (extreme face close-up, fisheye forced-perspective lunging "
+            "toward camera, dizzying bird's-eye top-down, low-angle loom, 30° Dutch tilt) — break stiff "
+            "symmetry with jaw-drop, soul-leaving-body, pinpoint pupils, or crumpled despair. "
+            "No room needed for speech bubbles."
         )
     elif cut.layout_slot == "top":
         framing_note = (
-            "COMPOSITION & SCALE: Open top-slot 4:3 comic panel inspired by Reference Image 2's dynamic "
-            "webtoon energy! Use lively depth (over-the-shoulder foreground/background, 3/4 diagonal angle, "
-            "low/high angle, side-profile action, or physical slapstick motion — NEVER stiff flat "
-            "front-facing side-by-side standing talk-show poses!). Frame the character(s) at a consistent "
-            "medium 2.5-to-3-head waist-up or knee-up chibi scale (filling ~55-68% of canvas height) "
-            "in the lower two-thirds of the canvas, leaving generous pure white (#FFFFFF) headroom at "
-            "the top 30-35% for external speech-bubble placement. NEVER shrink characters into tiny "
-            f"distant full-body micro-chibis. Primary speaker position cue: {cut.tail_target}."
+            "COMPOSITION & CAMERA: Open top-slot 4:3 comic panel inspired by Reference Image 2's dynamic "
+            "webtoon energy! Actively honor bold cameras in Scene Action (extreme face close-up, fisheye "
+            "forced-perspective lunging toward camera, dizzying bird's-eye top-down, low-angle loom, "
+            "30° Dutch tilt, over-the-shoulder, or physical slapstick — NEVER stiff flat front-facing "
+            "standing talk-show dolls!). Keep ONLY the top 30-35% pure solid white (#FFFFFF) headroom "
+            "uncluttered for external speech-bubble placement while letting the character(s) fill the "
+            "lower two-thirds boldly at expressive 2.5-to-3-head chibi scale (do NOT shrink dramatic "
+            "close-ups or tilted action into tiny distant full-body micro-chibis!). "
+            f"Primary speaker position cue: {cut.tail_target}."
         )
     elif len(cut.characters) >= 2:
         framing_note = (
-            "COMPOSITION & SCALE: Wide bottom-slot 16:9 two-character reaction or action panel. "
-            "Use cinematic depth and varied angles (over-the-shoulder, diagonal chase, crouching/sprawling "
-            "slapstick, back-view walk-away, or contrasting low/high posture — NEVER flat identical "
-            "front-facing standing mannequins!). Frame BOTH characters prominently at a consistent "
-            "medium 2.5-to-3-head waist-up/knee-up chibi scale (filling ~55-68% of canvas height, "
-            "matching the 4:3 panel character size — NEVER zoom out into tiny distant full-body "
-            "micro-chibis!). Arrange them dynamically in the lower two-thirds or speaker-side half with "
-            "generous pure white (#FFFFFF) space near the upper/opposite side for external speech-bubble "
-            f"placement. Primary speaker position cue: {cut.tail_target}."
+            "COMPOSITION & CAMERA: Wide bottom-slot 16:9 two-character reaction or action panel. "
+            "Actively honor bold cameras in Scene Action (over-the-shoulder, fisheye forced perspective, "
+            "diagonal chase, 30° Dutch tilt, low-angle loom, crouching/sprawling slapstick, or back-view "
+            "— NEVER flat identical front-facing standing mannequins!). Frame BOTH characters boldly at "
+            "expressive 2.5-to-3-head chibi scale (NEVER zoom out into tiny distant full-body "
+            "micro-chibis!) in the lower two-thirds or speaker-side half while keeping ONLY the upper "
+            "or opposite-side pure solid white (#FFFFFF) bubble headroom uncluttered. "
+            f"Primary speaker position cue: {cut.tail_target}."
         )
     else:
         framing_note = (
-            "COMPOSITION & SCALE: Wide bottom-slot 16:9 solo action or expressive reaction panel. "
-            "Give the character vivid kinetic posture (leaning, dashing, crouching, peeking, turning "
-            "over shoulder, collapsing, or dramatic comedic gesture — NEVER a static front passport pose!). "
-            "Frame prominently at a consistent medium 2.5-to-3-head waist-up/knee-up chibi scale "
-            "(filling ~58-70% of canvas height, matching the 4:3 panel character size) positioned cleanly "
-            "toward the speaker side with generous pure white (#FFFFFF) space near the upper/opposite "
-            f"side for external speech-bubble placement. Primary speaker position cue: {cut.tail_target}."
+            "COMPOSITION & CAMERA: Wide bottom-slot 16:9 solo action or expressive reaction panel. "
+            "Actively honor bold cameras in Scene Action (extreme face close-up, fisheye lunge toward "
+            "camera, low-angle loom, 30° Dutch tilt, bird's-eye top-down, leaning, dashing, crouching, "
+            "sprawling — NEVER a static front passport pose!). Frame boldly at expressive 2.5-to-3-head "
+            "chibi scale (do NOT shrink dramatic close-ups into tiny stiff full-body micro-chibis!) "
+            "positioned cleanly toward the speaker side while keeping ONLY the upper or opposite-side "
+            "pure solid white (#FFFFFF) bubble headroom uncluttered. "
+            f"Primary speaker position cue: {cut.tail_target}."
         )
 
     return (
         "Draw a single lively, cinematic Korean pop-gag 2.5-to-2.8 head anime chibi comic cut "
-        "in the exact razor-sharp thin variable-width ink linework, crisp 2-tier cel shading, "
-        "sparkling jewel eyes, and character design of Reference Image 1 (Draft C 9-Cast Master "
-        "Sheet) and any attached individual 3-view character turnaround blueprints (Reference "
-        "Images 3+), combined with the dynamic over-the-shoulder webtoon posing, expressive "
-        "acting, and crisp white-canvas energy of Reference Image 2 (Sloptoon Style Reference).\n"
+        "with STRICT IDENTITY vs UNLEASHED ACTING DECOUPLING: match ONLY character design identity "
+        "(hair, headgear, outfit, waist charms, boots, eye color, Clean Hand weapon stowing, thin "
+        "variable-width ink linework, and crisp 2-tier cel shading) from Reference Image 1 (Draft C "
+        "9-Cast Master Sheet) and any attached individual 3-view character turnaround blueprints "
+        "(Reference Images 3+), while unleashing the bold webtoon camera energy, wild manga gag "
+        "acting, and crisp white-canvas punch of Reference Image 2 (Sloptoon Style Reference).\n"
         f"{turnaround_ref_note}\n"
         f"{anchors}\n\n"
-        f"SCENE ACTION (Cut #{cut.cut_index}):\n{cut.visual_prompt.strip()}\n\n"
+        f"SCENE ACTION, EXPRESSION & CAMERA (Cut #{cut.cut_index}):\n{cut.visual_prompt.strip()}\n\n"
         f"{lore_hints}\n\n"
         f"{framing_note}\n\n"
         "CINEMATIC ACTING, FAITHFUL SCENE RECREATION & EXTRAS:\n"
-        "- NEVER copy Reference Image 1's static front-facing standing pose or default neutral face! "
-        "Give every character distinct torso twist, head tilt, hand/limb momentum, and bold manga gag "
-        "expressions (smug sneer, jaw-drop, spiral eyes, soul escaping mouth, side-eye glare, dramatic "
-        "tears, sinister grin, exasperated slouch, etc.).\n"
+        "- STRICT IDENTITY vs UNLEASHED ACTING DECOUPLING (BREAK THE PRETTY-FACE SAFETY ZONE!): "
+        "Reference images lock IDENTITY ONLY (costume/hair/headgear/eye color/linework) — NEVER copy "
+        "Reference Image 1's or the turnaround sheet's calm neutral standing pose or generic polite "
+        "smile/wink! Push wild, infinitely varied, scene-specific anime gag acting: dramatic eye-size "
+        "shifts (pinpoint psychotic pupils, huge sparkling jewel eyes, empty white shock eyes, spiral "
+        "dizzy eyes, crying waterfalls, unimpressed deadpan half-lids), extreme mouths (jaw-dropped "
+        "screaming, smug cat `:3`, mischievous gremlin grin, shaky panic squiggle), forehead gloom "
+        "shadows, comedic squash-and-stretch body distortion, dynamic leaning/lunging/crouching/"
+        "sprawling/mid-air motion, and expressive hand acting!\n"
         "- FAITHFUL IN-GAME RECREATION (EXTRAS, CROWDS, CORPSES & MOBS WELCOME): Do NOT restrict a "
         "scene to only 1–2 starring characters talking in a void! Whenever the scene action calls for "
         "extra players, crowds, comedic cartoon skeletons/knocked-out lowbie corpses piled on the "
@@ -157,8 +169,9 @@ def build_cut_image_prompt(
         "RULE — sheath/stow on back or waist, or omit a character's default weapon/prop whenever "
         "holding scene-specific loot, a tank shield, a loot die, a hearthstone, a potion flask, "
         "or gesturing (NEVER draw 3+ weapons/props in one character's hands).\n"
-        "- CONSISTENT MEDIUM CHIBI SCALE: Maintain consistent 2.5-to-3-head waist-up/knee-up chibi "
-        "proportions across both 4:3 and 16:9 cuts (never shrink characters to tiny micro-chibis)."
+        "- CONSISTENT EXPRESSIVE CHIBI SCALE: Maintain 2.5-to-3-head chibi proportions across both "
+        "4:3 and 16:9 cuts — honor bold close-ups and tilted angles freely, and NEVER shrink "
+        "characters into tiny stiff distant micro-chibis."
     )
 
 
@@ -395,13 +408,15 @@ def build_page_batch_prompt(
     turnaround_ref_note = ""
     if attached_turnarounds:
         ref_lines = [
-            f"- Reference Image {idx}: 3-View Front/Side/Back Turnaround Blueprint for {label} "
-            "(lock 100% onto exact front/side/back silhouette, headgear, hair, outfit, waist charms, "
-            "boots, thin variable-width ink linework, and 2-tier cel shading)"
+            f"- Reference Image {idx}: 3-View Front/Side/Back Turnaround Blueprint for {label} — "
+            "IDENTITY & COSTUME LOCK ONLY (match ONLY hair, headgear, outfit, waist charms, boots, "
+            "eye color, Clean Hand weapon stowing, thin variable-width ink linework, and 2-tier cel "
+            "shading; STRICTLY IGNORE the turnaround's calm neutral standing pose and generic polite "
+            "smile/wink — unleash wild scene-specific acting & distortion!)"
             for idx, label in enumerate(attached_turnarounds, start=4)
         ]
         turnaround_ref_note = (
-            "\nATTACHED CHARACTER 3-VIEW TURNAROUND BLUEPRINTS:\n"
+            "\nATTACHED CHARACTER 3-VIEW TURNAROUND BLUEPRINTS (IDENTITY LOCK ONLY — ZERO POSE/EXPRESSION LOCK):\n"
             + "\n".join(ref_lines)
             + "\n"
         )
@@ -414,34 +429,38 @@ def build_page_batch_prompt(
                 headroom_rule = (
                     "TIER 1 WORDLESS FULL-BLEED BOX (NO SPEECH BUBBLE): Fill 100% edge-to-edge inside "
                     "all 4 dark `#141414` black border lines with rich cohesive WoW zone/dungeon scenery "
-                    "& dramatic atmosphere (STRICTLY ZERO white gaps or vignettes!). Draw a massive "
-                    "hyper-expressive close-up/freeze-frame (character fills ~72-86% height). Keep ZERO "
-                    "TEXT, ZERO speech bubbles, and 100% pure solid `#FFFFFF` outer page margins & gutters."
+                    "& dramatic atmosphere (STRICTLY ZERO white gaps or vignettes!). Unleash MAXIMUM "
+                    "camera drama (~72-88% panel height; honor extreme face close-ups, fisheye lunges, "
+                    "bird's-eye views, or 30° Dutch tilts — ZERO doll-shrinking!). Keep ZERO TEXT, ZERO "
+                    "speech bubbles, and 100% pure solid `#FFFFFF` outer page margins & gutters."
                 )
             elif slot.is_narrow:
                 headroom_rule = (
                     f"TIER 1 NARROW FULL-BLEED BOX ({slot.width}x{slot.height}px): Fill 100% edge-to-edge "
                     "inside all 4 dark `#141414` black border lines with vivid WoW zone landmarks & atmosphere "
-                    "(ZERO white gaps or vignettes!). Place character(s) in the LOWER 62-66% and keep the "
-                    "UPPER 34-38% filled with UNOBSTRUCTED open sky/ceiling scenery (ZERO faces/heads in the "
-                    f"bubble zone). Speaker cue: {cut.tail_target}."
+                    "(ZERO white gaps or vignettes!). Keep ONLY the UPPER 34-38% as UNOBSTRUCTED open "
+                    "sky/ceiling scenery (ZERO faces/heads in the bubble zone) while filling the active "
+                    "LOWER 62-66% boldly with the exact camera & acting requested in Scene Action (NEVER "
+                    "shrink dramatic close-ups or tilted angles into tiny stiff full-body dolls!). "
+                    f"Speaker cue: {cut.tail_target}."
                 )
             elif slot.height < 540:
                 headroom_rule = (
                     f"TIER 1 WIDE SLIM FULL-BLEED BOX ({slot.width}x{slot.height}px): Fill 100% edge-to-edge "
                     "inside all 4 dark `#141414` black border lines with vivid WoW zone landmarks & atmosphere "
-                    "(ZERO white gaps or vignettes!). Place character(s) in the lower 62-66% or speaker side, "
-                    "leaving the OPPOSITE 44% SIDE or UPPER 34% as UNOBSTRUCTED open sky/ceiling scenery "
-                    f"(ZERO faces/heads in the bubble zone). Speaker cue: {cut.tail_target}."
+                    "(ZERO white gaps or vignettes!). Keep ONLY the OPPOSITE 44% SIDE or UPPER 34% as "
+                    "UNOBSTRUCTED open sky/ceiling scenery (ZERO faces/heads in the bubble zone) while "
+                    "filling the active zone boldly with the exact camera & acting requested in Scene Action "
+                    f"(NEVER flatten dramatic shots into stiff eye-level standing dolls!). Speaker cue: {cut.tail_target}."
                 )
             else:
                 headroom_rule = (
                     f"TIER 1 ESTABLISHING FULL-BLEED BOX ({slot.width}x{slot.height}px): Fill 100% edge-to-edge "
                     "inside all 4 dark `#141414` black border lines with rich, iconic WoW zone/dungeon scenery, "
-                    "landmarks & atmospheric sky (ZERO white gaps or vignettes!). Place character(s) in the "
-                    "LOWER 62-66% (or speaker side) and keep the UPPER 30-35% as UNOBSTRUCTED open sky/ceiling "
-                    f"scenery (ZERO faces/heads in the bubble zone) for crisp speech-bubble readability. "
-                    f"Speaker cue: {cut.tail_target}."
+                    "landmarks & atmospheric sky (ZERO white gaps or vignettes!). Keep ONLY the UPPER 30-35% "
+                    "as UNOBSTRUCTED open sky/ceiling scenery (ZERO faces/heads in the bubble zone) while "
+                    "staging dynamic leaning/gesturing characters & exact Scene Action camera boldly in the "
+                    f"active zone (ZERO stiff mannequin standing poses!). Speaker cue: {cut.tail_target}."
                 )
 
             border_note = (
@@ -452,33 +471,44 @@ def build_page_batch_prompt(
             if cut.wordless:
                 headroom_rule = (
                     "TIER 2/3 WORDLESS CLIMAX — NATURAL GROUND + 100% PURE SOLID `#FFFFFF` WHITE SKY "
-                    "(NO SPEECH BUBBLE): Massive hyper-expressive close-up/freeze-frame (character fills "
-                    "~72-86% height). Tier 2 (scenic/grounded action): anchor full-width ground, road, cliff, "
-                    "floor, deck, lower props, mobs, or mounts NATURALLY flush across the bottom & frame edges "
-                    "while keeping the ENTIRE upper sky 100% pure solid `#FFFFFF` white (ZERO floating miniature "
-                    "toy islands, ZERO beveled floating slabs, ZERO painted sky walls, ZERO blurry vignettes!). "
-                    "Tier 3 (character-only shock): draw ONLY the character + minimal manga FX on 100% pure "
+                    "(NO SPEECH BUBBLE): Unleash MAXIMUM full-panel cinematic scale & acting (~72-88% "
+                    "panel height — honor extreme face close-up, Munch-scream horror, dizzying bird's-eye "
+                    "drop, fisheye lunge, or 30° Dutch tilt with ZERO doll-shrinking!). Tier 2 (scenic/"
+                    "grounded action): anchor full-width ground, road, cliff, floor, deck, lower props, "
+                    "mobs, or mounts NATURALLY flush across the bottom & frame edges while keeping the "
+                    "ENTIRE upper sky 100% pure solid `#FFFFFF` white (ZERO floating miniature toy islands, "
+                    "ZERO beveled floating slabs, ZERO painted sky walls, ZERO blurry vignettes!). Tier 3 "
+                    "(character-only shock): draw ONLY the character + minimal manga FX on 100% pure "
                     "`#FFFFFF`. ZERO text, ZERO bubbles."
                 )
             elif slot.is_narrow:
                 headroom_rule = (
-                    f"TIER 2/3 NARROW PANEL ({slot.width}x{slot.height}px — LOWER 60-64% ART, TOP 36-40% "
-                    "100% PURE SOLID `#FFFFFF` WHITE SKY HEADROOM): Tier 2 (Grounded Scene — when Scene Action "
-                    "specifies terrain/road/cliff/floor/deck/props/mobs/mounts) -> draw full-width natural "
-                    "ground & lower props flush to bottom & side borders with 100% pure `#FFFFFF` upper sky "
-                    "(ZERO floating miniature toy islands, ZERO painted sky/walls, ZERO blurry vignettes!). "
-                    "Tier 3 (Character-Only Close-Up / Reaction) -> draw ONLY the character(s) + minimal manga "
-                    f"gag FX on 100% pure solid `#FFFFFF` white! Speaker cue: {cut.tail_target}."
+                    f"TIER 2/3 NARROW PANEL ({slot.width}x{slot.height}px — TOP 36-40% 100% PURE SOLID "
+                    "`#FFFFFF` WHITE SKY HEADROOM, LOWER 60-64% BOLD CAMERA/ACTING ZONE): Keep ONLY the "
+                    "TOP 36-40% uncluttered pure `#FFFFFF` sky for the speech bubble, and fill the LOWER "
+                    "60-64% BOLDLY with the exact camera requested in Scene Action (extreme face close-up, "
+                    "fisheye lunge, low floor-level angle, 30° Dutch tilt — NEVER shrink a bold close-up or "
+                    "tilted shot into a tiny stiff full-body doll!). Tier 2 (Grounded Scene — when Scene "
+                    "Action specifies terrain/road/cliff/floor/deck/props/mobs/mounts) -> draw full-width "
+                    "natural ground & lower props flush to bottom & side borders with 100% pure `#FFFFFF` "
+                    "upper sky (ZERO floating miniature toy islands, ZERO painted sky/walls, ZERO blurry "
+                    "vignettes!). Tier 3 (Character-Only Close-Up / Reaction) -> draw ONLY the character(s) "
+                    f"+ minimal manga gag FX on 100% pure solid `#FFFFFF` white! Speaker cue: {cut.tail_target}."
                 )
             else:
                 headroom_rule = (
                     f"TIER 2/3 WIDE PANEL ({slot.width}x{slot.height}px — TOP 34% OR OPPOSITE 46% 100% PURE "
-                    "SOLID `#FFFFFF` WHITE SKY HEADROOM): Place character(s) in lower two-thirds or speaker side. "
-                    "Tier 2 (Grounded Scene — when Scene Action specifies terrain/road/cliff/floor/deck/props/mobs/mounts) "
-                    "-> draw full-width natural ground & lower props flush to bottom & side borders with 100% pure "
-                    "`#FFFFFF` upper sky (ZERO floating miniature toy islands, ZERO painted sky/walls, ZERO blurry "
-                    "vignettes!). Tier 3 (Character-Only Close-Up / Reaction) -> draw ONLY the character(s) + "
-                    f"minimal manga gag FX on 100% pure solid `#FFFFFF` white! Speaker cue: {cut.tail_target}."
+                    "SOLID `#FFFFFF` WHITE SKY HEADROOM): Keep ONLY the designated bubble headroom pure "
+                    "`#FFFFFF`, and fill the active art zone BOLDLY with the exact camera requested in Scene "
+                    "Action (extreme face close-up, fisheye forced-perspective lunge, dizzying extreme "
+                    "bird's-eye top-down cliff view, low-angle loom, 30° Dutch tilt, over-the-shoulder — "
+                    "NEVER shrink bold close-ups or extreme angles into tiny stiff eye-level full-body dolls!). "
+                    "Tier 2 (Grounded Scene — when Scene Action specifies terrain/road/cliff/floor/deck/props/"
+                    "mobs/mounts) -> draw full-width natural ground & lower props flush to bottom & side "
+                    "borders with 100% pure `#FFFFFF` upper sky (ZERO floating miniature toy islands, ZERO "
+                    "painted sky/walls, ZERO blurry vignettes!). Tier 3 (Character-Only Close-Up / Reaction) "
+                    "-> draw ONLY the character(s) + minimal manga gag FX on 100% pure solid `#FFFFFF` white! "
+                    f"Speaker cue: {cut.tail_target}."
                 )
 
             border_note = (
@@ -491,24 +521,28 @@ def build_page_batch_prompt(
                 headroom_rule = (
                     "WORDLESS CLIMAX 100% PURE SOLID `#FFFFFF` CLEAN BACKGROUND PANEL (NO SPEECH BUBBLE): "
                     "Draw a massive, hyper-expressive comedic close-up or theatrical freeze-frame (character "
-                    "fills ~72-86% of panel height) on a 100% PURE SOLID `#FFFFFF` CLEAN BACKGROUND with "
+                    "fills ~72-88% of panel height — honor extreme close-ups, fisheye lunges, or 30° Dutch "
+                    "tilts with ZERO doll-shrinking!) on a 100% PURE SOLID `#FFFFFF` CLEAN BACKGROUND with "
                     "punchy minimal manga gag FX ONLY (ZERO painted scenery, ZERO partial vignette cutouts, "
                     "ZERO floating scenic rectangles). ZERO TEXT, ZERO bubbles."
                 )
             elif slot.is_narrow:
                 headroom_rule = (
                     f"NARROW VERTICAL 100% PURE SOLID `#FFFFFF` CLEAN PANEL ({slot.width}x{slot.height}px): "
-                    "Place character(s) in LOWER 60-64% on 100% PURE SOLID `#FFFFFF` CLEAN BACKGROUND with "
-                    "minimal manga gag FX ONLY (ZERO partial vignette cutouts, ZERO painted walls/sky), "
-                    f"reserving TOP 36-40% as pure `#FFFFFF` speech-bubble headroom! Speaker cue: {cut.tail_target}."
+                    "Reserve ONLY the TOP 36-40% as pure `#FFFFFF` speech-bubble headroom and fill the LOWER "
+                    "60-64% BOLDLY with the exact camera & acting requested in Scene Action (do NOT shrink "
+                    "bold close-ups into tiny stiff full-body dolls!) on 100% PURE SOLID `#FFFFFF` CLEAN "
+                    "BACKGROUND with minimal manga gag FX ONLY (ZERO partial vignette cutouts, ZERO painted "
+                    f"walls/sky). Speaker cue: {cut.tail_target}."
                 )
             else:
                 headroom_rule = (
                     f"WIDE 100% PURE SOLID `#FFFFFF` CLEAN PANEL ({slot.width}x{slot.height}px): "
-                    "Place character(s) across lower two-thirds or speaker side on 100% PURE SOLID `#FFFFFF` "
-                    "CLEAN BACKGROUND with minimal manga gag FX ONLY (ZERO partial vignette cutouts, ZERO "
-                    "painted walls/sky), reserving TOP 32% or opposite 46% side as pure `#FFFFFF` headroom! "
-                    f"Speaker cue: {cut.tail_target}."
+                    "Reserve ONLY the TOP 32% or opposite 46% side as pure `#FFFFFF` headroom and fill the "
+                    "active zone BOLDLY with the exact camera & acting requested in Scene Action (do NOT "
+                    "shrink bold close-ups or tilted action into tiny stiff full-body dolls!) on 100% PURE "
+                    "SOLID `#FFFFFF` CLEAN BACKGROUND with minimal manga gag FX ONLY (ZERO partial vignette "
+                    f"cutouts, ZERO painted walls/sky). Speaker cue: {cut.tail_target}."
                 )
 
             border_note = (
@@ -520,7 +554,7 @@ def build_page_batch_prompt(
         panel_blocks.append(
             f"### PANEL {slot.slot_index} — {slot.position_label} [{border_note}]\n"
             f"- Starring Cast: {chars_str}\n"
-            f"- Scene Action (Cut #{cut.cut_index}): {cut.visual_prompt.strip()}\n"
+            f"- Scene Action, Expression & Camera (Cut #{cut.cut_index}): {cut.visual_prompt.strip()}\n"
             f"- Background & Headroom Rule: {headroom_rule}\n"
             f"- Clean Hand Rule: Stow/sheathe default weapons on back or belt whenever holding scene loot, "
             "shields, dice, hearthstones, potions, or gesturing (never 3+ items at once)."
@@ -646,12 +680,16 @@ def build_page_batch_prompt(
 
     return (
         f"Draw a crisp 2:3 vertical Korean pop-gag anime chibi comic page (Act {act.act_number}: "
-        f"{act.act_title} | layout `{act.layout_id}`, {layout.panel_count} panels) matching the exact "
-        "2.5-to-2.8 head chibi proportions, thin variable-width ink linework, crisp 2-tier cel shading, "
-        "and sparkling jewel eyes of the attached references.\n\n"
-        "ATTACHED REFERENCE IMAGES (FOLLOW EXACT ORDER):\n"
-        "- Reference Image 1: Draft C 9-Cast Master Sheet (`assets/cast_sheet_c.jpg`) — global linework & chibi proportions.\n"
-        "- Reference Image 2: Sloptoon Style Reference (`assets/sloptoon_style_ref.jpg`) — dynamic webtoon acting & cel finish.\n"
+        f"{act.act_title} | layout `{act.layout_id}`, {layout.panel_count} panels) with STRICT "
+        "IDENTITY vs UNLEASHED ACTING DECOUPLING — match the exact 2.5-to-2.8 head chibi proportions, "
+        "thin variable-width ink linework, crisp 2-tier cel shading, and character costumes of the "
+        "attached references while UNLEASHING wildly varied anime gag acting and bold cinematic cameras!\n\n"
+        "ATTACHED REFERENCE IMAGES (FOLLOW EXACT ORDER — ZERO FIXED EXPRESSION SHEETS!):\n"
+        "- Reference Image 1: Draft C 9-Cast Master Sheet (`assets/cast_sheet_c.jpg`) — IDENTITY & STYLE "
+        "LOCK ONLY (2.5-to-2.8 head proportions, hair/costume identity, thin ink & 2-tier cel finish; "
+        "NEVER copy its calm standing poses or default polite smiles/winks!).\n"
+        "- Reference Image 2: Sloptoon Style Reference (`assets/sloptoon_style_ref.jpg`) — dynamic "
+        "webtoon camera energy, exaggerated manga gag acting & crisp cel finish.\n"
         f"{blueprint_ref_line}\n"
         f"{turnaround_ref_note}\n"
         f"{anchors}\n\n"
@@ -659,11 +697,34 @@ def build_page_batch_prompt(
         f"{panels_section}\n\n"
         f"{lore_hints}\n\n"
         f"{bg_section}\n\n"
-        "DYNAMIC ACTING, CAMERA ANGLES & EXTRAS:\n"
-        "- NEVER copy static front standing poses! Vary angles per panel (OTS, low/high angle, Dutch tilt, side-profile, "
-        "back-view, physical slapstick) with bold exaggerated manga gag expressions.\n"
-        "- Draw any scripted dungeon mobs, bosses, extras, guards, pets, mounts, spell FX, or cute non-gore cartoon "
-        "skeletons vividly in the same crisp Draft C anime style.\n\n"
+        "STRICT IDENTITY vs UNLEASHED ACTING DECOUPLING (BREAK THE PRETTY-FACE SAFETY ZONE!):\n"
+        "- **IDENTITY LOCK ONLY**: Reference images (`cast_sheet`, `turnarounds`) lock ONLY hair, "
+        "headgear, outfit, waist charms, boots, eye color, Clean Hand weapon stowing, and thin-ink "
+        "2-tier cel shading. Expressions and poses are 100% UNLOCKED and driven solely by Scene Action!\n"
+        "- **BREAK THE PRETTY-FACE SAFETY ZONE (UNLEASHED EXPRESSIVE ACTING)**: NEVER copy the calm/"
+        "neutral standing pose or generic polite smile/wink from the reference sheets! Push wild, "
+        "infinitely varied, scene-specific anime gag acting across every panel:\n"
+        "  * **Dramatic eye-size & shape shifts**: pinpoint psychotic pupils (`맑눈광`), huge sparkling "
+        "jewel eyes, empty white shock eyes, spiral dizzy eyes, crying geyser waterfalls, unimpressed "
+        "deadpan half-lids, sinister gleaming glint.\n"
+        "  * **Extreme mouths & facial comedy**: jaw-dropped screaming, smug cat `:3`, mischievous "
+        "gremlin grin, cheeky fang smirk / `:P`, shaky panic squiggle, wide sweetly-evil grin, "
+        "crumpled Munch-scream horror, forehead gloom shadows, pale-blue drained terror cheeks.\n"
+        "  * **Squash-and-stretch body & hand acting**: comedic squash-and-stretch body distortion, "
+        "dynamic leaning, lunging, crouching, sprawling, slipping mid-air, claw-like fingers, "
+        "steering-wheel cranking, facepalm, cheek-clutching panic, and index-finger `shhh!`.\n\n"
+        "ANTI-REPETITION & CINEMATIC CAMERA VARIETY (ZERO BLAND DOLL REPEATS!):\n"
+        "- **STRICT ANTI-REPETITION ACROSS THIS PAGE**: NEVER repeat the same facial expression, head "
+        "angle, or eye-level medium shot across panels on the same page! Every panel MUST contrast "
+        "sharply in both emotion and camera framing.\n"
+        "- **HONOR BOLD CAMERAS 100%**: Actively execute extreme cameras requested in Scene Action — "
+        "**extreme face close-up, fisheye forced-perspective lunging toward camera, dizzying extreme "
+        "bird's-eye top-down cliff view, low-angle loom, 30° Dutch tilt, over-the-shoulder, low "
+        "floor-level stealth angle** — keeping ONLY the designated speech-bubble sky/side headroom "
+        "uncluttered (NEVER shrink bold close-ups or tilted action shots into tiny stiff full-body dolls!).\n"
+        "- **EXTRAS, MOBS, MOUNTS & FX**: Draw any scripted dungeon mobs, bosses, extras, guards, "
+        "pets, mounts, spell FX, or cute non-gore cartoon skeletons vividly in the same crisp Draft C "
+        "anime style.\n\n"
         f"{tech_constraints}"
     )
 
