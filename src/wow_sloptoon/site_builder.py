@@ -607,6 +607,8 @@ def _render_index_html(
     *,
     base_url: str = DEFAULT_ARCHIVE_BASE_URL,
     fallback_og_image: str = "",
+    css_suffix: str = "",
+    js_suffix: str = "",
 ) -> str:
     newest_first = list(reversed(site_episodes))
     latest = newest_first[0] if newest_first else None
@@ -689,7 +691,7 @@ def _render_index_html(
   <title>{html.escape(page_title)}</title>
 {social_meta}
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
-  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/style.css{css_suffix}">
 </head>
 <body data-page="home">
   {_render_nav('home')}
@@ -753,7 +755,7 @@ def _render_index_html(
   {_render_footer(total_episodes)}
 
   <script>window.__SLOPTOON_DATA__ = {embedded_data};</script>
-  <script src="assets/app.js"></script>
+  <script src="assets/app.js{js_suffix}"></script>
 </body>
 </html>
 """
@@ -767,6 +769,8 @@ def _render_episode_reader_html(
     *,
     base_url: str = DEFAULT_ARCHIVE_BASE_URL,
     fallback_og_image: str = "",
+    css_suffix: str = "",
+    js_suffix: str = "",
 ) -> str:
     """Render `episode.html` (dynamic `?id=...`) or a static `episodes/<id>.html` page."""
     ep = default_episode
@@ -965,7 +969,7 @@ def _render_episode_reader_html(
   <title>{html.escape(page_title)}</title>
 {social_meta}
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
-  <link rel="stylesheet" href="{root_prefix}assets/style.css">
+  <link rel="stylesheet" href="{root_prefix}assets/style.css{css_suffix}">
 </head>
 <body data-page="episode">
   {_render_nav('home', root_prefix=root_prefix)}
@@ -977,7 +981,7 @@ def _render_episode_reader_html(
   {_render_footer(total_episodes, root_prefix=root_prefix)}
 
   <script>window.__SLOPTOON_DATA__ = {embedded_data};</script>
-  <script src="{root_prefix}assets/app.js"></script>
+  <script src="{root_prefix}assets/app.js{js_suffix}"></script>
 </body>
 </html>
 """
@@ -990,6 +994,8 @@ def _render_cast_html(
     has_clean_sheet: bool,
     *,
     base_url: str = DEFAULT_ARCHIVE_BASE_URL,
+    css_suffix: str = "",
+    js_suffix: str = "",
 ) -> str:
     total_episodes = len(site_episodes)
     page_title = f"9×9 캐스트 도감 (시안 C) — {SITE_NAME}"
@@ -1137,7 +1143,7 @@ def _render_cast_html(
   <title>{html.escape(page_title)}</title>
 {social_meta}
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
-  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/style.css{css_suffix}">
 </head>
 <body data-page="cast">
   {_render_nav('cast')}
@@ -1176,7 +1182,7 @@ def _render_cast_html(
   {_render_footer(total_episodes)}
 
   <script>window.__SLOPTOON_DATA__ = {embedded_data};</script>
-  <script src="assets/app.js"></script>
+  <script src="assets/app.js{js_suffix}"></script>
 </body>
 </html>
 """
@@ -1184,6 +1190,9 @@ def _render_cast_html(
 
 def _render_publish_html(
     site_episodes: list[dict[str, Any]],
+    *,
+    css_suffix: str = "",
+    js_suffix: str = "",
 ) -> str:
     """Render `publish.html` — Creator DCInside manual upload queue manager."""
     total_episodes = len(site_episodes)
@@ -1270,7 +1279,7 @@ def _render_publish_html(
   <title>{html.escape(page_title)}</title>
   <meta name="description" content="와우 포에버 슬롭툰 디시 WOW 포에버 마이너 갤러리 수동 업로드 큐 관리 페이지">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
-  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/style.css{css_suffix}">
 </head>
 <body data-page="publish">
   {_render_nav('publish')}
@@ -1340,9 +1349,17 @@ _STYLE_CSS = """/* 와우 포에버 슬롭툰 — 순백(#FFFFFF) 초고속 정�
 }
 
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; background: var(--bg); }
+html {
+  scroll-behavior: smooth;
+  background: var(--bg);
+  max-width: 100%;
+  overflow-x: clip;
+  -webkit-text-size-adjust: 100%;
+}
 body {
   margin: 0;
+  max-width: 100%;
+  overflow-x: clip;
   background: var(--bg);
   color: var(--ink);
   font-family: var(--font-sans);
@@ -1351,7 +1368,7 @@ body {
 }
 a { color: inherit; text-decoration: none; }
 img { display: block; max-width: 100%; height: auto; }
-button, input { font-family: inherit; }
+button, input, select { font-family: inherit; }
 
 .container {
   width: 100%;
@@ -1386,6 +1403,8 @@ button, input { font-family: inherit; }
   font-size: 1.05rem;
   letter-spacing: -0.02em;
   flex-shrink: 0;
+  max-width: 100%;
+  min-width: 0;
 }
 .brand-dot {
   width: 11px;
@@ -1448,7 +1467,9 @@ button, input { font-family: inherit; }
 .pill-badge {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
+  max-width: 100%;
   background: var(--ink);
   color: #ffffff;
   font-size: 0.84rem;
@@ -1456,6 +1477,10 @@ button, input { font-family: inherit; }
   padding: 7px 18px;
   border-radius: 999px;
   letter-spacing: -0.01em;
+  line-height: 1.35;
+  text-align: center;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
 }
 .pill-sm { font-size: 0.74rem; padding: 5px 12px; }
 .dot-sky {
@@ -1472,6 +1497,8 @@ button, input { font-family: inherit; }
   font-weight: 900;
   letter-spacing: -0.04em;
   line-height: 1.12;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
 }
 .masthead-sub {
   margin: 0 auto;
@@ -1479,6 +1506,7 @@ button, input { font-family: inherit; }
   color: var(--ink-muted);
   font-size: 1rem;
   word-break: keep-all;
+  overflow-wrap: anywhere;
 }
 .masthead-stats {
   display: flex;
@@ -1638,6 +1666,7 @@ button, input { font-family: inherit; }
   flex-direction: column;
   justify-content: center;
   gap: 14px;
+  min-width: 0;
 }
 .hero-title {
   margin: 0;
@@ -1646,6 +1675,7 @@ button, input { font-family: inherit; }
   letter-spacing: -0.03em;
   line-height: 1.25;
   word-break: keep-all;
+  overflow-wrap: anywhere;
 }
 .hero-title a:hover { text-decoration: underline; text-underline-offset: 4px; }
 .hero-sub {
@@ -1653,6 +1683,7 @@ button, input { font-family: inherit; }
   color: var(--ink-muted);
   font-size: 0.97rem;
   word-break: keep-all;
+  overflow-wrap: anywhere;
 }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
 
@@ -1695,8 +1726,8 @@ button, input { font-family: inherit; }
   letter-spacing: -0.03em;
 }
 .section-meta { margin: 4px 0 0; font-size: 0.86rem; color: var(--ink-soft); }
-.controls-right { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-.search-box { position: relative; }
+.controls-right { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; max-width: 100%; min-width: 0; }
+.search-box { position: relative; max-width: 100%; min-width: 0; }
 .search-icon {
   position: absolute;
   left: 12px;
@@ -1750,10 +1781,12 @@ button, input { font-family: inherit; }
 /* Episode card grid */
 .episode-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(310px, 100%), 1fr));
   gap: 22px;
 }
 .ep-card {
+  min-width: 0;
+  max-width: 100%;
   background: #ffffff;
   border: 1.8px solid var(--ink);
   border-radius: var(--radius-md);
@@ -1786,6 +1819,7 @@ button, input { font-family: inherit; }
   flex-direction: column;
   gap: 8px;
   flex: 1;
+  min-width: 0;
 }
 .ep-card-title {
   margin: 2px 0 0;
@@ -1794,6 +1828,7 @@ button, input { font-family: inherit; }
   letter-spacing: -0.02em;
   line-height: 1.3;
   word-break: keep-all;
+  overflow-wrap: anywhere;
 }
 .ep-card-sub {
   margin: 0;
@@ -1804,6 +1839,7 @@ button, input { font-family: inherit; }
   -webkit-box-orient: vertical;
   overflow: hidden;
   word-break: keep-all;
+  overflow-wrap: anywhere;
 }
 .mini-chip-row { display: flex; flex-wrap: wrap; gap: 5px; margin-top: auto; padding-top: 6px; }
 .mini-chip {
@@ -1841,6 +1877,7 @@ button, input { font-family: inherit; }
 
 .ep-jump-select {
   max-width: 220px;
+  min-width: 0;
   padding: 6px 10px;
   border: 1.5px solid var(--border);
   border-radius: 10px;
@@ -1903,6 +1940,8 @@ button, input { font-family: inherit; }
   align-items: center;
   flex-wrap: wrap;
   gap: 8px;
+  max-width: 100%;
+  min-width: 0;
 }
 .back-link { font-weight: 700; font-size: 0.9rem; color: var(--ink-muted); }
 .back-link:hover { color: var(--ink); }
@@ -1933,13 +1972,22 @@ button, input { font-family: inherit; }
   font-weight: 900;
   letter-spacing: -0.03em;
   word-break: keep-all;
+  overflow-wrap: anywhere;
 }
-.episode-sub { margin: 0 0 14px; color: var(--ink-muted); font-size: 0.98rem; word-break: keep-all; }
-.source-bar { margin-top: 14px; }
+.episode-sub {
+  margin: 0 0 14px;
+  color: var(--ink-muted);
+  font-size: 0.98rem;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+.source-bar { margin-top: 14px; max-width: 100%; }
 .source-link {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
+  max-width: 100%;
   font-size: 0.84rem;
   font-weight: 700;
   color: var(--sky-dark);
@@ -1947,6 +1995,10 @@ button, input { font-family: inherit; }
   border-radius: 999px;
   background: var(--sky-soft);
   border: 1px solid var(--sky-border);
+  line-height: 1.4;
+  text-align: center;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
 }
 .source-link:hover { background: #e0f2fe; }
 
@@ -1993,22 +2045,27 @@ button, input { font-family: inherit; }
   display: flex;
   flex-direction: column;
   gap: 2px;
+  min-width: 0;
 }
 .action-strip-copy strong {
   font-size: 0.98rem;
   font-weight: 900;
   letter-spacing: -0.02em;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
 }
 .action-strip-copy span {
   font-size: 0.83rem;
   color: var(--ink-muted);
   word-break: keep-all;
+  overflow-wrap: anywhere;
 }
 .action-strip-btns {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: 8px;
+  max-width: 100%;
 }
 
 /* Sleek Prev / Next Episode Binge Cards */
@@ -2022,6 +2079,9 @@ button, input { font-family: inherit; }
   display: flex;
   align-items: center;
   gap: 14px;
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
   padding: 14px 16px;
   border: 1.8px solid var(--ink);
   border-radius: var(--radius-md);
@@ -2061,12 +2121,22 @@ button, input { font-family: inherit; }
   flex-direction: column;
   gap: 3px;
   min-width: 0;
+  max-width: 100%;
   flex: 1;
+  overflow: hidden;
 }
 .nav-ep-dir { font-size: 0.76rem; font-weight: 800; color: var(--ink-soft); }
 .nav-ep-dir-accent { color: var(--sky-dark); }
-.nav-ep-title { font-size: 0.98rem; font-weight: 900; line-height: 1.25; word-break: keep-all; }
+.nav-ep-title {
+  font-size: 0.98rem;
+  font-weight: 900;
+  line-height: 1.25;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
 .nav-ep-sub {
+  display: block;
+  max-width: 100%;
   font-size: 0.8rem;
   color: var(--ink-muted);
   white-space: nowrap;
@@ -2081,7 +2151,7 @@ button, input { font-family: inherit; }
 .recommend-section[hidden] { display: none; }
 .recommend-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr));
   gap: 18px;
 }
 
@@ -2098,10 +2168,12 @@ button, input { font-family: inherit; }
 .cast-sheet-img { width: 100%; height: auto; background: #ffffff; }
 .cast-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(310px, 100%), 1fr));
   gap: 20px;
 }
 .cast-card {
+  min-width: 0;
+  max-width: 100%;
   border: 1.8px solid var(--ink);
   border-radius: var(--radius-md);
   background: #ffffff;
@@ -2149,25 +2221,42 @@ button, input { font-family: inherit; }
   padding: 1px 5px;
   border-radius: 6px;
 }
-.cast-identity { min-width: 0; }
+.cast-identity { min-width: 0; flex: 1; }
 .cast-race-pill {
   display: inline-flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 5px;
+  max-width: 100%;
   font-size: 0.74rem;
   font-weight: 700;
   border: 1.5px solid var(--border);
   border-radius: 999px;
   padding: 2px 9px;
 }
-.cast-name { margin: 5px 0 2px; font-size: 1.12rem; font-weight: 900; letter-spacing: -0.02em; }
-.cast-role { margin: 0; font-size: 0.83rem; font-weight: 700; color: var(--navy); }
+.cast-name {
+  margin: 5px 0 2px;
+  font-size: 1.12rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+.cast-role {
+  margin: 0;
+  font-size: 0.83rem;
+  font-weight: 700;
+  color: var(--navy);
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
 .cast-bio {
   margin: 0;
   padding: 4px 18px 12px;
   font-size: 0.87rem;
   color: var(--ink-muted);
   word-break: keep-all;
+  overflow-wrap: anywhere;
 }
 .cast-turnaround-wrap { padding: 0 18px 12px; }
 .cast-turnaround-btn {
@@ -2210,10 +2299,14 @@ button, input { font-family: inherit; }
   padding: 12px 18px 16px;
   border-top: 1px solid var(--border);
   background: var(--surface);
+  min-width: 0;
+  max-width: 100%;
 }
 .cast-foot-label { font-size: 0.74rem; font-weight: 800; color: var(--ink-soft); margin-bottom: 6px; }
-.cast-ep-list { display: flex; flex-direction: column; gap: 5px; margin-bottom: 10px; }
+.cast-ep-list { display: flex; flex-direction: column; gap: 5px; margin-bottom: 10px; min-width: 0; max-width: 100%; }
 .ep-mini-link {
+  display: block;
+  max-width: 100%;
   font-size: 0.82rem;
   font-weight: 700;
   color: var(--ink);
@@ -2272,12 +2365,14 @@ button, input { font-family: inherit; }
   flex-wrap: wrap;
   gap: 20px;
 }
+.footer-brand { min-width: 0; max-width: 100%; }
 .footer-desc {
   margin: 10px 0 0;
   max-width: 540px;
   font-size: 0.85rem;
   color: var(--ink-muted);
   word-break: keep-all;
+  overflow-wrap: anywhere;
 }
 .footer-links {
   display: flex;
@@ -2306,6 +2401,7 @@ button, input { font-family: inherit; }
   line-height: 1.65;
   color: var(--ink-soft);
   word-break: keep-all;
+  overflow-wrap: anywhere;
 }
 
 .toast {
@@ -2323,23 +2419,87 @@ button, input { font-family: inherit; }
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
   max-width: calc(100vw - 32px);
   text-align: center;
+  overflow-wrap: anywhere;
 }
 
 @media (max-width: 820px) {
-  .header-inner { flex-wrap: wrap; padding-top: 10px; padding-bottom: 10px; }
+  .header-inner { flex-wrap: wrap; padding-top: 10px; padding-bottom: 10px; gap: 10px 14px; }
   .nav-link { font-size: 0.84rem; padding: 6px 10px; }
   .nav-pill-random { font-size: 0.82rem; padding: 5px 11px; }
-  .hero-card { grid-template-columns: 1fr; }
+  .hero-card { grid-template-columns: minmax(0, 1fr); }
   .hero-thumb-link { border-right: 0; border-bottom: 2px solid var(--border-strong); }
   .hero-thumb { min-height: 220px; }
   .hero-body { padding: 20px; }
-  .episode-pager { grid-template-columns: 1fr; }
+  .episode-pager { grid-template-columns: minmax(0, 1fr); }
   .nav-ep-next { text-align: left; flex-direction: row-reverse; justify-content: flex-start; }
   .nav-ep-thumb-wrap { width: 88px; height: 58px; }
   .brand-tag { display: none; }
   .search-input { width: 100%; }
   .ep-jump-select { max-width: 170px; font-size: 0.76rem; }
   .back-to-top { right: 14px; bottom: 16px; padding: 7px 12px; font-size: 0.78rem; }
+}
+
+@media (max-width: 640px) {
+  .container { padding: 0 14px; }
+  .main-content { padding-top: 24px; padding-bottom: 56px; }
+  .header-inner { min-height: 54px; gap: 8px 12px; padding-top: 8px; padding-bottom: 8px; }
+  .site-nav { width: 100%; gap: 6px; }
+  .nav-link { font-size: 0.8rem; padding: 5px 10px; }
+  .nav-pill-random { font-size: 0.79rem; padding: 5px 10px; }
+  .masthead { padding: 4px 0 20px; }
+  .pill-badge { font-size: 0.76rem; padding: 6px 13px; border-radius: 16px; }
+  .masthead-title { font-size: clamp(1.72rem, 7.6vw, 2.25rem); }
+  .masthead-sub { font-size: 0.9rem; }
+  .ink-divider { margin-bottom: 24px; }
+  .hero-section { margin-bottom: 34px; }
+  .hero-card { border-radius: var(--radius-md); box-shadow: 3px 3px 0 #111111; }
+  .hero-thumb { min-height: 190px; }
+  .hero-body { padding: 16px; gap: 11px; }
+  .hero-title { font-size: 1.32rem; }
+  .hero-sub { font-size: 0.9rem; }
+  .hero-actions .btn { flex: 1 1 auto; }
+  .section-head { gap: 10px; margin-bottom: 14px; }
+  .controls-right { width: 100%; flex-wrap: nowrap; }
+  .search-box { flex: 1 1 auto; min-width: 0; }
+  .search-input { width: 100%; font-size: 16px; padding: 9px 12px 9px 32px; }
+  .controls-right .btn { flex-shrink: 0; white-space: nowrap; padding: 9px 12px; font-size: 0.82rem; }
+  .cast-filter-bar { gap: 6px; margin-bottom: 18px; }
+  .filter-chip { padding: 5px 11px; font-size: 0.78rem; }
+  .episode-grid, .cast-grid, .recommend-grid { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .reader-container { padding-top: 16px; padding-bottom: 56px; }
+  .reader-top-bar { gap: 8px; padding-bottom: 14px; }
+  .reader-top-actions { width: 100%; display: flex; flex-wrap: nowrap; }
+  .ep-jump-select { flex: 1 1 0; min-width: 0; max-width: 100%; font-size: 16px; padding: 7px 10px; }
+  .reader-top-actions .btn { flex-shrink: 0; white-space: nowrap; }
+  .episode-header { padding: 20px 0 16px; }
+  .episode-title { font-size: clamp(1.38rem, 6.2vw, 1.82rem); }
+  .episode-sub { font-size: 0.9rem; }
+  .source-link { display: inline-block; max-width: 100%; border-radius: 14px; padding: 7px 13px; font-size: 0.78rem; }
+  .episode-action-strip { padding: 16px; box-shadow: 2px 2px 0 var(--sky); }
+  .action-strip-btns { width: 100%; }
+  .action-strip-btns .btn { flex: 1 1 auto; }
+  .episode-pager { gap: 12px; margin-bottom: 32px; }
+  .nav-ep-card { padding: 12px; gap: 10px; }
+  .nav-ep-thumb-wrap { width: 76px; height: 50px; }
+  .nav-ep-title { font-size: 0.9rem; }
+  .cast-sheet-frame { border-radius: var(--radius-md); box-shadow: 3px 3px 0 #111111; }
+  .cast-card-top { padding: 14px 14px 10px; gap: 12px; }
+  .cast-avatar-wrap { width: 72px; height: 72px; }
+  .cast-bio { padding: 4px 14px 12px; }
+  .cast-turnaround-wrap { padding: 0 14px 12px; }
+  .alias-row { padding: 0 14px 12px; }
+  .cast-card-foot { padding: 12px 14px 14px; }
+  .footer-inner { gap: 14px; }
+  .footer-links { gap: 12px; }
+}
+
+@media (max-width: 380px) {
+  .container { padding: 0 12px; }
+  .nav-link { font-size: 0.76rem; padding: 5px 8px; }
+  .nav-pill-random { font-size: 0.76rem; padding: 5px 9px; }
+  .mode-btn { font-size: 0.75rem; padding: 5px 10px; }
+  .nav-ep-thumb-wrap { width: 64px; height: 44px; }
+  .cast-avatar-wrap { width: 64px; height: 64px; }
 }
 """
 
@@ -3142,8 +3302,12 @@ def build_static_site(
     ]
 
     # 4. Write shared static assets, site JSON, and crawler metadata
-    (site_assets_dir / "style.css").write_text(_STYLE_CSS, encoding="utf-8")
-    (site_assets_dir / "app.js").write_text(_APP_JS, encoding="utf-8")
+    style_css_path = site_assets_dir / "style.css"
+    app_js_path = site_assets_dir / "app.js"
+    style_css_path.write_text(_STYLE_CSS, encoding="utf-8")
+    app_js_path.write_text(_APP_JS, encoding="utf-8")
+    css_suffix = _file_cache_suffix(style_css_path)
+    js_suffix = _file_cache_suffix(app_js_path)
     (site_data_dir / "episodes.json").write_text(
         json.dumps(site_episodes, ensure_ascii=False, indent=2),
         encoding="utf-8",
@@ -3167,6 +3331,8 @@ def build_static_site(
             len(site_episodes),
             base_url=clean_base,
             fallback_og_image=fallback_og_image,
+            css_suffix=css_suffix,
+            js_suffix=js_suffix,
         ),
         encoding="utf-8",
     )
@@ -3179,6 +3345,8 @@ def build_static_site(
             root_prefix="",
             base_url=clean_base,
             fallback_og_image=fallback_og_image,
+            css_suffix=css_suffix,
+            js_suffix=js_suffix,
         ),
         encoding="utf-8",
     )
@@ -3197,6 +3365,8 @@ def build_static_site(
                 pinned_episode_id=ep["episode_id"],
                 base_url=clean_base,
                 fallback_og_image=fallback_og_image,
+                css_suffix=css_suffix,
+                js_suffix=js_suffix,
             ),
             encoding="utf-8",
         )
@@ -3208,6 +3378,8 @@ def build_static_site(
             has_labeled,
             has_clean,
             base_url=clean_base,
+            css_suffix=css_suffix,
+            js_suffix=js_suffix,
         ),
         encoding="utf-8",
     )

@@ -189,12 +189,20 @@ def test_build_static_site_end_to_end_and_link_integrity(tmp_path: Path) -> None
         assert turnaround_path.exists(), f"Missing synced turnaround sheet: {turnaround_path}"
         assert f"assets/cast/turnarounds/{member.turnaround_filename}" in cast_html
 
-    # Verify CSS pure-white aesthetic, #0ea5e9 accent, and collapsible :empty sponsor slot rule
+    # Verify CSS pure-white aesthetic, #0ea5e9 accent, collapsible :empty sponsor slot, and mobile overflow guards
     css_text = (out_site / "assets" / "style.css").read_text(encoding="utf-8")
     assert "--bg: #ffffff;" in css_text
     assert "--sky: #0ea5e9;" in css_text
     assert ".slop-sponsor-slot:empty" in css_text
     assert "display: none;" in css_text
+    assert "overflow-x: clip;" in css_text
+    assert "minmax(min(310px, 100%), 1fr)" in css_text
+    assert "minmax(min(260px, 100%), 1fr)" in css_text
+    assert ".episode-pager { grid-template-columns: minmax(0, 1fr); }" in css_text
+    assert "overflow-wrap: anywhere;" in css_text
+    assert re.search(r'href="assets/style\.css\?v=[0-9a-f]{8}"', index_html)
+    assert re.search(r'src="assets/app\.js\?v=[0-9a-f]{8}"', index_html)
+    assert re.search(r'href="\.\./assets/style\.css\?v=[0-9a-f]{8}"', ep1_html)
 
     # Verify zero WoW Inven mentions across ALL generated text files
     for generated in out_site.rglob("*"):
