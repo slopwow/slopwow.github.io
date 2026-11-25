@@ -283,11 +283,12 @@ def test_writer_and_artist_prompts_enforce_scale_clean_hand_and_lore() -> None:
     w_prompt = build_writer_prompt(post, episode_number=11)
     assert "핵심 1~4명" in w_prompt
     assert "괄호 다중 화자 편법 절대 금지" in w_prompt
-    assert "일관된 2.5~3등신" in w_prompt
+    assert "3~3.5등신" in w_prompt
+    assert "념글을 안 읽고도" in w_prompt
     assert "크롤도크 보루" in w_prompt
     assert "119" in w_prompt  # cited as forbidden modern phrasing rule
 
-    # 16:9 2-character panel prompt MUST explicitly prevent micro-chibi shrinking & enforce Clean Hand
+    # 16:9 2-character panel prompt enforces sleek 3-to-3.5 head scale, Clean Hand & WoW lore rules
     two_char_16_9_cut = ComicCut(
         cut_index=2,
         aspect_ratio="16:9",
@@ -304,11 +305,10 @@ def test_writer_and_artist_prompts_enforce_scale_clean_hand_and_lore() -> None:
     )
     art_prompt = build_cut_image_prompt(two_char_16_9_cut)
     assert "CLEAN HAND RULE" in art_prompt
-    assert "2.5-to-3-head" in art_prompt
-    assert "micro-chibis" in art_prompt
+    assert "3-to-3.5 head" in art_prompt
     assert "TANK SHIELD RULE" in art_prompt
     assert "WEAPON SCALE & CLEAN HAND RULE" in art_prompt
-    assert "ZERO DIGITS/NUMBERS" in art_prompt
+    assert "zero digits/numbers" in art_prompt.lower()
 
 
 def test_audit_script_quality_passes_clean_script_and_dry_run() -> None:
@@ -503,10 +503,11 @@ def test_site_builder_scales_cleanly_to_40_episodes(tmp_path: Path) -> None:
 
 
 def test_cinematic_variety_rules_and_strict_audit() -> None:
-    # Artist prompt and cast anchors must enforce dynamic poses & forbid copying cast sheet default pose
+    # Artist prompt and cast anchors enforce sleek 3–3.5 head style-first re-proportioning & dynamic acting
     anchors = build_character_anchors_block(["언데드 성기사", "드워프 사냥꾼"])
-    assert "DYNAMIC POSE & EXPRESSION MANDATE" in anchors
-    assert "stiff front-facing" in anchors
+    assert "PROPORTIONS & STYLE FIRST" in anchors
+    assert "3-to-3.5 head" in anchors
+    assert "COSTUME, HAIR, HEADGEAR & COLOR IDENTITY ONLY" in anchors
 
     sample_cut = ComicCut(
         cut_index=1,
@@ -523,7 +524,7 @@ def test_cinematic_variety_rules_and_strict_audit() -> None:
         tail_target="right",
     )
     art_prompt = build_cut_image_prompt(sample_cut)
-    assert "CINEMATIC ACTING, FAITHFUL SCENE RECREATION & EXTRAS" in art_prompt
+    assert "3-to-3.5 head" in art_prompt
     assert "over-the-shoulder" in art_prompt.lower()
 
     # Flat side-by-side talking-heads script fails strict_cinematic=True

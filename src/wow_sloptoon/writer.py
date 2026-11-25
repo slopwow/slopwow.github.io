@@ -1,9 +1,11 @@
 """Episode script writer powered by Google GenAI Interactions API (`gemini-4-hydrogen`).
 
-Produces strictly 100% live in-game WoW Forever (2026 Classic+) dungeon/party gag skits
-(4~6 cuts, 1~2 cast members per cut, 2~4 core cast members per episode, at least one
-signature wordless shocked/deadpan freeze-frame cut, Draft C Clean Hand visual anchors,
-consistent medium chibi framing, pure #FFFFFF background, and strict script quality auditing).
+Produces self-contained WoW Forever (2026 Classic+) gag webtoon scripts that readers can
+understand 100% WITHOUT reading the original DCInside post:
+- Primary classic 2-tier mode: 4~8 cuts (recommended 5~6 cuts), crisp 3–3.5 head sleek
+  Korean gag webtoon direction, 1~2 cast per cut, 2~4 core cast, mandatory wordless beat.
+- Optional V4 5-act long-form mode: 5 acts / 10~14 cuts across variable page layouts.
+- Clean, compact prompts with zero robotic catchphrase copy-paste and full quality auditing.
 """
 
 from __future__ import annotations
@@ -29,67 +31,54 @@ from wow_sloptoon.wow_lore import (
     find_modern_slang_violations,
 )
 
-WRITER_SYSTEM_RULES = """당신은 디시인사이드 '와우 포에버 마이너 갤러리(wowforever)' 개념글을 4~6컷 초귀염 팝·개그 웹툰(《와우 포에버 슬롭툰》) 대본으로 각색하는 전문 시나리오 작가입니다.
+WRITER_SYSTEM_RULES = """당신은 디시인사이드 '와우 포에버 마이너 갤러리(wowforever)' 개념글을 4~8컷(권장 5~6컷) 날렵한 3~3.5등신 개그 웹툰(《와우 포에버 슬롭툰》) 대본으로 각색하는 시나리오 작가입니다.
 
-[절대 준수 연출 규칙]
-1. **원글 실제 상황·스샷 100% 현장 재현 (억지 만담 상황극 절대 금지!)**:
-   - **작성자가 의도한 진짜 그 상황과 원본 스샷의 핵심 디테일을 100% 그대로 그림으로 재현하세요!** (예: 원글 스샷에 땅바닥에 호드 쪼렙 시체/해골이 수북이 쌓여 있다면 반드시 그 시체 더미 장면을 직접 그려야 합니다! 원글이 1인칭 독백/후기/현장 폭로라면 억지로 두 캐릭터가 주거니 받거니 하는 만담 대화로 바꾸지 말고, 독백·내레이션·현장 액션·군중/몹/보스/시체 더미 컷으로 그대로 살리세요!)
-   - "어 댓글 반응 보니까~", "갤러들이 이렇게 말하네~", "개념글 올라갔네~" 같은 **어색한 메타 댓글 반응 컷/제4의 벽 깨기는 절대 금지**합니다!
-   - **4~6컷 서사 인과 연속성 엄수**: 발단(현장 상황·스샷 디테일) → 전개/사건 → 무언 충격/개그 정지 컷 → 여파·펀치라인까지 핵심 시각 계기를 빠뜨리지 마세요.
-2. **분량 및 리듬 (4~6컷)**:
-   - 정확히 **4컷, 5컷, 또는 6컷**으로 구성하세요 (`cut_index`는 1부터 순차 증가).
-   - 2단 슬롭툰 페이지 구조에 맞춰 슬롯과 비율을 배치하세요:
-     * 홀수 컷(1, 3, 5번): `layout_slot="top"`, `aspect_ratio="4:3"` (단, 전체가 5컷일 때 마지막 5번 컷은 단독 피날레 리액션 박스이므로 `layout_slot="bottom"`, `aspect_ratio="16:9"` 권장).
-     * 짝수 컷(2, 4, 6번): `layout_slot="bottom"`, `aspect_ratio="16:9"`.
-3. **고정 캐스트 + 엑스트라·군중·시체·몹 자유 등장 규칙**:
-   - 각 컷의 `characters` 배열에는 해당 컷의 주연 고정 캐스트(시안 C 9명 중 **1~2명**)를 기입하고, 한 화 전체의 주연 고정 캐스트는 **핵심 1~4명 이내**로 유지하세요.
-   - **단, 화면 안에 고정 캐스트 1~2명만 나와야 할 이유는 전혀 없습니다!** 원글 상황에 맞게 **엑스트라 유저들, 쪼렙 시체/해골 더미(귀여운 만화풍·비고어), 군중, 보스 몬스터, 몹 떼거리, 경비병 NPC, 펫, 탈것**을 `visual_prompt`에 과감하고 생생하게 그려 넣어 실제 와우 포에버 현장을 재현하세요!
-4. **시그니처 무언 동공지진 정지 화면 (`wordless=True`) 최소 1컷 필수**:
-   - 애용갤 슬롭툰 특유의 찰진 개그 타이밍을 위해, **최소 1개 컷(권장: 하단 `bottom` / `16:9` 컷)은 반드시 `wordless=True`, `speaker=null`, `dialogue=null`** 로 설정하세요.
-   - 무언 컷의 `visual_prompt`에는 캐릭터 1명의 정중앙 클로즈업(chest-up close-up), 동공지진·정색·영혼 가출·땀방울·충격 정지 표정을 아주 생생하게 영문으로 묘사하세요.
-5. **대사 (`dialogue`) 작성 규칙 — Show, Don't Tell · 캐릭터별 애교 유지 · 1~2줄 찰진 호흡 · 1말풍선 1화자**:
-   - **🚫 Show, Don't Tell (그림 중계 절대 금지!)**: 그림에 이미 보이는 행동("내가 지금 정배를 걸어서 절벽으로 보내고 있어!", "지금 내가 뛰어가서 보물상자를 열고 있어!")을 대사로 구구절절 중계하지 마세요! 말풍선에는 그림으로 다 표현되지 않는 **날카로운 감정, 속마음, 캐릭터 고유의 찰진 겜창 티키타카**만 담으세요.
-   - **💕 캐릭터별 맞춤 애교 유지 + 로봇식 복붙 금지 (아재 설명충·양아치 욕설 둘 다 금지!)**: 2.5~2.8등신 귀염뽀짝 미소녀 그림체에 맞춰 **자연스럽고 매력적인 미소녀 애교는 반드시 유지**하되, 캐스트 바이블에 정의된 **9인 각각의 성격·말투 스타일·애교 시그니처**를 100% 살려 캐릭터들이 절대 비슷하게 들리지 않게 쓰세요! (모든 캐릭터에게 똑같은 기계적 `~해야징~♪` 복붙 금지! 딱딱한 아재/AI 설명충 존댓말(`~하세요~`, `시전 들어갑니다!!`, `완료!`) 금지! 거친 양아치·앰생 욕설(`새끼`, `미친년`, `시발`, `호구` 등) 금지!) 귀염뽀짝한 미소녀 애교 위에 찰진 와우·디시 겜창 어휘(`개꿀팁`, `그숨 딸깍`, `정배`, `혼란 딸깍`, `매너 겜`, `무덤 달리기`)만 톡톡 얹으세요.
-   - **⚡ 짧은 1~2줄 호흡 리듬 + 내부 2-Pass 대사 다듬기**: 매 컷 3줄 꽉 찬 설명문 벽텍스트 도배 금지! **전체 대사 컷의 최소 30~40%는 5~15자 한 줄짜리 찰진 펀치컷**으로 치고, 나머지도 **1~2줄(줄당 10~14자 내외, `\\n` 줄바꿈 포함)** 위주로 템포감 있게 작성하세요(3줄은 불가피한 핵심 컷 1개 이하로 제한). 출력 전 반드시 **내부 2-Pass 대사 퇴고(초안 작성 → 그림 중계·군더더기 삭제 및 화자 고유 애교 시그니처 극대화)**를 거쳐 압축하세요.
-   - **괄호 다중 화자 편법 절대 금지**: 한 컷의 `dialogue`에는 반드시 `speaker` **단 1명의 대사만** 적으세요. `(도적: ...)`, `(사제: ...)`, `[전사: ...]` 처럼 한 말풍선 안에 다른 캐릭터 대사를 끼워 넣는 편법은 절대 금지합니다!
-   - `tail_target`은 화자가 화면 왼쪽이면 `"left"`, 오른쪽이면 `"right"`, 정중앙이면 `"center"`로 지정하세요.
-   - **와우 인게임 어휘 엄수 (현실 현대어 금지)**: "119 불러야 되나", "구급차", "경찰 불러", "카톡", "편의점", "택시" 같은 현실 표현 대신 **"무덤 이동 눌러야 되나", "영혼의 치유사", "부활 좀요", "귀환석", "와이번/그리핀", "경비병", "귓말/파티창"** 등 100% 와우 인게임 어휘를 사용하세요.
-   - 와우 포에버갤 감성을 살리되, 타 커뮤니티 이름은 절대 언급하지 마세요.
-   - **명예훼손·고소 방지 익명성 절대 준수**: 사건·사고 당사자의 실제 인게임 닉네임·아이디·길드명(`<길드명>` 태그 및 패러디 별명 포함)은 대사·부제·이미지 프롬프트·툴팁 어디에도 절대 적지 마세요. 오직 직업·역할 호칭(`도적`, `징기`, `보기`, `전탱`, `흑마`, `사제`, `파장님` 등)으로만 표현하세요.
-6. **영문 비주얼 프롬프트 (`visual_prompt`) 규칙 — Visual Prompt Diet(70%+ 표정·연기·카메라!) · 정면 만담 금지 · Clean Hand**:
-   - **🎯 Visual Prompt Diet (의상 200단어 복붙 금지 → 70%+ 표정·신체 연기·카메라 집중!)**: 캐릭터의 고정 외형(머리·모자·의상·허리 소품·부츠)은 첨부되는 3면 도면(`assets/turnarounds/`)과 `anchors`가 자동 고정하므로, 매 컷 `visual_prompt`에 200단어짜리 의상 설명을 복붙하지 마세요! (장면 전용 소품·Clean Hand 무기 수납 여부만 짧게 명시!) 대신 각 컷 `visual_prompt`의 **70% 이상을 극단적인 만화 표정 연기, 스쿼시앤스트레치(squash-and-stretch) 신체 바디랭귀지, 그리고 대담한 카메라 연출**에 집중하세요!
-   - **🚫 동일 화 내 표정·아이레벨 카메라 중복 0건 & 고정 6표정 시트 금지**: `cast_sheet`나 턴어라운드의 무난한 미소·윙크를 복붙하거나 같은 표정/정면 아이레벨 샷을 반복하지 마세요! 컷마다 **바늘 동공 맑눈광 + 이마 음침 그림자 썩소, 개구쟁이 `:3` 고양이 입, 턱 빠짐, 눈물 폭포, 소용돌이 혼절 눈, 영혼 입 탈출, 얼굴 시퍼런 뭉크 절규 공포, 볼 빵빵 삐짐, 초점 나간 하얀 눈** 등 매 컷 완전히 다른 과장 표정으로 연기하세요!
-   - **🚫 정면 나란히 스탠딩 만담 도장찍기 절대 금지**: 한 에피소드 6컷을 "On the lower-left A..., On the lower-right B..." 식의 평면 정면 2인 서기 대화로 채우지 마세요! 평면 정면 나란히 2인 구도는 **한 화에 최대 1컷 이하**로 제한합니다.
-   - **🎬 시네마틱 샷 리듬 의무화 (Show, Don't Just Tell)**: 한 화 안에서 **최소 4가지 이상의 서로 다른 대담한 카메라 앵글 & 신체 모션**을 조합하세요!
-     * **익스트림 클로즈업(extreme close-up) / 어안 강제 원근(fisheye forced-perspective lunging toward camera) / 아찔한 버즈아이 탑다운(dizzying bird's-eye top-down) / 로우앵글(low-angle) / 30° 더치 틸트(Dutch tilt) / 오버더숄더(OTS) / 측면 90° 프로필 / 뒷모습**으로 시점을 매 컷 역동적으로 전환!
-     * **풀모션 인게임 물리 개그·액션 컷 (최소 2~3컷 필수!)**: 돌진·질주·몹 실루엣에 쫓겨 도주·은신 살금살금 기습·바닥에 철퍼덕 죽은 척 눕기·귀환석 빛기둥 속으로 빨려 들어가며 손 흔들기·보물상자 다이빙·배 난간 매달리기·뒤돌아 쿨하게 걸어가기·무릎 꿇고 절규·테이블/방패 쾅!
-     * **미니멀 액션 비네트 소품(Minimalist Vignette Props)**: 외곽 캔버스는 100% 순백 `#FFFFFF` 여백을 유지하되, 캐릭터 동작에 직접 붙는 단일 미니멀 소품(열린 보물상자, 야영 모닥불, 귀환석 빛기둥, 선착장 나무 난간, 여관 테이블 모서리, 흩날리는 먼지·스피드선·주문 불꽃·몹 그림자 실루엣)을 적극 활용해 살아 움직이는 현장감을 살리세요!
-   - **일관된 미디엄 치비 프레이밍 (Micro-Chibi 축소 금지)**: `4:3` 컷과 `16:9` 컷 모두 일반 컷은 **일관된 2.5~3등신 허리~무릎 위(medium waist-up / knee-up chibi shot)** 크기로 선명하게 프레이밍하세요(원거리 점처럼 작아지기 금지; 단, 의도된 익스트림 클로즈업은 얼굴·상반신을 과감히 키우세요).
-   - **Clean Hand Rule (무기·소품 겹침 금지)**: 캐릭터가 전리품·방패·주사위·귀환석·물약병을 들거나 제스처를 취할 때는 기본 무기를 등/허리에 수납(`sheathed on back/belt`)하거나 생략하도록 명시하세요(한 캐릭터가 무기 3개 이상 동시 소지 절대 금지).
-   - **와우 포에버 장비·소품 시각화 고증**:
-     * `전탱`/`방전`/`보기` 탱커는 반드시 **한손 무기 + 방패(sturdy shield)** 착용!
-     * `사슬(Mail)` 장비(`속박의 사슬` 등)는 쇠사슬·수갑이 아니라 **링메일 사슬 갑옷 허리띠/갑옷(interlocking ring-mesh mail armor belt)**으로 묘사!
-     * `멜론 주스`·음료·물약은 현대 종이팩/빨대가 아니라 **중세 판타지 코르크 유리병 또는 나무 머그잔(fantasy corked glass flask / wooden mug)**으로 묘사!
-     * 한손검(`장트라제`)·단검(`필살의 비수`)은 한 손 비율로(양손 대검화 금지), 주사위는 **점 눈금만 있는 6면체(dot pips only, ZERO digits/text)**로 묘사!
-   - 모든 컷의 외곽 배경은 **100% pure solid white `#FFFFFF` borderless background (no full room walls/scenery, no text, no speech bubbles)** 조건을 유지하세요.
-7. **원본 개념글 제목 100% 원문 유지 (`source_title`)**:
-   - `source_title`에는 절대 임의로 요약·재작성한 제목을 넣지 말고, 제공된 **포에버갤 원본 개념글 제목(`post.title`)을 100% 글자 그대로** 기입하세요.
-8. **와우 포에버 실제 아이템 툴팁 카드 (`item_tooltip`, 선택 사항)**:
-   - 실제 와우 아이템이 핵심 소재로 등장하는 컷에만 선택적으로 `item_tooltip`을 지정할 수 있습니다. 유저 닉네임·캐릭터명·길드명에는 절대 `item_tooltip`을 붙이지 마세요.
-   - **포에버 커스텀 스탯 최우선**: 바닐라 와우헤드 DB가 와우 포에버 개편 스탯(예: `모드레쉬의 이글거리는 눈`, `크롤도크 보루` 커스텀 템)과 다를 수 있으므로, 원글 본문이나 첨부 툴팁 스크린샷에 명시된 포에버 실스탯을 최우선으로 반영하세요.
+[핵심 원칙]
+1. **념글을 안 읽고도 100% 이해되는 완결 서사 (최우선!)**:
+   - 독자는 원본 게시글 제목·본문을 전혀 보지 않고 이 만화만 처음 읽는다고 가정하세요.
+   - 반드시 **① 상황 설정**(어디 던전/필드인지, 어떤 파티·룰·목적인지) → **② 사건 발단**(누가 무엇을 요구하거나 어떤 템·행동이 터졌는지) → **③ 황당·갈등 포인트**(왜 어이없고 웃긴지 명확한 인과) → **④ 무언 충격 정지 컷(`wordless=True`)** → **⑤ 여파·펀치라인**이 물 흐르듯 자급자족으로 이어지게 쓰세요.
+   - 원글의 실제 상황과 핵심 디테일을 100% 인게임 현장극으로 살리고, 분량을 채우기 위한 억지 전투 씬·불필요한 캐릭터 끼워팔기를 금지합니다.
+   - 메타 댓글 반응 컷("개념글 갔네~", "갤러들이~")과 타 커뮤니티(인벤 등) 언급을 금지합니다.
+
+2. **분량 및 2단 페이지 슬롯 (4~8컷, 권장 5~6컷)**:
+   - 원글 서사 밀도에 맞춰 정확히 **4~8컷**으로 구성하세요(짧은 썰은 4~6컷, 맥락 설명이 필요한 사건은 7~8컷).
+   - 홀수 컷(1, 3, 5, 7번): `layout_slot="top"`, `aspect_ratio="4:3"` (단, 전체 컷 수가 홀수일 때 마지막 컷은 단독 피날레 박스이므로 `layout_slot="bottom"`, `aspect_ratio="16:9"`).
+   - 짝수 컷(2, 4, 6, 8번): `layout_slot="bottom"`, `aspect_ratio="16:9"`.
+
+3. **캐스트 집중 & 무언 충격 정지 컷**:
+   - 각 컷의 `characters`는 공식 9인 캐스트 중 **1~2명**, 한 화 전체 주연은 **핵심 1~4명** 이내로 집중하세요.
+   - 장면에 필요한 몹·보스·NPC·엑스트라·귀여운 비고어 해골/시체 더미·펫·탈것은 `visual_prompt`에 자연스럽게 넣으세요.
+   - 사건의 황당함이 터지는 절정 1컷(권장: 하단 `bottom` / `16:9`)은 반드시 **`wordless=True`, `speaker=null`, `dialogue=null`**로 설정해 표정과 상황만으로 웃기세요.
+
+4. **자연스러운 구어체 대사 (`dialogue`) & 100% 익명화**:
+   - 캐릭터 성격은 은은한 말투 뉘앙스로만 살리고, 고정 유행어·애교 어미(`옴뇸뇸~`, `으, 으엣?!`, `후훗…`, `~해야징~♪`, 문장 끝 `~♡` 도배) 기계 복붙과 거친 욕설, AI 설명충 존댓말을 금지합니다.
+   - **념글 미독자도 즉시 이해하도록** 필요한 맥락(던전명·역할·아이템·룰·이유)을 **1~3줄(줄당 12~16자, `\\n` 줄바꿈)** 자연스러운 와우 구어체로 담으세요.
+   - **괄호 다중 화자 편법 절대 금지**: 한 컷 `dialogue`에는 `speaker` 단 1명의 대사만 적으세요(`(도적: ...)` 금지). `tail_target`은 화자 위치(`left`/`right`/`center`).
+   - 현실 현대어(`119`, `구급차`, `경찰`, `카톡`, `편의점`, `택시`) 대신 와우 어휘(`무덤 이동`, `영혼의 치유사`, `경비병`, `귓말/파티창`, `여관 주인`, `와이번/그리핀`)만 사용하세요.
+   - 실제 아이디·닉네임·길드명(패러디 포함)을 어디에도 적지 말고 직업·역할 호칭(`도적`, `징기`, `보기`, `전탱`, `흑마`, `사제`, `파장님`)만 사용하세요.
+
+5. **간결한 영문 시각 연출 (`visual_prompt`, 2~4문장)**:
+   - 캐릭터 의상·색상은 `artist.py`가 턴어라운드로 자동 고정하므로, 매 컷 의상 200단어나 가드레일을 복붙하지 마세요.
+   - 대신 **3~3.5등신 날렵한 한국 개그 웹툰 스타일**을 전제로 **① 카메라 앵글**(OTS, 로우앵글, 하이앵글, 클로즈업, 측면, 뒷모습 — 평면 정면 나란히 서기는 한 화 최대 1컷) **② 캐릭터 행동·표정·위치(left/right/center)** **③ 핵심 소품·최소 바닥 터치**만 영문 2~4문장으로 생생하게 적으세요.
+   - Clean Hand Rule(전리품·방패·주사위·귀환석·물약병을 들 때 기본 무기는 등/허리에 수납), 탱커(전탱/보기)는 한손 무기+방패, 사슬(Mail)=링메일 갑옷, 음료=판타지 코르크 유리병/나무 머그잔, 주사위=점 눈금만(숫자·글자 없음).
+   - 배경은 **100% pure solid white `#FFFFFF` background** 바탕 + 필요 시 캐릭터 발밑의 자연스러운 미니멀 바닥/소품만 배치하세요.
+
+6. **원본 제목 100% 유지 (`source_title`) & 선택적 `item_tooltip`**:
+   - `source_title`은 제공된 원본 개념글 제목(`post.title`)을 토씨 하나 바꾸지 말고 그대로 기입하세요.
+   - 핵심 와우 아이템이 등장하는 컷에만 선택적으로 `item_tooltip`을 붙이세요(유저 닉네임·길드명 금지, 포에버 커스텀 스탯 우선).
 """
 
 
 def build_writer_prompt(post: GalleryPost, episode_number: int) -> str:
-    """Assemble the complete structured prompt with WoW Forever lore & Draft C cast bible."""
+    """Assemble a concise, high-signal prompt for classic 4~8 cut script generation."""
     cast_bible = format_cast_bible_for_writer()
     comments_block = (
-        "\n".join(f"- {c}" for c in post.comments[:12])
+        "\n".join(f"- {c}" for c in post.comments[:10])
         if post.comments
-        else "(별도 댓글 없음 — 본문 에피소드 자체를 찰진 라이브 상황극으로 극대화하세요)"
+        else "(별도 댓글 없음 — 본문 상황과 반전을 명확하게 살리세요)"
     )
     context_text = "\n".join(
-        [post.title or "", post.body or "", *post.comments[:12]]
+        [post.title or "", post.body or "", *post.comments[:10]]
     )
     lore_guidance = build_wow_lore_guidance(context_text)
 
@@ -98,95 +87,57 @@ def build_writer_prompt(post: GalleryPost, episode_number: int) -> str:
         f"{lore_guidance}\n\n"
         f"{cast_bible}\n\n"
         f"=== 각색 대상 포에버갤 개념글 ===\n"
-        f"- 예정 화수: EP.{episode_number}\n"
-        f"- 게시글 번호: #{post.post_no}\n"
+        f"- 예정 화수: EP.{episode_number} | 게시글 번호: #{post.post_no}\n"
         f"- 원문 URL: {post.url}\n"
         f"- 원문 제목 (100% 그대로 유지): {post.title.strip()}\n"
-        f"- 작성자: {post.author} | 추천: {post.recommends} | 댓글: {post.comments_count}\n"
-        f"- 본문:\n{post.body or '(본문 텍스트 없음 — 제목의 펀치라인을 던전 상황극으로 풀어내세요)'}\n\n"
-        f"- 주요 댓글 (메타 해설 금지! 웃긴 포인트만 캐릭터 대사·상황극 소재로 흡수):\n{comments_block}\n\n"
-        f"위 JSON 스키마(`EpisodeScript`)에 정확히 맞춰 출력하세요. "
-        f"`episode_number`는 {episode_number}, `source_post_no`는 \"{post.post_no}\", "
-        f"`source_title`은 원문 제목 100% 그대로인 {json.dumps(post.title.strip(), ensure_ascii=False)}, "
-        f"`source_url`은 \"{post.url}\" 로 정확히 기입하세요."
+        f"- 추천: {post.recommends} | 댓글: {post.comments_count}\n"
+        f"- 본문:\n{post.body or '(본문 텍스트 없음 — 제목의 상황을 념글 미독자도 이해하게 현장극으로 풀어내세요)'}\n\n"
+        f"- 주요 댓글 (메타 해설 금지, 웃긴 맥락만 대사·상황에 자연스럽게 흡수):\n{comments_block}\n\n"
+        f"위 JSON 스키마(`EpisodeScript`)에 맞춰 출력하세요. "
+        f"`episode_number`={episode_number}, `source_post_no`=\"{post.post_no}\", "
+        f"`source_title`={json.dumps(post.title.strip(), ensure_ascii=False)}, "
+        f"`source_url`=\"{post.url}\"."
     )
 
 
-V4_WRITER_SYSTEM_RULES = """당신은 디시인사이드 '와우 포에버 마이너 갤러리(wowforever)' 개념글을 **V4 5막 가변 레이아웃(5 Acts · 10~14컷 · 페이지 배치 작화)** 초귀염 팝·개그 웹툰(《와우 포에버 슬롭툰》) 대본으로 각색하는 전문 시나리오 작가입니다.
+V4_WRITER_SYSTEM_RULES = """당신은 디시인사이드 '와우 포에버 마이너 갤러리(wowforever)' 개념글을 **V4 5막 가변 레이아웃(5 Acts · 10~14컷)** 날렵한 3~3.5등신 개그 웹툰(《와우 포에버 슬롭툰》) 대본으로 각색하는 시나리오 작가입니다.
 
-[V4 5막 가변 레이아웃 절대 준수 규칙]
-1. **5막(5 Acts) · 10~14컷 장편 서사 리듬 (`layout_mode="v4_five_act"`)**:
-   - 반드시 `layout_mode`를 `"v4_five_act"`로 설정하고, `acts` 배열에 정확히 **5개의 막(`act_number`: 1, 2, 3, 4, 5)**을 순서대로 작성하세요.
-   - 각 막의 역할:
-     * **1막 (발단·현장 진입)**: 첫 컷(또는 장소 전환 컷)에 **Tier 1 `full_bleed_bg=True` 100% 풀배경 지역·던전 설정 샷**으로 원글의 실제 와우 존/던전 분위기와 랜드마크를 한눈에 각인시키고, 이어지는 클로즈업·리액션은 Tier 2/3로 깔끔히 전개.
-     * **2막 (전개·조짐)**: 꼰대짓·억까·입찰/어그로 사고·갈등의 불씨를 노골적이고 자극적으로 점화.
-     * **3막 (위기·확산)**: 사건 본격화, 몬스터 전투 난장판·슬랩스틱 몸개그·격앙된 대립과 갈등 폭발.
-     * **4막 (절정·무언 충격 정지)**: `impact_freeze_2cut` 레이아웃 강력 권장! 하단 초대형 패널에 **Tier 2 자연스러운 하단 땅·배경 + 100% 순백(`#FFFFFF`) 하늘 + 엑스트라/보스 카메오**를 활용한 **시그니처 무언 충격 정지 클로즈업(`wordless=True`)**을 배치해 극대화된 개그 임팩트를 연출하세요.
-     * **5막 (여파·막장 반전 펀치라인)**: 맑눈광 꽃밭 반전·흑화·현타·귀환석 도주 등 찰진 엔딩 펀치라인.
-   - 5개 막의 모든 컷을 합산한 총 컷 수는 반드시 **10~14컷(권장 12~13컷)**이어야 합니다.
-2. **6종 가변 페이지 레이아웃(`layout_id`) 조합 및 다양성 규칙**:
-   - 각 막(`ActPage`)은 아래 6종 `layout_id` 중 하나를 선택하고, `act.cuts` 개수를 해당 레이아웃의 **정확한 패널 수**와 100% 일치시켜야 합니다:
-     * `"open_top_split_bottom"` (3컷): 상단 보더리스 오픈 와이드 + 하단 좌/우 세로 분할 2컷.
-     * `"split_top_wide_bottom"` (3컷): 상단 좌/우 세로 분할 2컷 + 하단 와이드 1컷.
-     * `"diagonal_tempo_2cut"` (2컷): 상단 대형 오픈 컷 + 하단 와이드 1컷.
-     * `"impact_freeze_2cut"` (2컷): 상단 빌드업 와이드 컷 + 하단 초대형 클라이맥스/무언 정지 컷.
-     * `"wide_reaction_wide"` (3컷): 상/중/하 3단 시네마틱 와이드 스트립.
-     * `"four_beat_gag"` (4컷): 2×2 빠른 4박자 개그 그리드.
-   - **연속 동일 레이아웃 금지**: 인접한 두 막(예: 1막과 2막, 2막과 3막)에 같은 `layout_id`를 절대 연달아 쓰지 마세요!
-   - **최소 3종 이상 다양성**: 5개 막 전체에서 **최소 3종 이상(권장 4~5종)**의 서로 다른 `layout_id`를 조합해 페이지마다 리듬을 살리세요.
-   - V4 컷의 `aspect_ratio`는 `"auto"`, `layout_slot`은 `"panel"`로 기입하세요.
-3. **원글 100% 현장 재현 · 막장드라마급 자극적 감정선 & 갈등 극대화 의무화**:
-   - **막장드라마급 자극적 감정선 & 갈등 극대화 의무화**: 물 흐르듯 심심하고 예의 바른 대화를 절대 금지합니다! 원글 개념글의 분노·억까·꼰대짓·배신·먹튀·반전을 과장된 만화적 자극과 슬랩스틱(**두루마리 낚아채기, 그을음 폭탄 머리, 흑화 오라, 도끼 뽑기, 맑눈광 꽃밭 반전, 멱살잡이, 턱 빠짐·영혼 탈출**)으로 극대화하세요!
-   - 원글의 실제 사건·스샷 디테일을 100% 인게임 라이브 상황극으로 재현하세요.
-   - "댓글 반응 보니까~", "개념글 갔네~" 같은 메타 댓글 컷/제4의 벽 깨기는 절대 금지합니다.
-   - 타 커뮤니티(와우 인벤 등) 언급은 영구 금지합니다.
-4. **고정 캐스트 집중 + 몬스터 전투 씬 & 엑스트라·보스·NPC 필수 투입 + 인접 컷 인물 연속성**:
-   - 각 컷의 `characters`에는 시안 C 9명 중 **1~2명**만 기입하고, 한 화 전체 주연 고정 캐스트는 **2~4명(최대 5인 파티 이내)**으로 집중하세요.
-   - **인접 컷 인물 연속성 절대 엄수**: 직전 컷에서 캐릭터 A가 B에게 따졌다면 바로 다음 컷에서 B가 역공할 때 반드시 같은 대상 A가 맞받아쳐야 합니다(갑자기 다른 캐릭터 C로 대상이 바뀌는 콘티 연속성 오류 금지). 또한 배경 엑스트라에 주연 캐릭터와 똑같이 생긴 복제 인물을 넣지 마세요.
-   - **몬스터 전투 씬 & 엑스트라·보스·NPC 필수 투입**: 한 화 5막(10~14컷) 중 **최소 2~3컷 이상에 던전 몬스터 때려잡는 전투 액션, 몹 떼거리, 보스 카메오(해적 선원·고블린·오우거·던전 네임드 등), 엑스트라 유저/경비병/NPC 군중**을 `visual_prompt`에 적극 배치해 살아있는 와우 인게임 현장감을 살리세요! (귀여운 만화풍·비고어 쪼렙 시체/해골 더미, 펫, 탈것도 적극 활용)
-5. **시그니처 무언 충격 정지 컷 (`wordless=True`) 최소 1컷 필수 — 자연스러운 하단 땅·배경 + 100% 순백(`#FFFFFF`) 하늘 극장판 연출**:
-   - 최소 1컷(권장: 4막 `impact_freeze_2cut`의 2번 초대형 패널)은 반드시 `wordless=True`, `speaker=null`, `dialogue=null`로 설정하세요.
-   - `wordless=True` 절정 컷은 기본 `clean_white` 모드에서 어두운 전면 사각 벽 박스나 허공에 뜬 미니어처 섬 대신 **하단·좌우 프레임 끝까지 자연스럽게 이어지는 실제 스케일의 땅·절벽·던전 바닥·갑판·소품·지켜보는 몹/탈것/보스 카메오 + 상단 하늘은 100% 순백(`#FFFFFF`) + 강렬한 만화 충격 이펙트**를 배치해 압도적인 개그 임팩트를 연출하세요! (`background_style="full_bleed"` 명시 시에만 전면 풀-블리드 배경 사용)
-6. **Show, Don't Tell · 9인 캐릭터별 애교 유지 · 1~2줄 스내피 호흡 리듬 · 1말풍선 1화자 · 와우 인게임 어휘 · 100% 익명화**:
-   - **🚫 Show, Don't Tell (그림 중계 절대 금지!)**: 그림에 이미 보이는 행동이나 화면 상황을 말풍선으로 구구절절 해설하지 마세요! (예: "지금 내가 정배를 걸어서 절벽으로 걸어가게 만드는 중이야!" ❌ → "어머, 귀여운 손님 왔네? 정배 딸깍~♡" ⭕). 말풍선에는 그림이 못 담는 **강렬한 감정, 속마음, 화자 고유의 찰진 겜창 티키타카**만 담으세요!
-   - **💕 9인 캐릭터별 고유 애교 유지 + 로봇식 복붙 금지 (아재 설명충·양아치 욕설 둘 다 금지!)**: 2.5~2.8등신 귀염뽀짝 미소녀 그림체에 맞춰 **자연스럽고 매력적인 미소녀 애교는 반드시 유지**하되, 캐스트 바이블에 정의된 **9인 각각의 고유 성격·말투 스타일·애교 시그니처**를 100% 구분해 절대 두 캐릭터가 비슷하게 들리지 않게 쓰세요! (모든 캐릭터에게 똑같은 로봇식 `~해야징~♪` 복붙 금지! 딱딱한 아재/AI 설명충 존댓말(`~하세요~`, `시전 들어갑니다!!`, `완료!`) 금지! 거친 양아치·앰생 욕설(`새끼`, `미친년`, `시발`, `호구` 등) 금지!) 귀염뽀짝한 미소녀 애교 위에 찰진 와우·디시 겜창 어휘(`개꿀팁`, `그숨 딸깍`, `정배`, `혼란 딸깍`, `매너 겜`, `무덤 달리기`)만 톡톡 얹으세요! (닉네임·길드명·정치·현실 혐오는 영구 금지!)
-   - **⚡ 짧은 1~2줄 호흡 리듬 + 1줄 펀치컷 30~40% 의무화 + 내부 2-Pass 대사 다듬기**:
-     * 매 컷 3줄 꽉 찬 설명문 벽텍스트로 도배하지 마세요! **전체 대사 컷의 최소 30~40%는 5~15자 안팎의 강렬한 1줄 펀치컷**으로 치고, 나머지도 **1~2줄**(세로 분할 좁은 컷 410px은 줄당 10~12자 / 와이드 컷은 줄당 12~14자, `\\n` 줄바꿈) 중심으로 숨 쉴 틈과 코믹 템포를 살리세요(3줄은 불가피한 핵심 1~2컷 이하로 제한).
-     * **내부 2-Pass 대사 퇴고 필수**: JSON을 출력하기 전에 내부적으로 반드시 **Pass 1(초안) → Pass 2(그림 중계·장문 설명을 가위로 도려내고, 화자별 고유 애교 시그니처와 1~2줄 리듬으로 날카롭게 다듬기)**를 수행하세요!
-   - **괄호 다중 화자 편법 절대 금지**: `(도적: ...)`, `[전사: ...]` 금지! 한 컷 `dialogue`에는 `speaker` 단 1명의 대사만 적으세요.
-   - **현실 현대어 금지**: "119", "112", "구급차", "경찰", "카톡", "편의점", "택시", "배민" 대신 "무덤 이동", "영혼의 치유사", "경비병", "귓말/파티창", "여관 주인", "와이번/그리핀" 등 100% 와우 인게임 어휘만 사용하세요.
-   - **100% 익명성 준수**: 실제 닉네임·아이디·`<길드명>`(패러디 포함)을 대사·막 제목·부제·이미지 프롬프트·툴팁 어디에도 절대 적지 말고 오직 직업·역할 호칭(`도적`, `징기`, `보기`, `전탱`, `흑마`, `사제`, `파장님`)만 사용하세요.
-7. **V4 영구 정본 3-Tier 알잘딱 배경 연출(`background_style="clean_white"` 기본) · Visual Prompt Diet(70%+ 연기·표정·카메라!) · Clean Hand · 와우 포에버 고증**:
-   - **🎯 Visual Prompt Diet — 70%+ 극단 표정·신체 연기·대담한 카메라 집중! (의상 200단어 복붙 금지!)**:
-     * 캐릭터의 외형 정체성(머리·모자·의상·허리 소품·부츠)은 첨부되는 3면 턴어라운드 도면(`assets/turnarounds/`)과 `anchors`가 100% 고정합니다! 매 컷 `visual_prompt`에 200단어짜리 의상 스펙을 복붙하지 말고(장면 전용 소품·Clean Hand 무기 수납 예외만 짧게 표기), **분량의 70% 이상을 극단적인 만화 표정 연기, 스쿼시앤스트레치(squash-and-stretch) 신체 모션, 그리고 대담한 카메라 연출**에 집중하세요!
-     * **🚫 동일 에피소드 내 표정·아이레벨 카메라 중복 0건 (고정 6표정 시트 금지!)**: 같은 화 10~14컷 안에서 무난한 미소·윙크·평범한 아이레벨 미디엄 샷을 절대 반복하지 마세요! 매 컷 각 캐릭터의 `표정 스펙트럼`을 극한까지 밀어붙여(**익스트림 클로즈업, 어안 강제 원근/fisheye forced-perspective lunging toward camera, 아찔한 버즈아이 탑다운/dizzying bird's-eye top-down, 로우앵글, 30° 더치 틸트, OTS, 뒷모습, 90° 측면 프로필**) 매 패널 완전히 다른 표정과 카메라로 연출하세요!
-   - **기본 정본 `clean_white` — 3-Tier 알잘딱 배경 연출 기준 (미니어처 부유 섬 금지 · 반쪽 사각형 비네트 금지!)**:
-     * **① Tier 1 — 지역·장소 설정 컷 (`full_bleed_bg=True`, 에피소드당 1~2컷: 1막 첫 컷 또는 장소 전환 시)**: 와우 포에버 지역·던전(하이잘 산, 죽음의 폐광, 붉은십자군 수도원 등)의 랜드마크·지형·하늘을 검은 박스 프레임 안에 **100% 풀-블리드 풀배경**으로 생생하게 채워 장소감을 즉시 전달하세요(단, 상단 말풍선 하늘/천장 영역은 인물이 없는 트인 공간으로 비움).
-     * **② Tier 2 — 지형·현장·전투·클라이맥스·엔딩 컷 (`full_bleed_bg=False`, 전체의 약 35~55%)**: 캐릭터·몹·탈것·소품이 딛고 선 **땅·돌길·절벽·던전 바닥·선박 갑판·하단 소품**을 실제 카메라 원근감으로 **패널 하단과 좌우 프레임 끝까지 자연스럽게 꽉 채우되**, **지평선 위 상단 하늘은 100% 순백(`#FFFFFF`)**으로 비워 말풍선·리액션 컷과 위화감 없이 조화시키세요! (**허공에 뜬 미니어처 장난감 섬·깎인 돌 팬케이크·흐릿한 반쪽 사각형 비네트 컷아웃 절대 금지!**)
-     * **③ Tier 3 — 사람만 등장하는 클로즈업·티키타카 리액션 컷 (`full_bleed_bg=False`, 전체의 약 30~50%)**: **100% 순백(`#FFFFFF`) 배경**에 과장된 캐릭터 연기 + 최소한의 만화 이펙트(땀방울·분노 마크·스피드선·충격선·영혼 탈출)만 깔끔하게 배치해 불필요한 배경 소음을 없애고 개그 호흡을 살리세요!
-     * Tier 2·3 대사 컷은 캐릭터를 하단/화자 측에 배치해 말풍선 영역(세로 좁은 컷 상단 36~40% / 와이드 상단 34% 또는 반대쪽 46%)을 **완전 빈 100% 순백(`#FFFFFF`) 하늘 여백**으로 확보하세요!
-   - **선택 옵션 모드 (명시 지정 시에만 하위 호환 적용)**:
-     * `background_style="selective_mix"` 명시 시: 전체 10~14컷 중 **40~60%** 핵심 현장·전투·클라이맥스 컷에 `full_bleed_bg=True`(100% 전면 풀-블리드 박스), 나머지 **40~60%** 리액션 컷에 `full_bleed_bg=False`(100% 순백 `#FFFFFF`, 반쪽 비네트 금지)를 배합합니다.
-     * `background_style="full_bleed"` 명시 시: 모든 컷에 `full_bleed_bg=True`를 지정해 박스 끝까지 풀-블리드 배경을 채우되 말풍선 영역은 인물이 없는 트인 배경으로 비웁니다.
-   - **페이지 외곽 여백·거터는 모든 모드에서 항상 `#FFFFFF` 순백 유지!**
-   - **시네마틱 카메라 & 물리 슬랩스틱**: 정면 나란히 서기 만담 도장찍기 금지! 5막 전체에서 익스트림 클로즈업, 어안 강제 원근(fisheye), 버즈아이 탑다운(bird's-eye), OTS(오버더숄더), 로우앵글, 하이앵글, 30° 더치 틸트, 측면 90° 프로필, 뒷모습, 물리 슬랩스틱(돌진·도주·죽은 척·은신·귀환석 소용돌이·두루마리 낚아채기·그을음 폭탄 머리·도끼 뽑기·무릎 꿇기 등)을 다채롭게 배합하세요.
-   - **Clean Hand Rule**: 전리품·방패·주사위·귀환석·물약을 들거나 제스처 시 기본 무기는 등/허리에 수납(`sheathed on back/belt`)하거나 생략하세요(한 캐릭터 무기 3개 동시 소지 금지).
-   - **고증 필수**: `전탱`/`보기` 탱커는 반드시 한손 무기 + 방패, `사슬(Mail)`은 링메일 사슬 갑옷(쇠사슬/수갑 금지), 음료·물약은 코르크 유리병/나무 머그잔(종이팩/빨대 금지), 주사위는 점 눈금만(숫자·글자 금지).
-   - **시안 C 최신 3면 도면 디테일 고정**: 노움 도적은 머리핀 0개(X·별핀 금지), 나이트엘프 사제는 평범한 뽀얀 피부·연보라 반묶음·은빛 발광눈·보라 사제복·허리 미니 성서 & 황금 묵주·황금 십자/성광 지팡이(천사링·날개 0개), 스카이본 마법사는 뽀얀 피부·하늘색 하이 사이드포니·웃는 구름/날개 뱃지 파란 마법사 모자·구름 망토·허리 미니 변이 양 키링·파란 수정구 지팡이(세일러복 금지).
-8. **원본 제목 100% 원문 유지 (`source_title`) & 선택적 `item_tooltip`**:
-   - `source_title`은 제공된 원본 개념글 제목(`post.title`)을 토씨 하나 바꾸지 말고 그대로 기입하세요.
-   - 실제 와우 아이템이 핵심 소재인 컷에만 선택적으로 `item_tooltip`을 붙이세요(유저 닉네임·길드명 절대 금지).
+[V4 5막 핵심 규칙]
+1. **념글을 안 읽고도 100% 이해되는 5막 완결 서사 (`layout_mode="v4_five_act"`)**:
+   - 독자는 원본 개념글을 읽지 않았다고 가정하고, 5개 막(`act_number`: 1~5, 총 **10~14컷**) 안에 **1막(장소·파티·룰 설정) → 2막(사건 발단) → 3막(갈등 확산) → 4막(절정 + 무언 충격 정지 컷 `wordless=True`) → 5막(여파·펀치라인)**이 물 흐르듯 이해되게 쓰세요.
+   - 원글에 없는 억지 전투 씬 끼워팔기, 메타 댓글 컷, 타 커뮤니티(인벤 등) 언급을 금지합니다.
+
+2. **6종 가변 레이아웃(`layout_id`) 조합**:
+   - 각 막의 `cuts` 개수는 선택한 `layout_id` 패널 수와 정확히 일치해야 합니다(`open_top_split_bottom` 3컷, `split_top_wide_bottom` 3컷, `diagonal_tempo_2cut` 2컷, `impact_freeze_2cut` 2컷, `wide_reaction_wide` 3컷, `four_beat_gag` 4컷).
+   - 인접 막에 동일 `layout_id` 연속 사용 금지, 5막 전체에서 **최소 3종 이상** 조합. 각 컷은 `aspect_ratio="auto"`, `layout_slot="panel"`.
+
+3. **캐스트 집중 · 인접 컷 인물 연속성 · 무언 정지 컷**:
+   - 각 컷 `characters`는 9인 중 **1~2명**, 전체 주연은 **2~5명** 이내.
+   - **인접 컷 인물 연속성 절대 엄수**: 직전 컷에서 대화·대립한 상대가 바로 다음 컷에 바뀌지 않게 유지하고, 배경 엑스트라에 주연 복제 인물을 넣지 마세요.
+   - 최소 1컷(권장 4막 `impact_freeze_2cut` 2번 패널)은 `wordless=True`, `speaker=null`, `dialogue=null`.
+
+4. **자연스러운 구어체 대사 & 100% 익명화**:
+   - 고정 유행어·애교 어미(`옴뇸뇸~`, `으, 으엣?!`, `후훗…`, `~해야징~♪`, 문장 끝 `~♡` 도배) 기계 복붙, 욕설, AI 설명충 존댓말, 현실 현대어(`119`, `카톡`, `편의점`, `택시`) 금지.
+   - 념글 미독자도 즉시 이해할 핵심 맥락을 1~2줄(좁은 410px 컷은 줄당 10~12자, 와이드 컷은 12~15자, 3줄은 핵심 컷 1~2개 이하) 자연스러운 구어체로 담고, 1말풍선 1화자(`(도적: ...)` 금지) 및 100% 익명화(직업 호칭만)를 지키세요.
+
+5. **간결한 영문 시각 연출 (`visual_prompt`, 2~4문장) & 배경 리듬**:
+   - 의상 200단어·가드레일 복붙 대신 **3~3.5등신 날렵한 한국 개그 웹툰** 기준으로 **카메라 앵글(OTS, 로우앵글, 하이앵글, 클로즈업, 더치 틸트, 측면, 뒷모습) + 행동·표정 + 핵심 소품**만 2~4문장 영문으로 적으세요.
+   - Clean Hand Rule(전리품·방패·주사위·귀환석·물약병을 들 때 기본 무기 수납), 탱커 방패, 링메일 사슬 갑옷, 판타지 코르크 유리병/나무잔, 점 눈금 주사위 고증을 지키세요.
+   - 페이지 외곽 여백·거터는 항상 순백 `#FFFFFF` 유지.
+
+6. **원본 제목 원문 유지 (`source_title`) & 선택적 `item_tooltip`**:
+   - `source_title`은 `post.title` 원문을 그대로 쓰고, 핵심 와우 아이템 컷에만 선택적으로 `item_tooltip`을 붙이세요.
 """
 
 
 def _format_v4_layouts_reference() -> str:
-    lines = ["=== V4 가변 페이지 레이아웃 6종 스펙 (900x1350, 2:3) ==="]
+    lines = ["=== V4 가변 페이지 레이아웃 6종 (900x1350) ==="]
     for layout_id, spec in PAGE_LAYOUTS.items():
         slot_summary = ", ".join(
-            f"P{s.slot_index}({s.position_label}, {'narrow 410px' if s.is_narrow else 'wide 844px'}, {s.border_style})"
+            f"P{s.slot_index}({'narrow' if s.is_narrow else 'wide'}, {s.border_style})"
             for s in spec.slots
         )
-        lines.append(f"- `{layout_id}` ({spec.panel_count}컷): {spec.description}\n  구성: {slot_summary}")
+        lines.append(f"- `{layout_id}` ({spec.panel_count}컷): {slot_summary}")
     return "\n".join(lines)
 
 
@@ -196,36 +147,35 @@ def build_v4_writer_prompt(
     *,
     background_style: BackgroundStyle = "clean_white",
 ) -> str:
-    """Assemble the complete V4 5-act variable-layout structured prompt."""
+    """Assemble a concise V4 5-act variable-layout structured prompt."""
     cast_bible = format_cast_bible_for_writer()
     layouts_ref = _format_v4_layouts_reference()
     comments_block = (
-        "\n".join(f"- {c}" for c in post.comments[:15])
+        "\n".join(f"- {c}" for c in post.comments[:12])
         if post.comments
-        else "(별도 댓글 없음 — 본문 에피소드의 현장감과 반전을 5막 호흡으로 극대화하세요)"
+        else "(별도 댓글 없음 — 본문 사건의 맥락과 반전을 5막으로 명확히 살리세요)"
     )
     context_text = "\n".join(
-        [post.title or "", post.body or "", *post.comments[:15]]
+        [post.title or "", post.body or "", *post.comments[:12]]
     )
     lore_guidance = build_wow_lore_guidance(context_text)
 
     if background_style == "selective_mix":
         bg_directive = (
-            "이번 화의 `background_style`은 `\"selective_mix\"`입니다. 전체 10~14컷 중 40~60% 핵심 현장·전투·군중·클라이맥스·엔딩 컷에는 "
-            "`full_bleed_bg=true`(100% 전면 풀-블리드 박스 배경)를, 나머지 40~60% 티키타카 대화·리액션 컷에는 "
-            "`full_bleed_bg=false`(100% 깔끔한 순백 `#FFFFFF` 배경, 반쪽짜리 비네트 컷아웃 절대 금지!)를 선별 배합하세요."
+            "이번 화 `background_style`은 `\"selective_mix\"`입니다. 전체 10~14컷 중 40~60% 핵심 현장 컷은 "
+            "`full_bleed_bg=true`(전면 풀-블리드 박스), 나머지 40~60% 리액션 컷은 `full_bleed_bg=false`"
+            "(순백 `#FFFFFF`, 반쪽 비네트 금지)로 배합하세요."
         )
     elif background_style == "full_bleed":
         bg_directive = (
-            "이번 화의 `background_style`은 `\"full_bleed\"`입니다. 모든 컷에 `full_bleed_bg=true`를 설정하고 "
-            "각 박스 패널을 상하좌우 100% 풀-블리드 컬러 배경(말풍선 영역은 인물이 없는 트인 배경 풍경)으로 채우세요."
+            "이번 화 `background_style`은 `\"full_bleed\"`입니다. 모든 컷에 `full_bleed_bg=true`를 설정하고 "
+            "각 박스를 전면 컬러 배경(말풍선 자리는 트인 배경)으로 채우세요."
         )
     else:
         bg_directive = (
-            "이번 화의 `background_style`은 `\"clean_white\"` (3-Tier 알잘딱 배경 연출 정본)입니다. "
-            "① 지역·장소 설정 컷(1막 첫 컷 등 에피소드당 1~2컷)만 `full_bleed_bg=true`(100% 풀-블리드 WoW 지역·던전 풀배경, 상단 말풍선 하늘은 트이게 비움)로 설정하고, "
-            "② 지형·현장·전투·클라이맥스·엔딩 컷(약 35~55%)은 `full_bleed_bg=false`로 하단·좌우 프레임 끝까지 자연스러운 땅·돌길·절벽·던전 바닥 + 100% 순백 `#FFFFFF` 상단 하늘을 배치하며, "
-            "③ 사람만 등장하는 클로즈업·리액션 컷(약 30~50%)은 `full_bleed_bg=false` 100% 순백 `#FFFFFF` + 최소 만화 이펙트만 배치하세요(미니어처 부유 섬 금지 · 흐릿한 반쪽 사각형 비네트 컷아웃 절대 금지!)."
+            "이번 화 `background_style`은 `\"clean_white\"`입니다. 1막 도입 등 장소 설정 1~2컷만 "
+            "`full_bleed_bg=true`(와우 지역 풀배경 박스)로 쓰고, 나머지 컷은 `full_bleed_bg=false`로 "
+            "순백 `#FFFFFF` 배경(필요 시 하단 자연 바닥·소품 터치, 공중 부유 섬·반쪽 비네트 금지)으로 깔끔히 연출하세요."
         )
 
     return (
@@ -234,30 +184,23 @@ def build_v4_writer_prompt(
         f"{lore_guidance}\n\n"
         f"{cast_bible}\n\n"
         f"=== 각색 대상 포에버갤 개념글 (V4 5막 10~14컷) ===\n"
-        f"- 예정 화수: EP.{episode_number}\n"
-        f"- 게시글 번호: #{post.post_no}\n"
+        f"- 예정 화수: EP.{episode_number} | 게시글 번호: #{post.post_no}\n"
         f"- 원문 URL: {post.url}\n"
         f"- 원문 제목 (100% 그대로 유지): {post.title.strip()}\n"
-        f"- 작성자: {post.author} | 추천: {post.recommends} | 댓글: {post.comments_count}\n"
-        f"- 본문:\n{post.body or '(본문 텍스트 없음 — 제목의 펀치라인을 5막 던전 상황극으로 풀어내세요)'}\n\n"
-        f"- 주요 댓글 (메타 해설 금지! 웃긴 포인트만 캐릭터 대사·상황극 소재로 흡수):\n{comments_block}\n\n"
-        f"[배경 리듬 지정] {bg_directive}\n\n"
-        f"[연기·대사 2-Pass 지시] ① Show, Don't Tell (그림 중계 절대 금지) + 각 화자의 고유 애교 시그니처 유지 + "
-        f"1~2줄 찰진 호흡(대사 컷 30~40% 이상은 5~15자 1줄 펀치컷, 3줄 벽텍스트 도배 금지, 출력 전 2-Pass 퇴고). "
-        f"② Visual Prompt Diet: 의상 200단어 복붙 대신 70% 이상을 극단 만화 표정·스쿼시앤스트레치 연기·대담한 카메라"
-        f"(익스트림 클로즈업, 어안 강제 원근/fisheye, 버즈아이 탑다운, 로우앵글, 30° 더치 틸트, OTS)에 집중하고 "
-        f"동일 화 내 표정·아이레벨 카메라 중복을 0건으로 유지하세요.\n\n"
-        f"위 JSON 스키마(`EpisodeScript`)에 정확히 맞춰 출력하세요. "
-        f"`layout_mode`는 \"v4_five_act\", `background_style`은 \"{background_style}\", "
-        f"`episode_number`는 {episode_number}, "
-        f"`source_post_no`는 \"{post.post_no}\", "
-        f"`source_title`은 원문 제목 100% 그대로인 {json.dumps(post.title.strip(), ensure_ascii=False)}, "
-        f"`source_url`은 \"{post.url}\" 로 기입하고, `acts`에 정확히 5개 막(총 10~14컷, 연속 동일 `layout_id` 금지, 최소 3종 이상 레이아웃 사용)을 작성하세요."
+        f"- 추천: {post.recommends} | 댓글: {post.comments_count}\n"
+        f"- 본문:\n{post.body or '(본문 텍스트 없음 — 제목의 사건을 념글 미독자도 이해하게 5막으로 풀어내세요)'}\n\n"
+        f"- 주요 댓글 (메타 해설 금지, 웃긴 맥락만 대사·상황에 자연스럽게 흡수):\n{comments_block}\n\n"
+        f"[배경 모드] {bg_directive}\n\n"
+        f"위 JSON 스키마(`EpisodeScript`)에 맞춰 출력하세요. "
+        f"`layout_mode`=\"v4_five_act\", `background_style`=\"{background_style}\", "
+        f"`episode_number`={episode_number}, `source_post_no`=\"{post.post_no}\", "
+        f"`source_title`={json.dumps(post.title.strip(), ensure_ascii=False)}, "
+        f"`source_url`=\"{post.url}\"."
     )
 
 
 # ---------------------------------------------------------------------------
-# Script Quality Auditor (catches EP.1–EP.10 flaws before expensive art gen)
+# Script Quality Auditor (catches structural, lore, and anonymity flaws)
 # ---------------------------------------------------------------------------
 
 _PAREN_DUAL_SPEAKER_RE = re.compile(
@@ -317,20 +260,7 @@ def audit_script_quality(
     forbidden_names: Sequence[str] | None = None,
     strict_cinematic: bool = False,
 ) -> dict[str, Any]:
-    """Audit an `EpisodeScript` (classic 2-tier OR V4 5-act) against all WoW Forever rules.
-
-    Catches:
-    - Classic cut count outside 4–6, or V4 cut count outside 10–14 / invalid 5-act layout structure
-    - V4 layout diversity violations (consecutive identical `layout_id` or < 3 distinct layouts)
-    - Missing mandatory wordless freeze-frame cut (`wordless=True`)
-    - Cast sprawl (> 4 unique cast in classic, > 5 unique cast in V4 5-man party mode)
-    - Parenthetical or multi-line dual-speaker hacks inside one bubble (e.g. `(도적: ...)`)
-    - Modern real-world phrasing (e.g. `119`, `구급차`, `카톡`, `편의점`)
-    - Real player nicknames / guild tags (`<Guild>`) / forbidden community (`인벤`)
-    - Outdoor faction/zone hearthstone mismatch (e.g. Tauren Druid claiming Dolanaar)
-    - Tanking Warrior/Paladin wielding a 2H weapon with no shield
-    - Literal anti-hallucination visual prompt traps (juice box, prison chains)
-    """
+    """Audit an `EpisodeScript` (classic 4~8 cut OR V4 5-act) against all WoW Forever rules."""
     errors: list[str] = []
     warnings: list[str] = []
 
@@ -384,9 +314,9 @@ def audit_script_quality(
                     f"Insufficient V4 layout diversity: {distinct_count} distinct layout(s) across 5 acts (need >= 3)."
                 )
     else:
-        cut_count_ok = 4 <= cut_count <= 6
+        cut_count_ok = 4 <= cut_count <= 8
         if not cut_count_ok:
-            errors.append(f"Cut count must be 4–6, got {cut_count}.")
+            errors.append(f"Cut count must be 4–8, got {cut_count}.")
 
     wordless_cuts = [cut.cut_index for cut in cuts if cut.wordless]
     act_has_wordless = (not act_cuts) or any(cut.wordless for cut in act_cuts)
@@ -394,7 +324,6 @@ def audit_script_quality(
     if not wordless_cut_ok:
         errors.append("Missing mandatory wordless freeze-frame cut (wordless=True).")
 
-    # Cast sprawl check (<= 4 core cast in classic, <= 5 party members in V4)
     unique_cast: list[str] = []
     seen_cast: set[str] = set()
     for cut in cuts:
@@ -441,7 +370,6 @@ def audit_script_quality(
             no_forbidden_community = False
             errors.append(f"Forbidden community mention ('인벤') in {location}.")
 
-    # Check subtitle & V4 act titles
     _check_text_anonymity_and_community(script.subtitle, "subtitle")
     if _GUILD_TAG_RE.search(script.subtitle) or _EXPLICIT_ID_LEAK_RE.search(script.subtitle):
         anonymity_ok = False
@@ -465,7 +393,6 @@ def audit_script_quality(
                     f"Modern real-world phrasing '{label}' in {act_loc} (use WoW phrasing like '{replacement}')."
                 )
 
-    # Audit every cut in `cuts`, plus any mutated cut present only in `script.acts`
     seen_cut_obj_ids = {id(c) for c in cuts}
     cuts_to_inspect: list[ComicCut] = list(cuts)
     for c in act_cuts:
@@ -477,7 +404,6 @@ def audit_script_quality(
         dlg = (cut.dialogue or "").strip()
         vp = (cut.visual_prompt or "").strip()
 
-        # Non-wordless cut checks
         if not cut.wordless:
             if not dlg:
                 warnings.append(f"{loc} is non-wordless but has empty dialogue.")
@@ -491,7 +417,6 @@ def audit_script_quality(
                         f"{loc} speaker '{canon_speaker}' is not in cut.characters {canon_chars}."
                     )
 
-        # 1. Dual-speaker hacks in dialogue
         if dlg:
             m_paren = _PAREN_DUAL_SPEAKER_RE.search(dlg)
             if m_paren:
@@ -518,7 +443,6 @@ def audit_script_quality(
                     no_dual_speaker_hack = False
                     errors.append(f"Multiple labeled speakers stuffed into one bubble in {loc}.")
 
-            # 2. Modern slang check
             for label, replacement in find_modern_slang_violations(dlg):
                 no_modern_slang = False
                 errors.append(
@@ -526,13 +450,11 @@ def audit_script_quality(
                     f"(use WoW phrasing like '{replacement}')."
                 )
 
-            # 3. Anonymity & community check
             _check_text_anonymity_and_community(dlg, f"{loc} dialogue")
             if _GUILD_TAG_RE.search(dlg) or _EXPLICIT_ID_LEAK_RE.search(dlg):
                 anonymity_ok = False
                 errors.append(f"Possible guild tag / ID leak in {loc} dialogue.")
 
-            # 4. Outdoor faction/zone hearthstone mismatch
             speaker_ref = cut.speaker or (cut.characters[0] if cut.characters else "")
             speaker_member = resolve_cast_member(speaker_ref)
             if speaker_member is not None and any(cue in dlg for cue in _HEARTH_HOME_CUES):
@@ -554,7 +476,6 @@ def audit_script_quality(
                             f"'{speaker_member.name}' claims Horde zone '{bad_zone}' as hearthstone/home."
                         )
 
-        # 5. Visual prompt checks (anonymity, forbidden community, tank shield, anti-hallucination traps)
         _check_text_anonymity_and_community(vp, f"{loc} visual_prompt")
 
         for pat, desc in _VISUAL_TRAP_PATTERNS:
@@ -566,7 +487,6 @@ def audit_script_quality(
                     )
                     break
 
-        # Tank shield check when Warrior/Paladin appears in a tanking cut holding a 2H weapon with no shield
         resolved_cut_members = [
             m for m in (resolve_cast_member(c) for c in cut.characters) if m is not None
         ]
@@ -583,7 +503,6 @@ def audit_script_quality(
                     "two-handed weapon with NO shield — 전탱/보기 must carry a 1H weapon + shield."
                 )
 
-        # 6. Item tooltip anonymity guard (never attach tooltips to user/cast names)
         if cut.item_tooltip and cut.item_tooltip.item_name:
             tip_name = cut.item_tooltip.item_name.strip()
             _check_text_anonymity_and_community(tip_name, f"{loc} item_tooltip")
@@ -593,7 +512,6 @@ def audit_script_quality(
                     f"Invalid item_tooltip.item_name '{tip_name}' in {loc}: tooltips are strictly for WoW items."
                 )
 
-    # 7. Cinematic variety & anti-talking-heads check (prevents repetitive flat side-by-side cuts)
     detected_camera_tags: set[str] = set()
     dynamic_cuts = 0
     flat_two_shot_cuts = 0
@@ -625,7 +543,6 @@ def audit_script_quality(
             "vary OTS/low-angle/high-angle/profile/back-view/slapstick action poses instead of static talking heads."
         )
 
-    # 8. Soft non-breaking dialogue pacing check (warns if V4 script is overloaded with dense 3-line walls)
     dialogue_cuts = [c for c in cuts if not c.wordless and (c.dialogue or "").strip()]
     bloated_3line_cuts: list[int] = []
     short_1line_cuts: list[int] = []
@@ -633,7 +550,7 @@ def audit_script_quality(
         dlg = (cut.dialogue or "").strip()
         non_empty_lines = [ln.strip() for ln in dlg.splitlines() if ln.strip()]
         char_len = len(dlg.replace("\n", "").strip())
-        if len(non_empty_lines) >= 3 and char_len > 32:
+        if len(non_empty_lines) >= 3 and char_len > 38:
             bloated_3line_cuts.append(cut.cut_index)
         elif len(non_empty_lines) == 1 and char_len <= 18:
             short_1line_cuts.append(cut.cut_index)
@@ -643,9 +560,8 @@ def audit_script_quality(
         if bloated_ratio > 0.70:
             warnings.append(
                 f"Dialogue pacing bloat in V4 script: {len(bloated_3line_cuts)}/{len(dialogue_cuts)} "
-                f"dialogue cuts ({bloated_ratio:.0%}) are dense 3-line walls (>32 chars, cuts "
-                f"{bloated_3line_cuts}). Prefer Show-Don't-Tell 1–2 line rhythm with >=30% punchy "
-                "1-line cuts (5–15 chars)."
+                f"dialogue cuts ({bloated_ratio:.0%}) are dense 3-line walls (>38 chars, cuts "
+                f"{bloated_3line_cuts})."
             )
 
     checks: dict[str, bool] = {
@@ -738,7 +654,7 @@ def _normalize_script(
     post: GalleryPost,
     episode_number: int,
 ) -> EpisodeScript:
-    """Ensure canonical Draft C names and exact source post metadata on classic or V4 scripts."""
+    """Ensure canonical cast names and exact verbatim source metadata on classic or V4 scripts."""
     verbatim_title = post.title.strip() or script.source_title.strip()
 
     if script.acts is not None:
@@ -793,7 +709,7 @@ def generate_episode_script(
     settings: Settings | None = None,
     model: str | None = None,
 ) -> EpisodeScript:
-    """Generate and validate a 4~6 cut `EpisodeScript` via Gemini Interactions API."""
+    """Generate and validate a 4~8 cut `EpisodeScript` via Gemini Interactions API."""
     cfg = settings or load_settings()
     target_model = model or cfg.text_model or DEFAULT_TEXT_MODEL
 
@@ -817,14 +733,12 @@ def generate_episode_script(
     )
 
     raw_json = _extract_interaction_text(interaction)
-    # Strip accidental markdown fences if any
     if raw_json.startswith("```"):
         lines = raw_json.splitlines()
         raw_json = "\n".join(
             line for line in lines if not line.strip().startswith("```")
         ).strip()
 
-    # Validate JSON directly with Pydantic v2
     script = EpisodeScript.model_validate_json(raw_json)
     return _normalize_script(script, post=post, episode_number=episode_number)
 
@@ -884,10 +798,10 @@ def generate_v4_episode_script(
 
 
 def build_dry_run_script(post: GalleryPost, episode_number: int) -> EpisodeScript:
-    """Build a deterministic offline 4-cut Draft C script for `--dry-run` previews and smoke tests."""
+    """Build a deterministic offline 4-cut self-contained script for `--dry-run` previews."""
     verbatim_title = post.title.strip()
     dialogue_hook = verbatim_title or f"개념글 #{post.post_no}"
-    snippet = (post.body.strip().splitlines()[0][:28] + "...") if post.body.strip() else dialogue_hook[:28]
+    snippet = (post.body.strip().splitlines()[0][:24] + "...") if post.body.strip() else dialogue_hook[:24]
 
     cuts = [
         ComicCut(
@@ -896,14 +810,13 @@ def build_dry_run_script(post: GalleryPost, episode_number: int) -> EpisodeScrip
             layout_slot="top",
             characters=["나이트엘프 사제", "오크 전사"],
             speaker="나이트엘프 사제",
-            dialogue=f"저기요...\n'{dialogue_hook[:18]}'\n이거 실화예요?",
+            dialogue=f"던전 주특입 파티잖아요.\n'{dialogue_hook[:16]}' 실화예요?",
             wordless=False,
             visual_prompt=(
-                "Medium waist-up 2.5-head chibi framing. Left: Night Elf Priest chibi girl with "
-                "dark under-eye circles leaning her golden crescent staff beside her while asking "
-                "nervously with clasped hands. Right: Orc Warrior chibi girl in green orc hood "
-                "grinning confidently with her axe strapped on her back. Pure solid white #FFFFFF "
-                "background, no text, no speech bubbles."
+                "Over-the-shoulder shot in sleek 3-to-3.5 head webtoon style. Left: exhausted Night Elf Priest "
+                "with tired dark circles pleading with clasped hands (staff on back). Foreground right: back "
+                "shoulder of Orc Warrior grinning confidently with steel shield and 1H sword. Pure solid white "
+                "#FFFFFF background."
             ),
             tail_target="left",
         ),
@@ -913,13 +826,12 @@ def build_dry_run_script(post: GalleryPost, episode_number: int) -> EpisodeScrip
             layout_slot="bottom",
             characters=["오크 전사"],
             speaker="오크 전사",
-            dialogue=f"당연하지!\n{snippet}\n던전이 원래 그런 곳이야!",
+            dialogue=f"당연하지! {snippet}\n던전은 원래 선착순이야!",
             wordless=False,
             visual_prompt=(
-                "Medium waist-up chibi framing on the right side of the wide 16:9 frame: Orc "
-                "Warrior chibi girl in vibrant green orc animal hood giving a bold proud thumbs-up "
-                "with sparkles and cheeky grin, her silver battle axe strapped across her back. "
-                "Pure solid white #FFFFFF background, no text, no speech bubbles."
+                "Low-angle shot on the right half of the wide 16:9 frame: Orc Warrior tank raising her steel "
+                "kite shield and 1H sword proudly with a confident grin. Generous empty pure solid white "
+                "#FFFFFF space on left for speech bubble."
             ),
             tail_target="right",
         ),
@@ -929,14 +841,12 @@ def build_dry_run_script(post: GalleryPost, episode_number: int) -> EpisodeScrip
             layout_slot="top",
             characters=["노움 도적", "스카이본 마법사"],
             speaker="노움 도적",
-            dialogue="어어 잠깐만,\n그거 탱커랑 힐러\n다 듣고 있는데?",
+            dialogue="잠깐, 방금 파티창에\n전탱·힐러 다 보고 있었는데?",
             wordless=False,
             visual_prompt=(
-                "Medium waist-up chibi framing. Left: Gnome Rogue chibi girl with blonde-pink-blue "
-                "pigtails and green goggles pointing mischievously with a sly grin (daggers "
-                "sheathed at belt). Right: Skyborne Mage chibi girl with elf ears and airy "
-                "sky-blue hair tips glancing sideways nervously (hands empty). Pure solid white "
-                "#FFFFFF background, no text, no speech bubbles."
+                "Side-profile comedic shot: Left, Gnome Rogue leaning in with a teasing smirk pointing thumb "
+                "back (daggers sheathed). Right, Skyborne Mage glancing sideways in disbelief with hands empty "
+                "(crystal staff on back). Pure solid white #FFFFFF background."
             ),
             tail_target="left",
         ),
@@ -949,10 +859,9 @@ def build_dry_run_script(post: GalleryPost, episode_number: int) -> EpisodeScrip
             dialogue=None,
             wordless=True,
             visual_prompt=(
-                "Centered extreme close-up freeze-frame of Skyborne Mage with star-pupils "
-                "extinguished into blank white shock eyes, jaw dropped wide open, and comical "
-                "mini-soul floating out of her mouth in speechless disbelief. Pure solid white "
-                "#FFFFFF background, no text, no speech bubbles."
+                "Centered Dutch-tilt close-up freeze-frame of Skyborne Mage with star-pupils switched off "
+                "into blank white shock eyes, forehead gloom shadow, jaw dropped wide, and a small cold sweat "
+                "drop. Pure solid white #FFFFFF background."
             ),
             tail_target="center",
         ),
@@ -974,13 +883,7 @@ def build_dry_run_v4_script(
     *,
     background_style: BackgroundStyle = "clean_white",
 ) -> EpisodeScript:
-    """Build a deterministic offline V4 5-act (13-cut, 5 distinct variable layouts) Draft C script.
-
-    Uses the 5 distinct layouts (`open_top_split_bottom`, `diagonal_tempo_2cut`,
-    `split_top_wide_bottom`, `impact_freeze_2cut`, `wide_reaction_wide` -> 3+2+3+2+3 = 13 cuts),
-    per-character cute aegyo pacing (mix of snappy 1-line punch cuts & 2-line beats),
-    acting-first camera-varied visual prompts, and Clean Hand rules.
-    """
+    """Build a deterministic offline V4 5-act (13-cut, 5 distinct layouts) self-contained script."""
     verbatim_title = post.title.strip()
     dialogue_hook = verbatim_title or f"개념글 #{post.post_no}"
     snippet = (
@@ -992,7 +895,7 @@ def build_dry_run_v4_script(
     acts = [
         ActPage(
             act_number=1,
-            act_title="발단 — 던전 앞 수상한 분위기",
+            act_title="발단 — 던전 앞 주특입 파티 출발",
             layout_id="open_top_split_bottom",
             cuts=[
                 ComicCut(
@@ -1003,17 +906,13 @@ def build_dry_run_v4_script(
                     panel_index=1,
                     characters=["나이트엘프 사제", "오크 전사"],
                     speaker="나이트엘프 사제",
-                    dialogue=f"어머, '{dialogue_hook[:14]}'?\n이 파티, 재밌겠네~♡",
+                    dialogue=f"'{dialogue_hook[:14]}' 파티 맞죠?\n주특입 룰 지키고 가요.",
                     wordless=False,
                     full_bleed_bg=True,
                     visual_prompt=(
-                        "Tier 1 establishing full-bleed dungeon entrance shot: 100% edge-to-edge "
-                        "gothic Scarlet Monastery stone archway, fluttering crimson banners, and "
-                        "uncluttered upper dusk sky for speech bubble; over-the-shoulder foreground "
-                        "back shoulder of Orc Warrior tank with sturdy steel kite shield and 1H sword "
-                        "ready; background Night Elf Priest leaning forward gracefully with a sly "
-                        "closed-eye smile and sparkling mischief, Holy Cross staff strapped on back. "
-                        "No text, no speech bubbles."
+                        "Over-the-shoulder establishing shot at Scarlet Monastery stone archway with crimson "
+                        "banners and open upper sky: foreground shoulder of Orc Warrior tank (steel kite shield "
+                        "and 1H sword), midground Night Elf Priest confirming dungeon rules politely (staff on back)."
                     ),
                     tail_target="left",
                 ),
@@ -1025,14 +924,11 @@ def build_dry_run_v4_script(
                     panel_index=2,
                     characters=["오크 전사"],
                     speaker="오크 전사",
-                    dialogue="나만 믿으라구~!",
+                    dialogue="걱정 마, 내가 앞장선다!",
                     wordless=False,
                     visual_prompt=(
-                        "Dramatic low-angle heroic brag looking up at Orc Warrior puffing her chest "
-                        "out with boisterous open-mouth fang belly-laugh and starry-eyed sparkle "
-                        "bursts, raising her sturdy steel kite shield and compact 1H sword for "
-                        "tanking. Pure solid white #FFFFFF background, generous top pure-white "
-                        "headroom, no text, no speech bubbles."
+                        "Low-angle heroic brag looking up at Orc Warrior tank raising her sturdy steel kite "
+                        "shield and 1H sword with a boisterous confident grin. Pure solid white #FFFFFF background."
                     ),
                     tail_target="center",
                 ),
@@ -1044,14 +940,11 @@ def build_dry_run_v4_script(
                     panel_index=3,
                     characters=["노움 도적"],
                     speaker="노움 도적",
-                    dialogue="에헤헷, 나 먼저 째야지~",
+                    dialogue="어차피 터지면 내가 제일 먼저 짼다.",
                     wordless=False,
                     visual_prompt=(
-                        "Side-profile sneaky crouch peeking from behind a wooden dungeon crate: "
-                        "Gnome Rogue nudging her green goggles up with a teasing fang smirk and "
-                        "cheeky tongue-out blep (:P), daggers sheathed neatly at lower back belt. "
-                        "Pure solid white #FFFFFF background, generous top pure-white headroom, "
-                        "no text, no speech bubbles."
+                        "Side-profile sneaky crouch beside a wooden dungeon crate: Gnome Rogue nudging her "
+                        "goggles up with a sly smirk (daggers sheathed at belt). Pure solid white #FFFFFF background."
                     ),
                     tail_target="center",
                 ),
@@ -1070,15 +963,12 @@ def build_dry_run_v4_script(
                     panel_index=1,
                     characters=["오크 전사", "노움 도적"],
                     speaker="노움 도적",
-                    dialogue=f"으악! {snippet}\n칼소멸 탈게~ 메롱!",
+                    dialogue=f"어어 {snippet}\n일단 소멸부터 탈게!",
                     wordless=False,
                     visual_prompt=(
-                        "30-degree Dutch-tilt slapstick dungeon chaos on natural full-width stone "
-                        "floor tiles: Orc Warrior tank (sturdy steel kite shield and 1H sword) "
-                        "skidding backward in jaw-dropped panic against rushing cartoon mob "
-                        "silhouettes while Gnome Rogue rockets sideways in a swirling Vanish smoke "
-                        "puff pulling a cheeky eyelid-down blep (:P). Pure solid white #FFFFFF "
-                        "background, no text, no speech bubbles."
+                        "Dutch-tilt slapstick chase on dungeon stone tiles: Orc Warrior tank (steel shield and "
+                        "1H sword) skidding backward against rushing mob silhouettes while Gnome Rogue darts "
+                        "sideways in a swirling Vanish smoke puff. Pure solid white #FFFFFF background."
                     ),
                     tail_target="right",
                 ),
@@ -1090,15 +980,12 @@ def build_dry_run_v4_script(
                     panel_index=2,
                     characters=["스카이본 마법사", "나이트엘프 사제"],
                     speaker="스카이본 마법사",
-                    dialogue="잠깐, 방금 지능 지팡이에\n입찰 눌렀어…?",
+                    dialogue="잠깐, 방금 지능 지팡이에\n입찰 누른 거 누구야?",
                     wordless=False,
                     visual_prompt=(
-                        "Fisheye forced-perspective reaction shot: Left, Skyborne Mage lunging "
-                        "dramatically toward camera pointing one accusing finger with star-pupils "
-                        "switched abruptly OFF into a cold deadpan glare (crystal staff on back); "
-                        "Right, Night Elf Priest behind her covering a polite giggle behind her "
-                        "hand with eerie glowing silver side-eye. Pure solid white #FFFFFF "
-                        "background, no text, no speech bubbles."
+                        "Fisheye forced-perspective reaction shot: Left, Skyborne Mage lunging toward camera "
+                        "pointing accusingly with a cold deadpan glare (crystal staff on back); Right, Night "
+                        "Elf Priest behind her eyeing the loot awkwardly. Pure solid white #FFFFFF background."
                     ),
                     tail_target="left",
                 ),
@@ -1117,15 +1004,12 @@ def build_dry_run_v4_script(
                     panel_index=1,
                     characters=["나이트엘프 사제"],
                     speaker="나이트엘프 사제",
-                    dialogue="어머, 힐 없어요~♡",
+                    dialogue="저런, 힐은 없어요.",
                     wordless=False,
                     visual_prompt=(
-                        "Extreme face close-up of Night Elf Priest: dark purple gloom shadow "
-                        "draping heavily over her forehead, glowing silver eyes shrunk to chilling "
-                        "pinpoint psychotic pupils with a wide sweetly-evil grin and faint dark "
-                        "villain sparkles (Holy Cross staff stowed on back). Pure solid white "
-                        "#FFFFFF background, generous top pure-white headroom, no text, no speech "
-                        "bubbles."
+                        "Extreme face close-up of Night Elf Priest with dark gloom shadow over her brow, "
+                        "chilling pinpoint silver pupils, and a razor-calm polite smile (staff on back). "
+                        "Pure solid white #FFFFFF background."
                     ),
                     tail_target="center",
                 ),
@@ -1137,14 +1021,11 @@ def build_dry_run_v4_script(
                     panel_index=2,
                     characters=["오크 전사"],
                     speaker="오크 전사",
-                    dialogue="으앙 힐러님 살려줘어~!",
+                    dialogue="피 1%야! 힐 좀 줘!",
                     wordless=False,
                     visual_prompt=(
-                        "Low-angle squash-and-stretch panic breakdown: Orc Warrior dropping to her "
-                        "knees clinging forward with HP-1% twin waterfall tears, snot bubble, and "
-                        "huge jaw-dropped wail while hugging her sturdy steel kite shield and 1H "
-                        "sword desperately. Pure solid white #FFFFFF background, generous top "
-                        "pure-white headroom, no text, no speech bubbles."
+                        "Low-angle panic breakdown: Orc Warrior dropping to her knees clinging forward in "
+                        "tears hugging her steel kite shield and 1H sword desperately. Pure solid white #FFFFFF background."
                     ),
                     tail_target="center",
                 ),
@@ -1156,15 +1037,12 @@ def build_dry_run_v4_script(
                     panel_index=3,
                     characters=["노움 도적", "스카이본 마법사"],
                     speaker="노움 도적",
-                    dialogue="흥~ 주사위는 공정하지!\n먼저 굴리는 사람이 임자~",
+                    dialogue="주사위는 공정하잖아?\n높게 나온 사람이 임자지!",
                     wordless=False,
                     visual_prompt=(
-                        "Over-the-shoulder reveal shot past Skyborne Mage's stiff trembling "
-                        "shoulder toward Gnome Rogue leaping onto an open wooden loot chest, "
-                        "cackling wildly with a smug gremlin grin while tossing a chunky 6-sided "
-                        "white-and-gold loot die showing ONLY round black dot pips (strictly zero "
-                        "digits, zero letters; daggers sheathed at belt). Pure solid white #FFFFFF "
-                        "background, no text, no speech bubbles."
+                        "Over-the-shoulder reveal past Skyborne Mage's trembling shoulder toward Gnome Rogue "
+                        "leaping onto an open wooden loot chest tossing a chunky 6-sided white-and-gold loot "
+                        "die with dot pips only (daggers sheathed). Pure solid white #FFFFFF background."
                     ),
                     tail_target="left",
                 ),
@@ -1183,14 +1061,12 @@ def build_dry_run_v4_script(
                     panel_index=1,
                     characters=["노움 도적", "오크 전사"],
                     speaker="노움 도적",
-                    dialogue="올입찰 100 떴다!\n귀환석 먼저 탈게~ 메롱!",
+                    dialogue="입찰 100 떴다!\n귀환석 먼저 탈게!",
                     wordless=False,
                     visual_prompt=(
-                        "Dynamic Dutch-tilt mid-air slapstick leap: Gnome Rogue soaring gleefully "
-                        "brandishing a glowing cyan spiral-rune Hearthstone (daggers sheathed) "
-                        "while Orc Warrior tank (sturdy steel kite shield and 1H sword) dives "
-                        "horizontal face-first in flying dust puffs trying to grab her boot. "
-                        "Pure solid white #FFFFFF background, no text, no speech bubbles."
+                        "Dutch-tilt mid-air leap: Gnome Rogue soaring gleefully holding a glowing cyan "
+                        "spiral-rune Hearthstone (daggers sheathed) while Orc Warrior tank (steel shield and "
+                        "1H sword) dives face-first trying to grab her boot. Pure solid white #FFFFFF background."
                     ),
                     tail_target="right",
                 ),
@@ -1205,11 +1081,9 @@ def build_dry_run_v4_script(
                     dialogue=None,
                     wordless=True,
                     visual_prompt=(
-                        "Massive centered extreme close-up comedic freeze-frame of Skyborne Mage: "
-                        "star-pupils completely extinguished into hollow blank white shock eyes, "
-                        "jaw dropped wide to her chest, comical translucent mini-soul drifting "
-                        "lazily out of her mouth amid jagged manga shock lines (crystal staff on "
-                        "back). Pure solid white #FFFFFF background, no text, no speech bubbles."
+                        "Centered extreme close-up comedic freeze-frame of Skyborne Mage with star-pupils "
+                        "switched off into blank white shock eyes, jaw dropped wide, and a tiny translucent "
+                        "soul drifting out of her mouth (staff on back). Pure solid white #FFFFFF background."
                     ),
                     tail_target="center",
                 ),
@@ -1228,14 +1102,12 @@ def build_dry_run_v4_script(
                     panel_index=1,
                     characters=["나이트엘프 사제"],
                     speaker="나이트엘프 사제",
-                    dialogue="영혼의 치유사 면담 각~♡",
+                    dialogue="영혼의 치유사 면담 각이네요.",
                     wordless=False,
                     visual_prompt=(
-                        "Dizzying bird's-eye top-down shot looking straight down at Night Elf "
-                        "Priest kneeling dramatically beside an empty fantasy corked glass mana "
-                        "flask, wearing a serene angelic closed-eye smile contrasted with a funny "
-                        "faint dark-violet chibi villain aura (Holy Cross staff resting beside "
-                        "her). Pure solid white #FFFFFF background, no text, no speech bubbles."
+                        "High-angle bird's-eye shot looking down at Night Elf Priest kneeling beside an empty "
+                        "corked glass mana flask with a calm resigned smile (staff resting beside her). "
+                        "Pure solid white #FFFFFF background."
                     ),
                     tail_target="left",
                 ),
@@ -1247,14 +1119,12 @@ def build_dry_run_v4_script(
                     panel_index=2,
                     characters=["노움 도적"],
                     speaker="노움 도적",
-                    dialogue="에헤헷, 여관 갈게~ 바이!",
+                    dialogue="여관으로 먼저 갈게!",
                     wordless=False,
                     visual_prompt=(
-                        "Back-view sprint action shot of Gnome Rogue diving into a bright swirling "
-                        "cyan Hearthstone teleport vortex while glancing back over her shoulder "
-                        "flashing a shameless cheeky wink and peace sign (daggers sheathed at "
-                        "lower back belt). Pure solid white #FFFFFF background, no text, no speech "
-                        "bubbles."
+                        "Back-view sprint action shot of Gnome Rogue diving into a bright swirling cyan "
+                        "Hearthstone vortex while glancing back over her shoulder with a cheeky wave "
+                        "(daggers sheathed). Pure solid white #FFFFFF background."
                     ),
                     tail_target="right",
                 ),
@@ -1266,15 +1136,12 @@ def build_dry_run_v4_script(
                     panel_index=3,
                     characters=["오크 전사", "스카이본 마법사"],
                     speaker="오크 전사",
-                    dialogue="다음엔 파티찾기 포에버에서\n주사위 룰부터 정하자…",
+                    dialogue="다음엔 파티찾기 포에버에서\n주사위 룰부터 못 박자…",
                     wordless=False,
                     visual_prompt=(
-                        "Side-profile exhausted aftermath on full-width dungeon stone floor: "
-                        "Orc Warrior slumped deflated against her sturdy steel kite shield and 1H "
-                        "sword with limp sweatdrops beside Skyborne Mage puffed up crimson-faced "
-                        "steaming with comic anger puffs erupting from her wizard hat (crystal "
-                        "staff on back). Pure solid white #FFFFFF background, no text, no speech "
-                        "bubbles."
+                        "Side-profile exhausted aftermath on dungeon stone floor: Orc Warrior slumped against "
+                        "her steel kite shield and 1H sword sighing beside Skyborne Mage fuming with comic "
+                        "anger steam (crystal staff on back). Pure solid white #FFFFFF background."
                     ),
                     tail_target="left",
                 ),
@@ -1282,11 +1149,6 @@ def build_dry_run_v4_script(
         ),
     ]
 
-    # Apply per-cut full_bleed_bg rhythm based on background_style:
-    # - full_bleed: every cut full_bleed_bg=True
-    # - selective_mix: ~50% key establishing/action/reveal/wordless/ending cuts (7/13 = 53.8%)
-    #   set full_bleed_bg=True; dialogue-reaction ping-pong cuts stay crisp #FFFFFF (False).
-    # - clean_white: every cut full_bleed_bg=False
     selective_fb_indices: set[int] = {1, 4, 8, 9, 10, 12, 13}
     if background_style in {"full_bleed", "selective_mix"}:
         adjusted_acts: list[ActPage] = []
@@ -1301,11 +1163,8 @@ def build_dry_run_v4_script(
                 vp = cut.visual_prompt
                 if use_fb:
                     vp = vp.replace(
-                        "Pure solid white #FFFFFF background, generous top pure-white headroom, no text, no speech bubbles.",
-                        "100% edge-to-edge full-bleed stone dungeon background with unobstructed upper cavern ceiling for speech bubble, no text, no speech bubbles.",
-                    ).replace(
-                        "Pure solid white #FFFFFF background, no text, no speech bubbles.",
-                        "100% edge-to-edge full-bleed stone dungeon background with unobstructed upper scenery for speech bubble, no text, no speech bubbles.",
+                        "Pure solid white #FFFFFF background.",
+                        "Full-bleed stone dungeon background with open upper cavern ceiling for speech bubble.",
                     )
                 adjusted_cuts.append(
                     cut.model_copy(update={"full_bleed_bg": use_fb, "visual_prompt": vp})

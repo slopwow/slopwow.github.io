@@ -56,40 +56,10 @@ class AntiHallucinationRule:
 # 1. WoW Forever (2026 Classic+) Unique Systems & Faction Rules
 # ---------------------------------------------------------------------------
 
-WOW_FOREVER_CORE_SYSTEMS: str = """[월드 오브 워크래프트: 포에버 (2026 Classic+) 핵심 세계관·시스템 바이블]
-1. **레벨 60 클래식+ (Classic+)**:
-   - 오리지널 60레벨 만렙 기반에 신규 종족·신규 조합·신규 5인 인던 9곳·10인 공격대·아이템 스탯 개편·생활 시스템이 추가된 포에버 전용 클래식+ 서버.
-2. **신규 플레이어블 종족 '스카이본 (Skyborne)'**:
-   - 시작 지역: **제프라스 섬 (Zephras Isle, Lv.1~12)**.
-   - 외형·종특: 하늘과 바람 친화 종족, 뾰족한 요정 귀(elf ears), 은은한 깃털 장식·바람결 머리끝, 공중 활강 종족 특성 **Walk on Air (공중 보행 / 바람 활강)**.
-   - 진영별 전용 직업: **얼라이언스 상급 기사단(Alliance High Order) = 마법사(Mage)**, **호드 바람술사(Horde Windshaper) = 주술사(Shaman)**; 양 진영 공통 직업 = 전사·사냥꾼·도적·드루이드.
-   - 공식 시안 C의 `스카이본 마법사`는 얼라이언스 상급 기사단 소속(단, 인던/레이드는 진영 통합 매칭 가능).
-3. **신규 종족-직업 조합 6종 (WoW Forever 6 New Combos)**:
-   - **언데드 성기사 (Undead Paladin)** (시안 C 고정 멤버!)
-   - **오크 마법사 (Orc Mage)**
-   - **트롤 흑마법사 (Troll Warlock)**
-   - **인간 사냥꾼 (Human Hunter)**
-   - **드워프 주술사 (Dwarf Shaman)**
-   - **노움 사제 (Gnome Priest)**
-4. **이중 특성 (Dual Spec)**: **40레벨** 해금. (인던에서 "이중특성으로 힐/탱도 해서 입찰함" 같은 입찰 분쟁 밈의 단골 원인!)
-5. **아늑한 침낭 퀘스트 ('침낭퀘', Lv.14+) & 야영 전문기술 (Camping)**:
-   - 14레벨 이상 대륙 횡단 장거리 연퀘(~1~1.5시간) 완료 시 **아늑한 침낭(Cozy Sleeping Bag)** + **12칸 가방** 획득.
-   - 침낭에 **3분 휴식**하면 **2시간 동안 경험치 +3% 버프** 획득. 야영(Camping) 전문기술로 필드 모닥불·텐트·휴식 버프 활용.
-6. **계정 공유 유산(Legacy) & 서버 편의/밸런스 시스템**:
-   - 계정 공유 **Legacy(유산)** 시스템, **PvP 진영 비율 균형 잠금(Faction-Balance Lock)**, **10인 공격대(10-man Raids)**, **FindParty Forever / MessageQueue Forever(파티찾기 포에버 / 메시지큐 포에버)** 기반 구인·매칭 문화.
-7. **진영 통합 인던 vs 진영 엄격 분리 야외 필드 (절대 고증 규칙)**:
-   - **인스턴스 던전·공격대**: 얼라이언스+호드 **진영 통합(크로스팩션)** 파티 가능! (오크 전사·언데드 성기사·나엘 사제·노움 도적이 같은 인던 파티에 함께 있어도 100% 정상).
-   - **야외 필드·대도시·여관 귀환석·퀘스트 허브**: **진영 엄격 분리!**
-     * 얼라이언스 전용: 스톰윈드, 아이언포지, 다르나서스, 돌라나르(텔드랏실), 서부 몰락지대(감시의 언덕), 황금골(골드샤이어), 아우버다인(어둠해안), 모단 호수, 그늘숲, 붉은마루 산맥.
-     * 호드 전용: 오그리마, 언더시티, 썬더 블러프, 불모의 땅(십자로/크로스로드), 듀로타(칼바위 언덕), 티리스팔 숲(브릴), 멀고어(블러드후프 마을), 은빛소나무 숲.
-     * 중립 허브: 제프라스 섬(스카이본 시작지), 무법항, 가젯잔, 톱니항, 눈망루 마을, 세나리온 요새, 희망의 빛 예배당.
-     * **주의**: 타우렌·오크·트롤·언데드(호드)가 돌라나르·스톰윈드를 자기 귀환지/고향이라고 말하거나, 노움·드워프·나엘·인간(얼라)이 오그리마·불모의 땅을 자기 귀환지라고 말하는 오류 절대 금지!
-8. **와우 포에버 커스텀 아이템 스탯 주의**:
-   - 포에버 서버는 바닐라 클래식 아이템의 스탯을 하이브리드 친화적으로 개편(예: 가시덩굴 구릉 `모드레쉬의 이글거리는 눈`)하거나 신규 커스텀 템(예: 크롤도크 보루 `속박의 사슬`, `두목의 고리`)을 드랍합니다.
-   - 원글 본문이나 첨부 툴팁 스샷에 스탯이 명시되어 있다면 **바닐라 와우헤드 DB보다 원글/포에버 실스탯을 최우선**으로 반영하세요.
-9. **100% 와우 인게임 어휘 사용 (현실 현대어 금지)**:
-   - ❌ 금지: "119 불러야 되나", "112 신고", "구급차", "경찰 불러", "카톡", "편의점", "택시".
-   - ✅ 권장: "무덤 이동 눌러야 되나", "영혼의 치유사 면담 각", "부활 좀요", "전부(전투 부활) 있음?", "귀환석 탐", "와이번/그리핀 타고 감", "경비병 불러!", "귓말/파티창", "여관 주인", "차단 박음"."""
+WOW_FOREVER_CORE_SYSTEMS: str = """[월드 오브 워크래프트: 포에버 (2026 Classic+) 핵심 고증]
+- **레벨 60 클래식+**: 신규 종족 스카이본(Zephras Isle, 공중 활강 Walk on Air; 얼라 마법사·호드 주술사), 신규 조합 6종(언데드 성기사·오크 마법사·트롤 흑마법사·인간 사냥꾼·드워프 주술사·노움 사제), 40레벨 이중 특성(Dual Spec), 침낭퀘(Lv.14+ 야영 3분 휴식 경험치 버프), 계정 공유 Legacy, 10인 공격대, FindParty Forever / MessageQueue Forever.
+- **진영 규칙**: 인던·공격대는 얼라+호드 진영 통합 가능. 야외 필드·대도시·귀환석은 진영 엄격 분리(얼라: 스톰윈드·아이언포지·다르나서스·돌라나르·서부 몰락지대·황금골 / 호드: 오그리마·언더시티·썬더 블러프·불모의 땅·십자로·듀로타·티리스팔 / 중립: 제프라스 섬·무법항·가젯잔·톱니항).
+- **포에버 커스텀 스탯 우선 & 현대어 금지**: 원글/스샷의 포에버 실스탯을 바닐라 DB보다 우선 반영. 119·112·구급차·경찰·카톡·편의점·택시 대신 무덤 이동·영혼의 치유사·경비병·귓말/파티창·여관 주인·와이번/그리핀 사용."""
 
 
 # ---------------------------------------------------------------------------
@@ -848,11 +818,10 @@ def build_cut_visual_lore_hints(visual_prompt: str, characters: list[str]) -> st
     # Skyborne subtle heritage cue when Skyborne Mage appears
     if any(tok in combined_lower for tok in ("스카이본", "skyborne")):
         hints.append(
-            "- SKYBORNE HERITAGE ACCENT: Keep Skyborne Mage 100% faithful to assets/turnarounds/skyborne_mage.jpg "
-            "(bright fair skin, sky-blue high side-ponytail, perky pointed elf ears, oversized tilted royal-blue "
-            "wizard hat with tiny smiling cloud-wing feather badge, cloud-trimmed blue capelet, white-and-blue flared "
-            "Mage tunic, tiny waist Polymorph Sheep keychain charm, and sky-blue crystal staff; STRICTLY NO sailor "
-            "uniform — stow staff on back whenever her hands hold conjured bread/water or perform another action)."
+            "- SKYBORNE HERITAGE ACCENT: Keep Skyborne Mage's costume faithful to her turnaround "
+            "(sky-blue high side-ponytail, pointed elf ears, tilted royal-blue wizard hat with smiling "
+            "cloud-wing badge, cloud-trimmed capelet, Polymorph Sheep waist charm, blue crystal staff; "
+            "no sailor uniform) re-proportioned into sleek 3-to-3.5 head webtoon style."
         )
 
     # Class spell/effect visual cues only when relevant action appears in prompt

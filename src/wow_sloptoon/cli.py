@@ -233,7 +233,7 @@ def _generate_for_post(
 
         raw_cuts_dir = settings.data_dir / "raw_cuts" / ep_id
         print(
-            f"[2/4] Generating {len(script.cuts)} pure-#FFFFFF Draft C cuts "
+            f"[2/4] Generating {len(script.cuts)} sleek 3~3.5-head gag webtoon cuts "
             f"(model={resolved_image_model})..."
         )
         raw_cut_paths = generate_episode_cuts(
@@ -241,6 +241,7 @@ def _generate_for_post(
             raw_cuts_dir,
             settings=settings,
             model=resolved_image_model,
+            max_workers=4,
         )
 
         from wow_sloptoon import composer

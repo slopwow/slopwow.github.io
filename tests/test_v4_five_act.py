@@ -732,8 +732,8 @@ def test_v4_models_validation_and_classic_backward_compatibility() -> None:
             include_wordless=False,
         )
 
-    # Classic mode strictly unchanged: 3 cuts fail, 7 cuts fail, 12 cuts without acts fail!
-    for bad_classic_n in (3, 7, 12):
+    # Classic mode supports 4~8 cuts: 3 cuts fail, 9 cuts fail, 12 cuts without acts fail!
+    for bad_classic_n in (3, 9, 12):
         with pytest.raises(ValidationError):
             EpisodeScript(
                 episode_number=3,
@@ -799,9 +799,8 @@ def test_writer_v4_dry_run_and_prompt() -> None:
     assert "wordless" in prompt
     assert '"clean_white"' in prompt
     assert "diorama_style_ref.jpg" not in prompt
-    assert "3-Tier" in prompt
-    assert "Tier 1" in prompt and "Tier 2" in prompt and "Tier 3" in prompt
-    assert "미니어처 부유 섬 금지" in prompt
+    assert "념글을 안 읽고도" in prompt
+    assert "3~3.5등신" in prompt
     assert "순백 `#FFFFFF`" in prompt or "순백(`#FFFFFF`)" in prompt
 
 
@@ -997,8 +996,8 @@ def test_artist_generate_v4_episode_pages_attaches_blueprint_and_all_turnarounds
         assert "#FFFFFF" in prompt_text
         assert "ZERO" in prompt_text.upper() or "NO TEXT" in prompt_text.upper()
 
-        # Identify which act this call belongs to (via prompt text OR exact attached blueprint image)
-        bp_bytes = base64.b64decode(items[3]["data"])
+        # Identify which act this call belongs to (Image 2 is the exact attached blueprint)
+        bp_bytes = base64.b64decode(items[2]["data"])
         with Image.open(io.BytesIO(bp_bytes)) as attached_bp:
             attached_bp_arr = np.asarray(attached_bp.convert("RGB"))
             assert attached_bp.size == (V4_PAGE_W, V4_PAGE_H)
@@ -1011,7 +1010,7 @@ def test_artist_generate_v4_episode_pages_attaches_blueprint_and_all_turnarounds
             ),
             None,
         )
-        assert act is not None, f"Attached Image 3 did not match any act layout blueprint! Prompt: {prompt_text[:200]}"
+        assert act is not None, f"Attached Image 2 did not match any act layout blueprint! Prompt: {prompt_text[:200]}"
         matched_acts.add(act.act_number)
 
         # Collect unique appearing cast members across ALL cuts in this act
@@ -1024,20 +1023,19 @@ def test_artist_generate_v4_episode_pages_attaches_blueprint_and_all_turnarounds
                     seen_ids.add(member.id)
                     unique_members.append(member)
 
-        # Verify exact attachment count:
-        # text + cast_sheet + style_ref + layout_blueprint + unique turnarounds (NO diorama_style_ref.jpg!)
-        assert len(items) == 4 + len(unique_members), (
-            f"Act {act.act_number} expected {4 + len(unique_members)} input items, got {len(items)}"
+        # Style-First exact attachment count:
+        # text + style_ref (Image 1) + layout_blueprint (Image 2) + unique turnarounds (NO 9-cast SD sheet, NO diorama ref!)
+        assert len(items) == 3 + len(unique_members), (
+            f"Act {act.act_number} expected {3 + len(unique_members)} input items, got {len(items)}"
         )
         assert all(item["type"] == "image" for item in items[1:])
 
-        # Image 1: cast_sheet_c.jpg
-        assert base64.b64decode(items[1]["data"]) == cast_sheet_bytes
-        # Image 2: sloptoon_style_ref.jpg
-        assert base64.b64decode(items[2]["data"]) == style_ref_bytes
+        # Image 1: sloptoon_style_ref.jpg (master 3–3.5 head style reference)
+        assert base64.b64decode(items[1]["data"]) == style_ref_bytes
+        assert all(base64.b64decode(item["data"]) != cast_sheet_bytes for item in items[1:])
 
-        # Images 4..end: every unique character's 3-view turnaround blueprint from assets/turnarounds/
-        attached_turnaround_blobs = {base64.b64decode(item["data"]) for item in items[4:]}
+        # Images 3..end: every unique character's 3-view turnaround sheet from assets/turnarounds/
+        attached_turnaround_blobs = {base64.b64decode(item["data"]) for item in items[3:]}
         expected_turnaround_blobs = {
             (settings.turnarounds_dir / member.turnaround_filename).read_bytes()
             for member in unique_members
@@ -1048,9 +1046,9 @@ def test_artist_generate_v4_episode_pages_attaches_blueprint_and_all_turnarounds
         if diorama_ref_bytes is not None:
             assert all(base64.b64decode(item["data"]) != diorama_ref_bytes for item in items[1:])
         assert "diorama_style_ref.jpg" not in prompt_text
-        assert "NATURAL GROUNDED SCENERY" in prompt_text.upper()
-        assert "WHITE SKY" in prompt_text.upper()
-        assert "ZERO FLOATING MINIATURE TOY ISLANDS" in prompt_text.upper()
+        assert "3-TO-3.5 HEAD" in prompt_text.upper()
+        assert "BACKGROUND MODE (CLEAN WHITE)" in prompt_text.upper()
+        assert "NO FLOATING ISLANDS" in prompt_text.upper()
 
     assert matched_acts == {1, 2, 3, 4, 5}
 
@@ -1674,16 +1672,16 @@ def test_artist_and_writer_v4_full_bleed_prompts_and_blueprint_attachment(tmp_pa
     for call in captured_calls:
         items = call["input"]
         prompt_text = items[0]["text"]
-        assert "100% FULL-BLEED" in prompt_text
-        assert "UNOBSTRUCTED" in prompt_text
+        assert "FULL-BLEED" in prompt_text.upper()
+        assert "UNOBSTRUCTED" in prompt_text.upper()
         assert "#FFFFFF" in prompt_text
-        assert "ATTACHED CHARACTER 3-VIEW TURNAROUND BLUEPRINTS" in prompt_text
-        assert "ZERO TEXT" in prompt_text
+        assert "Costume & Color Sheet" in prompt_text
+        assert "ZERO TEXT" in prompt_text.upper()
         # diorama_style_ref.jpg must NOT be attached in full_bleed mode
         assert all(base64.b64decode(item["data"]) != diorama_ref_bytes for item in items[1:])
 
-        # Image 3 must match render_layout_blueprint(act.layout_id, all_boxed=True)
-        bp_bytes = base64.b64decode(items[3]["data"])
+        # Image 2 must match render_layout_blueprint(act.layout_id, all_boxed=True)
+        bp_bytes = base64.b64decode(items[2]["data"])
         with Image.open(io.BytesIO(bp_bytes)) as attached_bp:
             attached_arr = np.asarray(attached_bp.convert("RGB"))
         matched = any(
@@ -2211,23 +2209,20 @@ def test_artist_and_writer_v4_selective_mix_prompts_and_blueprints(tmp_path: Pat
     assert 0.40 <= fb_ratio <= 0.60
     assert writer.audit_script_quality(script)["passed"] is True
 
-    # 3. Artist prompts for mixed, clean_white, and full_bleed pages NEVER contain rejected soft-vignette wording
+    # 3. Artist prompts for mixed, clean_white, and full_bleed pages stay compact & clean
     act1 = script.acts[0]  # open_top_split_bottom: [True, False, False]
     mixed_prompt = artist.build_page_batch_prompt(
         act1,
         attached_turnarounds=["나이트엘프 사제 (nightelf_priest)"],
         background_style="selective_mix",
     )
-    assert "ATMOSPHERIC SOFT-VIGNETTE" not in mixed_prompt.upper()
     assert "SOFT-VIGNETTE" not in mixed_prompt.upper()
-    assert "SELECTIVE-MIX" in mixed_prompt
-    assert "FULL-BLEED BOX" in mixed_prompt
-    assert "UNOBSTRUCTED" in mixed_prompt
-    assert "100% PURE SOLID `#FFFFFF` CLEAN" in mixed_prompt
-    assert "ZERO partial vignette cutouts" in mixed_prompt
-    assert "#FFFFFF" in mixed_prompt
-    assert "ATTACHED CHARACTER 3-VIEW TURNAROUND BLUEPRINTS" in mixed_prompt
-    assert "ZERO TEXT" in mixed_prompt
+    assert "SELECTIVE_MIX" in mixed_prompt.upper()
+    assert "FULL-BLEED BOX" in mixed_prompt.upper()
+    assert "UNOBSTRUCTED" in mixed_prompt.upper()
+    assert "PURE SOLID `#FFFFFF`" in mixed_prompt.upper()
+    assert "Costume & Color Sheet" in mixed_prompt
+    assert "ZERO TEXT" in mixed_prompt.upper()
 
     clean_act = act1.model_copy(
         update={"cuts": [c.model_copy(update={"full_bleed_bg": False}) for c in act1.cuts]}
@@ -2237,13 +2232,12 @@ def test_artist_and_writer_v4_selective_mix_prompts_and_blueprints(tmp_path: Pat
         attached_turnarounds=["나이트엘프 사제 (nightelf_priest)"],
         background_style="clean_white",
     )
-    assert "ATMOSPHERIC SOFT-VIGNETTE" not in clean_prompt.upper()
     assert "SOFT-VIGNETTE" not in clean_prompt.upper()
     assert "diorama_style_ref.jpg" not in clean_prompt
-    assert "NATURAL GROUNDED SCENERY" in clean_prompt.upper()
-    assert "100% PURE SOLID `#FFFFFF` WHITE SKY" in clean_prompt
-    assert "ZERO FLOATING MINIATURE TOY ISLANDS" in clean_prompt.upper()
-    assert "ZERO TEXT" in clean_prompt
+    assert "BACKGROUND MODE (CLEAN WHITE)" in clean_prompt.upper()
+    assert "3-TO-3.5 HEAD" in clean_prompt.upper()
+    assert "NO FLOATING ISLANDS" in clean_prompt.upper()
+    assert "ZERO TEXT" in clean_prompt.upper()
 
     # 4. generate_v4_episode_pages attaches exact per-act slot_boxed blueprint for selective_mix
     # Override Act 2 (diagonal_tempo_2cut) to [False, True] so open P1 stays open guide while P2 stays boxed!
@@ -2296,12 +2290,12 @@ def test_artist_and_writer_v4_selective_mix_prompts_and_blueprints(tmp_path: Pat
         prompt_text = items[0]["text"]
         assert "SOFT-VIGNETTE" not in prompt_text.upper()
         assert "#FFFFFF" in prompt_text
-        assert "ATTACHED CHARACTER 3-VIEW TURNAROUND BLUEPRINTS" in prompt_text
-        assert "ZERO TEXT" in prompt_text
+        assert "Costume & Color Sheet" in prompt_text
+        assert "ZERO TEXT" in prompt_text.upper()
         # diorama_style_ref.jpg must NOT be attached in selective_mix mode
         assert all(base64.b64decode(item["data"]) != diorama_ref_bytes for item in items[1:])
 
-        bp_bytes = base64.b64decode(items[3]["data"])
+        bp_bytes = base64.b64decode(items[2]["data"])
         with Image.open(io.BytesIO(bp_bytes)) as attached_bp:
             attached_arr = np.asarray(attached_bp.convert("RGB"))
         for act_num, exp_arr in expected_blueprints.items():
@@ -2871,7 +2865,7 @@ def test_clean_white_3tier_establishing_full_bleed_prompt_blueprint_and_compose(
         }
     )
 
-    # 1. Per-cut flag resolution & 3-tier prompt directives
+    # 1. Per-cut flag resolution & clean_white mixed full-bleed prompt directives
     act1 = script.acts[0]
     assert artist._resolve_act_cut_full_bleed_flags(act1, "clean_white") == [True, False, False]
     p1_prompt = artist.build_page_batch_prompt(
@@ -2879,14 +2873,11 @@ def test_clean_white_3tier_establishing_full_bleed_prompt_blueprint_and_compose(
         attached_turnarounds=["나이트엘프 사제 (nightelf_priest)", "오크 전사 (orc_warrior)"],
         background_style="clean_white",
     )
-    assert "3-TIER SMART BACKGROUND" in p1_prompt.upper()
-    assert "TIER 1" in p1_prompt.upper()
-    assert "TIER 2" in p1_prompt.upper()
-    assert "TIER 3" in p1_prompt.upper()
+    assert "3-TO-3.5 HEAD" in p1_prompt.upper()
     assert "FULL-BLEED BOX" in p1_prompt.upper()
-    assert "NATURAL GROUNDED SCENERY" in p1_prompt.upper()
-    assert "WHITE SKY" in p1_prompt.upper()
-    assert "ZERO FLOATING MINIATURE TOY ISLANDS" in p1_prompt.upper()
+    assert "CLEAN-WHITE BOX" in p1_prompt.upper()
+    assert "#FFFFFF" in p1_prompt
+    assert "NO FLOATING MINIATURE ISLANDS" in p1_prompt.upper()
     assert "ZERO TEXT" in p1_prompt.upper()
 
     # 2. generate_v4_episode_pages attaches slot_boxed=[True, True, True] blueprint for Act 1
@@ -2922,7 +2913,7 @@ def test_clean_white_3tier_establishing_full_bleed_prompt_blueprint_and_compose(
         prompt_text = items[0]["text"]
         if diorama_bytes is not None:
             assert all(base64.b64decode(it["data"]) != diorama_bytes for it in items[1:])
-        bp_bytes = base64.b64decode(items[3]["data"])
+        bp_bytes = base64.b64decode(items[2]["data"])
         with Image.open(io.BytesIO(bp_bytes)) as attached_bp:
             attached_arr = np.asarray(attached_bp.convert("RGB"))
         if "(Act 1:" in prompt_text:

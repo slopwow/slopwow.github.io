@@ -1,5 +1,5 @@
-"""Dedicated test suite for the 9-Cast Personality/Aegyo Bible, Identity-vs-Acting
-Decoupling, Dynamic Acting & Bold Camera Artist Prompts, and Show-Don't-Tell Writer Engine.
+"""Test suite for sleek 3–3.5 head webtoon Style-First prompts, copy-paste-free 9-cast
+personalities, compact prompt budget, and self-contained storytelling rules.
 """
 
 from __future__ import annotations
@@ -35,6 +35,15 @@ HARDCODED_STATIC_EXPRESSIONS: tuple[str, ...] = (
     "lively wink/smile",
 )
 
+FORBIDDEN_CATCHPHRASE_TEMPLATES: tuple[str, ...] = (
+    "옴뇸뇸~",
+    "으, 으엣?!",
+    "후훗…",
+    "우웅~",
+    "~당~♪",
+    "~♡",
+)
+
 
 def _sample_post(post_no: str = "107884") -> GalleryPost:
     return GalleryPost(
@@ -63,12 +72,7 @@ def _fake_png_base64(size: tuple[int, int] = (90, 135)) -> str:
     return base64.b64encode(buf.getvalue()).decode("ascii")
 
 
-# ---------------------------------------------------------------------------
-# 1. Cast Bible: 9 Unique Personalities, Aegyo Signatures & Pure Identity Locks
-# ---------------------------------------------------------------------------
-
-
-def test_cast_bible_all_nine_members_have_unique_personality_speech_aegyo_and_acting_range() -> None:
+def test_cast_bible_all_nine_members_have_unique_traits_and_zero_catchphrase_templates() -> None:
     assert len(CAST_BIBLE) == 9
 
     personalities: list[str] = []
@@ -77,23 +81,28 @@ def test_cast_bible_all_nine_members_have_unique_personality_speech_aegyo_and_ac
     acting_ranges: list[str] = []
 
     for member in CAST_BIBLE:
-        assert member.personality.strip(), f"{member.id} missing personality"
-        assert member.speech_style.strip(), f"{member.id} missing speech_style"
-        assert member.aegyo_signature.strip(), f"{member.id} missing aegyo_signature"
-        assert member.acting_range.strip(), f"{member.id} missing acting_range"
+        assert member.personality.strip()
+        assert member.speech_style.strip()
+        assert member.aegyo_signature.strip()
+        assert member.acting_range.strip()
+
+        for cliché in FORBIDDEN_CATCHPHRASE_TEMPLATES:
+            assert cliché not in member.aegyo_signature, (
+                f"{member.id}.aegyo_signature must not hardcode copy-paste template '{cliché}'"
+            )
+            assert cliché not in member.speech_style
 
         personalities.append(member.personality.strip())
         speech_styles.append(member.speech_style.strip())
         aegyo_signatures.append(member.aegyo_signature.strip())
         acting_ranges.append(member.acting_range.strip())
 
-    # Strictly zero duplicated personalities, speech styles, aegyo signatures, or acting ranges
     assert len(set(personalities)) == 9
     assert len(set(speech_styles)) == 9
     assert len(set(aegyo_signatures)) == 9
     assert len(set(acting_ranges)) == 9
 
-    # Backward compatibility: new CastMember fields default cleanly to ""
+    # Backward compatibility: optional fields default cleanly to ""
     minimal = CastMember(
         id="test_cast",
         name="테스트 캐스트",
@@ -104,7 +113,7 @@ def test_cast_bible_all_nine_members_have_unique_personality_speech_aegyo_and_ac
         color_hex="#000000",
         accent_hex="#FFFFFF",
         personality="테스트 성격",
-        appearance_anchor="Fair-skinned chibi identity only.",
+        appearance_anchor="Fair-skinned sleek 3-to-3.5 head identity only.",
         default_prop="Stowed sword.",
         aliases=("테스트",),
         sheet_position="custom",
@@ -114,22 +123,17 @@ def test_cast_bible_all_nine_members_have_unique_personality_speech_aegyo_and_ac
     assert minimal.acting_range == ""
 
 
-def test_cast_appearance_anchors_strip_hardcoded_expression_locks_and_keep_identity_invariants() -> None:
+def test_cast_appearance_anchors_target_sleek_3_to_3_5_head_and_keep_costume_invariants() -> None:
     for member in CAST_BIBLE:
         lower_anchor = member.appearance_anchor.lower()
         for forbidden_expr in HARDCODED_STATIC_EXPRESSIONS:
-            assert forbidden_expr not in lower_anchor, (
-                f"{member.id}.appearance_anchor still hardcodes static expression '{forbidden_expr}'"
-            )
-        assert "fair-skinned" in lower_anchor, f"{member.id} lost fair-skinned invariant"
-        assert "identity only" in lower_anchor, (
-            f"{member.id}.appearance_anchor must explicitly mark identity ONLY"
-        )
-        assert "facial expression" in lower_anchor and "free" in lower_anchor, (
-            f"{member.id}.appearance_anchor must leave facial expression free per scene"
-        )
+            assert forbidden_expr not in lower_anchor
+        assert "fair-skinned" in lower_anchor
+        assert "3-to-3.5 head" in lower_anchor
+        assert "2.5-to-2.8" not in lower_anchor
+        assert "identity & costume only" in lower_anchor
+        assert "facial expression and pose free" in lower_anchor
 
-    # Canonical Draft C turnaround visual invariants remain 100% intact
     rogue_anchor = CAST_BY_ID["gnome_rogue"].appearance_anchor.lower()
     assert "zero hairpins" in rogue_anchor
     assert "no x-pin" in rogue_anchor
@@ -145,128 +149,71 @@ def test_cast_appearance_anchors_strip_hardcoded_expression_locks_and_keep_ident
     assert "polymorph sheep" in mage_anchor
 
 
-def test_cast_formatters_include_personality_aegyo_and_identity_vs_acting_decoupling() -> None:
+def test_cast_formatters_stay_compact_and_style_first() -> None:
     writer_bible = format_cast_bible_for_writer()
-    assert "9인 개성·애교 차별화" in writer_bible
-    assert "성격:" in writer_bible
-    assert "말투·애교 시그니처:" in writer_bible
-    assert "표정 스펙트럼:" in writer_bible
-    assert "~해야징~♪" in writer_bible  # explicitly cited as robotic copy-paste to avoid
-
+    assert len(writer_bible) < 2500, f"Writer cast bible bloated again: {len(writer_bible)} chars"
+    assert "Clean Hand Rule" in writer_bible
+    assert "appearance_anchor" not in writer_bible
     for member in CAST_BIBLE:
         assert member.name in writer_bible
         assert member.personality in writer_bible
-        assert member.aegyo_signature in writer_bible
-        assert member.acting_range in writer_bible
+        assert member.appearance_anchor not in writer_bible  # English costume specs belong to artist.py only
 
-    anchors = build_character_anchors_block(["나이트엘프 사제", "타우렌 드루이드", "노움 도적"])
-    assert "IDENTITY LOCK ONLY" in anchors
-    assert "UNLEASHED DYNAMIC ACTING" in anchors
-    assert "ZERO fixed expression sheet" in anchors
-    assert "NEVER copy the stiff front-facing standing turnaround pose" in anchors
-    assert "bland polite smile" in anchors
-    for member_id in ("nightelf_priest", "tauren_druid", "gnome_rogue"):
-        member = CAST_BY_ID[member_id]
-        assert member.appearance_anchor in anchors
-        assert member.acting_range in anchors
+    anchors = build_character_anchors_block(["나이트엘프 사제", "노움 도적"])
+    assert "PROPORTIONS & STYLE FIRST" in anchors
+    assert "3-to-3.5 head" in anchors
+    assert "COSTUME, HAIR, HEADGEAR & COLOR IDENTITY ONLY" in anchors
+    assert "CLEAN HAND RULE" in anchors
+    for member_id in ("nightelf_priest", "gnome_rogue"):
+        assert CAST_BY_ID[member_id].appearance_anchor in anchors
 
-    # Empty character fallback also preserves Identity-vs-Acting decoupling
     fallback = build_character_anchors_block([])
-    assert "IDENTITY LOCK ONLY" in fallback
-    assert "UNLEASHED DYNAMIC ACTING" in fallback
+    assert "PROPORTIONS & STYLE FIRST" in fallback
+    assert "3-to-3.5 head" in fallback
 
 
-# ---------------------------------------------------------------------------
-# 2. Artist Prompts & Attachments: Identity vs Acting Decoupling + 0 Expr Sheet
-# ---------------------------------------------------------------------------
-
-
-def test_artist_build_page_batch_and_cut_prompts_enforce_unleashed_acting_anti_repetition_and_bold_cameras() -> None:
+def test_artist_prompts_stay_compact_and_enforce_sleek_3_to_3_5_head_style_first() -> None:
     post = _sample_post()
     script = writer.build_dry_run_v4_script(post, episode_number=20, background_style="clean_white")
     assert script.acts is not None
 
-    # Test Act 1 (Tier 1 full-bleed Cut 1 + Tier 2/3 Cuts 2-3) AND Act 3 (Tier 2/3 clean_white)
     for act in (script.acts[0], script.acts[2], script.acts[3]):
         prompt = artist.build_page_batch_prompt(
             act,
             attached_turnarounds=["나이트엘프 사제 (nightelf_priest)", "노움 도적 (gnome_rogue)"],
             background_style="clean_white",
         )
-        upper = prompt.upper()
-
-        # Root cause fixed: no rigid full-silhouette lock!
-        assert "LOCK 100% ONTO EXACT FRONT/SIDE/BACK SILHOUETTE" not in upper
-        assert "IDENTITY & COSTUME LOCK ONLY" in upper
-        assert "STRICT IDENTITY VS UNLEASHED ACTING DECOUPLING" in upper
-        assert "BREAK THE PRETTY-FACE SAFETY ZONE" in upper
-        assert "ZERO FIXED EXPRESSION SHEETS" in upper
-        assert "GENERIC POLITE SMILE/WINK" in upper
-
-        # Unleashed anime gag acting vocabulary
-        for acting_cue in (
-            "pinpoint psychotic pupils",
-            "empty white shock eyes",
-            "spiral dizzy eyes",
-            "waterfalls",
-            "jaw-dropped screaming",
-            "smug cat `:3`",
-            "gremlin grin",
-            "forehead gloom shadows",
-            "squash-and-stretch",
-        ):
-            assert acting_cue in prompt.lower(), f"Missing acting cue '{acting_cue}' in Act {act.act_number} prompt"
-
-        # Anti-repetition & bold camera freedom
-        assert "ANTI-REPETITION" in upper
-        assert "NEVER REPEAT THE SAME FACIAL EXPRESSION" in upper
-        for camera_cue in (
-            "extreme face close-up",
-            "fisheye forced-perspective",
-            "bird's-eye top-down",
-            "low-angle loom",
-            "30° dutch tilt",
-            "over-the-shoulder",
-        ):
-            assert camera_cue in prompt.lower(), f"Missing camera cue '{camera_cue}' in Act {act.act_number} prompt"
-        assert "full-body dolls" in prompt.lower()
-
-        # Existing 3-Tier Smart Background contracts remain 100% intact
-        assert "NATURAL GROUNDED SCENERY" in upper
-        assert "WHITE SKY" in upper
-        assert "ZERO FLOATING MINIATURE TOY ISLANDS" in upper
-        assert "ZERO TEXT" in upper
-        assert "SOFT-VIGNETTE" not in upper
+        assert len(prompt) < 9500, f"Act {act.act_number} image prompt bloated again: {len(prompt)} chars"
+        assert "3-to-3.5 head" in prompt
+        assert "2.5-to-2.8" not in prompt
+        assert "Reference Image 1 (`assets/sloptoon_style_ref.jpg`)" in prompt
+        assert "Costume & Color Sheet" in prompt
         assert "diorama_style_ref.jpg" not in prompt
+        assert "Zero text" in prompt
 
-    # Single-cut prompt (`build_cut_image_prompt`) also decouples Identity vs Acting
     cut = ComicCut(
-        cut_index=5,
+        cut_index=1,
         aspect_ratio="4:3",
         layout_slot="top",
-        characters=["나이트엘프 사제"],
+        characters=["나이트엘프 사제", "인간 흑마법사"],
         speaker="나이트엘프 사제",
-        dialogue="어머, 귀여운 손님 왔네?\n정배 딸깍~♡",
+        dialogue="저기 법사님, 마나 없는데\n물 20개만 뽑아주세요...",
         wordless=False,
-        visual_prompt=(
-            "Extreme low-angle face close-up with dark forehead gloom shadow, "
-            "pinpoint psychotic glowing silver-white pupils, wide sweetly-evil grin."
-        ),
-        tail_target="center",
+        visual_prompt="Over-the-shoulder shot of exhausted Night Elf Priest asking Human Warlock for water.",
+        tail_target="left",
     )
     single_prompt = artist.build_cut_image_prompt(
         cut,
-        attached_turnarounds=["나이트엘프 사제 (nightelf_priest)"],
+        attached_turnarounds=["나이트엘프 사제 (nightelf_priest)", "인간 흑마법사 (human_warlock)"],
     )
-    assert "lock 100% onto this character's exact front/side/back silhouette" not in single_prompt.lower()
-    assert "IDENTITY & COSTUME LOCK ONLY" in single_prompt
-    assert "STRICT IDENTITY vs UNLEASHED ACTING DECOUPLING" in single_prompt
-    assert "BREAK THE PRETTY-FACE SAFETY ZONE" in single_prompt
-    assert "fisheye" in single_prompt.lower()
-    assert "30° Dutch tilt" in single_prompt
+    assert len(single_prompt) < 5000, f"Single-cut prompt bloated: {len(single_prompt)} chars"
+    assert "3-to-3.5 head" in single_prompt
+    assert "Reference Image 1 (`assets/sloptoon_style_ref.jpg`)" in single_prompt
+    assert "Costume & Color Sheet" in single_prompt
+    assert "#FFFFFF" in single_prompt
 
 
-def test_artist_attaches_zero_expression_sheets_and_exact_reference_order(tmp_path: Path) -> None:
+def test_artist_attaches_style_ref_first_and_only_active_turnarounds(tmp_path: Path) -> None:
     settings = load_settings(PROJECT_ROOT)
     post = _sample_post()
     script = writer.build_dry_run_v4_script(post, episode_number=20, background_style="clean_white")
@@ -298,8 +245,7 @@ def test_artist_attaches_zero_expression_sheets_and_exact_reference_order(tmp_pa
         items = call["input"]
         assert items[0]["type"] == "text"
         prompt_text = items[0]["text"]
-        assert "STRICT IDENTITY vs UNLEASHED ACTING DECOUPLING" in prompt_text
-        assert "ZERO FIXED EXPRESSION SHEETS" in prompt_text
+        assert "3-to-3.5 head" in prompt_text
 
         act = next(
             (a for a in (script.acts or []) if f"(Act {a.act_number}:" in prompt_text),
@@ -317,15 +263,13 @@ def test_artist_attaches_zero_expression_sheets_and_exact_reference_order(tmp_pa
                     seen_ids.add(member.id)
                     unique_members.append(member)
 
-        # Exact attachment count: [text, cast_sheet, style_ref, layout_blueprint, *turnarounds]
-        # STRICTLY ZERO expression sheet attachments!
-        assert len(items) == 4 + len(unique_members), (
-            f"Act {act.act_number} expected {4 + len(unique_members)} items (0 expression sheets), got {len(items)}"
-        )
-        assert base64.b64decode(items[1]["data"]) == cast_sheet_bytes
-        assert base64.b64decode(items[2]["data"]) == style_ref_bytes
+        # Style-First exact attachments: [text, style_ref, layout_blueprint, *turnarounds]
+        # Zero redundant 9-cast 2-head SD sheet when turnarounds exist, zero expression sheets!
+        assert len(items) == 3 + len(unique_members)
+        assert base64.b64decode(items[1]["data"]) == style_ref_bytes
+        assert all(base64.b64decode(it["data"]) != cast_sheet_bytes for it in items[1:])
 
-        attached_turnarounds = {base64.b64decode(item["data"]) for item in items[4:]}
+        attached_turnarounds = {base64.b64decode(item["data"]) for item in items[3:]}
         expected_turnarounds = {
             (settings.turnarounds_dir / m.turnaround_filename).read_bytes()
             for m in unique_members
@@ -334,71 +278,42 @@ def test_artist_attaches_zero_expression_sheets_and_exact_reference_order(tmp_pa
 
     assert matched_acts == {1, 2, 3, 4, 5}
 
-    # Single-cut generation also attaches exact [text, cast_sheet, style_ref, *turnarounds] (0 expression sheets)
+    # Single-cut generation: [text, style_ref, *turnarounds] (parallel max_workers=2 supported)
     single_calls: list[dict[str, Any]] = []
 
     class FakeSingleInteractions:
         def create(self, **kwargs: Any) -> Any:
-            single_calls.append(kwargs)
+            with lock:
+                single_calls.append(kwargs)
             return SimpleNamespace(output_image=SimpleNamespace(data=fake_png_b64))
 
-    cut = ComicCut(
-        cut_index=1,
-        aspect_ratio="4:3",
-        layout_slot="top",
-        characters=["나이트엘프 사제", "노움 도적"],
-        speaker="나이트엘프 사제",
-        dialogue="정배 딸깍~♡",
-        wordless=False,
-        visual_prompt="Extreme face close-up on pure #FFFFFF white background.",
-        tail_target="left",
-    )
-    artist.generate_cut_image(
-        cut,
-        tmp_path / "single_cut.png",
+    dry_classic = writer.build_dry_run_script(post, episode_number=21)
+    out = artist.generate_episode_cuts(
+        dry_classic,
+        tmp_path / "classic_cuts",
         client=SimpleNamespace(interactions=FakeSingleInteractions()),
         settings=settings,
+        max_workers=2,
     )
-    assert len(single_calls) == 1
-    assert len(single_calls[0]["input"]) == 3 + 2
+    assert sorted(out.keys()) == [1, 2, 3, 4]
+    assert len(single_calls) == 4
+    for call in single_calls:
+        assert base64.b64decode(call["input"][1]["data"]) == style_ref_bytes
+        assert all(base64.b64decode(it["data"]) != cast_sheet_bytes for it in call["input"][1:])
 
 
-# ---------------------------------------------------------------------------
-# 3. Writer Engine: Show-Don't-Tell, Aegyo Retention, 1–2 Line Rhythm & Acting Diet
-# ---------------------------------------------------------------------------
-
-
-def test_writer_prompts_enforce_show_dont_tell_aegyo_punch_rhythm_and_acting_first_diet() -> None:
+def test_writer_prompts_stay_compact_and_prioritize_self_contained_storytelling() -> None:
     post = _sample_post()
     classic_prompt = writer.build_writer_prompt(post, episode_number=20)
     v4_prompt = writer.build_v4_writer_prompt(post, episode_number=20, background_style="clean_white")
 
+    assert len(classic_prompt) < 10000, f"Classic writer prompt bloated: {len(classic_prompt)} chars"
+    assert len(v4_prompt) < 11000, f"V4 writer prompt bloated: {len(v4_prompt)} chars"
+
     for label, prompt in (("classic", classic_prompt), ("v4", v4_prompt)):
-        # Show, Don't Tell
-        assert "Show, Don't Tell" in prompt, f"{label} prompt missing Show, Don't Tell rule"
-        assert "그림 중계 절대 금지" in prompt, f"{label} prompt missing anti-narration rule"
-
-        # Per-character aegyo retention (NOT flat robotic copy-paste)
-        assert "애교" in prompt
-        assert "애교 시그니처" in prompt
-        assert "~해야징~♪" in prompt  # cited as robotic repetition to avoid
-        for member in CAST_BIBLE:
-            assert member.aegyo_signature in prompt, f"{label} prompt missing {member.id} aegyo_signature"
-
-        # 1–2 line snappy punch rhythm + 2-Pass internal dialogue polish
-        assert "30~40%" in prompt
-        assert "5~15자" in prompt
-        assert "1~2줄" in prompt
-        assert "2-Pass" in prompt
-
-        # Visual prompt acting-first diet (70%+ acting/expression/bold cameras)
-        assert "Visual Prompt Diet" in prompt
-        assert "70%" in prompt
-        assert "squash-and-stretch" in prompt.lower()
-        assert "fisheye" in prompt.lower()
-        assert "bird's-eye" in prompt.lower()
-        assert "30° 더치 틸트" in prompt
-        assert "고정 6표정 시트 금지" in prompt
+        assert "념글을 안 읽고도 100% 이해" in prompt, f"{label} prompt missing self-contained story rule"
+        assert "3~3.5등신" in prompt, f"{label} prompt missing 3–3.5 head target"
+        assert "기계 복붙" in prompt, f"{label} prompt missing anti-catchphrase-copy rule"
 
 
 def test_v4_dry_run_pacing_and_non_breaking_dialogue_bloat_warning() -> None:
@@ -412,11 +327,8 @@ def test_v4_dry_run_pacing_and_non_breaking_dialogue_bloat_warning() -> None:
 
     pacing = audit["dialogue_pacing"]
     assert pacing["bloated_3line_cuts"] == []
-    assert len(pacing["short_1line_cuts"]) >= 4, (
-        f"Expected >= 4 snappy 1-line punch cuts in V4 dry-run, got {pacing['short_1line_cuts']}"
-    )
+    assert len(pacing["short_1line_cuts"]) >= 4
 
-    # Bloated V4 script (>70% dense 3-line >32-char walls) emits a SOFT warning without breaking `passed=True`
     bloated_acts = []
     for act in dry.acts or []:
         new_cuts = []
@@ -444,10 +356,8 @@ def test_v4_dry_run_pacing_and_non_breaking_dialogue_bloat_warning() -> None:
     )
 
     bloated_audit = writer.audit_script_quality(bloated_script, strict_cinematic=True)
-    assert bloated_audit["passed"] is True, "Bloat check must remain a soft non-breaking warning"
-    assert any("Dialogue pacing bloat" in w for w in bloated_audit["warnings"]), (
-        f"Expected soft dialogue bloat warning, got warnings={bloated_audit['warnings']}"
-    )
+    assert bloated_audit["passed"] is True
+    assert any("Dialogue pacing bloat" in w for w in bloated_audit["warnings"])
     assert len(bloated_audit["dialogue_pacing"]["bloated_3line_cuts"]) == len(
         [c for c in bloated_script.cuts if not c.wordless]
     )

@@ -256,7 +256,7 @@ class EpisodeScript(BaseModel):
     subtitle: str = Field(..., description="Witty short Korean subtitle shown in the episode header.")
     layout_mode: Literal["classic_2tier", "v4_five_act"] = Field(
         default="classic_2tier",
-        description="Page layout mode: 'classic_2tier' (4~6 cuts) or 'v4_five_act' (5 acts, 10~14 cuts).",
+        description="Page layout mode: 'classic_2tier' (4~8 cuts) or 'v4_five_act' (5 acts, 10~14 cuts).",
     )
     background_style: BackgroundStyle = Field(
         default="clean_white",
@@ -272,7 +272,7 @@ class EpisodeScript(BaseModel):
     )
     cuts: list[ComicCut] = Field(
         default_factory=list,
-        description="Ordered list of comic cuts (4~6 in classic_2tier, 10~14 flattened in v4_five_act).",
+        description="Ordered list of comic cuts (4~8 in classic_2tier, 10~14 flattened in v4_five_act).",
     )
 
     @model_validator(mode="after")
@@ -306,9 +306,9 @@ class EpisodeScript(BaseModel):
                     f"V4 EpisodeScript must have between 10 and 14 total cuts, got {len(self.cuts)}."
                 )
         else:
-            if not (4 <= len(self.cuts) <= 6):
+            if not (4 <= len(self.cuts) <= 8):
                 raise ValueError(
-                    f"EpisodeScript must have between 4 and 6 cuts, got {len(self.cuts)}."
+                    f"EpisodeScript must have between 4 and 8 cuts, got {len(self.cuts)}."
                 )
 
         for cut in self.cuts:

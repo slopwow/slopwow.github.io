@@ -6541,10 +6541,9 @@ def compose_episode(
     """Compose a complete Sloptoon episode into header, pages, stitched JPG, and thumb.
 
     Automatically delegates to `compose_v4_episode()` when `script.layout_mode == "v4_five_act"`.
-    In classic 2-tier mode, supports:
-    - 4 cuts -> 2 two-tier pages (`900x1320`)
-    - 5 cuts -> 2 two-tier pages (`900x1320`) + 1 epilogue single-box page (`900x486`)
-    - 6 cuts -> 3 two-tier pages (`900x1320`)
+    In classic 2-tier mode, supports 4~8 cuts:
+    - Even cuts (4, 6, 8) -> 2~4 two-tier pages (`900x1320`)
+    - Odd cuts (5, 7) -> 2~3 two-tier pages (`900x1320`) + 1 epilogue single-box page (`900x486`)
 
     By default appends the Sloptoon bottom watermark CTA banner (`watermark_url="slopwow.github.io"`)
     to `episode_full.jpg` while saving an un-watermarked backup at `episode_full_raw.jpg` so
@@ -6563,8 +6562,8 @@ def compose_episode(
     out_dir.mkdir(parents=True, exist_ok=True)
 
     ordered_cuts = sorted(script.cuts, key=lambda c: c.cut_index)
-    if not (4 <= len(ordered_cuts) <= 6):
-        raise ValueError(f"compose_episode supports 4~6 cuts, got {len(ordered_cuts)}")
+    if not (4 <= len(ordered_cuts) <= 8):
+        raise ValueError(f"compose_episode supports 4~8 cuts, got {len(ordered_cuts)}")
 
     loaded_raws: list[Image.Image] = []
     for pos, cut in enumerate(ordered_cuts, start=1):

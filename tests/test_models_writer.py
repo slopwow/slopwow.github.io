@@ -66,8 +66,8 @@ def _sample_cuts(count: int = 5, *, include_wordless: bool = True) -> list[Comic
 
 
 def test_episode_script_validates_cut_count_characters_and_wordless() -> None:
-    # 4, 5, 6 cuts are all valid when a wordless cut is present
-    for n in (4, 5, 6):
+    # 4~8 cuts are all valid when a wordless cut is present
+    for n in (4, 5, 6, 7, 8):
         script = EpisodeScript(
             episode_number=3,
             source_post_no="99001",
@@ -89,7 +89,7 @@ def test_episode_script_validates_cut_count_characters_and_wordless() -> None:
             cuts=_sample_cuts(3, include_wordless=True),
         )
 
-    # 7 cuts fails
+    # 9 cuts fails
     with pytest.raises(ValidationError):
         EpisodeScript(
             episode_number=3,
@@ -97,7 +97,7 @@ def test_episode_script_validates_cut_count_characters_and_wordless() -> None:
             source_title="너무 김",
             source_url="https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=99001",
             subtitle="실패",
-            cuts=_sample_cuts(7, include_wordless=True),
+            cuts=_sample_cuts(9, include_wordless=True),
         )
 
     # Missing wordless cut fails
@@ -293,12 +293,14 @@ def test_artist_uses_interactions_api_nano_banana_and_attaches_reference_images(
         "aspect_ratio": script.cuts[0].aspect_ratio,
         "image_size": "1K",
     }
-    # 1 text prompt + cast sheet + style ref + individual 3-view turnaround sheets for active cast
+    # Style-First order: 1 text prompt + style ref (Image 1) + active character turnaround sheets
     expected_turnaround_count = len({resolve_cast_member(c).id for c in script.cuts[0].characters if resolve_cast_member(c)})
-    assert len(first_call["input"]) == 3 + expected_turnaround_count
+    assert len(first_call["input"]) == 2 + expected_turnaround_count
     assert first_call["input"][0]["type"] == "text"
     assert "#FFFFFF" in first_call["input"][0]["text"]
-    assert "ATTACHED CHARACTER 3-VIEW TURNAROUND BLUEPRINTS" in first_call["input"][0]["text"]
+    assert "3-to-3.5 head" in first_call["input"][0]["text"]
+    assert "Costume & Color Sheet" in first_call["input"][0]["text"]
+    assert base64.b64decode(first_call["input"][1]["data"]) == settings.style_ref_path.read_bytes()
     for img_item in first_call["input"][1:]:
         assert img_item["type"] == "image"
 
