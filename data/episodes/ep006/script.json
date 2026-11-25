@@ -3,24 +3,409 @@
   "source_post_no": "78596",
   "source_title": "와뉴비 다들 왜 사제 안키우는 지 알거같다",
   "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=78596",
-  "subtitle": "수도원 주특입 8바퀴 — 화이트메인 템 쟁탈전과 착한 보기님",
+  "subtitle": "수도원 주특입 8바퀴 — 사제 빼고 다 굴리는 천·힐무기와 착한 보기님 — 5막 14컷",
+  "layout_mode": "v4_five_act",
+  "background_style": "clean_white",
+  "acts": [
+    {
+      "act_number": 1,
+      "act_title": "1막: 수도원 주특입 풀방 출격과 고술의 힐모자 강탈",
+      "layout_id": "diagonal_tempo_2cut",
+      "cuts": [
+        {
+          "cut_index": 1,
+          "aspect_ratio": "auto",
+          "layout_slot": "top",
+          "act_number": 1,
+          "panel_index": 1,
+          "characters": [
+            "나이트엘프 사제",
+            "트롤 주술사"
+          ],
+          "speaker": "나이트엘프 사제",
+          "dialogue": "수도원 주특입 풀방!\n오늘 졸업하고 가야지~♡",
+          "wordless": false,
+          "visual_prompt": "TIER 1 FULL-BLEED SCARLET MONASTERY COURTYARD ESTABLISHING SHOT inside solid black box frame (edge-to-edge full scenery, outer page margins & white gutter below 100% pure #FFFFFF — STRICTLY ZERO boots, feet, or legs crossing downward below Panel 1's bottom black frame into Panel 2!). Sweeping wide cinematic anime courtyard of Scarlet Monastery Cathedral: sunlit medieval cream-stone cloister spires, fluttering crimson Scarlet banners along lower pillars, warm clear golden-blue open sky filling the ENTIRE upper 36% (y=0%..36% completely uncluttered open sky across top-left for speech bubble — keep all ears, tiaras, mohawks, and staves strictly below y=36%!). DYNAMIC ACTING: on lower-left foreground (x=30%, full legs and boots standing cleanly on sunlit courtyard flagstones well above Panel 1's bottom border!), fair-skinned Night Elf Priestess bounces cheerfully forward waving a tiny plain wooden wand with optimistic sparkling glowing silver-white eyes and a radiant hopeful wink pointing toward the grand cathedral doors (guardrail: normal fair peach-ivory skin, lavender half-up ponytail, golden crescent tiara, glowing silver-white eyes, royal-purple vestments, waist mini Holy Book & gold Rosary, golden cross staff stowed on back, 0 halos/wings). On lower-right foreground (x=72%, waist-up framing cleanly bounded inside Panel 1's bottom frame!), over-the-shoulder lively hype-pose of fair-skinned Troll Shaman leaning in eagerly with glittering popcorn-gossip emerald eyes and crackling tiny blue sparks (guardrail: fair skin, sky-blue troll hood with red spiky mohawk, wooden totem staff strapped on back). Strictly zero text, zero UI.",
+          "tail_target": "left",
+          "bubble_side": "left",
+          "full_bleed_bg": true,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
+          "item_tooltip": null
+        },
+        {
+          "cut_index": 2,
+          "aspect_ratio": "auto",
+          "layout_slot": "panel",
+          "act_number": 1,
+          "panel_index": 2,
+          "characters": [
+            "나이트엘프 사제",
+            "트롤 주술사"
+          ],
+          "speaker": "트롤 주술사",
+          "dialogue": "이야~ 주문력 붙었네!\n고술 주특 맞지, 그치~?",
+          "wordless": false,
+          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND EVERYWHERE (STRICTLY ZERO dark wood walls, ZERO carpet floor rectangle, ZERO pillars, ZERO treasure chest boxes, and STRICTLY ZERO floating stray boots or legs from Panel 1 anywhere inside Panel 2 — ONLY the two expressive characters cleanly inside the lower 60% on 100% pure solid #FFFFFF white! Reserve ENTIRE top 40% y=0%..40% 100% blank pure #FFFFFF headroom across BOTH top-left for item tooltip and top-right for speech bubble!). WILD LOW-ANGLE LOOT HEIST COMEDY directly on pure #FFFFFF white: on lower-right (x=72%, keep bishop hat tip strictly below y=40%!), fair-skinned Troll Shaman bounces triumphantly wearing the shiny ornate crimson-and-gold Scarlet cloth bishop chapeau right on top of her red-mohawk troll hood flashing a shameless hyped uproarious grin & V-sign with bright comic loot sparkles (wooden totem staff stowed on back); on lower-left (x=28%, strictly below y=42%!), fair-skinned Night Elf Priestess freezes mid-reach with jaw dropped wide open, popping stunned glowing silver-white eyes, and flying comic shock sweatdrops staring straight at the crimson hat on the Shaman's head (golden cross staff stowed on back, 0 halos/wings). Strictly zero floor/wall backdrop, zero text.",
+          "tail_target": "right",
+          "bubble_side": "right",
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
+          "item_tooltip": {
+            "image_path": null,
+            "item_name": "화이트메인의 모자",
+            "wowhead_item_id": 7720,
+            "quality": "rare",
+            "slot_left": "머리",
+            "slot_right": "천",
+            "lines": [
+              "획득 시 귀속",
+              "방어도 52",
+              "체력 +9",
+              "지능 +14",
+              "정신력 +14",
+              "요구 레벨 39"
+            ],
+            "equip_effects": [
+              "착용 효과: 마법 주문 및 효과로 입히는 피해와 치유량이 최대 18만큼 증가합니다."
+            ],
+            "icon_name": "inv_helmet_12",
+            "preferred_corner": "top_left",
+            "target_width": 288
+          }
+        }
+      ]
+    },
+    {
+      "act_number": 2,
+      "act_title": "2막: 3바퀴째 힐무기 강탈과 사제의 맑눈광 흑화",
+      "layout_id": "four_beat_gag",
+      "cuts": [
+        {
+          "cut_index": 3,
+          "aspect_ratio": "auto",
+          "layout_slot": "panel",
+          "act_number": 2,
+          "panel_index": 1,
+          "characters": [
+            "나이트엘프 사제"
+          ],
+          "speaker": "나이트엘프 사제",
+          "dialogue": "…그래, 그럴 수 있지♡",
+          "wordless": false,
+          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND EVERYWHERE (top 38% y=0%..38% completely empty pure #FFFFFF headroom for 1-line bubble; keep figure cleanly inside Panel 1's borders!). TIGHT COMEDIC BUST CLOSE-UP of fair-skinned Night Elf Priestess forcing a strained super-polite sweet smile while a tiny ominous dark gloom shadow creeps down her forehead, one glowing silver-white eye twitching violently with a crisp cold sweatdrop sliding down her temple! Guardrail: fair peach-ivory skin, lavender hair, golden crescent tiara, purple vestments, staff on back, 0 halos/wings, 0 text.",
+          "tail_target": "center",
+          "bubble_side": "center",
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
+          "item_tooltip": null
+        },
+        {
+          "cut_index": 4,
+          "aspect_ratio": "auto",
+          "layout_slot": "panel",
+          "act_number": 2,
+          "panel_index": 2,
+          "characters": [
+            "오크 전사"
+          ],
+          "speaker": "오크 전사",
+          "dialogue": "오! 나도 먹어볼까~!",
+          "wordless": false,
+          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND EVERYWHERE (top 38% y=0%..38% completely empty pure #FFFFFF headroom for 1-line bubble; keep horns & scepter strictly below y=38% and inside Panel 2's borders!). LOW-ANGLE CLUELESS PUPPY-WARRIOR GRAB: fair-skinned Orc Warrior grinning with starry-eyed boisterous fang excitement scooping up a shiny glowing golden one-handed healer scepter mace (her own silver battle axe strapped cleanly across her back — Clean Hand Rule!) while tossing a chunky 6-sided white-and-gold loot die showing ONLY round black dot pips (strictly ZERO digits or letters!). Guardrail: fair peach-ivory skin (NEVER green!), green plush orc hood with ivory horns, black ponytail, red spiky pauldrons, 0 text.",
+          "tail_target": "center",
+          "bubble_side": "center",
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
+          "item_tooltip": null
+        },
+        {
+          "cut_index": 5,
+          "aspect_ratio": "auto",
+          "layout_slot": "panel",
+          "act_number": 2,
+          "panel_index": 3,
+          "characters": [
+            "오크 전사"
+          ],
+          "speaker": "오크 전사",
+          "dialogue": "앗, 힐무기였어?!\n이미 껴서 못 줘~ ㅈㅅ!",
+          "wordless": false,
+          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND EVERYWHERE (top 38% y=0%..38% completely empty pure #FFFFFF headroom for bubble; keep full sprinting pose strictly inside Panel 3's borders!). 90-DEGREE SIDE-PROFILE GUILTY DASH: fair-skinned Orc Warrior bolting rightward in a frantic tiptoe sprint kicking up comic dust puffs and swirling cyan dungeon-exit sparkles, glancing back over her shoulder with a hilariously sweaty sheepish apologetic grin while gripping the newly equipped golden one-handed healer scepter radiating bright golden soulbound sparkles (her silver battle axe neatly strapped on her back — Clean Hand Rule!). Guardrail: fair peach-ivory skin, green plush orc hood, 0 text.",
+          "tail_target": "center",
+          "bubble_side": "center",
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
+          "item_tooltip": null
+        },
+        {
+          "cut_index": 6,
+          "aspect_ratio": "auto",
+          "layout_slot": "panel",
+          "act_number": 2,
+          "panel_index": 4,
+          "characters": [
+            "나이트엘프 사제"
+          ],
+          "speaker": "나이트엘프 사제",
+          "dialogue": "전사가 왜 힐무기를…?!",
+          "wordless": false,
+          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE BACKGROUND EVERYWHERE AROUND HER HEAD, EARS, AND SHOULDERS! (STRICTLY ZERO dark painted background wall, ZERO purple rectangle backdrop, ZERO dark fill behind her hair — ALL empty space outside her hair/shoulders MUST BE 100% PURE SOLID #FFFFFF WHITE! Top 40% y=0%..40% completely empty pure #FFFFFF headroom for 1-line bubble; keep figure cleanly inside Panel 4's borders!). EXTREME UNHINGED CLOSE-UP: fair-skinned Night Elf Priestess snapping her tiny plain leveling wand clean in half between both trembling hands — dark indigo gloom gradient ONLY on her forehead skin under her bangs (NEVER behind her hair!), glowing silver-white eyes shrunk to blazing psychotic pinpoint `맑눈광` pupils, crisp red anime anger vein & tiny crisp black fury lightning sparks floating directly on pure #FFFFFF white! Guardrail: fair skin, lavender hair, golden crescent tiara, purple vestments, golden cross staff stowed on back, 0 halos/wings, 0 text.",
+          "tail_target": "center",
+          "bubble_side": "center",
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
+          "item_tooltip": null
+        }
+      ]
+    },
+    {
+      "act_number": 3,
+      "act_title": "3막: 8바퀴째 사서의 홀 드랍과 보기의 충격 팩폭",
+      "layout_id": "open_top_split_bottom",
+      "cuts": [
+        {
+          "cut_index": 7,
+          "aspect_ratio": "auto",
+          "layout_slot": "top",
+          "act_number": 3,
+          "panel_index": 1,
+          "characters": [
+            "나이트엘프 사제",
+            "언데드 성기사"
+          ],
+          "speaker": "나이트엘프 사제",
+          "dialogue": "8바퀴째야… 이번엔\n제발 내 무기 좀…!",
+          "wordless": false,
+          "visual_prompt": "OPEN TOP BORDERLESS PANEL WITH SOFTLY FEATHERED LOW SCARLET STONE FLOOR + MASSIVE 100% EMPTY PURE #FFFFFF SKY ACROSS THE ENTIRE TOP 44% OF PANEL 1! STRICT ABSOLUTE HEIGHT CEILING: EVERY SINGLE CHARACTER (INCLUDING Undead Paladin's round white skull cap AND Night Elf Priestess's hair/staff!) MUST stay COMPACT strictly inside the lower 56% (y=44%..100%) — the ENTIRE UPPER 44% (y=0%..44%) MUST BE 100% BLANK EMPTY PURE #FFFFFF WHITE SKY for top-left item tooltip & top-right speech bubble! STRICTLY ZERO dark back wall, ZERO boxy dark horizontal rectangle cutoff — render ONLY warm pale-tan sunlit dungeon floor tiles along the bottom fading softly and organically upward into pure #FFFFFF white around their knees/ankles! HIGH-ANGLE EXHAUSTED 8TH-RUN SHOWDOWN strictly in lower half y=44%..100%: on lower-right (x=72%, crouching low over the open wooden treasure chest), Night Elf Priestess with WARM BRIGHT FAIR PEACH-IVORY HUMAN SKIN on her face, ears, neck, and hands (STRICTLY ZERO blue/cyan/grey skin! Show tired 8th-run exhaustion ONLY with faint under-eye lines, sweatdrops, and wide desperate glowing silver-white eyes over warm peach-ivory skin!) reaching trembling hands toward a radiant glowing golden one-handed scepter hovering above the chest (golden cross staff stowed on back, 0 halos/wings); on lower-left (x=28%, compactly framed strictly below y=44%!), fair peach-ivory-skinned Undead Protection Paladin tank holding a sturdy shiny golden paladin crest shield strapped on her left forearm and a compact one-handed mace in her right hand (Tank Shield Rule — NEVER 2H!), peering lazily down at the scepter with half-lidded sleepy golden eyes (white skull cap, silver-white bob hair, white-and-gold cape). Strictly zero text, zero inner panel borders.",
+          "tail_target": "right",
+          "bubble_side": "right",
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
+          "item_tooltip": {
+            "image_path": "assets/items/scepter_of_the_librarian.png",
+            "item_name": "사서의 홀",
+            "wowhead_item_id": null,
+            "quality": "uncommon",
+            "slot_left": "",
+            "slot_right": "",
+            "lines": [],
+            "equip_effects": [],
+            "icon_name": null,
+            "preferred_corner": "top_left",
+            "target_width": 288
+          }
+        },
+        {
+          "cut_index": 8,
+          "aspect_ratio": "auto",
+          "layout_slot": "panel",
+          "act_number": 3,
+          "panel_index": 2,
+          "characters": [
+            "언데드 성기사"
+          ],
+          "speaker": "언데드 성기사",
+          "dialogue": "…아, 그거 보기 비스야.\n주문력 엄청 붙어서…",
+          "wordless": false,
+          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND EVERYWHERE (STRICTLY ZERO inner black horizontal divider lines, ZERO double borders, ZERO sub-frame lines anywhere inside Panel 2! Top 38% y=0%..38% completely empty seamless pure #FFFFFF white headroom flowing directly down into her portrait; keep skull cap & shield strictly inside Panel 2's outer frame!). DEADPAN SLEEPY LOW-ANGLE TANK PORTRAIT of fair peach-ivory-skinned Undead Protection Paladin tank resting her chin lazily on her gloved right hand while her sturdy shiny golden paladin crest shield stays strapped cleanly on her left forearm (1H weapon sheathed at waist — Tank Shield & Clean Hand Rules!), staring with flat half-lidded sleepy golden eyes and faint tired under-eye lines as she calmly states a devastating fact! Guardrail: fair skin, white skull cap, silver-white bob hair, white-and-gold cape, 0 text.",
+          "tail_target": "center",
+          "bubble_side": "center",
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
+          "item_tooltip": null
+        },
+        {
+          "cut_index": 9,
+          "aspect_ratio": "auto",
+          "layout_slot": "panel",
+          "act_number": 3,
+          "panel_index": 3,
+          "characters": [
+            "나이트엘프 사제"
+          ],
+          "speaker": "나이트엘프 사제",
+          "dialogue": "…힐러만 쓰는 줄 알았네?",
+          "wordless": false,
+          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND EVERYWHERE (STRICTLY ZERO inner black horizontal divider lines, ZERO double borders, ZERO sub-frame lines anywhere inside Panel 3! Top 38% y=0%..38% completely empty seamless pure #FFFFFF white headroom flowing directly down into her portrait; keep figure cleanly inside Panel 3's outer frame!). DUTCH-TILT SOUL-DRAINED SHOCK FREEZE: Night Elf Priestess with WARM BRIGHT FAIR PEACH-IVORY HUMAN SKIN on her entire face, cheeks, ears, neck, and hands (STRICTLY ZERO Smurf-blue skin, ZERO cyan or grey skin tint — convey shock ONLY via crisp vertical dark-indigo dread hatching lines on her upper forehead bangs and bright anime sweatdrops over warm peach-ivory human skin!), wide hollow shocked glowing silver-white eyes, frozen awkward twitching smile, and a tiny cute translucent white ghost-wisp mini-soul starting to drift upward out of her mouth! Guardrail: lavender hair, golden crescent tiara, purple vestments, golden cross staff on back, 0 halos/wings, 0 text.",
+          "tail_target": "center",
+          "bubble_side": "center",
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
+          "item_tooltip": null
+        }
+      ]
+    },
+    {
+      "act_number": 4,
+      "act_title": "4막: 눈물의 간절함과 성기사님의 빛나는 양보",
+      "layout_id": "impact_freeze_2cut",
+      "cuts": [
+        {
+          "cut_index": 10,
+          "aspect_ratio": "auto",
+          "layout_slot": "panel",
+          "act_number": 4,
+          "panel_index": 1,
+          "characters": [
+            "나이트엘프 사제"
+          ],
+          "speaker": "나이트엘프 사제",
+          "dialogue": "보기님… 제발…",
+          "wordless": false,
+          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (ENTIRE RIGHT 54% x=46%..100% 100% EMPTY PURE #FFFFFF HEADROOM for right 1-line bubble; strictly contain figure cleanly INSIDE Panel 1's black borders!). HIGH-ANGLE PLEADING PUPPY-EYES CLOSE-UP: positioned cleanly on left 42% (x=25%) facing right, fair-skinned Night Elf Priestess kneeling low clasping both trembling hands tightly beneath her chin, gazing pleadingly upward with huge shimmering watery glowing silver-white puppy eyes, trembling lip, and drooping elf ears! Guardrail: fair skin, lavender half-up ponytail, golden crescent tiara, purple vestments, golden cross staff stowed on back, 0 halos/wings, 0 text.",
+          "tail_target": "left",
+          "bubble_side": "right",
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
+          "item_tooltip": null
+        },
+        {
+          "cut_index": 11,
+          "aspect_ratio": "auto",
+          "layout_slot": "panel",
+          "act_number": 4,
+          "panel_index": 2,
+          "characters": [
+            "나이트엘프 사제",
+            "언데드 성기사"
+          ],
+          "speaker": null,
+          "dialogue": null,
+          "wordless": true,
+          "visual_prompt": "TIER 2 GIANT WORDLESS CLIMAX FREEZE-FRAME ON FULL-WIDTH SCARLET CATHEDRAL STONE FLOOR + 100% PURE #FFFFFF UPPER SKY & GOLDEN HOLY LIGHT RAYS (ZERO text, ZERO speech bubbles, ZERO SFX letters!). Cathedral flagstones anchored flush edge-to-edge along bottom, left & right borders; soft dazzling golden holy sunburst rays feather organically into pure #FFFFFF upper space behind the Paladin! DRAMATIC LOW-ANGLE DIVINE HANDOFF: on right (x=66%, tall cool stance), fair-skinned Undead Protection Paladin tank (sturdy shiny golden paladin crest shield strapped cleanly on her left forearm, 1H mace neatly sheathed at waist — Tank Shield & Clean Hand Rules!) gently holds out the gleaming golden one-handed healer scepter straight into the Priestess's hands with a serene half-lidded gentle tsundere smile; on left (x=32%, crouching awestruck), fair-skinned Night Elf Priestess cups the glowing scepter in both trembling hands with jaw dropped wide open, rosy cheeks, and gigantic sparkling anime waterfall joy-tears shooting out of her radiant glowing silver-white eyes! Guardrail: fair skin on both girls, Priestess golden cross staff stowed on back, 0 halos/wings on Priestess.",
+          "tail_target": "center",
+          "bubble_side": null,
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
+          "item_tooltip": null
+        }
+      ]
+    },
+    {
+      "act_number": 5,
+      "act_title": "5막: 착한 보기님의 츤데레 토닥임과 사제의 재기",
+      "layout_id": "split_top_wide_bottom",
+      "cuts": [
+        {
+          "cut_index": 12,
+          "aspect_ratio": "auto",
+          "layout_slot": "panel",
+          "act_number": 5,
+          "panel_index": 1,
+          "characters": [
+            "언데드 성기사"
+          ],
+          "speaker": "언데드 성기사",
+          "dialogue": "…귀찮아, 그냥 너 먹어.\n토닥토닥.",
+          "wordless": false,
+          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND EVERYWHERE (top 38% y=0%..38% completely empty pure #FFFFFF headroom for bubble; keep skull cap cleanly inside Panel 1's borders!). WARM 3/4 SIDE-PROFILE TSUNDERE PAT: fair-skinned Undead Protection Paladin tank (shiny golden paladin crest shield strapped neatly on her back over her white-and-gold cape, 1H mace sheathed at waist — Tank Shield & Clean Hand Rules!) lazily reaching one soft gloved hand gently forward in a soothing pat-pat motion with sleepy half-lidded warm golden eyes and a faint tiny affectionate smile! Guardrail: fair skin, white skull cap, silver-white bob hair, 0 text.",
+          "tail_target": "center",
+          "bubble_side": "center",
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
+          "item_tooltip": null
+        },
+        {
+          "cut_index": 13,
+          "aspect_ratio": "auto",
+          "layout_slot": "panel",
+          "act_number": 5,
+          "panel_index": 2,
+          "characters": [
+            "나이트엘프 사제"
+          ],
+          "speaker": "나이트엘프 사제",
+          "dialogue": "고마워 보기야…!!\n넌 진짜 착한 기사야~♡",
+          "wordless": false,
+          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND EVERYWHERE (top 38% y=0%..38% completely empty pure #FFFFFF headroom for bubble; keep full leaping figure strictly inside Panel 2's borders!). JOYFUL BOUNCY CELEBRATION SHOT: fair-skinned Night Elf Priestess leaping gleefully into the air hugging her brand-new radiant golden one-handed healer scepter tightly against her chest with both hands (her old golden cross staff stowed diagonally on back — Clean Hand Rule!), bawling adorable sparkly anime joy-tears with huge beaming `≧▽≦` eyes, bright rosy blush, and floating pink hearts! Guardrail: fair skin, lavender hair, golden crescent tiara, purple vestments, 0 halos/wings, 0 text.",
+          "tail_target": "center",
+          "bubble_side": "center",
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
+          "item_tooltip": null
+        },
+        {
+          "cut_index": 14,
+          "aspect_ratio": "auto",
+          "layout_slot": "panel",
+          "act_number": 5,
+          "panel_index": 3,
+          "characters": [
+            "언데드 성기사",
+            "나이트엘프 사제"
+          ],
+          "speaker": "언데드 성기사",
+          "dialogue": "…흥, 고맙긴 뭐가.",
+          "wordless": false,
+          "visual_prompt": "TIER 2 NATURAL FULL-WIDTH SCARLET MONASTERY COURTYARD FLAGSTONES + MASSIVE 100% EMPTY PURE #FFFFFF SKY ACROSS THE ENTIRE TOP 44% OF PANEL 3! STRICT ABSOLUTE HEIGHT CEILING: BOTH characters (INCLUDING Undead Paladin's round white skull cap AND Priestess's glowing scepter & hearts!) MUST stay COMPACT strictly inside the lower 56% (y=44%..100%) — the ENTIRE UPPER 44% (y=0%..44%, from left black border to right black border!) MUST BE 100% BLANK EMPTY PURE #FFFFFF WHITE SKY for the left 1-line speech bubble so ZERO horizontal scaling shrinkage occurs! Sunlit courtyard flagstones extend 100% FLUSH EDGE-TO-EDGE from the far-left black border (x=0%) to the far-right black border (x=100%) and bottom border (y=100%) (ZERO white side gaps, ZERO floating rectangular box!). BACK-VIEW & TSUNDERE BLUSH FINALE strictly in lower half y=44%..100%: on lower-left foreground (x=28%, compact y=44%..99%), fair-skinned Undead Protection Paladin tank (shiny golden paladin crest shield strapped neatly across her back cape, 1H weapon sheathed at waist — Tank Shield & Clean Hand Rules!) turns half away pulling the edge of her white-and-gold cape up to hide her furiously crimson-blushing flustered cheeks, glancing shyly sideways with sparkling embarrassed golden eyes! On lower-right midground (x=74%, smaller compact y=50%..96%), fair-skinned Night Elf Priestess skips happily down the sunlit flagstones waving her brand-new glowing golden scepter cheerily with tiny musical notes and hearts floating strictly below y=44% (old staff stowed on back, 0 halos/wings). Strictly zero text.",
+          "tail_target": "left",
+          "bubble_side": "left",
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
+          "item_tooltip": null
+        }
+      ]
+    }
+  ],
   "cuts": [
     {
       "cut_index": 1,
-      "aspect_ratio": "4:3",
+      "aspect_ratio": "auto",
       "layout_slot": "top",
+      "act_number": 1,
+      "panel_index": 1,
+      "characters": [
+        "나이트엘프 사제",
+        "트롤 주술사"
+      ],
+      "speaker": "나이트엘프 사제",
+      "dialogue": "수도원 주특입 풀방!\n오늘 졸업하고 가야지~♡",
+      "wordless": false,
+      "visual_prompt": "TIER 1 FULL-BLEED SCARLET MONASTERY COURTYARD ESTABLISHING SHOT inside solid black box frame (edge-to-edge full scenery, outer page margins & white gutter below 100% pure #FFFFFF — STRICTLY ZERO boots, feet, or legs crossing downward below Panel 1's bottom black frame into Panel 2!). Sweeping wide cinematic anime courtyard of Scarlet Monastery Cathedral: sunlit medieval cream-stone cloister spires, fluttering crimson Scarlet banners along lower pillars, warm clear golden-blue open sky filling the ENTIRE upper 36% (y=0%..36% completely uncluttered open sky across top-left for speech bubble — keep all ears, tiaras, mohawks, and staves strictly below y=36%!). DYNAMIC ACTING: on lower-left foreground (x=30%, full legs and boots standing cleanly on sunlit courtyard flagstones well above Panel 1's bottom border!), fair-skinned Night Elf Priestess bounces cheerfully forward waving a tiny plain wooden wand with optimistic sparkling glowing silver-white eyes and a radiant hopeful wink pointing toward the grand cathedral doors (guardrail: normal fair peach-ivory skin, lavender half-up ponytail, golden crescent tiara, glowing silver-white eyes, royal-purple vestments, waist mini Holy Book & gold Rosary, golden cross staff stowed on back, 0 halos/wings). On lower-right foreground (x=72%, waist-up framing cleanly bounded inside Panel 1's bottom frame!), over-the-shoulder lively hype-pose of fair-skinned Troll Shaman leaning in eagerly with glittering popcorn-gossip emerald eyes and crackling tiny blue sparks (guardrail: fair skin, sky-blue troll hood with red spiky mohawk, wooden totem staff strapped on back). Strictly zero text, zero UI.",
+      "tail_target": "left",
+      "bubble_side": "left",
+      "full_bleed_bg": true,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 2,
+      "aspect_ratio": "auto",
+      "layout_slot": "panel",
+      "act_number": 1,
+      "panel_index": 2,
       "characters": [
         "나이트엘프 사제",
         "트롤 주술사"
       ],
       "speaker": "트롤 주술사",
-      "dialogue": "힐모자요? 주문력·정신력 붙었으니\n고술인 저도 주특 맞죠! ㅎㅎ",
+      "dialogue": "이야~ 주문력 붙었네!\n고술 주특 맞지, 그치~?",
       "wordless": false,
-      "visual_prompt": "Over-the-shoulder (OTS) diagonal action shot recreating the Scarlet Monastery Cathedral boss room right after defeating High Inquisitor Whitemane. Foreground-left: seen over the slumped lavender-haired shoulder of the Night Elf Priest chibi girl (pointed elf ears, golden crescent circlet, white-and-gold priestess robe, her golden crescent staff leaned aside so both hands reach out weakly in dismay). Looking diagonally across a small soft organic floating patch of crimson Scarlet Cathedral carpet (NO straight horizon or wall lines!) where a tiny comical collapsed chibi boss silhouette of white-haired red-robed High Inquisitor Whitemane lies with dizzy spiral eyes beside an open wooden loot chest: on the lower-right, the fair peach-ivory-skinned Troll Shaman chibi girl (sky-blue plush troll hood with bright red spiky mohawk, floppy pierced ears, mint-teal bob hair, patterned tribal scarf, crackling blue lightning sparks) leaps jubilantly balancing an ornate crimson-and-gold Scarlet cloth bishop hat right atop her troll hood while flashing a shameless winking blep tongue-out grin and V-sign; in the tiny lower-center background, a generic chibi hooded mage extra scurries off hugging a gleaming ruby amulet. Keep all characters, fallen boss, and organic carpet patch strictly inside the lower two-thirds, fading seamlessly into 100% pure solid #FFFFFF white headroom across the entire top 38% (both top-left and top-right corners completely pure white for speech bubble and item tooltip). Zero text, zero letters, zero UI.",
+      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND EVERYWHERE (STRICTLY ZERO dark wood walls, ZERO carpet floor rectangle, ZERO pillars, ZERO treasure chest boxes, and STRICTLY ZERO floating stray boots or legs from Panel 1 anywhere inside Panel 2 — ONLY the two expressive characters cleanly inside the lower 60% on 100% pure solid #FFFFFF white! Reserve ENTIRE top 40% y=0%..40% 100% blank pure #FFFFFF headroom across BOTH top-left for item tooltip and top-right for speech bubble!). WILD LOW-ANGLE LOOT HEIST COMEDY directly on pure #FFFFFF white: on lower-right (x=72%, keep bishop hat tip strictly below y=40%!), fair-skinned Troll Shaman bounces triumphantly wearing the shiny ornate crimson-and-gold Scarlet cloth bishop chapeau right on top of her red-mohawk troll hood flashing a shameless hyped uproarious grin & V-sign with bright comic loot sparkles (wooden totem staff stowed on back); on lower-left (x=28%, strictly below y=42%!), fair-skinned Night Elf Priestess freezes mid-reach with jaw dropped wide open, popping stunned glowing silver-white eyes, and flying comic shock sweatdrops staring straight at the crimson hat on the Shaman's head (golden cross staff stowed on back, 0 halos/wings). Strictly zero floor/wall backdrop, zero text.",
       "tail_target": "right",
+      "bubble_side": "right",
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
       "item_tooltip": {
-        "wowhead_item_id": 7720,
+        "image_path": null,
         "item_name": "화이트메인의 모자",
+        "wowhead_item_id": 7720,
         "quality": "rare",
         "slot_left": "머리",
         "slot_right": "천",
@@ -35,83 +420,265 @@
         "equip_effects": [
           "착용 효과: 마법 주문 및 효과로 입히는 피해와 치유량이 최대 18만큼 증가합니다."
         ],
-        "preferred_corner": "top_left"
+        "icon_name": "inv_helmet_12",
+        "preferred_corner": "top_left",
+        "target_width": 288
       }
     },
     {
-      "cut_index": 2,
-      "aspect_ratio": "16:9",
-      "layout_slot": "bottom",
+      "cut_index": 3,
+      "aspect_ratio": "auto",
+      "layout_slot": "panel",
+      "act_number": 2,
+      "panel_index": 1,
       "characters": [
         "나이트엘프 사제"
       ],
       "speaker": "나이트엘프 사제",
-      "dialogue": "주특입 8바퀴째인데...\n캐스터에 하이브리드까지\n왜 죄다 천을 굴려대냐고!!",
+      "dialogue": "…그래, 그럴 수 있지♡",
       "wordless": false,
-      "visual_prompt": "High-angle diagonal shot looking down across the left half of the wide 16:9 frame (leaving the entire right 46% completely empty pure #FFFFFF white space for the speech bubble!). On a small soft organic floating patch of Scarlet Monastery cobblestone tiles (NO straight horizon or divider lines!), on the far-left sits the exhausted Night Elf Priest chibi girl (lavender-silver hair, pointed elf ears, golden crescent circlet, heavy dark under-eye circles, white-and-gold priestess robe, crescent staff leaned aside) slumped hugging her knees with twitching half-lidded furious eyes, puffed exasperated cheeks, and a tiny plain wand drooping weakly in one hand. Right beside her toward center-left, a chaotic cartoon scramble of 3 chibi party extras (a dark-hooded warlock, a blue-robed mage, and a leafy leather druid) dive headfirst in a puff of comic dust onto a glittering pile of crimson cloth hats and chunky white-and-gold 6-sided loot dice showing ONLY simple round black dot pips (strictly ZERO digits, ZERO numbers, ZERO letters!). 100% pure solid #FFFFFF white outer background, zero text, zero UI.",
-      "tail_target": "left",
-      "bubble_side": "left"
-    },
-    {
-      "cut_index": 3,
-      "aspect_ratio": "4:3",
-      "layout_slot": "top",
-      "characters": [
-        "나이트엘프 사제",
-        "오크 전사"
-      ],
-      "speaker": "오크 전사",
-      "dialogue": "어우 힐무기인 줄 몰랐네요 ㅈㅅ!\n이미 착용해서 못 드림 수고요~!",
-      "wordless": false,
-      "visual_prompt": "Side-profile 90-degree dynamic chase action shot across the lower two-thirds of the 4:3 frame! On the lower-right, the fair peach-ivory-skinned Orc Warrior chibi girl (vibrant green plush orc onesie hood with curved cream horns and tiny fangs, black high ponytail, crimson eyes, spiky red pauldrons over silver plate armor, her chunky silver battle axe strapped cleanly across her back — Clean Hand Rule!) sprints frantically rightward in a guilty tiptoe dash kicking up comic dust puffs and swirling cyan instance-exit sparkles, gripping a newly equipped gleaming golden one-handed healer mace (radiating golden soulbound sparkles!) in one hand while glancing back over her shoulder with a sweaty sheepish apologetic grin. Lunging horizontally from the lower-left in mid-stumble is the Night Elf Priest chibi girl (lavender hair flying wildly backward, golden crescent circlet, white-and-gold robe, her crescent staff dropped behind her) tripping forward with jaw dropped wide open and watery panicked eyes reaching both desperate hands after the fleeing Warrior. Keep all figures and dust puffs strictly inside the lower two-thirds with 100% pure solid #FFFFFF white headroom across the entire top 38% (both top-left and top-right corners completely pure white for item tooltip and speech bubble). Zero text, zero letters, zero UI.",
-      "tail_target": "right",
-      "item_tooltip": {
-        "image_path": "assets/items/scepter_of_the_librarian.png",
-        "item_name": "사서의 홀",
-        "quality": "uncommon",
-        "preferred_corner": "top_left"
-      }
+      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND EVERYWHERE (top 38% y=0%..38% completely empty pure #FFFFFF headroom for 1-line bubble; keep figure cleanly inside Panel 1's borders!). TIGHT COMEDIC BUST CLOSE-UP of fair-skinned Night Elf Priestess forcing a strained super-polite sweet smile while a tiny ominous dark gloom shadow creeps down her forehead, one glowing silver-white eye twitching violently with a crisp cold sweatdrop sliding down her temple! Guardrail: fair peach-ivory skin, lavender hair, golden crescent tiara, purple vestments, staff on back, 0 halos/wings, 0 text.",
+      "tail_target": "center",
+      "bubble_side": "center",
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
+      "item_tooltip": null
     },
     {
       "cut_index": 4,
-      "aspect_ratio": "16:9",
-      "layout_slot": "bottom",
+      "aspect_ratio": "auto",
+      "layout_slot": "panel",
+      "act_number": 2,
+      "panel_index": 2,
+      "characters": [
+        "오크 전사"
+      ],
+      "speaker": "오크 전사",
+      "dialogue": "오! 나도 먹어볼까~!",
+      "wordless": false,
+      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND EVERYWHERE (top 38% y=0%..38% completely empty pure #FFFFFF headroom for 1-line bubble; keep horns & scepter strictly below y=38% and inside Panel 2's borders!). LOW-ANGLE CLUELESS PUPPY-WARRIOR GRAB: fair-skinned Orc Warrior grinning with starry-eyed boisterous fang excitement scooping up a shiny glowing golden one-handed healer scepter mace (her own silver battle axe strapped cleanly across her back — Clean Hand Rule!) while tossing a chunky 6-sided white-and-gold loot die showing ONLY round black dot pips (strictly ZERO digits or letters!). Guardrail: fair peach-ivory skin (NEVER green!), green plush orc hood with ivory horns, black ponytail, red spiky pauldrons, 0 text.",
+      "tail_target": "center",
+      "bubble_side": "center",
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 5,
+      "aspect_ratio": "auto",
+      "layout_slot": "panel",
+      "act_number": 2,
+      "panel_index": 3,
+      "characters": [
+        "오크 전사"
+      ],
+      "speaker": "오크 전사",
+      "dialogue": "앗, 힐무기였어?!\n이미 껴서 못 줘~ ㅈㅅ!",
+      "wordless": false,
+      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND EVERYWHERE (top 38% y=0%..38% completely empty pure #FFFFFF headroom for bubble; keep full sprinting pose strictly inside Panel 3's borders!). 90-DEGREE SIDE-PROFILE GUILTY DASH: fair-skinned Orc Warrior bolting rightward in a frantic tiptoe sprint kicking up comic dust puffs and swirling cyan dungeon-exit sparkles, glancing back over her shoulder with a hilariously sweaty sheepish apologetic grin while gripping the newly equipped golden one-handed healer scepter radiating bright golden soulbound sparkles (her silver battle axe neatly strapped on her back — Clean Hand Rule!). Guardrail: fair peach-ivory skin, green plush orc hood, 0 text.",
+      "tail_target": "center",
+      "bubble_side": "center",
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 6,
+      "aspect_ratio": "auto",
+      "layout_slot": "panel",
+      "act_number": 2,
+      "panel_index": 4,
       "characters": [
         "나이트엘프 사제"
+      ],
+      "speaker": "나이트엘프 사제",
+      "dialogue": "전사가 왜 힐무기를…?!",
+      "wordless": false,
+      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE BACKGROUND EVERYWHERE AROUND HER HEAD, EARS, AND SHOULDERS! (STRICTLY ZERO dark painted background wall, ZERO purple rectangle backdrop, ZERO dark fill behind her hair — ALL empty space outside her hair/shoulders MUST BE 100% PURE SOLID #FFFFFF WHITE! Top 40% y=0%..40% completely empty pure #FFFFFF headroom for 1-line bubble; keep figure cleanly inside Panel 4's borders!). EXTREME UNHINGED CLOSE-UP: fair-skinned Night Elf Priestess snapping her tiny plain leveling wand clean in half between both trembling hands — dark indigo gloom gradient ONLY on her forehead skin under her bangs (NEVER behind her hair!), glowing silver-white eyes shrunk to blazing psychotic pinpoint `맑눈광` pupils, crisp red anime anger vein & tiny crisp black fury lightning sparks floating directly on pure #FFFFFF white! Guardrail: fair skin, lavender hair, golden crescent tiara, purple vestments, golden cross staff stowed on back, 0 halos/wings, 0 text.",
+      "tail_target": "center",
+      "bubble_side": "center",
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 7,
+      "aspect_ratio": "auto",
+      "layout_slot": "top",
+      "act_number": 3,
+      "panel_index": 1,
+      "characters": [
+        "나이트엘프 사제",
+        "언데드 성기사"
+      ],
+      "speaker": "나이트엘프 사제",
+      "dialogue": "8바퀴째야… 이번엔\n제발 내 무기 좀…!",
+      "wordless": false,
+      "visual_prompt": "OPEN TOP BORDERLESS PANEL WITH SOFTLY FEATHERED LOW SCARLET STONE FLOOR + MASSIVE 100% EMPTY PURE #FFFFFF SKY ACROSS THE ENTIRE TOP 44% OF PANEL 1! STRICT ABSOLUTE HEIGHT CEILING: EVERY SINGLE CHARACTER (INCLUDING Undead Paladin's round white skull cap AND Night Elf Priestess's hair/staff!) MUST stay COMPACT strictly inside the lower 56% (y=44%..100%) — the ENTIRE UPPER 44% (y=0%..44%) MUST BE 100% BLANK EMPTY PURE #FFFFFF WHITE SKY for top-left item tooltip & top-right speech bubble! STRICTLY ZERO dark back wall, ZERO boxy dark horizontal rectangle cutoff — render ONLY warm pale-tan sunlit dungeon floor tiles along the bottom fading softly and organically upward into pure #FFFFFF white around their knees/ankles! HIGH-ANGLE EXHAUSTED 8TH-RUN SHOWDOWN strictly in lower half y=44%..100%: on lower-right (x=72%, crouching low over the open wooden treasure chest), Night Elf Priestess with WARM BRIGHT FAIR PEACH-IVORY HUMAN SKIN on her face, ears, neck, and hands (STRICTLY ZERO blue/cyan/grey skin! Show tired 8th-run exhaustion ONLY with faint under-eye lines, sweatdrops, and wide desperate glowing silver-white eyes over warm peach-ivory skin!) reaching trembling hands toward a radiant glowing golden one-handed scepter hovering above the chest (golden cross staff stowed on back, 0 halos/wings); on lower-left (x=28%, compactly framed strictly below y=44%!), fair peach-ivory-skinned Undead Protection Paladin tank holding a sturdy shiny golden paladin crest shield strapped on her left forearm and a compact one-handed mace in her right hand (Tank Shield Rule — NEVER 2H!), peering lazily down at the scepter with half-lidded sleepy golden eyes (white skull cap, silver-white bob hair, white-and-gold cape). Strictly zero text, zero inner panel borders.",
+      "tail_target": "right",
+      "bubble_side": "right",
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
+      "item_tooltip": {
+        "image_path": "assets/items/scepter_of_the_librarian.png",
+        "item_name": "사서의 홀",
+        "wowhead_item_id": null,
+        "quality": "uncommon",
+        "slot_left": "",
+        "slot_right": "",
+        "lines": [],
+        "equip_effects": [],
+        "icon_name": null,
+        "preferred_corner": "top_left",
+        "target_width": 288
+      }
+    },
+    {
+      "cut_index": 8,
+      "aspect_ratio": "auto",
+      "layout_slot": "panel",
+      "act_number": 3,
+      "panel_index": 2,
+      "characters": [
+        "언데드 성기사"
+      ],
+      "speaker": "언데드 성기사",
+      "dialogue": "…아, 그거 보기 비스야.\n주문력 엄청 붙어서…",
+      "wordless": false,
+      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND EVERYWHERE (STRICTLY ZERO inner black horizontal divider lines, ZERO double borders, ZERO sub-frame lines anywhere inside Panel 2! Top 38% y=0%..38% completely empty seamless pure #FFFFFF white headroom flowing directly down into her portrait; keep skull cap & shield strictly inside Panel 2's outer frame!). DEADPAN SLEEPY LOW-ANGLE TANK PORTRAIT of fair peach-ivory-skinned Undead Protection Paladin tank resting her chin lazily on her gloved right hand while her sturdy shiny golden paladin crest shield stays strapped cleanly on her left forearm (1H weapon sheathed at waist — Tank Shield & Clean Hand Rules!), staring with flat half-lidded sleepy golden eyes and faint tired under-eye lines as she calmly states a devastating fact! Guardrail: fair skin, white skull cap, silver-white bob hair, white-and-gold cape, 0 text.",
+      "tail_target": "center",
+      "bubble_side": "center",
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 9,
+      "aspect_ratio": "auto",
+      "layout_slot": "panel",
+      "act_number": 3,
+      "panel_index": 3,
+      "characters": [
+        "나이트엘프 사제"
+      ],
+      "speaker": "나이트엘프 사제",
+      "dialogue": "…힐러만 쓰는 줄 알았네?",
+      "wordless": false,
+      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND EVERYWHERE (STRICTLY ZERO inner black horizontal divider lines, ZERO double borders, ZERO sub-frame lines anywhere inside Panel 3! Top 38% y=0%..38% completely empty seamless pure #FFFFFF white headroom flowing directly down into her portrait; keep figure cleanly inside Panel 3's outer frame!). DUTCH-TILT SOUL-DRAINED SHOCK FREEZE: Night Elf Priestess with WARM BRIGHT FAIR PEACH-IVORY HUMAN SKIN on her entire face, cheeks, ears, neck, and hands (STRICTLY ZERO Smurf-blue skin, ZERO cyan or grey skin tint — convey shock ONLY via crisp vertical dark-indigo dread hatching lines on her upper forehead bangs and bright anime sweatdrops over warm peach-ivory human skin!), wide hollow shocked glowing silver-white eyes, frozen awkward twitching smile, and a tiny cute translucent white ghost-wisp mini-soul starting to drift upward out of her mouth! Guardrail: lavender hair, golden crescent tiara, purple vestments, golden cross staff on back, 0 halos/wings, 0 text.",
+      "tail_target": "center",
+      "bubble_side": "center",
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 10,
+      "aspect_ratio": "auto",
+      "layout_slot": "panel",
+      "act_number": 4,
+      "panel_index": 1,
+      "characters": [
+        "나이트엘프 사제"
+      ],
+      "speaker": "나이트엘프 사제",
+      "dialogue": "보기님… 제발…",
+      "wordless": false,
+      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (ENTIRE RIGHT 54% x=46%..100% 100% EMPTY PURE #FFFFFF HEADROOM for right 1-line bubble; strictly contain figure cleanly INSIDE Panel 1's black borders!). HIGH-ANGLE PLEADING PUPPY-EYES CLOSE-UP: positioned cleanly on left 42% (x=25%) facing right, fair-skinned Night Elf Priestess kneeling low clasping both trembling hands tightly beneath her chin, gazing pleadingly upward with huge shimmering watery glowing silver-white puppy eyes, trembling lip, and drooping elf ears! Guardrail: fair skin, lavender half-up ponytail, golden crescent tiara, purple vestments, golden cross staff stowed on back, 0 halos/wings, 0 text.",
+      "tail_target": "left",
+      "bubble_side": "right",
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 11,
+      "aspect_ratio": "auto",
+      "layout_slot": "panel",
+      "act_number": 4,
+      "panel_index": 2,
+      "characters": [
+        "나이트엘프 사제",
+        "언데드 성기사"
       ],
       "speaker": null,
       "dialogue": null,
       "wordless": true,
-      "visual_prompt": "Dutch-tilt dramatic close-up comedic freeze-frame of ONLY the Night Elf Priest chibi girl (filling ~80% of canvas height, dynamically tilted diagonally on a 100% pure solid #FFFFFF white background). Long silky lavender-silver hair, pointed elf ears, golden crescent-moon circlet, white-and-gold priestess robe collar with cream bow. Deep ominous dark-indigo gloom shadow falls heavily across her forehead and prominent dark under-eye circles; wide-open lilac-purple eyes shrink to hollow trembling white pinpoint pupils staring straight ahead into the void, a crisp cold sweat drop rolling down her cheek, and a cute tiny translucent white cartoon ghost-wisp of her soul drifting out of her frozen parted mouth while one slumped hand weakly clutches her tiny plain wand. Strictly zero text, zero letters, zero UI, zero borders.",
-      "tail_target": "center"
+      "visual_prompt": "TIER 2 GIANT WORDLESS CLIMAX FREEZE-FRAME ON FULL-WIDTH SCARLET CATHEDRAL STONE FLOOR + 100% PURE #FFFFFF UPPER SKY & GOLDEN HOLY LIGHT RAYS (ZERO text, ZERO speech bubbles, ZERO SFX letters!). Cathedral flagstones anchored flush edge-to-edge along bottom, left & right borders; soft dazzling golden holy sunburst rays feather organically into pure #FFFFFF upper space behind the Paladin! DRAMATIC LOW-ANGLE DIVINE HANDOFF: on right (x=66%, tall cool stance), fair-skinned Undead Protection Paladin tank (sturdy shiny golden paladin crest shield strapped cleanly on her left forearm, 1H mace neatly sheathed at waist — Tank Shield & Clean Hand Rules!) gently holds out the gleaming golden one-handed healer scepter straight into the Priestess's hands with a serene half-lidded gentle tsundere smile; on left (x=32%, crouching awestruck), fair-skinned Night Elf Priestess cups the glowing scepter in both trembling hands with jaw dropped wide open, rosy cheeks, and gigantic sparkling anime waterfall joy-tears shooting out of her radiant glowing silver-white eyes! Guardrail: fair skin on both girls, Priestess golden cross staff stowed on back, 0 halos/wings on Priestess.",
+      "tail_target": "center",
+      "bubble_side": null,
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
+      "item_tooltip": null
     },
     {
-      "cut_index": 5,
-      "aspect_ratio": "4:3",
-      "layout_slot": "top",
+      "cut_index": 12,
+      "aspect_ratio": "auto",
+      "layout_slot": "panel",
+      "act_number": 5,
+      "panel_index": 1,
       "characters": [
-        "나이트엘프 사제",
         "언데드 성기사"
       ],
       "speaker": "언데드 성기사",
-      "dialogue": "원래 주문력 붙어서 보기 비스긴 한데...\n힐러님 너무 간절해 보이시네요.\n전 패스할게요. 드세요.",
+      "dialogue": "…귀찮아, 그냥 너 먹어.\n토닥토닥.",
       "wordless": false,
-      "visual_prompt": "Low-angle heroic comedic shot looking slightly upward across a soft organic floating patch of Scarlet Cathedral stone floor (NO straight horizon or wall lines!). Standing tall and cool on the lower-right is the Undead Protection Paladin tank chibi girl (round white cartoon skull hood with dark eye sockets, chin-length silver-white bob hair with icy blue inner tips, crisp white-and-gold paladin cloak with cream neck bow) wearing a sturdy shiny golden paladin crest shield strapped cleanly on her left forearm (her own one-handed weapon neatly sheathed at her waist — Tank Shield & Clean Hand Rules!), calmly extending the radiant glowing golden one-handed healer mace forward in her right gloved hand with soft warm golden light rays behind her and a stoic half-lidded gentle smile. Crouched kneeling low on the lower-left is the Night Elf Priest chibi girl (crescent staff leaned aside) leaning eagerly upward with tightly clasped trembling hands, rosy cheeks, and gigantic shimmering starry tearful puppy-dog lilac eyes gazing in awe at the mace. Keep all figures and golden rays strictly inside the lower two-thirds with 100% pure solid #FFFFFF white headroom across the entire top 38%. Zero text, zero letters, zero UI.",
-      "tail_target": "right"
+      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND EVERYWHERE (top 38% y=0%..38% completely empty pure #FFFFFF headroom for bubble; keep skull cap cleanly inside Panel 1's borders!). WARM 3/4 SIDE-PROFILE TSUNDERE PAT: fair-skinned Undead Protection Paladin tank (shiny golden paladin crest shield strapped neatly on her back over her white-and-gold cape, 1H mace sheathed at waist — Tank Shield & Clean Hand Rules!) lazily reaching one soft gloved hand gently forward in a soothing pat-pat motion with sleepy half-lidded warm golden eyes and a faint tiny affectionate smile! Guardrail: fair skin, white skull cap, silver-white bob hair, 0 text.",
+      "tail_target": "center",
+      "bubble_side": "center",
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
+      "item_tooltip": null
     },
     {
-      "cut_index": 6,
-      "aspect_ratio": "16:9",
-      "layout_slot": "bottom",
+      "cut_index": 13,
+      "aspect_ratio": "auto",
+      "layout_slot": "panel",
+      "act_number": 5,
+      "panel_index": 2,
       "characters": [
-        "나이트엘프 사제",
-        "언데드 성기사"
+        "나이트엘프 사제"
       ],
       "speaker": "나이트엘프 사제",
-      "dialogue": "고맙다 보기야...!!\n무기 먹었으니 사제 더 열심히 할게!!\n넌 진짜 착한 기사야아아!!",
+      "dialogue": "고마워 보기야…!!\n넌 진짜 착한 기사야~♡",
       "wordless": false,
-      "visual_prompt": "Back-view and joyful celebration split shot positioned cleanly on the left half of the wide 16:9 frame (leaving the entire right 46% completely empty pure #FFFFFF white space for the speech bubble!). On the far-left, the Night Elf Priest chibi girl leaps joyfully off the ground hugging her brand-new radiant glowing golden one-handed healer mace tightly against her chest with both hands (her old staff stowed away), bawling comical twin waterfalls of sparkling anime joy tears with bright rosy blushing cheeks and warm golden heart sparkles. Right beside her toward center-left, the Undead Protection Paladin tank chibi girl strolls coolly away seen from behind (her sturdy shiny golden paladin crest shield strapped cleanly across her back over her crisp white-and-gold cloak, one-handed mace sheathed at her waist — Tank Shield & Clean Hand Rules!), turning her skull-hooded head back over her shoulder with a cool stoic half-lidded wink, tiny warm blush, and casual thumbs-up. 100% pure solid #FFFFFF white outer background, zero text, zero letters, zero UI.",
-      "tail_target": "left"
+      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND EVERYWHERE (top 38% y=0%..38% completely empty pure #FFFFFF headroom for bubble; keep full leaping figure strictly inside Panel 2's borders!). JOYFUL BOUNCY CELEBRATION SHOT: fair-skinned Night Elf Priestess leaping gleefully into the air hugging her brand-new radiant golden one-handed healer scepter tightly against her chest with both hands (her old golden cross staff stowed diagonally on back — Clean Hand Rule!), bawling adorable sparkly anime joy-tears with huge beaming `≧▽≦` eyes, bright rosy blush, and floating pink hearts! Guardrail: fair skin, lavender hair, golden crescent tiara, purple vestments, 0 halos/wings, 0 text.",
+      "tail_target": "center",
+      "bubble_side": "center",
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 14,
+      "aspect_ratio": "auto",
+      "layout_slot": "panel",
+      "act_number": 5,
+      "panel_index": 3,
+      "characters": [
+        "언데드 성기사",
+        "나이트엘프 사제"
+      ],
+      "speaker": "언데드 성기사",
+      "dialogue": "…흥, 고맙긴 뭐가.",
+      "wordless": false,
+      "visual_prompt": "TIER 2 NATURAL FULL-WIDTH SCARLET MONASTERY COURTYARD FLAGSTONES + MASSIVE 100% EMPTY PURE #FFFFFF SKY ACROSS THE ENTIRE TOP 44% OF PANEL 3! STRICT ABSOLUTE HEIGHT CEILING: BOTH characters (INCLUDING Undead Paladin's round white skull cap AND Priestess's glowing scepter & hearts!) MUST stay COMPACT strictly inside the lower 56% (y=44%..100%) — the ENTIRE UPPER 44% (y=0%..44%, from left black border to right black border!) MUST BE 100% BLANK EMPTY PURE #FFFFFF WHITE SKY for the left 1-line speech bubble so ZERO horizontal scaling shrinkage occurs! Sunlit courtyard flagstones extend 100% FLUSH EDGE-TO-EDGE from the far-left black border (x=0%) to the far-right black border (x=100%) and bottom border (y=100%) (ZERO white side gaps, ZERO floating rectangular box!). BACK-VIEW & TSUNDERE BLUSH FINALE strictly in lower half y=44%..100%: on lower-left foreground (x=28%, compact y=44%..99%), fair-skinned Undead Protection Paladin tank (shiny golden paladin crest shield strapped neatly across her back cape, 1H weapon sheathed at waist — Tank Shield & Clean Hand Rules!) turns half away pulling the edge of her white-and-gold cape up to hide her furiously crimson-blushing flustered cheeks, glancing shyly sideways with sparkling embarrassed golden eyes! On lower-right midground (x=74%, smaller compact y=50%..96%), fair-skinned Night Elf Priestess skips happily down the sunlit flagstones waving her brand-new glowing golden scepter cheerily with tiny musical notes and hearts floating strictly below y=44% (old staff stowed on back, 0 halos/wings). Strictly zero text.",
+      "tail_target": "left",
+      "bubble_side": "left",
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
+      "item_tooltip": null
     }
   ]
 }

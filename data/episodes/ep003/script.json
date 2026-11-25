@@ -4,94 +4,574 @@
   "source_title": "놈리건 천장 압사 사건",
   "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=89934&exception_mode=recommend&page=1",
   "subtitle": "1넴 투력·은신 허리띠 구경하다 돌무더기 압사 전멸 현장",
+  "layout_mode": "v4_five_act",
+  "background_style": "clean_white",
+  "acts": [
+    {
+      "act_number": 1,
+      "act_title": "1막: 놈리건 1넴 그루비스 컷과 투력·은신 허리띠 대박 드랍",
+      "layout_id": "open_top_split_bottom",
+      "cuts": [
+        {
+          "cut_index": 1,
+          "aspect_ratio": "auto",
+          "layout_slot": "panel",
+          "act_number": 1,
+          "panel_index": 1,
+          "characters": [
+            "오크 전사",
+            "노움 도적"
+          ],
+          "speaker": "오크 전사",
+          "dialogue": "1넴 컷! 별거 없구만~!",
+          "wordless": false,
+          "visual_prompt": "TIER 1 FULL-BLEED GNOMEREGAN DUNGEON ESTABLISHING SHOT inside solid black box frame (edge-to-edge rich underground mechanical dungeon scenery, outer page margins & gutter below pure #FFFFFF). Sweeping wide dynamic shot inside Gnomeregan's iconic rocky mechanical cavern tunnel: giant rusted brass clockwork gears embedded in cave walls, glowing neon-green steam pipes, rocky jagged cave ceiling, and a defeated cartoon Trogg boss Grubbis collapsed flat on the right cavern floor with wide-open dizzy spinning spiral eyes and tongue poking out (leave the dark tunnel wall directly above the Trogg 100% plain empty stone with ZERO floating marks, ZERO symbols, ZERO letters!) as golden loot beams rise from a sleek dark-leather assassin waist belt! Keep the ENTIRE upper-left cavern vault (x=4%..56%, y=0%..34%) open dark rocky cavern ceiling for the left 1-line bubble! DYNAMIC ACTING: lower-left (x=28%), Orc Warrior tank (fair peach-ivory skin, green orc plush hood, JET-BLACK high ponytail tied with a red hair band — strictly dark black hair!) laughing boisterously with fang grin slamming her sturdy steel kite shield triumphantly while brandishing her compact one-handed steel sword (NEVER a 2H weapon!). Lower-right (x=72%), petite Gnome Rogue leaping excitedly toward the glowing belt sparkles (fair skin, blonde-pink-blue pigtails, green aviator goggles on forehead, 0 X/star pins, crossed green daggers stowed neatly at back waist). Keep all limbs strictly inside Panel 1 borders.",
+          "tail_target": "left",
+          "bubble_side": "left",
+          "full_bleed_bg": true,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
+          "item_tooltip": null
+        },
+        {
+          "cut_index": 2,
+          "aspect_ratio": "auto",
+          "layout_slot": "panel",
+          "act_number": 1,
+          "panel_index": 2,
+          "characters": [
+            "노움 도적"
+          ],
+          "speaker": "노움 도적",
+          "dialogue": "오 ㄷㄷ 투력·은신 허리띠?!",
+          "wordless": false,
+          "visual_prompt": "TIER 3 PURE #FFFFFF REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom; strictly inside Panel 2 borders). DRAMATIC LOW-ANGLE LOOT HYPE CLOSE-UP: petite Gnome Rogue pushing her green aviator goggles slightly up on her forehead with massive glittering starry sapphire eyes and huge excited fang grin, holding up a sleek dark-leather assassin waist belt with glowing silver buckle and stealth sparkles in both hands (dual green daggers stowed out of sight at lower back waist for Clean Hand)! Guardrail: fair peach-ivory skin, blonde-pink-blue pigtails, STRICTLY ZERO X/star hairpins, ZERO text.",
+          "tail_target": "center",
+          "bubble_side": "center",
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
+          "item_tooltip": null
+        },
+        {
+          "cut_index": 3,
+          "aspect_ratio": "auto",
+          "layout_slot": "panel",
+          "act_number": 1,
+          "panel_index": 3,
+          "characters": [
+            "타우렌 드루이드"
+          ],
+          "speaker": "타우렌 드루이드",
+          "dialogue": "우웅~ 야드 꿈의 템이당~♪",
+          "wordless": false,
+          "visual_prompt": "TIER 3 PURE #FFFFFF REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom for 1-line bubble; strictly inside Panel 3 borders). RADIANT FLOWER-FIELD BLISS BUST SHOT: Tauren Druid girl (fair peach-ivory skin, warm-brown plush cow hood with curved ivory horns & golden nose ring, leafy green shoulder mantle, wooden druid staff strapped on back for Clean Hand) bursting with pure rosy-cheeked ecstatic joy (`≧▽≦` squeezed happy crescent eyes, clasping both hands under her chin surrounded by floating sparkles and cute ink musical notes)! ZERO text.",
+          "tail_target": "center",
+          "bubble_side": "center",
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
+          "item_tooltip": null
+        }
+      ]
+    },
+    {
+      "act_number": 2,
+      "act_title": "2막: 허리띠 구경 삼매경과 머리 위 놈리건 천장 붕괴 조짐",
+      "layout_id": "wide_reaction_wide",
+      "cuts": [
+        {
+          "cut_index": 4,
+          "aspect_ratio": "auto",
+          "layout_slot": "panel",
+          "act_number": 2,
+          "panel_index": 1,
+          "characters": [
+            "노움 도적",
+            "타우렌 드루이드"
+          ],
+          "speaker": "노움 도적",
+          "dialogue": "옵션 봐, 은신 증가까지!\n과연 누가 먹을까~?",
+          "wordless": false,
+          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND EVERYWHERE (STRICTLY ZERO stone floor slab, ZERO dirt strip, ZERO ground patch, ZERO floating island — ONLY the two crouched characters, glowing leather belt, and tiny falling cartoon pebbles directly on pure blank #FFFFFF white! ENTIRE RIGHT 54% x=46%..100% completely empty pure #FFFFFF headroom for right bubble; keep BOTH characters tucked tightly inside LEFT 44% x=4%..46% strictly inside Panel 1 borders — ZERO spillover down into Panel 2!). SIDE-PROFILE HUDDLED INSPECTION on LEFT 44%: petite Gnome Rogue (0 X/star pins, crossed green daggers neatly at back waist) and Tauren Druid (curved ivory horns, wooden staff strapped on back) crouched nose-to-nose squinting excitedly with drooling starry eyes at the glowing dark-leather belt between them — completely oblivious as 4 tiny cartoon grey pebbles plink straight onto the tops of their hoods from above! ZERO text.",
+          "tail_target": "left",
+          "bubble_side": "right",
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
+          "item_tooltip": null
+        },
+        {
+          "cut_index": 5,
+          "aspect_ratio": "auto",
+          "layout_slot": "panel",
+          "act_number": 2,
+          "panel_index": 2,
+          "characters": [
+            "오크 전사"
+          ],
+          "speaker": "오크 전사",
+          "dialogue": "야!! 템 그만 보고 위를 봐!!\n천장 무너진다아!!",
+          "wordless": false,
+          "visual_prompt": "TIER 3 PURE #FFFFFF REACTION BACKGROUND (ENTIRE LEFT 54% x=0%..54% completely empty pure #FFFFFF headroom for left bubble; strictly inside RIGHT 44% x=56%..98% inside Panel 2 borders — ZERO spillover into Panels 1 or 3!). DRAMATIC LOW-ANGLE WARNING PANIC on RIGHT 44%: Orc Warrior tank (fair peach-ivory skin, green orc plush hood) craning her head sharply upward with popping shock eyes, jaw wide open screaming, raising her sturdy steel kite shield protectively overhead while gripping her compact one-handed steel sword (NEVER a 2H weapon!) as sharp downward falling rock chunks and dust streaks plummet right above her shield! ZERO text.",
+          "tail_target": "right",
+          "bubble_side": "left",
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
+          "item_tooltip": null
+        },
+        {
+          "cut_index": 6,
+          "aspect_ratio": "auto",
+          "layout_slot": "panel",
+          "act_number": 2,
+          "panel_index": 3,
+          "characters": [
+            "타우렌 드루이드"
+          ],
+          "speaker": "타우렌 드루이드",
+          "dialogue": "으아앙?! 헉, 돌이야!!",
+          "wordless": false,
+          "visual_prompt": "TIER 3 PURE #FFFFFF REACTION BACKGROUND (ENTIRE RIGHT 54% x=46%..100% completely empty pure #FFFFFF headroom for right 1-line bubble; strictly inside LEFT 42% x=4%..46% inside Panel 3 borders!). EXTREME HIGH-ANGLE BIRD'S-EYE TERROR on LEFT 42%: Tauren Druid looking straight up toward the camera in maximum squash-and-stretch panic — jaw dropped impossibly huge, giant dizzy spinning spiral eyes, twin geyser waterfall tears shooting sideways, both paws waving wildly above her brown plush cow hood as a dark circular shadow spreads underneath her boots (druid staff on back)! ZERO text.",
+          "tail_target": "left",
+          "bubble_side": "right",
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
+          "item_tooltip": null
+        }
+      ]
+    },
+    {
+      "act_number": 3,
+      "act_title": "3막: 칼소멸 회피 도적과 파티 전원 돌무더기 압사 대폭발",
+      "layout_id": "split_top_wide_bottom",
+      "cuts": [
+        {
+          "cut_index": 7,
+          "aspect_ratio": "auto",
+          "layout_slot": "panel",
+          "act_number": 3,
+          "panel_index": 1,
+          "characters": [
+            "나이트엘프 사제"
+          ],
+          "speaker": "나이트엘프 사제",
+          "dialogue": "어머, 다들 거기서 뭐 해?!",
+          "wordless": false,
+          "visual_prompt": "TIER 3 PURE #FFFFFF REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom for 1-line bubble; strictly inside Panel 1 borders). FISHEYE FORCED-PERSPECTIVE DASH: Night Elf Priestess lunging hastily forward toward the camera flinging out glowing golden Power Word: Shield sparkles with widened startled glowing silver-white eyes and urgent sweatdrops! Guardrail: fair peach-ivory skin, lavender half-up ponytail, golden crescent tiara, purple priest capelet, golden cross staff strapped diagonally on back (Clean Hand), 0 halos/wings, ZERO text.",
+          "tail_target": "center",
+          "bubble_side": "center",
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
+          "item_tooltip": null
+        },
+        {
+          "cut_index": 8,
+          "aspect_ratio": "auto",
+          "layout_slot": "panel",
+          "act_number": 3,
+          "panel_index": 2,
+          "characters": [
+            "노움 도적"
+          ],
+          "speaker": "노움 도적",
+          "dialogue": "에헤헷, 나 먼저 튈게~!",
+          "wordless": false,
+          "visual_prompt": "TIER 3 PURE #FFFFFF REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom for 1-line bubble; strictly inside Panel 2 borders). WILD 30-DEGREE DUTCH TILT SPRINT-DODGE: petite Gnome Rogue rocketing dramatically backward through mid-air in a bright swirling white Vanish/Sprint smoke puff kicking up speed lines, flashing a panicked wide-eyed cheeky survival grin with tongue sticking slightly out (:P)! Guardrail: fair peach-ivory skin, blonde-pink-blue pigtails, green goggles on forehead, 0 X/star pins, dual green daggers tucked at lower back waist, ZERO text.",
+          "tail_target": "center",
+          "bubble_side": "center",
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
+          "item_tooltip": null
+        },
+        {
+          "cut_index": 9,
+          "aspect_ratio": "auto",
+          "layout_slot": "panel",
+          "act_number": 3,
+          "panel_index": 3,
+          "characters": [
+            "오크 전사",
+            "타우렌 드루이드"
+          ],
+          "speaker": "오크 전사",
+          "dialogue": "으아악! 내 방패—!!",
+          "wordless": false,
+          "visual_prompt": "TIER 2 MASSIVE GNOMEREGAN ROCKSLIDE COLLAPSE ON FULL-WIDTH TUNNEL FLOOR + 100% PURE #FFFFFF UPPER SKY across TOP 36% (y=0%..36% completely empty pure #FFFFFF headroom for left 1-line bubble; rugged Gnomeregan rock-pile floor anchored flush edge-to-edge along bottom, left & right borders!). EXPLOSIVE SLAPSTICK BOULDER CRASH (100% cute non-gore cartoon gag!): a colossal mound of jagged dark-slate Gnomeregan ceiling boulders slams heavily onto the cavern floor sending white cartoon dust clouds, pebble bursts, and crisp manga impact lines outward! Hilariously poking out from under the left edge of the rocks are Orc Warrior's silver-and-brown steel boots and battered sturdy steel kite shield edge + 1H sword hilt; poking out the center-right are Tauren Druid's chunky brown lace-up boots & leaf-trimmed wooden staff tip; poking out the far right edge is a purple priest boot! ZERO gore, ZERO text or SFX letters.",
+          "tail_target": "left",
+          "bubble_side": "left",
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
+          "item_tooltip": null
+        }
+      ]
+    },
+    {
+      "act_number": 4,
+      "act_title": "4막: 파란 네모 징표 홀로 생존자와 거대 돌무더기 무언 충격",
+      "layout_id": "impact_freeze_2cut",
+      "cuts": [
+        {
+          "cut_index": 10,
+          "aspect_ratio": "auto",
+          "layout_slot": "panel",
+          "act_number": 4,
+          "panel_index": 1,
+          "characters": [
+            "노움 도적"
+          ],
+          "speaker": "노움 도적",
+          "dialogue": "…어라? 다들 어디 갔어?",
+          "wordless": false,
+          "visual_prompt": "TIER 3 PURE #FFFFFF REACTION BACKGROUND (ENTIRE RIGHT 54% x=46%..100% completely empty pure #FFFFFF headroom for right 1-line bubble; strictly inside LEFT 42% x=4%..46% inside Panel 1 borders — ZERO spillover down into Panel 2!). DEADPAN SIDE-PROFILE BLINK on LEFT 42%: petite Gnome Rogue standing alone brushing gray cave dust off her cloak, wearing blank uncomprehending dot eyes and blinking slowly as a glowing bright sky-blue WoW square raid marker floats cleanly just above her blonde-pink-blue pigtails! Guardrail: fair peach-ivory skin, green goggles on forehead, 0 X/star pins, dual green daggers stowed neatly at lower back waist, ZERO text.",
+          "tail_target": "left",
+          "bubble_side": "right",
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
+          "item_tooltip": null
+        },
+        {
+          "cut_index": 11,
+          "aspect_ratio": "auto",
+          "layout_slot": "panel",
+          "act_number": 4,
+          "panel_index": 2,
+          "characters": [
+            "노움 도적"
+          ],
+          "speaker": null,
+          "dialogue": null,
+          "wordless": true,
+          "visual_prompt": "TIER 2 WORDLESS CLIMAX FREEZE-FRAME ON FULL-WIDTH GNOMEREGAN CAVE FLOOR + 100% PURE #FFFFFF UPPER SKY (ZERO text, ZERO speech bubbles, ZERO question-mark letters!). Rugged dark Gnomeregan tunnel floor anchored flush edge-to-edge to bottom, left & right borders. SHOWSTOPPER OVER-THE-SHOULDER MUNCH-SCREAM HORROR: dominating lower-left foreground (x=28%, bold dramatic framing), petite Gnome Rogue (with the glowing bright sky-blue square raid marker hovering cleanly above her head, green goggles on forehead, 0 X/star pins, crossed green daggers at back waist) frozen stiff in icy BLUE-DRAINED CRUMPLED-PAPER HORROR — deep blue-indigo vertical dread lines flooding her face, jaw unhinged dropped to her chest, giant popping blank white shock eyes, both hands clutching her trembling cheeks! Looming massively across center-right (x=46%..98%) flush to the floor & right border sits the COLOSSAL dark-slate collapsed Gnomeregan ceiling boulder mountain completely sealing the tunnel, with Orc Warrior's battered steel kite shield rim, Tauren Druid's curved ivory hood-horn tip, and Night Elf Priestess's golden cross staff tip sticking hilariously out of the rubble while FOUR tiny glowing pale-cyan translucent cartoon mini-souls drift lazily upward into the pure #FFFFFF white sky!",
+          "tail_target": "center",
+          "bubble_side": null,
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
+          "item_tooltip": null
+        }
+      ]
+    },
+    {
+      "act_number": 5,
+      "act_title": "5막: 주사위도 못 굴린 유령들의 오열과 전원 무덤 달리기 엔딩",
+      "layout_id": "diagonal_tempo_2cut",
+      "cuts": [
+        {
+          "cut_index": 12,
+          "aspect_ratio": "auto",
+          "layout_slot": "panel",
+          "act_number": 5,
+          "panel_index": 1,
+          "characters": [
+            "타우렌 드루이드",
+            "오크 전사"
+          ],
+          "speaker": "타우렌 드루이드",
+          "dialogue": "으아앙!! 허리띠 주사위도\n못 굴렸는데 전멸이야?!",
+          "wordless": false,
+          "visual_prompt": "TIER 2 NATURAL GNOMEREGAN BOULDER PILE FLOOR + 100% PURE #FFFFFF UPPER SKY across TOP 36% (y=0%..36% completely empty pure #FFFFFF headroom for left bubble; borderless open top panel — keep dark collapsed rock pile anchored cleanly across bottom edge!). COMEDIC HIGH-ANGLE GHOST MELTDOWN: floating slightly above the rocky rubble on lower-left (x=30%), adorable translucent glowing pale-cyan GHOST SPIRIT of the Tauren Druid girl (cow hood, curved horns, leafy capelet, wooden staff on back) sobbing twin geyser waterfalls of glowing ghost tears waving both fists in jaw-dropped despair! On lower-right (x=72%), translucent glowing pale-cyan GHOST SPIRIT of the Orc Warrior girl (green orc hood, translucent kite shield & 1H sword at her side) slapping her palm over her face in exasperated sighing facepalm! ZERO text.",
+          "tail_target": "left",
+          "bubble_side": "left",
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
+          "item_tooltip": null
+        },
+        {
+          "cut_index": 13,
+          "aspect_ratio": "auto",
+          "layout_slot": "panel",
+          "act_number": 5,
+          "panel_index": 2,
+          "characters": [
+            "나이트엘프 사제",
+            "노움 도적"
+          ],
+          "speaker": "나이트엘프 사제",
+          "dialogue": "어머, 힐러도 깔렸네?\n다 같이 무덤 달리기~♡",
+          "wordless": false,
+          "visual_prompt": "TIER 2 NATURAL GNOMEREGAN CAVE FLOOR & BOULDER EDGE + 100% PURE #FFFFFF UPPER SKY across TOP 36% (ENTIRE LEFT 54% x=0%..54% upper area completely pure #FFFFFF headroom for left bubble; stone floor & rubble edge anchored flush along bottom, left & right borders!). GAP-MOE GHOST FINALE: on lower-right (x=74%, y=38%..98%), translucent glowing pale-cyan GHOST SPIRIT of Night Elf Priestess drifting gracefully upward out of the boulder pile wearing a chillingly serene angelic closed-eye smile contrasted with faint mischievous dark-violet chibi villain glints and politely waving one hand (lavender hair, golden crescent tiara, golden cross staff on back, 0 halos/wings)! On lower-left (x=28%, y=58%..98%), the sole surviving Gnome Rogue collapsed completely flat face-down on the stone cavern floor with spinning spiral eyes and a tiny wisp mini-soul escaping out of her mouth (0 X/star pins, crossed green daggers at lower back waist)! ZERO text.",
+          "tail_target": "right",
+          "bubble_side": "left",
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
+          "item_tooltip": null
+        }
+      ]
+    }
+  ],
   "cuts": [
     {
       "cut_index": 1,
-      "aspect_ratio": "4:3",
-      "layout_slot": "top",
-      "characters": [
-        "노움 도적",
-        "타우렌 드루이드"
-      ],
-      "speaker": "노움 도적",
-      "dialogue": "오 ㄷㄷ 1넴한테\n투력·은신 허리띠 떴어!!\n야드님 이거 대박인데?!",
-      "wordless": false,
-      "visual_prompt": "High-angle shot looking down at an excited 5-man Gnomeregan dungeon party huddled tightly around a glowing purple-aura ornate leather waist belt resting on a soft organic floating patch of rusty mechanical Gnomeregan cavern floor dotted with small brass gears! In the lower-left foreground, the Gnome Rogue girl (blonde twin pigtails fading to hot-pink and electric-blue tips, green-lensed steampunk aviator goggles on forehead, black lowered chin mask, dark rogue cloak, green daggers sheathed neatly at her belt — Clean Hand Rule!) crouches eagerly pointing at the gleaming purple belt with huge starry eyes and an ecstatic grin. Across from her on the lower-right, the Tauren Druid girl (fluffy warm-brown plush cow hood with curved ivory horns and golden nose ring, leafy green mantle, gnarled wooden staff laid flat beside her) kneels leaning in excitedly with glowing amazed brown eyes and rosy cheeks; right behind them crouch two extra chibi party silhouettes (an Orc Warrior tank wearing a steel shield and a tiny hooded party extra) all staring down at the belt completely oblivious to tiny gray dust crumbs starting to trickle right above them! Keep all figures strictly in the lower two-thirds, fading seamlessly into 100% pure solid #FFFFFF white headroom across the entire top 38% (ZERO horizontal divider lines). Zero text, zero letters, zero UI.",
-      "tail_target": "left",
-      "item_tooltip": null
-    },
-    {
-      "cut_index": 2,
-      "aspect_ratio": "16:9",
-      "layout_slot": "bottom",
-      "characters": [
-        "타우렌 드루이드",
-        "노움 도적"
-      ],
-      "speaker": "타우렌 드루이드",
-      "dialogue": "헐... 옵션 미쳤다!\n도적이랑 야드 둘 다\n꿈의 템 아니야?!",
-      "wordless": false,
-      "visual_prompt": "Over-the-shoulder (OTS) diagonal comedic close-up positioned cleanly on the right half of the wide 16:9 frame (medium 2.5-3 head chibi scale)! Seen past the foreground shoulder and blonde-pink pigtail of the crouching Gnome Rogue girl on the far-right, the Tauren Druid girl in the center-right (fluffy warm-brown plush cow hood with curved ivory horns, golden nose ring, chestnut bangs, leafy green mantle; wooden staff laid aside — Clean Hand Rule!) leans happily over the glowing purple leather waist belt holding her hands to her blushing cheeks with huge dreamy sparkling eyes — completely oblivious as a chunky loose mechanical Gnomeregan iron bolt and a fist-sized gray pebble bounce right off the top of her plush cow hood with a tiny comic bump puff! Leave the entire left 48% completely empty pure #FFFFFF white space for the left speech bubble. 100% pure solid #FFFFFF white outer background, zero text, zero UI.",
-      "tail_target": "right",
-      "item_tooltip": null
-    },
-    {
-      "cut_index": 3,
-      "aspect_ratio": "4:3",
-      "layout_slot": "top",
+      "aspect_ratio": "auto",
+      "layout_slot": "panel",
+      "act_number": 1,
+      "panel_index": 1,
       "characters": [
         "오크 전사",
         "노움 도적"
       ],
       "speaker": "오크 전사",
-      "dialogue": "야!! 템 그만 보고\n놈리건 천장 무너진다!!\n다들 피해— 헉!!",
+      "dialogue": "1넴 컷! 별거 없구만~!",
       "wordless": false,
-      "visual_prompt": "Low-angle dramatic panic shot looking sharply upward strictly in the lower two-thirds of the 4:3 frame! On the lower-left, the Orc Warrior tank girl (fair peach-ivory anime human skin — NEVER green skin! — vibrant green plush orc animal-onesie hood with curved cream horns and piggy snout, black ponytail, crimson eyes blown wide in sheer panic, spiky red pauldrons over silver plate armor) hoists a sturdy steel kite shield high overhead with one arm while gripping her compact one-handed steel sword in the other, bracing desperately and shouting upward with flying panic sweat droplets! Beside her on the lower-right, the Gnome Rogue girl (blonde-pink-blue twin pigtails, green steampunk goggles, daggers sheathed at belt) finally cranes her neck straight up with jaw dropped in sudden horror as jagged dark slate-gray Gnomeregan cavern boulders and twisted mechanical girders begin tumbling downward in a localized kinetic cluster right above them (fading seamlessly into 100% pure solid #FFFFFF white headroom across the entire top 38% with ZERO horizontal divider lines!). Zero text, zero letters, zero UI.",
+      "visual_prompt": "TIER 1 FULL-BLEED GNOMEREGAN DUNGEON ESTABLISHING SHOT inside solid black box frame (edge-to-edge rich underground mechanical dungeon scenery, outer page margins & gutter below pure #FFFFFF). Sweeping wide dynamic shot inside Gnomeregan's iconic rocky mechanical cavern tunnel: giant rusted brass clockwork gears embedded in cave walls, glowing neon-green steam pipes, rocky jagged cave ceiling, and a defeated cartoon Trogg boss Grubbis collapsed flat on the right cavern floor with wide-open dizzy spinning spiral eyes and tongue poking out (leave the dark tunnel wall directly above the Trogg 100% plain empty stone with ZERO floating marks, ZERO symbols, ZERO letters!) as golden loot beams rise from a sleek dark-leather assassin waist belt! Keep the ENTIRE upper-left cavern vault (x=4%..56%, y=0%..34%) open dark rocky cavern ceiling for the left 1-line bubble! DYNAMIC ACTING: lower-left (x=28%), Orc Warrior tank (fair peach-ivory skin, green orc plush hood, JET-BLACK high ponytail tied with a red hair band — strictly dark black hair!) laughing boisterously with fang grin slamming her sturdy steel kite shield triumphantly while brandishing her compact one-handed steel sword (NEVER a 2H weapon!). Lower-right (x=72%), petite Gnome Rogue leaping excitedly toward the glowing belt sparkles (fair skin, blonde-pink-blue pigtails, green aviator goggles on forehead, 0 X/star pins, crossed green daggers stowed neatly at back waist). Keep all limbs strictly inside Panel 1 borders.",
       "tail_target": "left",
+      "bubble_side": "left",
+      "full_bleed_bg": true,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 2,
+      "aspect_ratio": "auto",
+      "layout_slot": "panel",
+      "act_number": 1,
+      "panel_index": 2,
+      "characters": [
+        "노움 도적"
+      ],
+      "speaker": "노움 도적",
+      "dialogue": "오 ㄷㄷ 투력·은신 허리띠?!",
+      "wordless": false,
+      "visual_prompt": "TIER 3 PURE #FFFFFF REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom; strictly inside Panel 2 borders). DRAMATIC LOW-ANGLE LOOT HYPE CLOSE-UP: petite Gnome Rogue pushing her green aviator goggles slightly up on her forehead with massive glittering starry sapphire eyes and huge excited fang grin, holding up a sleek dark-leather assassin waist belt with glowing silver buckle and stealth sparkles in both hands (dual green daggers stowed out of sight at lower back waist for Clean Hand)! Guardrail: fair peach-ivory skin, blonde-pink-blue pigtails, STRICTLY ZERO X/star hairpins, ZERO text.",
+      "tail_target": "center",
+      "bubble_side": "center",
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 3,
+      "aspect_ratio": "auto",
+      "layout_slot": "panel",
+      "act_number": 1,
+      "panel_index": 3,
+      "characters": [
+        "타우렌 드루이드"
+      ],
+      "speaker": "타우렌 드루이드",
+      "dialogue": "우웅~ 야드 꿈의 템이당~♪",
+      "wordless": false,
+      "visual_prompt": "TIER 3 PURE #FFFFFF REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom for 1-line bubble; strictly inside Panel 3 borders). RADIANT FLOWER-FIELD BLISS BUST SHOT: Tauren Druid girl (fair peach-ivory skin, warm-brown plush cow hood with curved ivory horns & golden nose ring, leafy green shoulder mantle, wooden druid staff strapped on back for Clean Hand) bursting with pure rosy-cheeked ecstatic joy (`≧▽≦` squeezed happy crescent eyes, clasping both hands under her chin surrounded by floating sparkles and cute ink musical notes)! ZERO text.",
+      "tail_target": "center",
+      "bubble_side": "center",
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
       "item_tooltip": null
     },
     {
       "cut_index": 4,
-      "aspect_ratio": "16:9",
-      "layout_slot": "bottom",
+      "aspect_ratio": "auto",
+      "layout_slot": "panel",
+      "act_number": 2,
+      "panel_index": 1,
+      "characters": [
+        "노움 도적",
+        "타우렌 드루이드"
+      ],
+      "speaker": "노움 도적",
+      "dialogue": "옵션 봐, 은신 증가까지!\n과연 누가 먹을까~?",
+      "wordless": false,
+      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND EVERYWHERE (STRICTLY ZERO stone floor slab, ZERO dirt strip, ZERO ground patch, ZERO floating island — ONLY the two crouched characters, glowing leather belt, and tiny falling cartoon pebbles directly on pure blank #FFFFFF white! ENTIRE RIGHT 54% x=46%..100% completely empty pure #FFFFFF headroom for right bubble; keep BOTH characters tucked tightly inside LEFT 44% x=4%..46% strictly inside Panel 1 borders — ZERO spillover down into Panel 2!). SIDE-PROFILE HUDDLED INSPECTION on LEFT 44%: petite Gnome Rogue (0 X/star pins, crossed green daggers neatly at back waist) and Tauren Druid (curved ivory horns, wooden staff strapped on back) crouched nose-to-nose squinting excitedly with drooling starry eyes at the glowing dark-leather belt between them — completely oblivious as 4 tiny cartoon grey pebbles plink straight onto the tops of their hoods from above! ZERO text.",
+      "tail_target": "left",
+      "bubble_side": "right",
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 5,
+      "aspect_ratio": "auto",
+      "layout_slot": "panel",
+      "act_number": 2,
+      "panel_index": 2,
+      "characters": [
+        "오크 전사"
+      ],
+      "speaker": "오크 전사",
+      "dialogue": "야!! 템 그만 보고 위를 봐!!\n천장 무너진다아!!",
+      "wordless": false,
+      "visual_prompt": "TIER 3 PURE #FFFFFF REACTION BACKGROUND (ENTIRE LEFT 54% x=0%..54% completely empty pure #FFFFFF headroom for left bubble; strictly inside RIGHT 44% x=56%..98% inside Panel 2 borders — ZERO spillover into Panels 1 or 3!). DRAMATIC LOW-ANGLE WARNING PANIC on RIGHT 44%: Orc Warrior tank (fair peach-ivory skin, green orc plush hood) craning her head sharply upward with popping shock eyes, jaw wide open screaming, raising her sturdy steel kite shield protectively overhead while gripping her compact one-handed steel sword (NEVER a 2H weapon!) as sharp downward falling rock chunks and dust streaks plummet right above her shield! ZERO text.",
+      "tail_target": "right",
+      "bubble_side": "left",
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 6,
+      "aspect_ratio": "auto",
+      "layout_slot": "panel",
+      "act_number": 2,
+      "panel_index": 3,
+      "characters": [
+        "타우렌 드루이드"
+      ],
+      "speaker": "타우렌 드루이드",
+      "dialogue": "으아앙?! 헉, 돌이야!!",
+      "wordless": false,
+      "visual_prompt": "TIER 3 PURE #FFFFFF REACTION BACKGROUND (ENTIRE RIGHT 54% x=46%..100% completely empty pure #FFFFFF headroom for right 1-line bubble; strictly inside LEFT 42% x=4%..46% inside Panel 3 borders!). EXTREME HIGH-ANGLE BIRD'S-EYE TERROR on LEFT 42%: Tauren Druid looking straight up toward the camera in maximum squash-and-stretch panic — jaw dropped impossibly huge, giant dizzy spinning spiral eyes, twin geyser waterfall tears shooting sideways, both paws waving wildly above her brown plush cow hood as a dark circular shadow spreads underneath her boots (druid staff on back)! ZERO text.",
+      "tail_target": "left",
+      "bubble_side": "right",
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 7,
+      "aspect_ratio": "auto",
+      "layout_slot": "panel",
+      "act_number": 3,
+      "panel_index": 1,
+      "characters": [
+        "나이트엘프 사제"
+      ],
+      "speaker": "나이트엘프 사제",
+      "dialogue": "어머, 다들 거기서 뭐 해?!",
+      "wordless": false,
+      "visual_prompt": "TIER 3 PURE #FFFFFF REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom for 1-line bubble; strictly inside Panel 1 borders). FISHEYE FORCED-PERSPECTIVE DASH: Night Elf Priestess lunging hastily forward toward the camera flinging out glowing golden Power Word: Shield sparkles with widened startled glowing silver-white eyes and urgent sweatdrops! Guardrail: fair peach-ivory skin, lavender half-up ponytail, golden crescent tiara, purple priest capelet, golden cross staff strapped diagonally on back (Clean Hand), 0 halos/wings, ZERO text.",
+      "tail_target": "center",
+      "bubble_side": "center",
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 8,
+      "aspect_ratio": "auto",
+      "layout_slot": "panel",
+      "act_number": 3,
+      "panel_index": 2,
+      "characters": [
+        "노움 도적"
+      ],
+      "speaker": "노움 도적",
+      "dialogue": "에헤헷, 나 먼저 튈게~!",
+      "wordless": false,
+      "visual_prompt": "TIER 3 PURE #FFFFFF REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom for 1-line bubble; strictly inside Panel 2 borders). WILD 30-DEGREE DUTCH TILT SPRINT-DODGE: petite Gnome Rogue rocketing dramatically backward through mid-air in a bright swirling white Vanish/Sprint smoke puff kicking up speed lines, flashing a panicked wide-eyed cheeky survival grin with tongue sticking slightly out (:P)! Guardrail: fair peach-ivory skin, blonde-pink-blue pigtails, green goggles on forehead, 0 X/star pins, dual green daggers tucked at lower back waist, ZERO text.",
+      "tail_target": "center",
+      "bubble_side": "center",
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 9,
+      "aspect_ratio": "auto",
+      "layout_slot": "panel",
+      "act_number": 3,
+      "panel_index": 3,
+      "characters": [
+        "오크 전사",
+        "타우렌 드루이드"
+      ],
+      "speaker": "오크 전사",
+      "dialogue": "으아악! 내 방패—!!",
+      "wordless": false,
+      "visual_prompt": "TIER 2 MASSIVE GNOMEREGAN ROCKSLIDE COLLAPSE ON FULL-WIDTH TUNNEL FLOOR + 100% PURE #FFFFFF UPPER SKY across TOP 36% (y=0%..36% completely empty pure #FFFFFF headroom for left 1-line bubble; rugged Gnomeregan rock-pile floor anchored flush edge-to-edge along bottom, left & right borders!). EXPLOSIVE SLAPSTICK BOULDER CRASH (100% cute non-gore cartoon gag!): a colossal mound of jagged dark-slate Gnomeregan ceiling boulders slams heavily onto the cavern floor sending white cartoon dust clouds, pebble bursts, and crisp manga impact lines outward! Hilariously poking out from under the left edge of the rocks are Orc Warrior's silver-and-brown steel boots and battered sturdy steel kite shield edge + 1H sword hilt; poking out the center-right are Tauren Druid's chunky brown lace-up boots & leaf-trimmed wooden staff tip; poking out the far right edge is a purple priest boot! ZERO gore, ZERO text or SFX letters.",
+      "tail_target": "left",
+      "bubble_side": "left",
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 10,
+      "aspect_ratio": "auto",
+      "layout_slot": "panel",
+      "act_number": 4,
+      "panel_index": 1,
+      "characters": [
+        "노움 도적"
+      ],
+      "speaker": "노움 도적",
+      "dialogue": "…어라? 다들 어디 갔어?",
+      "wordless": false,
+      "visual_prompt": "TIER 3 PURE #FFFFFF REACTION BACKGROUND (ENTIRE RIGHT 54% x=46%..100% completely empty pure #FFFFFF headroom for right 1-line bubble; strictly inside LEFT 42% x=4%..46% inside Panel 1 borders — ZERO spillover down into Panel 2!). DEADPAN SIDE-PROFILE BLINK on LEFT 42%: petite Gnome Rogue standing alone brushing gray cave dust off her cloak, wearing blank uncomprehending dot eyes and blinking slowly as a glowing bright sky-blue WoW square raid marker floats cleanly just above her blonde-pink-blue pigtails! Guardrail: fair peach-ivory skin, green goggles on forehead, 0 X/star pins, dual green daggers stowed neatly at lower back waist, ZERO text.",
+      "tail_target": "left",
+      "bubble_side": "right",
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 11,
+      "aspect_ratio": "auto",
+      "layout_slot": "panel",
+      "act_number": 4,
+      "panel_index": 2,
+      "characters": [
+        "노움 도적"
+      ],
+      "speaker": null,
+      "dialogue": null,
+      "wordless": true,
+      "visual_prompt": "TIER 2 WORDLESS CLIMAX FREEZE-FRAME ON FULL-WIDTH GNOMEREGAN CAVE FLOOR + 100% PURE #FFFFFF UPPER SKY (ZERO text, ZERO speech bubbles, ZERO question-mark letters!). Rugged dark Gnomeregan tunnel floor anchored flush edge-to-edge to bottom, left & right borders. SHOWSTOPPER OVER-THE-SHOULDER MUNCH-SCREAM HORROR: dominating lower-left foreground (x=28%, bold dramatic framing), petite Gnome Rogue (with the glowing bright sky-blue square raid marker hovering cleanly above her head, green goggles on forehead, 0 X/star pins, crossed green daggers at back waist) frozen stiff in icy BLUE-DRAINED CRUMPLED-PAPER HORROR — deep blue-indigo vertical dread lines flooding her face, jaw unhinged dropped to her chest, giant popping blank white shock eyes, both hands clutching her trembling cheeks! Looming massively across center-right (x=46%..98%) flush to the floor & right border sits the COLOSSAL dark-slate collapsed Gnomeregan ceiling boulder mountain completely sealing the tunnel, with Orc Warrior's battered steel kite shield rim, Tauren Druid's curved ivory hood-horn tip, and Night Elf Priestess's golden cross staff tip sticking hilariously out of the rubble while FOUR tiny glowing pale-cyan translucent cartoon mini-souls drift lazily upward into the pure #FFFFFF white sky!",
+      "tail_target": "center",
+      "bubble_side": null,
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 12,
+      "aspect_ratio": "auto",
+      "layout_slot": "panel",
+      "act_number": 5,
+      "panel_index": 1,
+      "characters": [
+        "타우렌 드루이드",
+        "오크 전사"
+      ],
+      "speaker": "타우렌 드루이드",
+      "dialogue": "으아앙!! 허리띠 주사위도\n못 굴렸는데 전멸이야?!",
+      "wordless": false,
+      "visual_prompt": "TIER 2 NATURAL GNOMEREGAN BOULDER PILE FLOOR + 100% PURE #FFFFFF UPPER SKY across TOP 36% (y=0%..36% completely empty pure #FFFFFF headroom for left bubble; borderless open top panel — keep dark collapsed rock pile anchored cleanly across bottom edge!). COMEDIC HIGH-ANGLE GHOST MELTDOWN: floating slightly above the rocky rubble on lower-left (x=30%), adorable translucent glowing pale-cyan GHOST SPIRIT of the Tauren Druid girl (cow hood, curved horns, leafy capelet, wooden staff on back) sobbing twin geyser waterfalls of glowing ghost tears waving both fists in jaw-dropped despair! On lower-right (x=72%), translucent glowing pale-cyan GHOST SPIRIT of the Orc Warrior girl (green orc hood, translucent kite shield & 1H sword at her side) slapping her palm over her face in exasperated sighing facepalm! ZERO text.",
+      "tail_target": "left",
+      "bubble_side": "left",
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 13,
+      "aspect_ratio": "auto",
+      "layout_slot": "panel",
+      "act_number": 5,
+      "panel_index": 2,
       "characters": [
         "나이트엘프 사제",
         "노움 도적"
       ],
       "speaker": "나이트엘프 사제",
-      "dialogue": "어...?\n방금 파티원 4명 다\n돌무더기에 깔렸는데요...?",
+      "dialogue": "어머, 힐러도 깔렸네?\n다 같이 무덤 달리기~♡",
       "wordless": false,
-      "visual_prompt": "Back-view shot faithfully recreating the iconic original Gnomeregan rockfall screenshot on the left-center half of the wide 16:9 frame! In the lower foreground-left, seen from behind wearing her long silky lavender-silver hair, pointed elf ears, and white-and-gold priestess robe (holding her golden crescent staff limply in disbelief), the lone surviving Night Elf Priest girl stands small and frozen with a bright glowing cyan-blue geometric square raid-target icon floating neatly above her head! Directly ahead of her rises a huge comical mound of dark bluish-slate Gnomeregan rockfall boulders resting on a soft organic floating cavern floor patch — with hilarious 100% non-gore cute cartoon slapstick hints of all 4 flattened party members poking out from under the rocks: the Gnome Rogue girl's blonde-pink pigtail and green steampunk goggles sticking out on the left edge with tiny dizzy cartoon stars, the Tauren Druid's fluffy brown plush cow horns poking up from the middle, the Orc Warrior's green orc-hood ears and steel shield rim poking out on the right, and a fourth extra party boot sticking out with four tiny cute translucent chibi spirit-ghosts puffing up above the rocks! Leave the entire right 46% completely empty pure #FFFFFF white space for the right speech bubble. 100% pure solid #FFFFFF white outer background, zero text, zero UI.",
-      "tail_target": "left",
-      "item_tooltip": null
-    },
-    {
-      "cut_index": 5,
-      "aspect_ratio": "4:3",
-      "layout_slot": "top",
-      "characters": [
-        "오크 전사"
-      ],
-      "speaker": null,
-      "dialogue": null,
-      "wordless": true,
-      "visual_prompt": "Dutch-tilt dramatic comedic close-up freeze-frame of ONLY the Orc Warrior tank girl, completely silent and wordless (filling ~78% of canvas height, tilted dynamic angle). Fair peach-ivory anime human skin (NEVER green skin!), wearing her vibrant green plush orc animal-onesie hood with curved cream horns, piggy snout, and pointed green ears, poking ONLY her squashed face, trembling steel shield rim, and wide horrified eyes out of a hilarious tight wedge between chunky dark slate-gray Gnomeregan boulders at the lower edge! Deep dark indigo anime gloom shadow crashes across her brow, crimson eyes shrunk to microscopic trembling dots, tiny frozen open mouth, cold sweat bead sliding down her cheek, and a tiny shiny purple leather waist-belt buckle dangling mockingly right in front of her nose. 100% pure solid #FFFFFF white outer background, zero text, zero letters, zero UI.",
-      "tail_target": "center",
-      "item_tooltip": null
-    },
-    {
-      "cut_index": 6,
-      "aspect_ratio": "16:9",
-      "layout_slot": "bottom",
-      "characters": [
-        "나이트엘프 사제",
-        "타우렌 드루이드"
-      ],
-      "speaker": "나이트엘프 사제",
-      "dialogue": "무덤 이동 누르지 마세요...\n영혼의 치유사 면담 말고\n일단 한 분씩 부활 넣을게요...",
-      "wordless": false,
-      "visual_prompt": "Side-profile 90-degree exhausted comedic aftermath shot positioned cleanly on the right half of the wide 16:9 frame (medium 2.5-3 head chibi scale)! On the far-right, the utterly drained Night Elf Priest girl (silky lavender-silver hair, pointed elf ears, golden crescent-moon circlet, heavy dark under-eye circles, slouched tired posture, deadpan half-lidded eyes with a weary cold sweat drop) reluctantly channels warm golden-white resurrection sparkles from her raised golden crescent-moon staff toward the center-right, where the Tauren Druid girl (fluffy warm-brown plush cow hood, leafy green mantle) floats slightly above a soft organic stone patch as a cute translucent pale-cyan spirit-ghost waving apologetically with dizzy spiral eyes and a comical cartoon bump on her hood, while two tiny extra translucent chibi party ghosts sheepishly line up behind her waiting for resurrection! Leave the entire left 46% completely empty pure #FFFFFF white space for the left speech bubble. 100% pure solid #FFFFFF white outer background, zero text, zero UI.",
+      "visual_prompt": "TIER 2 NATURAL GNOMEREGAN CAVE FLOOR & BOULDER EDGE + 100% PURE #FFFFFF UPPER SKY across TOP 36% (ENTIRE LEFT 54% x=0%..54% upper area completely pure #FFFFFF headroom for left bubble; stone floor & rubble edge anchored flush along bottom, left & right borders!). GAP-MOE GHOST FINALE: on lower-right (x=74%, y=38%..98%), translucent glowing pale-cyan GHOST SPIRIT of Night Elf Priestess drifting gracefully upward out of the boulder pile wearing a chillingly serene angelic closed-eye smile contrasted with faint mischievous dark-violet chibi villain glints and politely waving one hand (lavender hair, golden crescent tiara, golden cross staff on back, 0 halos/wings)! On lower-left (x=28%, y=58%..98%), the sole surviving Gnome Rogue collapsed completely flat face-down on the stone cavern floor with spinning spiral eyes and a tiny wisp mini-soul escaping out of her mouth (0 X/star pins, crossed green daggers at lower back waist)! ZERO text.",
       "tail_target": "right",
+      "bubble_side": "left",
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
       "item_tooltip": null
     }
   ]

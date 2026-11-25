@@ -3,102 +3,626 @@
   "source_post_no": "75091",
   "source_title": "진지하게 앞으로 성기사랑 파티 안간다",
   "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=75091",
-  "subtitle": "크롤도크 보루 주문력 사슬·치유 반지 풀닌자 징기 참사",
+  "subtitle": "강물터 크롤도크 보루 주문력 사슬·치유 반지 풀닌자 징기 참사",
+  "layout_mode": "v4_five_act",
+  "background_style": "clean_white",
+  "acts": [
+    {
+      "act_number": 1,
+      "act_title": "1막: 강물터 신규 인던 크롤도크 보루 클리어와 주문력 사슬 드랍",
+      "layout_id": "diagonal_tempo_2cut",
+      "cuts": [
+        {
+          "cut_index": 1,
+          "aspect_ratio": "auto",
+          "layout_slot": "panel",
+          "act_number": 1,
+          "panel_index": 1,
+          "characters": [
+            "인간 흑마법사",
+            "트롤 주술사"
+          ],
+          "speaker": "인간 흑마법사",
+          "dialogue": "후훗… 강물터 신규 인던 끝!\n보스 상자 좀 열어볼까~",
+          "wordless": false,
+          "visual_prompt": "TIER 1 FULL-BLEED KRAULDOC BASTION ESTABLISHING SHOT inside solid black box frame (edge-to-edge full scenery, outer page margins pure #FFFFFF). Sweeping wide cinematic anime camera inside WoW Forever's Krauldoc Bastion river-fortress courtyard: rugged mossy stone battlements, timber palisades, misty rushing river gorge beyond the archway, flickering iron braziers, bright misty blue-gold sky filling the ENTIRE upper-left headroom (x=4%..58%, y=0%..35% completely uncluttered open sky — keep all heads/props below y=35%!). Behind a burst open iron-bound wooden loot chest glowing with blue rare rays in center-back, a burly cartoon dungeon bandit boss lies flat on his back with dizzy spinning spiral eyes. DYNAMIC ACTING (100% EDGE-TO-EDGE FULL-BLEED STONE COURTYARD FLOOR ALL THE WAY DOWN TO THE VERY BOTTOM PIXEL OF PANEL 1 — STRICTLY ZERO inner bottom border line, ZERO white strip or white bottom corners anywhere inside Panel 1, and ZERO legs or feet spilling down across the gutter into Panel 2!): lower-left foreground (x=28%), Human Warlock (medium knee-up framing extending seamlessly to the bottom edge) striking a dramatic chuunibyou cape-flourish victory pose with a smug gothic fang grin, her grumpy red plush Imp doll perched proudly on her shoulder (fair peach-ivory skin, gothic dark-purple hood & twin pigtails). Lower-right foreground (x=74%), Troll Shaman (medium knee-up extending seamlessly to the bottom edge) throwing both fists up with glittering blue lightning sparks and starry hype eyes (fair peach-ivory skin — NEVER blue skin, sky-blue troll hood with red mohawk, wooden totem staff stowed diagonally on back, Clean Hand). STRICTLY ZERO text/letters inside art; ZERO white bottom strip inside Panel 1!",
+          "tail_target": "left",
+          "bubble_side": "left",
+          "full_bleed_bg": true,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
+          "item_tooltip": null
+        },
+        {
+          "cut_index": 2,
+          "aspect_ratio": "auto",
+          "layout_slot": "panel",
+          "act_number": 1,
+          "panel_index": 2,
+          "characters": [
+            "트롤 주술사",
+            "언데드 성기사"
+          ],
+          "speaker": "트롤 주술사",
+          "dialogue": "이야~ 주문력 사슬 떴다~!",
+          "wordless": false,
+          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE BACKGROUND EVERYWHERE (STRICTLY ZERO stone floor slab, ZERO dark wall, ZERO ground rectangle under their knees — ONLY the open wooden treasure chest, gleaming belt, and two kneeling chibi characters floating cleanly directly on 100% PURE BLANK #FFFFFF WHITE with light soft drop shadows ONLY! Top 38% y=0%..38% and top-right x=58%..100% y=0%..44% 100% pure blank #FFFFFF white!). LOW-ANGLE TREASURE REVEAL: left-center (x=28%), Troll Shaman kneeling eagerly beside a gleaming open wooden treasure chest (x=48%) with giant starry eyes (`★▽★`) reaching excitedly toward a shimmering WIDE INTERLOCKING STEEL RING-MESH MAIL ARMOR WAIST BELT with chunky leather straps and rectangular silver buckle glowing pale blue (NOT prison chains, zero handcuffs!; fair skin, sky-blue troll hood with bright RED mohawk, wooden totem staff stowed on back, Clean Hand). Right-center (x=72%), Undead Paladin crouching quietly behind the chest with deadpan half-lidded sleepy golden eyes eyeing the mail belt (fair skin, white skull cap, silver bob, golden warhammer strapped diagonally on back, Clean Hand). ZERO text/letters inside art; keep strictly inside Panel 2.",
+          "tail_target": "left",
+          "bubble_side": "left",
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
+          "item_tooltip": {
+            "image_path": "assets/items/chain_of_binding.png",
+            "item_name": "속박의 사슬",
+            "wowhead_item_id": null,
+            "quality": "rare",
+            "slot_left": "",
+            "slot_right": "",
+            "lines": [],
+            "equip_effects": [],
+            "icon_name": null,
+            "preferred_corner": "top_right",
+            "target_width": 255
+          }
+        }
+      ]
+    },
+    {
+      "act_number": 2,
+      "act_title": "2막: 징기의 주문력 사슬 날먹과 두목의 고리 매너 양보",
+      "layout_id": "split_top_wide_bottom",
+      "cuts": [
+        {
+          "cut_index": 3,
+          "aspect_ratio": "auto",
+          "layout_slot": "panel",
+          "act_number": 2,
+          "panel_index": 1,
+          "characters": [
+            "언데드 성기사"
+          ],
+          "speaker": "언데드 성기사",
+          "dialogue": "…어, 내가 먹었네.",
+          "wordless": false,
+          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom for 1-line bubble; ZERO floor or wall props, keep full figure strictly inside Panel 1's borders!). DYNAMIC LOW-ANGLE LUNGING SWOOP: Undead Paladin leaning nonchalantly sideways in a slick snatch motion with deadpan half-lidded sleepy golden eyes and blank flat mouth, casually holding up a WIDE SILVER-STEEL WOVEN RING-MESH MAIL ARMOR WAIST BELT WITH CHUNKY LEATHER TRIM AND RECTANGULAR SILVER BUCKLE (exact armored girdle waist belt — STRICTLY ZERO loose hanging iron chain links!) in one white-gloved hand while a chunky white 6-sided loot die showing ONLY round black dot pips (STRICTLY ZERO digits or letters!) bounces with comic sparkle trails beside her! Guardrail: fair skin, round white skull cap, silver-white bob, golden warhammer stowed neatly on back cape (Clean Hand). ZERO text/letters in art.",
+          "tail_target": "center",
+          "bubble_side": "center",
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
+          "item_tooltip": null
+        },
+        {
+          "cut_index": 4,
+          "aspect_ratio": "auto",
+          "layout_slot": "panel",
+          "act_number": 2,
+          "panel_index": 2,
+          "characters": [
+            "트롤 주술사"
+          ],
+          "speaker": "트롤 주술사",
+          "dialogue": "에에엑?! 징기가\n주문력 사슬을 왜 먹어?!",
+          "wordless": false,
+          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom for bubble; keep all hair/sparks strictly inside Panel 2's borders!). EXTREME CLOSE-UP ELECTROCUTED COMIC SHOCK! Troll Shaman jolted violently backward with wild spiky cartoon electrocuted hair standing on end, giant popping blank white shock eyes, jaw dropped wide open screaming, both hands clutching her cheeks while bright blue comic lightning zigzags crackle organically around her silhouette (STRICTLY ZERO Japanese katakana, Korean, or English SFX text!). Guardrail: fair peach-ivory skin (NEVER blue skin!), sky-blue troll plush hood with red mohawk, wooden staff omitted/stowed on back.",
+          "tail_target": "center",
+          "bubble_side": "center",
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
+          "item_tooltip": null
+        },
+        {
+          "cut_index": 5,
+          "aspect_ratio": "auto",
+          "layout_slot": "panel",
+          "act_number": 2,
+          "panel_index": 3,
+          "characters": [
+            "인간 흑마법사",
+            "나이트엘프 사제"
+          ],
+          "speaker": "인간 흑마법사",
+          "dialogue": "주문력 침 고이지만…\n치유 반지니까 사제님 양보!",
+          "wordless": false,
+          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE BACKGROUND EVERYWHERE (STRICTLY ZERO stone floor slab, ZERO mossy ground strip, ZERO dark rectangle under their knees — ONLY the compact wooden treasure chest, hovering golden ring, and two kneeling chibi girls directly on 100% PURE BLANK #FFFFFF WHITE with subtle contact shadow ONLY! Top 38% y=0%..38% and top-right x=58%..100% y=0%..44% 100% pure blank #FFFFFF white!). OVER-THE-SHOULDER COMIC TEMPTATION: lower-left (x=28%), Human Warlock kneeling dramatically biting her trembling lip with glistening anime drool & tears heroically pushing a sparkling golden ring hovering over a small wooden chest (x=48%) toward the Priestess, while her plump grumpy red plush Imp doll tugs frantically at her cloak (fair skin, dark-purple hood). Lower-right (x=72%), Night Elf Priestess kneeling clasping both hands sweetly by her chin with a radiant touched closed-eye angelic smile and tiny pink hearts beside her cheeks (fair skin, pastel-lavender half-up hair, golden crescent tiara, purple vestments, golden cross staff stowed on back, 0 halos/wings, Clean Hand). ZERO text/letters in art; keep strictly inside Panel 3.",
+          "tail_target": "left",
+          "bubble_side": "left",
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
+          "item_tooltip": {
+            "image_path": "assets/items/band_of_bossman.png",
+            "item_name": "두목의 고리",
+            "wowhead_item_id": null,
+            "quality": "rare",
+            "slot_left": "",
+            "slot_right": "",
+            "lines": [],
+            "equip_effects": [],
+            "icon_name": null,
+            "preferred_corner": "top_right",
+            "target_width": 250
+          }
+        }
+      ]
+    },
+    {
+      "act_number": 3,
+      "act_title": "3막: 두목의 고리 연속 닌자와 전설의 이중특성 신기 선언",
+      "layout_id": "open_top_split_bottom",
+      "cuts": [
+        {
+          "cut_index": 6,
+          "aspect_ratio": "auto",
+          "layout_slot": "panel",
+          "act_number": 3,
+          "panel_index": 1,
+          "characters": [
+            "나이트엘프 사제",
+            "언데드 성기사"
+          ],
+          "speaker": "나이트엘프 사제",
+          "dialogue": "어머… 방금 또 드셨어요?",
+          "wordless": false,
+          "visual_prompt": "TIER 2 NATURAL FULL-WIDTH KRAULDOC STONE FLOOR + 100% PURE #FFFFFF UPPER SKY across top 38% (y=0%..38% completely empty pure #FFFFFF headroom for left bubble!). Rugged dungeon flagstones flush edge-to-edge along bottom & sides (0 floating islands!). WILD 30-DEGREE DUTCH TILT SLAPSTICK SNATCH! Lower-left (x=27%), Night Elf Priestess lunging halfway forward frozen mid-reach with sudden wide pinpoint glowing silver-white shock eyes, trembling outstretched fingers missing by an inch, and a giant anime sweatdrop on her temple (fair skin, lavender half-up hair, golden crescent tiara, purple vestments, golden cross staff stowed on back, 0 halos/wings, Clean Hand). Lower-right (x=73%), Undead Paladin effortlessly snatching the sparkling golden healer ring right out of the air with one deadpan hand while casually tossing a chunky white 6-sided loot die with round black dot pips ONLY (0 digits/text!) in the other hand, wearing an utterly blank sleepy half-lidded expression (fair skin, white skull cap, golden warhammer stowed on back). ZERO text/letters inside art; keep all limbs strictly inside Panel 1.",
+          "tail_target": "left",
+          "bubble_side": "left",
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
+          "item_tooltip": null
+        },
+        {
+          "cut_index": 7,
+          "aspect_ratio": "auto",
+          "layout_slot": "panel",
+          "act_number": 3,
+          "panel_index": 2,
+          "characters": [
+            "나이트엘프 사제"
+          ],
+          "speaker": "나이트엘프 사제",
+          "dialogue": "반지 안 쓰시면\n저 주실 수 있어요~?",
+          "wordless": false,
+          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom for bubble; keep strictly inside Panel 2's borders!). HIGH-ANGLE POLITELY-TENSE PLEADING CLOSE-UP: Night Elf Priestess clasping both hands gracefully under her chin tilting her head sweetly upward with a forced angelic smile (`^‿^`) and sparkling eyes — hilariously betrayed by one crisp twitching red manga anger vein pulsing on her temple and tiny nervous sweatdrops! Guardrail: fair skin, pastel-lavender wavy half-up hair, golden crescent tiara, glowing silver-white eyes, purple vestments, golden cross staff stowed on back, 0 halos/wings, Clean Hand. ZERO text/letters in art.",
+          "tail_target": "center",
+          "bubble_side": "center",
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
+          "item_tooltip": null
+        },
+        {
+          "cut_index": 8,
+          "aspect_ratio": "auto",
+          "layout_slot": "panel",
+          "act_number": 3,
+          "panel_index": 3,
+          "characters": [
+            "언데드 성기사"
+          ],
+          "speaker": "언데드 성기사",
+          "dialogue": "…이중특성 신기 키우는 중.\n그때 필요해서 못 줘…",
+          "wordless": false,
+          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom for bubble; keep strictly inside Panel 3's borders!). LOOMING LOW-ANGLE DEADPAN SHAMELESSNESS: Undead Paladin leaning lazily back folding one arm with heavy half-lidded bored golden eyes looking straight down at the camera, utterly unbothered as she casually dangles BOTH the gleaming golden ring and the metallic ring-mesh mail armor waist belt (NOT prison chains!) from her raised fingers with tiny smug sparkles! Guardrail: fair skin, white cartoon skull cap, silver-white bob, crisp white-and-gold paladin cape, golden warhammer strapped diagonally on back (Clean Hand). ZERO text/letters in art.",
+          "tail_target": "center",
+          "bubble_side": "center",
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
+          "item_tooltip": null
+        }
+      ]
+    },
+    {
+      "act_number": 4,
+      "act_title": "4막: 뻔뻔한 귀환석 런과 흑마·사제 영혼 붕괴 무언 충격",
+      "layout_id": "impact_freeze_2cut",
+      "cuts": [
+        {
+          "cut_index": 9,
+          "aspect_ratio": "auto",
+          "layout_slot": "panel",
+          "act_number": 4,
+          "panel_index": 1,
+          "characters": [
+            "언데드 성기사"
+          ],
+          "speaker": "언데드 성기사",
+          "dialogue": "…그럼 수고. 귀환석 탈게.",
+          "wordless": false,
+          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (ENTIRE LEFT 54% x=0%..54% MUST BE 100% EMPTY PURE #FFFFFF WHITE for left 1-line bubble!). STRICT PANEL CONTAINMENT: WAIST-UP / THIGH-UP PORTRAIT cleanly cropped at Panel 1's bottom black border — STRICTLY ZERO legs or boots crossing below Panel 1's bottom black line into Panel 2! 90-DEGREE SIDE-PROFILE WALK-OFF: positioned cleanly on right 42% (x=76%), Undead Paladin turning away to the right inside swirling turquoise-blue Hearthstone magic sparkles, lazily waving one limp hand goodbye over her shoulder while clutching a glowing blue rune-carved Hearthstone pebble in her other palm with a sleepy yawn face! Guardrail: fair skin, white skull cap, silver bob, golden warhammer stowed diagonally on back (Clean Hand). ZERO text/letters in art.",
+          "tail_target": "right",
+          "bubble_side": "left",
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
+          "item_tooltip": null
+        },
+        {
+          "cut_index": 10,
+          "aspect_ratio": "auto",
+          "layout_slot": "panel",
+          "act_number": 4,
+          "panel_index": 2,
+          "characters": [
+            "인간 흑마법사",
+            "나이트엘프 사제"
+          ],
+          "speaker": null,
+          "dialogue": null,
+          "wordless": true,
+          "visual_prompt": "TIER 2 WORDLESS CLIMAX FREEZE-FRAME ON FULL-WIDTH KRAULDOC BASTION COURTYARD FLOOR + 100% PURE #FFFFFF UPPER SKY (ZERO text, ZERO speech bubbles, ZERO SFX letters!). Rugged mossy stone flagstones anchored flush edge-to-edge along entire bottom & side borders with low broken stone crates on far edges, upper 45% pure #FFFFFF sky. SHOWSTOPPER DUAL SHOCK COMEDY: Foreground left-center (x=33%, bold large framing), Human Warlock frozen in BLUE-DRAINED MUNCH-SCREAM HORROR — deep indigo vertical dread shadow flooding her face, jaw unhinged dropped to her chest, giant popping blank white shock eyes, both hands clutching her cheeks in trembling shock while her grumpy red plush Imp doll beside her ALSO drops its jaw with blank white eyes as comical translucent mini-souls drift straight out of BOTH their open mouths! Right mid-ground (x=72%), Night Elf Priestess standing rigidly frozen with heavy PITCH-DARK MANGA FOREHEAD GLOOM SHADOW covering her brow, blazing pinpoint glowing silver-white '맑눈광' eyes wide open in terrifying frozen silence, menacing dark-violet comic aura crackling fiercely behind her shoulders (fair skin, lavender half-up hair, golden crescent tiara, purple vestments, golden cross staff stowed on back, 0 halos/wings). Far low right background (x=90%, tiny), the knocked-out Krauldoc bandit boss peeks up from the stone floor sweating nervously in sympathy! Keep strictly inside Panel 2.",
+          "tail_target": "center",
+          "bubble_side": null,
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
+          "item_tooltip": null
+        }
+      ]
+    },
+    {
+      "act_number": 5,
+      "act_title": "5막: 전설의 소문 확인, 인간혐오 각성과 성기사 영구 손절 선언",
+      "layout_id": "wide_reaction_wide",
+      "cuts": [
+        {
+          "cut_index": 11,
+          "aspect_ratio": "auto",
+          "layout_slot": "panel",
+          "act_number": 5,
+          "panel_index": 1,
+          "characters": [
+            "인간 흑마법사"
+          ],
+          "speaker": "인간 흑마법사",
+          "dialogue": "소문만 들을 땐 설마 했는데…\n내 눈으로 보니 인간혐오 와…",
+          "wordless": false,
+          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (ENTIRE RIGHT 54% x=46%..100% MUST BE 100% EMPTY PURE #FFFFFF WHITE for right bubble! Keep full curled figure strictly inside left 42% and inside Panel 1's black rectangle — ZERO spillover into Panel 2!). SLUMPED KNEELING TRAUMA SHOT: positioned on left 42% (x=24%), Human Warlock collapsed limply onto her knees hugging her grumpy red plush Imp doll tightly to her chest, pale drained face flooded with dark vertical gloom lines, hollow lifeless spinning spiral eyes, tiny comical storm cloud hovering just above her hood! Guardrail: fair skin, deep dark-purple gothic Warlock hood & twin pigtails. ZERO text/letters in art.",
+          "tail_target": "left",
+          "bubble_side": "right",
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
+          "item_tooltip": null
+        },
+        {
+          "cut_index": 12,
+          "aspect_ratio": "auto",
+          "layout_slot": "panel",
+          "act_number": 5,
+          "panel_index": 2,
+          "characters": [
+            "나이트엘프 사제"
+          ],
+          "speaker": "나이트엘프 사제",
+          "dialogue": "다음부터 성기사 힐 없어요~♡",
+          "wordless": false,
+          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (ENTIRE LEFT 54% x=0%..54% MUST BE 100% EMPTY PURE #FFFFFF WHITE for left 1-line bubble!). STRICT PANEL CONTAINMENT RULE: Night Elf Priestess's ENTIRE head, top ponytail, AND ahoge hair tuft MUST stay 100% BELOW Panel 2's top black border (y=12%..100%) with visible pure #FFFFFF white margin inside Panel 2 above her hair — STRICTLY ZERO ahoge curl or hair strand crossing upward across the top black border into Panel 1, ZERO spillover into Panel 3! FISHEYE FORCED-PERSPECTIVE CHILLING GAP-MOE CLOSE-UP: positioned compactly on right 42% (x=76%, y=14%..100%), Night Elf Priestess leaning forward toward camera with dark forehead gloom shadow, blazing pinpoint glowing silver-white '맑눈광' eyes, and a terrifyingly sweet cat-mouth `:3` smile while cracking her dainty gloved knuckles softly with just 3 tiny crisp dark-violet ink sparkles beside her cheeks (NO large painted gradient aura cloud!). Guardrail: fair skin, lavender half-up hair, golden crescent tiara, purple vestments, golden cross staff stowed compactly on back strictly below y=22%, 0 halos/wings, Clean Hand. ZERO text/letters in art.",
+          "tail_target": "right",
+          "bubble_side": "left",
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
+          "item_tooltip": null
+        },
+        {
+          "cut_index": 13,
+          "aspect_ratio": "auto",
+          "layout_slot": "panel",
+          "act_number": 5,
+          "panel_index": 3,
+          "characters": [
+            "인간 흑마법사",
+            "트롤 주술사"
+          ],
+          "speaker": "인간 흑마법사",
+          "dialogue": "파티에 성기사 있으면 절대 안 가!\n들어오면 그냥 내가 나간다구!!",
+          "wordless": false,
+          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND EVERYWHERE (STRICTLY ZERO stone floor strip, ZERO parapet wall, ZERO portal box under their boots — ONLY the two marching chibi girls and tiny comic dust puffs directly on 100% PURE BLANK #FFFFFF WHITE!). TUCK BOTH CHARACTERS TIGHTLY INSIDE THE RIGHT 48% (x=50%..98%, y=8%..98%) LEAVING THE ENTIRE LEFT 48% (x=0%..48%) 100% COMPLETELY BLANK EMPTY PURE #FFFFFF WHITE for the big left-side speech bubble! DYNAMIC MARCH-OUT FINALE: mid-right (x=60%), Human Warlock marching furiously away to the right looking back toward the left bubble with puffed steaming red cheeks, fierce sparkling violet eyes, shaking one clenched fist indignantly while clutching her grumpy red plush Imp doll under her other arm; far right right behind her (x=86%), Troll Shaman jogging excitedly throwing both fists up in solidarity with fiery comic anger puffs & tiny dust swirls under their boots (fair skin, sky-blue troll hood with bright RED mohawk, wooden staff stowed on back, Clean Hand). ZERO spillover into Panel 2; ZERO text/letters inside art.",
+          "tail_target": "left",
+          "bubble_side": "left",
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
+          "item_tooltip": null
+        }
+      ]
+    }
+  ],
   "cuts": [
     {
       "cut_index": 1,
-      "aspect_ratio": "4:3",
-      "layout_slot": "top",
-      "characters": [
-        "트롤 주술사",
-        "언데드 성기사"
-      ],
-      "speaker": "트롤 주술사",
-      "dialogue": "어?! 사슬 허리띠에 주문력 +12인데\n그거 정술 템 아니에요?!",
-      "wordless": false,
-      "visual_prompt": "Over-the-shoulder (OTS) diagonal loot-snatch action shot over a small soft organic floating patch of weathered Krol'dok Stronghold stone fortress tiles (NO straight horizon or wall lines!) with a small carved wooden shaman totem standing on the floor and a tiny chibi warrior-with-shield extra blinking in disbelief in the small lower-center background. Foreground-left: the fair peach-ivory-skinned Troll Shaman chibi girl (sky-blue plush troll hood with bright red spiky mohawk, floppy pierced ears, mint-teal bob hair, patterned tribal scarf) lunges forward reaching both empty hands out in wild panicked shock (wide bright green eyes, dropped jaw, nervous crackling blue static sparks popping off her fingertips). Across on the lower-right, the Undead Retribution Paladin chibi girl (white cartoon skull hood, silver-white bob hair with icy blue tips, white-and-gold paladin cloak, golden warhammer strapped cleanly across her back — Clean Hand Rule!) spins jauntily aside shamelessly snatching an ornate interlocking silver ring-mesh mail-armor waist belt with a gleaming metallic clasp buckle radiating bright blue spell-power sparkles (medieval ring-mesh mail armor belt ONLY — strictly NEVER metal prison chains, shackles, or padlocks!) cleanly into her gloved hands with a sleepy smug smirk. Keep all figures, totem, and organic stone patch strictly inside the lower two-thirds with 100% pure solid #FFFFFF white headroom across the entire top 38% (both top-left and top-right corners completely pure white for speech bubble and item tooltip). Zero text, zero letters, zero UI.",
-      "tail_target": "left",
-      "item_tooltip": {
-        "image_path": "assets/items/chain_of_binding.png",
-        "item_name": "속박의 사슬",
-        "quality": "rare",
-        "preferred_corner": "top_right"
-      }
-    },
-    {
-      "cut_index": 2,
-      "aspect_ratio": "16:9",
-      "layout_slot": "bottom",
-      "characters": [
-        "인간 흑마법사",
-        "나이트엘프 사제"
-      ],
-      "speaker": "인간 흑마법사",
-      "dialogue": "주문력 +7 탐나지만 치유량 +22니까\n사제님께 양보하고 차비 누를게요!",
-      "wordless": false,
-      "visual_prompt": "Low-angle gracious passing gesture shot positioned cleanly on the right half of the wide 16:9 frame (leaving the entire left 48% completely empty pure #FFFFFF white space for the speech bubble and item tooltip!). Center-right: the Human Warlock chibi girl (dark purple hood, jet-black twin pigtails with purple highlights, dark purple robe, plump red plush imp doll tucked snugly under one arm) has a tiny comedic glistening drop of drool at the corner of her smiling mouth as she gazes longingly at the loot, yet nobly leans in a gallant bow sweeping her free open hand toward the Priest in a generous 'after you' gesture. Far-right: the Night Elf Priest chibi girl (silky lavender-silver hair, pointed elf ears, golden crescent circlet, white-and-gold priestess robe, golden crescent staff leaned neatly behind her shoulder) clasps both hands excitedly to her chest with glowing starry hopeful lilac eyes gazing at an ornate gleaming emerald-and-gold healing ring floating brightly in soft green-gold sparkles between them. 100% pure solid #FFFFFF white outer background, zero text, zero letters, zero UI.",
-      "tail_target": "right",
-      "item_tooltip": {
-        "image_path": "assets/items/band_of_bossman.png",
-        "item_name": "두목의 고리",
-        "quality": "rare",
-        "preferred_corner": "bottom_left"
-      }
-    },
-    {
-      "cut_index": 3,
-      "aspect_ratio": "4:3",
-      "layout_slot": "top",
-      "characters": [
-        "나이트엘프 사제",
-        "언데드 성기사"
-      ],
-      "speaker": "언데드 성기사",
-      "dialogue": "반지 달라고요?\n이중특성으로 신기도 키우는 중이라\n그때 필요해서 못 드려요.",
-      "wordless": false,
-      "visual_prompt": "Side-profile 90-degree kneeling-plea vs shameless-arrogance shot across the lower two-thirds of the 4:3 frame! On the lower-left, the Night Elf Priest chibi girl (lavender hair, pointed elf ears, golden crescent circlet, heavy dark under-eye circles, white-and-gold priestess robe, crescent staff lying beside her) drops to her knees leaning desperately forward clasping both trembling hands beneath her chin with huge brimming waterfalls of pleading puppy-dog tears. Towering casually on the lower-right is the Undead Retribution Paladin chibi girl (white cartoon skull hood, silver-white bob hair, white-and-gold cloak, golden warhammer strapped cleanly on her back — Clean Hand Rule!) ALREADY wearing the gleaming interlocking silver ring-mesh mail-armor waist belt with metallic buckle buckled prominently around her waist (medieval mail armor belt ONLY, strictly NOT metal chains!) while lazily twirling the glowing emerald-and-gold healing ring on one fingertip with totally deadpan half-lidded poker-faced arrogance as a chunky white-and-gold 6-sided loot die showing ONLY simple round black dot pips (strictly ZERO digits or letters!) bounces near her boots. Keep all figures strictly inside the lower two-thirds with 100% pure solid #FFFFFF white headroom across the entire top 38%. Zero text, zero letters, zero UI.",
-      "tail_target": "right"
-    },
-    {
-      "cut_index": 4,
-      "aspect_ratio": "16:9",
-      "layout_slot": "bottom",
-      "characters": [
-        "인간 흑마법사"
-      ],
-      "speaker": null,
-      "dialogue": null,
-      "wordless": true,
-      "visual_prompt": "Dutch-tilt dramatic close-up comedic freeze-frame of ONLY the Human Warlock chibi girl (filling ~80% of canvas height, dynamically tilted diagonally on a 100% pure solid #FFFFFF white background). Deep dark-purple warlock hood over long jet-black twin pigtails with vivid purple highlights and dark purple robe collar, with the top of her plump red plush imp doll's wide-eyed traumatized head peeking at the bottom foreground edge. Heavy ominous dark-indigo gloom shadow blankets her forehead and upper eyes; her wide-open violet eyes freeze into tiny trembling blank white pinpoint pupils staring straight ahead in stunned misanthropy, a crisp cold sweat drop on her cheek, small frozen parted mouth, completely petrified and speechless. Strictly zero text, zero letters, zero UI, zero borders.",
-      "tail_target": "center"
-    },
-    {
-      "cut_index": 5,
-      "aspect_ratio": "4:3",
-      "layout_slot": "top",
-      "characters": [
-        "인간 흑마법사",
-        "나이트엘프 사제"
-      ],
-      "speaker": "인간 흑마법사",
-      "dialogue": "소문만 들을 땐 설마 했는데...\n내 눈으로 보니 진짜 인간혐오 생기네!!",
-      "wordless": false,
-      "visual_prompt": "High-angle diagonal party-trauma aftermath shot looking down at a small soft organic floating patch of weathered dungeon stone tiles (NO straight horizon or wall lines!). On the lower-left, the Human Warlock chibi girl squeezes her squishy plump red plush imp doll extra tightly against her chest with both hands (the red imp doll puffing its cheeks in comical surprise!) while glaring sharply sideways with trembling furious violet eyes, tiny fang grimace, cold sweat drop, and jagged purple exasperation aura lines. Slumped collapsed face-down beside her on the lower-right is the Night Elf Priest chibi girl hugging her crescent staff curled in comical puddle-of-tears heartbreak, while in the tiny lower-center background a distant silhouette of the Undead Paladin skips carefree away waving goodbye. Keep all figures and organic stone patch strictly inside the lower two-thirds with 100% pure solid #FFFFFF white headroom across the entire top 38%. Zero text, zero letters, zero UI.",
-      "tail_target": "left"
-    },
-    {
-      "cut_index": 6,
-      "aspect_ratio": "16:9",
-      "layout_slot": "bottom",
+      "aspect_ratio": "auto",
+      "layout_slot": "panel",
+      "act_number": 1,
+      "panel_index": 1,
       "characters": [
         "인간 흑마법사",
         "트롤 주술사"
       ],
       "speaker": "인간 흑마법사",
-      "dialogue": "앞으로 파티에 성기사 있으면 절대 안 간다!\n내 파티에 들어오면 내가 나감!!",
+      "dialogue": "후훗… 강물터 신규 인던 끝!\n보스 상자 좀 열어볼까~",
       "wordless": false,
-      "visual_prompt": "Back-view defiant walk-out shot positioned cleanly on the left half of the wide 16:9 frame (leaving the entire right 46% completely empty pure #FFFFFF white space for the speech bubble!). Center-left: the Human Warlock chibi girl marches resolutely away turning her head sharply back over her shoulder with blazing determined violet eyes, fierce tiny fang shout, and both forearms firmly crossed tightly over her chest in absolute refusal (do NOT draw floating letters or X symbols in the air!), while her plump red plush imp doll perched beside her shoulder stubbornly crosses its tiny arms too. Far-left right beside her: the fair peach-ivory-skinned Troll Shaman chibi girl (sky-blue plush troll hood with red mohawk, mint-teal bob hair, lively blue lightning sparks) leans forward energetically giving a fiery wholehearted double-thumbs-up solidarity grin. 100% pure solid #FFFFFF white outer background, zero text, zero letters, zero UI.",
-      "tail_target": "right"
+      "visual_prompt": "TIER 1 FULL-BLEED KRAULDOC BASTION ESTABLISHING SHOT inside solid black box frame (edge-to-edge full scenery, outer page margins pure #FFFFFF). Sweeping wide cinematic anime camera inside WoW Forever's Krauldoc Bastion river-fortress courtyard: rugged mossy stone battlements, timber palisades, misty rushing river gorge beyond the archway, flickering iron braziers, bright misty blue-gold sky filling the ENTIRE upper-left headroom (x=4%..58%, y=0%..35% completely uncluttered open sky — keep all heads/props below y=35%!). Behind a burst open iron-bound wooden loot chest glowing with blue rare rays in center-back, a burly cartoon dungeon bandit boss lies flat on his back with dizzy spinning spiral eyes. DYNAMIC ACTING (100% EDGE-TO-EDGE FULL-BLEED STONE COURTYARD FLOOR ALL THE WAY DOWN TO THE VERY BOTTOM PIXEL OF PANEL 1 — STRICTLY ZERO inner bottom border line, ZERO white strip or white bottom corners anywhere inside Panel 1, and ZERO legs or feet spilling down across the gutter into Panel 2!): lower-left foreground (x=28%), Human Warlock (medium knee-up framing extending seamlessly to the bottom edge) striking a dramatic chuunibyou cape-flourish victory pose with a smug gothic fang grin, her grumpy red plush Imp doll perched proudly on her shoulder (fair peach-ivory skin, gothic dark-purple hood & twin pigtails). Lower-right foreground (x=74%), Troll Shaman (medium knee-up extending seamlessly to the bottom edge) throwing both fists up with glittering blue lightning sparks and starry hype eyes (fair peach-ivory skin — NEVER blue skin, sky-blue troll hood with red mohawk, wooden totem staff stowed diagonally on back, Clean Hand). STRICTLY ZERO text/letters inside art; ZERO white bottom strip inside Panel 1!",
+      "tail_target": "left",
+      "bubble_side": "left",
+      "full_bleed_bg": true,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 2,
+      "aspect_ratio": "auto",
+      "layout_slot": "panel",
+      "act_number": 1,
+      "panel_index": 2,
+      "characters": [
+        "트롤 주술사",
+        "언데드 성기사"
+      ],
+      "speaker": "트롤 주술사",
+      "dialogue": "이야~ 주문력 사슬 떴다~!",
+      "wordless": false,
+      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE BACKGROUND EVERYWHERE (STRICTLY ZERO stone floor slab, ZERO dark wall, ZERO ground rectangle under their knees — ONLY the open wooden treasure chest, gleaming belt, and two kneeling chibi characters floating cleanly directly on 100% PURE BLANK #FFFFFF WHITE with light soft drop shadows ONLY! Top 38% y=0%..38% and top-right x=58%..100% y=0%..44% 100% pure blank #FFFFFF white!). LOW-ANGLE TREASURE REVEAL: left-center (x=28%), Troll Shaman kneeling eagerly beside a gleaming open wooden treasure chest (x=48%) with giant starry eyes (`★▽★`) reaching excitedly toward a shimmering WIDE INTERLOCKING STEEL RING-MESH MAIL ARMOR WAIST BELT with chunky leather straps and rectangular silver buckle glowing pale blue (NOT prison chains, zero handcuffs!; fair skin, sky-blue troll hood with bright RED mohawk, wooden totem staff stowed on back, Clean Hand). Right-center (x=72%), Undead Paladin crouching quietly behind the chest with deadpan half-lidded sleepy golden eyes eyeing the mail belt (fair skin, white skull cap, silver bob, golden warhammer strapped diagonally on back, Clean Hand). ZERO text/letters inside art; keep strictly inside Panel 2.",
+      "tail_target": "left",
+      "bubble_side": "left",
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
+      "item_tooltip": {
+        "image_path": "assets/items/chain_of_binding.png",
+        "item_name": "속박의 사슬",
+        "wowhead_item_id": null,
+        "quality": "rare",
+        "slot_left": "",
+        "slot_right": "",
+        "lines": [],
+        "equip_effects": [],
+        "icon_name": null,
+        "preferred_corner": "top_right",
+        "target_width": 255
+      }
+    },
+    {
+      "cut_index": 3,
+      "aspect_ratio": "auto",
+      "layout_slot": "panel",
+      "act_number": 2,
+      "panel_index": 1,
+      "characters": [
+        "언데드 성기사"
+      ],
+      "speaker": "언데드 성기사",
+      "dialogue": "…어, 내가 먹었네.",
+      "wordless": false,
+      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom for 1-line bubble; ZERO floor or wall props, keep full figure strictly inside Panel 1's borders!). DYNAMIC LOW-ANGLE LUNGING SWOOP: Undead Paladin leaning nonchalantly sideways in a slick snatch motion with deadpan half-lidded sleepy golden eyes and blank flat mouth, casually holding up a WIDE SILVER-STEEL WOVEN RING-MESH MAIL ARMOR WAIST BELT WITH CHUNKY LEATHER TRIM AND RECTANGULAR SILVER BUCKLE (exact armored girdle waist belt — STRICTLY ZERO loose hanging iron chain links!) in one white-gloved hand while a chunky white 6-sided loot die showing ONLY round black dot pips (STRICTLY ZERO digits or letters!) bounces with comic sparkle trails beside her! Guardrail: fair skin, round white skull cap, silver-white bob, golden warhammer stowed neatly on back cape (Clean Hand). ZERO text/letters in art.",
+      "tail_target": "center",
+      "bubble_side": "center",
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 4,
+      "aspect_ratio": "auto",
+      "layout_slot": "panel",
+      "act_number": 2,
+      "panel_index": 2,
+      "characters": [
+        "트롤 주술사"
+      ],
+      "speaker": "트롤 주술사",
+      "dialogue": "에에엑?! 징기가\n주문력 사슬을 왜 먹어?!",
+      "wordless": false,
+      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom for bubble; keep all hair/sparks strictly inside Panel 2's borders!). EXTREME CLOSE-UP ELECTROCUTED COMIC SHOCK! Troll Shaman jolted violently backward with wild spiky cartoon electrocuted hair standing on end, giant popping blank white shock eyes, jaw dropped wide open screaming, both hands clutching her cheeks while bright blue comic lightning zigzags crackle organically around her silhouette (STRICTLY ZERO Japanese katakana, Korean, or English SFX text!). Guardrail: fair peach-ivory skin (NEVER blue skin!), sky-blue troll plush hood with red mohawk, wooden staff omitted/stowed on back.",
+      "tail_target": "center",
+      "bubble_side": "center",
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 5,
+      "aspect_ratio": "auto",
+      "layout_slot": "panel",
+      "act_number": 2,
+      "panel_index": 3,
+      "characters": [
+        "인간 흑마법사",
+        "나이트엘프 사제"
+      ],
+      "speaker": "인간 흑마법사",
+      "dialogue": "주문력 침 고이지만…\n치유 반지니까 사제님 양보!",
+      "wordless": false,
+      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE BACKGROUND EVERYWHERE (STRICTLY ZERO stone floor slab, ZERO mossy ground strip, ZERO dark rectangle under their knees — ONLY the compact wooden treasure chest, hovering golden ring, and two kneeling chibi girls directly on 100% PURE BLANK #FFFFFF WHITE with subtle contact shadow ONLY! Top 38% y=0%..38% and top-right x=58%..100% y=0%..44% 100% pure blank #FFFFFF white!). OVER-THE-SHOULDER COMIC TEMPTATION: lower-left (x=28%), Human Warlock kneeling dramatically biting her trembling lip with glistening anime drool & tears heroically pushing a sparkling golden ring hovering over a small wooden chest (x=48%) toward the Priestess, while her plump grumpy red plush Imp doll tugs frantically at her cloak (fair skin, dark-purple hood). Lower-right (x=72%), Night Elf Priestess kneeling clasping both hands sweetly by her chin with a radiant touched closed-eye angelic smile and tiny pink hearts beside her cheeks (fair skin, pastel-lavender half-up hair, golden crescent tiara, purple vestments, golden cross staff stowed on back, 0 halos/wings, Clean Hand). ZERO text/letters in art; keep strictly inside Panel 3.",
+      "tail_target": "left",
+      "bubble_side": "left",
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
+      "item_tooltip": {
+        "image_path": "assets/items/band_of_bossman.png",
+        "item_name": "두목의 고리",
+        "wowhead_item_id": null,
+        "quality": "rare",
+        "slot_left": "",
+        "slot_right": "",
+        "lines": [],
+        "equip_effects": [],
+        "icon_name": null,
+        "preferred_corner": "top_right",
+        "target_width": 250
+      }
+    },
+    {
+      "cut_index": 6,
+      "aspect_ratio": "auto",
+      "layout_slot": "panel",
+      "act_number": 3,
+      "panel_index": 1,
+      "characters": [
+        "나이트엘프 사제",
+        "언데드 성기사"
+      ],
+      "speaker": "나이트엘프 사제",
+      "dialogue": "어머… 방금 또 드셨어요?",
+      "wordless": false,
+      "visual_prompt": "TIER 2 NATURAL FULL-WIDTH KRAULDOC STONE FLOOR + 100% PURE #FFFFFF UPPER SKY across top 38% (y=0%..38% completely empty pure #FFFFFF headroom for left bubble!). Rugged dungeon flagstones flush edge-to-edge along bottom & sides (0 floating islands!). WILD 30-DEGREE DUTCH TILT SLAPSTICK SNATCH! Lower-left (x=27%), Night Elf Priestess lunging halfway forward frozen mid-reach with sudden wide pinpoint glowing silver-white shock eyes, trembling outstretched fingers missing by an inch, and a giant anime sweatdrop on her temple (fair skin, lavender half-up hair, golden crescent tiara, purple vestments, golden cross staff stowed on back, 0 halos/wings, Clean Hand). Lower-right (x=73%), Undead Paladin effortlessly snatching the sparkling golden healer ring right out of the air with one deadpan hand while casually tossing a chunky white 6-sided loot die with round black dot pips ONLY (0 digits/text!) in the other hand, wearing an utterly blank sleepy half-lidded expression (fair skin, white skull cap, golden warhammer stowed on back). ZERO text/letters inside art; keep all limbs strictly inside Panel 1.",
+      "tail_target": "left",
+      "bubble_side": "left",
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 7,
+      "aspect_ratio": "auto",
+      "layout_slot": "panel",
+      "act_number": 3,
+      "panel_index": 2,
+      "characters": [
+        "나이트엘프 사제"
+      ],
+      "speaker": "나이트엘프 사제",
+      "dialogue": "반지 안 쓰시면\n저 주실 수 있어요~?",
+      "wordless": false,
+      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom for bubble; keep strictly inside Panel 2's borders!). HIGH-ANGLE POLITELY-TENSE PLEADING CLOSE-UP: Night Elf Priestess clasping both hands gracefully under her chin tilting her head sweetly upward with a forced angelic smile (`^‿^`) and sparkling eyes — hilariously betrayed by one crisp twitching red manga anger vein pulsing on her temple and tiny nervous sweatdrops! Guardrail: fair skin, pastel-lavender wavy half-up hair, golden crescent tiara, glowing silver-white eyes, purple vestments, golden cross staff stowed on back, 0 halos/wings, Clean Hand. ZERO text/letters in art.",
+      "tail_target": "center",
+      "bubble_side": "center",
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 8,
+      "aspect_ratio": "auto",
+      "layout_slot": "panel",
+      "act_number": 3,
+      "panel_index": 3,
+      "characters": [
+        "언데드 성기사"
+      ],
+      "speaker": "언데드 성기사",
+      "dialogue": "…이중특성 신기 키우는 중.\n그때 필요해서 못 줘…",
+      "wordless": false,
+      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom for bubble; keep strictly inside Panel 3's borders!). LOOMING LOW-ANGLE DEADPAN SHAMELESSNESS: Undead Paladin leaning lazily back folding one arm with heavy half-lidded bored golden eyes looking straight down at the camera, utterly unbothered as she casually dangles BOTH the gleaming golden ring and the metallic ring-mesh mail armor waist belt (NOT prison chains!) from her raised fingers with tiny smug sparkles! Guardrail: fair skin, white cartoon skull cap, silver-white bob, crisp white-and-gold paladin cape, golden warhammer strapped diagonally on back (Clean Hand). ZERO text/letters in art.",
+      "tail_target": "center",
+      "bubble_side": "center",
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 9,
+      "aspect_ratio": "auto",
+      "layout_slot": "panel",
+      "act_number": 4,
+      "panel_index": 1,
+      "characters": [
+        "언데드 성기사"
+      ],
+      "speaker": "언데드 성기사",
+      "dialogue": "…그럼 수고. 귀환석 탈게.",
+      "wordless": false,
+      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (ENTIRE LEFT 54% x=0%..54% MUST BE 100% EMPTY PURE #FFFFFF WHITE for left 1-line bubble!). STRICT PANEL CONTAINMENT: WAIST-UP / THIGH-UP PORTRAIT cleanly cropped at Panel 1's bottom black border — STRICTLY ZERO legs or boots crossing below Panel 1's bottom black line into Panel 2! 90-DEGREE SIDE-PROFILE WALK-OFF: positioned cleanly on right 42% (x=76%), Undead Paladin turning away to the right inside swirling turquoise-blue Hearthstone magic sparkles, lazily waving one limp hand goodbye over her shoulder while clutching a glowing blue rune-carved Hearthstone pebble in her other palm with a sleepy yawn face! Guardrail: fair skin, white skull cap, silver bob, golden warhammer stowed diagonally on back (Clean Hand). ZERO text/letters in art.",
+      "tail_target": "right",
+      "bubble_side": "left",
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 10,
+      "aspect_ratio": "auto",
+      "layout_slot": "panel",
+      "act_number": 4,
+      "panel_index": 2,
+      "characters": [
+        "인간 흑마법사",
+        "나이트엘프 사제"
+      ],
+      "speaker": null,
+      "dialogue": null,
+      "wordless": true,
+      "visual_prompt": "TIER 2 WORDLESS CLIMAX FREEZE-FRAME ON FULL-WIDTH KRAULDOC BASTION COURTYARD FLOOR + 100% PURE #FFFFFF UPPER SKY (ZERO text, ZERO speech bubbles, ZERO SFX letters!). Rugged mossy stone flagstones anchored flush edge-to-edge along entire bottom & side borders with low broken stone crates on far edges, upper 45% pure #FFFFFF sky. SHOWSTOPPER DUAL SHOCK COMEDY: Foreground left-center (x=33%, bold large framing), Human Warlock frozen in BLUE-DRAINED MUNCH-SCREAM HORROR — deep indigo vertical dread shadow flooding her face, jaw unhinged dropped to her chest, giant popping blank white shock eyes, both hands clutching her cheeks in trembling shock while her grumpy red plush Imp doll beside her ALSO drops its jaw with blank white eyes as comical translucent mini-souls drift straight out of BOTH their open mouths! Right mid-ground (x=72%), Night Elf Priestess standing rigidly frozen with heavy PITCH-DARK MANGA FOREHEAD GLOOM SHADOW covering her brow, blazing pinpoint glowing silver-white '맑눈광' eyes wide open in terrifying frozen silence, menacing dark-violet comic aura crackling fiercely behind her shoulders (fair skin, lavender half-up hair, golden crescent tiara, purple vestments, golden cross staff stowed on back, 0 halos/wings). Far low right background (x=90%, tiny), the knocked-out Krauldoc bandit boss peeks up from the stone floor sweating nervously in sympathy! Keep strictly inside Panel 2.",
+      "tail_target": "center",
+      "bubble_side": null,
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 11,
+      "aspect_ratio": "auto",
+      "layout_slot": "panel",
+      "act_number": 5,
+      "panel_index": 1,
+      "characters": [
+        "인간 흑마법사"
+      ],
+      "speaker": "인간 흑마법사",
+      "dialogue": "소문만 들을 땐 설마 했는데…\n내 눈으로 보니 인간혐오 와…",
+      "wordless": false,
+      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (ENTIRE RIGHT 54% x=46%..100% MUST BE 100% EMPTY PURE #FFFFFF WHITE for right bubble! Keep full curled figure strictly inside left 42% and inside Panel 1's black rectangle — ZERO spillover into Panel 2!). SLUMPED KNEELING TRAUMA SHOT: positioned on left 42% (x=24%), Human Warlock collapsed limply onto her knees hugging her grumpy red plush Imp doll tightly to her chest, pale drained face flooded with dark vertical gloom lines, hollow lifeless spinning spiral eyes, tiny comical storm cloud hovering just above her hood! Guardrail: fair skin, deep dark-purple gothic Warlock hood & twin pigtails. ZERO text/letters in art.",
+      "tail_target": "left",
+      "bubble_side": "right",
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 12,
+      "aspect_ratio": "auto",
+      "layout_slot": "panel",
+      "act_number": 5,
+      "panel_index": 2,
+      "characters": [
+        "나이트엘프 사제"
+      ],
+      "speaker": "나이트엘프 사제",
+      "dialogue": "다음부터 성기사 힐 없어요~♡",
+      "wordless": false,
+      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (ENTIRE LEFT 54% x=0%..54% MUST BE 100% EMPTY PURE #FFFFFF WHITE for left 1-line bubble!). STRICT PANEL CONTAINMENT RULE: Night Elf Priestess's ENTIRE head, top ponytail, AND ahoge hair tuft MUST stay 100% BELOW Panel 2's top black border (y=12%..100%) with visible pure #FFFFFF white margin inside Panel 2 above her hair — STRICTLY ZERO ahoge curl or hair strand crossing upward across the top black border into Panel 1, ZERO spillover into Panel 3! FISHEYE FORCED-PERSPECTIVE CHILLING GAP-MOE CLOSE-UP: positioned compactly on right 42% (x=76%, y=14%..100%), Night Elf Priestess leaning forward toward camera with dark forehead gloom shadow, blazing pinpoint glowing silver-white '맑눈광' eyes, and a terrifyingly sweet cat-mouth `:3` smile while cracking her dainty gloved knuckles softly with just 3 tiny crisp dark-violet ink sparkles beside her cheeks (NO large painted gradient aura cloud!). Guardrail: fair skin, lavender half-up hair, golden crescent tiara, purple vestments, golden cross staff stowed compactly on back strictly below y=22%, 0 halos/wings, Clean Hand. ZERO text/letters in art.",
+      "tail_target": "right",
+      "bubble_side": "left",
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 13,
+      "aspect_ratio": "auto",
+      "layout_slot": "panel",
+      "act_number": 5,
+      "panel_index": 3,
+      "characters": [
+        "인간 흑마법사",
+        "트롤 주술사"
+      ],
+      "speaker": "인간 흑마법사",
+      "dialogue": "파티에 성기사 있으면 절대 안 가!\n들어오면 그냥 내가 나간다구!!",
+      "wordless": false,
+      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND EVERYWHERE (STRICTLY ZERO stone floor strip, ZERO parapet wall, ZERO portal box under their boots — ONLY the two marching chibi girls and tiny comic dust puffs directly on 100% PURE BLANK #FFFFFF WHITE!). TUCK BOTH CHARACTERS TIGHTLY INSIDE THE RIGHT 48% (x=50%..98%, y=8%..98%) LEAVING THE ENTIRE LEFT 48% (x=0%..48%) 100% COMPLETELY BLANK EMPTY PURE #FFFFFF WHITE for the big left-side speech bubble! DYNAMIC MARCH-OUT FINALE: mid-right (x=60%), Human Warlock marching furiously away to the right looking back toward the left bubble with puffed steaming red cheeks, fierce sparkling violet eyes, shaking one clenched fist indignantly while clutching her grumpy red plush Imp doll under her other arm; far right right behind her (x=86%), Troll Shaman jogging excitedly throwing both fists up in solidarity with fiery comic anger puffs & tiny dust swirls under their boots (fair skin, sky-blue troll hood with bright RED mohawk, wooden staff stowed on back, Clean Hand). ZERO spillover into Panel 2; ZERO text/letters inside art.",
+      "tail_target": "left",
+      "bubble_side": "left",
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
+      "item_tooltip": null
     }
   ]
 }

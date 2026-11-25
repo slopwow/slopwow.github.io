@@ -59,28 +59,30 @@ def _assert_internal_links_resolve(html_path: Path) -> None:
 def test_seed_episodes_json_valid_and_files_exist() -> None:
     settings = load_settings(PROJECT_ROOT)
     records = load_episodes(settings.episodes_json)
-    assert len(records) >= 2
+    assert len(records) >= 20
 
     by_id = {r.episode_id: r for r in records}
     assert "ep001" in by_id
     assert "ep002" in by_id
+    assert "ep020" in by_id
 
     ep1 = by_id["ep001"]
     assert ep1.source_post_no == "92059"
-    assert ep1.cut_count == 5
+    assert 10 <= ep1.cut_count <= 14
     assert "흑마법사" in ep1.title
 
     ep2 = by_id["ep002"]
     assert ep2.source_post_no == "96849"
-    assert ep2.cut_count == 6
+    assert 10 <= ep2.cut_count <= 14
     assert "기사님" in ep2.title
 
-    for rec in (ep1, ep2):
-        assert (PROJECT_ROOT / rec.full_image_rel).exists()
-        assert (PROJECT_ROOT / rec.thumb_image_rel).exists()
-        assert len(rec.page_images_rel) == 3
+    for rec in records:
+        assert 10 <= rec.cut_count <= 14, f"{rec.episode_id} expected V4 10..14 cuts, got {rec.cut_count}"
+        assert (PROJECT_ROOT / rec.full_image_rel).exists(), f"Missing {rec.full_image_rel}"
+        assert (PROJECT_ROOT / rec.thumb_image_rel).exists(), f"Missing {rec.thumb_image_rel}"
+        assert len(rec.page_images_rel) == 5, f"{rec.episode_id} expected 5 V4 pages, got {len(rec.page_images_rel)}"
         for page_rel in rec.page_images_rel:
-            assert (PROJECT_ROOT / page_rel).exists()
+            assert (PROJECT_ROOT / page_rel).exists(), f"Missing {page_rel}"
 
 
 def _extract_meta_map(html_text: str) -> dict[str, str]:

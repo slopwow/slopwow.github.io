@@ -2,21 +2,23 @@
   "episode_id": "ep013",
   "episode_number": 13,
   "title": "내가 징기로 골드 버는 법 공유함",
-  "subtitle": "징기의 부특 읍소 루팅으로 던전당 10골드 — 양심(?) 골드 파밍 상황극",
+  "subtitle": "전탱 살펴보기·아틀라스룻 치밀 설계 → 부특 읍소 루팅 → 상점 직행 9골 95실 대참사 — 5막 14컷",
   "source_post_no": "109167",
   "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=109167&exception_mode=recommend&page=1",
-  "created_at": "2026-11-24T08:14:53+09:00",
-  "cut_count": 6,
+  "created_at": "2026-11-25T13:30:26+09:00",
+  "cut_count": 14,
   "cast_used": [
+    "오크 전사",
     "언데드 성기사",
-    "나이트엘프 사제",
-    "오크 전사"
+    "나이트엘프 사제"
   ],
   "full_image_rel": "data/episodes/ep013/episode_full.jpg",
   "thumb_image_rel": "data/episodes/ep013/thumb.jpg",
   "page_images_rel": [
     "data/episodes/ep013/page_1.png",
     "data/episodes/ep013/page_2.png",
-    "data/episodes/ep013/page_3.png"
+    "data/episodes/ep013/page_3.png",
+    "data/episodes/ep013/page_4.png",
+    "data/episodes/ep013/page_5.png"
   ]
 }

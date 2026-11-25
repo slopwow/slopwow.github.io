@@ -4,92 +4,576 @@
   "source_title": "호드 쪼렙새끼들 싸가지없노",
   "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=110173&exception_mode=recommend&page=1",
   "subtitle": "탄돌 교각 침낭퀘 길목 — /인사 씹고 지나간 호드 쪼렙들의 최후",
+  "layout_mode": "v4_five_act",
+  "background_style": "clean_white",
+  "acts": [
+    {
+      "act_number": 1,
+      "act_title": "1막: 탄돌 교각 길목의 호드 쪼렙 침낭퀘 행렬과 친절한 /인사",
+      "layout_id": "open_top_split_bottom",
+      "cuts": [
+        {
+          "cut_index": 1,
+          "aspect_ratio": "auto",
+          "layout_slot": "panel",
+          "act_number": 1,
+          "panel_index": 1,
+          "characters": [
+            "드워프 사냥꾼",
+            "오크 전사"
+          ],
+          "speaker": "드워프 사냥꾼",
+          "dialogue": "옴뇸뇸~ 탄돌 교각에\n호드 쪼렙들 침낭퀘 왔네?",
+          "wordless": false,
+          "visual_prompt": "TIER 1 FULL-BLEED THANDOL SPAN DWARVEN STONE BRIDGE CORRIDOR ESTABLISHING SHOT inside solid black box frame (edge-to-edge full scenery, outer page margins pure #FFFFFF). Iconic WoW Thandol Span bridge passage faithful to the original screenshot: broad warm brown irregular cobblestone bridge roadway flanked by chunky beige-tan dwarven stone pillars studded with dark iron bolts and low stone ledges, sunlit misty Wetlands-Arathi canyon sky filling the ENTIRE upper-left headroom (x=4%..58%, y=0%..35% completely uncluttered clear blue sky — keep all heads below y=35%!). DYNAMIC ACTING: foreground left (x=27%), high-level Alliance Dwarf Hunter perched relaxed on a low stone bridge ledge munching fluffy popcorn from a carved wooden bowl with a warm amused smile (fair skin, forest-green fur hood, orange braided chin-pigtails, blunderbuss rifle slung across back, Clean Hand). Farther down the right cobblestone bridge corridor (x=76%, smaller mid-distance scale), lowbie Orc Warrior jogging eagerly up the road carrying a rolled-up cozy plaid sleeping bag strapped to her pack (fair skin, green plush orc hood, weapon stowed on back) alongside a tiny trailing Tauren Druid lowbie wearing a FLUFFY SOLID WARM-BROWN PLUSH TAUREN COW HOOD (solid warm chestnut brown fur with ivory horns & gold nose ring — NEVER white spotted dairy-cow pattern!) and leafy green mantle! STRICTLY ZERO text/letters in art; keep strictly inside Panel 1.",
+          "tail_target": "left",
+          "bubble_side": "left",
+          "full_bleed_bg": true,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
+          "item_tooltip": null
+        },
+        {
+          "cut_index": 2,
+          "aspect_ratio": "auto",
+          "layout_slot": "panel",
+          "act_number": 1,
+          "panel_index": 2,
+          "characters": [
+            "드워프 사냥꾼"
+          ],
+          "speaker": "드워프 사냥꾼",
+          "dialogue": "어휴~ 귀엽네, /인사~\n조심히 지나가라구~",
+          "wordless": false,
+          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom; keep strictly inside Panel 2!). HIGH-ANGLE SUNNY FRIENDLY WAVE: Dwarf Hunter leaning cheerfully forward waving both fingerless-gloved hands brightly in a warm friendly greeting emote, radiant cozy rosy-cheeked smile with bright friendly amber eyes and cute twinkling sparkles! Guardrail: fair skin, forest-green fur-trimmed ranger hood, orange braided chin-pigtails, wooden-and-steel blunderbuss slung peacefully across back (Clean Hand). ZERO text/letters in art.",
+          "tail_target": "center",
+          "bubble_side": "center",
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
+          "item_tooltip": null
+        },
+        {
+          "cut_index": 3,
+          "aspect_ratio": "auto",
+          "layout_slot": "panel",
+          "act_number": 1,
+          "panel_index": 3,
+          "characters": [
+            "타우렌 드루이드"
+          ],
+          "speaker": "타우렌 드루이드",
+          "dialogue": "히잉… 얼라 고렙이 인사해…",
+          "wordless": false,
+          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom; keep strictly inside Panel 3!). NERVOUS SIDE-PROFILE SCURRY CLOSE-UP: lowbie Tauren Druid hugging a plump rolled-up cozy plaid sleeping bag tightly to her chest, glancing apprehensively sideways with shimmering round timid brown eyes, trembling shoulders and floating nervous sweatdrops! Guardrail: fair skin, FLUFFY SOLID WARM-BROWN PLUSH TAUREN COW HOOD (solid warm chestnut brown plush fur matching assets/turnarounds/tauren_druid.jpg — NEVER white dairy-cow spots!) with curved ivory horns & golden nose ring, leafy green shoulder mantle, wooden druid staff stowed diagonally on back (Clean Hand). ZERO text/letters in art.",
+          "tail_target": "center",
+          "bubble_side": "center",
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
+          "item_tooltip": null
+        }
+      ]
+    },
+    {
+      "act_number": 2,
+      "act_title": "2막: 쪼렙들의 패기로운 /인사 무시와 얼라 고렙의 눈빛 돌변",
+      "layout_id": "wide_reaction_wide",
+      "cuts": [
+        {
+          "cut_index": 4,
+          "aspect_ratio": "auto",
+          "layout_slot": "panel",
+          "act_number": 2,
+          "panel_index": 1,
+          "characters": [
+            "오크 전사"
+          ],
+          "speaker": "오크 전사",
+          "dialogue": "말 섞지 말고 쌩까고 가!\n침낭퀘 빨리 끝내야지~!",
+          "wordless": false,
+          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (ENTIRE RIGHT 54% x=46%..100% MUST BE 100% EMPTY PURE #FFFFFF WHITE for right bubble! Keep full character strictly inside left 42% and inside Panel 1 — ZERO spillover into Panel 2!). COCKY SWAGGERING STRIDE: positioned on left 42% (x=24%), lowbie Orc Warrior tilting her chin high with a breezy cocky fang smirk and dismissive wave of one hand, marching straight ahead with a rolled-up cozy sleeping bag strapped over her red cape! Guardrail: fair skin (NEVER green skin!), green plush orc hood, battle axe stowed on back (Clean Hand). ZERO text/letters in art.",
+          "tail_target": "left",
+          "bubble_side": "right",
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
+          "item_tooltip": null
+        },
+        {
+          "cut_index": 5,
+          "aspect_ratio": "auto",
+          "layout_slot": "panel",
+          "act_number": 2,
+          "panel_index": 2,
+          "characters": [
+            "타우렌 드루이드",
+            "오크 전사"
+          ],
+          "speaker": "타우렌 드루이드",
+          "dialogue": "우웅… 그냥 지나가도 돼…?",
+          "wordless": false,
+          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (STRICTLY ZERO stone floor strip, ZERO ground box — ONLY the two scurrying characters and tiny comic dust/wind swirls directly on 100% PURE BLANK #FFFFFF WHITE! ENTIRE LEFT 48% x=0%..48% MUST BE 100% EMPTY PURE #FFFFFF WHITE for left bubble! Keep BOTH figures compact strictly inside RIGHT 48% x=50%..98% and strictly inside Panel 2 — ZERO spillover into Panels 1 or 3!). BACK-VIEW HURRIED SCURRY: mid-right (x=62%), Tauren Druid (solid warm-brown plush cow hood) scurrying nervously rightward clutching her rolled sleeping bag, peeking anxiously back over her leafy shoulder with tiny sweatdrops (staff stowed on back); far right (x=86%), Orc Warrior briskly marching ahead rightward ignoring everything with tiny cartoon dust puffs under their boots! ZERO text/letters in art.",
+          "tail_target": "left",
+          "bubble_side": null,
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
+          "item_tooltip": null
+        },
+        {
+          "cut_index": 6,
+          "aspect_ratio": "auto",
+          "layout_slot": "panel",
+          "act_number": 2,
+          "panel_index": 3,
+          "characters": [
+            "드워프 사냥꾼"
+          ],
+          "speaker": "드워프 사냥꾼",
+          "dialogue": "…어라? 인사를 씹었네?",
+          "wordless": false,
+          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND EVERYWHERE BEHIND HER (STRICTLY ZERO dark/black square background box, ZERO grey/black wall behind her hood — ONLY the character directly on 100% PURE BLANK #FFFFFF WHITE! ENTIRE LEFT 54% x=0%..54% MUST BE 100% EMPTY PURE #FFFFFF WHITE for left 1-line bubble! Keep compact bust strictly inside right 42% and inside Panel 3 — ZERO spillover into Panel 2!). EXTREME FISHEYE CLOSE-UP DARK SWITCH: positioned on right 42% (x=76%), Dwarf Hunter snapping instantly from cozy friendliness to chilling calm — heavy dark manga gloom shading ONLY across her own forehead skin under her bangs, warm amber pupils shrinking to razor-sharp glowing pinpoints, chillingly calm half-smile as her gloved hand slowly swings her gleaming wooden-and-steel Dwarf blunderbuss barrel into view with an ominous gleam! Guardrail: fair skin, forest-green fur hood, ONLY two thick orange side braids wrapping gently under chin (ZERO mustache, ZERO 3rd middle braid!). ZERO text/letters in art.",
+          "tail_target": "right",
+          "bubble_side": "left",
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
+          "item_tooltip": null
+        }
+      ]
+    },
+    {
+      "act_number": 3,
+      "act_title": "3막: /무릎 /경례 미흡 판정과 탄돌 교각 예절 교육 개시",
+      "layout_id": "split_top_wide_bottom",
+      "cuts": [
+        {
+          "cut_index": 7,
+          "aspect_ratio": "auto",
+          "layout_slot": "panel",
+          "act_number": 3,
+          "panel_index": 1,
+          "characters": [
+            "드워프 사냥꾼"
+          ],
+          "speaker": "드워프 사냥꾼",
+          "dialogue": "/무릎 /경례 도 없고…\n예절 교육 좀 받아야겠네~",
+          "wordless": false,
+          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom; keep strictly inside Panel 1!). 30-DEGREE DUTCH TILT SLAPSTICK SHOT: Dwarf Hunter lunging dynamically forward aiming her chunky wooden-and-steel Dwarf blunderbuss rifle smoothly to the right, beaming with a terrifyingly serene closed-eye enlightened Buddha smile (`^‿^`) while crisp golden cartoon star-sparks & puffy comic smoke burst playfully from the barrel (100% cute non-gore cartoon boom!). Guardrail: fair skin, forest-green fur hood, thick orange braided pigtails. ZERO text/letters in art.",
+          "tail_target": "center",
+          "bubble_side": "center",
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
+          "item_tooltip": null
+        },
+        {
+          "cut_index": 8,
+          "aspect_ratio": "auto",
+          "layout_slot": "panel",
+          "act_number": 3,
+          "panel_index": 2,
+          "characters": [
+            "오크 전사"
+          ],
+          "speaker": "오크 전사",
+          "dialogue": "으아앙!! 한 방에 녹잖아!!",
+          "wordless": false,
+          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom; keep strictly inside Panel 2!). DIZZYING BIRD'S-EYE TOP-DOWN SLAPSTICK LAUNCH: lowbie Orc Warrior tumbling comically head-over-heels mid-air with giant spinning spiral eyes, jaw dropped wide open screaming, puffy cartoon soot-clouds and golden comic stars orbiting her orc plush hood as her rolled plaid sleeping bag flies hilariously out of her pack! Guardrail: fair skin (NEVER green skin!), green orc hood, axe stowed on back. ZERO text/letters in art.",
+          "tail_target": "center",
+          "bubble_side": "center",
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
+          "item_tooltip": null
+        },
+        {
+          "cut_index": 9,
+          "aspect_ratio": "auto",
+          "layout_slot": "panel",
+          "act_number": 3,
+          "panel_index": 3,
+          "characters": [
+            "타우렌 드루이드",
+            "드워프 사냥꾼"
+          ],
+          "speaker": "타우렌 드루이드",
+          "dialogue": "으아앙!! 나도 인사할게!!\n/인사 /경례 다 누를게에!!",
+          "wordless": false,
+          "visual_prompt": "TIER 2 FULL-WIDTH THANDOL SPAN STONE BRIDGE CORRIDOR + 100% PURE #FFFFFF UPPER SKY across top 38% (y=0%..38% completely empty pure #FFFFFF headroom for left bubble!). Warm brown cobblestone bridge roadway and chunky riveted beige dwarven pillars anchored flush along bottom & sides (0 floating islands!). WILD SLAPSTICK CHASE CHAOS: lower-left (x=28%), lowbie Tauren Druid tumbling flat face-first on the stones waving both hands frantically in panicked bows/salutes with twin comical waterfall tears, jaw-dropped crying panic and rolled sleeping bag bouncing beside her (staff stowed on back); lower-right (x=72%), Dwarf Hunter's chubby fluffy brown Bear Pet playfully swatting an extra cartoon fleeing Horde lowbie into puffy comic dust stars while Dwarf Hunter strolls calmly behind reloading her blunderbuss with a serene cozy grin! ZERO text/letters in art; keep strictly inside Panel 3.",
+          "tail_target": "center",
+          "bubble_side": "left",
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
+          "item_tooltip": null
+        }
+      ]
+    },
+    {
+      "act_number": 4,
+      "act_title": "4막: 탄돌 교각 전설의 호드 쪼렙 시체 더미 무언 충격 현장",
+      "layout_id": "impact_freeze_2cut",
+      "cuts": [
+        {
+          "cut_index": 10,
+          "aspect_ratio": "auto",
+          "layout_slot": "panel",
+          "act_number": 4,
+          "panel_index": 1,
+          "characters": [
+            "드워프 사냥꾼"
+          ],
+          "speaker": "드워프 사냥꾼",
+          "dialogue": "어휴~ 다 정리됐네~",
+          "wordless": false,
+          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (ENTIRE LEFT 54% x=0%..54% MUST BE 100% EMPTY PURE #FFFFFF WHITE for left 1-line bubble! Keep character strictly inside right 42% and inside Panel 1!). CLEAN HAND SINGLE WEAPON RULE: she holds ONLY ONE blunderbuss rifle in her hands — STRICTLY ZERO second duplicate gun or barrel strapped on her back! CALM SIDE-PROFILE SMOKE-BLOW: positioned on right 42% (x=76%), Dwarf Hunter tilting her SINGLE wooden-and-steel blunderbuss upward to blow one dainty curly wisp of white comic smoke off the barrel tip with relaxed sleepy half-lidded eyes and a satisfied little puff! Guardrail: fair skin, forest-green fur hood, orange braided chin-pigtails, EMPTY back cape (0 second rifle on back!). ZERO text/letters in art.",
+          "tail_target": "right",
+          "bubble_side": "left",
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
+          "item_tooltip": null
+        },
+        {
+          "cut_index": 11,
+          "aspect_ratio": "auto",
+          "layout_slot": "panel",
+          "act_number": 4,
+          "panel_index": 2,
+          "characters": [
+            "드워프 사냥꾼",
+            "오크 전사"
+          ],
+          "speaker": null,
+          "dialogue": null,
+          "wordless": true,
+          "visual_prompt": "TIER 2 WORDLESS CLIMAX FREEZE-FRAME RECREATING THE ORIGINAL THANDOL SPAN SCREENSHOT + 100% PURE #FFFFFF UPPER SKY (ZERO text, ZERO speech bubbles, ZERO blood or gore — 100% cute cartoon slapstick!). Deep corridor perspective looking straight down WoW's Thandol Span stone bridge passage: broad warm brown irregular cobblestone bridge roadway anchored flush edge-to-edge along entire bottom & side borders, chunky beige-tan dwarven stone pillars studded with dark iron bolts lining left and right walls, wooden supply crate corner on far bottom-right edge, upper 42% pure #FFFFFF sky above the bridge arches! SCATTERED ACROSS THE BROWN COBBLESTONES (faithful to the original screenshot!): 5 to 6 sprawled cartoon chibi Horde lowbies knocked out completely flat face-down and starfish-flopped across the bridge stones with comical swirling dizzy stars, cute tiny cartoon white bone-crossbone doodles, and adorable translucent pale-cyan mini chibi ghost souls drifting peacefully upward — including Orc Warrior (MUST wear her vibrant green plush orc monster hood with curved cream horns & piggy snout matching assets/turnarounds/orc_warrior.jpg!) sprawled flat knocked-out on her unrolled plaid sleeping bag in center corridor, a cute knocked-out chibi Tauren Druid flopped in lower-left with dizzy spiral/X eyes (CRITICAL IDENTITY GUARDRAIL: golden cow nose ring ONLY on the plush brown cow hood snout above her forehead — STRICTLY bare cute human girl nose & dizzy open mouth with ZERO ring on her human face/mouth!), and 3 extra tiny cartoon chibi Horde lowbies (troll, undead, orc) sprawled down the road! Standing calmly in foreground right (x=82%), Alliance Dwarf Hunter rests both hands proudly on her hips (blunderbuss slung peacefully across her back, Clean Hand) admiring the quiet bridge with a completely serene, blissful closed-eye Buddha smile and one tiny cozy floating musical note! Keep strictly inside Panel 2.",
+          "tail_target": "center",
+          "bubble_side": null,
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
+          "item_tooltip": null
+        }
+      ]
+    },
+    {
+      "act_number": 5,
+      "act_title": "5막: 인사만 받아줬어도 무사했을 텐데… 유령 앞 마지막 /인사",
+      "layout_id": "diagonal_tempo_2cut",
+      "cuts": [
+        {
+          "cut_index": 12,
+          "aspect_ratio": "auto",
+          "layout_slot": "panel",
+          "act_number": 5,
+          "panel_index": 1,
+          "characters": [
+            "드워프 사냥꾼",
+            "오크 전사"
+          ],
+          "speaker": "드워프 사냥꾼",
+          "dialogue": "인사만 받아줬어도 무사히\n침낭퀘 하고 지나갔을 거다~",
+          "wordless": false,
+          "visual_prompt": "TIER 2 FULL-WIDTH THANDOL SPAN COBBLESTONES + 100% PURE #FFFFFF UPPER SKY across top 36% (y=0%..36% completely empty pure #FFFFFF headroom for right bubble!; open borderless top panel so softly feather the outer left/right stone floor edges cleanly into pure #FFFFFF white!). LOW-ANGLE COZY LECTURE: foreground right (x=72%), Dwarf Hunter crouching casually on one knee holding her rustic carved wooden bowl of popcorn with gentle half-lidded cozy amber eyes, lecturing calmly with one wagging finger (blunderbuss slung on back, Clean Hand); foreground left (x=28%), the glowing translucent pale-cyan GHOST SPIRIT of lowbie Orc Warrior hovering stiffly mid-air trembling with giant blank shock eyes and chattering teeth clutching a clearly drawn ROLLED CYLINDRICAL PLAID CAMPING BEDROLL / SLEEPING BAG TIED WITH TWO LEATHER STRAPS under her arm (an inanimate rolled-up plaid blanket cylinder ONLY — STRICTLY ZERO baby, ZERO face, ZERO eyes on the sleeping bag!). ZERO text/letters in art; keep strictly inside Panel 1.",
+          "tail_target": "right",
+          "bubble_side": "right",
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
+          "item_tooltip": null
+        },
+        {
+          "cut_index": 13,
+          "aspect_ratio": "auto",
+          "layout_slot": "panel",
+          "act_number": 5,
+          "panel_index": 2,
+          "characters": [
+            "드워프 사냥꾼",
+            "타우렌 드루이드"
+          ],
+          "speaker": "드워프 사냥꾼",
+          "dialogue": "근데 인사를 안 받아줬잖아?\n자, 다시~ /인사♪",
+          "wordless": false,
+          "visual_prompt": "TIER 2 FULL-WIDTH EDGE-TO-EDGE LOW-HORIZON THANDOL SPAN BRIDGE COBBLESTONES + MASSIVE 100% EMPTY PURE #FFFFFF WHITE SKY ACROSS ENTIRE UPPER HALF (y=0%..48% MUST BE 100% COMPLETELY BLANK PURE #FFFFFF WHITE FROM x=0% TO x=100% — ZERO hair, ZERO notes, ZERO stone pillars rising above y=48%! That guarantees full 1:1 edge-to-edge panel width with ZERO side shrinkage!). CRITICAL FLOOR RULE: flat warm brown irregular bridge cobblestones & very low ankle-high stone edge trim MUST span 100% FLUSH EDGE-TO-EDGE from far LEFT black border (x=0%) all the way to far RIGHT black border (x=100%) along y=76%..100% (ZERO tall stone walls/pillars, ZERO centered floor cutouts!). COMPACT OVER-THE-SHOULDER FINALE GAG strictly below y=48%..100%: lower-left (x=28%, compact below y=50%), the glowing translucent pale-cyan GHOST SPIRIT of lowbie Tauren Druid (solid brown cow hood silhouette, alongside tiny pale-cyan ghost Orc Warrior beside her) frantically spamming deep stiff 90-degree panicked bows & salutes gushing twin comic waterfall ghost-tears; lower-right foreground (x=72%, compact crouching/waving strictly below y=48%), Dwarf Hunter beaming with a dazzlingly bright cheeky closed-eye smile (`≧▽≦`), waving one tiny hand playfully back at the bowing ghosts with tiny musical notes tucked strictly beside her cheek below y=48%! Guardrail: fair skin, forest-green fur hood, ONLY two thick orange side braids (ZERO mustache, ZERO 3rd middle braid!), blunderbuss slung across back (Clean Hand). ZERO text/letters in art; keep strictly inside Panel 2.",
+          "tail_target": "right",
+          "bubble_side": "right",
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
+          "item_tooltip": null
+        }
+      ]
+    }
+  ],
   "cuts": [
     {
       "cut_index": 1,
-      "aspect_ratio": "4:3",
-      "layout_slot": "top",
-      "characters": [
-        "드워프 사냥꾼"
-      ],
-      "speaker": "드워프 사냥꾼",
-      "dialogue": "오, 탄돌 교각 밑에\n호드 쪼렙들 침낭퀘 오네?\n귀여우니 봐준다.",
-      "wordless": false,
-      "visual_prompt": "Over-the-shoulder (OTS) diagonal shot from behind the forest-green fur-trimmed hood and shoulder of the Dwarf Hunter girl in the foreground-left (her wooden blunderbuss slung across her back, holding a warm mug/snack with a benevolent veteran grin), looking down toward a compact floating cobblestone vignette of the Thandol Span stone bridge underside on the lower-right where a lively group of 4-5 tiny chibi Horde lowbie extras (an Orc, a Tauren, a Troll, an Undead wearing starter leather gear and bulky rolled tan sleeping-bag bedrolls on their backs) trot past cheerfully. Place all artwork and bridge stones strictly in the lower two-thirds, fading cleanly into 100% pure solid #FFFFFF white headroom across the entire top 38% for the speech bubble. Zero text, zero letters, zero UI.",
-      "tail_target": "left",
-      "item_tooltip": null
-    },
-    {
-      "cut_index": 2,
-      "aspect_ratio": "16:9",
-      "layout_slot": "bottom",
-      "characters": [
-        "드워프 사냥꾼"
-      ],
-      "speaker": "드워프 사냥꾼",
-      "dialogue": "/인사 /인사~\n반가워 쪼렙들!\n조심히 지나가렴♪",
-      "wordless": false,
-      "visual_prompt": "Side-profile 90-degree dynamic action shot of the Dwarf Hunter girl positioned cleanly on the right half of the wide 16:9 frame (medium 2.5-3 head waist-up chibi scale), leaning eagerly forward to the left and waving one hand high in an enthusiastic friendly /wave emote. Wide beaming closed-eye anime smile, rosy cheeks, cheerful heart sparkles floating near her waving hand; wooden blunderbuss slung safely on her back (hands free). Leave the entire left 48% completely empty pure #FFFFFF white space for the left speech bubble. 100% pure solid #FFFFFF white outer background, zero text, zero UI.",
-      "tail_target": "right",
-      "item_tooltip": null
-    },
-    {
-      "cut_index": 3,
-      "aspect_ratio": "4:3",
-      "layout_slot": "top",
-      "characters": [
-        "오크 전사",
-        "타우렌 드루이드"
-      ],
-      "speaker": "오크 전사",
-      "dialogue": "얼라 고렙이 손 흔드네?\n괜히 말 섞지 말고\n그냥 씹고 가자~",
-      "wordless": false,
-      "visual_prompt": "Low-angle diagonal action shot looking up at a briskly jogging pack of Horde lowbie travelers (4-5 characters total!) hustling rightward past a weathered stone bridge pillar vignette. Leading in front on the lower-left is the Orc Warrior chibi girl (green plush orc onesie hood, black ponytail, crimson eyes) jogging forward with a bulky rolled tan sleeping bag strapped to her pack, glancing dismissively sideways with a bored half-lidded side-eye and shrugging; right beside her is the Tauren Druid chibi girl (fluffy brown cow hood with horns and golden nose ring) puffing her cheeks hurrying along with her own rolled bedroll; behind them 2-3 extra chibi Horde lowbies (a Troll and Undead in low-level rags with bedrolls) sprint right past without waving back, kicking up tiny comic dust puffs. Weapons stowed on backs. Keep all figures strictly in the lower two-thirds with 100% pure solid #FFFFFF white headroom across the entire top 38%. Zero text, zero UI.",
-      "tail_target": "left",
-      "item_tooltip": null
-    },
-    {
-      "cut_index": 4,
-      "aspect_ratio": "16:9",
-      "layout_slot": "bottom",
-      "characters": [
-        "드워프 사냥꾼"
-      ],
-      "speaker": null,
-      "dialogue": null,
-      "wordless": true,
-      "visual_prompt": "Dutch-tilt dramatic close-up comedic freeze-frame of ONLY the Dwarf Hunter girl, completely silent and wordless (filling ~80% of canvas height, tilted dynamic angle). Deep ominous purple-indigo gloom shadow falls heavily across her forehead and eyes beneath her forest-green ranger hood, her amber eyes shrinking into chilling pinpoint blank white dots, her mouth frozen in an eerie twitching polite smile with a sharp anime anger vein pulsing near her temple, while both hands calmly rack and level her wooden blunderbuss rifle across her chest with dramatic dark speed-line sparks. 100% pure solid #FFFFFF white outer background, zero text, zero letters, zero UI.",
-      "tail_target": "center",
-      "item_tooltip": null
-    },
-    {
-      "cut_index": 5,
-      "aspect_ratio": "4:3",
-      "layout_slot": "top",
+      "aspect_ratio": "auto",
+      "layout_slot": "panel",
+      "act_number": 1,
+      "panel_index": 1,
       "characters": [
         "드워프 사냥꾼",
         "오크 전사"
       ],
       "speaker": "드워프 사냥꾼",
-      "dialogue": "인사만 받아줬어도\n너네들은 무사히\n침낭퀘 하고 갔을 거다.",
+      "dialogue": "옴뇸뇸~ 탄돌 교각에\n호드 쪼렙들 침낭퀘 왔네?",
       "wordless": false,
-      "visual_prompt": "High-angle shot looking down directly recreating the original DCInside screenshot: a crisp minimalist floor vignette of the warm brown Thandol Span cobblestone stone-bridge corridor flanked by short weathered stone pillar bases at the lower left and right edges (fading cleanly into 100% pure solid #FFFFFF white headroom across the entire top 38% for the speech bubble!). Strewn all across the cobblestone corridor are 6-7 comically defeated lowbie Horde chibi characters (including the Orc Warrior girl in her green orc hood and 5-6 extra lowbie Horde Orc/Troll/Undead/Tauren travelers) lying face-down and starfish-sprawled on the stones with cute dizzy spiral eyes, cartoon stars orbiting their heads, and unrolled tan sleeping-bag bedrolls scattered around them (cute chibi manga slapstick ONLY — strictly ZERO blood and ZERO gore!). Standing casually in the lower-left foreground above the corridor carnage, the Dwarf Hunter girl rests the smoking barrel of her wooden blunderbuss over one shoulder with a cold deadpan smirk and half-lidded eyes. Zero text, zero UI.",
+      "visual_prompt": "TIER 1 FULL-BLEED THANDOL SPAN DWARVEN STONE BRIDGE CORRIDOR ESTABLISHING SHOT inside solid black box frame (edge-to-edge full scenery, outer page margins pure #FFFFFF). Iconic WoW Thandol Span bridge passage faithful to the original screenshot: broad warm brown irregular cobblestone bridge roadway flanked by chunky beige-tan dwarven stone pillars studded with dark iron bolts and low stone ledges, sunlit misty Wetlands-Arathi canyon sky filling the ENTIRE upper-left headroom (x=4%..58%, y=0%..35% completely uncluttered clear blue sky — keep all heads below y=35%!). DYNAMIC ACTING: foreground left (x=27%), high-level Alliance Dwarf Hunter perched relaxed on a low stone bridge ledge munching fluffy popcorn from a carved wooden bowl with a warm amused smile (fair skin, forest-green fur hood, orange braided chin-pigtails, blunderbuss rifle slung across back, Clean Hand). Farther down the right cobblestone bridge corridor (x=76%, smaller mid-distance scale), lowbie Orc Warrior jogging eagerly up the road carrying a rolled-up cozy plaid sleeping bag strapped to her pack (fair skin, green plush orc hood, weapon stowed on back) alongside a tiny trailing Tauren Druid lowbie wearing a FLUFFY SOLID WARM-BROWN PLUSH TAUREN COW HOOD (solid warm chestnut brown fur with ivory horns & gold nose ring — NEVER white spotted dairy-cow pattern!) and leafy green mantle! STRICTLY ZERO text/letters in art; keep strictly inside Panel 1.",
       "tail_target": "left",
+      "bubble_side": "left",
+      "full_bleed_bg": true,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 2,
+      "aspect_ratio": "auto",
+      "layout_slot": "panel",
+      "act_number": 1,
+      "panel_index": 2,
+      "characters": [
+        "드워프 사냥꾼"
+      ],
+      "speaker": "드워프 사냥꾼",
+      "dialogue": "어휴~ 귀엽네, /인사~\n조심히 지나가라구~",
+      "wordless": false,
+      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom; keep strictly inside Panel 2!). HIGH-ANGLE SUNNY FRIENDLY WAVE: Dwarf Hunter leaning cheerfully forward waving both fingerless-gloved hands brightly in a warm friendly greeting emote, radiant cozy rosy-cheeked smile with bright friendly amber eyes and cute twinkling sparkles! Guardrail: fair skin, forest-green fur-trimmed ranger hood, orange braided chin-pigtails, wooden-and-steel blunderbuss slung peacefully across back (Clean Hand). ZERO text/letters in art.",
+      "tail_target": "center",
+      "bubble_side": "center",
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 3,
+      "aspect_ratio": "auto",
+      "layout_slot": "panel",
+      "act_number": 1,
+      "panel_index": 3,
+      "characters": [
+        "타우렌 드루이드"
+      ],
+      "speaker": "타우렌 드루이드",
+      "dialogue": "히잉… 얼라 고렙이 인사해…",
+      "wordless": false,
+      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom; keep strictly inside Panel 3!). NERVOUS SIDE-PROFILE SCURRY CLOSE-UP: lowbie Tauren Druid hugging a plump rolled-up cozy plaid sleeping bag tightly to her chest, glancing apprehensively sideways with shimmering round timid brown eyes, trembling shoulders and floating nervous sweatdrops! Guardrail: fair skin, FLUFFY SOLID WARM-BROWN PLUSH TAUREN COW HOOD (solid warm chestnut brown plush fur matching assets/turnarounds/tauren_druid.jpg — NEVER white dairy-cow spots!) with curved ivory horns & golden nose ring, leafy green shoulder mantle, wooden druid staff stowed diagonally on back (Clean Hand). ZERO text/letters in art.",
+      "tail_target": "center",
+      "bubble_side": "center",
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 4,
+      "aspect_ratio": "auto",
+      "layout_slot": "panel",
+      "act_number": 2,
+      "panel_index": 1,
+      "characters": [
+        "오크 전사"
+      ],
+      "speaker": "오크 전사",
+      "dialogue": "말 섞지 말고 쌩까고 가!\n침낭퀘 빨리 끝내야지~!",
+      "wordless": false,
+      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (ENTIRE RIGHT 54% x=46%..100% MUST BE 100% EMPTY PURE #FFFFFF WHITE for right bubble! Keep full character strictly inside left 42% and inside Panel 1 — ZERO spillover into Panel 2!). COCKY SWAGGERING STRIDE: positioned on left 42% (x=24%), lowbie Orc Warrior tilting her chin high with a breezy cocky fang smirk and dismissive wave of one hand, marching straight ahead with a rolled-up cozy sleeping bag strapped over her red cape! Guardrail: fair skin (NEVER green skin!), green plush orc hood, battle axe stowed on back (Clean Hand). ZERO text/letters in art.",
+      "tail_target": "left",
+      "bubble_side": "right",
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 5,
+      "aspect_ratio": "auto",
+      "layout_slot": "panel",
+      "act_number": 2,
+      "panel_index": 2,
+      "characters": [
+        "타우렌 드루이드",
+        "오크 전사"
+      ],
+      "speaker": "타우렌 드루이드",
+      "dialogue": "우웅… 그냥 지나가도 돼…?",
+      "wordless": false,
+      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (STRICTLY ZERO stone floor strip, ZERO ground box — ONLY the two scurrying characters and tiny comic dust/wind swirls directly on 100% PURE BLANK #FFFFFF WHITE! ENTIRE LEFT 48% x=0%..48% MUST BE 100% EMPTY PURE #FFFFFF WHITE for left bubble! Keep BOTH figures compact strictly inside RIGHT 48% x=50%..98% and strictly inside Panel 2 — ZERO spillover into Panels 1 or 3!). BACK-VIEW HURRIED SCURRY: mid-right (x=62%), Tauren Druid (solid warm-brown plush cow hood) scurrying nervously rightward clutching her rolled sleeping bag, peeking anxiously back over her leafy shoulder with tiny sweatdrops (staff stowed on back); far right (x=86%), Orc Warrior briskly marching ahead rightward ignoring everything with tiny cartoon dust puffs under their boots! ZERO text/letters in art.",
+      "tail_target": "left",
+      "bubble_side": null,
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
       "item_tooltip": null
     },
     {
       "cut_index": 6,
-      "aspect_ratio": "16:9",
-      "layout_slot": "bottom",
+      "aspect_ratio": "auto",
+      "layout_slot": "panel",
+      "act_number": 2,
+      "panel_index": 3,
+      "characters": [
+        "드워프 사냥꾼"
+      ],
+      "speaker": "드워프 사냥꾼",
+      "dialogue": "…어라? 인사를 씹었네?",
+      "wordless": false,
+      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND EVERYWHERE BEHIND HER (STRICTLY ZERO dark/black square background box, ZERO grey/black wall behind her hood — ONLY the character directly on 100% PURE BLANK #FFFFFF WHITE! ENTIRE LEFT 54% x=0%..54% MUST BE 100% EMPTY PURE #FFFFFF WHITE for left 1-line bubble! Keep compact bust strictly inside right 42% and inside Panel 3 — ZERO spillover into Panel 2!). EXTREME FISHEYE CLOSE-UP DARK SWITCH: positioned on right 42% (x=76%), Dwarf Hunter snapping instantly from cozy friendliness to chilling calm — heavy dark manga gloom shading ONLY across her own forehead skin under her bangs, warm amber pupils shrinking to razor-sharp glowing pinpoints, chillingly calm half-smile as her gloved hand slowly swings her gleaming wooden-and-steel Dwarf blunderbuss barrel into view with an ominous gleam! Guardrail: fair skin, forest-green fur hood, ONLY two thick orange side braids wrapping gently under chin (ZERO mustache, ZERO 3rd middle braid!). ZERO text/letters in art.",
+      "tail_target": "right",
+      "bubble_side": "left",
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 7,
+      "aspect_ratio": "auto",
+      "layout_slot": "panel",
+      "act_number": 3,
+      "panel_index": 1,
+      "characters": [
+        "드워프 사냥꾼"
+      ],
+      "speaker": "드워프 사냥꾼",
+      "dialogue": "/무릎 /경례 도 없고…\n예절 교육 좀 받아야겠네~",
+      "wordless": false,
+      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom; keep strictly inside Panel 1!). 30-DEGREE DUTCH TILT SLAPSTICK SHOT: Dwarf Hunter lunging dynamically forward aiming her chunky wooden-and-steel Dwarf blunderbuss rifle smoothly to the right, beaming with a terrifyingly serene closed-eye enlightened Buddha smile (`^‿^`) while crisp golden cartoon star-sparks & puffy comic smoke burst playfully from the barrel (100% cute non-gore cartoon boom!). Guardrail: fair skin, forest-green fur hood, thick orange braided pigtails. ZERO text/letters in art.",
+      "tail_target": "center",
+      "bubble_side": "center",
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 8,
+      "aspect_ratio": "auto",
+      "layout_slot": "panel",
+      "act_number": 3,
+      "panel_index": 2,
+      "characters": [
+        "오크 전사"
+      ],
+      "speaker": "오크 전사",
+      "dialogue": "으아앙!! 한 방에 녹잖아!!",
+      "wordless": false,
+      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom; keep strictly inside Panel 2!). DIZZYING BIRD'S-EYE TOP-DOWN SLAPSTICK LAUNCH: lowbie Orc Warrior tumbling comically head-over-heels mid-air with giant spinning spiral eyes, jaw dropped wide open screaming, puffy cartoon soot-clouds and golden comic stars orbiting her orc plush hood as her rolled plaid sleeping bag flies hilariously out of her pack! Guardrail: fair skin (NEVER green skin!), green orc hood, axe stowed on back. ZERO text/letters in art.",
+      "tail_target": "center",
+      "bubble_side": "center",
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 9,
+      "aspect_ratio": "auto",
+      "layout_slot": "panel",
+      "act_number": 3,
+      "panel_index": 3,
+      "characters": [
+        "타우렌 드루이드",
+        "드워프 사냥꾼"
+      ],
+      "speaker": "타우렌 드루이드",
+      "dialogue": "으아앙!! 나도 인사할게!!\n/인사 /경례 다 누를게에!!",
+      "wordless": false,
+      "visual_prompt": "TIER 2 FULL-WIDTH THANDOL SPAN STONE BRIDGE CORRIDOR + 100% PURE #FFFFFF UPPER SKY across top 38% (y=0%..38% completely empty pure #FFFFFF headroom for left bubble!). Warm brown cobblestone bridge roadway and chunky riveted beige dwarven pillars anchored flush along bottom & sides (0 floating islands!). WILD SLAPSTICK CHASE CHAOS: lower-left (x=28%), lowbie Tauren Druid tumbling flat face-first on the stones waving both hands frantically in panicked bows/salutes with twin comical waterfall tears, jaw-dropped crying panic and rolled sleeping bag bouncing beside her (staff stowed on back); lower-right (x=72%), Dwarf Hunter's chubby fluffy brown Bear Pet playfully swatting an extra cartoon fleeing Horde lowbie into puffy comic dust stars while Dwarf Hunter strolls calmly behind reloading her blunderbuss with a serene cozy grin! ZERO text/letters in art; keep strictly inside Panel 3.",
+      "tail_target": "center",
+      "bubble_side": "left",
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 10,
+      "aspect_ratio": "auto",
+      "layout_slot": "panel",
+      "act_number": 4,
+      "panel_index": 1,
+      "characters": [
+        "드워프 사냥꾼"
+      ],
+      "speaker": "드워프 사냥꾼",
+      "dialogue": "어휴~ 다 정리됐네~",
+      "wordless": false,
+      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (ENTIRE LEFT 54% x=0%..54% MUST BE 100% EMPTY PURE #FFFFFF WHITE for left 1-line bubble! Keep character strictly inside right 42% and inside Panel 1!). CLEAN HAND SINGLE WEAPON RULE: she holds ONLY ONE blunderbuss rifle in her hands — STRICTLY ZERO second duplicate gun or barrel strapped on her back! CALM SIDE-PROFILE SMOKE-BLOW: positioned on right 42% (x=76%), Dwarf Hunter tilting her SINGLE wooden-and-steel blunderbuss upward to blow one dainty curly wisp of white comic smoke off the barrel tip with relaxed sleepy half-lidded eyes and a satisfied little puff! Guardrail: fair skin, forest-green fur hood, orange braided chin-pigtails, EMPTY back cape (0 second rifle on back!). ZERO text/letters in art.",
+      "tail_target": "right",
+      "bubble_side": "left",
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 11,
+      "aspect_ratio": "auto",
+      "layout_slot": "panel",
+      "act_number": 4,
+      "panel_index": 2,
+      "characters": [
+        "드워프 사냥꾼",
+        "오크 전사"
+      ],
+      "speaker": null,
+      "dialogue": null,
+      "wordless": true,
+      "visual_prompt": "TIER 2 WORDLESS CLIMAX FREEZE-FRAME RECREATING THE ORIGINAL THANDOL SPAN SCREENSHOT + 100% PURE #FFFFFF UPPER SKY (ZERO text, ZERO speech bubbles, ZERO blood or gore — 100% cute cartoon slapstick!). Deep corridor perspective looking straight down WoW's Thandol Span stone bridge passage: broad warm brown irregular cobblestone bridge roadway anchored flush edge-to-edge along entire bottom & side borders, chunky beige-tan dwarven stone pillars studded with dark iron bolts lining left and right walls, wooden supply crate corner on far bottom-right edge, upper 42% pure #FFFFFF sky above the bridge arches! SCATTERED ACROSS THE BROWN COBBLESTONES (faithful to the original screenshot!): 5 to 6 sprawled cartoon chibi Horde lowbies knocked out completely flat face-down and starfish-flopped across the bridge stones with comical swirling dizzy stars, cute tiny cartoon white bone-crossbone doodles, and adorable translucent pale-cyan mini chibi ghost souls drifting peacefully upward — including Orc Warrior (MUST wear her vibrant green plush orc monster hood with curved cream horns & piggy snout matching assets/turnarounds/orc_warrior.jpg!) sprawled flat knocked-out on her unrolled plaid sleeping bag in center corridor, a cute knocked-out chibi Tauren Druid flopped in lower-left with dizzy spiral/X eyes (CRITICAL IDENTITY GUARDRAIL: golden cow nose ring ONLY on the plush brown cow hood snout above her forehead — STRICTLY bare cute human girl nose & dizzy open mouth with ZERO ring on her human face/mouth!), and 3 extra tiny cartoon chibi Horde lowbies (troll, undead, orc) sprawled down the road! Standing calmly in foreground right (x=82%), Alliance Dwarf Hunter rests both hands proudly on her hips (blunderbuss slung peacefully across her back, Clean Hand) admiring the quiet bridge with a completely serene, blissful closed-eye Buddha smile and one tiny cozy floating musical note! Keep strictly inside Panel 2.",
+      "tail_target": "center",
+      "bubble_side": null,
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 12,
+      "aspect_ratio": "auto",
+      "layout_slot": "panel",
+      "act_number": 5,
+      "panel_index": 1,
+      "characters": [
+        "드워프 사냥꾼",
+        "오크 전사"
+      ],
+      "speaker": "드워프 사냥꾼",
+      "dialogue": "인사만 받아줬어도 무사히\n침낭퀘 하고 지나갔을 거다~",
+      "wordless": false,
+      "visual_prompt": "TIER 2 FULL-WIDTH THANDOL SPAN COBBLESTONES + 100% PURE #FFFFFF UPPER SKY across top 36% (y=0%..36% completely empty pure #FFFFFF headroom for right bubble!; open borderless top panel so softly feather the outer left/right stone floor edges cleanly into pure #FFFFFF white!). LOW-ANGLE COZY LECTURE: foreground right (x=72%), Dwarf Hunter crouching casually on one knee holding her rustic carved wooden bowl of popcorn with gentle half-lidded cozy amber eyes, lecturing calmly with one wagging finger (blunderbuss slung on back, Clean Hand); foreground left (x=28%), the glowing translucent pale-cyan GHOST SPIRIT of lowbie Orc Warrior hovering stiffly mid-air trembling with giant blank shock eyes and chattering teeth clutching a clearly drawn ROLLED CYLINDRICAL PLAID CAMPING BEDROLL / SLEEPING BAG TIED WITH TWO LEATHER STRAPS under her arm (an inanimate rolled-up plaid blanket cylinder ONLY — STRICTLY ZERO baby, ZERO face, ZERO eyes on the sleeping bag!). ZERO text/letters in art; keep strictly inside Panel 1.",
+      "tail_target": "right",
+      "bubble_side": "right",
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 13,
+      "aspect_ratio": "auto",
+      "layout_slot": "panel",
+      "act_number": 5,
+      "panel_index": 2,
       "characters": [
         "드워프 사냥꾼",
         "타우렌 드루이드"
       ],
       "speaker": "드워프 사냥꾼",
-      "dialogue": "근데 인사를\n안 받아줬잖아?\n/인사~♪",
+      "dialogue": "근데 인사를 안 받아줬잖아?\n자, 다시~ /인사♪",
       "wordless": false,
-      "visual_prompt": "Back-view shot seen from behind of the Dwarf Hunter girl on the left half of the wide 16:9 frame strolling jauntily away down the cobblestone vignette (wooden blunderbuss slung on her back), turning her head back over her shoulder with a bright cheeky closed-eye wink and waving goodbye playfully with cheerful musical sparkles; behind her in the lower-center-left lies the knocked-out Tauren Druid girl (cow hood, swirling dizzy spiral eyes, soul-puff drifting up) sprawled beside two comical fallen lowbie chibi extras and a rolled bedroll (cute cartoon slapstick, zero gore). Leave the entire right 46% completely empty pure #FFFFFF white space for the speech bubble. 100% pure solid #FFFFFF white outer background, zero text, zero UI.",
-      "tail_target": "left",
+      "visual_prompt": "TIER 2 FULL-WIDTH EDGE-TO-EDGE LOW-HORIZON THANDOL SPAN BRIDGE COBBLESTONES + MASSIVE 100% EMPTY PURE #FFFFFF WHITE SKY ACROSS ENTIRE UPPER HALF (y=0%..48% MUST BE 100% COMPLETELY BLANK PURE #FFFFFF WHITE FROM x=0% TO x=100% — ZERO hair, ZERO notes, ZERO stone pillars rising above y=48%! That guarantees full 1:1 edge-to-edge panel width with ZERO side shrinkage!). CRITICAL FLOOR RULE: flat warm brown irregular bridge cobblestones & very low ankle-high stone edge trim MUST span 100% FLUSH EDGE-TO-EDGE from far LEFT black border (x=0%) all the way to far RIGHT black border (x=100%) along y=76%..100% (ZERO tall stone walls/pillars, ZERO centered floor cutouts!). COMPACT OVER-THE-SHOULDER FINALE GAG strictly below y=48%..100%: lower-left (x=28%, compact below y=50%), the glowing translucent pale-cyan GHOST SPIRIT of lowbie Tauren Druid (solid brown cow hood silhouette, alongside tiny pale-cyan ghost Orc Warrior beside her) frantically spamming deep stiff 90-degree panicked bows & salutes gushing twin comic waterfall ghost-tears; lower-right foreground (x=72%, compact crouching/waving strictly below y=48%), Dwarf Hunter beaming with a dazzlingly bright cheeky closed-eye smile (`≧▽≦`), waving one tiny hand playfully back at the bowing ghosts with tiny musical notes tucked strictly beside her cheek below y=48%! Guardrail: fair skin, forest-green fur hood, ONLY two thick orange side braids (ZERO mustache, ZERO 3rd middle braid!), blunderbuss slung across back (Clean Hand). ZERO text/letters in art; keep strictly inside Panel 2.",
+      "tail_target": "right",
+      "bubble_side": "right",
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
       "item_tooltip": null
     }
   ]

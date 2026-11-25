@@ -3,94 +3,615 @@
   "source_post_no": "109167",
   "source_title": "내가 징기로 골드 버는 법 공유함",
   "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=109167&exception_mode=recommend&page=1",
-  "subtitle": "징기의 부특 읍소 루팅으로 던전당 10골드 — 양심(?) 골드 파밍 상황극",
+  "subtitle": "전탱 살펴보기·아틀라스룻 치밀 설계 → 부특 읍소 루팅 → 상점 직행 9골 95실 대참사 — 5막 14컷",
+  "layout_mode": "v4_five_act",
+  "background_style": "clean_white",
+  "acts": [
+    {
+      "act_number": 1,
+      "act_title": "1막: 던전 입장! 징기의 수상한 살펴보기와 아틀라스룻 작전",
+      "layout_id": "open_top_split_bottom",
+      "cuts": [
+        {
+          "cut_index": 1,
+          "aspect_ratio": "auto",
+          "layout_slot": "top",
+          "act_number": 1,
+          "panel_index": 1,
+          "characters": [
+            "오크 전사",
+            "언데드 성기사"
+          ],
+          "speaker": "언데드 성기사",
+          "dialogue": "…전탱님 살펴보기 끝.\n안 쓰는 부위, 딱 체크했다…",
+          "wordless": false,
+          "visual_prompt": "TIER 1 FULL-BLEED CLASSIC WOW DUNGEON ESTABLISHING SHOT inside solid black box frame (edge-to-edge full scenery, outer page margins & gutter below pure #FFFFFF). Sweeping wide cinematic dungeon interior of a torchlit stone fortress cathedral corridor (Scarlet Monastery / Scholomance vibe): warm flickering wall torches, arched gothic stone pillars, shadowy armored skeleton mobs patrolling far down the stone hallway, and dark open vaulted stone ceiling filling the ENTIRE upper-right headroom (x=42%..96%, y=0%..36% completely uncluttered open vaulted ceiling — keep characters below y=36%!). DYNAMIC ACTING: on lower-left foreground (x=28%), Orc Warrior girl (Protection Tank — MUST hold a chunky one-handed steel sword AND a sturdy steel kite shield, NEVER a two-handed axe! Fair peach-ivory skin!) marches eagerly ahead in 3/4 back-side stride puffing out her chest with a bold fang grin. On lower-right foreground (x=72%), Undead Paladin girl (fair skin, white skull cap, silver bob, chunky golden warhammer stowed diagonally on back — Clean Hand!) leans sneakily sideways peering through a tiny gleaming spyglass while holding open a thick leather AtlasLoot tome with half-lidded scheming golden eyes and a faint sly grin. STRICTLY ZERO text, letters, or numbers inside artwork!",
+          "tail_target": "right",
+          "bubble_side": "right",
+          "full_bleed_bg": true,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
+          "item_tooltip": null
+        },
+        {
+          "cut_index": 2,
+          "aspect_ratio": "auto",
+          "layout_slot": "panel",
+          "act_number": 1,
+          "panel_index": 2,
+          "characters": [
+            "오크 전사"
+          ],
+          "speaker": "오크 전사",
+          "dialogue": "전탱만 믿으라구~!",
+          "wordless": false,
+          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom for 1-line bubble; keep all horns, weapon, shield & boots strictly inside Panel 2's black borders!). BOLD LOW-ANGLE HEROIC BOAST: Orc Warrior girl (fair peach-ivory skin, vibrant green orc hood, jet-black ponytail) striking a super proud chest-out Protection Tank pose — resting a sturdy steel kite shield confidently on her forearm and tapping her one-handed steel sword lightly against her shoulder (NEVER a two-handed axe!), flashing a dazzling toothy fang belly-laugh with sparkly confident star eyes and radiating energetic comic gleam sparkles directly on pure #FFFFFF white. ZERO text or letters!",
+          "tail_target": "center",
+          "bubble_side": "center",
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
+          "item_tooltip": null
+        },
+        {
+          "cut_index": 3,
+          "aspect_ratio": "auto",
+          "layout_slot": "panel",
+          "act_number": 1,
+          "panel_index": 3,
+          "characters": [
+            "언데드 성기사"
+          ],
+          "speaker": "언데드 성기사",
+          "dialogue": "…응, 믿어.\n특히 방패 상점가를…",
+          "wordless": false,
+          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom for 2-line bubble; strictly contain inside Panel 3 borders!). DRAMATIC 25-DEGREE DUTCH-TILT EXTREME CLOSE-UP on Undead Paladin girl (fair skin, white skull cap, silver bob, golden warhammer stowed on back — Clean Hand!) hunched over an open thick brown leather loot-table book (drawing ONLY tiny colorful weapon/shield icon doodles on the pages — ZERO letters or numbers!), pushing a gleaming brass monocle/glasses tint with one fingertip as sly half-lidded golden eyes glint with tiny shiny golden coin reflections and a deadpan scheming smirk, dark calculating manga shade across her brow!",
+          "tail_target": "center",
+          "bubble_side": "center",
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
+          "item_tooltip": null
+        }
+      ]
+    },
+    {
+      "act_number": 2,
+      "act_title": "2막: 최소한의 양심! 캐스터 무기 1차 읍소 대성공",
+      "layout_id": "four_beat_gag",
+      "cuts": [
+        {
+          "cut_index": 4,
+          "aspect_ratio": "auto",
+          "layout_slot": "panel",
+          "act_number": 2,
+          "panel_index": 1,
+          "characters": [
+            "언데드 성기사"
+          ],
+          "speaker": "언데드 성기사",
+          "dialogue": "…아무도 입찰 안 하네?",
+          "wordless": false,
+          "visual_prompt": "TIER 2 NATURAL FULL-WIDTH DUNGEON STONE FLOOR + 100% PURE #FFFFFF SKY across top 38% (y=0%..38% completely empty pure #FFFFFF headroom for 1-line bubble; cracked medieval dungeon flagstones flush edge-to-edge against bottom, left & right inner black borders — ZERO floating islands, ZERO spillover!). HIGH-ANGLE TOP-DOWN PERSPECTIVE looking down at a defeated cartoon skeletal mage boss collapsed flat on the dungeon stones in dizzy swirling stars & smoke puffs, dropping a dazzling sky-blue glowing crystal Caster Staff on the flagstones! Beside the loot, Undead Paladin girl (fair skin, warhammer stowed on back — Clean Hand!) stands calmly in 3/4 side view with arms folded neatly, leaning forward slightly with calculating half-lidded golden eyes checking that nobody else reaches for it. ZERO text or letters!",
+          "tail_target": "center",
+          "bubble_side": "center",
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
+          "item_tooltip": null
+        },
+        {
+          "cut_index": 5,
+          "aspect_ratio": "auto",
+          "layout_slot": "panel",
+          "act_number": 2,
+          "panel_index": 2,
+          "characters": [
+            "언데드 성기사"
+          ],
+          "speaker": "언데드 성기사",
+          "dialogue": "저기… 혹시 힐템으로\n먹어도 될까요…?",
+          "wordless": false,
+          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom for 2-line bubble; keep inside Panel 2 borders!). HILARIOUS EXTREME CLOSE-UP ACTING SHIFT: Undead Paladin girl (fair skin, white skull cap, silver bob, golden warhammer stowed on back — Clean Hand!) suddenly puts on the most absurdly over-the-top FAKE pitiful saintly puppy-dog expression — both white-gauntleted hands clasped pleadingly right under her chin, shoulders hunched shyly, giant shimmering watery golden anime puppy eyes glistening with fake sparkly teardrops, soft blushing cheeks, and floating pastel flower-sparkle comic fluff around her cheeks (pure hilarious acting contrast!). ZERO text!",
+          "tail_target": "center",
+          "bubble_side": "center",
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
+          "item_tooltip": null
+        },
+        {
+          "cut_index": 6,
+          "aspect_ratio": "auto",
+          "layout_slot": "panel",
+          "act_number": 2,
+          "panel_index": 3,
+          "characters": [
+            "나이트엘프 사제"
+          ],
+          "speaker": "나이트엘프 사제",
+          "dialogue": "신기 준비세요?\n당연히 드세요~♡",
+          "wordless": false,
+          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom for 2-line bubble; keep inside Panel 3 borders!). WARM LOW-ANGLE GRACEFUL BUST SHOT: Night Elf Priestess (fair peach-ivory skin, pastel-lavender wavy half-up ponytail, golden crescent tiara, purple & gold priest vestments, golden cross staff stowed neatly on back — Clean Hand! Strictly ZERO angel halo and ZERO wings!) smiling with angelic closed-eye radiant warmth (`^‿^`), pressing one dainty palm gracefully to her rosy cheek while waving her other hand generously with tiny floating golden sparkles and cute warm heart puffs! ZERO text!",
+          "tail_target": "center",
+          "bubble_side": "center",
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
+          "item_tooltip": null
+        },
+        {
+          "cut_index": 7,
+          "aspect_ratio": "auto",
+          "layout_slot": "panel",
+          "act_number": 2,
+          "panel_index": 4,
+          "characters": [
+            "언데드 성기사"
+          ],
+          "speaker": "언데드 성기사",
+          "dialogue": "…1차 꿀통, 회수 끝.",
+          "wordless": false,
+          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom for 1-line bubble; keep inside Panel 4 borders!). SNAPPY 90-DEGREE SIDE-PROFILE ACTION GAG: Undead Paladin girl (fair skin, white skull cap, silver bob, golden warhammer stowed on back — Clean Hand!) INSTANTLY drops the fake puppy face back to dead-eyed ice-cold sleepy apathy, casually cramming the gleaming sky-blue crystal Caster Staff upside-down straight into a stuffed brown leather adventurer backpack already bulging with vendor trinkets — tiny sly satisfied blink and crisp speed swoosh lines! ZERO text!",
+          "tail_target": "center",
+          "bubble_side": "center",
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
+          "item_tooltip": null
+        }
+      ]
+    },
+    {
+      "act_number": 3,
+      "act_title": "3막: 진짜 꿀단지! 전탱 살펴보기 완료된 고가 탱템 2차 읍소",
+      "layout_id": "split_top_wide_bottom",
+      "cuts": [
+        {
+          "cut_index": 8,
+          "aspect_ratio": "auto",
+          "layout_slot": "panel",
+          "act_number": 3,
+          "panel_index": 1,
+          "characters": [
+            "오크 전사"
+          ],
+          "speaker": "오크 전사",
+          "dialogue": "오, 이거 난 이미 있는데!",
+          "wordless": false,
+          "visual_prompt": "TIER 2 NATURAL FULL-WIDTH DUNGEON STONE FLOOR + 100% PURE #FFFFFF SKY across top 38% (y=0%..38% completely empty pure #FFFFFF headroom for 1-line bubble; rugged stone boss chamber tiles flush edge-to-edge against bottom, left & right inner borders — ZERO floating islands!). OVER-THE-SHOULDER 3/4 BACK VIEW of Orc Warrior girl (Protection Tank, fair skin, green orc hood, black ponytail, carrying her one-handed steel sword AND her ALREADY-EQUIPPED gleaming steel kite shield on her arm — NEVER a 2H axe!) scratching the back of her hood casually with a breezy shrug as an ornate dungeon boss treasure chest bursts open on the stone floor in front of her, sparkling with a heavy ornate blue-and-gold Tank Shield & Plate Helm! ZERO text!",
+          "tail_target": "center",
+          "bubble_side": "center",
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
+          "item_tooltip": null
+        },
+        {
+          "cut_index": 9,
+          "aspect_ratio": "auto",
+          "layout_slot": "panel",
+          "act_number": 3,
+          "panel_index": 2,
+          "characters": [
+            "언데드 성기사"
+          ],
+          "speaker": "언데드 성기사",
+          "dialogue": "…저, 보기 부특으로\n이 탱템 먹어도 될까요 ㅠ",
+          "wordless": false,
+          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom for 2-line bubble; keep inside Panel 2 borders!). SHOWSTOPPER FISHEYE FORCED-PERSPECTIVE LUNGING CLOSE-UP! Undead Paladin girl (fair skin, white skull cap, silver bob, golden warhammer stowed on back — Clean Hand!) drops dramatically onto both knees lunging WAY forward toward the camera lens with oversized foreground clasped white gauntleted hands, cranking up MAXIMUM comical fake melodramatic begging: giant wobbling starry-watery golden eyes, quivering bottom lip, exaggerated sparkling anime tear beads flying off her eyelashes, soft rosy blush! ZERO text!",
+          "tail_target": "center",
+          "bubble_side": "center",
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
+          "item_tooltip": null
+        },
+        {
+          "cut_index": 10,
+          "aspect_ratio": "auto",
+          "layout_slot": "panel",
+          "act_number": 3,
+          "panel_index": 3,
+          "characters": [
+            "오크 전사",
+            "언데드 성기사"
+          ],
+          "speaker": "오크 전사",
+          "dialogue": "보기 준비하는구나?!\n멋지다, 당근 먹어라구~!",
+          "wordless": false,
+          "visual_prompt": "TIER 2 NATURAL FULL-WIDTH DUNGEON STONE FLOOR + MASSIVE 100% PURE #FFFFFF SKY ACROSS THE ENTIRE TOP 42%! ABSOLUTE HEIGHT CEILING: BOTH characters (including Orc Warrior's ponytail/horns and Paladin's skull cap/warhammer!) MUST stay COMPACT strictly BELOW y=42% (y=42%..100%) — the ENTIRE upper 42% (y=0%..42%, left border to right border!) MUST be 100% blank empty pure #FFFFFF sky so the panel stays full-width with ZERO shrinking! Dungeon flagstones anchored flush edge-to-edge along entire bottom, left & right black borders (ZERO floating islands!). DYNAMIC 2-CHARACTER SLAPSTICK CONTRAST: Lower-left (x=28%, compact y=44%..98%), Orc Warrior girl (Protection Tank, fair skin, sturdy steel kite shield strapped cleanly to her left forearm & one-handed sword sheathed at waist so her right hand is free!) beaming a hugely moved, fiery-eyed proud toothy grin, vigorously giving an enthusiastic thumbs-up with warm supportive sparkles! Lower-right (x=72%, compact y=44%..98%), Undead Paladin girl (warhammer stowed on back — Clean Hand!) bowing low pretending to dab a fake tear with her left hand while her right arm stealthily sweeps the heavy gleaming ornate Tank Shield and Plate Helm straight into her overflowing leather sack behind her cape, flashing a tiny sneaky `:3` cat-mouth smirk! ZERO text!",
+          "tail_target": "left",
+          "bubble_side": null,
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
+          "item_tooltip": null
+        }
+      ]
+    },
+    {
+      "act_number": 4,
+      "act_title": "4막: 던전 끝나자마자 상점 직행 — 9골 95실의 진실!",
+      "layout_id": "impact_freeze_2cut",
+      "cuts": [
+        {
+          "cut_index": 11,
+          "aspect_ratio": "auto",
+          "layout_slot": "panel",
+          "act_number": 4,
+          "panel_index": 1,
+          "characters": [
+            "언데드 성기사"
+          ],
+          "speaker": "언데드 성기사",
+          "dialogue": "…한 바퀴에 딱 9골 95실.\n역시 탱템이 달달하네…",
+          "wordless": false,
+          "visual_prompt": "TIER 2 NATURAL GROUNDED MEDIEVAL VENDOR COUNTER + 100% PURE #FFFFFF SKY ACROSS LEFT 48%! Keep the ENTIRE left 48% (x=0%..48%) 100% pure blank #FFFFFF white headroom for the left speech bubble! STRICTLY CONTAIN PANEL 1 INSIDE PANEL 1'S BLACK RECTANGLE — STOP CLEANLY AT THE WAIST/COUNTERTOP WITH ZERO LEGS, ZERO COUNTER BASE, ZERO ART CONTINUING DOWN INTO PANEL 2! FULL BOLD CHIBI SCALE MATCHING ALL OTHER PANELS: filling the right 52% (`x=46%..100%`, `y=14%..100%`) with a rustic wooden medieval vendor counter anchored 100% FLUSH to BOTH RIGHT border (`x=100%`) and BOTTOM border (`y=100%`) — ZERO wooden roof overhanging top! Standing bold waist-up (`x=64%`, `y=14%..100%`) in 3/4 side-profile facing right: Undead Paladin girl (fair skin, round white skull cap, silver bob, ONE single golden warhammer stowed on back — Clean Hand!) lazily dumping the gleaming blue crystal Caster Staff and ornate Tank Shield & Plate Helm onto the counter while snagging a FAT bulging brown leather coin pouch bursting with sparkling GOLD, SILVER, and COPPER coins from the large wide-eyed green cartoon Goblin merchant NPC behind the right counter (`x=88%`, flush to right edge!) — serene sleepy half-lidded blissful smirk! ZERO text, digits, or bills!",
+          "tail_target": "right",
+          "bubble_side": "left",
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
+          "item_tooltip": null
+        },
+        {
+          "cut_index": 12,
+          "aspect_ratio": "auto",
+          "layout_slot": "panel",
+          "act_number": 4,
+          "panel_index": 2,
+          "characters": [
+            "오크 전사",
+            "나이트엘프 사제"
+          ],
+          "speaker": null,
+          "dialogue": null,
+          "wordless": true,
+          "visual_prompt": "TIER 2 WORDLESS CLIMAX FREEZE-FRAME — ONE SINGLE UNIFIED GIANT PANEL (STRICTLY ZERO INTERNAL HORIZONTAL SPLIT LINES, ZERO SUB-PANELS, ZERO PALADIN LEGS FROM PANEL 1, AND 100% PURE SOLID #FFFFFF WHITE UPPER SKY ABOVE THE STREET — STRICTLY ZERO BLUE SKY OR CLOUDS!). ZERO text, ZERO speech bubbles! Weathered village cobblestone street anchored flush edge-to-edge along entire bottom & side black borders (low buildings/vendor stall strictly along lower-left and lower-right edges so the upper sky is 100% PURE SOLID #FFFFFF WHITE!); on far right edge (x=82%..100%), the wooden vendor shop stall's open bargain junk barrel clearly displays the gleaming blue crystal Caster Staff and heavy ornate Tank Shield sticking straight out of the vendor's scrap pile, with a tiny back-view silhouette of the Undead Paladin casually walking away behind the stall jingling her coin pouch! SHOWSTOPPER DUAL-SHOCK CLIMAX dominating foreground left & center: on lower-left (x=30%), Orc Warrior girl (Protection Tank, fair peach-ivory skin, one-handed steel sword & steel kite shield sagging limply at her sides) FROZEN IN SHATTERING BETRAYAL HORROR — dark-indigo vertical dread lines over fair skin, jaw unhinged dropped to her chest, giant blank white shock eyes, twin geyser waterfall tears, and a hilarious translucent mini-soul drifting halfway out of her open mouth! Right beside her at center (x=62%), Night Elf Priestess (fair peach-ivory skin, lavender half-up ponytail, golden crescent tiara, vibrant royal-purple & gold short capelet, purple pleated mini-skirt, white knee-high stockings, mini Holy Book & golden Rosary at waist, golden cross staff stowed on back, strictly 0 halos/wings) FROZEN IN CHILLING PINPOINT-PUPIL '맑눈광' RAGE — heavy dark manga gloom shadow across her forehead, glowing silver-white eyes shrunk to terrifying razor pinpoints, dark-violet villain aura flaring ominously behind her shoulders into pure #FFFFFF white as her trembling hands SNAP a small corked glass healing flask cork clean in two!",
+          "tail_target": "center",
+          "bubble_side": null,
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
+          "item_tooltip": null
+        }
+      ]
+    },
+    {
+      "act_number": 5,
+      "act_title": "5막: 뻔뻔한 최소한의 양심과 힐러의 서늘한 선고",
+      "layout_id": "diagonal_tempo_2cut",
+      "cuts": [
+        {
+          "cut_index": 13,
+          "aspect_ratio": "auto",
+          "layout_slot": "top",
+          "act_number": 5,
+          "panel_index": 1,
+          "characters": [
+            "오크 전사",
+            "언데드 성기사"
+          ],
+          "speaker": "언데드 성기사",
+          "dialogue": "…흥, 왜 그래.\n말없이 안 먹고 물어봤잖아…",
+          "wordless": false,
+          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF BORDERLESS OPEN WHITE REACTION BACKGROUND EVERYWHERE (top 38% y=0%..38% completely empty pure #FFFFFF headroom for right bubble; STRICTLY ZERO diagonal black lines, ZERO horizontal divider borders, ZERO drawn panel frames inside Panel 1!). DYNAMIC OVER-THE-SHOULDER BACK-VIEW CONFRONTATION: in lower-left foreground (x=24%), the back/shoulder of Orc Warrior girl's green horned orc hood trembling violently with steaming red anime anger puffs & throbbing crimson anger-vein marks as she shakes her clenched fist accusingly — carrying ONLY her sturdy steel kite shield on her left arm and one-handed steel sword at her waist (STRICTLY ZERO two-handed battle axe on her back!). On lower-right midground (x=70%), Undead Paladin girl (fair skin, white skull cap, silver bob, ONE single golden warhammer stowed diagonally on back — Clean Hand!) glances lazily back over her white-and-gold cape holding up her fat gleaming brown leather coin pouch bursting with gold coins, giving a completely shameless half-lidded sleepy shrug with puffed blushing tsundere cheeks and zero remorse! ZERO text or letters!",
+          "tail_target": "right",
+          "bubble_side": "right",
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
+          "item_tooltip": null
+        },
+        {
+          "cut_index": 14,
+          "aspect_ratio": "auto",
+          "layout_slot": "panel",
+          "act_number": 5,
+          "panel_index": 2,
+          "characters": [
+            "나이트엘프 사제",
+            "언데드 성기사"
+          ],
+          "speaker": "나이트엘프 사제",
+          "dialogue": "다음 던전엔 힐 없어요~♡",
+          "wordless": false,
+          "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND EVERYWHERE (STRICTLY ZERO cobblestone floor, ZERO ground strip, ZERO horizon — pure blank #FFFFFF white across the entire top 38% and around both characters!). HILARIOUS LOW-ANGLE GAP-MOE FINALE: Lower-left (x=28%, below y=38%), Night Elf Priestess — STRICTLY MATCH `assets/turnarounds/nightelf_priest.jpg` 100%: fair peach-ivory skin, pastel-lavender half-up ponytail, GOLDEN Elune crescent forehead tiara, vibrant ROYAL-PURPLE & GOLD short Priestess shoulder capelet over crisp white blouse, ROYAL-PURPLE & GOLD pleated mini-skirt, brown leather waist belt with white-and-gold mini Holy Prayer Book on left hip & draping golden beaded Rosary on right hip, PURE-WHITE knee-high stockings, royal-purple & gold Priest boots, ONE intact golden Holy Cross staff stowed diagonally on her back (Clean Hand! NEVER split into two sticks!), strictly 0 halos/wings! Stepping boldly forward with a terrifyingly sweet closed-eye saintly smile (`^‿^`) while one razor-sharp glowing silver-white glint peeks lethally beneath her brow, compact menacing dark-violet chibi villain aura tapering softly into pure #FFFFFF white! Lower-right (x=72%, below y=38%), Undead Paladin girl — MUST WEAR HER SIGNATURE ROUND PURE-WHITE CARTOON SKULL CAP WITH TWO DARK EYE SOCKETS ON HER HEAD matching `assets/turnarounds/undead_paladin.jpg` (STRICTLY NEVER bare hair, ZERO hairpins/hairclips!), silver-white bob, white-and-gold paladin cape & skirt, ONE single golden warhammer head stowed neatly on her back — suddenly leaping backward in comical panic dropping spinning gold coins from her leather pouch with wide popped golden eyes, cold anime sweatdrops, and flustered stammering blush! ZERO text!",
+          "tail_target": "left",
+          "bubble_side": null,
+          "full_bleed_bg": false,
+          "speaker_anchor_xy": null,
+          "bubble_center_xy": null,
+          "item_tooltip": null
+        }
+      ]
+    }
+  ],
   "cuts": [
     {
       "cut_index": 1,
-      "aspect_ratio": "4:3",
+      "aspect_ratio": "auto",
       "layout_slot": "top",
+      "act_number": 1,
+      "panel_index": 1,
       "characters": [
-        "언데드 성기사",
-        "나이트엘프 사제"
+        "오크 전사",
+        "언데드 성기사"
       ],
       "speaker": "언데드 성기사",
-      "dialogue": "아무도 입찰 안 하면…\n힐템으로 써도\n될까요?",
+      "dialogue": "…전탱님 살펴보기 끝.\n안 쓰는 부위, 딱 체크했다…",
       "wordless": false,
-      "visual_prompt": "Over-the-shoulder (OTS) diagonal shot from behind the mooncloth cowl and pointed ears of the Night Elf Priest in foreground-right. Looking toward the Undead Paladin girl on the left (ragged cowl, grey skin, gold eyes, black-and-gold plate armor) who is kneeling on one knee, clasping her hands beneath her chin with enormous shimmering puppy-dog anime eyes and waterfall tears, pleading desperately for the dropped healer cloth gear hovering on a stone pedestal. Holy hammer sheathed at her hip. Lower two-thirds framing, top 35% pure white (#FFFFFF) headroom. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
-      "tail_target": "left",
+      "visual_prompt": "TIER 1 FULL-BLEED CLASSIC WOW DUNGEON ESTABLISHING SHOT inside solid black box frame (edge-to-edge full scenery, outer page margins & gutter below pure #FFFFFF). Sweeping wide cinematic dungeon interior of a torchlit stone fortress cathedral corridor (Scarlet Monastery / Scholomance vibe): warm flickering wall torches, arched gothic stone pillars, shadowy armored skeleton mobs patrolling far down the stone hallway, and dark open vaulted stone ceiling filling the ENTIRE upper-right headroom (x=42%..96%, y=0%..36% completely uncluttered open vaulted ceiling — keep characters below y=36%!). DYNAMIC ACTING: on lower-left foreground (x=28%), Orc Warrior girl (Protection Tank — MUST hold a chunky one-handed steel sword AND a sturdy steel kite shield, NEVER a two-handed axe! Fair peach-ivory skin!) marches eagerly ahead in 3/4 back-side stride puffing out her chest with a bold fang grin. On lower-right foreground (x=72%), Undead Paladin girl (fair skin, white skull cap, silver bob, chunky golden warhammer stowed diagonally on back — Clean Hand!) leans sneakily sideways peering through a tiny gleaming spyglass while holding open a thick leather AtlasLoot tome with half-lidded scheming golden eyes and a faint sly grin. STRICTLY ZERO text, letters, or numbers inside artwork!",
+      "tail_target": "right",
+      "bubble_side": "right",
+      "full_bleed_bg": true,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
       "item_tooltip": null
     },
     {
       "cut_index": 2,
-      "aspect_ratio": "16:9",
-      "layout_slot": "bottom",
+      "aspect_ratio": "auto",
+      "layout_slot": "panel",
+      "act_number": 1,
+      "panel_index": 2,
       "characters": [
-        "언데드 성기사"
+        "오크 전사"
       ],
-      "speaker": "언데드 성기사",
-      "dialogue": "진짜 꿀단지는 탱템.\n전탱님 안 쓰는 부위\n미리 다 조사해 뒀지.",
+      "speaker": "오크 전사",
+      "dialogue": "전탱만 믿으라구~!",
       "wordless": false,
-      "visual_prompt": "Low-angle shot looking up at the Undead Paladin girl on the right half, grinning with a sinister vampire-like sneer and glowing yellow eyes. She holds a small leather-bound notepad and charcoal pencil, flipping through detailed armor checklists, her heavy holy hammer resting against her waist. Positioned cleanly on the right half, leaving generous pure white (#FFFFFF) space across the left 48% for dialogue bubble. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
-      "tail_target": "right",
+      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom for 1-line bubble; keep all horns, weapon, shield & boots strictly inside Panel 2's black borders!). BOLD LOW-ANGLE HEROIC BOAST: Orc Warrior girl (fair peach-ivory skin, vibrant green orc hood, jet-black ponytail) striking a super proud chest-out Protection Tank pose — resting a sturdy steel kite shield confidently on her forearm and tapping her one-handed steel sword lightly against her shoulder (NEVER a two-handed axe!), flashing a dazzling toothy fang belly-laugh with sparkly confident star eyes and radiating energetic comic gleam sparkles directly on pure #FFFFFF white. ZERO text or letters!",
+      "tail_target": "center",
+      "bubble_side": "center",
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
       "item_tooltip": null
     },
     {
       "cut_index": 3,
-      "aspect_ratio": "4:3",
-      "layout_slot": "top",
-      "characters": [
-        "언데드 성기사",
-        "오크 전사"
-      ],
-      "speaker": "언데드 성기사",
-      "dialogue": "이 탱템… 부특으로\n먹어도 될까요 ㅠㅠ",
-      "wordless": false,
-      "visual_prompt": "Dutch-tilt slapstick action camera. Undead Paladin dramatically lunging down onto the floor, clutching the bottom rim of the Orc Warrior tank's sturdy steel tower shield with both hands, sobbing melodramatically with fountain anime tears. The Orc Warrior tank (holding a 1H sword and shield) flinches backward in bewildered shock with giant sweat drops popping above her helmet. Lower two-thirds framing, top 35% pure white (#FFFFFF) headroom. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
-      "tail_target": "left",
-      "item_tooltip": null
-    },
-    {
-      "cut_index": 4,
-      "aspect_ratio": "16:9",
-      "layout_slot": "bottom",
+      "aspect_ratio": "auto",
+      "layout_slot": "panel",
+      "act_number": 1,
+      "panel_index": 3,
       "characters": [
         "언데드 성기사"
       ],
       "speaker": "언데드 성기사",
-      "dialogue": "상점에 쫙 팔면\n한 바퀴에 10골드~\n징기는 꿀통이야♪",
+      "dialogue": "…응, 믿어.\n특히 방패 상점가를…",
       "wordless": false,
-      "visual_prompt": "Side-profile 90-degree action shot recreating the screenshot's vendor loot sell! Undead Paladin girl stands at a rustic wooden vendor merchant counter, gleefully dumping an armful of heavy armor and shields onto the table, while the merchant hands over a giant leather pouch bursting with gold and silver coins (nearly 10 gold!). Paladin's eyes sparkle with pure greed, hammer slung on back. Positioned on the right half, leaving generous pure white (#FFFFFF) space across left 48% for dialogue bubble. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
-      "tail_target": "right",
-      "item_tooltip": null,
-      "bubble_side": "right"
+      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom for 2-line bubble; strictly contain inside Panel 3 borders!). DRAMATIC 25-DEGREE DUTCH-TILT EXTREME CLOSE-UP on Undead Paladin girl (fair skin, white skull cap, silver bob, golden warhammer stowed on back — Clean Hand!) hunched over an open thick brown leather loot-table book (drawing ONLY tiny colorful weapon/shield icon doodles on the pages — ZERO letters or numbers!), pushing a gleaming brass monocle/glasses tint with one fingertip as sly half-lidded golden eyes glint with tiny shiny golden coin reflections and a deadpan scheming smirk, dark calculating manga shade across her brow!",
+      "tail_target": "center",
+      "bubble_side": "center",
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 4,
+      "aspect_ratio": "auto",
+      "layout_slot": "panel",
+      "act_number": 2,
+      "panel_index": 1,
+      "characters": [
+        "언데드 성기사"
+      ],
+      "speaker": "언데드 성기사",
+      "dialogue": "…아무도 입찰 안 하네?",
+      "wordless": false,
+      "visual_prompt": "TIER 2 NATURAL FULL-WIDTH DUNGEON STONE FLOOR + 100% PURE #FFFFFF SKY across top 38% (y=0%..38% completely empty pure #FFFFFF headroom for 1-line bubble; cracked medieval dungeon flagstones flush edge-to-edge against bottom, left & right inner black borders — ZERO floating islands, ZERO spillover!). HIGH-ANGLE TOP-DOWN PERSPECTIVE looking down at a defeated cartoon skeletal mage boss collapsed flat on the dungeon stones in dizzy swirling stars & smoke puffs, dropping a dazzling sky-blue glowing crystal Caster Staff on the flagstones! Beside the loot, Undead Paladin girl (fair skin, warhammer stowed on back — Clean Hand!) stands calmly in 3/4 side view with arms folded neatly, leaning forward slightly with calculating half-lidded golden eyes checking that nobody else reaches for it. ZERO text or letters!",
+      "tail_target": "center",
+      "bubble_side": "center",
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
+      "item_tooltip": null
     },
     {
       "cut_index": 5,
-      "aspect_ratio": "4:3",
-      "layout_slot": "top",
+      "aspect_ratio": "auto",
+      "layout_slot": "panel",
+      "act_number": 2,
+      "panel_index": 2,
       "characters": [
-        "오크 전사"
+        "언데드 성기사"
       ],
-      "speaker": null,
-      "dialogue": null,
-      "wordless": true,
-      "visual_prompt": "High-angle shot looking down at the Orc Warrior tank in a signature comedic freeze-frame, completely wordless. Still holding her 1H sword and round shield, she is petrified in stone-gray shock with jaw dropped to her chest, pupils reduced to trembling white dots, and her soul literally escaping her mouth like a wispy phantom upon realizing she was farmed as a free vendor trash scout! Centered dramatic framing filling ~78% of canvas height. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
+      "speaker": "언데드 성기사",
+      "dialogue": "저기… 혹시 힐템으로\n먹어도 될까요…?",
+      "wordless": false,
+      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom for 2-line bubble; keep inside Panel 2 borders!). HILARIOUS EXTREME CLOSE-UP ACTING SHIFT: Undead Paladin girl (fair skin, white skull cap, silver bob, golden warhammer stowed on back — Clean Hand!) suddenly puts on the most absurdly over-the-top FAKE pitiful saintly puppy-dog expression — both white-gauntleted hands clasped pleadingly right under her chin, shoulders hunched shyly, giant shimmering watery golden anime puppy eyes glistening with fake sparkly teardrops, soft blushing cheeks, and floating pastel flower-sparkle comic fluff around her cheeks (pure hilarious acting contrast!). ZERO text!",
       "tail_target": "center",
+      "bubble_side": "center",
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
       "item_tooltip": null
     },
     {
       "cut_index": 6,
-      "aspect_ratio": "16:9",
-      "layout_slot": "bottom",
+      "aspect_ratio": "auto",
+      "layout_slot": "panel",
+      "act_number": 2,
+      "panel_index": 3,
       "characters": [
-        "언데드 성기사",
-        "오크 전사"
+        "나이트엘프 사제"
+      ],
+      "speaker": "나이트엘프 사제",
+      "dialogue": "신기 준비세요?\n당연히 드세요~♡",
+      "wordless": false,
+      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom for 2-line bubble; keep inside Panel 3 borders!). WARM LOW-ANGLE GRACEFUL BUST SHOT: Night Elf Priestess (fair peach-ivory skin, pastel-lavender wavy half-up ponytail, golden crescent tiara, purple & gold priest vestments, golden cross staff stowed neatly on back — Clean Hand! Strictly ZERO angel halo and ZERO wings!) smiling with angelic closed-eye radiant warmth (`^‿^`), pressing one dainty palm gracefully to her rosy cheek while waving her other hand generously with tiny floating golden sparkles and cute warm heart puffs! ZERO text!",
+      "tail_target": "center",
+      "bubble_side": "center",
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 7,
+      "aspect_ratio": "auto",
+      "layout_slot": "panel",
+      "act_number": 2,
+      "panel_index": 4,
+      "characters": [
+        "언데드 성기사"
       ],
       "speaker": "언데드 성기사",
-      "dialogue": "그래도 양심은\n있어요.\n물어는 봤잖아요?",
+      "dialogue": "…1차 꿀통, 회수 끝.",
       "wordless": false,
-      "visual_prompt": "Back-view shot seen from behind of the Undead Paladin girl walking away toward the dungeon portal arch on the left, turning her back to the stunned Orc Warrior who remains slumped in the background. The Paladin looks back over her shoulder with an innocent angel halo gesture above her ragged hood and a sly cheeky wink. Cleanly framed with generous pure white (#FFFFFF) space on the right 46% for dialogue bubble. 100% pure solid #FFFFFF white borderless background, zero text, zero UI.",
+      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom for 1-line bubble; keep inside Panel 4 borders!). SNAPPY 90-DEGREE SIDE-PROFILE ACTION GAG: Undead Paladin girl (fair skin, white skull cap, silver bob, golden warhammer stowed on back — Clean Hand!) INSTANTLY drops the fake puppy face back to dead-eyed ice-cold sleepy apathy, casually cramming the gleaming sky-blue crystal Caster Staff upside-down straight into a stuffed brown leather adventurer backpack already bulging with vendor trinkets — tiny sly satisfied blink and crisp speed swoosh lines! ZERO text!",
+      "tail_target": "center",
+      "bubble_side": "center",
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 8,
+      "aspect_ratio": "auto",
+      "layout_slot": "panel",
+      "act_number": 3,
+      "panel_index": 1,
+      "characters": [
+        "오크 전사"
+      ],
+      "speaker": "오크 전사",
+      "dialogue": "오, 이거 난 이미 있는데!",
+      "wordless": false,
+      "visual_prompt": "TIER 2 NATURAL FULL-WIDTH DUNGEON STONE FLOOR + 100% PURE #FFFFFF SKY across top 38% (y=0%..38% completely empty pure #FFFFFF headroom for 1-line bubble; rugged stone boss chamber tiles flush edge-to-edge against bottom, left & right inner borders — ZERO floating islands!). OVER-THE-SHOULDER 3/4 BACK VIEW of Orc Warrior girl (Protection Tank, fair skin, green orc hood, black ponytail, carrying her one-handed steel sword AND her ALREADY-EQUIPPED gleaming steel kite shield on her arm — NEVER a 2H axe!) scratching the back of her hood casually with a breezy shrug as an ornate dungeon boss treasure chest bursts open on the stone floor in front of her, sparkling with a heavy ornate blue-and-gold Tank Shield & Plate Helm! ZERO text!",
+      "tail_target": "center",
+      "bubble_side": "center",
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 9,
+      "aspect_ratio": "auto",
+      "layout_slot": "panel",
+      "act_number": 3,
+      "panel_index": 2,
+      "characters": [
+        "언데드 성기사"
+      ],
+      "speaker": "언데드 성기사",
+      "dialogue": "…저, 보기 부특으로\n이 탱템 먹어도 될까요 ㅠ",
+      "wordless": false,
+      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND (top 38% y=0%..38% completely empty pure #FFFFFF headroom for 2-line bubble; keep inside Panel 2 borders!). SHOWSTOPPER FISHEYE FORCED-PERSPECTIVE LUNGING CLOSE-UP! Undead Paladin girl (fair skin, white skull cap, silver bob, golden warhammer stowed on back — Clean Hand!) drops dramatically onto both knees lunging WAY forward toward the camera lens with oversized foreground clasped white gauntleted hands, cranking up MAXIMUM comical fake melodramatic begging: giant wobbling starry-watery golden eyes, quivering bottom lip, exaggerated sparkling anime tear beads flying off her eyelashes, soft rosy blush! ZERO text!",
+      "tail_target": "center",
+      "bubble_side": "center",
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 10,
+      "aspect_ratio": "auto",
+      "layout_slot": "panel",
+      "act_number": 3,
+      "panel_index": 3,
+      "characters": [
+        "오크 전사",
+        "언데드 성기사"
+      ],
+      "speaker": "오크 전사",
+      "dialogue": "보기 준비하는구나?!\n멋지다, 당근 먹어라구~!",
+      "wordless": false,
+      "visual_prompt": "TIER 2 NATURAL FULL-WIDTH DUNGEON STONE FLOOR + MASSIVE 100% PURE #FFFFFF SKY ACROSS THE ENTIRE TOP 42%! ABSOLUTE HEIGHT CEILING: BOTH characters (including Orc Warrior's ponytail/horns and Paladin's skull cap/warhammer!) MUST stay COMPACT strictly BELOW y=42% (y=42%..100%) — the ENTIRE upper 42% (y=0%..42%, left border to right border!) MUST be 100% blank empty pure #FFFFFF sky so the panel stays full-width with ZERO shrinking! Dungeon flagstones anchored flush edge-to-edge along entire bottom, left & right black borders (ZERO floating islands!). DYNAMIC 2-CHARACTER SLAPSTICK CONTRAST: Lower-left (x=28%, compact y=44%..98%), Orc Warrior girl (Protection Tank, fair skin, sturdy steel kite shield strapped cleanly to her left forearm & one-handed sword sheathed at waist so her right hand is free!) beaming a hugely moved, fiery-eyed proud toothy grin, vigorously giving an enthusiastic thumbs-up with warm supportive sparkles! Lower-right (x=72%, compact y=44%..98%), Undead Paladin girl (warhammer stowed on back — Clean Hand!) bowing low pretending to dab a fake tear with her left hand while her right arm stealthily sweeps the heavy gleaming ornate Tank Shield and Plate Helm straight into her overflowing leather sack behind her cape, flashing a tiny sneaky `:3` cat-mouth smirk! ZERO text!",
       "tail_target": "left",
+      "bubble_side": null,
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 11,
+      "aspect_ratio": "auto",
+      "layout_slot": "panel",
+      "act_number": 4,
+      "panel_index": 1,
+      "characters": [
+        "언데드 성기사"
+      ],
+      "speaker": "언데드 성기사",
+      "dialogue": "…한 바퀴에 딱 9골 95실.\n역시 탱템이 달달하네…",
+      "wordless": false,
+      "visual_prompt": "TIER 2 NATURAL GROUNDED MEDIEVAL VENDOR COUNTER + 100% PURE #FFFFFF SKY ACROSS LEFT 48%! Keep the ENTIRE left 48% (x=0%..48%) 100% pure blank #FFFFFF white headroom for the left speech bubble! STRICTLY CONTAIN PANEL 1 INSIDE PANEL 1'S BLACK RECTANGLE — STOP CLEANLY AT THE WAIST/COUNTERTOP WITH ZERO LEGS, ZERO COUNTER BASE, ZERO ART CONTINUING DOWN INTO PANEL 2! FULL BOLD CHIBI SCALE MATCHING ALL OTHER PANELS: filling the right 52% (`x=46%..100%`, `y=14%..100%`) with a rustic wooden medieval vendor counter anchored 100% FLUSH to BOTH RIGHT border (`x=100%`) and BOTTOM border (`y=100%`) — ZERO wooden roof overhanging top! Standing bold waist-up (`x=64%`, `y=14%..100%`) in 3/4 side-profile facing right: Undead Paladin girl (fair skin, round white skull cap, silver bob, ONE single golden warhammer stowed on back — Clean Hand!) lazily dumping the gleaming blue crystal Caster Staff and ornate Tank Shield & Plate Helm onto the counter while snagging a FAT bulging brown leather coin pouch bursting with sparkling GOLD, SILVER, and COPPER coins from the large wide-eyed green cartoon Goblin merchant NPC behind the right counter (`x=88%`, flush to right edge!) — serene sleepy half-lidded blissful smirk! ZERO text, digits, or bills!",
+      "tail_target": "right",
+      "bubble_side": "left",
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 12,
+      "aspect_ratio": "auto",
+      "layout_slot": "panel",
+      "act_number": 4,
+      "panel_index": 2,
+      "characters": [
+        "오크 전사",
+        "나이트엘프 사제"
+      ],
+      "speaker": null,
+      "dialogue": null,
+      "wordless": true,
+      "visual_prompt": "TIER 2 WORDLESS CLIMAX FREEZE-FRAME — ONE SINGLE UNIFIED GIANT PANEL (STRICTLY ZERO INTERNAL HORIZONTAL SPLIT LINES, ZERO SUB-PANELS, ZERO PALADIN LEGS FROM PANEL 1, AND 100% PURE SOLID #FFFFFF WHITE UPPER SKY ABOVE THE STREET — STRICTLY ZERO BLUE SKY OR CLOUDS!). ZERO text, ZERO speech bubbles! Weathered village cobblestone street anchored flush edge-to-edge along entire bottom & side black borders (low buildings/vendor stall strictly along lower-left and lower-right edges so the upper sky is 100% PURE SOLID #FFFFFF WHITE!); on far right edge (x=82%..100%), the wooden vendor shop stall's open bargain junk barrel clearly displays the gleaming blue crystal Caster Staff and heavy ornate Tank Shield sticking straight out of the vendor's scrap pile, with a tiny back-view silhouette of the Undead Paladin casually walking away behind the stall jingling her coin pouch! SHOWSTOPPER DUAL-SHOCK CLIMAX dominating foreground left & center: on lower-left (x=30%), Orc Warrior girl (Protection Tank, fair peach-ivory skin, one-handed steel sword & steel kite shield sagging limply at her sides) FROZEN IN SHATTERING BETRAYAL HORROR — dark-indigo vertical dread lines over fair skin, jaw unhinged dropped to her chest, giant blank white shock eyes, twin geyser waterfall tears, and a hilarious translucent mini-soul drifting halfway out of her open mouth! Right beside her at center (x=62%), Night Elf Priestess (fair peach-ivory skin, lavender half-up ponytail, golden crescent tiara, vibrant royal-purple & gold short capelet, purple pleated mini-skirt, white knee-high stockings, mini Holy Book & golden Rosary at waist, golden cross staff stowed on back, strictly 0 halos/wings) FROZEN IN CHILLING PINPOINT-PUPIL '맑눈광' RAGE — heavy dark manga gloom shadow across her forehead, glowing silver-white eyes shrunk to terrifying razor pinpoints, dark-violet villain aura flaring ominously behind her shoulders into pure #FFFFFF white as her trembling hands SNAP a small corked glass healing flask cork clean in two!",
+      "tail_target": "center",
+      "bubble_side": null,
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 13,
+      "aspect_ratio": "auto",
+      "layout_slot": "top",
+      "act_number": 5,
+      "panel_index": 1,
+      "characters": [
+        "오크 전사",
+        "언데드 성기사"
+      ],
+      "speaker": "언데드 성기사",
+      "dialogue": "…흥, 왜 그래.\n말없이 안 먹고 물어봤잖아…",
+      "wordless": false,
+      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF BORDERLESS OPEN WHITE REACTION BACKGROUND EVERYWHERE (top 38% y=0%..38% completely empty pure #FFFFFF headroom for right bubble; STRICTLY ZERO diagonal black lines, ZERO horizontal divider borders, ZERO drawn panel frames inside Panel 1!). DYNAMIC OVER-THE-SHOULDER BACK-VIEW CONFRONTATION: in lower-left foreground (x=24%), the back/shoulder of Orc Warrior girl's green horned orc hood trembling violently with steaming red anime anger puffs & throbbing crimson anger-vein marks as she shakes her clenched fist accusingly — carrying ONLY her sturdy steel kite shield on her left arm and one-handed steel sword at her waist (STRICTLY ZERO two-handed battle axe on her back!). On lower-right midground (x=70%), Undead Paladin girl (fair skin, white skull cap, silver bob, ONE single golden warhammer stowed diagonally on back — Clean Hand!) glances lazily back over her white-and-gold cape holding up her fat gleaming brown leather coin pouch bursting with gold coins, giving a completely shameless half-lidded sleepy shrug with puffed blushing tsundere cheeks and zero remorse! ZERO text or letters!",
+      "tail_target": "right",
+      "bubble_side": "right",
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 14,
+      "aspect_ratio": "auto",
+      "layout_slot": "panel",
+      "act_number": 5,
+      "panel_index": 2,
+      "characters": [
+        "나이트엘프 사제",
+        "언데드 성기사"
+      ],
+      "speaker": "나이트엘프 사제",
+      "dialogue": "다음 던전엔 힐 없어요~♡",
+      "wordless": false,
+      "visual_prompt": "TIER 3 — 100% PURE SOLID #FFFFFF WHITE REACTION BACKGROUND EVERYWHERE (STRICTLY ZERO cobblestone floor, ZERO ground strip, ZERO horizon — pure blank #FFFFFF white across the entire top 38% and around both characters!). HILARIOUS LOW-ANGLE GAP-MOE FINALE: Lower-left (x=28%, below y=38%), Night Elf Priestess — STRICTLY MATCH `assets/turnarounds/nightelf_priest.jpg` 100%: fair peach-ivory skin, pastel-lavender half-up ponytail, GOLDEN Elune crescent forehead tiara, vibrant ROYAL-PURPLE & GOLD short Priestess shoulder capelet over crisp white blouse, ROYAL-PURPLE & GOLD pleated mini-skirt, brown leather waist belt with white-and-gold mini Holy Prayer Book on left hip & draping golden beaded Rosary on right hip, PURE-WHITE knee-high stockings, royal-purple & gold Priest boots, ONE intact golden Holy Cross staff stowed diagonally on her back (Clean Hand! NEVER split into two sticks!), strictly 0 halos/wings! Stepping boldly forward with a terrifyingly sweet closed-eye saintly smile (`^‿^`) while one razor-sharp glowing silver-white glint peeks lethally beneath her brow, compact menacing dark-violet chibi villain aura tapering softly into pure #FFFFFF white! Lower-right (x=72%, below y=38%), Undead Paladin girl — MUST WEAR HER SIGNATURE ROUND PURE-WHITE CARTOON SKULL CAP WITH TWO DARK EYE SOCKETS ON HER HEAD matching `assets/turnarounds/undead_paladin.jpg` (STRICTLY NEVER bare hair, ZERO hairpins/hairclips!), silver-white bob, white-and-gold paladin cape & skirt, ONE single golden warhammer head stowed neatly on her back — suddenly leaping backward in comical panic dropping spinning gold coins from her leather pouch with wide popped golden eyes, cold anime sweatdrops, and flustered stammering blush! ZERO text!",
+      "tail_target": "left",
+      "bubble_side": null,
+      "full_bleed_bg": false,
+      "speaker_anchor_xy": null,
+      "bubble_center_xy": null,
       "item_tooltip": null
     }
   ]
