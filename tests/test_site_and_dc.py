@@ -188,6 +188,11 @@ def test_build_static_site_end_to_end_and_link_integrity(tmp_path: Path) -> None
         turnaround_path = out_site / "assets" / "cast" / "turnarounds" / member.turnaround_filename
         assert turnaround_path.exists(), f"Missing synced turnaround sheet: {turnaround_path}"
         assert f"assets/cast/turnarounds/{member.turnaround_filename}" in cast_html
+        if member.companion_turnaround_filename:
+            comp_path = out_site / "assets" / "cast" / "turnarounds" / member.companion_turnaround_filename
+            assert comp_path.exists(), f"Missing synced companion sheet: {comp_path}"
+            assert f"assets/cast/turnarounds/{member.companion_turnaround_filename}" in cast_html
+            assert member.companion_name in cast_html
 
     # Verify CSS pure-white aesthetic, #0ea5e9 accent, collapsible :empty sponsor slot, and mobile overflow guards
     css_text = (out_site / "assets" / "style.css").read_text(encoding="utf-8")

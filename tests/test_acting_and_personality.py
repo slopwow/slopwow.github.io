@@ -263,9 +263,15 @@ def test_artist_attaches_style_ref_first_and_only_active_turnarounds(tmp_path: P
                     seen_ids.add(member.id)
                     unique_members.append(member)
 
-        # Style-First exact attachments: [text, style_ref, layout_blueprint, *turnarounds]
+        # Style-First exact attachments: [text, style_ref, layout_blueprint, *turnarounds, *companions]
         # Zero redundant 9-cast 2-head SD sheet when turnarounds exist, zero expression sheets!
-        assert len(items) == 3 + len(unique_members)
+        companion_files = [
+            m.companion_turnaround_filename
+            for m in unique_members
+            if m.companion_turnaround_filename
+            and (settings.turnarounds_dir / m.companion_turnaround_filename).exists()
+        ]
+        assert len(items) == 3 + len(unique_members) + len(companion_files)
         assert base64.b64decode(items[1]["data"]) == style_ref_bytes
         assert all(base64.b64decode(it["data"]) != cast_sheet_bytes for it in items[1:])
 
@@ -273,6 +279,9 @@ def test_artist_attaches_style_ref_first_and_only_active_turnarounds(tmp_path: P
         expected_turnarounds = {
             (settings.turnarounds_dir / m.turnaround_filename).read_bytes()
             for m in unique_members
+        } | {
+            (settings.turnarounds_dir / fname).read_bytes()
+            for fname in companion_files
         }
         assert attached_turnarounds == expected_turnarounds
 
@@ -313,7 +322,71 @@ def test_writer_prompts_stay_compact_and_prioritize_self_contained_storytelling(
     for label, prompt in (("classic", classic_prompt), ("v4", v4_prompt)):
         assert "념글을 안 읽고도 100% 이해" in prompt, f"{label} prompt missing self-contained story rule"
         assert "3~3.5등신" in prompt, f"{label} prompt missing 3–3.5 head target"
+        assert "아기 곰" in prompt and "공허방랑자" in prompt, f"{label} prompt missing fixed companion cues"
         assert "기계 복붙" in prompt, f"{label} prompt missing anti-catchphrase-copy rule"
+
+
+def test_fixed_companions_auto_attach_for_hunter_and_warlock_only(tmp_path: Path) -> None:
+    settings = load_settings(PROJECT_ROOT)
+    hunter = resolve_cast_member("드워프 사냥꾼")
+    warlock = resolve_cast_member("인간 흑마법사")
+    warrior = resolve_cast_member("오크 전사")
+    assert hunter is not None and hunter.companion_id == "hunter_bear"
+    assert warlock is not None and warlock.companion_id == "warlock_voidwalker"
+    assert warrior is not None and warrior.companion_id == ""
+
+    bear_path = settings.turnarounds_dir / "hunter_bear.jpg"
+    vw_path = settings.turnarounds_dir / "warlock_voidwalker.jpg"
+    assert bear_path.exists() and vw_path.exists()
+    bear_bytes = bear_path.read_bytes()
+    vw_bytes = vw_path.read_bytes()
+
+    fake_png_b64 = _fake_png_base64()
+    captured: list[dict[str, Any]] = []
+
+    class FakeInteractions:
+        def create(self, **kwargs: Any) -> Any:
+            captured.append(kwargs)
+            return SimpleNamespace(output_image=SimpleNamespace(data=fake_png_b64))
+
+    fake_client = SimpleNamespace(interactions=FakeInteractions())
+
+    for idx, (char_name, expected_extra) in enumerate(
+        (
+            ("드워프 사냥꾼", bear_bytes),
+            ("인간 흑마법사", vw_bytes),
+            ("오크 전사", None),
+        ),
+        start=1,
+    ):
+        cut = ComicCut(
+            cut_index=idx,
+            layout_slot="bottom",
+            aspect_ratio="16:9",
+            characters=[char_name],
+            speaker=char_name,
+            dialogue="테스트 대사",
+            tail_target="center",
+            wordless=False,
+            visual_prompt=f"Low-angle 3-to-3.5 head comic reaction shot of {char_name} on pure #FFFFFF.",
+        )
+        artist.generate_cut_image(
+            cut,
+            tmp_path / f"cut_{idx}.png",
+            client=fake_client,
+            settings=settings,
+        )
+        items = captured[-1]["input"]
+        attached_blobs = [base64.b64decode(it["data"]) for it in items[1:]]
+        if expected_extra is not None:
+            assert len(items) == 4  # text + style_ref + owner + companion
+            assert expected_extra in attached_blobs
+            assert "Cute Round Companion Mascot Sheet" in items[0]["text"]
+        else:
+            assert len(items) == 3  # text + style_ref + owner only
+            assert bear_bytes not in attached_blobs
+            assert vw_bytes not in attached_blobs
+            assert "Cute Round Companion Mascot Sheet" not in items[0]["text"]
 
 
 def test_v4_dry_run_pacing_and_non_breaking_dialogue_bloat_warning() -> None:

@@ -42,11 +42,11 @@ _CAST_PORTRAIT_BOXES: dict[str, tuple[float, float, float, float]] = {
     "orc_warrior": (0.025, 0.015, 0.200, 0.495),
     "undead_paladin": (0.215, 0.015, 0.395, 0.495),
     "gnome_rogue": (0.400, 0.035, 0.598, 0.495),
-    "dwarf_hunter": (0.605, 0.015, 0.785, 0.495),
+    "dwarf_hunter": (0.598, 0.015, 0.790, 0.495),
     "troll_shaman": (0.798, 0.015, 0.975, 0.495),
     "tauren_druid": (0.078, 0.505, 0.265, 0.988),
     "nightelf_priest": (0.288, 0.505, 0.495, 0.988),
-    "human_warlock": (0.518, 0.505, 0.705, 0.988),
+    "human_warlock": (0.505, 0.505, 0.725, 0.988),
     "skyborne_mage": (0.740, 0.505, 0.922, 0.988),
 }
 
@@ -371,6 +371,7 @@ def _cast_member_payload(
     portrait_rel: str | None,
     ep_counts: dict[str, int],
     turnaround_rel: str | None = None,
+    companion_turnaround_rel: str | None = None,
 ) -> dict[str, Any]:
     return {
         "id": member.id,
@@ -386,6 +387,9 @@ def _cast_member_payload(
         "aliases": list(member.aliases[:5]),
         "portrait": portrait_rel or "",
         "turnaround": turnaround_rel or "",
+        "companion_id": member.companion_id,
+        "companion_name": member.companion_name,
+        "companion_turnaround": companion_turnaround_rel or "",
         "episode_count": ep_counts.get(member.name, 0),
     }
 
@@ -1095,6 +1099,21 @@ def _render_cast_html(
                 f'</div>'
             )
 
+        companion_html = ""
+        if c.get("companion_name") and c.get("companion_turnaround"):
+            ct_src = html.escape(c["companion_turnaround"])
+            c_name = html.escape(c["companion_name"])
+            companion_html = (
+                f'<div class="cast-turnaround-wrap">'
+                f'<button type="button" class="cast-turnaround-btn" data-lightbox-src="{ct_src}" '
+                f'aria-label="{html.escape(c["name"])} 고정 동행 펫 {c_name} 3면 턴어라운드 확대 보기">'
+                f'<img src="{ct_src}" alt="{html.escape(c["name"])} 고정 동행 펫 {c_name} 3면 턴어라운드 도면" '
+                f'class="cast-turnaround-img" loading="lazy" decoding="async">'
+                f'<span class="cast-turnaround-caption">고정 동행 펫 · {c_name} 3면 도면 (클릭 확대)</span>'
+                f'</button>'
+                f'</div>'
+            )
+
         cards_parts.append(
             f"""
             <article class="cast-card" id="{html.escape(c['id'])}">
@@ -1117,6 +1136,7 @@ def _render_cast_html(
               </div>
               <p class="cast-bio">{html.escape(c['personality'])}</p>
               {turnaround_html}
+              {companion_html}
               <div class="alias-row">{alias_tags}</div>
               <div class="cast-card-foot">
                 <div class="cast-foot-label">출연 에피소드 ({len(appearances)}화)</div>
@@ -3199,6 +3219,7 @@ def build_static_site(
     turnarounds_src_dir = assets_dir / "turnarounds"
     site_turnarounds_dir = site_cast_dir / "turnarounds"
     turnarounds: dict[str, str] = {}
+    companion_turnarounds: dict[str, str] = {}
     if turnarounds_src_dir.exists():
         site_turnarounds_dir.mkdir(parents=True, exist_ok=True)
         for member in CAST_BIBLE:
@@ -3206,6 +3227,13 @@ def build_static_site(
             if t_src.exists() and t_src.is_file():
                 _copy_if_different(t_src, site_turnarounds_dir / member.turnaround_filename)
                 turnarounds[member.id] = f"assets/cast/turnarounds/{member.turnaround_filename}"
+            if member.companion_turnaround_filename:
+                ct_src = turnarounds_src_dir / member.companion_turnaround_filename
+                if ct_src.exists() and ct_src.is_file():
+                    _copy_if_different(ct_src, site_turnarounds_dir / member.companion_turnaround_filename)
+                    companion_turnarounds[member.id] = (
+                        f"assets/cast/turnarounds/{member.companion_turnaround_filename}"
+                    )
     fallback_og_image = (
         "assets/cast/cast_sheet_c_labeled.png"
         if has_labeled
@@ -3297,6 +3325,7 @@ def build_static_site(
             portraits.get(member.id),
             ep_counts,
             turnaround_rel=turnarounds.get(member.id),
+            companion_turnaround_rel=companion_turnarounds.get(member.id),
         )
         for member in CAST_BIBLE
     ]

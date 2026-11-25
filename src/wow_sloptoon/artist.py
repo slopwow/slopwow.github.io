@@ -22,7 +22,11 @@ from typing import Any
 from google import genai
 from PIL import Image, ImageDraw
 
-from wow_sloptoon.cast import build_character_anchors_block, get_turnaround_paths
+from wow_sloptoon.cast import (
+    build_character_anchors_block,
+    get_companion_turnaround_paths,
+    get_turnaround_paths,
+)
 from wow_sloptoon.config import (
     DEFAULT_IMAGE_MODEL,
     SUPPORTED_IMAGE_MODELS,
@@ -65,6 +69,7 @@ def build_cut_image_prompt(
     cut: ComicCut,
     *,
     attached_turnarounds: list[str] | None = None,
+    attached_companions: list[str] | None = None,
     has_cast_sheet_fallback: bool = False,
 ) -> str:
     """Construct a compact, Style-First 3–3.5 head webtoon prompt for a single comic cut."""
@@ -74,22 +79,31 @@ def build_cut_image_prompt(
     ref_lines = [
         "- Reference Image 1 (`assets/sloptoon_style_ref.jpg`): MASTER ART STYLE & PROPORTIONS — "
         "match its sleek 3-to-3.5 head Korean anime gag webtoon body proportions, tapered chin, "
-        "slender limbs, thin crisp dark ink linework, vibrant 2-tier cel shading, and expressive faces."
+        "slender limbs, thin crisp dark ink linework, fine hair strands, natural clothing folds, "
+        "vibrant 2-tier cel shading, and expressive faces."
     ]
     next_idx = 2
     if attached_turnarounds:
         for label in attached_turnarounds:
             ref_lines.append(
-                f"- Reference Image {next_idx}: Costume & Color Sheet for {label} — match ONLY hair, "
-                "headgear, outfit, waist charms, and colors; re-proportion into Reference Image 1's sleek "
-                "3-to-3.5 head webtoon build with scene-driven dynamic pose and expression."
+                f"- Reference Image {next_idx}: Costume & Color Sheet for {label} — match sleek 3.5-head "
+                "build, hair strands, cloth folds, headgear, outfit & colors with dynamic scene acting."
             )
             next_idx += 1
     elif has_cast_sheet_fallback:
         ref_lines.append(
             f"- Reference Image {next_idx}: Cast Costume Sheet — use for outfit/hair color identity only, "
-            "re-proportioned into Reference Image 1's sleek 3-to-3.5 head webtoon style."
+            "in Reference Image 1's sleek 3-to-3.5 head webtoon style."
         )
+        next_idx += 1
+    if attached_companions:
+        for comp_label in attached_companions:
+            ref_lines.append(
+                f"- Reference Image {next_idx}: Cute Round Companion Mascot Sheet for {comp_label} — "
+                "keep its ultra-cute plump round proportions, colors, and adorable face; draw it naturally "
+                "accompanying and reacting beside its owner."
+            )
+            next_idx += 1
     refs_block = "\n".join(ref_lines)
 
     if cut.wordless:
@@ -195,15 +209,20 @@ def generate_cut_image(
 
     style_b64, style_mime = _encode_image_base64(cfg.style_ref_path)
     turnaround_pairs = get_turnaround_paths(cut.characters, cfg.turnarounds_dir)
+    companion_pairs = get_companion_turnaround_paths(cut.characters, cfg.turnarounds_dir)
     use_cast_fallback = len(turnaround_pairs) == 0
 
     prompt = build_cut_image_prompt(
         cut,
         attached_turnarounds=[f"{m.name} ({m.id})" for m, _ in turnaround_pairs],
+        attached_companions=[
+            f"{m.companion_name} ({m.companion_id}, companion of {m.name})"
+            for m, _ in companion_pairs
+        ],
         has_cast_sheet_fallback=use_cast_fallback,
     )
 
-    # Style-First attachment order: [text, style_ref, *active_turnarounds] (or cast_sheet fallback)
+    # Style-First attachment order: [text, style_ref, *active_turnarounds, *companion_turnarounds]
     input_items: list[dict[str, Any]] = [
         {"type": "text", "text": prompt},
         {"type": "image", "data": style_b64, "mime_type": style_mime},
@@ -215,6 +234,9 @@ def generate_cut_image(
     else:
         cast_b64, cast_mime = _encode_image_base64(cfg.cast_sheet_path)
         input_items.append({"type": "image", "data": cast_b64, "mime_type": cast_mime})
+    for _owner, comp_path in companion_pairs:
+        c_b64, c_mime = _encode_image_base64(comp_path)
+        input_items.append({"type": "image", "data": c_b64, "mime_type": c_mime})
 
     interaction = client.interactions.create(
         model=target_model,
@@ -352,6 +374,7 @@ def build_page_batch_prompt(
     act: ActPage,
     *,
     attached_turnarounds: list[str] | None = None,
+    attached_companions: list[str] | None = None,
     full_bleed_bg: bool = False,
     background_style: BackgroundStyle | None = None,
     has_cast_sheet_fallback: bool = False,
@@ -371,7 +394,7 @@ def build_page_batch_prompt(
     ref_lines = [
         "- Reference Image 1 (`assets/sloptoon_style_ref.jpg`): MASTER ART STYLE & PROPORTIONS — "
         "sleek 3-to-3.5 head Korean anime gag webtoon proportions, slender limbs, thin clean dark ink "
-        "linework, crisp 2-tier cel shading, and vivid manga expressions.",
+        "linework, fine hair strands, natural clothing folds, crisp 2-tier cel shading, and vivid manga expressions.",
         f"- Reference Image 2: Exact 2:3 Layout Blueprint (`{act.layout_id}`) — solid `#141414` black "
         "rectangles mark boxed panels; light-gray guides mark borderless open panels (keep outer page "
         "margins and gutters pure `#FFFFFF`; do not paint gray guide lines or panel numbers).",
@@ -380,15 +403,23 @@ def build_page_batch_prompt(
     if attached_turnarounds:
         for label in attached_turnarounds:
             ref_lines.append(
-                f"- Reference Image {next_idx}: Costume & Color Sheet for {label} — use for hair, headgear, "
-                "outfit, and colors ONLY; re-proportion into Reference Image 1's sleek 3-to-3.5 head build."
+                f"- Reference Image {next_idx}: Costume & Color Sheet for {label} — match its sleek "
+                "3.5-head proportions, hair strands, clothing folds, headgear, outfit, and colors."
             )
             next_idx += 1
     elif has_cast_sheet_fallback:
         ref_lines.append(
             f"- Reference Image {next_idx}: Cast Costume Sheet — outfit/color identity only, "
-            "re-proportioned into Reference Image 1's sleek 3-to-3.5 head webtoon style."
+            "in Reference Image 1's sleek 3-to-3.5 head webtoon style."
         )
+        next_idx += 1
+    if attached_companions:
+        for comp_label in attached_companions:
+            ref_lines.append(
+                f"- Reference Image {next_idx}: Cute Round Companion Mascot Sheet for {comp_label} — "
+                "keep its ultra-cute plump round proportions, colors, and adorable face beside its owner."
+            )
+            next_idx += 1
     refs_block = "\n".join(ref_lines)
 
     panel_blocks: list[str] = []
@@ -501,17 +532,22 @@ def generate_act_page_image(
 
     act_characters = _collect_act_characters(act)
     turnaround_pairs = get_turnaround_paths(act_characters, cfg.turnarounds_dir)
+    companion_pairs = get_companion_turnaround_paths(act_characters, cfg.turnarounds_dir)
     use_cast_fallback = len(turnaround_pairs) == 0
 
     prompt = build_page_batch_prompt(
         act,
         attached_turnarounds=[f"{m.name} ({m.id})" for m, _ in turnaround_pairs],
+        attached_companions=[
+            f"{m.companion_name} ({m.companion_id}, companion of {m.name})"
+            for m, _ in companion_pairs
+        ],
         full_bleed_bg=(eff_style == "full_bleed"),
         background_style=eff_style,
         has_cast_sheet_fallback=use_cast_fallback,
     )
 
-    # Style-First attachment order: [text, style_ref, layout_blueprint, *active_turnarounds]
+    # Style-First attachment order: [text, style_ref, layout_blueprint, *active_turnarounds, *companion_turnarounds]
     input_items: list[dict[str, Any]] = [
         {"type": "text", "text": prompt},
         {"type": "image", "data": style_b64, "mime_type": style_mime},
@@ -524,6 +560,9 @@ def generate_act_page_image(
     else:
         cast_b64, cast_mime = _encode_image_base64(cfg.cast_sheet_path)
         input_items.append({"type": "image", "data": cast_b64, "mime_type": cast_mime})
+    for _owner, comp_path in companion_pairs:
+        c_b64, c_mime = _encode_image_base64(comp_path)
+        input_items.append({"type": "image", "data": c_b64, "mime_type": c_mime})
 
     interaction = client.interactions.create(
         model=target_model,

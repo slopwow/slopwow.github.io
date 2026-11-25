@@ -260,6 +260,8 @@ def test_artist_uses_interactions_api_nano_banana_and_attaches_reference_images(
     assert settings.turnarounds_dir.exists()
     for member in CAST_BIBLE:
         assert (settings.turnarounds_dir / member.turnaround_filename).exists()
+        if member.companion_turnaround_filename:
+            assert (settings.turnarounds_dir / member.companion_turnaround_filename).exists()
 
     # Create tiny valid PNG bytes as fake Gemini image response
     buf = io.BytesIO()
@@ -293,9 +295,21 @@ def test_artist_uses_interactions_api_nano_banana_and_attaches_reference_images(
         "aspect_ratio": script.cuts[0].aspect_ratio,
         "image_size": "1K",
     }
-    # Style-First order: 1 text prompt + style ref (Image 1) + active character turnaround sheets
-    expected_turnaround_count = len({resolve_cast_member(c).id for c in script.cuts[0].characters if resolve_cast_member(c)})
-    assert len(first_call["input"]) == 2 + expected_turnaround_count
+    # Style-First order: 1 text prompt + style ref (Image 1) + active character turnaround sheets + any fixed companions
+    resolved_first = []
+    seen_first: set[str] = set()
+    for c in script.cuts[0].characters:
+        m = resolve_cast_member(c)
+        if m and m.id not in seen_first:
+            seen_first.add(m.id)
+            resolved_first.append(m)
+    expected_companion_count = sum(
+        1
+        for m in resolved_first
+        if m.companion_turnaround_filename
+        and (settings.turnarounds_dir / m.companion_turnaround_filename).exists()
+    )
+    assert len(first_call["input"]) == 2 + len(resolved_first) + expected_companion_count
     assert first_call["input"][0]["type"] == "text"
     assert "#FFFFFF" in first_call["input"][0]["text"]
     assert "3-to-3.5 head" in first_call["input"][0]["text"]

@@ -1024,9 +1024,15 @@ def test_artist_generate_v4_episode_pages_attaches_blueprint_and_all_turnarounds
                     unique_members.append(member)
 
         # Style-First exact attachment count:
-        # text + style_ref (Image 1) + layout_blueprint (Image 2) + unique turnarounds (NO 9-cast SD sheet, NO diorama ref!)
-        assert len(items) == 3 + len(unique_members), (
-            f"Act {act.act_number} expected {3 + len(unique_members)} input items, got {len(items)}"
+        # text + style_ref (Image 1) + layout_blueprint (Image 2) + unique turnarounds + fixed companions
+        companion_files = [
+            m.companion_turnaround_filename
+            for m in unique_members
+            if m.companion_turnaround_filename
+            and (settings.turnarounds_dir / m.companion_turnaround_filename).exists()
+        ]
+        assert len(items) == 3 + len(unique_members) + len(companion_files), (
+            f"Act {act.act_number} expected {3 + len(unique_members) + len(companion_files)} input items, got {len(items)}"
         )
         assert all(item["type"] == "image" for item in items[1:])
 
@@ -1034,11 +1040,14 @@ def test_artist_generate_v4_episode_pages_attaches_blueprint_and_all_turnarounds
         assert base64.b64decode(items[1]["data"]) == style_ref_bytes
         assert all(base64.b64decode(item["data"]) != cast_sheet_bytes for item in items[1:])
 
-        # Images 3..end: every unique character's 3-view turnaround sheet from assets/turnarounds/
+        # Images 3..end: every unique character's 3-view turnaround sheet + any fixed companion sheets
         attached_turnaround_blobs = {base64.b64decode(item["data"]) for item in items[3:]}
         expected_turnaround_blobs = {
             (settings.turnarounds_dir / member.turnaround_filename).read_bytes()
             for member in unique_members
+        } | {
+            (settings.turnarounds_dir / fname).read_bytes()
+            for fname in companion_files
         }
         assert attached_turnaround_blobs == expected_turnaround_blobs
 

@@ -1,9 +1,11 @@
-"""Official 9-Race x 9-Class Cast Bible for WOW Forever Sloptoon.
+"""Official 9-Race x 9-Class Cast Bible (+ 2 Fixed Round Companion Mascots) for WOW Forever Sloptoon.
 
 Target art style: sleek 3-to-3.5 head Korean anime gag webtoon proportions matching
-`assets/sloptoon_style_ref.jpg` (Reference Image 1). Turnaround sheets
-(`assets/turnarounds/<id>.jpg`) provide costume, hair, headgear, and color design ONLY —
-never copy their shorter 2-head chibi proportions or neutral standing poses.
+`assets/sloptoon_style_ref.jpg` (Reference Image 1) and the polished 3.5–4 head
+turnaround sheets (`assets/turnarounds/<id>.jpg`) featuring fine hair strands, natural
+clothing folds, and expressive faces. Fixed ultra-cute round companion mascots
+(`hunter_bear.jpg` for Dwarf Hunter and `warlock_voidwalker.jpg` for Human Warlock)
+auto-attach whenever their owners appear.
 
 Personality and speech tones are concise behavioral cues (zero copy-paste catchphrase
 templates) so dialogue stays natural, witty, and self-contained for readers who have never
@@ -46,11 +48,19 @@ class CastMember:
     speech_style: str = ""
     aegyo_signature: str = ""
     acting_range: str = ""
+    companion_id: str = ""
+    companion_name: str = ""
+    companion_anchor: str = ""
 
     @property
     def turnaround_filename(self) -> str:
         """Filename of this character's 3-view costume/color design reference."""
         return f"{self.id}.jpg"
+
+    @property
+    def companion_turnaround_filename(self) -> str | None:
+        """Filename of this character's fixed companion 3-view turnaround sheet, if any."""
+        return f"{self.companion_id}.jpg" if self.companion_id else None
 
     @property
     def visual_anchor(self) -> str:
@@ -139,7 +149,7 @@ CAST_BIBLE: tuple[CastMember, ...] = (
         aegyo_signature="장난스럽고 깐족대는 빠른 템포(억지 웃음소리 복붙 금지).",
         acting_range="teasing smirk, pushing goggles up smugly, wide-eyed pale terror when cornered",
         appearance_anchor=(
-            "Petite fair-skinned sleek 3-to-3.5 head anime webtoon girl with golden-blonde twin pigtails "
+            "Fair-skinned sleek 3-to-3.5 head anime webtoon girl with golden-blonde twin pigtails "
             "fading into hot-pink and electric-blue tips (zero hairpins — no X-pin, no star hairpins), "
             "green-lensed steampunk goggles on forehead, bright blue eyes, black stealth half-mask below chin; "
             "dark charcoal hooded rogue cloak and tunic, utility belt with tiny green poison vials, dark "
@@ -184,6 +194,12 @@ CAST_BIBLE: tuple[CastMember, ...] = (
         ),
         sheet_position="top-row-4",
         lore_note="Alliance Hunter (Ironforge/Dun Morogh outdoor faction).",
+        companion_id="hunter_bear",
+        companion_name="아기 곰",
+        companion_anchor=(
+            "Ultra-cute round chubby baby brown bear cub (~0.4x height, fluffy brown fur, cream muzzle, "
+            "':3' smile, rosy blush, pink paw pads, pom-pom tail, forest-green neckerchief) beside Dwarf Hunter."
+        ),
     ),
     CastMember(
         id="troll_shaman",
@@ -307,6 +323,12 @@ CAST_BIBLE: tuple[CastMember, ...] = (
         ),
         sheet_position="bottom-row-3",
         lore_note="Alliance Warlock (Stormwind/Elwynn/Goldshire outdoor faction).",
+        companion_id="warlock_voidwalker",
+        companion_name="공허방랑자",
+        companion_anchor=(
+            "Ultra-cute round squishy floating purple Voidwalker (~0.42x height, plump cloud body, "
+            "starry lavender belly glow, warm oval eyes, purple blush, golden wrist bracers, wispy tail) beside Warlock."
+        ),
     ),
     CastMember(
         id="skyborne_mage",
@@ -403,27 +425,49 @@ def get_turnaround_paths(
     return pairs
 
 
+def get_companion_turnaround_paths(
+    characters: list[str],
+    turnarounds_dir: Path,
+) -> list[tuple[CastMember, Path]]:
+    """Return existing `(owner_member, companion_turnaround_path)` pairs for cast with fixed pets."""
+    pairs: list[tuple[CastMember, Path]] = []
+    seen_ids: set[str] = set()
+    if not turnarounds_dir.exists():
+        return pairs
+    for raw in characters:
+        member = resolve_cast_member(raw)
+        if member is None or member.id in seen_ids or not member.companion_turnaround_filename:
+            continue
+        seen_ids.add(member.id)
+        candidate = turnarounds_dir / member.companion_turnaround_filename
+        if candidate.exists() and candidate.is_file():
+            pairs.append((member, candidate))
+    return pairs
+
+
 def format_cast_bible_for_writer() -> str:
     """Render a compact, copy-paste-free 9-character cast guide for the script writer.
 
     Omits 200-word English costume specs (handled by `artist.py`) so the writer focuses on
-    story clarity, natural voice contrast, accurate factions, and Clean Hand prop staging.
+    story clarity, natural voice contrast, accurate factions, fixed companions, and Clean Hand staging.
     """
     lines: list[str] = [
         "=== 고정 캐스트 9인 (전원 미소녀 — 영문 visual_prompt에서 she/her 사용 · 고정 유행어 복붙 금지) ===",
         "※ Clean Hand Rule: 전리품·방패·주사위·귀환석·물약병을 들거나 제스처할 때는 기본 무기를 등/허리에 수납하세요.",
+        "※ 고정 동행 펫(주인 등장 시 컷당 1~2명 주연 제한과 무관하게 곁에서 함께 리액션): 드워프 사냥꾼 → 동글동글 아기 곰, 인간 흑마법사 → 동글동글 공허방랑자.",
     ]
     for idx, member in enumerate(CAST_BIBLE, start=1):
         faction_ko = _FACTION_KO_LABELS.get(member.faction, member.faction)
+        pet_tag = f" [고정 동행 펫: {member.companion_name}]" if member.companion_name else ""
         lines.append(
-            f"{idx}. {member.name} [{faction_ko}] ({member.role_tag}) — {member.personality} "
+            f"{idx}. {member.name} [{faction_ko}] ({member.role_tag}){pet_tag} — {member.personality} "
             f"말투: {member.speech_style}"
         )
     return "\n".join(lines)
 
 
 def build_character_anchors_block(characters: list[str]) -> str:
-    """Build concise Style-First (3–3.5 head sleek webtoon) + Costume Identity anchors."""
+    """Build concise Style-First (3–3.5 head sleek webtoon) + Costume & Companion Identity anchors."""
     resolved: list[CastMember] = []
     seen_ids: set[str] = set()
     for raw in characters:
@@ -433,13 +477,11 @@ def build_character_anchors_block(characters: list[str]) -> str:
             seen_ids.add(member.id)
 
     header = (
-        "PROPORTIONS & STYLE FIRST (MATCH REFERENCE IMAGE 1): Draw sleek 3-to-3.5 head Korean anime "
-        "gag webtoon girls with slender necks, shoulders, and limbs, thin clean dark ink linework, crisp "
-        "2-tier cel shading, and lively manga expressions. Use attached character turnaround sheets for "
-        "COSTUME, HAIR, HEADGEAR & COLOR IDENTITY ONLY — re-proportion them into Reference Image 1's "
-        "sleek 3-to-3.5 head webtoon build and unleash dynamic scene-driven poses & expressions.\n"
-        "CLEAN HAND RULE: Default weapons/props are optional; stow them on back/belt whenever hands hold "
-        "scene loot, a shield, dice, flasks, or gesture."
+        "PROPORTIONS & STYLE FIRST (MATCH REFERENCE IMAGE 1): Sleek 3-to-3.5 head Korean anime gag "
+        "webtoon girls with slender limbs, crisp thin ink, fine hair strands, natural cloth folds, "
+        "2-tier cel shading, and vivid expressions. Match turnarounds for COSTUME, HAIR, HEADGEAR & "
+        "COLOR IDENTITY ONLY with dynamic scene poses.\n"
+        "CLEAN HAND RULE: Stow default weapons on back/belt when holding loot, shield, dice, or gesturing."
     )
     if not resolved:
         return header
@@ -450,6 +492,11 @@ def build_character_anchors_block(characters: list[str]) -> str:
             f"- {member.name} ({member.id}): {member.appearance_anchor} "
             f"Optional default prop: {member.default_prop}"
         )
+        if member.companion_id and member.companion_anchor:
+            lines.append(
+                f"  Fixed companion mascot ({member.companion_name} / {member.companion_id}): "
+                f"{member.companion_anchor}"
+            )
         if member.id == "skyborne_mage":
             lines.append(
                 "  Skyborne lore note: Zephras Isle wind-elf heritage (sky-blue high side-ponytail, "
