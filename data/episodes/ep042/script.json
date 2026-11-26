@@ -1,0 +1,124 @@
+{
+  "episode_number": 42,
+  "source_post_no": "80391",
+  "source_title": "렙업구간이니까. 그냥 무시하라고?",
+  "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=80391",
+  "subtitle": "만렙 인던서 이중특 핑계로 천 로브 입찰한 보기",
+  "cuts": [
+    {
+      "cut_index": 1,
+      "aspect_ratio": "4:3",
+      "layout_slot": "top",
+      "characters": [
+        "나이트엘프 사제",
+        "언데드 성기사"
+      ],
+      "speaker": "나이트엘프 사제",
+      "dialogue": "오 만렙 인던 파템 천 로브!\n힐러 졸업템 드디어 떴어요!",
+      "wordless": false,
+      "visual_prompt": "Low-angle loot discovery shot in cute 2.5-head chibi SD style on a pure #FFFFFF background with minimal stone dungeon floor touch and open pure white upper-right space. On the left, overjoyed Night Elf Priest (lavender half-up hair, gold crescent tiara, purple priest robe, waist mini Holy Book and gold Rosary, zero angel halo or wings, single gold cross staff stowed on back) clasps her empty hands sparkling happily over a glowing blue-trimmed fantasy cloth robe hovering above a small loot chest. On the lower-right, Undead Paladin prot tank holding her compact one-handed mace and sturdy gold kite shield eyes the cloth robe with a sly sideways glint.",
+      "tail_target": "left",
+      "bubble_side": "left",
+      "item_tooltip": {
+        "image_path": null,
+        "item_name": "고귀한 빛의 로브",
+        "wowhead_item_id": null,
+        "quality": "rare",
+        "slot_left": "가슴",
+        "slot_right": "천",
+        "lines": [
+          "획득 시 귀속",
+          "방어도 88",
+          "지능 +15",
+          "정신력 +14",
+          "요구 레벨 58"
+        ],
+        "equip_effects": [
+          "착용 효과: 주문 피해 및 치유량이 최대 33만큼 증가합니다."
+        ],
+        "icon_name": "inv_chest_cloth_17",
+        "preferred_corner": "top_right",
+        "target_width": 288
+      }
+    },
+    {
+      "cut_index": 2,
+      "aspect_ratio": "16:9",
+      "layout_slot": "bottom",
+      "characters": [
+        "언데드 성기사",
+        "스카이본 마법사"
+      ],
+      "speaker": "언데드 성기사",
+      "dialogue": "이중특으로 신기할 거라 입찰함!\n나중에 힐러 할 거라 필요해",
+      "wordless": false,
+      "visual_prompt": "Over-the-shoulder shot from behind Skyborne Mage (tilted blue wizard hat with smiling cloud-wing badge in right foreground, single blue crystal staff stowed on back) looking at Undead Paladin prot tank on the left, in cute 2.5-head chibi SD style on a pure #FFFFFF background. On the left, shameless Undead Paladin prot tank (sturdy gold kite shield strapped across her left arm, compact one-handed mace tucked neatly at her waist) casually tosses a chunky 6-sided white-and-gold loot die with round dot pips only (no digits) into the air with a deadpan smirk.",
+      "tail_target": "left",
+      "bubble_side": "left",
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 3,
+      "aspect_ratio": "4:3",
+      "layout_slot": "top",
+      "characters": [
+        "나이트엘프 사제",
+        "언데드 성기사"
+      ],
+      "speaker": "나이트엘프 사제",
+      "dialogue": "보기로 왔으면 탱템 먹어야지!\n힐템 먹을 거면 신기로 와!",
+      "wordless": false,
+      "visual_prompt": "Side-profile confrontation shot in cute 2.5-head chibi SD style on a pure #FFFFFF background with minimal dungeon flagstones. On the left, furious Night Elf Priest (lavender half-up hair, gold crescent tiara, purple priest robe, waist mini Holy Book and gold Rosary, zero angel halo or wings, single gold cross staff stowed on back) leans forward pointing sharply with blazing lavender-silver eyes and a comic anger vein. On the right, Undead Paladin prot tank holds her sturdy gold kite shield (compact one-handed mace at waist) while hugging the folded blue cloth robe awkwardly with an innocent blank blink.",
+      "tail_target": "left",
+      "bubble_side": "left",
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 4,
+      "aspect_ratio": "16:9",
+      "layout_slot": "bottom",
+      "characters": [
+        "나이트엘프 사제"
+      ],
+      "speaker": null,
+      "dialogue": null,
+      "wordless": true,
+      "visual_prompt": "Centered Dutch-tilt extreme big bust-up close-up filling 80 percent of frame height in cute 2.5-head chibi SD style on a pure #FFFFFF background. Night Elf Priest (lavender half-up hair, gold crescent tiara, purple priest robe, zero angel halo or wings) stares dead ahead with darkened icy lavender-silver eyes, eerie twitching smile, and ominous jagged purple comic rage aura crackling behind her shoulders (zero text, letters, or speech bubbles).",
+      "tail_target": "center",
+      "bubble_side": null,
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 5,
+      "aspect_ratio": "4:3",
+      "layout_slot": "top",
+      "characters": [
+        "스카이본 마법사",
+        "언데드 성기사"
+      ],
+      "speaker": "스카이본 마법사",
+      "dialogue": "판금 탱커가 천 로브를 먹어?!\n만렙 인던에서 이걸 걍 넘겨?",
+      "wordless": false,
+      "visual_prompt": "High-angle heated argument shot in cute 2.5-head chibi SD style on a pure #FFFFFF background with minimal stone floor touch. On the left, fuming Skyborne Mage (sky-blue high side-ponytail, tilted blue wizard hat with smiling cloud-wing badge, cloud capelet, single blue crystal staff stowed on back) stomps her foot waving both empty hands angrily with popping comic steam puffs. On the right, nervous Undead Paladin prot tank (sturdy gold kite shield slung on back, compact one-handed mace at waist) clutches the folded blue cloth robe tightly to her chest sweating a giant cold drop.",
+      "tail_target": "left",
+      "bubble_side": "left",
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 6,
+      "aspect_ratio": "16:9",
+      "layout_slot": "bottom",
+      "characters": [
+        "나이트엘프 사제",
+        "언데드 성기사"
+      ],
+      "speaker": "나이트엘프 사제",
+      "dialogue": "그럼 천 로브 입고 자힐하세요\n전 힐 안 줍니다, 수고요",
+      "wordless": false,
+      "visual_prompt": "Back-view three-quarter comic finale in cute 2.5-head chibi SD style on a pure #FFFFFF background with minimal stone dungeon floor touch. On the left, icy-smiling Night Elf Priest (lavender half-up hair, gold crescent tiara, purple priest robe, waist mini Holy Book and gold Rosary, zero angel halo or wings, single gold cross staff stowed on back) turns her back and strolls briskly away waving dismissively over her shoulder. On the right, Undead Paladin prot tank holding her compact one-handed mace and sturdy gold kite shield (blue cloth robe draped awkwardly over her arm) freezes pale in panic as a cute 2.5-head chibi SD dungeon skeleton mob peeks cheerfully behind her.",
+      "tail_target": "left",
+      "bubble_side": "left",
+      "item_tooltip": null
+    }
+  ]
+}
