@@ -70,7 +70,23 @@
       "visual_prompt": "Over-the-shoulder shot from behind Human Warlock (dark-purple hood in right foreground) and her cute 2.5-head chibi SD round squishy floating purple Voidwalker with a starry belly and gold bracers looking at Troll Shaman on the left, in cute 2.5-head chibi SD style on a pure #FFFFFF background. Troll Shaman (single wooden totem staff stowed on back) leans forward looking utterly horrified over a small glowing golden talent-tree constellation sphere hovering low near chest height (simple golden dots and thin connecting lines only, zero text or numbers), leaving open pure #FFFFFF space above her head.",
       "tail_target": "left",
       "bubble_side": "left",
-      "item_tooltip": null
+      "item_tooltip": {
+        "image_path": null,
+        "item_name": "고독한 늑대",
+        "wowhead_item_id": null,
+        "quality": "common",
+        "slot_left": "사냥꾼 특성",
+        "slot_right": "사격",
+        "lines": [
+          "지속 효과"
+        ],
+        "equip_effects": [
+          "활성화된 야수(펫)가 없을 때 모든 공격력이 20%만큼 증가합니다."
+        ],
+        "icon_name": "spell_hunter_lonewolf",
+        "preferred_corner": "top_right",
+        "target_width": 290
+      }
     },
     {
       "cut_index": 4,

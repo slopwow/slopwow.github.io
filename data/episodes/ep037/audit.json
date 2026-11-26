@@ -84,8 +84,8 @@
       "wordless": false,
       "bubble_count": 1,
       "overlap_px": 0,
-      "min_clearance_px": 10.0,
-      "font_size": 25,
+      "min_clearance_px": 76.8,
+      "font_size": 23,
       "art_bbox": [
         88,
         321,
@@ -93,11 +93,14 @@
         829
       ],
       "tail_target": "left",
-      "bubble_center": [
-        282.5,
-        183.8
+      "has_item_tooltip": true,
+      "tooltip_bbox": [
+        582,
+        16,
+        872,
+        130
       ],
-      "bubble_side_resolved": "left",
+      "tooltip_overlap_px": 0,
       "art_height_ratio": 0.612,
       "cut_index": 3,
       "slot": "top",
