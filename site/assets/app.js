@@ -3,6 +3,55 @@
   "use strict";
 
   var HOME_PAGE_SIZE = 24;
+  var READ_STORAGE_KEY = "sloptoon_read_eps";
+
+  function getReadEpisodeMap() {
+    var map = {};
+    try {
+      var raw = window.localStorage.getItem(READ_STORAGE_KEY);
+      if (!raw) return map;
+      var list = JSON.parse(raw);
+      if (Array.isArray(list)) {
+        list.forEach(function (id) {
+          if (typeof id === "string" && id) map[id] = true;
+        });
+      }
+    } catch (_err) {
+      /* ignore storage errors */
+    }
+    return map;
+  }
+
+  function markEpisodeRead(episodeId) {
+    if (!episodeId) return;
+    try {
+      var map = getReadEpisodeMap();
+      if (map[episodeId]) return;
+      var list = Object.keys(map);
+      list.push(episodeId);
+      if (list.length > 500) list = list.slice(list.length - 500);
+      window.localStorage.setItem(READ_STORAGE_KEY, JSON.stringify(list));
+    } catch (_err) {
+      /* ignore storage errors */
+    }
+  }
+
+  function applyReadMarks(container) {
+    if (!container) return;
+    var readMap = getReadEpisodeMap();
+    var cards = container.querySelectorAll(".ep-card[data-id]");
+    cards.forEach(function (card) {
+      var epId = card.getAttribute("data-id") || "";
+      var isRead = Boolean(epId && readMap[epId]);
+      card.classList.toggle("is-read", isRead);
+      var mark = card.querySelector(".ep-read-mark");
+      if (mark) mark.hidden = !isRead;
+    });
+  }
+
+  function prefersReducedMotion() {
+    return Boolean(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  }
 
   function showToast(msg) {
     var toast = document.getElementById("toast");
@@ -63,7 +112,7 @@
         });
         if (pool.length === 0) {
           if (currentId) {
-            showToast("현재 1화만 등록되어 있어요! 곧 새로운 념글 만화가 추가됩니다.");
+            showToast("현재 1화만 등록되어 있습니다. 곧 새로운 념글 만화가 추가됩니다.");
             return;
           }
           pool = episodes;
@@ -74,7 +123,7 @@
     });
   }
 
-  /* ---------------- HOME PAGE (SEARCH / FILTER / SORT / PAGINATION) ---------------- */
+  /* ---------------- HOME PAGE (SEARCH / FILTER / SORT / PAGINATION / READ MARKS) ---------------- */
   function initHomePage() {
     var grid = document.getElementById("episodeGrid");
     var searchInput = document.getElementById("searchInput");
@@ -87,6 +136,8 @@
     var loadMoreBtn = document.getElementById("loadMoreBtn");
     var showAllBtn = document.getElementById("showAllBtn");
     if (!grid) return;
+
+    applyReadMarks(grid);
 
     var cards = Array.prototype.slice.call(grid.querySelectorAll(".ep-card"));
     var totalAll = cards.length;
@@ -101,7 +152,9 @@
       activeCast = initCast;
       var btns = filterBar.querySelectorAll(".filter-chip");
       btns.forEach(function (btn) {
-        btn.classList.toggle("is-active", btn.getAttribute("data-cast") === activeCast);
+        var active = btn.getAttribute("data-cast") === activeCast;
+        btn.classList.toggle("is-active", active);
+        btn.setAttribute("aria-pressed", active ? "true" : "false");
       });
     }
 
@@ -188,6 +241,25 @@
         visibleLimit = HOME_PAGE_SIZE;
         applyFilters();
       });
+      searchInput.addEventListener("keydown", function (ev) {
+        if (ev.key === "Escape") {
+          if (searchInput.value) {
+            searchInput.value = "";
+            visibleLimit = HOME_PAGE_SIZE;
+            applyFilters();
+          } else {
+            searchInput.blur();
+          }
+        }
+      });
+      document.addEventListener("keydown", function (ev) {
+        if (ev.key !== "/" || ev.ctrlKey || ev.metaKey || ev.altKey) return;
+        var tag = ev.target ? ev.target.tagName : "";
+        if (/INPUT|TEXTAREA|SELECT/.test(tag) || (ev.target && ev.target.isContentEditable)) return;
+        ev.preventDefault();
+        searchInput.focus();
+        searchInput.select();
+      });
     }
     if (filterBar) {
       filterBar.addEventListener("click", function (ev) {
@@ -196,7 +268,9 @@
         activeCast = btn.getAttribute("data-cast") || "";
         visibleLimit = HOME_PAGE_SIZE;
         filterBar.querySelectorAll(".filter-chip").forEach(function (b) {
-          b.classList.toggle("is-active", b === btn);
+          var isMatch = b === btn;
+          b.classList.toggle("is-active", isMatch);
+          b.setAttribute("aria-pressed", isMatch ? "true" : "false");
         });
         applyFilters();
       });
@@ -229,7 +303,9 @@
         if (searchInput) searchInput.value = "";
         if (filterBar) {
           filterBar.querySelectorAll(".filter-chip").forEach(function (b) {
-            b.classList.toggle("is-active", (b.getAttribute("data-cast") || "") === "");
+            var isAll = (b.getAttribute("data-cast") || "") === "";
+            b.classList.toggle("is-active", isAll);
+            b.setAttribute("aria-pressed", isAll ? "true" : "false");
           });
         }
         applyFilters();
@@ -239,7 +315,7 @@
     applyFilters();
   }
 
-  /* ---------------- EPISODE READER, SHARE & BINGE NAVIGATION ---------------- */
+  /* ---------------- EPISODE READER, PROGRESS, SHARE & BINGE NAVIGATION ---------------- */
   function selectRecommended(episodes, currentIndex, limit) {
     var currentId = episodes[currentIndex].episode_id;
     var adjacent = {};
@@ -263,6 +339,7 @@
   function buildRecommendCardEl(rec, rootPrefix) {
     var article = document.createElement("article");
     article.className = "ep-card";
+    article.setAttribute("data-id", rec.episode_id);
 
     var link = document.createElement("a");
     link.className = "ep-card-link";
@@ -274,7 +351,10 @@
     img.src = rootPrefix + rec.thumb_image;
     img.alt = "EP." + rec.episode_number + " " + rec.title;
     img.className = "ep-thumb";
+    img.width = 800;
+    img.height = 500;
     img.loading = "lazy";
+    img.decoding = "async";
     var cuts = document.createElement("span");
     cuts.className = "thumb-cuts";
     cuts.textContent = rec.cut_count + "컷";
@@ -285,18 +365,28 @@
     body.className = "ep-card-body";
     var metaRow = document.createElement("div");
     metaRow.className = "meta-row";
-    var pill = document.createElement("span");
-    pill.className = "ep-pill ep-pill-sm";
-    pill.textContent = "EP." + rec.episode_number;
+    var idxSpan = document.createElement("span");
+    idxSpan.className = "ep-index";
+    idxSpan.textContent = "EP." + rec.episode_number;
+    var sep = document.createElement("span");
+    sep.className = "meta-sep";
+    sep.setAttribute("aria-hidden", "true");
+    sep.textContent = "·";
     var postNo = document.createElement("span");
     postNo.className = "post-no";
     postNo.textContent = "#" + rec.source_post_no;
     var dt = document.createElement("span");
     dt.className = "meta-date";
     dt.textContent = rec.date_short || "";
-    metaRow.appendChild(pill);
+    var readMark = document.createElement("span");
+    readMark.className = "ep-read-mark";
+    readMark.hidden = true;
+    readMark.textContent = "✓ 읽음";
+    metaRow.appendChild(idxSpan);
+    metaRow.appendChild(sep);
     metaRow.appendChild(postNo);
     metaRow.appendChild(dt);
+    metaRow.appendChild(readMark);
 
     var h3 = document.createElement("h3");
     h3.className = "ep-card-title";
@@ -313,7 +403,7 @@
       sp.className = "mini-chip";
       var dot = document.createElement("span");
       dot.className = "cast-dot";
-      dot.style.background = chip.color || "#111111";
+      dot.style.background = chip.color || "#111318";
       sp.appendChild(dot);
       sp.appendChild(document.createTextNode(chip.name));
       chipRow.appendChild(sp);
@@ -343,7 +433,7 @@
       ttl.textContent = isNext ? "가장 최신 에피소드입니다" : "첫 번째 에피소드입니다";
       var hint = document.createElement("span");
       hint.className = "nav-ep-sub";
-      hint.textContent = isNext ? "랜덤 화 보기로 다른 명장면도 즐겨보세요!" : "지금 1화부터 정주행 중이에요!";
+      hint.textContent = isNext ? "랜덤 화 보기로 다른 명장면도 감상해 보세요." : "지금 1화부터 정주행 중입니다.";
       info.appendChild(dir);
       info.appendChild(ttl);
       info.appendChild(hint);
@@ -361,14 +451,28 @@
     img.src = rootPrefix + targetEp.thumb_image;
     img.alt = "EP." + targetEp.episode_number + " " + targetEp.title;
     img.className = "nav-ep-thumb";
+    img.width = 800;
+    img.height = 500;
     img.loading = "lazy";
+    img.decoding = "async";
     thumbWrap.appendChild(img);
 
     var infoBox = document.createElement("div");
     infoBox.className = "nav-ep-info";
     var dirSpan = document.createElement("span");
     dirSpan.className = isNext ? "nav-ep-dir nav-ep-dir-accent" : "nav-ep-dir";
-    dirSpan.textContent = isNext ? "다음 화 바로 보기 →" : "← 이전 화 정주행";
+    var kbd = document.createElement("kbd");
+    kbd.className = "key-hint";
+    kbd.setAttribute("aria-hidden", "true");
+    kbd.textContent = isNext ? "→" : "←";
+    if (isNext) {
+      dirSpan.appendChild(document.createTextNode("다음 화 바로 보기 "));
+      dirSpan.appendChild(kbd);
+    } else {
+      dirSpan.appendChild(kbd);
+      dirSpan.appendChild(document.createTextNode(" 이전 화 정주행"));
+    }
+
     var titleStrong = document.createElement("strong");
     titleStrong.className = "nav-ep-title";
     titleStrong.textContent = "EP." + targetEp.episode_number + " " + targetEp.title;
@@ -387,6 +491,28 @@
       a.appendChild(infoBox);
     }
     return a;
+  }
+
+  function initReadProgressBar() {
+    var bar = document.getElementById("readProgressBar");
+    if (!bar) return null;
+    var rafPending = false;
+    function update() {
+      rafPending = false;
+      var docEl = document.documentElement;
+      var maxScroll = Math.max(0, docEl.scrollHeight - window.innerHeight);
+      var pct = maxScroll > 0 ? Math.min(100, Math.max(0, (window.scrollY / maxScroll) * 100)) : 0;
+      bar.style.width = pct.toFixed(2) + "%";
+    }
+    function schedule() {
+      if (rafPending) return;
+      rafPending = true;
+      window.requestAnimationFrame(update);
+    }
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule, { passive: true });
+    update();
+    return update;
   }
 
   function initEpisodePage() {
@@ -409,6 +535,7 @@
     }
     var ep = episodes[currentIndex];
     window.__SLOPTOON_CURRENT_EP__ = ep.episode_id;
+    markEpisodeRead(ep.episode_id);
 
     var prevEp = currentIndex > 0 ? episodes[currentIndex - 1] : null;
     var nextEp = currentIndex + 1 < episodes.length ? episodes[currentIndex + 1] : null;
@@ -430,8 +557,7 @@
     var sourceEl = document.getElementById("epSourceLink");
     if (sourceEl) {
       sourceEl.href = ep.source_url;
-      sourceEl.textContent =
-        "원본 디시 WOW 포에버 마이너 갤러리 개념글 (#" + ep.source_post_no + ") 바로가기 ↗";
+      sourceEl.textContent = "원본 포에버갤 개념글 (#" + ep.source_post_no + ") ↗";
     }
     var bottomSourceEl = document.getElementById("epBottomSourceLink");
     if (bottomSourceEl) {
@@ -447,7 +573,7 @@
         a.href = rootPrefix + "cast.html#" + encodeURIComponent(chip.id || "");
         var dot = document.createElement("span");
         dot.className = "cast-dot";
-        dot.style.background = chip.color || "#111111";
+        dot.style.background = chip.color || "#111318";
         a.appendChild(dot);
         a.appendChild(document.createTextNode(chip.name));
         castRow.appendChild(a);
@@ -464,13 +590,24 @@
     var pagesView = document.getElementById("readerPagesView");
     if (pagesView && Array.isArray(ep.page_images)) {
       pagesView.innerHTML = "";
+      var totalPages = ep.page_images.length;
       ep.page_images.forEach(function (rel, idx) {
+        var fig = document.createElement("figure");
+        fig.className = "reader-page-item";
+        var cap = document.createElement("figcaption");
+        cap.className = "reader-page-label";
+        var pNum = String(idx + 1).padStart(2, "0");
+        var pTot = String(totalPages).padStart(2, "0");
+        cap.textContent = "PAGE " + pNum + " / " + pTot;
         var img = document.createElement("img");
         img.src = rootPrefix + rel;
         img.alt = "EP." + ep.episode_number + " 페이지 " + (idx + 1);
         img.className = "reader-page-img";
         img.loading = "lazy";
-        pagesView.appendChild(img);
+        img.decoding = "async";
+        fig.appendChild(cap);
+        fig.appendChild(img);
+        pagesView.appendChild(fig);
       });
     }
 
@@ -505,21 +642,27 @@
         recs.forEach(function (rec) {
           recGrid.appendChild(buildRecommendCardEl(rec, rootPrefix));
         });
+        applyReadMarks(recGrid);
         recSection.hidden = false;
       } else {
         recSection.hidden = true;
       }
     }
 
+    var updateProgress = initReadProgressBar();
+
     var fullView = document.getElementById("readerFullView");
     document.querySelectorAll(".mode-btn[data-mode]").forEach(function (btn) {
       btn.addEventListener("click", function () {
         var mode = btn.getAttribute("data-mode");
         document.querySelectorAll(".mode-btn[data-mode]").forEach(function (b) {
-          b.classList.toggle("is-active", b === btn);
+          var active = b === btn;
+          b.classList.toggle("is-active", active);
+          b.setAttribute("aria-pressed", active ? "true" : "false");
         });
         if (fullView) fullView.hidden = mode !== "full";
         if (pagesView) pagesView.hidden = mode !== "pages";
+        if (updateProgress) window.requestAnimationFrame(updateProgress);
       });
     });
 
@@ -552,40 +695,91 @@
     }
     window.addEventListener("scroll", toggleBtn, { passive: true });
     btn.addEventListener("click", function () {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      window.scrollTo({ top: 0, behavior: prefersReducedMotion() ? "auto" : "smooth" });
     });
     toggleBtn();
   }
 
-  /* ---------------- CAST PAGE (LIGHTBOX) ---------------- */
+  /* ---------------- CAST PAGE (FACTION FILTER & ACCESSIBLE LIGHTBOX) ---------------- */
   function initCastPage() {
-    var sheetImg = document.getElementById("castSheetImg");
+    var factionFilter = document.getElementById("castFactionFilter");
+    var castGrid = document.getElementById("castGrid");
+    var castCountMeta = document.getElementById("castCountMeta");
+    var factionNames = {
+      Horde: "호드",
+      Alliance: "얼라이언스",
+      "Neutral-Skyborne": "스카이본"
+    };
+
+    if (factionFilter && castGrid) {
+      var castCards = Array.prototype.slice.call(castGrid.querySelectorAll(".cast-card"));
+      var totalCast = castCards.length;
+      var defaultMetaText = castCountMeta ? castCountMeta.textContent : "";
+
+      factionFilter.addEventListener("click", function (ev) {
+        var btn = ev.target.closest(".filter-chip");
+        if (!btn) return;
+        var faction = btn.getAttribute("data-faction") || "";
+        factionFilter.querySelectorAll(".filter-chip").forEach(function (b) {
+          var isMatch = b === btn;
+          b.classList.toggle("is-active", isMatch);
+          b.setAttribute("aria-pressed", isMatch ? "true" : "false");
+        });
+        var visibleCount = 0;
+        castCards.forEach(function (card) {
+          var show = !faction || card.getAttribute("data-faction") === faction;
+          card.hidden = !show;
+          if (show) visibleCount += 1;
+        });
+        if (castCountMeta) {
+          if (!faction) {
+            castCountMeta.textContent = defaultMetaText;
+          } else {
+            castCountMeta.textContent = (factionNames[faction] || faction) + " " + visibleCount + "명 표시 중 (전체 " + totalCast + "명)";
+          }
+        }
+      });
+    }
+
     var lightbox = document.getElementById("lightbox");
     var lightboxImg = document.getElementById("lightboxImg");
+    var lightboxCaption = document.getElementById("lightboxCaption");
     var lightboxClose = document.getElementById("lightboxClose");
 
     if (lightbox && lightboxImg) {
-      var openLightbox = function (src, alt) {
+      var lastTrigger = null;
+
+      var openLightbox = function (src, alt, triggerEl) {
         if (!src) return;
+        lastTrigger = triggerEl || document.activeElement;
         lightboxImg.src = src;
-        if (alt) lightboxImg.alt = alt;
+        lightboxImg.alt = alt || "확대 이미지";
+        if (lightboxCaption) lightboxCaption.textContent = alt || "";
         lightbox.hidden = false;
+        document.body.style.overflow = "hidden";
+        if (lightboxClose) lightboxClose.focus();
       };
-      if (sheetImg) {
-        sheetImg.addEventListener("click", function () {
-          openLightbox(sheetImg.src, sheetImg.alt);
-        });
-      }
+
+      var closeLightbox = function () {
+        if (lightbox.hidden) return;
+        lightbox.hidden = true;
+        lightboxImg.removeAttribute("src");
+        if (lightboxCaption) lightboxCaption.textContent = "";
+        document.body.style.overflow = "";
+        if (lastTrigger && typeof lastTrigger.focus === "function") {
+          lastTrigger.focus();
+        }
+        lastTrigger = null;
+      };
+
       document.querySelectorAll("[data-lightbox-src]").forEach(function (el) {
         el.addEventListener("click", function () {
           var src = el.getAttribute("data-lightbox-src");
           var img = el.querySelector("img");
-          openLightbox(src, img ? img.alt : "");
+          openLightbox(src, img ? img.alt : "", el);
         });
       });
-      var closeLightbox = function () {
-        lightbox.hidden = true;
-      };
+
       if (lightboxClose) lightboxClose.addEventListener("click", closeLightbox);
       lightbox.addEventListener("click", function (ev) {
         if (ev.target === lightbox) closeLightbox();

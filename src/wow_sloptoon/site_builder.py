@@ -534,21 +534,58 @@ def _render_robots_txt(base_url: str) -> str:
     return f"User-agent: *\nAllow: /\n\nSitemap: {clean_base}/sitemap.xml\n"
 
 
+_FAVICON_SVG = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <rect width="64" height="64" rx="14" fill="#111318"/>
+  <rect x="12" y="13" width="40" height="17" rx="4" fill="#ffffff"/>
+  <rect x="12" y="34" width="23" height="17" rx="4" fill="#ffffff"/>
+  <rect x="39" y="34" width="13" height="17" rx="4" fill="#0ea5e9"/>
+</svg>
+"""
+
+_BRAND_MARK_SVG = (
+    '<svg class="brand-mark" width="28" height="28" viewBox="0 0 64 64" fill="none" aria-hidden="true">'
+    '<rect width="64" height="64" rx="14" fill="#111318"/>'
+    '<rect x="12" y="13" width="40" height="17" rx="4" fill="#ffffff"/>'
+    '<rect x="12" y="34" width="23" height="17" rx="4" fill="#ffffff"/>'
+    '<rect x="39" y="34" width="13" height="17" rx="4" fill="#0ea5e9"/>'
+    "</svg>"
+)
+
+
+def _render_head_assets(root_prefix: str = "", css_suffix: str = "") -> str:
+    return "\n".join([
+        '  <meta name="theme-color" content="#ffffff">',
+        f'  <link rel="icon" href="{root_prefix}assets/favicon.svg" type="image/svg+xml">',
+        '  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>',
+        '  <link rel="preconnect" href="https://fonts.googleapis.com">',
+        '  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>',
+        '  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css">',
+        '  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&display=swap">',
+        f'  <link rel="stylesheet" href="{root_prefix}assets/style.css{css_suffix}">',
+    ])
+
+
 def _render_nav(active: str, root_prefix: str = "") -> str:
-    def _cls(key: str) -> str:
-        return "nav-link is-active" if active == key else "nav-link"
+    def _nav_attrs(key: str) -> str:
+        if active == key:
+            return 'class="nav-link is-active" aria-current="page"'
+        if active == "episode" and key == "home":
+            return 'class="nav-link is-active"'
+        return 'class="nav-link"'
 
     return f"""
     <header class="site-header">
       <div class="container header-inner">
         <a class="brand" href="{root_prefix}index.html" aria-label="와우 포에버 슬롭툰 홈">
-          <span class="brand-dot" aria-hidden="true"></span>
-          <span class="brand-name">와우 포에버 슬롭툰</span>
-          <span class="brand-tag">ARCHIVE</span>
+          {_BRAND_MARK_SVG}
+          <span class="brand-text">
+            <span class="brand-name">와우 포에버 슬롭툰</span>
+            <span class="brand-tag">ARCHIVE</span>
+          </span>
         </a>
         <nav class="site-nav" aria-label="주요 메뉴">
-          <a class="{_cls('home')}" href="{root_prefix}index.html">에피소드</a>
-          <a class="{_cls('cast')}" href="{root_prefix}cast.html">SD 캐스트 도감</a>
+          <a {_nav_attrs('home')} href="{root_prefix}index.html">에피소드</a>
+          <a {_nav_attrs('cast')} href="{root_prefix}cast.html">SD 캐스트 도감</a>
           <button type="button" class="nav-pill-random js-random-ep" title="무작위 다른 에피소드로 이동">🎲 랜덤 화 보기</button>
           <a class="nav-link nav-ext" href="{DC_GALLERY_RECOMMEND_URL}" target="_blank" rel="noopener noreferrer">포에버갤 개념글 ↗</a>
         </nav>
@@ -562,7 +599,7 @@ def _render_footer(total_episodes: int, root_prefix: str = "") -> str:
     <footer class="site-footer">
       <div class="container footer-inner">
         <div class="footer-brand">
-          <span class="pill-badge pill-sm"><span class="dot-sky"></span>{SITE_TAGLINE}</span>
+          <div class="footer-eyebrow"><span class="dot-sky" aria-hidden="true"></span>{SITE_TAGLINE}</div>
           <p class="footer-desc">
             포에버갤 개념글의 명장면을 2~2.5등신 귀염뽀짝 SD 고정 9인 캐스트와 동행 펫(아기 곰·공허방랑자)의 순백 상황극 웹툰으로 아카이빙합니다.
             현재 총 <strong>{total_episodes}화</strong>가 아카이브에 보관되어 있습니다.
@@ -585,7 +622,7 @@ def _render_footer(total_episodes: int, root_prefix: str = "") -> str:
 
 def _render_cast_chip_html(cast_name: str, root_prefix: str = "") -> str:
     member = resolve_cast_member(cast_name)
-    color = member.color_hex if member else "#111111"
+    color = member.color_hex if member else "#111318"
     label = html.escape(member.name if member else cast_name)
     target = f"{root_prefix}cast.html#{html.escape(member.id)}" if member else f"{root_prefix}cast.html"
     return (
@@ -602,13 +639,14 @@ def _render_episode_card(
     include_filter_attrs: bool = False,
 ) -> str:
     chips = "".join(
-        f'<span class="mini-chip"><span class="cast-dot" style="background:{html.escape((CAST_BY_NAME[c].color_hex if c in CAST_BY_NAME else "#111111"))};"></span>{html.escape(c)}</span>'
+        f'<span class="mini-chip"><span class="cast-dot" style="background:{html.escape((CAST_BY_NAME[c].color_hex if c in CAST_BY_NAME else "#111318"))};"></span>{html.escape(c)}</span>'
         for c in ep["cast_used"]
     )
-    filter_attrs = ""
+    id_attr = f'\n              data-id="{html.escape(ep["episode_id"])}"'
+    filter_attrs = id_attr
     if include_filter_attrs:
         filter_attrs = (
-            f'\n              data-id="{html.escape(ep["episode_id"])}"'
+            f"{id_attr}"
             f'\n              data-num="{ep["episode_number"]}"'
             f'\n              data-title="{html.escape(ep["title"].lower())}"'
             f'\n              data-sub="{html.escape(ep["subtitle"].lower())}"'
@@ -625,9 +663,11 @@ def _render_episode_card(
                 </div>
                 <div class="ep-card-body">
                   <div class="meta-row">
-                    <span class="ep-pill ep-pill-sm">EP.{ep['episode_number']}</span>
+                    <span class="ep-index">EP.{ep['episode_number']}</span>
+                    <span class="meta-sep" aria-hidden="true">·</span>
                     <span class="post-no">#{html.escape(ep['source_post_no'])}</span>
                     <span class="meta-date">{html.escape(ep['date_short'])}</span>
+                    <span class="ep-read-mark" hidden>✓ 읽음</span>
                   </div>
                   <h3 class="ep-card-title">{html.escape(ep['title'])}</h3>
                   <p class="ep-card-sub">{html.escape(ep['subtitle'])}</p>
@@ -667,16 +707,18 @@ def _render_index_html(
         latest_href = f"episodes/{html.escape(latest['episode_id'])}.html"
         latest_chips = "".join(_render_cast_chip_html(c) for c in latest["cast_used"])
         hero_html = f"""
-        <section class="hero-section" aria-label="최신 에피소드">
+        <section class="hero-section" aria-label="최신 에피소드" data-enter="2">
           <div class="hero-card">
-            <a class="hero-thumb-link" href="{latest_href}">
-              <img src="{html.escape(latest['thumb_image'])}" alt="EP.{latest['episode_number']} {html.escape(latest['title'])} 썸네일" class="hero-thumb" loading="eager">
-              <span class="thumb-flag">LATEST · EP.{latest['episode_number']}</span>
-              <span class="thumb-cuts">{latest['cut_count']}컷 상황극</span>
+            <a class="hero-thumb-link" href="{latest_href}" aria-label="최신 화 EP.{latest['episode_number']} {html.escape(latest['title'])} 바로 보기">
+              <img src="{html.escape(latest['thumb_image'])}" alt="EP.{latest['episode_number']} {html.escape(latest['title'])} 썸네일" class="hero-thumb" width="800" height="500" loading="eager" decoding="async" fetchpriority="high">
+              <span class="thumb-cuts">{latest['cut_count']}컷</span>
             </a>
             <div class="hero-body">
-              <div class="meta-row">
-                <span class="ep-pill">EP.{latest['episode_number']} · #{html.escape(latest['source_post_no'])}</span>
+              <div class="meta-row hero-meta-top">
+                <span class="hero-kicker">LATEST</span>
+                <span class="ep-index">EP.{latest['episode_number']}</span>
+                <span class="meta-sep" aria-hidden="true">·</span>
+                <span class="post-no">#{html.escape(latest['source_post_no'])}</span>
                 <span class="meta-date">{html.escape(latest['date_short'])}</span>
               </div>
               <h2 class="hero-title">
@@ -694,19 +736,30 @@ def _render_index_html(
         """
     else:
         hero_html = """
-        <section class="empty-hero">
+        <section class="empty-hero" data-enter="2">
           <p>아직 등록된 에피소드가 없습니다. <code>sloptoon generate --auto</code>로 첫 화를 생성해 보세요!</p>
         </section>
         """
 
     filter_buttons = [
-        f'<button type="button" class="filter-chip is-active" data-cast="">전체 <span class="filter-count">{total_episodes}</span></button>'
+        f'<button type="button" class="filter-chip is-active" data-cast="" aria-pressed="true">'
+        f'전체 <span class="filter-count">{total_episodes}</span></button>'
     ]
     for c in cast_payload:
+        if c.get("portrait"):
+            avatar_markup = (
+                f'<img class="filter-avatar" src="{html.escape(c["portrait"])}" '
+                f'alt="" width="24" height="24" loading="lazy" decoding="async">'
+            )
+        else:
+            avatar_markup = (
+                f'<span class="cast-dot" style="background:{html.escape(c["color_hex"])};"></span>'
+            )
         filter_buttons.append(
-            f'<button type="button" class="filter-chip" data-cast="{html.escape(c["name"])}">'
-            f'<span class="cast-dot" style="background:{html.escape(c["color_hex"])};"></span>'
-            f'{html.escape(c["name"])} <span class="filter-count">{c["episode_count"]}</span>'
+            f'<button type="button" class="filter-chip" data-cast="{html.escape(c["name"])}" aria-pressed="false">'
+            f"{avatar_markup}"
+            f'<span class="filter-name">{html.escape(c["name"])}</span>'
+            f'<span class="filter-count">{c["episode_count"]}</span>'
             f"</button>"
         )
 
@@ -728,27 +781,25 @@ def _render_index_html(
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{html.escape(page_title)}</title>
 {social_meta}
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
-  <link rel="stylesheet" href="assets/style.css{css_suffix}">
+{_render_head_assets("", css_suffix)}
 </head>
 <body data-page="home">
+  <a class="skip-link" href="#main-content">본문으로 바로가기</a>
   {_render_nav('home')}
 
-  <main class="container main-content">
-    <section class="masthead">
-      <div class="pill-badge">
-        <span class="dot-sky"></span>{SITE_TAGLINE}
+  <main id="main-content" class="container main-content">
+    <section class="masthead" data-enter="1">
+      <div class="masthead-main">
+        <p class="masthead-eyebrow"><span class="dot-sky" aria-hidden="true"></span>{SITE_TAGLINE}</p>
+        <h1 class="masthead-title">{SITE_NAME}</h1>
+        <p class="masthead-sub">포에버갤 레전드 개념글을 2~2.5등신 귀염뽀짝 SD 고정 9인 캐스트와 아기 곰·공허방랑자 파트너의 상황극으로 연재하는 순백 웹 아카이브</p>
       </div>
-      <h1 class="masthead-title">{SITE_NAME}</h1>
-      <p class="masthead-sub">포에버갤 레전드 개념글을 2~2.5등신 귀염뽀짝 SD 고정 9인 캐스트와 아기 곰·공허방랑자 파트너의 100% 라이브 상황극으로 연재하는 순백 웹 아카이브</p>
-      <div class="masthead-stats">
-        <span class="stat-pill">총 <strong>{total_episodes}</strong>화 아카이브</span>
-        <span class="stat-pill">2~2.5등신 귀염뽀짝 SD</span>
-        <span class="stat-pill">고정 9인 + 펫 2종</span>
+      <div class="masthead-stats" aria-label="아카이브 지표">
+        <span class="stat-item">총 <strong>{total_episodes}</strong>화 아카이브</span>
+        <span class="stat-item">2~2.5등신 귀염뽀짝 SD</span>
+        <span class="stat-item">고정 9인 · 펫 2종</span>
       </div>
     </section>
-
-    <hr class="ink-divider">
 
     {hero_html}
 
@@ -760,10 +811,14 @@ def _render_index_html(
         </div>
         <div class="controls-right">
           <div class="search-box">
-            <span class="search-icon" aria-hidden="true">⌕</span>
-            <input type="search" id="searchInput" class="search-input" placeholder="제목, 화수(EP.12), 글번호(#92059), 캐릭터 검색..." autocomplete="off">
+            <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="search" id="searchInput" class="search-input" placeholder="제목, EP.12, #92059, 캐릭터" aria-label="에피소드 검색" autocomplete="off">
+            <kbd class="search-kbd" aria-hidden="true">/</kbd>
           </div>
-          <button type="button" id="sortToggle" class="btn btn-subtle" data-order="desc" title="정렬 순서 전환">최신순 ↓</button>
+          <button type="button" id="sortToggle" class="btn btn-outline" data-order="desc" title="정렬 순서 전환">최신순 ↓</button>
         </div>
       </div>
 
@@ -777,11 +832,11 @@ def _render_index_html(
 
       <div class="archive-load-more" id="loadMoreWrap" hidden>
         <button type="button" id="loadMoreBtn" class="btn btn-outline">더 보기</button>
-        <button type="button" id="showAllBtn" class="btn btn-subtle">전체 펼치기</button>
+        <button type="button" id="showAllBtn" class="btn btn-outline">전체 펼치기</button>
       </div>
 
       <div class="empty-filter" id="emptyFilter" hidden>
-        <p class="empty-filter-title">조건에 맞는 에피소드가 아직 없어요!</p>
+        <p class="empty-filter-title">조건에 맞는 에피소드가 아직 없어요.</p>
         <p class="empty-filter-sub">다른 검색어나 캐릭터를 선택해 보세요.</p>
         <button type="button" id="resetFiltersBtn" class="btn btn-outline">필터 초기화</button>
       </div>
@@ -864,8 +919,12 @@ def _render_episode_reader_html(
         next_ep = site_episodes[idx + 1] if idx + 1 < len(site_episodes) else None
         recommended = _select_recommended_episodes(site_episodes, ep["episode_id"], limit=3)
         cast_chips = "".join(_render_cast_chip_html(c, root_prefix=root_prefix) for c in ep["cast_used"])
+        total_pages = len(ep["page_images"])
         pages_imgs_html = "".join(
-            f'<img src="{root_prefix}{html.escape(p)}" alt="EP.{ep["episode_number"]} 페이지 {pi}" class="reader-page-img" loading="lazy">'
+            f'<figure class="reader-page-item">'
+            f'<figcaption class="reader-page-label">PAGE {pi:02d} / {total_pages:02d}</figcaption>'
+            f'<img src="{root_prefix}{html.escape(p)}" alt="EP.{ep["episode_number"]} 페이지 {pi}" class="reader-page-img" loading="lazy" decoding="async">'
+            f"</figure>"
             for pi, p in enumerate(ep["page_images"], start=1)
         )
         canonical_url = html.escape(ep["canonical_url"])
@@ -873,30 +932,30 @@ def _render_episode_reader_html(
         prev_link_html = (
             f'<a class="nav-ep-card" href="{root_prefix}episodes/{html.escape(prev_ep["episode_id"])}.html">'
             f'<div class="nav-ep-thumb-wrap">'
-            f'<img src="{root_prefix}{html.escape(prev_ep["thumb_image"])}" alt="EP.{prev_ep["episode_number"]} {html.escape(prev_ep["title"])}" class="nav-ep-thumb" loading="lazy">'
-            f'</div>'
+            f'<img src="{root_prefix}{html.escape(prev_ep["thumb_image"])}" alt="EP.{prev_ep["episode_number"]} {html.escape(prev_ep["title"])}" class="nav-ep-thumb" width="800" height="500" loading="lazy" decoding="async">'
+            f"</div>"
             f'<div class="nav-ep-info">'
-            f'<span class="nav-ep-dir">← 이전 화 정주행</span>'
+            f'<span class="nav-ep-dir"><kbd class="key-hint" aria-hidden="true">←</kbd> 이전 화 정주행</span>'
             f'<strong class="nav-ep-title">EP.{prev_ep["episode_number"]} {html.escape(prev_ep["title"])}</strong>'
             f'<span class="nav-ep-sub">{html.escape(prev_ep["subtitle"])}</span>'
-            f'</div>'
-            f'</a>'
+            f"</div>"
+            f"</a>"
             if prev_ep
-            else '<div class="nav-ep-card is-disabled"><div class="nav-ep-info"><span class="nav-ep-dir">← 이전 화</span><span class="nav-ep-title">첫 번째 에피소드입니다</span><span class="nav-ep-sub">지금 1화부터 정주행 중이에요!</span></div></div>'
+            else '<div class="nav-ep-card is-disabled"><div class="nav-ep-info"><span class="nav-ep-dir">← 이전 화</span><span class="nav-ep-title">첫 번째 에피소드입니다</span><span class="nav-ep-sub">지금 1화부터 정주행 중입니다.</span></div></div>'
         )
         next_link_html = (
             f'<a class="nav-ep-card nav-ep-next" href="{root_prefix}episodes/{html.escape(next_ep["episode_id"])}.html">'
             f'<div class="nav-ep-info">'
-            f'<span class="nav-ep-dir nav-ep-dir-accent">다음 화 바로 보기 →</span>'
+            f'<span class="nav-ep-dir nav-ep-dir-accent">다음 화 바로 보기 <kbd class="key-hint" aria-hidden="true">→</kbd></span>'
             f'<strong class="nav-ep-title">EP.{next_ep["episode_number"]} {html.escape(next_ep["title"])}</strong>'
             f'<span class="nav-ep-sub">{html.escape(next_ep["subtitle"])}</span>'
-            f'</div>'
+            f"</div>"
             f'<div class="nav-ep-thumb-wrap">'
-            f'<img src="{root_prefix}{html.escape(next_ep["thumb_image"])}" alt="EP.{next_ep["episode_number"]} {html.escape(next_ep["title"])}" class="nav-ep-thumb" loading="lazy">'
-            f'</div>'
-            f'</a>'
+            f'<img src="{root_prefix}{html.escape(next_ep["thumb_image"])}" alt="EP.{next_ep["episode_number"]} {html.escape(next_ep["title"])}" class="nav-ep-thumb" width="800" height="500" loading="lazy" decoding="async">'
+            f"</div>"
+            f"</a>"
             if next_ep
-            else '<div class="nav-ep-card nav-ep-next is-disabled"><div class="nav-ep-info"><span class="nav-ep-dir">다음 화 →</span><span class="nav-ep-title">가장 최신 에피소드입니다</span><span class="nav-ep-sub">랜덤 화 보기로 다른 명장면도 즐겨보세요!</span></div></div>'
+            else '<div class="nav-ep-card nav-ep-next is-disabled"><div class="nav-ep-info"><span class="nav-ep-dir">다음 화 →</span><span class="nav-ep-title">가장 최신 에피소드입니다</span><span class="nav-ep-sub">랜덤 화 보기로 다른 명장면도 감상해 보세요.</span></div></div>'
         )
 
         rec_cards_html = "".join(
@@ -923,34 +982,36 @@ def _render_episode_reader_html(
         <div class="reader-top-bar">
           <a class="back-link" href="{root_prefix}index.html">← 전체 목록</a>
           <div class="reader-mode-toggle" role="group" aria-label="보기 방식">
-            <button type="button" class="mode-btn is-active" data-mode="full">통합 스크롤</button>
-            <button type="button" class="mode-btn" data-mode="pages">페이지별 보기</button>
+            <button type="button" class="mode-btn is-active" data-mode="full" aria-pressed="true">통합 스크롤</button>
+            <button type="button" class="mode-btn" data-mode="pages" aria-pressed="false">페이지별 보기</button>
           </div>
           <div class="reader-top-actions">
             {jump_select_html}
-            <button type="button" class="btn btn-sm btn-outline js-share-url" data-share-url="{canonical_url}">🔗 링크 복사</button>
+            <button type="button" class="btn btn-outline btn-sm js-share-url" data-share-url="{canonical_url}">🔗 링크 복사</button>
           </div>
         </div>
 
-        <header class="episode-header">
-          <div class="meta-row center-row">
-            <span class="ep-pill" id="epBadge">EP.{ep['episode_number']} · #{html.escape(ep['source_post_no'])}</span>
+        <header class="episode-header" data-enter="1">
+          <div class="meta-row">
+            <span class="ep-index" id="epBadge">EP.{ep['episode_number']} · #{html.escape(ep['source_post_no'])}</span>
+            <span class="meta-sep" aria-hidden="true">·</span>
             <span class="meta-date" id="epDate">{html.escape(ep['date_short'])}</span>
-            <span class="stat-pill" id="epCuts">{ep['cut_count']}컷 상황극</span>
+            <span class="meta-sep" aria-hidden="true">·</span>
+            <span class="meta-cuts" id="epCuts">{ep['cut_count']}컷 상황극</span>
           </div>
           <h1 class="episode-title" id="epTitle">{html.escape(ep['title'])}</h1>
           <p class="episode-sub" id="epSub">{html.escape(ep['subtitle'])}</p>
-          <div class="chip-row center-row" id="epCastRow">{cast_chips}</div>
-          <div class="source-bar">
+          <div class="episode-header-foot">
+            <div class="chip-row" id="epCastRow">{cast_chips}</div>
             <a id="epSourceLink" class="source-link" href="{html.escape(ep['source_url'])}" target="_blank" rel="noopener noreferrer">
-              원본 디시 WOW 포에버 마이너 갤러리 개념글 (#{html.escape(ep['source_post_no'])}) 바로가기 ↗
+              원본 포에버갤 개념글 (#{html.escape(ep['source_post_no'])}) ↗
             </a>
           </div>
         </header>
 
         <section class="comic-stage" aria-label="웹툰 본문">
           <div id="readerFullView" class="reader-full-view">
-            <img id="epFullImg" src="{root_prefix}{html.escape(ep['full_image'])}" alt="와우 포에버 슬롭툰 EP.{ep['episode_number']} {html.escape(ep['title'])} 통합본" class="reader-full-img">
+            <img id="epFullImg" src="{root_prefix}{html.escape(ep['full_image'])}" alt="와우 포에버 슬롭툰 EP.{ep['episode_number']} {html.escape(ep['title'])} 통합본" class="reader-full-img" loading="eager" decoding="async" fetchpriority="high">
           </div>
           <div id="readerPagesView" class="reader-pages-view" hidden>
             {pages_imgs_html}
@@ -962,12 +1023,12 @@ def _render_episode_reader_html(
         <section class="episode-action-strip" aria-label="공유 및 다음 정주행">
           <div class="action-strip-copy">
             <strong>이 념글 상황극, 재밌게 보셨나요?</strong>
-            <span>링크를 복사해 공유하거나 랜덤 화로 바로 이어서 정주행해 보세요!</span>
+            <span>링크를 복사해 공유하거나 랜덤 화로 바로 이어서 정주행해 보세요.</span>
           </div>
           <div class="action-strip-btns">
             <button type="button" id="shareCopyBtn" class="btn btn-outline btn-sm js-share-url" data-share-url="{canonical_url}">🔗 링크 복사</button>
-            <button type="button" id="bottomRandomBtn" class="btn btn-sky btn-sm js-random-ep">🎲 랜덤 화 보기</button>
-            <a id="epBottomSourceLink" class="btn btn-subtle btn-sm" href="{html.escape(ep['source_url'])}" target="_blank" rel="noopener noreferrer">원본 개념글 ↗</a>
+            <button type="button" id="bottomRandomBtn" class="btn btn-primary btn-sm js-random-ep">🎲 랜덤 화 보기</button>
+            <a id="epBottomSourceLink" class="btn btn-outline btn-sm" href="{html.escape(ep['source_url'])}" target="_blank" rel="noopener noreferrer">원본 개념글 ↗</a>
           </div>
         </section>
 
@@ -982,7 +1043,7 @@ def _render_episode_reader_html(
               <h2 class="section-title">다른 레전드 념글 만화</h2>
               <p class="section-meta">놓치면 아까운 포에버갤 개념글 상황극을 이어서 정주행해 보세요.</p>
             </div>
-            <a class="btn btn-subtle btn-sm" href="{root_prefix}index.html">전체 아카이브 →</a>
+            <a class="btn btn-outline btn-sm" href="{root_prefix}index.html">전체 아카이브 →</a>
           </div>
           <div class="recommend-grid" id="epRecommendGrid">
             {rec_cards_html}
@@ -1004,14 +1065,17 @@ def _render_episode_reader_html(
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{html.escape(page_title)}</title>
 {social_meta}
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
-  <link rel="stylesheet" href="{root_prefix}assets/style.css{css_suffix}">
+{_render_head_assets(root_prefix, css_suffix)}
 </head>
 <body data-page="episode">
-  {_render_nav('home', root_prefix=root_prefix)}
+  <a class="skip-link" href="#main-content">본문으로 바로가기</a>
+  <div class="read-progress" aria-hidden="true"><div class="read-progress-bar" id="readProgressBar"></div></div>
+  {_render_nav('episode', root_prefix=root_prefix)}
 
-  <main class="container reader-container" id="episodeRoot">
-    {reader_initial_html}
+  <main id="main-content" class="container reader-container">
+    <div id="episodeRoot">
+      {reader_initial_html}
+    </div>
   </main>
 
   {_render_footer(total_episodes, root_prefix=root_prefix)}
@@ -1044,6 +1108,10 @@ def _render_cast_html(
         for name in ep["cast_used"]:
             ep_by_cast.setdefault(name, []).append(ep)
 
+    horde_count = sum(1 for c in cast_payload if c.get("faction") == "Horde")
+    alliance_count = sum(1 for c in cast_payload if c.get("faction") == "Alliance")
+    skyborne_count = sum(1 for c in cast_payload if c.get("faction") == "Neutral-Skyborne")
+
     sheet_src = "assets/cast/cast_sheet_c.jpg" if has_clean_sheet else ""
     og_image_rel = (sheet_src or (site_episodes[-1]["thumb_image"] if site_episodes else "")).split("?", 1)[0]
     social_meta = _render_social_meta(
@@ -1059,16 +1127,17 @@ def _render_cast_html(
 
     sheet_section = (
         f"""
-        <section class="cast-sheet-section" aria-label="공식 2.5등신 SD 전체 캐스트 시트">
+        <section class="cast-sheet-section" aria-label="공식 2.5등신 SD 전체 캐스트 시트" data-enter="2">
           <div class="section-head">
             <div>
               <h2 class="section-title">공식 2.5등신 SD 전체 캐스트 시트</h2>
               <p class="section-meta">이미지를 클릭하면 원본 고해상도로 확대해서 감상할 수 있습니다.</p>
             </div>
           </div>
-          <div class="cast-sheet-frame">
-            <img id="castSheetImg" src="{html.escape(sheet_src)}" alt="와우 포에버 슬롭툰 공식 2.5등신 귀염뽀짝 SD 고정 9인 캐스트 시트" class="cast-sheet-img">
-          </div>
+          <button type="button" class="cast-sheet-frame" id="castSheetBtn" data-lightbox-src="{html.escape(sheet_src)}" aria-label="공식 2.5등신 SD 전체 캐스트 시트 원본 확대">
+            <img id="castSheetImg" src="{html.escape(sheet_src)}" alt="와우 포에버 슬롭툰 공식 2.5등신 귀염뽀짝 SD 고정 9인 캐스트 시트" class="cast-sheet-img" loading="eager" decoding="async">
+            <span class="cast-sheet-caption">원본 고해상도 확대 보기 ↗</span>
+          </button>
         </section>
         """
         if sheet_src
@@ -1092,7 +1161,7 @@ def _render_cast_html(
             )
             appearances_html = f'<div class="cast-ep-list">{ep_links}{more_badge}</div>'
         else:
-            appearances_html = '<p class="cast-ep-empty">곧 새로운 개념글 상황극으로 등판 예정!</p>'
+            appearances_html = '<p class="cast-ep-empty">곧 새로운 개념글 상황극으로 등판 예정입니다.</p>'
 
         if c["portrait"]:
             avatar_html = f'<img src="{html.escape(c["portrait"])}" alt="{html.escape(c["name"])} 포트레이트" class="cast-avatar" width="360" height="360" loading="lazy" decoding="async">'
@@ -1112,11 +1181,13 @@ def _render_cast_html(
                 f'<div class="cast-turnaround-wrap">'
                 f'<button type="button" class="cast-turnaround-btn" data-lightbox-src="{t_src}" '
                 f'aria-label="{html.escape(c["name"])} 정면·측면·후면 3면 턴어라운드 확대 보기">'
+                f'<span class="cast-turnaround-stage">'
                 f'<img src="{t_src}" alt="{html.escape(c["name"])} 정면 측면 후면 3면 턴어라운드 도면" '
                 f'class="cast-turnaround-img" loading="lazy" decoding="async">'
-                f'<span class="cast-turnaround-caption">2.5등신 SD 3면 턴어라운드 (클릭 확대)</span>'
-                f'</button>'
-                f'</div>'
+                f"</span>"
+                f'<span class="cast-turnaround-caption">2.5등신 SD 3면 턴어라운드 · 확대 ↗</span>'
+                f"</button>"
+                f"</div>"
             )
 
         companion_html = ""
@@ -1127,25 +1198,27 @@ def _render_cast_html(
                 f'<div class="cast-turnaround-wrap">'
                 f'<button type="button" class="cast-turnaround-btn" data-lightbox-src="{ct_src}" '
                 f'aria-label="{html.escape(c["name"])} 고정 동행 펫 {c_name} 3면 턴어라운드 확대 보기">'
+                f'<span class="cast-turnaround-stage">'
                 f'<img src="{ct_src}" alt="{html.escape(c["name"])} 고정 동행 펫 {c_name} 3면 턴어라운드 도면" '
                 f'class="cast-turnaround-img" loading="lazy" decoding="async">'
-                f'<span class="cast-turnaround-caption">고정 동행 펫 · {c_name} 3면 도면 (클릭 확대)</span>'
-                f'</button>'
-                f'</div>'
+                f"</span>"
+                f'<span class="cast-turnaround-caption">고정 동행 펫 · {c_name} 3면 도면 · 확대 ↗</span>'
+                f"</button>"
+                f"</div>"
             )
 
         cards_parts.append(
             f"""
-            <article class="cast-card" id="{html.escape(c['id'])}">
-              <div class="cast-card-accent" style="background:linear-gradient(90deg, {html.escape(c['color_hex'])}, {html.escape(c['accent_hex'])});"></div>
+            <article class="cast-card" id="{html.escape(c['id'])}" data-faction="{html.escape(c['faction'])}">
+              <div class="cast-card-accent" style="background:{html.escape(c['color_hex'])};"></div>
               <div class="cast-card-top">
                 <div class="cast-avatar-wrap">
                   {avatar_html}
-                  <span class="cast-num">0{idx}</span>
                 </div>
                 <div class="cast-identity">
-                  <div class="meta-row">
-                    <span class="cast-race-pill" style="border-color:{html.escape(c['color_hex'])};">
+                  <div class="cast-index-row">
+                    <span class="cast-num">0{idx}</span>
+                    <span class="cast-race-label">
                       <span class="cast-dot" style="background:{html.escape(c['color_hex'])};"></span>
                       {html.escape(c['race'])} · {html.escape(c['wow_class'])}{faction_suffix}
                     </span>
@@ -1182,22 +1255,25 @@ def _render_cast_html(
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{html.escape(page_title)}</title>
 {social_meta}
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
-  <link rel="stylesheet" href="assets/style.css{css_suffix}">
+{_render_head_assets("", css_suffix)}
 </head>
 <body data-page="cast">
+  <a class="skip-link" href="#main-content">본문으로 바로가기</a>
   {_render_nav('cast')}
 
-  <main class="container main-content">
-    <section class="masthead">
-      <div class="pill-badge">
-        <span class="dot-sky"></span>2~2.5등신 귀염뽀짝 SD 정본 · 고정 9인 + 동행 펫 2종
+  <main id="main-content" class="container main-content">
+    <section class="masthead" data-enter="1">
+      <div class="masthead-main">
+        <p class="masthead-eyebrow"><span class="dot-sky" aria-hidden="true"></span>2~2.5등신 귀염뽀짝 SD 정본 · 고정 9인 + 동행 펫 2종</p>
+        <h1 class="masthead-title">SD 9인 캐스트 도감</h1>
+        <p class="masthead-sub">오크·언데드·노움·드워프·트롤·타우렌·나이트엘프·인간·스카이본 — 포에버갤 상황극을 책임지는 2~2.5등신 SD 고정 9인과 동행 펫(아기 곰·공허방랑자)을 소개합니다.</p>
       </div>
-      <h1 class="masthead-title">귀염뽀짝 SD 9인 캐스트 도감</h1>
-      <p class="masthead-sub">오크·언데드·노움·드워프·트롤·타우렌·나이트엘프·인간·스카이본 — 포에버갤 상황극을 책임지는 2~2.5등신 SD 고정 9인과 동행 펫(아기 곰·공허방랑자)을 소개합니다.</p>
+      <div class="masthead-stats" aria-label="캐스트 구성">
+        <span class="stat-item">고정 <strong>{len(cast_payload)}</strong>인 캐스트</span>
+        <span class="stat-item">동행 펫 <strong>2</strong>종</span>
+        <span class="stat-item">3면 턴어라운드 정본</span>
+      </div>
     </section>
-
-    <hr class="ink-divider">
 
     {sheet_section}
 
@@ -1205,10 +1281,16 @@ def _render_cast_html(
       <div class="section-head">
         <div>
           <h2 class="section-title">캐릭터별 프로필 ({len(cast_payload)}명)</h2>
-          <p class="section-meta">각 캐릭터를 클릭하면 출연 에피소드 바로가기 및 아카이브 필터링이 가능합니다.</p>
+          <p class="section-meta" id="castCountMeta">진영별 필터와 3면 턴어라운드 확대, 출연 화 모아보기를 지원합니다.</p>
+        </div>
+        <div class="faction-filter-bar" id="castFactionFilter" role="group" aria-label="진영별 필터">
+          <button type="button" class="filter-chip is-active" data-faction="" aria-pressed="true">전체 {len(cast_payload)}인</button>
+          <button type="button" class="filter-chip" data-faction="Horde" aria-pressed="false">호드 <span class="filter-count">{horde_count}</span></button>
+          <button type="button" class="filter-chip" data-faction="Alliance" aria-pressed="false">얼라이언스 <span class="filter-count">{alliance_count}</span></button>
+          <button type="button" class="filter-chip" data-faction="Neutral-Skyborne" aria-pressed="false">스카이본 <span class="filter-count">{skyborne_count}</span></button>
         </div>
       </div>
-      <div class="cast-grid">
+      <div class="cast-grid" id="castGrid">
         {''.join(cards_parts)}
       </div>
     </section>
@@ -1216,7 +1298,10 @@ def _render_cast_html(
 
   <div id="lightbox" class="lightbox" hidden aria-modal="true" role="dialog" aria-label="이미지 확대 보기">
     <button type="button" id="lightboxClose" class="lightbox-close" aria-label="닫기">✕</button>
-    <img id="lightboxImg" src="" alt="확대 이미지" class="lightbox-img">
+    <figure class="lightbox-figure">
+      <img id="lightboxImg" alt="확대 이미지" class="lightbox-img">
+      <figcaption id="lightboxCaption" class="lightbox-caption"></figcaption>
+    </figure>
   </div>
 
   {_render_footer(total_episodes)}
@@ -1228,27 +1313,30 @@ def _render_cast_html(
 """
 
 
-_STYLE_CSS = """/* 와우 포에버 슬롭툰 — 순백(#FFFFFF) 초고속 정적 웹 아카이브 스타일 */
+_STYLE_CSS = """/* 와우 포에버 슬롭툰 — 순백(#FFFFFF) 에디토리얼 정적 웹 아카이브 */
 :root {
   --bg: #ffffff;
-  --surface: #f8fafc;
-  --surface-2: #f1f5f9;
-  --ink: #111111;
-  --ink-muted: #52525b;
-  --ink-soft: #71717a;
-  --border: #e4e4e7;
-  --border-strong: #111111;
-  --navy: #1e3a8a;
+  --surface: #f7f8fa;
+  --surface-2: #eff2f6;
+  --ink: #111318;
+  --ink-muted: #4b5262;
+  --ink-soft: #636b7c;
+  --border: rgba(17, 19, 24, 0.11);
+  --border-strong: rgba(17, 19, 24, 0.22);
+  --border-hover: rgba(17, 19, 24, 0.28);
   --sky: #0ea5e9;
   --sky-dark: #0284c7;
+  --sky-ink: #0369a1;
   --sky-soft: #f0f9ff;
   --sky-border: #bae6fd;
-  --radius-sm: 10px;
-  --radius-md: 16px;
-  --radius-lg: 22px;
-  --shadow-comic: 4px 4px 0 #111111;
-  --shadow-comic-lg: 6px 6px 0 #111111;
-  --font-sans: "Pretendard", "Noto Sans KR", "Malgun Gothic", -apple-system, BlinkMacSystemFont, sans-serif;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 14px;
+  --shadow-hover: 0 12px 28px -10px rgba(17, 19, 24, 0.11), 0 2px 6px -1px rgba(17, 19, 24, 0.05);
+  --shadow-float: 0 10px 26px -6px rgba(17, 19, 24, 0.14), 0 2px 8px -2px rgba(17, 19, 24, 0.06);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --font-sans: "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -1266,238 +1354,368 @@ body {
   background: var(--bg);
   color: var(--ink);
   font-family: var(--font-sans);
-  line-height: 1.55;
+  font-size: 16px;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 a { color: inherit; text-decoration: none; }
 img { display: block; max-width: 100%; height: auto; }
 button, input, select { font-family: inherit; }
 
-.container {
-  width: 100%;
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 20px;
+:focus-visible {
+  outline: 2px solid var(--sky);
+  outline-offset: 2px;
 }
 
-/* Sticky minimal white header */
+/* Skip link for keyboard accessibility */
+.skip-link {
+  position: fixed;
+  top: 10px;
+  left: 12px;
+  z-index: 120;
+  padding: 10px 16px;
+  border-radius: var(--radius-sm);
+  background: var(--ink);
+  color: #ffffff;
+  font-size: 0.875rem;
+  font-weight: 700;
+  transform: translateY(-160%);
+}
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+/* Quiet entrance animation — hero & masthead first load only */
+@keyframes quietEnter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+[data-enter] {
+  animation: quietEnter 420ms var(--ease-out) both;
+}
+[data-enter="2"] {
+  animation-delay: 70ms;
+}
+
+/* Equal-edges container */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Fixed reading progress bar on episode pages */
+.read-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2.5px;
+  z-index: 65;
+  pointer-events: none;
+  background: transparent;
+}
+.read-progress-bar {
+  width: 0%;
+  height: 100%;
+  background: var(--sky);
+}
+
+/* Opaque pure-white sticky header */
 .site-header {
   position: sticky;
   top: 0;
-  z-index: 40;
-  background: rgba(255, 255, 255, 0.96);
-  backdrop-filter: blur(10px);
-  border-bottom: 1.5px solid var(--border);
+  z-index: 50;
+  background: #ffffff;
+  border-bottom: 1px solid var(--border);
 }
 .header-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  min-height: 62px;
-  padding-top: 6px;
-  padding-bottom: 6px;
+  min-height: 64px;
 }
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 9px;
-  font-weight: 800;
-  font-size: 1.05rem;
-  letter-spacing: -0.02em;
-  flex-shrink: 0;
+  gap: 10px;
+  min-height: 44px;
+  min-width: 0;
   max-width: 100%;
+  flex-shrink: 0;
+}
+.brand-mark {
+  flex-shrink: 0;
+  display: block;
+}
+.brand-text {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
   min-width: 0;
 }
-.brand-dot {
-  width: 11px;
-  height: 11px;
-  border-radius: 999px;
-  background: var(--ink);
-  box-shadow: 0 0 0 3px var(--sky);
+.brand-name {
+  font-size: 1.0625rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  white-space: nowrap;
 }
 .brand-tag {
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  padding: 2px 7px;
-  border: 1.5px solid var(--ink);
-  border-radius: 999px;
-  background: var(--bg);
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--ink-soft);
 }
 .site-nav {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 4px;
 }
 .nav-link {
-  font-size: 0.9rem;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 12px;
+  font-size: 0.9375rem;
   font-weight: 600;
   color: var(--ink-muted);
-  padding: 7px 13px;
-  border-radius: 999px;
-  transition: background 0.15s ease, color 0.15s ease;
+  border-radius: var(--radius-sm);
+  transition: color 150ms ease, background-color 150ms ease;
 }
-.nav-link:hover { background: var(--surface-2); color: var(--ink); }
-.nav-link.is-active { background: var(--ink); color: #ffffff; }
-.nav-ext { border: 1px solid var(--border); }
+.nav-link:hover {
+  color: var(--ink);
+  background: var(--surface);
+}
+.nav-link.is-active {
+  color: var(--ink);
+  font-weight: 700;
+}
+.nav-link.is-active::after {
+  content: "";
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 0;
+  height: 2px;
+  background: var(--sky);
+  border-radius: 2px 2px 0 0;
+}
+.nav-ext {
+  color: var(--ink-soft);
+}
 .nav-pill-random {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  font-size: 0.86rem;
-  font-weight: 800;
+  justify-content: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 0 14px;
+  margin-left: 4px;
+  font-size: 0.875rem;
+  font-weight: 700;
   color: var(--ink);
   background: #ffffff;
-  border: 1.5px solid var(--ink);
-  border-radius: 999px;
-  padding: 6px 13px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
   cursor: pointer;
-  transition: transform 0.14s ease, box-shadow 0.14s ease, background 0.14s ease, border-color 0.14s ease;
+  transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease, transform 90ms ease;
 }
 .nav-pill-random:hover {
   background: var(--sky-soft);
-  border-color: var(--sky);
-  color: var(--sky-dark);
-  transform: translate(-1px, -1px);
-  box-shadow: 2px 2px 0 var(--sky);
+  border-color: var(--sky-border);
+  color: var(--sky-ink);
+}
+.nav-pill-random:active {
+  transform: scale(0.985);
 }
 
-/* Editorial masthead matching comic header */
-.main-content { padding-top: 38px; padding-bottom: 72px; }
-.masthead { text-align: center; padding: 8px 0 26px; }
-.pill-badge {
+/* Main layout & compact left-aligned editorial masthead */
+.main-content {
+  padding-top: 28px;
+  padding-bottom: 72px;
+}
+.masthead {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px 32px;
+  padding-bottom: 22px;
+  margin-bottom: 28px;
+  border-bottom: 1px solid var(--border);
+}
+.masthead-main {
+  flex: 1 1 320px;
+  min-width: 0;
+  max-width: 100%;
+}
+.masthead-eyebrow {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
   gap: 8px;
-  max-width: 100%;
-  background: var(--ink);
-  color: #ffffff;
-  font-size: 0.84rem;
-  font-weight: 700;
-  padding: 7px 18px;
-  border-radius: 999px;
+  margin: 0 0 8px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--ink-soft);
   letter-spacing: -0.01em;
-  line-height: 1.35;
-  text-align: center;
   word-break: keep-all;
   overflow-wrap: anywhere;
 }
-.pill-sm { font-size: 0.74rem; padding: 5px 12px; }
 .dot-sky {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
   border-radius: 999px;
   background: var(--sky);
   display: inline-block;
   flex-shrink: 0;
 }
 .masthead-title {
-  margin: 16px 0 10px;
-  font-size: clamp(2rem, 4.8vw, 3.15rem);
-  font-weight: 900;
-  letter-spacing: -0.04em;
-  line-height: 1.12;
+  margin: 0 0 6px;
+  font-size: clamp(1.85rem, 3.2vw, 2.55rem);
+  font-weight: 850;
+  letter-spacing: -0.035em;
+  line-height: 1.16;
+  color: var(--ink);
   word-break: keep-all;
   overflow-wrap: anywhere;
 }
 .masthead-sub {
-  margin: 0 auto;
-  max-width: 640px;
+  margin: 0;
+  max-width: 680px;
+  font-size: 0.9375rem;
+  line-height: 1.55;
   color: var(--ink-muted);
-  font-size: 1rem;
   word-break: keep-all;
   overflow-wrap: anywhere;
 }
 .masthead-stats {
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 18px;
-}
-.stat-pill {
-  display: inline-flex;
   align-items: center;
-  gap: 4px;
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: var(--ink-muted);
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  padding: 4px 12px;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  max-width: 100%;
+  min-width: 0;
 }
-.ink-divider {
-  border: 0;
-  height: 2px;
-  background: var(--ink);
-  margin: 0 0 34px;
+.stat-item {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  padding-left: 16px;
+  border-left: 1px solid var(--border);
+  white-space: nowrap;
+}
+.stat-item:first-child {
+  padding-left: 0;
+  border-left: 0;
+}
+.stat-item strong {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  color: var(--ink);
 }
 
-/* Shared pills & buttons */
-.ep-pill {
-  display: inline-flex;
-  align-items: center;
-  font-size: 0.84rem;
-  font-weight: 800;
-  color: var(--navy);
-  background: #ffffff;
-  border: 2px solid var(--navy);
-  border-radius: 999px;
-  padding: 4px 13px;
-  letter-spacing: -0.01em;
-}
-.ep-pill-sm { font-size: 0.76rem; padding: 2px 10px; border-width: 1.5px; }
+/* Shared editorial metadata & unified buttons */
 .meta-row {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 6px 8px;
+  min-width: 0;
 }
-.center-row { justify-content: center; }
-.meta-date, .post-no { font-size: 0.82rem; color: var(--ink-soft); font-weight: 600; }
+.ep-index {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+.meta-sep {
+  color: var(--border-strong);
+  font-size: 0.8125rem;
+}
+.post-no, .meta-date, .meta-cuts {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--ink-soft);
+}
+.ep-read-mark {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--sky-ink);
+  background: var(--sky-soft);
+  border: 1px solid var(--sky-border);
+  border-radius: 5px;
+  padding: 1px 7px;
+  line-height: 1.4;
+}
+.ep-read-mark[hidden] { display: none; }
 
+/* Unified 2-variant button system: Solid Primary + Clean Outline Secondary */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 7px;
+  min-height: 44px;
+  padding: 0 18px;
+  border-radius: var(--radius-sm);
+  font-size: 0.9375rem;
   font-weight: 700;
-  font-size: 0.92rem;
-  padding: 11px 18px;
-  border-radius: 12px;
-  border: 2px solid var(--ink);
+  line-height: 1.2;
   cursor: pointer;
-  transition: transform 0.14s ease, box-shadow 0.14s ease, background 0.14s ease, border-color 0.14s ease;
+  white-space: nowrap;
+  transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease, transform 90ms ease;
 }
-.btn:hover { transform: translate(-1px, -1px); }
+.btn:active {
+  transform: scale(0.985);
+}
 .btn-primary {
   background: var(--ink);
   color: #ffffff;
-  box-shadow: 3px 3px 0 var(--sky);
+  border: 1px solid var(--ink);
 }
-.btn-primary:hover { box-shadow: 4px 4px 0 var(--sky); }
-.btn-sky {
-  background: var(--sky);
-  color: #ffffff;
+.btn-primary:hover {
+  background: #232833;
+  border-color: #232833;
+}
+.btn-outline {
+  background: #ffffff;
+  color: var(--ink);
+  border: 1px solid var(--border-strong);
+}
+.btn-outline:hover {
+  background: var(--surface);
   border-color: var(--ink);
-  box-shadow: 3px 3px 0 var(--ink);
 }
-.btn-sky:hover { background: var(--sky-dark); box-shadow: 4px 4px 0 var(--ink); }
-.btn-outline { background: #ffffff; color: var(--ink); }
-.btn-outline:hover { background: var(--surface); box-shadow: 3px 3px 0 var(--ink); }
-.btn-subtle { background: var(--surface); border-color: var(--border); color: var(--ink); }
-.btn-subtle:hover { border-color: var(--ink); }
-.btn-sm { font-size: 0.82rem; padding: 7px 13px; border-radius: 10px; border-width: 1.5px; }
-.btn-lg { font-size: 0.98rem; padding: 14px 22px; width: 100%; }
+.btn-sm {
+  min-height: 44px;
+  padding: 0 14px;
+  font-size: 0.875rem;
+}
 
-/* Collapsible sponsor / ad slot — zero-height & invisible when empty */
+/* Collapsible sponsor slot — zero height & invisible when empty */
 .slop-sponsor-slot {
   width: 100%;
-  max-width: 900px;
+  max-width: 960px;
   margin: 28px auto;
   padding: 16px;
   background: #ffffff;
@@ -1512,99 +1730,135 @@ button, input, select { font-family: inherit; }
   border: 0;
 }
 
-/* Hero featured latest card */
-.hero-section { margin-bottom: 48px; }
+/* Featured latest hero — balanced 2-column showcase fitting above 1440x900 fold */
+.hero-section {
+  margin-bottom: 48px;
+}
 .hero-card {
   display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
-  background: var(--bg);
-  border: 2px solid var(--border-strong);
+  grid-template-columns: minmax(0, 1.18fr) minmax(0, 1fr);
+  background: #ffffff;
+  border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   overflow: hidden;
-  box-shadow: var(--shadow-comic-lg);
+  transition: border-color 180ms ease, box-shadow 180ms var(--ease-out);
+}
+.hero-card:hover {
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-hover);
 }
 .hero-thumb-link {
   position: relative;
   display: block;
+  aspect-ratio: 16 / 10;
   background: #ffffff;
-  border-right: 2px solid var(--border-strong);
+  border-right: 1px solid var(--border);
   overflow: hidden;
 }
 .hero-thumb {
   width: 100%;
   height: 100%;
-  min-height: 290px;
   object-fit: contain;
   background: #ffffff;
-  transition: transform 0.25s ease;
+  transition: transform 500ms var(--ease-out);
 }
-.hero-thumb-link:hover .hero-thumb { transform: scale(1.025); }
-.thumb-flag {
-  position: absolute;
-  top: 14px;
-  left: 14px;
-  background: var(--ink);
-  color: #ffffff;
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.06em;
-  padding: 5px 11px;
-  border-radius: 999px;
+.hero-thumb-link:hover .hero-thumb {
+  transform: scale(1.025);
 }
 .thumb-cuts {
   position: absolute;
   bottom: 12px;
   right: 12px;
-  background: rgba(255, 255, 255, 0.95);
-  color: var(--ink);
-  border: 1.5px solid var(--ink);
-  font-size: 0.74rem;
-  font-weight: 800;
-  padding: 3px 10px;
-  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--ink-muted);
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 2px 9px;
+  line-height: 1.45;
 }
 .hero-body {
-  padding: 28px 30px;
+  padding: 32px 34px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 14px;
   min-width: 0;
 }
+.hero-kicker {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--sky-ink);
+  background: var(--sky-soft);
+  border: 1px solid var(--sky-border);
+  border-radius: 5px;
+  padding: 1px 8px;
+}
 .hero-title {
   margin: 0;
-  font-size: clamp(1.45rem, 2.5vw, 1.95rem);
-  font-weight: 900;
+  font-size: clamp(1.5rem, 2.3vw, 2.05rem);
+  font-weight: 850;
   letter-spacing: -0.03em;
-  line-height: 1.25;
+  line-height: 1.24;
+  color: var(--ink);
   word-break: keep-all;
   overflow-wrap: anywhere;
 }
-.hero-title a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.hero-title a {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0% 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 2px;
+  transition: background-size 220ms var(--ease-out);
+}
+.hero-title a:hover {
+  background-size: 100% 2px;
+}
 .hero-sub {
   margin: 0;
   color: var(--ink-muted);
-  font-size: 0.97rem;
+  font-size: 1rem;
+  line-height: 1.55;
   word-break: keep-all;
   overflow-wrap: anywhere;
 }
-.hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 6px;
+}
 
 /* Cast chips */
-.chip-row { display: flex; flex-wrap: wrap; gap: 7px; }
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
 .cast-chip {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  font-size: 0.8rem;
-  font-weight: 700;
-  padding: 4px 11px;
-  border-radius: 999px;
+  gap: 7px;
+  min-height: 36px;
+  padding: 4px 12px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--ink-muted);
   background: var(--surface);
   border: 1px solid var(--border);
-  transition: border-color 0.15s ease, transform 0.15s ease;
+  border-radius: var(--radius-sm);
+  transition: border-color 150ms ease, color 150ms ease, background-color 150ms ease;
 }
-.cast-chip:hover { border-color: var(--ink); transform: translateY(-1px); }
+.cast-chip:hover {
+  border-color: var(--border-hover);
+  color: var(--ink);
+  background: #ffffff;
+}
 .cast-dot {
   width: 8px;
   height: 8px;
@@ -1613,99 +1867,187 @@ button, input, select { font-family: inherit; }
   flex-shrink: 0;
 }
 
-/* Search & filter controls */
+/* Section header, search & sort controls */
 .section-head {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 14px;
+  gap: 16px;
   margin-bottom: 18px;
 }
 .section-title {
   margin: 0;
-  font-size: 1.35rem;
-  font-weight: 900;
-  letter-spacing: -0.03em;
+  font-size: 1.375rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.25;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
 }
-.section-meta { margin: 4px 0 0; font-size: 0.86rem; color: var(--ink-soft); }
-.controls-right { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; max-width: 100%; min-width: 0; }
-.search-box { position: relative; max-width: 100%; min-width: 0; }
+.section-meta {
+  margin: 4px 0 0;
+  font-size: 0.875rem;
+  color: var(--ink-soft);
+  font-variant-numeric: tabular-nums;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+.controls-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  max-width: 100%;
+  min-width: 0;
+}
+.search-box {
+  position: relative;
+  max-width: 100%;
+  min-width: 0;
+}
 .search-icon {
   position: absolute;
-  left: 12px;
+  left: 13px;
   top: 50%;
   transform: translateY(-50%);
   color: var(--ink-soft);
-  font-size: 1rem;
   pointer-events: none;
 }
 .search-input {
-  width: 260px;
+  width: 320px;
   max-width: 100%;
-  padding: 9px 14px 9px 34px;
-  border: 1.5px solid var(--border);
-  border-radius: 12px;
-  font-size: 0.88rem;
+  min-height: 44px;
+  padding: 0 38px 0 38px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  font-size: 0.9375rem;
   background: #ffffff;
   color: var(--ink);
-  outline: none;
-  transition: border-color 0.15s ease;
+  transition: border-color 150ms ease;
 }
-.search-input:focus { border-color: var(--ink); }
+.search-input::placeholder {
+  color: var(--ink-soft);
+}
+.search-input:hover {
+  border-color: var(--border-hover);
+}
+.search-input:focus {
+  border-color: var(--sky);
+}
+.search-kbd {
+  position: absolute;
+  right: 11px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 5px;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  pointer-events: none;
+}
+.search-box:focus-within .search-kbd {
+  opacity: 0;
+}
 
-.cast-filter-bar {
+/* Character avatar filter bar & faction filter bar */
+.cast-filter-bar, .faction-filter-bar {
   display: flex;
   flex-wrap: wrap;
-  gap: 7px;
+  gap: 8px;
   margin-bottom: 24px;
+}
+.faction-filter-bar {
+  margin-bottom: 0;
 }
 .filter-chip {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 7px;
+  min-height: 44px;
+  padding: 5px 13px;
   background: #ffffff;
   color: var(--ink-muted);
-  border: 1.5px solid var(--border);
-  border-radius: 999px;
-  padding: 6px 13px;
-  font-size: 0.82rem;
-  font-weight: 700;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: all 0.14s ease;
+  transition: border-color 150ms ease, background-color 150ms ease, color 150ms ease, transform 90ms ease;
 }
-.filter-chip:hover { border-color: var(--ink); color: var(--ink); }
-.filter-chip.is-active { background: var(--ink); border-color: var(--ink); color: #ffffff; }
+.filter-chip:hover {
+  border-color: var(--border-hover);
+  color: var(--ink);
+  background: var(--surface);
+}
+.filter-chip:active {
+  transform: scale(0.985);
+}
+.filter-chip.is-active {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #ffffff;
+}
+.filter-avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  object-fit: cover;
+  object-position: 50% 15%;
+  background: #ffffff;
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.filter-chip.is-active .filter-avatar {
+  border-color: rgba(255, 255, 255, 0.65);
+}
 .filter-count {
-  font-size: 0.72rem;
-  opacity: 0.75;
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  opacity: 0.72;
 }
 
 /* Episode card grid */
 .episode-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(310px, 100%), 1fr));
-  gap: 22px;
+  gap: 24px;
 }
 .ep-card {
   min-width: 0;
   max-width: 100%;
   background: #ffffff;
-  border: 1.8px solid var(--ink);
+  border: 1px solid var(--border);
   border-radius: var(--radius-md);
   overflow: hidden;
-  transition: transform 0.16s ease, box-shadow 0.16s ease;
+  transition: transform 180ms var(--ease-out), box-shadow 180ms var(--ease-out), border-color 180ms ease;
 }
 .ep-card:hover {
-  transform: translate(-2px, -3px);
-  box-shadow: var(--shadow-comic);
+  transform: translateY(-2px);
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-hover);
 }
-.ep-card-link { display: flex; flex-direction: column; height: 100%; }
+.ep-card-link {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
 .ep-thumb-wrap {
   position: relative;
   aspect-ratio: 16 / 10;
   background: #ffffff;
-  border-bottom: 1.5px solid var(--border);
+  border-bottom: 1px solid var(--border);
   overflow: hidden;
 }
 .ep-thumb {
@@ -1713,9 +2055,15 @@ button, input, select { font-family: inherit; }
   height: 100%;
   object-fit: contain;
   background: #ffffff;
-  transition: transform 0.22s ease;
+  transition: transform 500ms var(--ease-out), opacity 180ms ease;
 }
-.ep-card:hover .ep-thumb { transform: scale(1.03); }
+.ep-card.is-read .ep-thumb {
+  opacity: 0.92;
+}
+.ep-card:hover .ep-thumb {
+  transform: scale(1.025);
+  opacity: 1;
+}
 .ep-card-body {
   padding: 16px 18px 18px;
   display: flex;
@@ -1726,16 +2074,25 @@ button, input, select { font-family: inherit; }
 }
 .ep-card-title {
   margin: 2px 0 0;
-  font-size: 1.1rem;
-  font-weight: 800;
+  font-size: 1.0625rem;
+  font-weight: 750;
   letter-spacing: -0.02em;
-  line-height: 1.3;
+  line-height: 1.38;
+  color: var(--ink);
   word-break: keep-all;
   overflow-wrap: anywhere;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 4px;
+  transition: text-decoration-color 180ms ease;
+}
+.ep-card:hover .ep-card-title {
+  text-decoration-color: var(--ink);
 }
 .ep-card-sub {
   margin: 0;
-  font-size: 0.87rem;
+  font-size: 0.9375rem;
+  line-height: 1.5;
   color: var(--ink-muted);
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -1744,29 +2101,42 @@ button, input, select { font-family: inherit; }
   word-break: keep-all;
   overflow-wrap: anywhere;
 }
-.mini-chip-row { display: flex; flex-wrap: wrap; gap: 5px; margin-top: auto; padding-top: 6px; }
+.mini-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 8px;
+}
 .mini-chip {
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  font-size: 0.74rem;
+  font-size: 0.8125rem;
   font-weight: 600;
   color: var(--ink-muted);
   background: var(--surface);
-  border: 1px solid var(--border);
+  border-radius: 6px;
   padding: 2px 8px;
-  border-radius: 999px;
 }
 
 .empty-filter, .empty-hero {
   text-align: center;
-  padding: 52px 20px;
-  border: 1.5px dashed var(--border);
+  padding: 52px 24px;
+  border: 1px dashed var(--border-strong);
   border-radius: var(--radius-md);
   background: var(--surface);
 }
-.empty-filter-title { margin: 0 0 6px; font-weight: 800; font-size: 1.05rem; }
-.empty-filter-sub { margin: 0 0 16px; color: var(--ink-muted); font-size: 0.9rem; }
+.empty-filter-title {
+  margin: 0 0 6px;
+  font-weight: 750;
+  font-size: 1.0625rem;
+}
+.empty-filter-sub {
+  margin: 0 0 18px;
+  color: var(--ink-muted);
+  font-size: 0.9375rem;
+}
 
 .archive-load-more {
   display: flex;
@@ -1774,59 +2144,42 @@ button, input, select { font-family: inherit; }
   justify-content: center;
   flex-wrap: wrap;
   gap: 10px;
-  margin-top: 28px;
+  margin-top: 32px;
 }
 .archive-load-more[hidden] { display: none; }
 
-.ep-jump-select {
-  max-width: 220px;
-  min-width: 0;
-  padding: 6px 10px;
-  border: 1.5px solid var(--border);
-  border-radius: 10px;
-  background: #ffffff;
-  color: var(--ink);
-  font-family: inherit;
-  font-size: 0.8rem;
-  font-weight: 700;
-  cursor: pointer;
-}
-.ep-jump-select:focus { outline: none; border-color: var(--ink); }
-
-.cast-ep-more {
-  font-size: 0.76rem;
-  font-weight: 700;
-  color: var(--ink-soft);
-  padding-top: 2px;
-}
-
+/* Back to top floating button */
 .back-to-top {
   position: fixed;
-  right: 22px;
+  right: 24px;
   bottom: 24px;
   z-index: 60;
+  min-height: 44px;
+  padding: 0 16px;
   background: #ffffff;
   color: var(--ink);
-  border: 1.8px solid var(--ink);
-  border-radius: 999px;
-  padding: 8px 14px;
-  font-size: 0.82rem;
-  font-weight: 800;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  font-weight: 700;
   cursor: pointer;
-  box-shadow: 3px 3px 0 var(--ink);
-  transition: transform 0.14s ease, box-shadow 0.14s ease, background 0.14s ease;
+  box-shadow: var(--shadow-float);
+  transition: transform 150ms var(--ease-out), border-color 150ms ease, background-color 150ms ease;
 }
 .back-to-top:hover {
-  background: var(--sky-soft);
-  transform: translate(-1px, -1px);
-  box-shadow: 4px 4px 0 var(--sky);
+  background: var(--surface);
+  border-color: var(--ink);
+  transform: translateY(-2px);
+}
+.back-to-top:active {
+  transform: scale(0.985);
 }
 .back-to-top[hidden] { display: none; }
 
-/* Episode Reader page */
+/* ---------------- EPISODE READER PAGE ---------------- */
 .reader-container {
-  max-width: 940px;
-  padding-top: 22px;
+  max-width: 960px;
+  padding-top: 20px;
   padding-bottom: 72px;
 }
 .reader-top-bar {
@@ -1834,9 +2187,51 @@ button, input, select { font-family: inherit; }
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 10px;
-  padding-bottom: 18px;
+  gap: 10px 14px;
+  padding-bottom: 16px;
   border-bottom: 1px solid var(--border);
+}
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 4px;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--ink-muted);
+  transition: color 150ms ease;
+}
+.back-link:hover {
+  color: var(--ink);
+}
+.reader-mode-toggle {
+  display: inline-flex;
+  align-items: center;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 3px;
+  gap: 3px;
+}
+.mode-btn {
+  min-height: 44px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--ink-muted);
+  font-size: 0.875rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 150ms ease, color 150ms ease, box-shadow 150ms ease;
+}
+.mode-btn:hover {
+  color: var(--ink);
+}
+.mode-btn.is-active {
+  background: #ffffff;
+  color: var(--ink);
+  box-shadow: 0 1px 3px rgba(17, 19, 24, 0.10);
 }
 .reader-top-actions {
   display: inline-flex;
@@ -1846,68 +2241,79 @@ button, input, select { font-family: inherit; }
   max-width: 100%;
   min-width: 0;
 }
-.back-link { font-weight: 700; font-size: 0.9rem; color: var(--ink-muted); }
-.back-link:hover { color: var(--ink); }
-.reader-mode-toggle {
-  display: inline-flex;
-  background: var(--surface-2);
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  padding: 3px;
-  gap: 3px;
-}
-.mode-btn {
-  border: 0;
-  background: transparent;
-  color: var(--ink-muted);
-  font-size: 0.8rem;
-  font-weight: 700;
-  padding: 6px 13px;
-  border-radius: 999px;
+.ep-jump-select {
+  max-width: 240px;
+  min-width: 0;
+  min-height: 44px;
+  padding: 0 12px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: #ffffff;
+  color: var(--ink);
+  font-size: 0.875rem;
+  font-weight: 600;
   cursor: pointer;
+  transition: border-color 150ms ease;
 }
-.mode-btn.is-active { background: var(--ink); color: #ffffff; }
+.ep-jump-select:hover {
+  border-color: var(--ink);
+}
 
-.episode-header { text-align: center; padding: 28px 0 22px; }
+.episode-header {
+  padding: 28px 0 24px;
+  border-bottom: 1px solid var(--border);
+}
 .episode-title {
-  margin: 12px 0 8px;
-  font-size: clamp(1.6rem, 3.8vw, 2.3rem);
-  font-weight: 900;
+  margin: 10px 0 8px;
+  font-size: clamp(1.6rem, 3.4vw, 2.3rem);
+  font-weight: 850;
   letter-spacing: -0.03em;
+  line-height: 1.24;
+  color: var(--ink);
   word-break: keep-all;
   overflow-wrap: anywhere;
 }
 .episode-sub {
-  margin: 0 0 14px;
+  margin: 0 0 18px;
   color: var(--ink-muted);
-  font-size: 0.98rem;
+  font-size: 1rem;
+  line-height: 1.55;
   word-break: keep-all;
   overflow-wrap: anywhere;
 }
-.source-bar { margin-top: 14px; max-width: 100%; }
+.episode-header-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px 16px;
+}
 .source-link {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 6px;
+  min-height: 44px;
+  padding: 0 12px;
   max-width: 100%;
-  font-size: 0.84rem;
-  font-weight: 700;
-  color: var(--sky-dark);
-  padding: 6px 14px;
-  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--sky-ink);
   background: var(--sky-soft);
   border: 1px solid var(--sky-border);
+  border-radius: var(--radius-sm);
   line-height: 1.4;
-  text-align: center;
   word-break: keep-all;
   overflow-wrap: anywhere;
+  transition: background-color 150ms ease, border-color 150ms ease;
 }
-.source-link:hover { background: #e0f2fe; }
+.source-link:hover {
+  background: #e0f2fe;
+  border-color: var(--sky);
+}
 
+/* Borderless pure-white comic stage */
 .comic-stage {
   background: #ffffff;
-  margin: 12px auto 28px;
+  margin: 24px auto 36px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1923,42 +2329,62 @@ button, input, select { font-family: inherit; }
   margin: 0 auto;
   background: #ffffff;
 }
-.reader-pages-view { display: flex; flex-direction: column; gap: 28px; }
-.reader-pages-view[hidden], .reader-full-view[hidden] { display: none; }
+.reader-pages-view {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.reader-pages-view[hidden], .reader-full-view[hidden] {
+  display: none;
+}
+.reader-page-item {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.reader-page-label {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--ink-soft);
+}
 .reader-page-img {
   border: 1px solid var(--border);
-  border-radius: 10px;
+  border-radius: var(--radius-md);
 }
 
-/* Post-comic Share & Random Binge Strip */
+/* Post-comic Share & Random Strip */
 .episode-action-strip {
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 14px;
-  padding: 18px 22px;
-  background: #ffffff;
-  border: 1.8px solid var(--ink);
+  gap: 16px;
+  padding: 20px 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: var(--radius-md);
-  box-shadow: 3px 3px 0 var(--sky);
   margin-bottom: 24px;
 }
 .action-strip-copy {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 3px;
   min-width: 0;
 }
 .action-strip-copy strong {
-  font-size: 0.98rem;
-  font-weight: 900;
+  font-size: 1rem;
+  font-weight: 800;
   letter-spacing: -0.02em;
+  color: var(--ink);
   word-break: keep-all;
   overflow-wrap: anywhere;
 }
 .action-strip-copy span {
-  font-size: 0.83rem;
+  font-size: 0.875rem;
   color: var(--ink-muted);
   word-break: keep-all;
   overflow-wrap: anywhere;
@@ -1971,12 +2397,12 @@ button, input, select { font-family: inherit; }
   max-width: 100%;
 }
 
-/* Sleek Prev / Next Episode Binge Cards */
+/* Prev / Next Episode Pager */
 .episode-pager {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
-  margin-bottom: 42px;
+  margin-bottom: 48px;
 }
 .nav-ep-card {
   display: flex;
@@ -1986,19 +2412,19 @@ button, input, select { font-family: inherit; }
   max-width: 100%;
   overflow: hidden;
   padding: 14px 16px;
-  border: 1.8px solid var(--ink);
+  border: 1px solid var(--border);
   border-radius: var(--radius-md);
   background: #ffffff;
-  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+  transition: transform 180ms var(--ease-out), box-shadow 180ms var(--ease-out), border-color 180ms ease;
 }
 .nav-ep-card:not(.is-disabled):hover {
-  transform: translate(-2px, -2px);
-  box-shadow: var(--shadow-comic);
+  transform: translateY(-2px);
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-hover);
 }
 .nav-ep-card.is-disabled {
-  border-color: var(--border);
-  color: var(--ink-soft);
   background: var(--surface);
+  color: var(--ink-soft);
 }
 .nav-ep-next {
   justify-content: flex-end;
@@ -2006,10 +2432,10 @@ button, input, select { font-family: inherit; }
 }
 .nav-ep-thumb-wrap {
   width: 108px;
-  height: 70px;
+  height: 68px;
   flex-shrink: 0;
-  border: 1.5px solid var(--border);
-  border-radius: 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
   overflow: hidden;
   background: #ffffff;
 }
@@ -2018,6 +2444,10 @@ button, input, select { font-family: inherit; }
   height: 100%;
   object-fit: contain;
   background: #ffffff;
+  transition: transform 500ms var(--ease-out);
+}
+.nav-ep-card:not(.is-disabled):hover .nav-ep-thumb {
+  transform: scale(1.03);
 }
 .nav-ep-info {
   display: flex;
@@ -2028,80 +2458,154 @@ button, input, select { font-family: inherit; }
   flex: 1;
   overflow: hidden;
 }
-.nav-ep-dir { font-size: 0.76rem; font-weight: 800; color: var(--ink-soft); }
-.nav-ep-dir-accent { color: var(--sky-dark); }
+.nav-ep-dir {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+}
+.nav-ep-next .nav-ep-dir {
+  justify-content: flex-end;
+}
+.nav-ep-dir-accent {
+  color: var(--sky-dark);
+}
+.key-hint {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 5px;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
 .nav-ep-title {
-  font-size: 0.98rem;
-  font-weight: 900;
-  line-height: 1.25;
+  font-size: 0.9375rem;
+  font-weight: 750;
+  line-height: 1.32;
+  color: var(--ink);
   word-break: keep-all;
   overflow-wrap: anywhere;
+}
+.nav-ep-card.is-disabled .nav-ep-title {
+  color: var(--ink-muted);
 }
 .nav-ep-sub {
   display: block;
   max-width: 100%;
-  font-size: 0.8rem;
-  color: var(--ink-muted);
+  font-size: 0.8125rem;
+  color: var(--ink-soft);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-/* Recommended "다른 레전드 념글 만화" Grid */
-.recommend-section { margin-bottom: 42px; }
+/* Recommended Episodes Grid */
+.recommend-section {
+  margin-bottom: 42px;
+}
 .recommend-section[hidden] { display: none; }
 .recommend-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr));
-  gap: 18px;
+  gap: 20px;
 }
 
-/* Cast page */
-.cast-sheet-section { margin-bottom: 46px; }
+/* ---------------- CAST PAGE ---------------- */
+.cast-sheet-section {
+  margin-bottom: 52px;
+}
 .cast-sheet-frame {
-  border: 2px solid var(--ink);
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   overflow: hidden;
   background: #ffffff;
-  box-shadow: var(--shadow-comic);
   cursor: zoom-in;
+  text-align: left;
+  transition: border-color 180ms ease, box-shadow 180ms var(--ease-out);
 }
-.cast-sheet-img { width: 100%; height: auto; background: #ffffff; }
+.cast-sheet-frame:hover {
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-hover);
+}
+.cast-sheet-img {
+  width: 100%;
+  height: auto;
+  background: #ffffff;
+  transition: transform 500ms var(--ease-out);
+}
+.cast-sheet-frame:hover .cast-sheet-img {
+  transform: scale(1.015);
+}
+.cast-sheet-caption {
+  display: block;
+  padding: 12px 18px;
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--ink-muted);
+  text-align: right;
+}
+
 .cast-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(310px, 100%), 1fr));
-  gap: 20px;
+  gap: 24px;
 }
 .cast-card {
   min-width: 0;
   max-width: 100%;
-  border: 1.8px solid var(--ink);
-  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
   background: #ffffff;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  transition: transform 180ms var(--ease-out), box-shadow 180ms var(--ease-out), border-color 180ms ease;
 }
-.cast-card:hover { transform: translate(-2px, -2px); box-shadow: var(--shadow-comic); }
-.cast-card-accent { height: 6px; width: 100%; }
+.cast-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-hover);
+}
+.cast-card[hidden] { display: none; }
+.cast-card-accent {
+  height: 3px;
+  width: 100%;
+}
 .cast-card-top {
   display: flex;
   align-items: center;
-  gap: 14px;
-  padding: 16px 18px 10px;
+  gap: 16px;
+  padding: 20px 20px 12px;
 }
 .cast-avatar-wrap {
-  position: relative;
-  width: 86px;
-  height: 86px;
+  width: 104px;
+  height: 104px;
   flex-shrink: 0;
-  border: 1.5px solid var(--ink);
-  border-radius: 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
   overflow: hidden;
   background: #ffffff;
 }
-.cast-avatar { width: 100%; height: 100%; object-fit: contain; background: #ffffff; }
+.cast-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #ffffff;
+}
 .cast-avatar-fallback {
   width: 100%;
   height: 100%;
@@ -2109,168 +2613,278 @@ button, input, select { font-family: inherit; }
   align-items: center;
   justify-content: center;
   color: #ffffff;
-  font-weight: 900;
+  font-weight: 800;
   font-size: 1.4rem;
 }
-.cast-num {
-  position: absolute;
-  top: 4px;
-  left: 5px;
-  font-size: 0.65rem;
-  font-weight: 900;
-  background: rgba(255, 255, 255, 0.9);
-  padding: 1px 5px;
-  border-radius: 6px;
+.cast-identity {
+  min-width: 0;
+  flex: 1;
 }
-.cast-identity { min-width: 0; flex: 1; }
-.cast-race-pill {
-  display: inline-flex;
+.cast-index-row {
+  display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 5px;
-  max-width: 100%;
-  font-size: 0.74rem;
-  font-weight: 700;
-  border: 1.5px solid var(--border);
-  border-radius: 999px;
-  padding: 2px 9px;
+  gap: 6px 8px;
+}
+.cast-num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+.cast-race-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--ink-muted);
+  word-break: keep-all;
+  overflow-wrap: anywhere;
 }
 .cast-name {
-  margin: 5px 0 2px;
-  font-size: 1.12rem;
-  font-weight: 900;
-  letter-spacing: -0.02em;
+  margin: 6px 0 2px;
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.25;
+  color: var(--ink);
   word-break: keep-all;
   overflow-wrap: anywhere;
 }
 .cast-role {
   margin: 0;
-  font-size: 0.83rem;
+  font-size: 0.875rem;
   font-weight: 700;
-  color: var(--navy);
+  color: var(--sky-ink);
   word-break: keep-all;
   overflow-wrap: anywhere;
 }
 .cast-bio {
   margin: 0;
-  padding: 4px 18px 12px;
-  font-size: 0.87rem;
+  padding: 4px 20px 14px;
+  font-size: 0.9375rem;
+  line-height: 1.55;
   color: var(--ink-muted);
   word-break: keep-all;
   overflow-wrap: anywhere;
 }
-.cast-turnaround-wrap { padding: 0 18px 12px; }
+.cast-turnaround-wrap {
+  padding: 0 20px 12px;
+}
 .cast-turnaround-btn {
   display: block;
   width: 100%;
-  padding: 6px;
-  border: 1.5px solid var(--border);
+  padding: 8px;
+  border: 1px solid var(--border);
   border-radius: 10px;
   background: #ffffff;
   cursor: zoom-in;
   text-align: center;
-  transition: border-color 0.15s ease, transform 0.15s ease;
+  transition: border-color 150ms ease, background-color 150ms ease;
 }
-.cast-turnaround-btn:hover { border-color: var(--ink); transform: translateY(-1px); }
+.cast-turnaround-btn:hover {
+  border-color: var(--border-hover);
+  background: var(--surface);
+}
+.cast-turnaround-stage {
+  display: block;
+  overflow: hidden;
+  border-radius: 6px;
+  background: #ffffff;
+}
 .cast-turnaround-img {
   display: block;
   width: 100%;
   height: auto;
-  border-radius: 6px;
   background: #ffffff;
+  transition: transform 500ms var(--ease-out);
+}
+.cast-turnaround-btn:hover .cast-turnaround-img {
+  transform: scale(1.025);
 }
 .cast-turnaround-caption {
   display: block;
-  margin-top: 5px;
-  font-size: 0.72rem;
-  font-weight: 700;
+  margin-top: 7px;
+  font-size: 0.8125rem;
+  font-weight: 600;
   color: var(--ink-soft);
+  word-break: keep-all;
+  overflow-wrap: anywhere;
 }
-.alias-row { display: flex; flex-wrap: wrap; gap: 5px; padding: 0 18px 14px; }
+.alias-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 0 20px 16px;
+}
 .alias-tag {
-  font-size: 0.73rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
   color: var(--ink-soft);
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 999px;
+  border-radius: 6px;
   padding: 2px 8px;
 }
 .cast-card-foot {
   margin-top: auto;
-  padding: 12px 18px 16px;
+  padding: 14px 20px 16px;
   border-top: 1px solid var(--border);
   background: var(--surface);
   min-width: 0;
   max-width: 100%;
 }
-.cast-foot-label { font-size: 0.74rem; font-weight: 800; color: var(--ink-soft); margin-bottom: 6px; }
-.cast-ep-list { display: flex; flex-direction: column; gap: 5px; margin-bottom: 10px; min-width: 0; max-width: 100%; }
+.cast-foot-label {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  margin-bottom: 8px;
+}
+.cast-ep-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 10px;
+  min-width: 0;
+  max-width: 100%;
+}
 .ep-mini-link {
   display: block;
   max-width: 100%;
-  font-size: 0.82rem;
-  font-weight: 700;
+  padding: 3px 0;
+  font-size: 0.875rem;
+  font-weight: 600;
   color: var(--ink);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.ep-mini-link:hover { color: var(--navy); text-decoration: underline; }
-.cast-ep-empty { margin: 0 0 8px; font-size: 0.8rem; color: var(--ink-soft); }
-.cast-filter-link { font-size: 0.8rem; font-weight: 800; color: var(--navy); }
-.cast-filter-link:hover { text-decoration: underline; }
+.ep-mini-link:hover {
+  color: var(--sky-dark);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.cast-ep-more {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  padding-top: 2px;
+}
+.cast-ep-empty {
+  margin: 0 0 8px;
+  font-size: 0.875rem;
+  color: var(--ink-soft);
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+.cast-filter-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--sky-dark);
+}
+.cast-filter-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
 
 /* Lightbox modal */
 .lightbox {
   position: fixed;
   inset: 0;
-  z-index: 80;
-  background: rgba(17, 17, 17, 0.88);
+  z-index: 90;
+  background: rgba(17, 19, 24, 0.88);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 24px;
 }
 .lightbox[hidden] { display: none; }
-.lightbox-img {
+.lightbox-figure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
   max-width: 96vw;
   max-height: 92vh;
-  border-radius: 12px;
+}
+.lightbox-img {
+  max-width: 96vw;
+  max-height: 84vh;
+  border-radius: var(--radius-md);
   background: #ffffff;
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.35);
+}
+.lightbox-caption {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  text-align: center;
+  word-break: keep-all;
 }
 .lightbox-close {
   position: fixed;
   top: 18px;
   right: 22px;
-  width: 42px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
   border-radius: 999px;
-  border: 0;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   background: #ffffff;
   color: var(--ink);
-  font-size: 1.15rem;
-  font-weight: 900;
+  font-size: 1.1rem;
+  font-weight: 800;
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 90ms ease, background-color 150ms ease;
+}
+.lightbox-close:hover {
+  background: var(--surface-2);
+}
+.lightbox-close:active {
+  transform: scale(0.95);
 }
 
-/* Pure-White Footer, Legal Notice & Toast */
+/* Editorial Pure-White Footer, Legal Notice & Toast */
 .site-footer {
-  border-top: 1.5px solid var(--border);
+  border-top: 1px solid var(--border);
   background: #ffffff;
-  padding: 34px 0 38px;
+  padding: 38px 0 42px;
 }
 .footer-inner {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 20px 32px;
 }
-.footer-brand { min-width: 0; max-width: 100%; }
+.footer-brand {
+  min-width: 0;
+  max-width: 600px;
+}
+.footer-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--ink);
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
 .footer-desc {
-  margin: 10px 0 0;
-  max-width: 540px;
-  font-size: 0.85rem;
+  margin: 8px 0 0;
+  font-size: 0.875rem;
+  line-height: 1.6;
   color: var(--ink-muted);
   word-break: keep-all;
   overflow-wrap: anywhere;
@@ -2279,20 +2893,28 @@ button, input, select { font-family: inherit; }
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 16px;
-  font-size: 0.86rem;
-  font-weight: 700;
+  gap: 6px 18px;
+  font-size: 0.875rem;
+  font-weight: 600;
   color: var(--ink-muted);
 }
-.footer-links a:hover { color: var(--ink); }
+.footer-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  transition: color 150ms ease;
+}
+.footer-links a:hover {
+  color: var(--ink);
+}
 .footer-legal {
   margin-top: 22px;
-  padding-top: 16px;
+  padding-top: 18px;
   border-top: 1px solid var(--border);
 }
 .legal-notice {
   margin: 0;
-  font-size: 0.78rem;
+  font-size: 0.8125rem;
   line-height: 1.65;
   color: var(--ink-soft);
   word-break: keep-all;
@@ -2304,97 +2926,292 @@ button, input, select { font-family: inherit; }
   bottom: 24px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 90;
+  z-index: 100;
   background: var(--ink);
   color: #ffffff;
-  font-size: 0.88rem;
-  font-weight: 700;
+  font-size: 0.875rem;
+  font-weight: 600;
   padding: 12px 20px;
-  border-radius: 999px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-float);
   max-width: calc(100vw - 32px);
   text-align: center;
   overflow-wrap: anywhere;
 }
 
+/* ---------------- RESPONSIVE BREAKPOINTS ---------------- */
 @media (max-width: 820px) {
-  .header-inner { flex-wrap: wrap; padding-top: 10px; padding-bottom: 10px; gap: 10px 14px; }
-  .nav-link { font-size: 0.84rem; padding: 6px 10px; }
-  .nav-pill-random { font-size: 0.82rem; padding: 5px 11px; }
-  .hero-card { grid-template-columns: minmax(0, 1fr); }
-  .hero-thumb-link { border-right: 0; border-bottom: 2px solid var(--border-strong); }
-  .hero-thumb { min-height: 220px; }
-  .hero-body { padding: 20px; }
-  .episode-pager { grid-template-columns: minmax(0, 1fr); }
-  .nav-ep-next { text-align: left; flex-direction: row-reverse; justify-content: flex-start; }
-  .nav-ep-thumb-wrap { width: 88px; height: 58px; }
+  .header-inner {
+    flex-wrap: wrap;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    gap: 6px 14px;
+  }
   .brand-tag { display: none; }
-  .search-input { width: 100%; }
-  .ep-jump-select { max-width: 170px; font-size: 0.76rem; }
-  .back-to-top { right: 14px; bottom: 16px; padding: 7px 12px; font-size: 0.78rem; }
+  .masthead {
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .masthead-main {
+    flex: 1 1 100%;
+  }
+  .masthead-stats {
+    width: 100%;
+    gap: 6px 14px;
+  }
+  .hero-card {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .hero-thumb-link {
+    border-right: 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .hero-body {
+    padding: 22px 24px;
+  }
+  .episode-pager { grid-template-columns: minmax(0, 1fr); }
+  .nav-ep-next {
+    text-align: left;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+  }
+  .nav-ep-next .nav-ep-dir {
+    justify-content: flex-start;
+  }
+  .nav-ep-thumb-wrap {
+    width: 92px;
+    height: 58px;
+  }
+  .key-hint, .search-kbd { display: none; }
+  .search-input {
+    width: 100%;
+    padding-right: 14px;
+  }
+  .ep-jump-select {
+    max-width: 190px;
+  }
+  .back-to-top {
+    right: 16px;
+    bottom: 16px;
+  }
 }
 
 @media (max-width: 640px) {
-  .container { padding: 0 14px; }
-  .main-content { padding-top: 24px; padding-bottom: 56px; }
-  .header-inner { min-height: 54px; gap: 8px 12px; padding-top: 8px; padding-bottom: 8px; }
-  .site-nav { width: 100%; gap: 6px; }
-  .nav-link { font-size: 0.8rem; padding: 5px 10px; }
-  .nav-pill-random { font-size: 0.79rem; padding: 5px 10px; }
-  .masthead { padding: 4px 0 20px; }
-  .pill-badge { font-size: 0.76rem; padding: 6px 13px; border-radius: 16px; }
-  .masthead-title { font-size: clamp(1.72rem, 7.6vw, 2.25rem); }
-  .masthead-sub { font-size: 0.9rem; }
-  .ink-divider { margin-bottom: 24px; }
-  .hero-section { margin-bottom: 34px; }
-  .hero-card { border-radius: var(--radius-md); box-shadow: 3px 3px 0 #111111; }
-  .hero-thumb { min-height: 190px; }
-  .hero-body { padding: 16px; gap: 11px; }
-  .hero-title { font-size: 1.32rem; }
-  .hero-sub { font-size: 0.9rem; }
-  .hero-actions .btn { flex: 1 1 auto; }
-  .section-head { gap: 10px; margin-bottom: 14px; }
-  .controls-right { width: 100%; flex-wrap: nowrap; }
-  .search-box { flex: 1 1 auto; min-width: 0; }
-  .search-input { width: 100%; font-size: 16px; padding: 9px 12px 9px 32px; }
-  .controls-right .btn { flex-shrink: 0; white-space: nowrap; padding: 9px 12px; font-size: 0.82rem; }
-  .cast-filter-bar { gap: 6px; margin-bottom: 18px; }
-  .filter-chip { padding: 5px 11px; font-size: 0.78rem; }
-  .episode-grid, .cast-grid, .recommend-grid { grid-template-columns: minmax(0, 1fr); gap: 16px; }
-  .reader-container { padding-top: 16px; padding-bottom: 56px; }
-  .reader-top-bar { gap: 8px; padding-bottom: 14px; }
-  .reader-top-actions { width: 100%; display: flex; flex-wrap: nowrap; }
-  .ep-jump-select { flex: 1 1 0; min-width: 0; max-width: 100%; font-size: 16px; padding: 7px 10px; }
-  .reader-top-actions .btn { flex-shrink: 0; white-space: nowrap; }
-  .episode-header { padding: 20px 0 16px; }
-  .episode-title { font-size: clamp(1.38rem, 6.2vw, 1.82rem); }
-  .episode-sub { font-size: 0.9rem; }
-  .source-link { display: inline-block; max-width: 100%; border-radius: 14px; padding: 7px 13px; font-size: 0.78rem; }
-  .episode-action-strip { padding: 16px; box-shadow: 2px 2px 0 var(--sky); }
-  .action-strip-btns { width: 100%; }
-  .action-strip-btns .btn { flex: 1 1 auto; }
-  .episode-pager { gap: 12px; margin-bottom: 32px; }
-  .nav-ep-card { padding: 12px; gap: 10px; }
-  .nav-ep-thumb-wrap { width: 76px; height: 50px; }
-  .nav-ep-title { font-size: 0.9rem; }
-  .cast-sheet-frame { border-radius: var(--radius-md); box-shadow: 3px 3px 0 #111111; }
-  .cast-card-top { padding: 14px 14px 10px; gap: 12px; }
-  .cast-avatar-wrap { width: 72px; height: 72px; }
-  .cast-bio { padding: 4px 14px 12px; }
-  .cast-turnaround-wrap { padding: 0 14px 12px; }
-  .alias-row { padding: 0 14px 12px; }
-  .cast-card-foot { padding: 12px 14px 14px; }
-  .footer-inner { gap: 14px; }
-  .footer-links { gap: 12px; }
+  .container { padding: 0 16px; }
+  .main-content {
+    padding-top: 20px;
+    padding-bottom: 56px;
+  }
+  .header-inner {
+    min-height: 44px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    gap: 2px 10px;
+  }
+  .brand {
+    min-height: 36px;
+  }
+  .site-nav {
+    width: 100%;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 8px;
+    padding-bottom: 2px;
+  }
+  .site-nav::-webkit-scrollbar { display: none; }
+  .site-nav > * {
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+  .nav-link {
+    padding: 0 10px;
+    font-size: 0.875rem;
+  }
+  .nav-link.is-active::after {
+    left: 10px;
+    right: 10px;
+  }
+  .nav-pill-random {
+    margin-left: 0;
+    padding: 0 12px;
+    font-size: 0.8125rem;
+  }
+  .masthead {
+    padding-bottom: 18px;
+    margin-bottom: 22px;
+  }
+  .masthead-title {
+    font-size: clamp(1.65rem, 7.2vw, 2.15rem);
+  }
+  .masthead-stats {
+    gap: 4px 12px;
+  }
+  .stat-item {
+    padding-left: 0;
+    border-left: 0;
+    white-space: normal;
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+  }
+  .hero-section { margin-bottom: 36px; }
+  .hero-body {
+    padding: 18px;
+    gap: 12px;
+  }
+  .hero-title { font-size: 1.375rem; }
+  .hero-sub { font-size: 0.9375rem; }
+  .hero-actions .btn { flex: 1 1 140px; }
+  .section-head {
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .controls-right {
+    width: 100%;
+    flex-wrap: nowrap;
+  }
+  .search-box {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+  .search-input {
+    width: 100%;
+    font-size: 16px;
+    padding: 0 12px 0 36px;
+  }
+  .controls-right .btn {
+    flex-shrink: 0;
+    padding: 0 12px;
+    font-size: 0.875rem;
+  }
+  .cast-filter-bar {
+    gap: 6px;
+    margin-bottom: 18px;
+  }
+  .filter-chip {
+    padding: 4px 11px;
+    font-size: 0.8125rem;
+  }
+  .episode-grid, .cast-grid, .recommend-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+  .reader-container {
+    padding-top: 14px;
+    padding-bottom: 56px;
+  }
+  .reader-top-bar {
+    gap: 8px;
+    padding-bottom: 14px;
+  }
+  .reader-top-actions {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+  }
+  .ep-jump-select {
+    flex: 1 1 0;
+    min-width: 0;
+    max-width: 100%;
+    font-size: 16px;
+  }
+  .reader-top-actions .btn {
+    flex-shrink: 0;
+  }
+  .episode-header {
+    padding: 20px 0 18px;
+  }
+  .episode-title {
+    font-size: clamp(1.375rem, 6vw, 1.8rem);
+  }
+  .episode-action-strip {
+    padding: 16px 18px;
+  }
+  .action-strip-btns {
+    width: 100%;
+  }
+  .action-strip-btns .btn {
+    flex: 1 1 120px;
+  }
+  .episode-pager {
+    gap: 12px;
+    margin-bottom: 34px;
+  }
+  .nav-ep-card {
+    padding: 12px;
+    gap: 12px;
+  }
+  .nav-ep-thumb-wrap {
+    width: 78px;
+    height: 50px;
+  }
+  .cast-card-top {
+    padding: 16px 16px 10px;
+    gap: 14px;
+  }
+  .cast-avatar-wrap {
+    width: 84px;
+    height: 84px;
+  }
+  .cast-bio { padding: 4px 16px 12px; }
+  .cast-turnaround-wrap { padding: 0 16px 12px; }
+  .alias-row { padding: 0 16px 14px; }
+  .cast-card-foot { padding: 14px 16px 16px; }
 }
 
 @media (max-width: 380px) {
   .container { padding: 0 12px; }
-  .nav-link { font-size: 0.76rem; padding: 5px 8px; }
-  .nav-pill-random { font-size: 0.76rem; padding: 5px 9px; }
-  .mode-btn { font-size: 0.75rem; padding: 5px 10px; }
-  .nav-ep-thumb-wrap { width: 64px; height: 44px; }
-  .cast-avatar-wrap { width: 64px; height: 64px; }
+  .nav-link {
+    font-size: 0.8125rem;
+    padding: 0 8px;
+  }
+  .nav-pill-random {
+    font-size: 0.8125rem;
+    padding: 0 10px;
+  }
+  .mode-btn {
+    font-size: 0.8125rem;
+    padding: 0 10px;
+  }
+  .controls-right {
+    gap: 6px;
+  }
+  .controls-right .btn {
+    padding: 0 10px;
+    font-size: 0.8125rem;
+  }
+  .nav-ep-thumb-wrap {
+    width: 66px;
+    height: 44px;
+  }
+  .cast-avatar-wrap {
+    width: 74px;
+    height: 74px;
+  }
+}
+
+/* Reduced motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .ep-card:hover,
+  .cast-card:hover,
+  .nav-ep-card:not(.is-disabled):hover,
+  .back-to-top:hover,
+  .ep-card:hover .ep-thumb,
+  .hero-thumb-link:hover .hero-thumb,
+  .cast-sheet-frame:hover .cast-sheet-img,
+  .cast-turnaround-btn:hover .cast-turnaround-img,
+  .btn:active,
+  .filter-chip:active,
+  .nav-pill-random:active {
+    transform: none;
+  }
 }
 """
 
@@ -2404,6 +3221,55 @@ _APP_JS = """/* 와우 포에버 슬롭툰 — 정적 웹 아카이브 인터랙
   "use strict";
 
   var HOME_PAGE_SIZE = 24;
+  var READ_STORAGE_KEY = "sloptoon_read_eps";
+
+  function getReadEpisodeMap() {
+    var map = {};
+    try {
+      var raw = window.localStorage.getItem(READ_STORAGE_KEY);
+      if (!raw) return map;
+      var list = JSON.parse(raw);
+      if (Array.isArray(list)) {
+        list.forEach(function (id) {
+          if (typeof id === "string" && id) map[id] = true;
+        });
+      }
+    } catch (_err) {
+      /* ignore storage errors */
+    }
+    return map;
+  }
+
+  function markEpisodeRead(episodeId) {
+    if (!episodeId) return;
+    try {
+      var map = getReadEpisodeMap();
+      if (map[episodeId]) return;
+      var list = Object.keys(map);
+      list.push(episodeId);
+      if (list.length > 500) list = list.slice(list.length - 500);
+      window.localStorage.setItem(READ_STORAGE_KEY, JSON.stringify(list));
+    } catch (_err) {
+      /* ignore storage errors */
+    }
+  }
+
+  function applyReadMarks(container) {
+    if (!container) return;
+    var readMap = getReadEpisodeMap();
+    var cards = container.querySelectorAll(".ep-card[data-id]");
+    cards.forEach(function (card) {
+      var epId = card.getAttribute("data-id") || "";
+      var isRead = Boolean(epId && readMap[epId]);
+      card.classList.toggle("is-read", isRead);
+      var mark = card.querySelector(".ep-read-mark");
+      if (mark) mark.hidden = !isRead;
+    });
+  }
+
+  function prefersReducedMotion() {
+    return Boolean(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  }
 
   function showToast(msg) {
     var toast = document.getElementById("toast");
@@ -2464,7 +3330,7 @@ _APP_JS = """/* 와우 포에버 슬롭툰 — 정적 웹 아카이브 인터랙
         });
         if (pool.length === 0) {
           if (currentId) {
-            showToast("현재 1화만 등록되어 있어요! 곧 새로운 념글 만화가 추가됩니다.");
+            showToast("현재 1화만 등록되어 있습니다. 곧 새로운 념글 만화가 추가됩니다.");
             return;
           }
           pool = episodes;
@@ -2475,7 +3341,7 @@ _APP_JS = """/* 와우 포에버 슬롭툰 — 정적 웹 아카이브 인터랙
     });
   }
 
-  /* ---------------- HOME PAGE (SEARCH / FILTER / SORT / PAGINATION) ---------------- */
+  /* ---------------- HOME PAGE (SEARCH / FILTER / SORT / PAGINATION / READ MARKS) ---------------- */
   function initHomePage() {
     var grid = document.getElementById("episodeGrid");
     var searchInput = document.getElementById("searchInput");
@@ -2488,6 +3354,8 @@ _APP_JS = """/* 와우 포에버 슬롭툰 — 정적 웹 아카이브 인터랙
     var loadMoreBtn = document.getElementById("loadMoreBtn");
     var showAllBtn = document.getElementById("showAllBtn");
     if (!grid) return;
+
+    applyReadMarks(grid);
 
     var cards = Array.prototype.slice.call(grid.querySelectorAll(".ep-card"));
     var totalAll = cards.length;
@@ -2502,7 +3370,9 @@ _APP_JS = """/* 와우 포에버 슬롭툰 — 정적 웹 아카이브 인터랙
       activeCast = initCast;
       var btns = filterBar.querySelectorAll(".filter-chip");
       btns.forEach(function (btn) {
-        btn.classList.toggle("is-active", btn.getAttribute("data-cast") === activeCast);
+        var active = btn.getAttribute("data-cast") === activeCast;
+        btn.classList.toggle("is-active", active);
+        btn.setAttribute("aria-pressed", active ? "true" : "false");
       });
     }
 
@@ -2589,6 +3459,25 @@ _APP_JS = """/* 와우 포에버 슬롭툰 — 정적 웹 아카이브 인터랙
         visibleLimit = HOME_PAGE_SIZE;
         applyFilters();
       });
+      searchInput.addEventListener("keydown", function (ev) {
+        if (ev.key === "Escape") {
+          if (searchInput.value) {
+            searchInput.value = "";
+            visibleLimit = HOME_PAGE_SIZE;
+            applyFilters();
+          } else {
+            searchInput.blur();
+          }
+        }
+      });
+      document.addEventListener("keydown", function (ev) {
+        if (ev.key !== "/" || ev.ctrlKey || ev.metaKey || ev.altKey) return;
+        var tag = ev.target ? ev.target.tagName : "";
+        if (/INPUT|TEXTAREA|SELECT/.test(tag) || (ev.target && ev.target.isContentEditable)) return;
+        ev.preventDefault();
+        searchInput.focus();
+        searchInput.select();
+      });
     }
     if (filterBar) {
       filterBar.addEventListener("click", function (ev) {
@@ -2597,7 +3486,9 @@ _APP_JS = """/* 와우 포에버 슬롭툰 — 정적 웹 아카이브 인터랙
         activeCast = btn.getAttribute("data-cast") || "";
         visibleLimit = HOME_PAGE_SIZE;
         filterBar.querySelectorAll(".filter-chip").forEach(function (b) {
-          b.classList.toggle("is-active", b === btn);
+          var isMatch = b === btn;
+          b.classList.toggle("is-active", isMatch);
+          b.setAttribute("aria-pressed", isMatch ? "true" : "false");
         });
         applyFilters();
       });
@@ -2630,7 +3521,9 @@ _APP_JS = """/* 와우 포에버 슬롭툰 — 정적 웹 아카이브 인터랙
         if (searchInput) searchInput.value = "";
         if (filterBar) {
           filterBar.querySelectorAll(".filter-chip").forEach(function (b) {
-            b.classList.toggle("is-active", (b.getAttribute("data-cast") || "") === "");
+            var isAll = (b.getAttribute("data-cast") || "") === "";
+            b.classList.toggle("is-active", isAll);
+            b.setAttribute("aria-pressed", isAll ? "true" : "false");
           });
         }
         applyFilters();
@@ -2640,7 +3533,7 @@ _APP_JS = """/* 와우 포에버 슬롭툰 — 정적 웹 아카이브 인터랙
     applyFilters();
   }
 
-  /* ---------------- EPISODE READER, SHARE & BINGE NAVIGATION ---------------- */
+  /* ---------------- EPISODE READER, PROGRESS, SHARE & BINGE NAVIGATION ---------------- */
   function selectRecommended(episodes, currentIndex, limit) {
     var currentId = episodes[currentIndex].episode_id;
     var adjacent = {};
@@ -2664,6 +3557,7 @@ _APP_JS = """/* 와우 포에버 슬롭툰 — 정적 웹 아카이브 인터랙
   function buildRecommendCardEl(rec, rootPrefix) {
     var article = document.createElement("article");
     article.className = "ep-card";
+    article.setAttribute("data-id", rec.episode_id);
 
     var link = document.createElement("a");
     link.className = "ep-card-link";
@@ -2675,7 +3569,10 @@ _APP_JS = """/* 와우 포에버 슬롭툰 — 정적 웹 아카이브 인터랙
     img.src = rootPrefix + rec.thumb_image;
     img.alt = "EP." + rec.episode_number + " " + rec.title;
     img.className = "ep-thumb";
+    img.width = 800;
+    img.height = 500;
     img.loading = "lazy";
+    img.decoding = "async";
     var cuts = document.createElement("span");
     cuts.className = "thumb-cuts";
     cuts.textContent = rec.cut_count + "컷";
@@ -2686,18 +3583,28 @@ _APP_JS = """/* 와우 포에버 슬롭툰 — 정적 웹 아카이브 인터랙
     body.className = "ep-card-body";
     var metaRow = document.createElement("div");
     metaRow.className = "meta-row";
-    var pill = document.createElement("span");
-    pill.className = "ep-pill ep-pill-sm";
-    pill.textContent = "EP." + rec.episode_number;
+    var idxSpan = document.createElement("span");
+    idxSpan.className = "ep-index";
+    idxSpan.textContent = "EP." + rec.episode_number;
+    var sep = document.createElement("span");
+    sep.className = "meta-sep";
+    sep.setAttribute("aria-hidden", "true");
+    sep.textContent = "·";
     var postNo = document.createElement("span");
     postNo.className = "post-no";
     postNo.textContent = "#" + rec.source_post_no;
     var dt = document.createElement("span");
     dt.className = "meta-date";
     dt.textContent = rec.date_short || "";
-    metaRow.appendChild(pill);
+    var readMark = document.createElement("span");
+    readMark.className = "ep-read-mark";
+    readMark.hidden = true;
+    readMark.textContent = "✓ 읽음";
+    metaRow.appendChild(idxSpan);
+    metaRow.appendChild(sep);
     metaRow.appendChild(postNo);
     metaRow.appendChild(dt);
+    metaRow.appendChild(readMark);
 
     var h3 = document.createElement("h3");
     h3.className = "ep-card-title";
@@ -2714,7 +3621,7 @@ _APP_JS = """/* 와우 포에버 슬롭툰 — 정적 웹 아카이브 인터랙
       sp.className = "mini-chip";
       var dot = document.createElement("span");
       dot.className = "cast-dot";
-      dot.style.background = chip.color || "#111111";
+      dot.style.background = chip.color || "#111318";
       sp.appendChild(dot);
       sp.appendChild(document.createTextNode(chip.name));
       chipRow.appendChild(sp);
@@ -2744,7 +3651,7 @@ _APP_JS = """/* 와우 포에버 슬롭툰 — 정적 웹 아카이브 인터랙
       ttl.textContent = isNext ? "가장 최신 에피소드입니다" : "첫 번째 에피소드입니다";
       var hint = document.createElement("span");
       hint.className = "nav-ep-sub";
-      hint.textContent = isNext ? "랜덤 화 보기로 다른 명장면도 즐겨보세요!" : "지금 1화부터 정주행 중이에요!";
+      hint.textContent = isNext ? "랜덤 화 보기로 다른 명장면도 감상해 보세요." : "지금 1화부터 정주행 중입니다.";
       info.appendChild(dir);
       info.appendChild(ttl);
       info.appendChild(hint);
@@ -2762,14 +3669,28 @@ _APP_JS = """/* 와우 포에버 슬롭툰 — 정적 웹 아카이브 인터랙
     img.src = rootPrefix + targetEp.thumb_image;
     img.alt = "EP." + targetEp.episode_number + " " + targetEp.title;
     img.className = "nav-ep-thumb";
+    img.width = 800;
+    img.height = 500;
     img.loading = "lazy";
+    img.decoding = "async";
     thumbWrap.appendChild(img);
 
     var infoBox = document.createElement("div");
     infoBox.className = "nav-ep-info";
     var dirSpan = document.createElement("span");
     dirSpan.className = isNext ? "nav-ep-dir nav-ep-dir-accent" : "nav-ep-dir";
-    dirSpan.textContent = isNext ? "다음 화 바로 보기 →" : "← 이전 화 정주행";
+    var kbd = document.createElement("kbd");
+    kbd.className = "key-hint";
+    kbd.setAttribute("aria-hidden", "true");
+    kbd.textContent = isNext ? "→" : "←";
+    if (isNext) {
+      dirSpan.appendChild(document.createTextNode("다음 화 바로 보기 "));
+      dirSpan.appendChild(kbd);
+    } else {
+      dirSpan.appendChild(kbd);
+      dirSpan.appendChild(document.createTextNode(" 이전 화 정주행"));
+    }
+
     var titleStrong = document.createElement("strong");
     titleStrong.className = "nav-ep-title";
     titleStrong.textContent = "EP." + targetEp.episode_number + " " + targetEp.title;
@@ -2788,6 +3709,28 @@ _APP_JS = """/* 와우 포에버 슬롭툰 — 정적 웹 아카이브 인터랙
       a.appendChild(infoBox);
     }
     return a;
+  }
+
+  function initReadProgressBar() {
+    var bar = document.getElementById("readProgressBar");
+    if (!bar) return null;
+    var rafPending = false;
+    function update() {
+      rafPending = false;
+      var docEl = document.documentElement;
+      var maxScroll = Math.max(0, docEl.scrollHeight - window.innerHeight);
+      var pct = maxScroll > 0 ? Math.min(100, Math.max(0, (window.scrollY / maxScroll) * 100)) : 0;
+      bar.style.width = pct.toFixed(2) + "%";
+    }
+    function schedule() {
+      if (rafPending) return;
+      rafPending = true;
+      window.requestAnimationFrame(update);
+    }
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule, { passive: true });
+    update();
+    return update;
   }
 
   function initEpisodePage() {
@@ -2810,6 +3753,7 @@ _APP_JS = """/* 와우 포에버 슬롭툰 — 정적 웹 아카이브 인터랙
     }
     var ep = episodes[currentIndex];
     window.__SLOPTOON_CURRENT_EP__ = ep.episode_id;
+    markEpisodeRead(ep.episode_id);
 
     var prevEp = currentIndex > 0 ? episodes[currentIndex - 1] : null;
     var nextEp = currentIndex + 1 < episodes.length ? episodes[currentIndex + 1] : null;
@@ -2831,8 +3775,7 @@ _APP_JS = """/* 와우 포에버 슬롭툰 — 정적 웹 아카이브 인터랙
     var sourceEl = document.getElementById("epSourceLink");
     if (sourceEl) {
       sourceEl.href = ep.source_url;
-      sourceEl.textContent =
-        "원본 디시 WOW 포에버 마이너 갤러리 개념글 (#" + ep.source_post_no + ") 바로가기 ↗";
+      sourceEl.textContent = "원본 포에버갤 개념글 (#" + ep.source_post_no + ") ↗";
     }
     var bottomSourceEl = document.getElementById("epBottomSourceLink");
     if (bottomSourceEl) {
@@ -2848,7 +3791,7 @@ _APP_JS = """/* 와우 포에버 슬롭툰 — 정적 웹 아카이브 인터랙
         a.href = rootPrefix + "cast.html#" + encodeURIComponent(chip.id || "");
         var dot = document.createElement("span");
         dot.className = "cast-dot";
-        dot.style.background = chip.color || "#111111";
+        dot.style.background = chip.color || "#111318";
         a.appendChild(dot);
         a.appendChild(document.createTextNode(chip.name));
         castRow.appendChild(a);
@@ -2865,13 +3808,24 @@ _APP_JS = """/* 와우 포에버 슬롭툰 — 정적 웹 아카이브 인터랙
     var pagesView = document.getElementById("readerPagesView");
     if (pagesView && Array.isArray(ep.page_images)) {
       pagesView.innerHTML = "";
+      var totalPages = ep.page_images.length;
       ep.page_images.forEach(function (rel, idx) {
+        var fig = document.createElement("figure");
+        fig.className = "reader-page-item";
+        var cap = document.createElement("figcaption");
+        cap.className = "reader-page-label";
+        var pNum = String(idx + 1).padStart(2, "0");
+        var pTot = String(totalPages).padStart(2, "0");
+        cap.textContent = "PAGE " + pNum + " / " + pTot;
         var img = document.createElement("img");
         img.src = rootPrefix + rel;
         img.alt = "EP." + ep.episode_number + " 페이지 " + (idx + 1);
         img.className = "reader-page-img";
         img.loading = "lazy";
-        pagesView.appendChild(img);
+        img.decoding = "async";
+        fig.appendChild(cap);
+        fig.appendChild(img);
+        pagesView.appendChild(fig);
       });
     }
 
@@ -2906,21 +3860,27 @@ _APP_JS = """/* 와우 포에버 슬롭툰 — 정적 웹 아카이브 인터랙
         recs.forEach(function (rec) {
           recGrid.appendChild(buildRecommendCardEl(rec, rootPrefix));
         });
+        applyReadMarks(recGrid);
         recSection.hidden = false;
       } else {
         recSection.hidden = true;
       }
     }
 
+    var updateProgress = initReadProgressBar();
+
     var fullView = document.getElementById("readerFullView");
     document.querySelectorAll(".mode-btn[data-mode]").forEach(function (btn) {
       btn.addEventListener("click", function () {
         var mode = btn.getAttribute("data-mode");
         document.querySelectorAll(".mode-btn[data-mode]").forEach(function (b) {
-          b.classList.toggle("is-active", b === btn);
+          var active = b === btn;
+          b.classList.toggle("is-active", active);
+          b.setAttribute("aria-pressed", active ? "true" : "false");
         });
         if (fullView) fullView.hidden = mode !== "full";
         if (pagesView) pagesView.hidden = mode !== "pages";
+        if (updateProgress) window.requestAnimationFrame(updateProgress);
       });
     });
 
@@ -2953,40 +3913,91 @@ _APP_JS = """/* 와우 포에버 슬롭툰 — 정적 웹 아카이브 인터랙
     }
     window.addEventListener("scroll", toggleBtn, { passive: true });
     btn.addEventListener("click", function () {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      window.scrollTo({ top: 0, behavior: prefersReducedMotion() ? "auto" : "smooth" });
     });
     toggleBtn();
   }
 
-  /* ---------------- CAST PAGE (LIGHTBOX) ---------------- */
+  /* ---------------- CAST PAGE (FACTION FILTER & ACCESSIBLE LIGHTBOX) ---------------- */
   function initCastPage() {
-    var sheetImg = document.getElementById("castSheetImg");
+    var factionFilter = document.getElementById("castFactionFilter");
+    var castGrid = document.getElementById("castGrid");
+    var castCountMeta = document.getElementById("castCountMeta");
+    var factionNames = {
+      Horde: "호드",
+      Alliance: "얼라이언스",
+      "Neutral-Skyborne": "스카이본"
+    };
+
+    if (factionFilter && castGrid) {
+      var castCards = Array.prototype.slice.call(castGrid.querySelectorAll(".cast-card"));
+      var totalCast = castCards.length;
+      var defaultMetaText = castCountMeta ? castCountMeta.textContent : "";
+
+      factionFilter.addEventListener("click", function (ev) {
+        var btn = ev.target.closest(".filter-chip");
+        if (!btn) return;
+        var faction = btn.getAttribute("data-faction") || "";
+        factionFilter.querySelectorAll(".filter-chip").forEach(function (b) {
+          var isMatch = b === btn;
+          b.classList.toggle("is-active", isMatch);
+          b.setAttribute("aria-pressed", isMatch ? "true" : "false");
+        });
+        var visibleCount = 0;
+        castCards.forEach(function (card) {
+          var show = !faction || card.getAttribute("data-faction") === faction;
+          card.hidden = !show;
+          if (show) visibleCount += 1;
+        });
+        if (castCountMeta) {
+          if (!faction) {
+            castCountMeta.textContent = defaultMetaText;
+          } else {
+            castCountMeta.textContent = (factionNames[faction] || faction) + " " + visibleCount + "명 표시 중 (전체 " + totalCast + "명)";
+          }
+        }
+      });
+    }
+
     var lightbox = document.getElementById("lightbox");
     var lightboxImg = document.getElementById("lightboxImg");
+    var lightboxCaption = document.getElementById("lightboxCaption");
     var lightboxClose = document.getElementById("lightboxClose");
 
     if (lightbox && lightboxImg) {
-      var openLightbox = function (src, alt) {
+      var lastTrigger = null;
+
+      var openLightbox = function (src, alt, triggerEl) {
         if (!src) return;
+        lastTrigger = triggerEl || document.activeElement;
         lightboxImg.src = src;
-        if (alt) lightboxImg.alt = alt;
+        lightboxImg.alt = alt || "확대 이미지";
+        if (lightboxCaption) lightboxCaption.textContent = alt || "";
         lightbox.hidden = false;
+        document.body.style.overflow = "hidden";
+        if (lightboxClose) lightboxClose.focus();
       };
-      if (sheetImg) {
-        sheetImg.addEventListener("click", function () {
-          openLightbox(sheetImg.src, sheetImg.alt);
-        });
-      }
+
+      var closeLightbox = function () {
+        if (lightbox.hidden) return;
+        lightbox.hidden = true;
+        lightboxImg.removeAttribute("src");
+        if (lightboxCaption) lightboxCaption.textContent = "";
+        document.body.style.overflow = "";
+        if (lastTrigger && typeof lastTrigger.focus === "function") {
+          lastTrigger.focus();
+        }
+        lastTrigger = null;
+      };
+
       document.querySelectorAll("[data-lightbox-src]").forEach(function (el) {
         el.addEventListener("click", function () {
           var src = el.getAttribute("data-lightbox-src");
           var img = el.querySelector("img");
-          openLightbox(src, img ? img.alt : "");
+          openLightbox(src, img ? img.alt : "", el);
         });
       });
-      var closeLightbox = function () {
-        lightbox.hidden = true;
-      };
+
       if (lightboxClose) lightboxClose.addEventListener("click", closeLightbox);
       lightbox.addEventListener("click", function (ev) {
         if (ev.target === lightbox) closeLightbox();
@@ -3190,11 +4201,13 @@ def build_static_site(
         for member in CAST_BIBLE
     ]
 
-    # 4. Write shared static assets, site JSON, and crawler metadata
+    # 4. Write shared static assets, favicon, site JSON, and crawler metadata
     style_css_path = site_assets_dir / "style.css"
     app_js_path = site_assets_dir / "app.js"
+    favicon_path = site_assets_dir / "favicon.svg"
     style_css_path.write_text(_STYLE_CSS, encoding="utf-8")
     app_js_path.write_text(_APP_JS, encoding="utf-8")
+    favicon_path.write_text(_FAVICON_SVG, encoding="utf-8")
     css_suffix = _file_cache_suffix(style_css_path)
     js_suffix = _file_cache_suffix(app_js_path)
     (site_data_dir / "episodes.json").write_text(
