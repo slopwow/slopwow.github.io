@@ -301,3 +301,31 @@ def test_composer_places_item_tooltips_with_zero_overlap_across_all_cut_types(
     assert reloaded.cuts[0].item_tooltip.wowhead_item_id == 7722
     assert reloaded.cuts[1].item_tooltip is not None
     assert reloaded.cuts[1].item_tooltip.image_path == "assets/items/scepter_of_the_librarian.png"
+
+
+def test_wow_forever_talent_tooltip_rendering_and_writer_rule(monkeypatch: pytest.MonkeyPatch) -> None:
+    """Custom WoW Forever class talent/spell tooltips render crisply and are codified in writer rules."""
+    monkeypatch.setenv("SLOPTOON_OFFLINE_TOOLTIPS", "1")
+    assert "고독한 늑대" in writer.WRITER_SYSTEM_RULES
+    assert "직업 특성·스킬" in writer.WRITER_SYSTEM_RULES
+
+    talent_card = render_item_tooltip(
+        ItemTooltipSpec(
+            item_name="고독한 늑대",
+            quality="common",
+            slot_left="사냥꾼 특성",
+            slot_right="사격",
+            lines=["지속 효과"],
+            equip_effects=["활성화된 야수(펫)가 없을 때 모든 공격력이 20%만큼 증가합니다."],
+            icon_name="spell_hunter_lonewolf",
+            preferred_corner="top_right",
+            target_width=290,
+        ),
+        fetch_network=False,
+    )
+    assert talent_card is not None
+    assert talent_card.mode == "RGBA"
+    assert 270 <= talent_card.width <= 300
+    arr = np.asarray(talent_card)
+    eq_px = np.sum((arr[:, :, 1] > 200) & (arr[:, :, 0] < 70) & (arr[:, :, 2] < 70))
+    assert eq_px > 60
