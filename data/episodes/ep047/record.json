@@ -1,0 +1,23 @@
+{
+  "episode_id": "ep047",
+  "episode_number": 47,
+  "title": "직업 이름이 도적인게 미스테리...",
+  "subtitle": "고상한 직업들 사이 대놓고 수상한 도적의 본업",
+  "source_post_no": "85823",
+  "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=85823&exception_mode=recommend&page=5",
+  "created_at": "2026-11-26T22:51:49+09:00",
+  "cut_count": 6,
+  "cast_used": [
+    "오크 전사",
+    "나이트엘프 사제",
+    "스카이본 마법사",
+    "노움 도적"
+  ],
+  "full_image_rel": "data/episodes/ep047/episode_full.jpg",
+  "thumb_image_rel": "data/episodes/ep047/thumb.jpg",
+  "page_images_rel": [
+    "data/episodes/ep047/page_1.png",
+    "data/episodes/ep047/page_2.png",
+    "data/episodes/ep047/page_3.png"
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "episode_number": 52,
+  "source_post_no": "72984",
+  "source_title": "기사들끼리 5인팟 가라는말에 발작할수밖에없지",
+  "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=72984&exception_mode=recommend&page=6",
+  "subtitle": "기사 5인팟 가면 강제 올주 지옥인 걸 본인들이 제일 잘 앎",
+  "cuts": [
+    {
+      "cut_index": 1,
+      "aspect_ratio": "4:3",
+      "layout_slot": "top",
+      "characters": [
+        "트롤 주술사",
+        "언데드 성기사"
+      ],
+      "speaker": "트롤 주술사",
+      "dialogue": "기사 탱·힐·딜 다 되잖아!\n걍 기사 5인팟 가든가!",
+      "wordless": false,
+      "visual_prompt": "Over-the-shoulder shot from behind Undead Paladin (round white skull cap, gold warhammer stowed on back) in the lower-right foreground looking at Troll Shaman on the left, in cute 2.5-head chibi SD style on a pure #FFFFFF background with minimal dungeon entrance stone touch and zero text or speech bubbles. On the left, cheeky Troll Shaman (wooden totem staff stowed on back) grins brightly spreading both empty hands as if suggesting an obvious brilliant plan.",
+      "tail_target": "left",
+      "bubble_side": "left",
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 2,
+      "aspect_ratio": "16:9",
+      "layout_slot": "bottom",
+      "characters": [
+        "트롤 주술사",
+        "언데드 성기사"
+      ],
+      "speaker": "언데드 성기사",
+      "dialogue": "미쳤어?! 기사 5인팟이라니!\n그건 절대 안 돼, 취소해!",
+      "wordless": false,
+      "visual_prompt": "Low-angle sudden outburst shot in cute 2.5-head chibi SD style on a pure #FFFFFF background with minimal stone floor touch and zero text or speech bubbles. On the right, normally deadpan Undead Paladin (gold warhammer stowed on back) leaps upright flailing both empty arms wildly in sheer panic with wide horrified golden eyes and jagged shock lines. On the left, startled Troll Shaman (wooden totem staff stowed on back) leans back blinking in surprise at the sudden meltdown.",
+      "tail_target": "right",
+      "bubble_side": "right",
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 3,
+      "aspect_ratio": "4:3",
+      "layout_slot": "top",
+      "characters": [
+        "언데드 성기사"
+      ],
+      "speaker": "언데드 성기사",
+      "dialogue": "천·가죽·사슬·판금 뭐가 떠도\n다섯이 죄다 올주 굴린다고!",
+      "wordless": false,
+      "visual_prompt": "High-angle chaotic imagination gag shot in cute 2.5-head chibi SD style on a pure #FFFFFF background with minimal glowing loot pile touch and zero text or speech bubbles. On the left, frantic Undead Paladin (weapons stowed on back) scrambles alongside four cute 2.5-head chibi SD paladin extras in bright white-and-gold armor, all five furiously tossing chunky 6-sided white-and-gold loot dice cubes with round dot pips only (no digits) over a single glowing dungeon drop pile of a blue cloth robe, brown leather boots, a silver interlocking ring-mesh mail-armor belt, and a gold plate shield.",
+      "tail_target": "left",
+      "bubble_side": "left",
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 4,
+      "aspect_ratio": "16:9",
+      "layout_slot": "bottom",
+      "characters": [
+        "언데드 성기사"
+      ],
+      "speaker": null,
+      "dialogue": null,
+      "wordless": true,
+      "visual_prompt": "Centered Dutch-tilt extreme big bust-up close-up filling 83 percent of frame height in cute 2.5-head chibi SD style on a pure #FFFFFF background with zero text or speech bubbles. Horrified Undead Paladin (weapons stowed away) grips both sides of her round white skull cap with empty hands, staring ahead in pale cold-sweat dread with tiny pinprick golden pupils as ominous chunky 6-sided white-and-gold loot dice with round dot pips only (no digits) spin around her head.",
+      "tail_target": "center",
+      "bubble_side": null,
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 5,
+      "aspect_ratio": "4:3",
+      "layout_slot": "top",
+      "characters": [
+        "트롤 주술사",
+        "언데드 성기사"
+      ],
+      "speaker": "트롤 주술사",
+      "dialogue": "ㅋㅋ 강제 올주팟 되는 거\n니들도 다 알아서 발작하네!",
+      "wordless": false,
+      "visual_prompt": "Side-profile smug roast shot in cute 2.5-head chibi SD style on a pure #FFFFFF background with minimal stone floor touch and zero text or speech bubbles. On the left, teasing Troll Shaman (wooden totem staff stowed on back) leans forward pointing an empty finger with a victorious smirk and sparkling knowing emerald eyes. On the right, busted Undead Paladin (weapons stowed on back) turns her face away sweating buckets with stiff averted golden eyes.",
+      "tail_target": "left",
+      "bubble_side": "left",
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 6,
+      "aspect_ratio": "16:9",
+      "layout_slot": "bottom",
+      "characters": [
+        "트롤 주술사",
+        "언데드 성기사"
+      ],
+      "speaker": "언데드 성기사",
+      "dialogue": "인던 갈 분~ 탱힐딜 다 구함!\n단, 성기사님만 절대 사절!",
+      "wordless": false,
+      "visual_prompt": "Back-view comedic sprint finale in cute 2.5-head chibi SD style on a pure #FFFFFF background with minimal stone floor touch and zero text or speech bubbles. On the right, flustered Undead Paladin (weapons stowed on back) dashes away cupping her empty hands around her mouth shouting a dungeon party call into the distance while glancing nervously back. On the left, exasperated Troll Shaman (wooden totem staff stowed on back) crosses her arms shaking her head with a flat unimpressed stare.",
+      "tail_target": "right",
+      "bubble_side": "right",
+      "item_tooltip": null
+    }
+  ]
+}

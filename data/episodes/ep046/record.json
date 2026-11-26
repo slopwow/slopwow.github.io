@@ -1,0 +1,23 @@
+{
+  "episode_id": "ep046",
+  "episode_number": 46,
+  "title": "뉴비 진짜 서러웠음 위로해줘",
+  "subtitle": "놈리건 퀘팟에서 원딜 냥꾼만 퀘템 못 먹은 사연",
+  "source_post_no": "112587",
+  "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=112587&exception_mode=recommend&page=2",
+  "created_at": "2026-11-26T22:51:41+09:00",
+  "cut_count": 6,
+  "cast_used": [
+    "드워프 사냥꾼",
+    "노움 도적",
+    "오크 전사",
+    "나이트엘프 사제"
+  ],
+  "full_image_rel": "data/episodes/ep046/episode_full.jpg",
+  "thumb_image_rel": "data/episodes/ep046/thumb.jpg",
+  "page_images_rel": [
+    "data/episodes/ep046/page_1.png",
+    "data/episodes/ep046/page_2.png",
+    "data/episodes/ep046/page_3.png"
+  ]
+}

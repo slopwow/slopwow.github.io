@@ -1,0 +1,118 @@
+{
+  "episode_number": 51,
+  "source_post_no": "103269",
+  "source_title": "생에 첫 와우 법사 랩 30찍었는데 후기.txt",
+  "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=103269&exception_mode=recommend&page=3",
+  "subtitle": "무쌍 기대했다가 얼화 5등급과 첫 인던에 입덕한 와린이",
+  "cuts": [
+    {
+      "cut_index": 1,
+      "aspect_ratio": "4:3",
+      "layout_slot": "top",
+      "characters": [
+        "스카이본 마법사"
+      ],
+      "speaker": "스카이본 마법사",
+      "dialogue": "RPG 짬바 어디 가겠어?\n동렙 몹 둘쯤 가볍게 쓸지!",
+      "wordless": false,
+      "visual_prompt": "Low-angle heroic field-quest shot in cute 2.5-head chibi SD style on a pure #FFFFFF background with minimal grassy dirt floor touch and zero text or speech bubbles. On the left, cocky newbie Skyborne Mage wielding her blue crystal staff strikes a confident heroic stance pointing forward with glittering starry eyes. On the lower-right, two tiny scowling cute 2.5-head chibi SD wild forest boars puff steam getting ready to charge.",
+      "tail_target": "left",
+      "bubble_side": "left",
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 2,
+      "aspect_ratio": "16:9",
+      "layout_slot": "bottom",
+      "characters": [
+        "스카이본 마법사"
+      ],
+      "speaker": "스카이본 마법사",
+      "dialogue": "아니 몹 둘 붙었다고 죽어?!\n내 영웅 무쌍 어디 갔냐고!",
+      "wordless": false,
+      "visual_prompt": "Side-profile slapstick wipeout shot in cute 2.5-head chibi SD style on a pure #FFFFFF background with minimal grassy dirt floor touch and zero text or speech bubbles. On the left, defeated Skyborne Mage (blue crystal staff dropped beside her, blue wizard hat knocked askew) lies sprawled face-down in a puff of comic stars with dizzy spiral eyes. On the right, two triumphant tiny cute 2.5-head chibi SD wild forest boars stomp proudly with smug grins.",
+      "tail_target": "left",
+      "bubble_side": "left",
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 3,
+      "aspect_ratio": "4:3",
+      "layout_slot": "top",
+      "characters": [
+        "스카이본 마법사"
+      ],
+      "speaker": "스카이본 마법사",
+      "dialogue": "30렙 새 스킬 기대했더니…\n또 얼음 화살 5등급이냐?!",
+      "wordless": false,
+      "visual_prompt": "Over-the-shoulder shot from behind a bearded cute 2.5-head chibi SD elderly Mage Trainer NPC (wearing blue wizard robes and holding a rolled spell scroll in lower-right foreground) looking at Skyborne Mage on the left, in cute 2.5-head chibi SD style on a pure #FFFFFF background with wide open pure #FFFFFF upper-right space and zero text or speech bubbles. On the left, baffled Skyborne Mage (blue crystal staff stowed on back) holds up a single glowing frosty blue ice bolt spark in one empty hand staring with wide incredulous eyes and a giant sweat drop.",
+      "tail_target": "left",
+      "bubble_side": "left",
+      "item_tooltip": {
+        "image_path": null,
+        "item_name": "얼음 화살",
+        "wowhead_item_id": null,
+        "quality": "common",
+        "slot_left": "마법사 주문",
+        "slot_right": "냉기",
+        "lines": [
+          "시전 시간 2.6초",
+          "4등급 → 5등급 승급"
+        ],
+        "equip_effects": [
+          "대상에게 냉기 피해를 입히고 이동 속도를 감소시킵니다."
+        ],
+        "icon_name": "spell_frost_frostbolt02",
+        "preferred_corner": "top_right",
+        "target_width": 288
+      }
+    },
+    {
+      "cut_index": 4,
+      "aspect_ratio": "16:9",
+      "layout_slot": "bottom",
+      "characters": [
+        "스카이본 마법사"
+      ],
+      "speaker": null,
+      "dialogue": null,
+      "wordless": true,
+      "visual_prompt": "Centered Dutch-tilt extreme big bust-up close-up filling 83 percent of frame height in cute 2.5-head chibi SD style on a pure #FFFFFF background with zero text or speech bubbles. Skyborne Mage (blue crystal staff stowed away) presses both empty hands to her rosy blushing cheeks in stunned realization, her starry blue eyes glittering uncontrollably with delighted sparkles despite a tiny flustered sweat drop.",
+      "tail_target": "center",
+      "bubble_side": null,
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 5,
+      "aspect_ratio": "4:3",
+      "layout_slot": "top",
+      "characters": [
+        "오크 전사",
+        "스카이본 마법사"
+      ],
+      "speaker": "오크 전사",
+      "dialogue": "해골 징표부터 점사해!\n어글 내가 꽉 잡아둘게!",
+      "wordless": false,
+      "visual_prompt": "High-angle energetic dungeon party teamwork shot in cute 2.5-head chibi SD style on a pure #FFFFFF background with minimal dungeon stone floor touch and zero text or speech bubbles. On the left, reliable Orc Warrior protection tank wielding her 1H sword and sturdy steel kite shield lunges forward blocking a charging cute 2.5-head chibi SD dungeon ogre mob marked with a small floating white skull target icon above its head. On the right, thrilled Skyborne Mage leans in channeling a bright frosty blue ice bolt from her blue crystal staff.",
+      "tail_target": "left",
+      "bubble_side": "left",
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 6,
+      "aspect_ratio": "16:9",
+      "layout_slot": "bottom",
+      "characters": [
+        "스카이본 마법사",
+        "나이트엘프 사제"
+      ],
+      "speaker": "스카이본 마법사",
+      "dialogue": "첫 던전 꿈에도 나오겠다!\n친추 가자, 와우 갓겜이네!",
+      "wordless": false,
+      "visual_prompt": "Back-view heartwarming dungeon victory celebration in cute 2.5-head chibi SD style on a pure #FFFFFF background with minimal stone floor touch and zero text or speech bubbles. On the left, overjoyed Skyborne Mage (blue crystal staff stowed on back) hops happily raising both empty hands with glittering starry eyes and tiny joyful sparkles. On the right, gentle smiling Night Elf Priest (gold cross staff stowed on back, zero halo or wings) turns back waving warmly with soft golden healing sparkles drifting between them.",
+      "tail_target": "left",
+      "bubble_side": "left",
+      "item_tooltip": null
+    }
+  ]
+}
