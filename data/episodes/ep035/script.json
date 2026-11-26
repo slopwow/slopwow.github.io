@@ -1,0 +1,119 @@
+{
+  "episode_number": 35,
+  "source_post_no": "122442",
+  "source_title": "아이 병신새낀가 ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ",
+  "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=122442",
+  "subtitle": "딸피 생존 물약인 줄 알고 배달 퀘템 원샷",
+  "cuts": [
+    {
+      "cut_index": 1,
+      "aspect_ratio": "4:3",
+      "layout_slot": "top",
+      "characters": [
+        "오크 전사"
+      ],
+      "speaker": "오크 전사",
+      "dialogue": "으악 애드났다 딸피야!\n빨리 가방에서 빨간 물약!",
+      "wordless": false,
+      "visual_prompt": "Side-profile high-speed chasing shot in cute 2.5-head chibi SD style on a pure #FFFFFF background with minimal dusty trail touch. On the left, bruised panicked Orc Warrior (battle axe stowed on back) sprints forward desperately digging into her brown leather belt pouch with trembling empty hands. Behind her on the right, two tiny angry cute 2.5-head chibi SD brown wild boars dash after her with puffs of dust.",
+      "tail_target": "left",
+      "bubble_side": "left",
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 2,
+      "aspect_ratio": "16:9",
+      "layout_slot": "bottom",
+      "characters": [
+        "오크 전사"
+      ],
+      "speaker": "오크 전사",
+      "dialogue": "꿀꺽꿀꺽— 살았다!\n어? 근데 왜 피가 안 차?!",
+      "wordless": false,
+      "visual_prompt": "Low-angle dynamic action shot on the right half in cute 2.5-head chibi SD style on a pure #FFFFFF background with open white space on the left. On the right, Orc Warrior (battle axe stowed on back) tilts her head back gulping straight from an uncorked open-necked red glass potion flask while the removed wooden cork flies off in mid-air, suddenly freezing wide-eyed as fiery red rage steam puffs from her ears instead of healing sparkles.",
+      "tail_target": "right",
+      "bubble_side": "right",
+      "item_tooltip": {
+        "image_path": null,
+        "item_name": "분노의 물약",
+        "wowhead_item_id": 5631,
+        "quality": "common",
+        "slot_left": "소비 용품",
+        "slot_right": "물약",
+        "lines": [
+          "요구 레벨 4",
+          "최대 중첩: 5"
+        ],
+        "equip_effects": [
+          "사용 효과: 분노가 20에서 40만큼 증가합니다."
+        ],
+        "icon_name": "inv_potion_24",
+        "preferred_corner": "top_left",
+        "target_width": 280
+      }
+    },
+    {
+      "cut_index": 3,
+      "aspect_ratio": "4:3",
+      "layout_slot": "top",
+      "characters": [
+        "드워프 사냥꾼",
+        "오크 전사"
+      ],
+      "speaker": "드워프 사냥꾼",
+      "dialogue": "야 그거 치유 물약 아니고\n퀘 배달할 분노의 물약인데?",
+      "wordless": false,
+      "visual_prompt": "Over-the-shoulder two-shot in cute 2.5-head chibi SD style on a pure #FFFFFF background with minimal dirt road touch. On the left, Dwarf Hunter (blunderbuss rifle slung on back) smirks holding up an unrolled blank quest delivery parchment scroll (zero text) while her cute round chubby brown baby bear (green scarf) giggles covering its muzzle beside her. On the right, Orc Warrior (battle axe stowed on back) stares blankly down at the empty uncorked open glass flask in her hands.",
+      "tail_target": "left",
+      "bubble_side": "left",
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 4,
+      "aspect_ratio": "16:9",
+      "layout_slot": "bottom",
+      "characters": [
+        "오크 전사"
+      ],
+      "speaker": null,
+      "dialogue": null,
+      "wordless": true,
+      "visual_prompt": "Dutch-tilt extreme big bust-up close-up filling 82 percent of frame height in cute 2.5-head chibi SD style on a pure #FFFFFF background with stark vertical pale shock lines. Centered, Orc Warrior turns ghostly pale with tiny blank shocked dot eyes, wide-open jaw, and giant cold sweat drops while clutching the empty uncorked open-necked glass potion flask near her chin in paralyzed horror.",
+      "tail_target": "center",
+      "bubble_side": null,
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 5,
+      "aspect_ratio": "4:3",
+      "layout_slot": "top",
+      "characters": [
+        "트롤 주술사",
+        "드워프 사냥꾼"
+      ],
+      "speaker": "트롤 주술사",
+      "dialogue": "푸하하 배달 퀘템을 원샷?!\n완전 배달 거지 탄생이네!",
+      "wordless": false,
+      "visual_prompt": "High-angle comedic reaction shot in cute 2.5-head chibi SD style on a pure #FFFFFF background with minimal ground shadows. On the left, Troll Shaman (totem staff stowed on back) doubles over laughing uproariously and slapping her knee with happy tears. On the right, Dwarf Hunter (blunderbuss rifle slung on back) wipes a laughing tear while her cute round chubby brown baby bear (green scarf) rolls happily on the floor chuckling beside her.",
+      "tail_target": "left",
+      "bubble_side": "left",
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 6,
+      "aspect_ratio": "16:9",
+      "layout_slot": "bottom",
+      "characters": [
+        "오크 전사",
+        "트롤 주술사"
+      ],
+      "speaker": "오크 전사",
+      "dialogue": "피 1 남고 분노만 풀충전…\n경매장서 다시 사와야 됨",
+      "wordless": false,
+      "visual_prompt": "Back-view three-quarter wide comic finale in cute 2.5-head chibi SD style on a pure #FFFFFF background with minimal dirt path touch. On the left, bruised Orc Warrior (battle axe stowed on back) sits slumped defeatedly hugging her knees beside an empty uncorked open-necked glass flask on the ground while a tiny red rage puff drifts sadly from her head. On the right, Troll Shaman (staff stowed on back) walks up grinning and playfully patting her shoulder with an empty hand.",
+      "tail_target": "left",
+      "bubble_side": "left",
+      "item_tooltip": null
+    }
+  ]
+}

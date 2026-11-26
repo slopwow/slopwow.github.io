@@ -1218,5 +1218,292 @@
       "assets/episodes/ep030/page_3.png?v=00f0a661"
     ],
     "canonical_url": "https://slopwow.github.io/episodes/ep030.html"
+  },
+  {
+    "episode_id": "ep031",
+    "episode_number": 31,
+    "title": "탱커하는 뉴비새끼들 아구창 돌려버리고싶네",
+    "subtitle": "초행 탱커 기 살려주는 츤데레 고인물",
+    "source_post_no": "50167",
+    "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=50167&exception_mode=recommend&page=7",
+    "created_at": "2026-11-26T12:42:34+09:00",
+    "date_short": "2026-11-26",
+    "cut_count": 6,
+    "cast_used": [
+      "트롤 주술사",
+      "오크 전사",
+      "타우렌 드루이드"
+    ],
+    "cast_chips": [
+      {
+        "id": "troll_shaman",
+        "name": "트롤 주술사",
+        "color": "#00ACC1"
+      },
+      {
+        "id": "orc_warrior",
+        "name": "오크 전사",
+        "color": "#4CAF50"
+      },
+      {
+        "id": "tauren_druid",
+        "name": "타우렌 드루이드",
+        "color": "#8D6E63"
+      }
+    ],
+    "full_image": "assets/episodes/ep031/episode_full.jpg?v=392a8e11",
+    "thumb_image": "assets/episodes/ep031/thumb.jpg?v=10c72b04",
+    "page_images": [
+      "assets/episodes/ep031/page_1.png?v=e9621c2b",
+      "assets/episodes/ep031/page_2.png?v=9aa96518",
+      "assets/episodes/ep031/page_3.png?v=acd632ca"
+    ],
+    "canonical_url": "https://slopwow.github.io/episodes/ep031.html"
+  },
+  {
+    "episode_id": "ep032",
+    "episode_number": 32,
+    "title": "성기사 이새끼들은 뉴비까지 등쳐먹으려드네ㅋㅋㅋ",
+    "subtitle": "뉴비 사제 치유 반지를 노린 징기와 곰탱의 철벽",
+    "source_post_no": "72269",
+    "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=72269&exception_mode=recommend&page=5",
+    "created_at": "2026-11-26T12:43:58+09:00",
+    "date_short": "2026-11-26",
+    "cut_count": 6,
+    "cast_used": [
+      "나이트엘프 사제",
+      "언데드 성기사",
+      "타우렌 드루이드"
+    ],
+    "cast_chips": [
+      {
+        "id": "nightelf_priest",
+        "name": "나이트엘프 사제",
+        "color": "#7E57C2"
+      },
+      {
+        "id": "undead_paladin",
+        "name": "언데드 성기사",
+        "color": "#9E9E9E"
+      },
+      {
+        "id": "tauren_druid",
+        "name": "타우렌 드루이드",
+        "color": "#8D6E63"
+      }
+    ],
+    "full_image": "assets/episodes/ep032/episode_full.jpg?v=996c230b",
+    "thumb_image": "assets/episodes/ep032/thumb.jpg?v=f5cf1a1f",
+    "page_images": [
+      "assets/episodes/ep032/page_1.png?v=847273d9",
+      "assets/episodes/ep032/page_2.png?v=36905abf",
+      "assets/episodes/ep032/page_3.png?v=90e46523"
+    ],
+    "canonical_url": "https://slopwow.github.io/episodes/ep032.html"
+  },
+  {
+    "episode_id": "ep033",
+    "episode_number": 33,
+    "title": "물을 씨발 6덩이를 달라고하냐",
+    "subtitle": "법사에게 생수 6덩이 120병을 주문한 힐러",
+    "source_post_no": "85615",
+    "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=85615&exception_mode=recommend&page=4",
+    "created_at": "2026-11-26T12:47:01+09:00",
+    "date_short": "2026-11-26",
+    "cut_count": 6,
+    "cast_used": [
+      "스카이본 마법사",
+      "타우렌 드루이드",
+      "드워프 사냥꾼"
+    ],
+    "cast_chips": [
+      {
+        "id": "skyborne_mage",
+        "name": "스카이본 마법사",
+        "color": "#29B6F6"
+      },
+      {
+        "id": "tauren_druid",
+        "name": "타우렌 드루이드",
+        "color": "#8D6E63"
+      },
+      {
+        "id": "dwarf_hunter",
+        "name": "드워프 사냥꾼",
+        "color": "#2E7D32"
+      }
+    ],
+    "full_image": "assets/episodes/ep033/episode_full.jpg?v=6e183983",
+    "thumb_image": "assets/episodes/ep033/thumb.jpg?v=c032ddcd",
+    "page_images": [
+      "assets/episodes/ep033/page_1.png?v=edafc3dc",
+      "assets/episodes/ep033/page_2.png?v=201ed01f",
+      "assets/episodes/ep033/page_3.png?v=85d40573"
+    ],
+    "canonical_url": "https://slopwow.github.io/episodes/ep033.html"
+  },
+  {
+    "episode_id": "ep034",
+    "episode_number": 34,
+    "title": "딜템 다 양보하고 힐템입고 만렙찍으면 이렇게됨",
+    "subtitle": "60렙에 24렙 손목 낀 착한 힐러의 최후",
+    "source_post_no": "87172",
+    "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=87172&exception_mode=recommend&page=4",
+    "created_at": "2026-11-26T12:44:21+09:00",
+    "date_short": "2026-11-26",
+    "cut_count": 6,
+    "cast_used": [
+      "나이트엘프 사제",
+      "인간 흑마법사",
+      "드워프 사냥꾼"
+    ],
+    "cast_chips": [
+      {
+        "id": "nightelf_priest",
+        "name": "나이트엘프 사제",
+        "color": "#7E57C2"
+      },
+      {
+        "id": "human_warlock",
+        "name": "인간 흑마법사",
+        "color": "#6A1B9A"
+      },
+      {
+        "id": "dwarf_hunter",
+        "name": "드워프 사냥꾼",
+        "color": "#2E7D32"
+      }
+    ],
+    "full_image": "assets/episodes/ep034/episode_full.jpg?v=e62a91e2",
+    "thumb_image": "assets/episodes/ep034/thumb.jpg?v=06e7135f",
+    "page_images": [
+      "assets/episodes/ep034/page_1.png?v=a33e9028",
+      "assets/episodes/ep034/page_2.png?v=9704c9df",
+      "assets/episodes/ep034/page_3.png?v=121c1c9c"
+    ],
+    "canonical_url": "https://slopwow.github.io/episodes/ep034.html"
+  },
+  {
+    "episode_id": "ep035",
+    "episode_number": 35,
+    "title": "아이 병신새낀가 ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ",
+    "subtitle": "딸피 생존 물약인 줄 알고 배달 퀘템 원샷",
+    "source_post_no": "122442",
+    "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=122442",
+    "created_at": "2026-11-26T12:47:06+09:00",
+    "date_short": "2026-11-26",
+    "cut_count": 6,
+    "cast_used": [
+      "오크 전사",
+      "드워프 사냥꾼",
+      "트롤 주술사"
+    ],
+    "cast_chips": [
+      {
+        "id": "orc_warrior",
+        "name": "오크 전사",
+        "color": "#4CAF50"
+      },
+      {
+        "id": "dwarf_hunter",
+        "name": "드워프 사냥꾼",
+        "color": "#2E7D32"
+      },
+      {
+        "id": "troll_shaman",
+        "name": "트롤 주술사",
+        "color": "#00ACC1"
+      }
+    ],
+    "full_image": "assets/episodes/ep035/episode_full.jpg?v=c400e759",
+    "thumb_image": "assets/episodes/ep035/thumb.jpg?v=39c09d53",
+    "page_images": [
+      "assets/episodes/ep035/page_1.png?v=b21d5f13",
+      "assets/episodes/ep035/page_2.png?v=d29be016",
+      "assets/episodes/ep035/page_3.png?v=a0967180"
+    ],
+    "canonical_url": "https://slopwow.github.io/episodes/ep035.html"
+  },
+  {
+    "episode_id": "ep036",
+    "episode_number": 36,
+    "title": "속보) 탱커 인던 데뷔전 완료ㅠㅠㅠㅠㅠㅠㅠ",
+    "subtitle": "폐광 탱커 데뷔전의 기계 양변 대참사",
+    "source_post_no": "69245",
+    "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=69245&exception_mode=recommend&page=5",
+    "created_at": "2026-11-26T12:48:21+09:00",
+    "date_short": "2026-11-26",
+    "cut_count": 6,
+    "cast_used": [
+      "언데드 성기사",
+      "스카이본 마법사",
+      "노움 도적"
+    ],
+    "cast_chips": [
+      {
+        "id": "undead_paladin",
+        "name": "언데드 성기사",
+        "color": "#9E9E9E"
+      },
+      {
+        "id": "skyborne_mage",
+        "name": "스카이본 마법사",
+        "color": "#29B6F6"
+      },
+      {
+        "id": "gnome_rogue",
+        "name": "노움 도적",
+        "color": "#FFC107"
+      }
+    ],
+    "full_image": "assets/episodes/ep036/episode_full.jpg?v=34af9add",
+    "thumb_image": "assets/episodes/ep036/thumb.jpg?v=56515a65",
+    "page_images": [
+      "assets/episodes/ep036/page_1.png?v=acf79ee2",
+      "assets/episodes/ep036/page_2.png?v=9fea5033",
+      "assets/episodes/ep036/page_3.png?v=236a4140"
+    ],
+    "canonical_url": "https://slopwow.github.io/episodes/ep036.html"
+  },
+  {
+    "episode_id": "ep037",
+    "episode_number": 37,
+    "title": "념글 개장수 ㅅㅂㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ",
+    "subtitle": "입찰해 먹은 목걸이 상점행과 고독한 늑대 냥꾼",
+    "source_post_no": "102815",
+    "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=102815&exception_mode=recommend&page=2",
+    "created_at": "2026-11-26T12:48:26+09:00",
+    "date_short": "2026-11-26",
+    "cut_count": 6,
+    "cast_used": [
+      "드워프 사냥꾼",
+      "트롤 주술사",
+      "인간 흑마법사"
+    ],
+    "cast_chips": [
+      {
+        "id": "dwarf_hunter",
+        "name": "드워프 사냥꾼",
+        "color": "#2E7D32"
+      },
+      {
+        "id": "troll_shaman",
+        "name": "트롤 주술사",
+        "color": "#00ACC1"
+      },
+      {
+        "id": "human_warlock",
+        "name": "인간 흑마법사",
+        "color": "#6A1B9A"
+      }
+    ],
+    "full_image": "assets/episodes/ep037/episode_full.jpg?v=ae80c365",
+    "thumb_image": "assets/episodes/ep037/thumb.jpg?v=664947a7",
+    "page_images": [
+      "assets/episodes/ep037/page_1.png?v=5df4fddb",
+      "assets/episodes/ep037/page_2.png?v=b3d75bcc",
+      "assets/episodes/ep037/page_3.png?v=efc3c1a8"
+    ],
+    "canonical_url": "https://slopwow.github.io/episodes/ep037.html"
   }
 ]
