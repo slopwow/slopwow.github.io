@@ -1,0 +1,21 @@
+{
+  "episode_id": "ep061",
+  "episode_number": 61,
+  "title": "오우거 이새끼들 말 잘하네",
+  "subtitle": "노움 부순다 하던 오우거의 갑작스러운 스카이본 완벽 발음",
+  "source_post_no": "78902",
+  "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=78902&exception_mode=recommend&page=7",
+  "created_at": "2026-11-27T19:14:40+09:00",
+  "cut_count": 6,
+  "cast_used": [
+    "노움 도적",
+    "스카이본 마법사"
+  ],
+  "full_image_rel": "data/episodes/ep061/episode_full.jpg",
+  "thumb_image_rel": "data/episodes/ep061/thumb.jpg",
+  "page_images_rel": [
+    "data/episodes/ep061/page_1.png",
+    "data/episodes/ep061/page_2.png",
+    "data/episodes/ep061/page_3.png"
+  ]
+}

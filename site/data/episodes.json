@@ -2173,5 +2173,315 @@
       "assets/episodes/ep053/page_3.png?v=d55ebae4"
     ],
     "canonical_url": "https://slopwow.github.io/episodes/ep053.html"
+  },
+  {
+    "episode_id": "ep054",
+    "episode_number": 54,
+    "title": "미안해 귀여운 노움마법사야.",
+    "subtitle": "20분 동안 정성껏 도와준 노움을 역병 전이로 눕힌 사제",
+    "source_post_no": "127616",
+    "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=127616&exception_mode=recommend&page=1",
+    "created_at": "2026-11-27T19:02:32+09:00",
+    "date_short": "2026-11-27",
+    "cut_count": 6,
+    "cast_used": [
+      "나이트엘프 사제",
+      "노움 도적"
+    ],
+    "cast_chips": [
+      {
+        "id": "nightelf_priest",
+        "name": "나이트엘프 사제",
+        "color": "#7E57C2"
+      },
+      {
+        "id": "gnome_rogue",
+        "name": "노움 도적",
+        "color": "#FFC107"
+      }
+    ],
+    "full_image": "assets/episodes/ep054/episode_full.jpg?v=d1d96717",
+    "thumb_image": "assets/episodes/ep054/thumb.jpg?v=b0df69d9",
+    "page_images": [
+      "assets/episodes/ep054/page_1.png?v=f20bf652",
+      "assets/episodes/ep054/page_2.png?v=63ed19a1",
+      "assets/episodes/ep054/page_3.png?v=ab772277"
+    ],
+    "canonical_url": "https://slopwow.github.io/episodes/ep054.html"
+  },
+  {
+    "episode_id": "ep055",
+    "episode_number": 55,
+    "title": "근뎅 낭만 다뒤지긴 한거 같다",
+    "subtitle": "목숨 구해준 드루를 물탐 중 버리고 퀘몹만 잡다 같이 누운 흑마",
+    "source_post_no": "128340",
+    "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=128340&exception_mode=recommend&page=1",
+    "created_at": "2026-11-27T19:03:37+09:00",
+    "date_short": "2026-11-27",
+    "cut_count": 6,
+    "cast_used": [
+      "타우렌 드루이드",
+      "노움 도적",
+      "인간 흑마법사"
+    ],
+    "cast_chips": [
+      {
+        "id": "tauren_druid",
+        "name": "타우렌 드루이드",
+        "color": "#8D6E63"
+      },
+      {
+        "id": "gnome_rogue",
+        "name": "노움 도적",
+        "color": "#FFC107"
+      },
+      {
+        "id": "human_warlock",
+        "name": "인간 흑마법사",
+        "color": "#6A1B9A"
+      }
+    ],
+    "full_image": "assets/episodes/ep055/episode_full.jpg?v=5c6b273a",
+    "thumb_image": "assets/episodes/ep055/thumb.jpg?v=a395f603",
+    "page_images": [
+      "assets/episodes/ep055/page_1.png?v=725b9888",
+      "assets/episodes/ep055/page_2.png?v=64fb4667",
+      "assets/episodes/ep055/page_3.png?v=fc951c77"
+    ],
+    "canonical_url": "https://slopwow.github.io/episodes/ep055.html"
+  },
+  {
+    "episode_id": "ep056",
+    "episode_number": 56,
+    "title": "아이러니하게도 도적이 진짜 제일 착함 ㅋㅋ",
+    "subtitle": "혐오 밈과 정반대인 인던 최고의 모범 파티원 도적",
+    "source_post_no": "128380",
+    "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=128380&exception_mode=recommend&page=1",
+    "created_at": "2026-11-27T19:05:27+09:00",
+    "date_short": "2026-11-27",
+    "cut_count": 6,
+    "cast_used": [
+      "오크 전사",
+      "노움 도적",
+      "트롤 주술사"
+    ],
+    "cast_chips": [
+      {
+        "id": "orc_warrior",
+        "name": "오크 전사",
+        "color": "#4CAF50"
+      },
+      {
+        "id": "gnome_rogue",
+        "name": "노움 도적",
+        "color": "#FFC107"
+      },
+      {
+        "id": "troll_shaman",
+        "name": "트롤 주술사",
+        "color": "#00ACC1"
+      }
+    ],
+    "full_image": "assets/episodes/ep056/episode_full.jpg?v=6a2b68e0",
+    "thumb_image": "assets/episodes/ep056/thumb.jpg?v=b7c0b339",
+    "page_images": [
+      "assets/episodes/ep056/page_1.png?v=661817ae",
+      "assets/episodes/ep056/page_2.png?v=3fb183bc",
+      "assets/episodes/ep056/page_3.png?v=d266c882"
+    ],
+    "canonical_url": "https://slopwow.github.io/episodes/ep056.html"
+  },
+  {
+    "episode_id": "ep057",
+    "episode_number": 57,
+    "title": "길드 가입 2일차에 인사안했다고 뭐라하길래 귀찮아서 나왔는데 이렇게 귓왔다 내가 이상한거냐",
+    "subtitle": "아무도 인사 안 하는 길드에서 나가라길래 나갔더니 날아온 귓말",
+    "source_post_no": "127541",
+    "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=127541&exception_mode=recommend&page=1",
+    "created_at": "2026-11-27T19:07:25+09:00",
+    "date_short": "2026-11-27",
+    "cut_count": 6,
+    "cast_used": [
+      "언데드 성기사",
+      "트롤 주술사",
+      "오크 전사"
+    ],
+    "cast_chips": [
+      {
+        "id": "undead_paladin",
+        "name": "언데드 성기사",
+        "color": "#9E9E9E"
+      },
+      {
+        "id": "troll_shaman",
+        "name": "트롤 주술사",
+        "color": "#00ACC1"
+      },
+      {
+        "id": "orc_warrior",
+        "name": "오크 전사",
+        "color": "#4CAF50"
+      }
+    ],
+    "full_image": "assets/episodes/ep057/episode_full.jpg?v=95493212",
+    "thumb_image": "assets/episodes/ep057/thumb.jpg?v=79ad29e1",
+    "page_images": [
+      "assets/episodes/ep057/page_1.png?v=b0e09ad8",
+      "assets/episodes/ep057/page_2.png?v=866c9269",
+      "assets/episodes/ep057/page_3.png?v=621dda49"
+    ],
+    "canonical_url": "https://slopwow.github.io/episodes/ep057.html"
+  },
+  {
+    "episode_id": "ep058",
+    "episode_number": 58,
+    "title": "이게 와우 포에버의 정인가..?",
+    "subtitle": "알터랙 쓸모없는 불 퀘스트에 10분 태운 훈훈한 정",
+    "source_post_no": "129817",
+    "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=129817&exception_mode=recommend&page=1",
+    "created_at": "2026-11-27T19:09:13+09:00",
+    "date_short": "2026-11-27",
+    "cut_count": 6,
+    "cast_used": [
+      "나이트엘프 사제",
+      "노움 도적",
+      "스카이본 마법사"
+    ],
+    "cast_chips": [
+      {
+        "id": "nightelf_priest",
+        "name": "나이트엘프 사제",
+        "color": "#7E57C2"
+      },
+      {
+        "id": "gnome_rogue",
+        "name": "노움 도적",
+        "color": "#FFC107"
+      },
+      {
+        "id": "skyborne_mage",
+        "name": "스카이본 마법사",
+        "color": "#29B6F6"
+      }
+    ],
+    "full_image": "assets/episodes/ep058/episode_full.jpg?v=fa47625e",
+    "thumb_image": "assets/episodes/ep058/thumb.jpg?v=68bfec6d",
+    "page_images": [
+      "assets/episodes/ep058/page_1.png?v=4f77e399",
+      "assets/episodes/ep058/page_2.png?v=e55f070a",
+      "assets/episodes/ep058/page_3.png?v=38d76de0"
+    ],
+    "canonical_url": "https://slopwow.github.io/episodes/ep058.html"
+  },
+  {
+    "episode_id": "ep059",
+    "episode_number": 59,
+    "title": "낙사 시키는거보고 와우 입문해서",
+    "subtitle": "하루 2시간 낙사 로테이션에 렙업 포기한 정배 사제",
+    "source_post_no": "126129",
+    "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=126129&exception_mode=recommend&page=1",
+    "created_at": "2026-11-27T19:11:24+09:00",
+    "date_short": "2026-11-27",
+    "cut_count": 6,
+    "cast_used": [
+      "나이트엘프 사제",
+      "오크 전사",
+      "드워프 사냥꾼"
+    ],
+    "cast_chips": [
+      {
+        "id": "nightelf_priest",
+        "name": "나이트엘프 사제",
+        "color": "#7E57C2"
+      },
+      {
+        "id": "orc_warrior",
+        "name": "오크 전사",
+        "color": "#4CAF50"
+      },
+      {
+        "id": "dwarf_hunter",
+        "name": "드워프 사냥꾼",
+        "color": "#2E7D32"
+      }
+    ],
+    "full_image": "assets/episodes/ep059/episode_full.jpg?v=88c1ee46",
+    "thumb_image": "assets/episodes/ep059/thumb.jpg?v=420a72f6",
+    "page_images": [
+      "assets/episodes/ep059/page_1.png?v=0e4d6bd0",
+      "assets/episodes/ep059/page_2.png?v=181e9762",
+      "assets/episodes/ep059/page_3.png?v=884fef94"
+    ],
+    "canonical_url": "https://slopwow.github.io/episodes/ep059.html"
+  },
+  {
+    "episode_id": "ep060",
+    "episode_number": 60,
+    "title": "알방에서 시비거는새끼들 너무 싫다.",
+    "subtitle": "오픈 초 알터랙 계곡에서 100골마라고 시비 터는 천골마 텃세",
+    "source_post_no": "129627",
+    "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=129627&exception_mode=recommend&page=1",
+    "created_at": "2026-11-27T19:13:19+09:00",
+    "date_short": "2026-11-27",
+    "cut_count": 6,
+    "cast_used": [
+      "드워프 사냥꾼",
+      "언데드 성기사"
+    ],
+    "cast_chips": [
+      {
+        "id": "dwarf_hunter",
+        "name": "드워프 사냥꾼",
+        "color": "#2E7D32"
+      },
+      {
+        "id": "undead_paladin",
+        "name": "언데드 성기사",
+        "color": "#9E9E9E"
+      }
+    ],
+    "full_image": "assets/episodes/ep060/episode_full.jpg?v=e9327bc8",
+    "thumb_image": "assets/episodes/ep060/thumb.jpg?v=1434b1a8",
+    "page_images": [
+      "assets/episodes/ep060/page_1.png?v=e3c41672",
+      "assets/episodes/ep060/page_2.png?v=cf96094a",
+      "assets/episodes/ep060/page_3.png?v=42bd6135"
+    ],
+    "canonical_url": "https://slopwow.github.io/episodes/ep060.html"
+  },
+  {
+    "episode_id": "ep061",
+    "episode_number": 61,
+    "title": "오우거 이새끼들 말 잘하네",
+    "subtitle": "노움 부순다 하던 오우거의 갑작스러운 스카이본 완벽 발음",
+    "source_post_no": "78902",
+    "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=78902&exception_mode=recommend&page=7",
+    "created_at": "2026-11-27T19:14:40+09:00",
+    "date_short": "2026-11-27",
+    "cut_count": 6,
+    "cast_used": [
+      "노움 도적",
+      "스카이본 마법사"
+    ],
+    "cast_chips": [
+      {
+        "id": "gnome_rogue",
+        "name": "노움 도적",
+        "color": "#FFC107"
+      },
+      {
+        "id": "skyborne_mage",
+        "name": "스카이본 마법사",
+        "color": "#29B6F6"
+      }
+    ],
+    "full_image": "assets/episodes/ep061/episode_full.jpg?v=1afe7ec7",
+    "thumb_image": "assets/episodes/ep061/thumb.jpg?v=8fd65e8d",
+    "page_images": [
+      "assets/episodes/ep061/page_1.png?v=101f610a",
+      "assets/episodes/ep061/page_2.png?v=413bd59c",
+      "assets/episodes/ep061/page_3.png?v=61fa73e8"
+    ],
+    "canonical_url": "https://slopwow.github.io/episodes/ep061.html"
   }
 ]
