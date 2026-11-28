@@ -1,0 +1,22 @@
+{
+  "episode_id": "ep065",
+  "episode_number": 65,
+  "title": "파티에서 천직업들이 걸러야될 1순위 직업 성기사",
+  "subtitle": "대성당 근접·치유 무기에 주문력 천템까지 싹 입찰하는 보기 탱",
+  "source_post_no": "109021",
+  "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=109021",
+  "created_at": "2026-11-28T15:49:40+09:00",
+  "cut_count": 6,
+  "cast_used": [
+    "나이트엘프 사제",
+    "언데드 성기사",
+    "스카이본 마법사"
+  ],
+  "full_image_rel": "data/episodes/ep065/episode_full.jpg",
+  "thumb_image_rel": "data/episodes/ep065/thumb.jpg",
+  "page_images_rel": [
+    "data/episodes/ep065/page_1.png",
+    "data/episodes/ep065/page_2.png",
+    "data/episodes/ep065/page_3.png"
+  ]
+}

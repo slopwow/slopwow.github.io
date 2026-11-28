@@ -1,0 +1,121 @@
+{
+  "episode_number": 65,
+  "source_post_no": "109021",
+  "source_title": "파티에서 천직업들이 걸러야될 1순위 직업 성기사",
+  "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=109021",
+  "subtitle": "대성당 근접·치유 무기에 주문력 천템까지 싹 입찰하는 보기 탱",
+  "cuts": [
+    {
+      "cut_index": 1,
+      "aspect_ratio": "4:3",
+      "layout_slot": "top",
+      "characters": [
+        "나이트엘프 사제",
+        "언데드 성기사"
+      ],
+      "speaker": "나이트엘프 사제",
+      "dialogue": "대성당 끝! 모그레인 철퇴랑\n치유용 정의의 망치 떴네요!",
+      "wordless": false,
+      "visual_prompt": "Low-angle full-body head-to-boots Scarlet Monastery Cathedral loot drop shot framed inside generous pure #FFFFFF margins on all 4 edges (ONLY tiny self-contained stone tile floor ovals under boots and chest; NEVER full-width ground strips, walls, doorways, or edge-touching columns) in cute 2.5-head chibi SD style on a pure #FFFFFF background with zero panel borders, text, letters, SFX, or speech bubbles. On the left, beaming Night Elf Priest (lavender half-up hair, gold crescent tiara, elf ears, big lively lavender-silver SD eyes, short purple pleated skirt, white stockings, purple boots, waist mini Holy Book and gold Rosary, zero angel halo or wings, ONE single straight diagonal gold sun-ring cross staff with ONLY ONE bottom tip (never forked or X-shaped) stowed neatly on her back) clasps both empty hands happily over a compact freestanding glowing loot chest displaying both a spiked melee mace and a radiant golden healer hammer. On the right, deadpan Undead Paladin protection tank (prominently wearing round white skull cap with black skull eye sockets, never bare head or beret, silver bob, bright golden tired eyes, white-gold paladin cape with neck bow, tunic and boots, ONLY ONE 1H mace and ONE sturdy gold shield stowed neatly on her back) leans in intently eyeing both weapons.",
+      "tail_target": "left",
+      "bubble_side": "left",
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 2,
+      "aspect_ratio": "16:9",
+      "layout_slot": "bottom",
+      "characters": [
+        "나이트엘프 사제",
+        "언데드 성기사"
+      ],
+      "speaker": "언데드 성기사",
+      "dialogue": "탱이지만 둘 다 입찰.\n어, 둘 다 이겨서 먹었네",
+      "wordless": false,
+      "visual_prompt": "Side-profile full-body head-to-boots double-need loot sweep shot framed inside generous pure #FFFFFF margins on all 4 edges (ONLY tiny self-contained stone tile floor ovals under boots; wide open pure #FFFFFF upper-left space for tooltip overlay; NEVER full-width ground strips, walls, doorways, or edge-touching props) in cute 2.5-head chibi SD style on a pure #FFFFFF background with zero panel borders, text, letters, SFX, or speech bubbles. Toward the lower-left (keeping the upper-left completely open pure #FFFFFF), stunned Night Elf Priest (short purple pleated skirt, white stockings, purple boots, waist mini Holy Book and gold Rosary, zero angel halo or wings, ONE single straight diagonal gold sun-ring cross staff with ONLY ONE bottom tip (never forked or X-shaped) stowed neatly on her back) freezes with wide shocked lavender-silver eyes and raised trembling empty hands. On the right, totally nonchalant Undead Paladin protection tank (prominently wearing round white skull cap with black skull eye sockets, never bare head or beret, silver bob, bright golden tired eyes, white-gold paladin cape with neck bow, tunic and boots, her tank 1H mace and sturdy gold shield stowed neatly on her back) casually scoops up BOTH the spiked melee mace and golden healer hammer as two chunky 6-sided white-and-gold loot die cubes with round dot pips only (zero digits) tumble near her boots.",
+      "tail_target": "right",
+      "bubble_side": "right",
+      "item_tooltip": {
+        "image_path": null,
+        "item_name": "정의의 망치",
+        "wowhead_item_id": null,
+        "quality": "rare",
+        "slot_left": "한손 둔기",
+        "slot_right": "치유",
+        "lines": [
+          "획득 시 귀속",
+          "지능 +8 · 정신력 +7"
+        ],
+        "equip_effects": [
+          "착용 효과: 주문으로 인한 치유량 최대 20 증가"
+        ],
+        "icon_name": "inv_hammer_07",
+        "preferred_corner": "top_left",
+        "target_width": 288
+      }
+    },
+    {
+      "cut_index": 3,
+      "aspect_ratio": "4:3",
+      "layout_slot": "top",
+      "characters": [
+        "스카이본 마법사",
+        "나이트엘프 사제"
+      ],
+      "speaker": "스카이본 마법사",
+      "dialogue": "아까 주문력 천템도 굴렸잖아!\n져서 못 먹은 것뿐이야!",
+      "wordless": false,
+      "visual_prompt": "High-angle full-body head-to-boots outraged caster rant shot framed inside generous pure #FFFFFF margins on all 4 edges (ONLY tiny self-contained stone tile floor ovals under boots; NEVER full-width ground strips, walls, doorways, or edge-touching props) in cute 2.5-head chibi SD style on a pure #FFFFFF background with zero panel borders, text, letters, SFX, or speech bubbles. On the left, furious Skyborne Mage (sky-blue high side-ponytail, elf ears, star-pupil eyes, tilted blue wizard hat with smiling cloud-wing hat badge, cloud capelet, blue-white tunic, waist Polymorph Sheep charm, ONE single straight diagonal blue crystal staff with ONLY ONE bottom tip (never forked or X-shaped) stowed neatly on her back) points an accusing empty finger toward a floating daydream puff showing a glowing blue cloth caster robe beside a chunky 6-sided white-and-gold loot die cube with round dot pips only (zero digits). On the right, horrified Night Elf Priest (short purple pleated skirt, white stockings, purple boots, waist mini Holy Book and gold Rosary, zero angel halo or wings, ONE single straight diagonal gold sun-ring cross staff with ONLY ONE bottom tip (never forked or X-shaped) stowed neatly on her back) clutches her cheeks with empty hands in pure disbelief.",
+      "tail_target": "left",
+      "bubble_side": "left",
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 4,
+      "aspect_ratio": "16:9",
+      "layout_slot": "bottom",
+      "characters": [
+        "나이트엘프 사제"
+      ],
+      "speaker": null,
+      "dialogue": null,
+      "wordless": true,
+      "visual_prompt": "Centered Dutch-tilt extreme big bust-up close-up filling 83 percent of frame height in cute 2.5-head chibi SD style on a pure #FFFFFF background with zero panel borders, text, letters, SFX, or speech bubbles. Utterly stunned Night Elf Priest (lavender half-up hair, gold crescent tiara, elf ears, short purple pleated skirt, white stockings, purple boots, waist mini Holy Book and gold Rosary, zero angel halo or wings, ONE single straight diagonal gold sun-ring cross staff with ONLY ONE bottom tip (never forked or X-shaped) angled behind her back, both hands empty) stares dead ahead with huge hollow pale lavender-silver eyes, a tiny frozen open mouth, cold sweat drops, and jagged pale shock lines radiating behind her.",
+      "tail_target": "center",
+      "bubble_side": null,
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 5,
+      "aspect_ratio": "4:3",
+      "layout_slot": "top",
+      "characters": [
+        "나이트엘프 사제",
+        "언데드 성기사"
+      ],
+      "speaker": "언데드 성기사",
+      "dialogue": "성기사는 다 낄 수 있잖아?\n쓸 수 있으면 다 입찰이지",
+      "wordless": false,
+      "visual_prompt": "Over-the-shoulder three-quarter full-body head-to-boots deadpan excuse shot framed inside generous pure #FFFFFF margins on all 4 edges (ONLY tiny self-contained stone tile floor ovals under boots; NEVER full-width ground strips, walls, doorways, or edge-touching props) seen past stunned Night Elf Priest on the left (short purple pleated skirt, white stockings, purple boots, waist mini Holy Book and gold Rosary, zero angel halo or wings, ONE single straight diagonal gold sun-ring cross staff with ONLY ONE bottom tip (never forked or X-shaped) stowed neatly on her back, empty hands frozen in disbelief) looking at Undead Paladin on the right, in cute 2.5-head chibi SD style on a pure #FFFFFF background with zero panel borders, text, letters, SFX, or speech bubbles. On the right, shamelessly deadpan Undead Paladin protection tank (prominently wearing round white skull cap with black skull eye sockets, never bare head or beret, silver bob, bright golden tired eyes, white-gold paladin cape with neck bow, tunic and boots, ONLY ONE 1H mace and ONE sturdy gold shield stowed neatly on her back) shrugs both empty hands lazily as bright loot sparkles glint around her bulging brown loot bag.",
+      "tail_target": "right",
+      "bubble_side": "right",
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 6,
+      "aspect_ratio": "16:9",
+      "layout_slot": "bottom",
+      "characters": [
+        "나이트엘프 사제",
+        "스카이본 마법사"
+      ],
+      "speaker": "스카이본 마법사",
+      "dialogue": "앞으로 천직업 파티 짤 때\n성기사부터 1순위로 거르자",
+      "wordless": false,
+      "visual_prompt": "Back-view full-body head-to-boots cloth-caster pact finale framed inside generous pure #FFFFFF margins on all 4 edges (ONLY tiny self-contained stone tile floor ovals under boots; NEVER full-width ground strips, walls, doorways, or edge-touching props) in cute 2.5-head chibi SD style on a pure #FFFFFF background with zero panel borders, text, letters, SFX, or speech bubbles. On the left, grimly nodding Night Elf Priest (short purple pleated skirt, white stockings, purple boots, waist mini Holy Book and gold Rosary, zero angel halo or wings, ONE single straight diagonal gold sun-ring cross staff with ONLY ONE bottom tip (never forked or X-shaped) stowed neatly on her back) scribbles firmly onto a small medieval parchment party-roster note with a feather quill. On the right, resolute Skyborne Mage (sky-blue high side-ponytail, elf ears, star-pupil eyes, tilted blue wizard hat with smiling cloud-wing hat badge, cloud capelet, blue-white tunic, waist Polymorph Sheep charm, ONE single straight diagonal blue crystal staff with ONLY ONE bottom tip (never forked or X-shaped) stowed neatly on her back) glances back over her shoulder with stern narrowed star-pupil eyes thumping an empty clenched fist into her open palm in solemn vow.",
+      "tail_target": "right",
+      "bubble_side": "right",
+      "item_tooltip": null
+    }
+  ]
+}

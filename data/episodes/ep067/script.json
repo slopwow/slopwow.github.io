@@ -1,0 +1,121 @@
+{
+  "episode_number": 67,
+  "source_post_no": "119740",
+  "source_title": "금고 따는데 도적한테 돈주기싫으면 상점어팔어 시발련들아",
+  "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=119740",
+  "subtitle": "잠긴 금고 공짜로 따먹고 0실버 튄 얌체에게 터진 도적",
+  "cuts": [
+    {
+      "cut_index": 1,
+      "aspect_ratio": "4:3",
+      "layout_slot": "top",
+      "characters": [
+        "오크 전사",
+        "노움 도적"
+      ],
+      "speaker": "오크 전사",
+      "dialogue": "도적님, 이 잠긴 금고 좀\n한 번만 따주시면 안 돼요?",
+      "wordless": false,
+      "visual_prompt": "Low-angle neutral trading town square shot in cute 2.5-head chibi SD style. Full-body head-to-boots framing inside generous pure #FFFFFF margins on all 4 edges with ONLY tiny self-contained cobblestone floor ovals under boots (never full-width ground strips, walls, doorways, or edge-touching rocks), zero text, letters, digits, SFX, panel borders, or speech bubbles. On the left, pleading puppy-eyed Orc Warrior (fair peach skin, never green skin, green plush orc hood with TWO curved ivory horns, jet-black ponytail and bangs, crimson eyes, EXACTLY TWO arms, battle axe stowed neatly on her back) leans eagerly forward holding out a heavy padlocked iron lockbox with both hands and sparkling begging crimson eyes. On the right, easygoing Gnome Rogue (bare unadorned blonde twin pigtails with pink/blue tips, zero hairpins, dark rogue cloak, EXACTLY TWO waist-sheathed green daggers, both hands empty) tilts her head shrugging casually with a confident smirk.",
+      "tail_target": "left",
+      "bubble_side": "left",
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 2,
+      "aspect_ratio": "16:9",
+      "layout_slot": "bottom",
+      "characters": [
+        "오크 전사",
+        "노움 도적"
+      ],
+      "speaker": "노움 도적",
+      "dialogue": "자, 숙련도 꽉 채워 땄어!\n수고비는 알아서 좀 챙겨줘~",
+      "wordless": false,
+      "visual_prompt": "Side-profile deft lockpicking shot in cute 2.5-head chibi SD style. Full-body head-to-boots framing inside generous pure #FFFFFF margins on all 4 edges with wide open pure #FFFFFF upper-left space and ONLY tiny self-contained cobblestone floor ovals under boots (never full-width ground strips, walls, doorways, or edge-touching rocks), zero text, letters, digits, SFX, panel borders, or speech bubbles. On the lower-left, greedy Orc Warrior (fair peach skin, never green skin, green plush orc hood with TWO curved ivory horns, jet-black ponytail and bangs, crimson eyes, EXACTLY TWO arms, battle axe stowed neatly on her back) leans close rubbing both empty hands impatiently with wide gleaming eyes. On the right, focused Gnome Rogue (bare unadorned blonde twin pigtails with pink/blue tips, zero hairpins, dark rogue cloak, EXACTLY TWO waist-sheathed green daggers) kneels smoothly popping open the heavy iron lockbox lid using a small brass lockpick as bright golden unlock sparkles pop from the latch while holding out her other open palm expectantly.",
+      "tail_target": "right",
+      "bubble_side": "right",
+      "item_tooltip": {
+        "image_path": null,
+        "item_name": "자물쇠 따기",
+        "wowhead_item_id": null,
+        "quality": "common",
+        "slot_left": "도적 기술",
+        "slot_right": "전문",
+        "lines": [
+          "시전 시간 5.0초",
+          "잠긴 금고 해제"
+        ],
+        "equip_effects": [
+          "숙련도에 따라 잠긴 상자나 금고를 열어줍니다."
+        ],
+        "icon_name": "spell_nature_moonkey",
+        "preferred_corner": "top_left",
+        "target_width": 288
+      }
+    },
+    {
+      "cut_index": 3,
+      "aspect_ratio": "4:3",
+      "layout_slot": "top",
+      "characters": [
+        "노움 도적",
+        "오크 전사"
+      ],
+      "speaker": "오크 전사",
+      "dialogue": "오 감사감사! 잘 쓸게요!\n수고비는 없고 이만 튑니다!",
+      "wordless": false,
+      "visual_prompt": "High-angle shameless dash-away shot in cute 2.5-head chibi SD style. Full-body head-to-boots framing inside generous pure #FFFFFF margins on all 4 edges with ONLY tiny self-contained cobblestone floor ovals under boots (never full-width ground strips, walls, doorways, or edge-touching rocks), zero text, letters, digits, SFX, panel borders, or speech bubbles. On the left, frozen dumbfounded Gnome Rogue (bare unadorned blonde twin pigtails with pink/blue tips, zero hairpins, dark rogue cloak, EXACTLY TWO waist-sheathed green daggers, both hands empty) stands staring blankly at her completely empty outstretched palm with a tiny comic dust puff drifting past her fingers and shocked wide blue eyes. On the right, shameless Orc Warrior (fair peach skin, never green skin, green plush orc hood with TWO curved ivory horns, jet-black ponytail and bangs, crimson eyes, EXACTLY TWO arms, battle axe stowed neatly on her back) bolts full-speed away hugging the freshly unlocked iron lockbox tightly against her chest with lively speed dust puffs behind her boots and a cheeky parting grin.",
+      "tail_target": "right",
+      "bubble_side": "right",
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 4,
+      "aspect_ratio": "16:9",
+      "layout_slot": "bottom",
+      "characters": [
+        "노움 도적"
+      ],
+      "speaker": null,
+      "dialogue": null,
+      "wordless": true,
+      "visual_prompt": "Centered Dutch-tilt extreme big bust-up close-up filling 83 percent of frame height in cute 2.5-head chibi SD style on a pure #FFFFFF background with generous pure #FFFFFF margins on left and right and zero panel borders, text, letters, digits, SFX, or speech bubbles. Livid silent Gnome Rogue (bare unadorned blonde twin pigtails with pink/blue tips, zero hairpins, green forehead goggles, dark rogue cloak, EXACTLY TWO waist-sheathed green daggers tucked at her sides, both hands empty) stares dead ahead with one violently twitching narrowed blue eye, stiff frozen grimace, a throbbing red comic anger vein on her temple, and jagged pale fury lines radiating behind her.",
+      "tail_target": "center",
+      "bubble_side": null,
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 5,
+      "aspect_ratio": "4:3",
+      "layout_slot": "top",
+      "characters": [
+        "언데드 성기사",
+        "노움 도적"
+      ],
+      "speaker": "언데드 성기사",
+      "dialogue": "또 공짜로 금고만 따먹고\n1실버도 안 주고 튀었냐?",
+      "wordless": false,
+      "visual_prompt": "Over-the-shoulder dry deadpan shot from behind trembling Gnome Rogue on the lower-right looking at Undead Paladin on the left, in cute 2.5-head chibi SD style. Full-body head-to-boots framing inside generous pure #FFFFFF margins on all 4 edges with ONLY tiny self-contained cobblestone floor ovals under boots (never full-width ground strips, walls, doorways, or edge-touching rocks), zero text, letters, digits, SFX, panel borders, or speech bubbles. On the left, cynical Undead Paladin (prominently wearing round white skull cap with black skull eye sockets, never bare head or beret, silver bob, bright golden tired eyes, white-gold paladin cape and tunic, gold warhammer stowed neatly on her back) stands leaning casually with both empty hands on her hips giving a completely unimpressed half-lidded stare. On the lower-right, quivering Gnome Rogue (bare unadorned blonde twin pigtails with pink/blue tips, zero hairpins, dark rogue cloak, EXACTLY TWO waist-sheathed green daggers, both hands empty) clenches both empty fists shaking with comic steam rising off her shoulders.",
+      "tail_target": "left",
+      "bubble_side": "left",
+      "item_tooltip": null
+    },
+    {
+      "cut_index": 6,
+      "aspect_ratio": "16:9",
+      "layout_slot": "bottom",
+      "characters": [
+        "노움 도적",
+        "언데드 성기사"
+      ],
+      "speaker": "노움 도적",
+      "dialogue": "도적한테 팁 주기 싫으면\n그냥 상점에 팔아 얌체들아!",
+      "wordless": false,
+      "visual_prompt": "Back-view explosive comic rant finale in cute 2.5-head chibi SD style. Full-body head-to-boots framing inside generous pure #FFFFFF margins on all 4 edges with ONLY tiny self-contained cobblestone floor ovals under boots (never full-width ground strips, walls, doorways, or edge-touching rocks), zero text, letters, digits, SFX, panel borders, or speech bubbles. On the left, furious Gnome Rogue (bare unadorned blonde twin pigtails with pink/blue tips, zero hairpins, dark rogue cloak, EXACTLY TWO waist-sheathed green daggers, both hands empty) leans wildly forward waving both empty fists yelling into the empty town lane with white comic steam clouds puffing overhead. On the right, unbothered Undead Paladin (prominently wearing round white skull cap with black skull eye sockets, never bare head or beret, silver bob, bright golden tired eyes, white-gold paladin cape and tunic, gold warhammer stowed neatly on her back) lazily plugs one ear glancing back over her shoulder while holding an uncorked open-necked warm glass tea flask with the removed wooden cork visibly lying on the tiny floor oval beside her boots.",
+      "tail_target": "left",
+      "bubble_side": "left",
+      "item_tooltip": null
+    }
+  ]
+}

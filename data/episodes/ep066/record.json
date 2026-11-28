@@ -1,0 +1,22 @@
+{
+  "episode_id": "ep066",
+  "episode_number": 66,
+  "title": "와틀딱들이 명심해야 할 점: 알아도 모른 척 하기",
+  "subtitle": "탱커보다 먼저 달려가 3무리 애드 내는 고인물 훈수 냥꾼",
+  "source_post_no": "128004",
+  "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=128004",
+  "created_at": "2026-11-28T15:51:51+09:00",
+  "cut_count": 6,
+  "cast_used": [
+    "오크 전사",
+    "타우렌 드루이드",
+    "드워프 사냥꾼"
+  ],
+  "full_image_rel": "data/episodes/ep066/episode_full.jpg",
+  "thumb_image_rel": "data/episodes/ep066/thumb.jpg",
+  "page_images_rel": [
+    "data/episodes/ep066/page_1.png",
+    "data/episodes/ep066/page_2.png",
+    "data/episodes/ep066/page_3.png"
+  ]
+}

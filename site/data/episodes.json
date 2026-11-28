@@ -2483,5 +2483,315 @@
       "assets/episodes/ep061/page_3.png?v=61fa73e8"
     ],
     "canonical_url": "https://slopwow.github.io/episodes/ep061.html"
+  },
+  {
+    "episode_id": "ep062",
+    "episode_number": 62,
+    "title": "이 노움은 무얼 하는 걸까요?",
+    "subtitle": "스톰윈드 도서관 반납퀘 도와주다 초라이트 노움 친추 받은 흑마",
+    "source_post_no": "129426",
+    "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=129426",
+    "created_at": "2026-11-28T15:44:48+09:00",
+    "date_short": "2026-11-28",
+    "cut_count": 6,
+    "cast_used": [
+      "인간 흑마법사",
+      "스카이본 마법사"
+    ],
+    "cast_chips": [
+      {
+        "id": "human_warlock",
+        "name": "인간 흑마법사",
+        "color": "#6A1B9A"
+      },
+      {
+        "id": "skyborne_mage",
+        "name": "스카이본 마법사",
+        "color": "#29B6F6"
+      }
+    ],
+    "full_image": "assets/episodes/ep062/episode_full.jpg?v=970fa775",
+    "thumb_image": "assets/episodes/ep062/thumb.jpg?v=a6c9540c",
+    "page_images": [
+      "assets/episodes/ep062/page_1.png?v=f408a3b0",
+      "assets/episodes/ep062/page_2.png?v=10bcd025",
+      "assets/episodes/ep062/page_3.png?v=c9534f28"
+    ],
+    "canonical_url": "https://slopwow.github.io/episodes/ep062.html"
+  },
+  {
+    "episode_id": "ep063",
+    "episode_number": 63,
+    "title": "어젯자 잼난 일.jpg",
+    "subtitle": "그늘숲 누더기 피해 텐트에 숨었더니 이미 먼저 와 있던 두 쥐",
+    "source_post_no": "124888",
+    "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=124888",
+    "created_at": "2026-11-28T15:46:35+09:00",
+    "date_short": "2026-11-28",
+    "cut_count": 6,
+    "cast_used": [
+      "노움 도적",
+      "드워프 사냥꾼"
+    ],
+    "cast_chips": [
+      {
+        "id": "gnome_rogue",
+        "name": "노움 도적",
+        "color": "#FFC107"
+      },
+      {
+        "id": "dwarf_hunter",
+        "name": "드워프 사냥꾼",
+        "color": "#2E7D32"
+      }
+    ],
+    "full_image": "assets/episodes/ep063/episode_full.jpg?v=06ac6303",
+    "thumb_image": "assets/episodes/ep063/thumb.jpg?v=0eed0e32",
+    "page_images": [
+      "assets/episodes/ep063/page_1.png?v=18651496",
+      "assets/episodes/ep063/page_2.png?v=31332abc",
+      "assets/episodes/ep063/page_3.png?v=84942d14"
+    ],
+    "canonical_url": "https://slopwow.github.io/episodes/ep063.html"
+  },
+  {
+    "episode_id": "ep064",
+    "episode_number": 64,
+    "title": "와포 입문 뉴비 오늘 낭만 있는 모험을 한 듯.",
+    "subtitle": "적 진영 방전끼리 도발로 살려주고 은혜 갚은 전사의 낭만",
+    "source_post_no": "118721",
+    "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=118721",
+    "created_at": "2026-11-28T15:47:54+09:00",
+    "date_short": "2026-11-28",
+    "cut_count": 6,
+    "cast_used": [
+      "오크 전사",
+      "트롤 주술사"
+    ],
+    "cast_chips": [
+      {
+        "id": "orc_warrior",
+        "name": "오크 전사",
+        "color": "#4CAF50"
+      },
+      {
+        "id": "troll_shaman",
+        "name": "트롤 주술사",
+        "color": "#00ACC1"
+      }
+    ],
+    "full_image": "assets/episodes/ep064/episode_full.jpg?v=357feb55",
+    "thumb_image": "assets/episodes/ep064/thumb.jpg?v=0a9d27f6",
+    "page_images": [
+      "assets/episodes/ep064/page_1.png?v=b9567c5d",
+      "assets/episodes/ep064/page_2.png?v=0ee941e1",
+      "assets/episodes/ep064/page_3.png?v=48592d81"
+    ],
+    "canonical_url": "https://slopwow.github.io/episodes/ep064.html"
+  },
+  {
+    "episode_id": "ep065",
+    "episode_number": 65,
+    "title": "파티에서 천직업들이 걸러야될 1순위 직업 성기사",
+    "subtitle": "대성당 근접·치유 무기에 주문력 천템까지 싹 입찰하는 보기 탱",
+    "source_post_no": "109021",
+    "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=109021",
+    "created_at": "2026-11-28T15:49:40+09:00",
+    "date_short": "2026-11-28",
+    "cut_count": 6,
+    "cast_used": [
+      "나이트엘프 사제",
+      "언데드 성기사",
+      "스카이본 마법사"
+    ],
+    "cast_chips": [
+      {
+        "id": "nightelf_priest",
+        "name": "나이트엘프 사제",
+        "color": "#7E57C2"
+      },
+      {
+        "id": "undead_paladin",
+        "name": "언데드 성기사",
+        "color": "#9E9E9E"
+      },
+      {
+        "id": "skyborne_mage",
+        "name": "스카이본 마법사",
+        "color": "#29B6F6"
+      }
+    ],
+    "full_image": "assets/episodes/ep065/episode_full.jpg?v=11b5a428",
+    "thumb_image": "assets/episodes/ep065/thumb.jpg?v=f74cd648",
+    "page_images": [
+      "assets/episodes/ep065/page_1.png?v=863e8bd0",
+      "assets/episodes/ep065/page_2.png?v=09a5ddac",
+      "assets/episodes/ep065/page_3.png?v=cd0be491"
+    ],
+    "canonical_url": "https://slopwow.github.io/episodes/ep065.html"
+  },
+  {
+    "episode_id": "ep066",
+    "episode_number": 66,
+    "title": "와틀딱들이 명심해야 할 점: 알아도 모른 척 하기",
+    "subtitle": "탱커보다 먼저 달려가 3무리 애드 내는 고인물 훈수 냥꾼",
+    "source_post_no": "128004",
+    "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=128004",
+    "created_at": "2026-11-28T15:51:51+09:00",
+    "date_short": "2026-11-28",
+    "cut_count": 6,
+    "cast_used": [
+      "오크 전사",
+      "타우렌 드루이드",
+      "드워프 사냥꾼"
+    ],
+    "cast_chips": [
+      {
+        "id": "orc_warrior",
+        "name": "오크 전사",
+        "color": "#4CAF50"
+      },
+      {
+        "id": "tauren_druid",
+        "name": "타우렌 드루이드",
+        "color": "#8D6E63"
+      },
+      {
+        "id": "dwarf_hunter",
+        "name": "드워프 사냥꾼",
+        "color": "#2E7D32"
+      }
+    ],
+    "full_image": "assets/episodes/ep066/episode_full.jpg?v=03455cb8",
+    "thumb_image": "assets/episodes/ep066/thumb.jpg?v=6e8f7b33",
+    "page_images": [
+      "assets/episodes/ep066/page_1.png?v=823a5f5a",
+      "assets/episodes/ep066/page_2.png?v=ede6f79d",
+      "assets/episodes/ep066/page_3.png?v=497b7312"
+    ],
+    "canonical_url": "https://slopwow.github.io/episodes/ep066.html"
+  },
+  {
+    "episode_id": "ep067",
+    "episode_number": 67,
+    "title": "금고 따는데 도적한테 돈주기싫으면 상점어팔어 시발련들아",
+    "subtitle": "잠긴 금고 공짜로 따먹고 0실버 튄 얌체에게 터진 도적",
+    "source_post_no": "119740",
+    "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=119740",
+    "created_at": "2026-11-28T15:54:09+09:00",
+    "date_short": "2026-11-28",
+    "cut_count": 6,
+    "cast_used": [
+      "오크 전사",
+      "노움 도적",
+      "언데드 성기사"
+    ],
+    "cast_chips": [
+      {
+        "id": "orc_warrior",
+        "name": "오크 전사",
+        "color": "#4CAF50"
+      },
+      {
+        "id": "gnome_rogue",
+        "name": "노움 도적",
+        "color": "#FFC107"
+      },
+      {
+        "id": "undead_paladin",
+        "name": "언데드 성기사",
+        "color": "#9E9E9E"
+      }
+    ],
+    "full_image": "assets/episodes/ep067/episode_full.jpg?v=2e392862",
+    "thumb_image": "assets/episodes/ep067/thumb.jpg?v=22953b6a",
+    "page_images": [
+      "assets/episodes/ep067/page_1.png?v=c130af51",
+      "assets/episodes/ep067/page_2.png?v=c48be1ea",
+      "assets/episodes/ep067/page_3.png?v=31e27c99"
+    ],
+    "canonical_url": "https://slopwow.github.io/episodes/ep067.html"
+  },
+  {
+    "episode_id": "ep068",
+    "episode_number": 68,
+    "title": "힐러님 딜하세요 마나관리하세요 만피유지하세요",
+    "subtitle": "딜·마나·만피·무입찰 다 요구하다가 물탐 파업 맞은 파티",
+    "source_post_no": "106316",
+    "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=106316",
+    "created_at": "2026-11-28T15:55:00+09:00",
+    "date_short": "2026-11-28",
+    "cut_count": 6,
+    "cast_used": [
+      "나이트엘프 사제",
+      "오크 전사",
+      "스카이본 마법사"
+    ],
+    "cast_chips": [
+      {
+        "id": "nightelf_priest",
+        "name": "나이트엘프 사제",
+        "color": "#7E57C2"
+      },
+      {
+        "id": "orc_warrior",
+        "name": "오크 전사",
+        "color": "#4CAF50"
+      },
+      {
+        "id": "skyborne_mage",
+        "name": "스카이본 마법사",
+        "color": "#29B6F6"
+      }
+    ],
+    "full_image": "assets/episodes/ep068/episode_full.jpg?v=4150b8ba",
+    "thumb_image": "assets/episodes/ep068/thumb.jpg?v=8aedfa71",
+    "page_images": [
+      "assets/episodes/ep068/page_1.png?v=aeff6b78",
+      "assets/episodes/ep068/page_2.png?v=23fa5633",
+      "assets/episodes/ep068/page_3.png?v=b8cec3a3"
+    ],
+    "canonical_url": "https://slopwow.github.io/episodes/ep068.html"
+  },
+  {
+    "episode_id": "ep069",
+    "episode_number": 69,
+    "title": "와우 틀딱들이 파티문화를 망치고 있는 이유.jpg",
+    "subtitle": "멀쩡한 파티 찾기 창 놔두고 광장 도배에 합류한 뉴비 법사",
+    "source_post_no": "61532",
+    "source_url": "https://gall.dcinside.com/mgallery/board/view/?id=wowforever&no=61532",
+    "created_at": "2026-11-28T15:55:45+09:00",
+    "date_short": "2026-11-28",
+    "cut_count": 6,
+    "cast_used": [
+      "스카이본 마법사",
+      "트롤 주술사",
+      "타우렌 드루이드"
+    ],
+    "cast_chips": [
+      {
+        "id": "skyborne_mage",
+        "name": "스카이본 마법사",
+        "color": "#29B6F6"
+      },
+      {
+        "id": "troll_shaman",
+        "name": "트롤 주술사",
+        "color": "#00ACC1"
+      },
+      {
+        "id": "tauren_druid",
+        "name": "타우렌 드루이드",
+        "color": "#8D6E63"
+      }
+    ],
+    "full_image": "assets/episodes/ep069/episode_full.jpg?v=740fd790",
+    "thumb_image": "assets/episodes/ep069/thumb.jpg?v=0ee19a6d",
+    "page_images": [
+      "assets/episodes/ep069/page_1.png?v=48ecc7b5",
+      "assets/episodes/ep069/page_2.png?v=9afcacd3",
+      "assets/episodes/ep069/page_3.png?v=d0d65c42"
+    ],
+    "canonical_url": "https://slopwow.github.io/episodes/ep069.html"
   }
 ]
